@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NFL Prediction Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+
+<!-- ═══════════════════════════ HEADER ═══════════════════════════ -->
+<header>
+  <div class="container header-inner">
+    <div class="logo">
+      <div class="logo-icon">🏈</div>
+      <div>
+        <h1>NFL Prediction Dashboard</h1>
+        <p>12-Model Ensemble • Live Data • Monte Carlo Simulations</p>
+      </div>
+    </div>
+    <div class="header-meta">
+      <div><span class="status-dot"></span>Auto-updated daily</div>
+      <div id="last-updated" class="muted">Loading...</div>
+      <div id="season-week" class="muted"></div>
+    </div>
+  </div>
+</header>
+
+<!-- ════════════════════════════ NAV ═════════════════════════════ -->
+<nav>
+  <div class="container">
+    <div class="nav-tabs">
+      <button class="nav-tab active" data-tab="games">This Week's Games</button>
+      <button class="nav-tab" data-tab="controls">Model Controls</button>
+      <button class="nav-tab" data-tab="predictor">Matchup Predictor</button>
+      <button class="nav-tab" data-tab="leaderboard">ELO Leaderboard</button>
+      <button class="nav-tab" data-tab="performance">Model Performance</button>
+    </div>
+  </div>
+</nav>
+
+<!-- ══════════════════════════ MAIN ══════════════════════════════ -->
+<main>
+  <div class="container">
+
+    <!-- ── Section 1: This Week's Games ── -->
+    <section id="tab-games" class="section active">
+      <div class="section-header">
+        <div class="section-title">
+          <h2>This Week's Games</h2>
+          <span class="section-badge" id="games-count-badge">0 games</span>
+        </div>
+      </div>
+      <div id="offseason-banner"></div>
+      <div id="games-grid" class="games-grid">
+        <div class="loading"><div class="spinner"></div><span>Loading predictions...</span></div>
+      </div>
+    </section>
+
+    <!-- ── Section 2: Model Controls ── -->
+    <section id="tab-controls" class="section">
+      <div class="section-header">
+        <div class="section-title">
+          <h2>Model Controls</h2>
+          <span class="section-badge">Real-time</span>
+        </div>
+      </div>
+      <p class="muted mb-3" style="font-size:0.8125rem;">Adjust model parameters. Changes update the Matchup Predictor live. Full model retraining runs daily via GitHub Actions.</p>
+      <div class="controls-grid">
+
+        <!-- ELO Parameters -->
+        <div class="control-card">
+          <h4>ELO Parameters</h4>
+          <div class="slider-group">
+            <div class="slider-item">
+              <div class="slider-header">
+                <span class="slider-label">K-Factor</span>
+                <span class="slider-value" id="val-k">20</span>
+              </div>
+              <input type="range" id="sl-k" min="10" max="40" step="1" value="20" />
+            </div>
+            <div class="slider-item">
+              <div class="slider-header">
+                <span class="slider-label">Home Field Advantage (ELO pts)</span>
+                <span class="slider-value" id="val-hfa">65</span>
+              </div>
+              <input type="range" id="sl-hfa" min="0" max="80" step="5" value="65" />
+            </div>
+            <div class="slider-item">
+              <div class="slider-header">
+                <span class="slider-label">MOV Multiplier Weight</span>
+                <span class="slider-value" id="val-mov">1.0</span>
+              </div>
+              <input type="range" id="sl-mov" min="0" max="2" step="0.1" value="1.0" />
+            </div>
+            <div class="slider-item">
+              <div class="slider-header">
+                <span class="slider-label">Recent Form Blend</span>
+                <span class="slider-value" id="val-form">0.30</span>
+              </div>
+              <input type="range" id="sl-form" min="0" max="1" step="0.05" value="0.30" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Adjustments -->
+        <div class="control-card">
+          <h4>Game Adjustments</h4>
+          <div class="slider-group">
+            <div class="slider-item">
+              <div class="slider-header">
+                <span class="slider-label">SOS Weight</span>
+                <span class="slider-value" id="val-sos">0.50</span>
+              </div>
+              <input type="range" id="sl-sos" min="0" max="1" step="0.05" value="0.50" />
+            </div>
+            <div class="slider-item">
+              <div class="slider-header">
+                <span class="slider-label">Head-to-Head Modifier</span>
+                <span class="slider-value" id="val-h2h">0.50</span>
+              </div>
+              <input type="range" id="sl-h2h" min="0" max="1" step="0.05" value="0.50" />
+            </div>
+            <div class="slider-item">
+              <div class="slider-header">
+                <span class="slider-label">Turnover Impact</span>
+                <span class="slider-value" id="val-to">1.0</span>
+              </div>
+              <input type="range" id="sl-to" min="0" max="2" step="0.1" value="1.0" />
+            </div>
+            <div class="slider-item">
+              <div class="slider-header">
+                <span class="slider-label">Rest/Travel Scaling</span>
+                <span class="slider-value" id="val-rt">1.0</span>
+              </div>
+              <input type="range" id="sl-rt" min="0" max="2" step="0.1" value="1.0" />
+            </div>
+            <div class="slider-item">
+              <div class="slider-header">
+                <span class="slider-label">Time Decay λ</span>
+                <span class="slider-value" id="val-lambda">0.10</span>
+              </div>
+              <input type="range" id="sl-lambda" min="0.01" max="0.5" step="0.01" value="0.10" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Ensemble Weights -->
+        <div class="control-card">
+          <h4>Ensemble Weights</h4>
+          <div class="slider-group">
+            <div class="slider-item">
+              <div class="slider-header">
+                <span class="slider-label">Logistic Regression</span>
+                <span class="slider-value" id="val-w-log">0.30</span>
+              </div>
+              <input type="range" id="sl-w-log" min="0" max="1" step="0.05" value="0.30" data-weight="logistic" />
+            </div>
+            <div class="slider-item">
+              <div class="slider-header">
+                <span class="slider-label">XGBoost</span>
+                <span class="slider-value" id="val-w-xgb">0.25</span>
+              </div>
+              <input type="range" id="sl-w-xgb" min="0" max="1" step="0.05" value="0.25" data-weight="xgboost" />
+            </div>
+            <div class="slider-item">
+              <div class="slider-header">
+                <span class="slider-label">ELO Model</span>
+                <span class="slider-value" id="val-w-elo">0.20</span>
+              </div>
+              <input type="range" id="sl-w-elo" min="0" max="1" step="0.05" value="0.20" data-weight="elo" />
+            </div>
+            <div class="slider-item">
+              <div class="slider-header">
+                <span class="slider-label">Pythagorean</span>
+                <span class="slider-value" id="val-w-pyth">0.15</span>
+              </div>
+              <input type="range" id="sl-w-pyth" min="0" max="1" step="0.05" value="0.15" data-weight="pyth" />
+            </div>
+            <div class="slider-item">
+              <div class="slider-header">
+                <span class="slider-label">Efficiency</span>
+                <span class="slider-value" id="val-w-eff">0.10</span>
+              </div>
+              <input type="range" id="sl-w-eff" min="0" max="1" step="0.05" value="0.10" data-weight="eff" />
+            </div>
+          </div>
+          <div class="weight-total">
+            <span>Total weight</span>
+            <span id="weight-total-val" class="weight-total-val ok">1.00</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── Section 3: Matchup Predictor ── -->
+    <section id="tab-predictor" class="section">
+      <div class="section-header">
+        <div class="section-title">
+          <h2>Matchup Predictor</h2>
+          <span class="section-badge">Any Teams</span>
+        </div>
+      </div>
+      <div class="predictor-layout">
+
+        <div class="predictor-form">
+          <div class="form-group">
+            <label class="form-label" for="pred-home">Home Team</label>
+            <select id="pred-home"><option value="">Select team...</option></select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="pred-away">Away Team</label>
+            <select id="pred-away"><option value="">Select team...</option></select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="pred-rest-home">Home Team Rest Days</label>
+            <select id="pred-rest-home">
+              <option value="4">4 days (Thu game)</option>
+              <option value="7" selected>7 days (normal)</option>
+              <option value="10">10 days</option>
+              <option value="14">14 days (bye week)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="pred-rest-away">Away Team Rest Days</label>
+            <select id="pred-rest-away">
+              <option value="4">4 days (Thu game)</option>
+              <option value="7" selected>7 days (normal)</option>
+              <option value="10">10 days</option>
+              <option value="14">14 days (bye week)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="pred-neutral">Venue</label>
+            <select id="pred-neutral">
+              <option value="0">Home team stadium</option>
+              <option value="1">Neutral site</option>
+            </select>
+          </div>
+          <button class="btn btn-primary" id="btn-predict">Run Prediction</button>
+        </div>
+
+        <div class="predictor-results" id="predictor-results">
+          <div class="empty-state">
+            <div class="empty-state-icon">🏈</div>
+            <h3>Select Two Teams</h3>
+            <p>Choose a home and away team, then click Run Prediction.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── Section 4: ELO Leaderboard ── -->
+    <section id="tab-leaderboard" class="section">
+      <div class="section-header">
+        <div class="section-title">
+          <h2>ELO Leaderboard</h2>
+          <span class="section-badge">All 32 Teams</span>
+        </div>
+        <div style="font-size:0.75rem;color:var(--text-muted);">Click column header to sort</div>
+      </div>
+      <div class="table-wrapper">
+        <table id="leaderboard-table">
+          <thead>
+            <tr>
+              <th data-col="rank">Rank</th>
+              <th data-col="team">Team</th>
+              <th data-col="elo" class="sorted">ELO ▲ <span class="sort-icon">▼</span></th>
+              <th data-col="band">±Band</th>
+              <th data-col="record">Record</th>
+              <th data-col="pyth">Pythagorean</th>
+              <th data-col="net_eff">Net Eff</th>
+              <th data-col="off_eff">Off Eff</th>
+              <th data-col="def_eff">Def Eff</th>
+              <th data-col="playoff_prob">Playoff %</th>
+              <th data-col="sb_prob">SB %</th>
+              <th data-col="trend">Trend</th>
+            </tr>
+          </thead>
+          <tbody id="leaderboard-body">
+            <tr><td colspan="12"><div class="loading"><div class="spinner"></div></div></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ── Section 5: Model Performance ── -->
+    <section id="tab-performance" class="section">
+      <div class="section-header">
+        <div class="section-title">
+          <h2>Model Performance</h2>
+          <span class="section-badge" id="metrics-trained-on">Loading...</span>
+        </div>
+      </div>
+
+      <div class="metrics-row" id="metrics-row">
+        <div class="loading"><div class="spinner"></div></div>
+      </div>
+
+      <div class="charts-row">
+        <div class="chart-card">
+          <div class="chart-title">Calibration Curve</div>
+          <div class="chart-container">
+            <canvas id="calibration-chart" height="280"></canvas>
+          </div>
+        </div>
+        <div class="chart-card">
+          <div class="chart-title">Historical Accuracy by Season</div>
+          <div class="chart-container">
+            <canvas id="accuracy-chart" height="280"></canvas>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div><!-- /container -->
+</main>
+
+<script src="main.js"></script>
+</body>
+</html>

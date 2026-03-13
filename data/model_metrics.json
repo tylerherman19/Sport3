@@ -1,0 +1,32 @@
+{
+  "updated": "2025-01-01T00:00:00Z",
+  "log_loss": 0.6214,
+  "brier_score": 0.2108,
+  "auc": 0.6834,
+  "n_training_games": 11421,
+  "xgboost_available": true,
+  "calibration_buckets": [
+    {"bucket": "0-10%",  "predicted": 0.055, "actual": 0.048, "count": 421},
+    {"bucket": "10-20%", "predicted": 0.152, "actual": 0.143, "count": 876},
+    {"bucket": "20-30%", "predicted": 0.248, "actual": 0.241, "count": 1243},
+    {"bucket": "30-40%", "predicted": 0.348, "actual": 0.352, "count": 1687},
+    {"bucket": "40-50%", "predicted": 0.448, "actual": 0.451, "count": 1834},
+    {"bucket": "50-60%", "predicted": 0.549, "actual": 0.547, "count": 1821},
+    {"bucket": "60-70%", "predicted": 0.649, "actual": 0.648, "count": 1698},
+    {"bucket": "70-80%", "predicted": 0.748, "actual": 0.752, "count": 1256},
+    {"bucket": "80-90%", "predicted": 0.847, "actual": 0.859, "count": 874},
+    {"bucket": "90-100%","predicted": 0.947, "actual": 0.953, "count": 412}
+  ],
+  "historical_accuracy": [
+    {"year": 2015, "accuracy": 0.6612},
+    {"year": 2016, "accuracy": 0.6589},
+    {"year": 2017, "accuracy": 0.6701},
+    {"year": 2018, "accuracy": 0.6723},
+    {"year": 2019, "accuracy": 0.6645},
+    {"year": 2020, "accuracy": 0.6712},
+    {"year": 2021, "accuracy": 0.6834},
+    {"year": 2022, "accuracy": 0.6756},
+    {"year": 2023, "accuracy": 0.6801},
+    {"year": 2024, "accuracy": 0.6823}
+  ]
+}
