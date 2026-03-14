@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NFL Prediction Dashboard</title>
+  <title>Sports Prediction Dashboard</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -16,9 +16,9 @@
 <header>
   <div class="container header-inner">
     <div class="logo">
-      <div class="logo-icon">🏈</div>
+      <div class="logo-icon" id="header-icon">🏈</div>
       <div>
-        <h1>NFL Prediction Dashboard</h1>
+        <h1 id="header-title">Sports Prediction Dashboard</h1>
         <p>12-Model Ensemble • Live Data • Monte Carlo Simulations</p>
       </div>
     </div>
@@ -30,15 +30,34 @@
   </div>
 </header>
 
+<!-- ══════════════════════════ LEAGUE SELECTOR ═══════════════════════ -->
+<div class="league-selector">
+  <div class="container">
+    <button class="league-btn active" data-league="nfl">🏈 NFL</button>
+    <button class="league-btn" data-league="nba">🏀 NBA</button>
+  </div>
+</div>
+
 <!-- ════════════════════════════ NAV ═════════════════════════════ -->
-<nav>
+<nav id="nfl-nav">
   <div class="container">
     <div class="nav-tabs">
-      <button class="nav-tab active" data-tab="games">This Week's Games</button>
-      <button class="nav-tab" data-tab="controls">Model Controls</button>
-      <button class="nav-tab" data-tab="predictor">Matchup Predictor</button>
-      <button class="nav-tab" data-tab="leaderboard">ELO Leaderboard</button>
-      <button class="nav-tab" data-tab="performance">Model Performance</button>
+      <button class="nav-tab active" data-tab="games" data-league="nfl">This Week's Games</button>
+      <button class="nav-tab" data-tab="controls" data-league="nfl">Model Controls</button>
+      <button class="nav-tab" data-tab="predictor" data-league="nfl">Matchup Predictor</button>
+      <button class="nav-tab" data-tab="leaderboard" data-league="nfl">ELO Leaderboard</button>
+      <button class="nav-tab" data-tab="performance" data-league="nfl">Model Performance</button>
+    </div>
+  </div>
+</nav>
+<nav id="nba-nav" style="display:none;">
+  <div class="container">
+    <div class="nav-tabs">
+      <button class="nav-tab active" data-tab="games" data-league="nba">Tonight's Games</button>
+      <button class="nav-tab" data-tab="controls" data-league="nba">Model Controls</button>
+      <button class="nav-tab" data-tab="predictor" data-league="nba">Matchup Predictor</button>
+      <button class="nav-tab" data-tab="leaderboard" data-league="nba">ELO Leaderboard</button>
+      <button class="nav-tab" data-tab="performance" data-league="nba">Model Performance</button>
     </div>
   </div>
 </nav>
@@ -319,7 +338,227 @@
       </div>
     </section>
 
-  </div><!-- /container -->
+  </div><!-- /container NFL -->
+</main>
+
+<!-- ══════════════════════════ NBA MAIN ══════════════════════════════ -->
+<main id="nba-main" style="display:none;">
+  <div class="container">
+
+    <!-- ── NBA Section 1: Tonight's Games ── -->
+    <section id="nba-tab-games" class="section active">
+      <div class="section-header">
+        <div class="section-title">
+          <h2>Tonight's Games</h2>
+          <span class="section-badge" id="nba-games-count-badge">0 games</span>
+        </div>
+      </div>
+      <div id="nba-offseason-banner"></div>
+      <div id="nba-games-grid" class="games-grid">
+        <div class="loading"><div class="spinner"></div><span>Loading NBA predictions...</span></div>
+      </div>
+    </section>
+
+    <!-- ── NBA Section 2: Model Controls ── -->
+    <section id="nba-tab-controls" class="section">
+      <div class="section-header">
+        <div class="section-title">
+          <h2>NBA Model Controls</h2>
+          <span class="section-badge">Real-time</span>
+        </div>
+      </div>
+      <p class="muted mb-3" style="font-size:0.8125rem;">Adjust NBA model parameters. Changes update the Matchup Predictor live.</p>
+      <div class="controls-grid">
+        <div class="control-card">
+          <h4>ELO Parameters</h4>
+          <div class="slider-group">
+            <div class="slider-item">
+              <div class="slider-header">
+                <span class="slider-label">K-Factor</span>
+                <span class="slider-value" id="nba-val-k">20</span>
+              </div>
+              <input type="range" id="nba-sl-k" min="10" max="40" step="1" value="20" />
+            </div>
+            <div class="slider-item">
+              <div class="slider-header">
+                <span class="slider-label">Home Court Advantage (ELO pts)</span>
+                <span class="slider-value" id="nba-val-hfa">100</span>
+              </div>
+              <input type="range" id="nba-sl-hfa" min="0" max="150" step="5" value="100" />
+            </div>
+            <div class="slider-item">
+              <div class="slider-header">
+                <span class="slider-label">Recent Form Blend</span>
+                <span class="slider-value" id="nba-val-form">0.20</span>
+              </div>
+              <input type="range" id="nba-sl-form" min="0" max="1" step="0.05" value="0.20" />
+            </div>
+          </div>
+        </div>
+        <div class="control-card">
+          <h4>Ensemble Weights</h4>
+          <div class="slider-group">
+            <div class="slider-item">
+              <div class="slider-header">
+                <span class="slider-label">Logistic Regression</span>
+                <span class="slider-value" id="nba-val-w-log">0.30</span>
+              </div>
+              <input type="range" id="nba-sl-w-log" min="0" max="1" step="0.05" value="0.30" data-nba-weight="logistic" />
+            </div>
+            <div class="slider-item">
+              <div class="slider-header">
+                <span class="slider-label">XGBoost</span>
+                <span class="slider-value" id="nba-val-w-xgb">0.25</span>
+              </div>
+              <input type="range" id="nba-sl-w-xgb" min="0" max="1" step="0.05" value="0.25" data-nba-weight="xgboost" />
+            </div>
+            <div class="slider-item">
+              <div class="slider-header">
+                <span class="slider-label">ELO Model</span>
+                <span class="slider-value" id="nba-val-w-elo">0.20</span>
+              </div>
+              <input type="range" id="nba-sl-w-elo" min="0" max="1" step="0.05" value="0.20" data-nba-weight="elo" />
+            </div>
+            <div class="slider-item">
+              <div class="slider-header">
+                <span class="slider-label">Pythagorean</span>
+                <span class="slider-value" id="nba-val-w-pyth">0.15</span>
+              </div>
+              <input type="range" id="nba-sl-w-pyth" min="0" max="1" step="0.05" value="0.15" data-nba-weight="pyth" />
+            </div>
+            <div class="slider-item">
+              <div class="slider-header">
+                <span class="slider-label">Efficiency</span>
+                <span class="slider-value" id="nba-val-w-eff">0.10</span>
+              </div>
+              <input type="range" id="nba-sl-w-eff" min="0" max="1" step="0.05" value="0.10" data-nba-weight="eff" />
+            </div>
+          </div>
+          <div class="weight-total">
+            <span>Total weight</span>
+            <span id="nba-weight-total-val" class="weight-total-val ok">1.00</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── NBA Section 3: Matchup Predictor ── -->
+    <section id="nba-tab-predictor" class="section">
+      <div class="section-header">
+        <div class="section-title">
+          <h2>NBA Matchup Predictor</h2>
+          <span class="section-badge">Any Teams</span>
+        </div>
+      </div>
+      <div class="predictor-layout">
+        <div class="predictor-form">
+          <div class="form-group">
+            <label class="form-label" for="nba-pred-home">Home Team</label>
+            <select id="nba-pred-home"><option value="">Select team...</option></select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="nba-pred-away">Away Team</label>
+            <select id="nba-pred-away"><option value="">Select team...</option></select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="nba-pred-rest-home">Home Rest Days</label>
+            <select id="nba-pred-rest-home">
+              <option value="1">1 day (back-to-back)</option>
+              <option value="2" selected>2 days (normal)</option>
+              <option value="3">3 days</option>
+              <option value="5">5 days (extended rest)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="nba-pred-rest-away">Away Rest Days</label>
+            <select id="nba-pred-rest-away">
+              <option value="1">1 day (back-to-back)</option>
+              <option value="2" selected>2 days (normal)</option>
+              <option value="3">3 days</option>
+              <option value="5">5 days (extended rest)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="nba-pred-neutral">Venue</label>
+            <select id="nba-pred-neutral">
+              <option value="0">Home court</option>
+              <option value="1">Neutral site</option>
+            </select>
+          </div>
+          <button class="btn btn-primary" id="nba-btn-predict">Run Prediction</button>
+        </div>
+        <div class="predictor-results" id="nba-predictor-results">
+          <div class="empty-state">
+            <div class="empty-state-icon">🏀</div>
+            <h3>Select Two Teams</h3>
+            <p>Choose a home and away team, then click Run Prediction.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── NBA Section 4: ELO Leaderboard ── -->
+    <section id="nba-tab-leaderboard" class="section">
+      <div class="section-header">
+        <div class="section-title">
+          <h2>NBA ELO Leaderboard</h2>
+          <span class="section-badge">All 30 Teams</span>
+        </div>
+        <div style="font-size:0.75rem;color:var(--text-muted);">Click column header to sort</div>
+      </div>
+      <div class="table-wrapper">
+        <table id="nba-leaderboard-table">
+          <thead>
+            <tr>
+              <th data-nba-col="rank">Rank</th>
+              <th data-nba-col="team">Team</th>
+              <th data-nba-col="elo" class="sorted">ELO ▲ <span class="sort-icon">▼</span></th>
+              <th data-nba-col="band">±Band</th>
+              <th data-nba-col="record">Record</th>
+              <th data-nba-col="net_rating">Net Rtg</th>
+              <th data-nba-col="off_rating">Off Rtg</th>
+              <th data-nba-col="def_rating">Def Rtg</th>
+              <th data-nba-col="pyth">Pythagorean</th>
+              <th data-nba-col="playoff_prob">Playoff %</th>
+              <th data-nba-col="champ_prob">Champ %</th>
+              <th data-nba-col="trend">Trend</th>
+            </tr>
+          </thead>
+          <tbody id="nba-leaderboard-body">
+            <tr><td colspan="12"><div class="loading"><div class="spinner"></div></div></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ── NBA Section 5: Model Performance ── -->
+    <section id="nba-tab-performance" class="section">
+      <div class="section-header">
+        <div class="section-title">
+          <h2>NBA Model Performance</h2>
+          <span class="section-badge" id="nba-metrics-trained-on">Loading...</span>
+        </div>
+      </div>
+      <div class="metrics-row" id="nba-metrics-row">
+        <div class="loading"><div class="spinner"></div></div>
+      </div>
+      <div class="charts-row">
+        <div class="chart-card">
+          <div class="chart-title">Calibration Curve</div>
+          <div class="chart-container">
+            <canvas id="nba-calibration-chart" height="280"></canvas>
+          </div>
+        </div>
+        <div class="chart-card">
+          <div class="chart-title">Historical Accuracy by Season</div>
+          <div class="chart-container">
+            <canvas id="nba-accuracy-chart" height="280"></canvas>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div><!-- /container NBA -->
 </main>
 
 <script src="main.js"></script>

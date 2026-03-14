@@ -108,6 +108,86 @@ header {
   50%      { opacity:0.4; }
 }
 
+/* ── League selector ────────────────────────────────────────── */
+.league-selector {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: 0.5rem 0;
+}
+
+.league-selector .container {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.league-btn {
+  padding: 0.4rem 1.25rem;
+  border-radius: 99px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  font-family: var(--font);
+}
+
+.league-btn:hover {
+  border-color: var(--blue-light);
+  color: var(--text);
+}
+
+.league-btn.active {
+  background: var(--blue);
+  border-color: var(--blue);
+  color: #fff;
+}
+
+/* ── Prediction drivers ─────────────────────────────────────── */
+.prediction-drivers {
+  border-top: 1px solid var(--border);
+  padding-top: 0.75rem;
+  margin-top: 0.75rem;
+}
+
+.prediction-drivers-title {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.driver-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.driver-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+}
+
+.driver-icon { font-size: 0.85rem; flex-shrink: 0; }
+
+.driver-desc { flex: 1; color: var(--text-muted); }
+
+.driver-impact {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.driver-impact.positive { color: var(--green-light); }
+.driver-impact.negative { color: var(--red-light); }
+
 /* ── Nav tabs ───────────────────────────────────────────────── */
 nav {
   background: var(--surface);

@@ -17,7 +17,8 @@ from pathlib import Path
 # Add project root to path
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-from model.elo_model import compute_elo, predict_game as elo_predict_game, get_trend
+from model.elo_model import (compute_elo, predict_game as elo_predict_game,
+                             get_trend, update_elo_with_result)
 from model.logistic_model import (build_features, train_logistic, evaluate_model,
                                    calibration_buckets, predict_matchups,
                                    historical_accuracy_by_year)
@@ -319,6 +320,213 @@ def build_team_efficiency_data(standings, fte_df):
     return efficiency_data
 
 
+def fetch_espn_season_results(season_year):
+    """
+    Fetch all completed NFL games for a season from ESPN team schedules.
+    Returns a list of dicts: {game_id, date, team_a, team_b, score_a, score_b,
+                               is_home_a, neutral}
+    """
+    log.info(f"Fetching ESPN NFL season {season_year} results for live ELO update...")
+    games = {}  # game_id → game dict (dedup since each game appears for both teams)
+
+    # ESPN team IDs for NFL — abbrev → numeric ESPN id
+    ESPN_NFL_TEAM_IDS = {
+        "ARI": 22, "ATL": 1, "BAL": 33, "BUF": 2, "CAR": 29, "CHI": 3,
+        "CIN": 4, "CLE": 5, "DAL": 6, "DEN": 7, "DET": 8, "GB": 9,
+        "HOU": 34, "IND": 11, "JAX": 30, "KC": 12, "LAC": 24, "LAR": 14,
+        "LV": 13, "MIA": 15, "MIN": 16, "NE": 17, "NO": 18, "NYG": 19,
+        "NYJ": 20, "PHI": 21, "PIT": 23, "SEA": 26, "SF": 25, "TB": 27,
+        "TEN": 10, "WAS": 28,
+    }
+
+    for abbrev, team_id in ESPN_NFL_TEAM_IDS.items():
+        url = f"{ESPN_BASE}/teams/{team_id}/schedule"
+        data = safe_get(url, params={"season": season_year})
+        if not data:
+            continue
+        try:
+            for event in data.get("events", []):
+                comp_list = event.get("competitions", [])
+                if not comp_list:
+                    continue
+                comp = comp_list[0]
+                status_name = comp.get("status", {}).get("type", {}).get("name", "")
+                if status_name != "STATUS_FINAL":
+                    continue
+
+                game_id = event.get("id", "")
+                if game_id in games:
+                    continue
+
+                competitors = comp.get("competitors", [])
+                if len(competitors) < 2:
+                    continue
+
+                home = next((c for c in competitors if c.get("homeAway") == "home"), None)
+                away = next((c for c in competitors if c.get("homeAway") == "away"), None)
+                if not home or not away:
+                    continue
+
+                home_abbrev = abbrev_norm(home["team"]["abbreviation"])
+                away_abbrev = abbrev_norm(away["team"]["abbreviation"])
+                home_score = int(home.get("score", 0) or 0)
+                away_score = int(away.get("score", 0) or 0)
+                neutral = int(comp.get("neutralSite", False))
+                date_str = event.get("date", "")
+
+                games[game_id] = {
+                    "game_id": game_id,
+                    "date": date_str,
+                    "team_a": home_abbrev,
+                    "team_b": away_abbrev,
+                    "score_a": home_score,
+                    "score_b": away_score,
+                    "is_home_a": True,
+                    "neutral": bool(neutral),
+                }
+        except Exception as e:
+            log.debug(f"Error fetching schedule for team {abbrev}: {e}")
+
+    result = sorted(games.values(), key=lambda g: g["date"])
+    log.info(f"Found {len(result)} completed ESPN games for season {season_year}")
+    return result
+
+
+def update_elo_from_espn(elo_dict, game_history, fte_df, season_year):
+    """
+    Continue updating ELO with ESPN live results not yet in FTE data.
+    Only processes games dated after the FTE dataset's last entry.
+    """
+    if fte_df.empty:
+        fte_cutoff = "2000-01-01"
+    else:
+        fte_cutoff = pd.to_datetime(fte_df["date"]).max().isoformat()[:10]
+
+    log.info(f"FTE data ends at {fte_cutoff}. Fetching newer ESPN results...")
+    espn_games = fetch_espn_season_results(season_year)
+
+    new_count = 0
+    for game in espn_games:
+        game_date = game["date"][:10]
+        if game_date <= fte_cutoff:
+            continue
+        update_elo_with_result(
+            elo_dict, game_history,
+            game["team_a"], game["team_b"],
+            game["score_a"], game["score_b"],
+            is_home_a=game["is_home_a"],
+            neutral=game["neutral"],
+        )
+        new_count += 1
+
+    log.info(f"Updated ELO with {new_count} live ESPN games past FTE cutoff")
+    return espn_games  # return for Bayesian update use
+
+
+def compute_prediction_drivers(home, away, elo_result, eff_result, adj,
+                                home_inj_impact, away_inj_impact,
+                                home_name, away_name):
+    """
+    Build a ranked list of the top prediction drivers for a game.
+    Each driver: {type, team, description, impact_pct}
+    impact_pct is the estimated ±% change on home win probability.
+    """
+    from scipy.special import expit, logit as sp_logit
+
+    drivers = []
+
+    base_prob = elo_result.get("prob", 0.5)
+
+    def prob_delta_from_elo(elo_change):
+        """Estimate probability change from adding `elo_change` to home ELO."""
+        elo_diff = elo_result.get("elo_diff", 0.0)
+        new_prob = 1.0 / (1.0 + 10 ** (-(elo_diff + elo_change) / 400))
+        return round((new_prob - base_prob) * 100, 1)
+
+    # 1 — ELO gap
+    elo_diff = elo_result.get("elo_diff", 0.0)
+    if abs(elo_diff) > 30:
+        favored = home_name if elo_diff > 0 else away_name
+        impact = round((base_prob - 0.5) * 100, 1)
+        drivers.append({
+            "type": "elo",
+            "description": f"ELO advantage: {favored} +{abs(elo_diff):.0f} rating pts",
+            "impact_pct": impact,
+        })
+
+    # 2 — Home injury penalty
+    home_pen = home_inj_impact.get("elo_penalty", 0.0)
+    if home_pen > 10:
+        key_out = home_inj_impact.get("key_players_out", [])
+        detail = key_out[0]["player"] if key_out else "key player"
+        drivers.append({
+            "type": "injury",
+            "team": home,
+            "description": f"{home_name}: {detail} OUT (−{home_pen:.0f} ELO impact)",
+            "impact_pct": prob_delta_from_elo(-home_pen),
+        })
+
+    # 3 — Away injury penalty
+    away_pen = away_inj_impact.get("elo_penalty", 0.0)
+    if away_pen > 10:
+        key_out = away_inj_impact.get("key_players_out", [])
+        detail = key_out[0]["player"] if key_out else "key player"
+        drivers.append({
+            "type": "injury",
+            "team": away,
+            "description": f"{away_name}: {detail} OUT (−{away_pen:.0f} ELO impact)",
+            "impact_pct": prob_delta_from_elo(away_pen),
+        })
+
+    # 4 — Rest advantage
+    rest_diff = adj.get("rest_diff", 0)
+    if abs(rest_diff) >= 3:
+        rest_team = home_name if rest_diff > 0 else away_name
+        rest_adj_pts = rest_diff * 1.5
+        drivers.append({
+            "type": "rest",
+            "description": f"Rest advantage: {rest_team} +{abs(rest_diff)} days",
+            "impact_pct": prob_delta_from_elo(rest_adj_pts if rest_diff > 0 else -rest_adj_pts),
+        })
+
+    # 5 — Travel penalty
+    travel_mi = adj.get("travel_dist_miles", 0)
+    travel_adj = adj.get("travel_adj", 0)
+    if travel_mi > 1500:
+        drivers.append({
+            "type": "travel",
+            "description": f"Travel penalty: away team {travel_mi:.0f} mi ({travel_adj:+.0f} ELO)",
+            "impact_pct": prob_delta_from_elo(-travel_adj),
+        })
+
+    # 6 — Efficiency mismatch
+    net_eff_home = eff_result.get("home_net_eff", 0.0)
+    net_eff_away = eff_result.get("away_net_eff", 0.0)
+    eff_gap = net_eff_home - net_eff_away
+    if abs(eff_gap) > 0.08:
+        eff_team = home_name if eff_gap > 0 else away_name
+        drivers.append({
+            "type": "efficiency",
+            "description": (f"Efficiency gap: {home_name} net {net_eff_home:+.3f} "
+                            f"vs {away_name} net {net_eff_away:+.3f}"),
+            "impact_pct": round(eff_gap * 30, 1),
+        })
+
+    # 7 — Pythagorean signal
+    pyth_prob = eff_result.get("pyth_prob", 0.5)
+    if abs(pyth_prob - 0.5) > 0.08:
+        pyth_team = home_name if pyth_prob > 0.5 else away_name
+        drivers.append({
+            "type": "pythagorean",
+            "description": f"Pythagorean expectation favors {pyth_team} ({pyth_prob*100:.1f}%)",
+            "impact_pct": round((pyth_prob - 0.5) * 100, 1),
+        })
+
+    # Sort by absolute impact, return top 5
+    drivers.sort(key=lambda d: abs(d.get("impact_pct", 0)), reverse=True)
+    return drivers[:5]
+
+
 def match_odds_to_game(game, odds_map):
     """Try to find odds for a game by matching team names."""
     home = game.get("home_name", "")
@@ -356,7 +564,7 @@ def run():
 
     is_offseason = len(scoreboard_games) == 0
 
-    # ── 2. Build ELO ratings ────────────────────────────────────────────────
+    # ── 2. Build ELO ratings (FTE historical + ESPN live continuation) ───────
     log.info("Computing ELO ratings from FTE data...")
     if not fte_df.empty:
         elo_dict, game_history = compute_elo(fte_df)
@@ -372,6 +580,13 @@ def run():
             game_history[team] = []
 
     log.info(f"ELO computed for {len(elo_dict)} teams")
+
+    # ── 2b. Continue ELO with live ESPN results past FTE cutoff ─────────────
+    try:
+        espn_completed = update_elo_from_espn(elo_dict, game_history, fte_df, season_year)
+    except Exception as e:
+        log.warning(f"Live ELO update failed (non-fatal): {e}")
+        espn_completed = []
 
     # ── 3. Build efficiency & pythagorean data ──────────────────────────────
     log.info("Computing efficiency and pythagorean ratings...")
@@ -436,6 +651,20 @@ def run():
         recent_fte = fte_df[fte_df["season"] >= season_year - 3].copy()
         recent_fte = recent_fte.dropna(subset=["score1", "score2"])
         games_list = recent_fte[["team1", "team2", "score1", "score2", "date", "neutral", "season"]].to_dict("records")
+
+    # Append ESPN live completed games to Bayesian training set
+    for g in espn_completed:
+        game_date = g.get("date", "")[:10]
+        if not fte_df.empty:
+            fte_cutoff = pd.to_datetime(fte_df["date"]).max().isoformat()[:10]
+            if game_date <= fte_cutoff:
+                continue
+        games_list.append({
+            "team1": g["team_a"], "team2": g["team_b"],
+            "score1": g["score_a"], "score2": g["score_b"],
+            "date": g["date"], "neutral": int(g.get("neutral", False)),
+            "season": season_year,
+        })
 
     bayesian_ratings = update_ratings(games_list, elo_dict)
     for team in NFL_TEAMS:
@@ -520,6 +749,9 @@ def run():
             # Efficiency prediction
             eff_result = efficiency_predict_game(home, away, efficiency_data,
                                                   pythagorean_data, not neutral, neutral)
+            # Augment eff_result with net efficiency values for prediction drivers
+            eff_result["home_net_eff"] = efficiency_data.get(home, {}).get("net_eff", 0.0)
+            eff_result["away_net_eff"] = efficiency_data.get(away, {}).get("net_eff", 0.0)
 
             # Logistic prediction
             log_prob = 0.5
@@ -635,6 +867,16 @@ def run():
                     "home_key_players_out": home_inj_impact.get("key_players_out", []),
                     "away_key_players_out": away_inj_impact.get("key_players_out", []),
                 },
+                "prediction_drivers": compute_prediction_drivers(
+                    home, away, elo_result, eff_result,
+                    {
+                        "rest_diff": rest_home - rest_away,
+                        "travel_dist_miles": round(dist, 0),
+                        "travel_adj": travel_adj_away,
+                    },
+                    home_inj_impact, away_inj_impact,
+                    game.get("home_name", home), game.get("away_name", away),
+                ),
             })
 
         except Exception as e:
@@ -725,17 +967,32 @@ def run():
         "xgboost_available": xgb_model is not None,
     }
 
-    (DATA_DIR / "predictions.json").write_text(
+    # Build flat injuries list for nfl_injuries.json
+    injuries_flat = []
+    for team_abbrev, player_list in injuries.items():
+        for p in player_list:
+            injuries_flat.append({
+                "team": team_abbrev,
+                "player_name": p.get("player", ""),
+                "position": p.get("position", ""),
+                "status": p.get("status", ""),
+                "injury_description": "",
+            })
+
+    (DATA_DIR / "nfl_predictions.json").write_text(
         json.dumps(predictions_json, indent=2, default=str)
     )
-    (DATA_DIR / "elo_ratings.json").write_text(
+    (DATA_DIR / "nfl_elo_ratings.json").write_text(
         json.dumps(elo_ratings_json, indent=2, default=str)
     )
-    (DATA_DIR / "leaderboard.json").write_text(
+    (DATA_DIR / "nfl_leaderboard.json").write_text(
         json.dumps(leaderboard_json, indent=2, default=str)
     )
-    (DATA_DIR / "model_metrics.json").write_text(
+    (DATA_DIR / "nfl_model_metrics.json").write_text(
         json.dumps(model_metrics_json, indent=2, default=str)
+    )
+    (DATA_DIR / "nfl_injuries.json").write_text(
+        json.dumps({"updated": now_utc, "injuries": injuries_flat}, indent=2, default=str)
     )
 
     log.info("=== Update complete ===")

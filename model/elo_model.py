@@ -153,6 +153,46 @@ def predict_game(team_a, team_b, elo_dict, game_history,
     }
 
 
+def update_elo_with_result(elo_dict, game_history, team_a, team_b,
+                           score_a, score_b, is_home_a=True, neutral=False,
+                           k=20.0, hfa=65.0):
+    """
+    Update ELO ratings and game_history in-place after a completed game.
+    Used to chain live ESPN results onto FTE-trained ratings.
+    """
+    if team_a not in elo_dict:
+        elo_dict[team_a] = 1500.0
+        game_history[team_a] = []
+    if team_b not in elo_dict:
+        elo_dict[team_b] = 1500.0
+        game_history[team_b] = []
+
+    e_a = elo_dict[team_a]
+    e_b = elo_dict[team_b]
+
+    hfa_adj = 0.0
+    if not neutral:
+        hfa_adj = hfa if is_home_a else -hfa
+
+    adj_e_a = e_a + hfa_adj
+
+    exp_a = expected_score(adj_e_a, e_b)
+    exp_b = 1.0 - exp_a
+
+    actual_a = 1.0 if score_a > score_b else (0.5 if score_a == score_b else 0.0)
+    actual_b = 1.0 - actual_a
+
+    point_diff = abs(score_a - score_b)
+    elo_diff_abs = abs(adj_e_a - e_b)
+    mov = mov_multiplier(point_diff, elo_diff_abs) if point_diff > 0 else 1.0
+
+    elo_dict[team_a] = e_a + k * mov * (actual_a - exp_a)
+    elo_dict[team_b] = e_b + k * mov * (actual_b - exp_b)
+
+    game_history[team_a].append({"result": actual_a, "elo_diff": adj_e_a - e_b})
+    game_history[team_b].append({"result": actual_b, "elo_diff": e_b - adj_e_a})
+
+
 def get_trend(game_history, team, window=5):
     """Returns 'up', 'down', or 'neutral' based on recent results."""
     hist = game_history.get(team, [])
