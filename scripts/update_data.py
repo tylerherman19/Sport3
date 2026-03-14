@@ -30,6 +30,7 @@ from model.monte_carlo import simulate_game, simulate_season
 from model.ensemble_model import (build_xgb_features, train_xgboost, predict_xgboost,
                                    ensemble_predict, kelly_criterion,
                                    american_to_prob, remove_vig)
+from model.injury_model import compute_all_team_impacts, injury_elo_adjustment
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
 log = logging.getLogger(__name__)
@@ -343,6 +344,10 @@ def run():
     injuries = fetch_espn_injuries()
     odds_map = fetch_betting_odds(odds_api_key)
 
+    # ── 1b. Compute injury impacts ──────────────────────────────────────────
+    log.info("Computing injury impact scores...")
+    injury_impacts = compute_all_team_impacts(injuries)
+
     season_year = datetime.now().year
     current_month = datetime.now().month
     # NFL season runs Sep–Feb; if before September treat as prior season
@@ -484,6 +489,13 @@ def run():
             rest_adj_away = -rest_adj_home
             travel_adj_away = travel_elo_adjustment(dist)
 
+            # Injury adjustments
+            inj_adj_home, inj_adj_away = injury_elo_adjustment(
+                home, away, injury_impacts
+            )
+            home_inj_impact = injury_impacts.get(home, {})
+            away_inj_impact = injury_impacts.get(away, {})
+
             matchup_data = [{
                 "game_id": game_id,
                 "team_a": home, "team_b": away,
@@ -493,11 +505,12 @@ def run():
                 "turnover_diff": 0,
             }]
 
-            # ELO prediction
+            # ELO prediction (includes rest, travel, and injury adjustments)
             elo_result = elo_predict_game(
                 home, away, elo_dict, game_history,
                 is_home_a=True, neutral=neutral,
-                rest_adj_a=rest_adj_home, rest_adj_b=rest_adj_away + travel_adj_away
+                rest_adj_a=rest_adj_home + inj_adj_home,
+                rest_adj_b=rest_adj_away + travel_adj_away + inj_adj_away
             )
 
             # Bayesian prediction
@@ -614,6 +627,14 @@ def run():
                     "home": injuries.get(home, [])[:5],
                     "away": injuries.get(away, [])[:5],
                 },
+                "injury_impact": {
+                    "home_elo_penalty": home_inj_impact.get("elo_penalty", 0.0),
+                    "away_elo_penalty": away_inj_impact.get("elo_penalty", 0.0),
+                    "home_impact_score": home_inj_impact.get("impact_score", 0.0),
+                    "away_impact_score": away_inj_impact.get("impact_score", 0.0),
+                    "home_key_players_out": home_inj_impact.get("key_players_out", []),
+                    "away_key_players_out": away_inj_impact.get("key_players_out", []),
+                },
             })
 
         except Exception as e:
@@ -635,6 +656,8 @@ def run():
         sb_prob = season_sim.get(team, {}).get("sb_prob", 0.03)
         trend = get_trend(game_history, team)
         hier = hierarchical_team_rating(team, efficiency_data)
+
+        team_inj = injury_impacts.get(team, {})
 
         elo_ratings_list.append({
             "team": team,
@@ -658,6 +681,9 @@ def run():
             "trend": trend,
             "offensive_rating": round(hier["offensive_rating"], 4),
             "defensive_rating": round(hier["defensive_rating"], 4),
+            "injury_elo_penalty": team_inj.get("elo_penalty", 0.0),
+            "injury_impact_score": team_inj.get("impact_score", 0.0),
+            "injury_players_count": team_inj.get("total_players", 0),
         })
 
     elo_ratings_list.sort(key=lambda x: x["elo"], reverse=True)
