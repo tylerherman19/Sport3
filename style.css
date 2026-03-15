@@ -1340,6 +1340,20 @@ tbody tr:hover { background: var(--surface2); }
   border-color: var(--red-light);
   color: var(--red-light);
 }
+.log-league-btn {
+  padding: 0.3rem 0.9rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  font-family: var(--font);
+  color: var(--text-muted);
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.log-league-btn:hover { color: var(--text); border-color: var(--accent); }
+.log-league-btn.active { background: var(--blue); color: #fff; border-color: var(--blue); }
 
 /* ═══════════════════════════════════════════════════════════════
    SCORE DISPLAY

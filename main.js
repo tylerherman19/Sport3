@@ -185,6 +185,7 @@ document.querySelectorAll('.league-btn').forEach(btn => {
       $('nfl-rest-options').style.display = 'none';
       $('nba-rest-options').style.display = 'block';
       $('predictor-empty-icon').textContent = '🏀';
+      if (state.nba.predictions) updateHeader(state.nba.predictions, 'nba');
     } else {
       $('header-icon').textContent = '🏈';
       $('header-title').textContent = 'NFL Prediction Dashboard';
@@ -202,6 +203,7 @@ document.querySelectorAll('.league-btn').forEach(btn => {
       $('nfl-rest-options').style.display = 'block';
       $('nba-rest-options').style.display = 'none';
       $('predictor-empty-icon').textContent = '🏈';
+      if (state.predictions) updateHeader(state.predictions, 'nfl');
     }
 
     // Reset sort
@@ -351,6 +353,8 @@ async function fetchLiveScores() {
   if (updated && state.league === 'nba') renderAll();
   manageLivePolling();
   updateRefreshButtonState();
+  // Resolve any same-day finished games into the log
+  if (updated) resolveActualWinners('nba');
 }
 
 function manageLivePolling() {
@@ -1853,7 +1857,7 @@ async function resolveActualWinners(league) {
   let entries = [];
   try { entries = JSON.parse(localStorage.getItem(key) || '[]'); } catch { return; }
 
-  const unresolved = entries.filter(e => e.status === 'STATUS_FINAL' && !e.actual_winner);
+  const unresolved = entries.filter(e => !e.actual_winner);
   if (!unresolved.length) return;
 
   // Group by date
@@ -1905,9 +1909,11 @@ async function renderAccuracyTab() {
   // Resolve winners in background
   await Promise.all([resolveActualWinners('nfl'), resolveActualWinners('nba')]);
 
+  const logLeague = window._logLeaguePref || state.league;
   let nflLog = [], nbaLog = [];
   try { nflLog = JSON.parse(localStorage.getItem('sport3_log_nfl') || '[]'); } catch {}
   try { nbaLog = JSON.parse(localStorage.getItem('sport3_log_nba') || '[]'); } catch {}
+  const activeLog = logLeague === 'nba' ? nbaLog : nflLog;
 
   const renderLeagueSection = (entries, label) => {
     if (!entries.length) return `<div class="log-empty">No ${label} predictions logged yet. Predictions are saved automatically when you view games.</div>`;
@@ -2021,7 +2027,12 @@ async function renderAccuracyTab() {
           ? `<span class="log-correct">✓ ${e.actual_winner}</span>`
           : `<span class="log-incorrect">✗ ${e.actual_winner}</span>`;
       }
-      const gameDate = e.game_time ? new Date(e.game_time).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }) : '—';
+      const gameDate = e.game_time
+        ? (() => {
+            const [y, m, d] = e.game_time.slice(0, 10).split('-').map(Number);
+            return new Date(y, m - 1, d).toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+          })()
+        : '—';
       return `<tr>
         <td class="log-date">${gameDate}</td>
         <td class="log-matchup">${e.away_team} @ ${e.home_team}</td>
@@ -2054,27 +2065,30 @@ async function renderAccuracyTab() {
         <span class="section-badge">Auto-tracked</span>
       </div>
     </div>
-    <p class="muted" style="font-size:0.8125rem;margin-bottom:1.5rem;">
-      Model picks are logged automatically each time you view games. Actual results are fetched from ESPN for completed games.
+    <p class="muted" style="font-size:0.8125rem;margin-bottom:1.25rem;">
+      Model picks are logged automatically each time you view games. Results appear once games finish.
     </p>
 
+    <div class="log-league-toggle" style="display:flex;gap:0.5rem;margin-bottom:1.5rem;">
+      <button class="log-league-btn${logLeague === 'nfl' ? ' active' : ''}" onclick="setLogLeague('nfl')">🏈 NFL</button>
+      <button class="log-league-btn${logLeague === 'nba' ? ' active' : ''}" onclick="setLogLeague('nba')">🏀 NBA</button>
+    </div>
+
     <div class="log-league-section">
-      <h3 class="log-league-title">🏈 NFL</h3>
-      ${renderLeagueSection(nflLog, 'NFL')}
+      ${renderLeagueSection(activeLog, logLeague.toUpperCase())}
     </div>
 
-    <div class="log-league-section" style="margin-top:2rem;">
-      <h3 class="log-league-title">🏀 NBA</h3>
-      ${renderLeagueSection(nbaLog, 'NBA')}
-    </div>
-
-    <div style="margin-top:2rem;display:flex;gap:1rem;">
-      <button class="btn-clear-log" onclick="clearLog('nfl')">Clear NFL Log</button>
-      <button class="btn-clear-log" onclick="clearLog('nba')">Clear NBA Log</button>
+    <div style="margin-top:2rem;">
+      <button class="btn-clear-log" onclick="clearLog('${logLeague}')">Clear ${logLeague.toUpperCase()} Log</button>
     </div>`;
 }
 
 function clearLog(league) {
   localStorage.removeItem(`sport3_log_${league}`);
+  renderAccuracyTab();
+}
+
+function setLogLeague(league) {
+  window._logLeaguePref = league;
   renderAccuracyTab();
 }
