@@ -53,6 +53,15 @@ function fmtUpdated(iso) {
   } catch { return iso; }
 }
 
+function isToday(iso) {
+  if (!iso) return false;
+  const d = new Date(iso);
+  const now = new Date();
+  return d.getFullYear() === now.getFullYear() &&
+         d.getMonth()    === now.getMonth()    &&
+         d.getDate()     === now.getDate();
+}
+
 function clamp(v, lo, hi) { return Math.max(lo, Math.min(hi, v)); }
 
 /* ── Team Timezone Offsets (standard/non-DST UTC offset) ─────── */
@@ -288,9 +297,14 @@ function renderGames() {
   // Apply game filter
   let filteredGames = pred.games;
   if (state.gameFilter === 'today') {
-    filteredGames = pred.games.filter(g => !g.is_future);
+    filteredGames = pred.games.filter(g => !g.is_future && isToday(g.game_time));
   } else if (state.gameFilter === 'future') {
-    filteredGames = pred.games.filter(g => g.is_future);
+    const now = new Date();
+    filteredGames = pred.games.filter(g =>
+      g.is_future ||
+      (!isToday(g.game_time) && new Date(g.game_time) > now &&
+       g.status !== 'STATUS_FINAL' && g.status !== 'STATUS_IN_PROGRESS')
+    );
   }
 
   // Update filter pill active state
@@ -602,7 +616,7 @@ function buildContextHtml(game, adj, isNba, homeTrend, awayTrend, tzShift) {
     const longTrip = adj.travel_dist_miles > 2000 || tzShift >= 2;
     const travelClass = longTrip ? 'warn' : '';
     const tzStr = tzShift > 0 ? ` · ${tzShift}hr TZ` : '';
-    pills.push(`<div class="stat-pill ${travelClass}"><span class="stat-pill-label">Travel</span><span class="stat-pill-value">${Math.round(adj.travel_dist_miles).toLocaleString()} mi${tzStr}</span></div>`);
+    pills.push(`<div class="stat-pill ${travelClass}"><span class="stat-pill-label">Travel</span><span class="stat-pill-value">${game.away_team}: ${Math.round(adj.travel_dist_miles).toLocaleString()} mi${tzStr}</span></div>`);
   }
 
   // Hot/cold streak
@@ -1151,14 +1165,14 @@ function runNflPredictor(home, away, neutral) {
 The ELO gap is <strong>${Math.round(eloDiffAbs)} points</strong>${!neutral ? `, with home field adding approximately <strong>${state.params.hfa} ELO points</strong>` : ' at a neutral site'}.
 Pythagorean expectation favors <strong>${TEAM_NAMES[pythFavorite] || pythFavorite}</strong> (${pct(pythProb)} home win prob), and efficiency metrics favor <strong>${TEAM_NAMES[effFavorite] || effFavorite}</strong>.
 ${restDiff !== 0 ? `The rest advantage (<strong>${restDiff > 0 ? home : away}</strong> has ${Math.abs(restDiff)} more days) is factored in.` : 'Both teams have equal rest.'}
-${travelMi > 500 ? `The away team travels approximately <strong>${Math.round(travelMi)} miles</strong>, which contributes a fatigue penalty.` : ''}`;
+${travelMi > 500 ? `${away} travels approximately <strong>${Math.round(travelMi)} miles</strong>, which contributes a fatigue penalty.` : ''}`;
 
   // Prediction drivers
   const drivers = [];
   if (eloDiffAbs >= 50) drivers.push(`ELO advantage: ${winner} +${Math.round(eloDiffAbs)} rating points`);
   if (Math.abs(homeEff - awayEff) >= 0.1) drivers.push(`Efficiency gap: ${home} net ${homeEff >= 0 ? '+' : ''}${homeEff.toFixed(3)} vs ${away} net ${awayEff >= 0 ? '+' : ''}${awayEff.toFixed(3)}`);
   if (Math.abs(restDiff) >= 3) drivers.push(`Rest advantage: ${restDiff > 0 ? home : away} has ${Math.abs(restDiff)} extra days rest`);
-  if (travelMi >= 1500) drivers.push(`Travel penalty: away team travels ${Math.round(travelMi)} miles`);
+  if (travelMi >= 1500) drivers.push(`Travel penalty: ${away} travels ${Math.round(travelMi)} miles`);
   if (!neutral) drivers.push(`Home field: ${home} +${state.params.hfa} ELO advantage`);
 
   renderPredictorResults({

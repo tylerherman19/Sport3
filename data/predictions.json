@@ -1,5 +1,5 @@
 {
-  "updated": "2026-03-15T04:24:45.796232+00:00",
+  "updated": "2026-03-15T17:48:29.272717+00:00",
   "season": 2025,
   "week": 5,
   "is_offseason": false,
@@ -9,6 +9,7 @@
       "game_time": "2026-02-08T23:30Z",
       "week": 5,
       "status": "STATUS_FINAL",
+      "is_future": false,
       "home_team": "NE",
       "away_team": "SEA",
       "home_name": "New England Patriots",
@@ -16,13 +17,15 @@
       "home_logo": "https://a.espncdn.com/i/teamlogos/nfl/500/ne.png",
       "away_logo": "https://a.espncdn.com/i/teamlogos/nfl/500/sea.png",
       "neutral": true,
+      "home_score": 13,
+      "away_score": 29,
       "predictions": {
-        "ensemble_prob": 0.4677,
+        "ensemble_prob": 0.469,
         "logistic_prob": 0.5,
         "elo_prob": 0.379,
         "xgb_prob": null,
-        "pyth_prob": 0.5,
-        "eff_prob": 0.5,
+        "pyth_prob": 0.4803,
+        "eff_prob": 0.5391,
         "bayesian_prob": 0.1075
       },
       "market": {
@@ -33,19 +36,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.4002,
-        "exp_margin": -3.64,
-        "prob_7plus": 0.2361,
-        "prob_14plus": 0.1184,
-        "prob_21plus": 0.0482,
+        "win_prob": 0.3968,
+        "exp_margin": -3.69,
+        "prob_7plus": 0.2289,
+        "prob_14plus": 0.1148,
+        "prob_21plus": 0.0458,
         "margin_percentiles": [
-          -27.5,
-          -22.3,
-          -13.6,
+          -27.6,
+          -22.1,
+          -13.5,
           -3.8,
-          6.3,
+          6.0,
           15.2,
-          20.8
+          20.4
         ]
       },
       "adjustments": {
@@ -89,9 +92,3999 @@
       },
       "prediction_drivers": [
         "ELO advantage: SEA +90 rating points",
+        "Efficiency gap: NE net +0.019 vs SEA net -0.116",
         "Travel penalty: away team travels 2491 miles"
       ],
-      "explanation": "The model gives Seattle Seahawks a 53.2% win probability \u2014 a slight favorite over New England Patriots. The ELO gap is 90 points at a neutral site. Travel distance 2491 miles factors into the away team rating."
+      "explanation": "The model gives Seattle Seahawks a 53.1% win probability \u2014 a slight favorite over New England Patriots. The ELO gap is 90 points at a neutral site. Travel distance 2491 miles factors into the away team rating."
+    },
+    {
+      "game_id": "401772940",
+      "game_time": "2025-10-10T00:15Z",
+      "week": 6,
+      "status": "STATUS_FINAL",
+      "is_future": true,
+      "home_team": "NYG",
+      "away_team": "PHI",
+      "home_name": "New York Giants",
+      "away_name": "Philadelphia Eagles",
+      "home_logo": "https://a.espncdn.com/i/teamlogos/nfl/500/nyg.png",
+      "away_logo": "https://a.espncdn.com/i/teamlogos/nfl/500/phi.png",
+      "neutral": false,
+      "home_score": 34,
+      "away_score": 17,
+      "predictions": {
+        "ensemble_prob": 0.5004,
+        "logistic_prob": 0.5,
+        "elo_prob": 0.4175,
+        "xgb_prob": null,
+        "pyth_prob": 0.4938,
+        "eff_prob": 0.6773,
+        "bayesian_prob": 0.2277
+      },
+      "market": {
+        "home_prob": null,
+        "edge": null,
+        "kelly_pct": null,
+        "home_american": null,
+        "away_american": null
+      },
+      "monte_carlo": {
+        "win_prob": 0.4442,
+        "exp_margin": -2.16,
+        "prob_7plus": 0.2658,
+        "prob_14plus": 0.1344,
+        "prob_21plus": 0.0547,
+        "margin_percentiles": [
+          -26.5,
+          -20.7,
+          -12.0,
+          -2.0,
+          7.6,
+          16.4,
+          21.5
+        ]
+      },
+      "adjustments": {
+        "rest_home": 7,
+        "rest_away": 7,
+        "rest_diff": 0,
+        "travel_dist_miles": 85.0,
+        "travel_adj": 0.0,
+        "home_elo_bonus": 65
+      },
+      "elo": {
+        "home": 1408.9,
+        "away": 1525.8,
+        "diff": -57.8
+      },
+      "bayesian": {
+        "home_mu": 1408.9,
+        "home_sigma": 75.0,
+        "away_mu": 1525.8,
+        "away_sigma": 75.0,
+        "home_band": [
+          1333.9,
+          1483.9
+        ],
+        "away_band": [
+          1450.8,
+          1600.8
+        ]
+      },
+      "injuries": {
+        "home": [],
+        "away": []
+      },
+      "injury_impact": {
+        "home_elo_penalty": 0.0,
+        "away_elo_penalty": 0.0,
+        "home_impact_score": 0.0,
+        "away_impact_score": 0.0,
+        "home_key_players_out": [],
+        "away_key_players_out": []
+      },
+      "prediction_drivers": [
+        "ELO advantage: PHI +117 rating points",
+        "Efficiency gap: NYG net +0.075 vs PHI net -0.244",
+        "Home field: NYG +65 ELO home advantage"
+      ],
+      "explanation": "The model gives New York Giants a 50.0% win probability \u2014 a slight favorite over Philadelphia Eagles. The ELO gap is 117 points with home field adding approximately 65 ELO points."
+    },
+    {
+      "game_id": "401772634",
+      "game_time": "2025-10-12T13:30Z",
+      "week": 6,
+      "status": "STATUS_FINAL",
+      "is_future": true,
+      "home_team": "NYJ",
+      "away_team": "DEN",
+      "home_name": "New York Jets",
+      "away_name": "Denver Broncos",
+      "home_logo": "https://a.espncdn.com/i/teamlogos/nfl/500/nyj.png",
+      "away_logo": "https://a.espncdn.com/i/teamlogos/nfl/500/den.png",
+      "neutral": true,
+      "home_score": 11,
+      "away_score": 13,
+      "predictions": {
+        "ensemble_prob": 0.3659,
+        "logistic_prob": 0.5,
+        "elo_prob": 0.1329,
+        "xgb_prob": null,
+        "pyth_prob": 0.2758,
+        "eff_prob": 0.5645,
+        "bayesian_prob": 0.0006
+      },
+      "market": {
+        "home_prob": null,
+        "edge": null,
+        "kelly_pct": null,
+        "home_american": null,
+        "away_american": null
+      },
+      "monte_carlo": {
+        "win_prob": 0.1919,
+        "exp_margin": -12.87,
+        "prob_7plus": 0.0874,
+        "prob_14plus": 0.0344,
+        "prob_21plus": 0.0119,
+        "margin_percentiles": [
+          -36.7,
+          -31.7,
+          -22.8,
+          -12.9,
+          -2.9,
+          6.0,
+          11.3
+        ]
+      },
+      "adjustments": {
+        "rest_home": 7,
+        "rest_away": 7,
+        "rest_diff": 0,
+        "travel_dist_miles": 1628.0,
+        "travel_adj": -10.0,
+        "home_elo_bonus": 0
+      },
+      "elo": {
+        "home": 1316.0,
+        "away": 1633.9,
+        "diff": -325.8
+      },
+      "bayesian": {
+        "home_mu": 1316.0,
+        "home_sigma": 75.0,
+        "away_mu": 1633.9,
+        "away_sigma": 75.0,
+        "home_band": [
+          1241.0,
+          1391.0
+        ],
+        "away_band": [
+          1558.9,
+          1708.9
+        ]
+      },
+      "injuries": {
+        "home": [],
+        "away": []
+      },
+      "injury_impact": {
+        "home_elo_penalty": 0.0,
+        "away_elo_penalty": 0.0,
+        "home_impact_score": 0.0,
+        "away_impact_score": 0.0,
+        "home_key_players_out": [],
+        "away_key_players_out": []
+      },
+      "prediction_drivers": [
+        "ELO advantage: DEN +318 rating points",
+        "Efficiency gap: NYJ net -0.018 vs DEN net -0.243",
+        "Travel penalty: away team travels 1628 miles"
+      ],
+      "explanation": "The model gives Denver Broncos a 63.4% win probability \u2014 a moderate favorite over New York Jets. The ELO gap is 318 points at a neutral site. Travel distance 1628 miles factors into the away team rating."
+    },
+    {
+      "game_id": "401772856",
+      "game_time": "2025-10-12T17:00Z",
+      "week": 6,
+      "status": "STATUS_FINAL",
+      "is_future": true,
+      "home_team": "IND",
+      "away_team": "ARI",
+      "home_name": "Indianapolis Colts",
+      "away_name": "Arizona Cardinals",
+      "home_logo": "https://a.espncdn.com/i/teamlogos/nfl/500/ind.png",
+      "away_logo": "https://a.espncdn.com/i/teamlogos/nfl/500/ari.png",
+      "neutral": false,
+      "home_score": 31,
+      "away_score": 27,
+      "predictions": {
+        "ensemble_prob": 0.6308,
+        "logistic_prob": 0.5,
+        "elo_prob": 0.7594,
+        "xgb_prob": null,
+        "pyth_prob": 0.7222,
+        "eff_prob": 0.6291,
+        "bayesian_prob": 0.9887
+      },
+      "market": {
+        "home_prob": null,
+        "edge": null,
+        "kelly_pct": null,
+        "home_american": null,
+        "away_american": null
+      },
+      "monte_carlo": {
+        "win_prob": 0.6953,
+        "exp_margin": 7.44,
+        "prob_7plus": 0.5146,
+        "prob_14plus": 0.3285,
+        "prob_21plus": 0.1818,
+        "margin_percentiles": [
+          -16.9,
+          -11.3,
+          -2.5,
+          7.6,
+          17.4,
+          26.1,
+          31.5
+        ]
+      },
+      "adjustments": {
+        "rest_home": 7,
+        "rest_away": 7,
+        "rest_diff": 0,
+        "travel_dist_miles": 1506.0,
+        "travel_adj": -10.0,
+        "home_elo_bonus": 65
+      },
+      "elo": {
+        "home": 1478.9,
+        "away": 1354.2,
+        "diff": 199.7
+      },
+      "bayesian": {
+        "home_mu": 1478.9,
+        "home_sigma": 75.0,
+        "away_mu": 1354.2,
+        "away_sigma": 75.0,
+        "home_band": [
+          1403.9,
+          1553.9
+        ],
+        "away_band": [
+          1279.2,
+          1429.2
+        ]
+      },
+      "injuries": {
+        "home": [],
+        "away": []
+      },
+      "injury_impact": {
+        "home_elo_penalty": 0.0,
+        "away_elo_penalty": 0.0,
+        "home_impact_score": 0.0,
+        "away_impact_score": 0.0,
+        "home_key_players_out": [],
+        "away_key_players_out": []
+      },
+      "prediction_drivers": [
+        "ELO advantage: IND +125 rating points",
+        "Efficiency gap: IND net +0.232 vs ARI net +0.098",
+        "Travel penalty: away team travels 1506 miles",
+        "Home field: IND +65 ELO home advantage"
+      ],
+      "explanation": "The model gives Indianapolis Colts a 63.1% win probability \u2014 a moderate favorite over Arizona Cardinals. The ELO gap is 125 points with home field adding approximately 65 ELO points. Travel distance 1506 miles factors into the away team rating."
+    },
+    {
+      "game_id": "401772750",
+      "game_time": "2025-10-12T17:00Z",
+      "week": 6,
+      "status": "STATUS_FINAL",
+      "is_future": true,
+      "home_team": "MIA",
+      "away_team": "LAC",
+      "home_name": "Miami Dolphins",
+      "away_name": "Los Angeles Chargers",
+      "home_logo": "https://a.espncdn.com/i/teamlogos/nfl/500/mia.png",
+      "away_logo": "https://a.espncdn.com/i/teamlogos/nfl/500/lac.png",
+      "neutral": false,
+      "home_score": 27,
+      "away_score": 29,
+      "predictions": {
+        "ensemble_prob": 0.51,
+        "logistic_prob": 0.5,
+        "elo_prob": 0.4679,
+        "xgb_prob": null,
+        "pyth_prob": 0.4996,
+        "eff_prob": 0.6402,
+        "bayesian_prob": 0.318
+      },
+      "market": {
+        "home_prob": null,
+        "edge": null,
+        "kelly_pct": null,
+        "home_american": null,
+        "away_american": null
+      },
+      "monte_carlo": {
+        "win_prob": 0.4657,
+        "exp_margin": -1.37,
+        "prob_7plus": 0.2855,
+        "prob_14plus": 0.1433,
+        "prob_21plus": 0.0615,
+        "margin_percentiles": [
+          -25.4,
+          -20.1,
+          -11.4,
+          -1.3,
+          8.6,
+          17.1,
+          22.5
+        ]
+      },
+      "adjustments": {
+        "rest_home": 7,
+        "rest_away": 7,
+        "rest_diff": 0,
+        "travel_dist_miles": 2332.0,
+        "travel_adj": -10.0,
+        "home_elo_bonus": 65
+      },
+      "elo": {
+        "home": 1438.2,
+        "away": 1535.6,
+        "diff": -22.4
+      },
+      "bayesian": {
+        "home_mu": 1438.2,
+        "home_sigma": 75.0,
+        "away_mu": 1535.6,
+        "away_sigma": 75.0,
+        "home_band": [
+          1363.2,
+          1513.2
+        ],
+        "away_band": [
+          1460.6,
+          1610.6
+        ]
+      },
+      "injuries": {
+        "home": [],
+        "away": []
+      },
+      "injury_impact": {
+        "home_elo_penalty": 0.0,
+        "away_elo_penalty": 0.0,
+        "home_impact_score": 0.0,
+        "away_impact_score": 0.0,
+        "home_key_players_out": [],
+        "away_key_players_out": []
+      },
+      "prediction_drivers": [
+        "ELO advantage: LAC +97 rating points",
+        "Efficiency gap: MIA net -0.043 vs LAC net -0.219",
+        "Travel penalty: away team travels 2332 miles",
+        "Home field: MIA +65 ELO home advantage"
+      ],
+      "explanation": "The model gives Miami Dolphins a 51.0% win probability \u2014 a slight favorite over Los Angeles Chargers. The ELO gap is 97 points with home field adding approximately 65 ELO points. Travel distance 2332 miles factors into the away team rating."
+    },
+    {
+      "game_id": "401772751",
+      "game_time": "2025-10-12T17:00Z",
+      "week": 6,
+      "status": "STATUS_FINAL",
+      "is_future": true,
+      "home_team": "NO",
+      "away_team": "NE",
+      "home_name": "New Orleans Saints",
+      "away_name": "New England Patriots",
+      "home_logo": "https://a.espncdn.com/i/teamlogos/nfl/500/no.png",
+      "away_logo": "https://a.espncdn.com/i/teamlogos/nfl/500/ne.png",
+      "neutral": false,
+      "home_score": 19,
+      "away_score": 25,
+      "predictions": {
+        "ensemble_prob": 0.4219,
+        "logistic_prob": 0.5,
+        "elo_prob": 0.2839,
+        "xgb_prob": null,
+        "pyth_prob": 0.3866,
+        "eff_prob": 0.5168,
+        "bayesian_prob": 0.0197
+      },
+      "market": {
+        "home_prob": null,
+        "edge": null,
+        "kelly_pct": null,
+        "home_american": null,
+        "away_american": null
+      },
+      "monte_carlo": {
+        "win_prob": 0.3251,
+        "exp_margin": -6.55,
+        "prob_7plus": 0.1714,
+        "prob_14plus": 0.0796,
+        "prob_21plus": 0.031,
+        "margin_percentiles": [
+          -30.3,
+          -25.4,
+          -16.2,
+          -6.4,
+          3.2,
+          12.2,
+          17.5
+        ]
+      },
+      "adjustments": {
+        "rest_home": 7,
+        "rest_away": 7,
+        "rest_diff": 0,
+        "travel_dist_miles": 1341.0,
+        "travel_adj": -5.0,
+        "home_elo_bonus": 65
+      },
+      "elo": {
+        "home": 1441.2,
+        "away": 1671.9,
+        "diff": -160.8
+      },
+      "bayesian": {
+        "home_mu": 1441.2,
+        "home_sigma": 75.0,
+        "away_mu": 1671.9,
+        "away_sigma": 75.0,
+        "home_band": [
+          1366.2,
+          1516.2
+        ],
+        "away_band": [
+          1596.9,
+          1746.9
+        ]
+      },
+      "injuries": {
+        "home": [],
+        "away": []
+      },
+      "injury_impact": {
+        "home_elo_penalty": 0.0,
+        "away_elo_penalty": 0.0,
+        "home_impact_score": 0.0,
+        "away_impact_score": 0.0,
+        "home_key_players_out": [],
+        "away_key_players_out": []
+      },
+      "prediction_drivers": [
+        "ELO advantage: NE +231 rating points",
+        "Efficiency gap: NO net -0.247 vs NE net +0.019",
+        "Home field: NO +65 ELO home advantage"
+      ],
+      "explanation": "The model gives New England Patriots a 57.8% win probability \u2014 a slight favorite over New Orleans Saints. The ELO gap is 231 points with home field adding approximately 65 ELO points. Travel distance 1341 miles factors into the away team rating."
+    },
+    {
+      "game_id": "401772748",
+      "game_time": "2025-10-12T17:00Z",
+      "week": 6,
+      "status": "STATUS_FINAL",
+      "is_future": true,
+      "home_team": "PIT",
+      "away_team": "CLE",
+      "home_name": "Pittsburgh Steelers",
+      "away_name": "Cleveland Browns",
+      "home_logo": "https://a.espncdn.com/i/teamlogos/nfl/500/pit.png",
+      "away_logo": "https://a.espncdn.com/i/teamlogos/nfl/500/cle.png",
+      "neutral": false,
+      "home_score": 23,
+      "away_score": 9,
+      "predictions": {
+        "ensemble_prob": 0.6178,
+        "logistic_prob": 0.5,
+        "elo_prob": 0.7088,
+        "xgb_prob": null,
+        "pyth_prob": 0.692,
+        "eff_prob": 0.6779,
+        "bayesian_prob": 0.9707
+      },
+      "market": {
+        "home_prob": null,
+        "edge": null,
+        "kelly_pct": null,
+        "home_american": null,
+        "away_american": null
+      },
+      "monte_carlo": {
+        "win_prob": 0.6594,
+        "exp_margin": 6.12,
+        "prob_7plus": 0.4737,
+        "prob_14plus": 0.295,
+        "prob_21plus": 0.1561,
+        "margin_percentiles": [
+          -17.5,
+          -12.6,
+          -3.8,
+          6.0,
+          16.0,
+          24.8,
+          30.2
+        ]
+      },
+      "adjustments": {
+        "rest_home": 7,
+        "rest_away": 7,
+        "rest_diff": 0,
+        "travel_dist_miles": 114.0,
+        "travel_adj": 0.0,
+        "home_elo_bonus": 65
+      },
+      "elo": {
+        "home": 1495.9,
+        "away": 1412.4,
+        "diff": 154.5
+      },
+      "bayesian": {
+        "home_mu": 1495.9,
+        "home_sigma": 75.0,
+        "away_mu": 1412.4,
+        "away_sigma": 75.0,
+        "home_band": [
+          1420.9,
+          1570.9
+        ],
+        "away_band": [
+          1337.4,
+          1487.4
+        ]
+      },
+      "injuries": {
+        "home": [],
+        "away": []
+      },
+      "injury_impact": {
+        "home_elo_penalty": 0.0,
+        "away_elo_penalty": 0.0,
+        "home_impact_score": 0.0,
+        "away_impact_score": 0.0,
+        "home_key_players_out": [],
+        "away_key_players_out": []
+      },
+      "prediction_drivers": [
+        "ELO advantage: PIT +84 rating points",
+        "Efficiency gap: PIT net -0.005 vs CLE net -0.327",
+        "Home field: PIT +65 ELO home advantage"
+      ],
+      "explanation": "The model gives Pittsburgh Steelers a 61.8% win probability \u2014 a moderate favorite over Cleveland Browns. The ELO gap is 84 points with home field adding approximately 65 ELO points."
+    },
+    {
+      "game_id": "401772858",
+      "game_time": "2025-10-12T17:00Z",
+      "week": 6,
+      "status": "STATUS_FINAL",
+      "is_future": true,
+      "home_team": "CAR",
+      "away_team": "DAL",
+      "home_name": "Carolina Panthers",
+      "away_name": "Dallas Cowboys",
+      "home_logo": "https://a.espncdn.com/i/teamlogos/nfl/500/car.png",
+      "away_logo": "https://a.espncdn.com/i/teamlogos/nfl/500/dal.png",
+      "neutral": false,
+      "home_score": 30,
+      "away_score": 27,
+      "predictions": {
+        "ensemble_prob": 0.5185,
+        "logistic_prob": 0.5,
+        "elo_prob": 0.5945,
+        "xgb_prob": null,
+        "pyth_prob": 0.554,
+        "eff_prob": 0.3686,
+        "bayesian_prob": 0.8098
+      },
+      "market": {
+        "home_prob": null,
+        "edge": null,
+        "kelly_pct": null,
+        "home_american": null,
+        "away_american": null
+      },
+      "monte_carlo": {
+        "win_prob": 0.5775,
+        "exp_margin": 2.6,
+        "prob_7plus": 0.3793,
+        "prob_14plus": 0.216,
+        "prob_21plus": 0.102,
+        "margin_percentiles": [
+          -22.0,
+          -16.2,
+          -7.0,
+          2.8,
+          12.4,
+          21.1,
+          26.6
+        ]
+      },
+      "adjustments": {
+        "rest_home": 7,
+        "rest_away": 7,
+        "rest_diff": 0,
+        "travel_dist_miles": 947.0,
+        "travel_adj": -5.0,
+        "home_elo_bonus": 65
+      },
+      "elo": {
+        "home": 1438.1,
+        "away": 1441.6,
+        "diff": 66.5
+      },
+      "bayesian": {
+        "home_mu": 1438.1,
+        "home_sigma": 75.0,
+        "away_mu": 1441.6,
+        "away_sigma": 75.0,
+        "home_band": [
+          1363.1,
+          1513.1
+        ],
+        "away_band": [
+          1366.6,
+          1516.6
+        ]
+      },
+      "injuries": {
+        "home": [],
+        "away": []
+      },
+      "injury_impact": {
+        "home_elo_penalty": 0.0,
+        "away_elo_penalty": 0.0,
+        "home_impact_score": 0.0,
+        "away_impact_score": 0.0,
+        "home_key_players_out": [],
+        "away_key_players_out": []
+      },
+      "prediction_drivers": [
+        "Efficiency gap: CAR net -0.242 vs DAL net +0.550",
+        "Home field: CAR +65 ELO home advantage"
+      ],
+      "explanation": "The model gives Carolina Panthers a 51.8% win probability \u2014 a slight favorite over Dallas Cowboys. The ELO gap is 4 points with home field adding approximately 65 ELO points."
+    },
+    {
+      "game_id": "401772857",
+      "game_time": "2025-10-12T17:00Z",
+      "week": 6,
+      "status": "STATUS_FINAL",
+      "is_future": true,
+      "home_team": "JAX",
+      "away_team": "SEA",
+      "home_name": "Jacksonville Jaguars",
+      "away_name": "Seattle Seahawks",
+      "home_logo": "https://a.espncdn.com/i/teamlogos/nfl/500/jax.png",
+      "away_logo": "https://a.espncdn.com/i/teamlogos/nfl/500/sea.png",
+      "neutral": false,
+      "home_score": 12,
+      "away_score": 20,
+      "predictions": {
+        "ensemble_prob": 0.5037,
+        "logistic_prob": 0.5,
+        "elo_prob": 0.4087,
+        "xgb_prob": null,
+        "pyth_prob": 0.5508,
+        "eff_prob": 0.6343,
+        "bayesian_prob": 0.167
+      },
+      "market": {
+        "home_prob": null,
+        "edge": null,
+        "kelly_pct": null,
+        "home_american": null,
+        "away_american": null
+      },
+      "monte_carlo": {
+        "win_prob": 0.4205,
+        "exp_margin": -2.87,
+        "prob_7plus": 0.251,
+        "prob_14plus": 0.1269,
+        "prob_21plus": 0.0554,
+        "margin_percentiles": [
+          -27.3,
+          -21.6,
+          -12.7,
+          -3.0,
+          7.0,
+          16.0,
+          21.6
+        ]
+      },
+      "adjustments": {
+        "rest_home": 7,
+        "rest_away": 7,
+        "rest_diff": 0,
+        "travel_dist_miles": 2456.0,
+        "travel_adj": -10.0,
+        "home_elo_bonus": 65
+      },
+      "elo": {
+        "home": 1628.5,
+        "away": 1761.7,
+        "diff": -64.2
+      },
+      "bayesian": {
+        "home_mu": 1628.5,
+        "home_sigma": 75.0,
+        "away_mu": 1761.7,
+        "away_sigma": 75.0,
+        "home_band": [
+          1553.5,
+          1703.5
+        ],
+        "away_band": [
+          1686.7,
+          1836.7
+        ]
+      },
+      "injuries": {
+        "home": [],
+        "away": []
+      },
+      "injury_impact": {
+        "home_elo_penalty": 0.0,
+        "away_elo_penalty": 0.0,
+        "home_impact_score": 0.0,
+        "away_impact_score": 0.0,
+        "home_key_players_out": [],
+        "away_key_players_out": []
+      },
+      "prediction_drivers": [
+        "ELO advantage: SEA +133 rating points",
+        "Efficiency gap: JAX net +0.037 vs SEA net -0.116",
+        "Travel penalty: away team travels 2456 miles",
+        "Home field: JAX +65 ELO home advantage"
+      ],
+      "explanation": "The model gives Jacksonville Jaguars a 50.4% win probability \u2014 a slight favorite over Seattle Seahawks. The ELO gap is 133 points with home field adding approximately 65 ELO points. Travel distance 2456 miles factors into the away team rating."
+    },
+    {
+      "game_id": "401772855",
+      "game_time": "2025-10-12T17:00Z",
+      "week": 6,
+      "status": "STATUS_FINAL",
+      "is_future": true,
+      "home_team": "BAL",
+      "away_team": "LAR",
+      "home_name": "Baltimore Ravens",
+      "away_name": "Los Angeles Rams",
+      "home_logo": "https://a.espncdn.com/i/teamlogos/nfl/500/bal.png",
+      "away_logo": "https://a.espncdn.com/i/teamlogos/nfl/500/lar.png",
+      "neutral": false,
+      "home_score": 3,
+      "away_score": 17,
+      "predictions": {
+        "ensemble_prob": 0.4802,
+        "logistic_prob": 0.5,
+        "elo_prob": 0.4021,
+        "xgb_prob": null,
+        "pyth_prob": 0.4871,
+        "eff_prob": 0.5669,
+        "bayesian_prob": 0.152
+      },
+      "market": {
+        "home_prob": null,
+        "edge": null,
+        "kelly_pct": null,
+        "home_american": null,
+        "away_american": null
+      },
+      "monte_carlo": {
+        "win_prob": 0.4151,
+        "exp_margin": -3.23,
+        "prob_7plus": 0.24,
+        "prob_14plus": 0.1161,
+        "prob_21plus": 0.0489,
+        "margin_percentiles": [
+          -27.0,
+          -22.0,
+          -13.2,
+          -3.1,
+          6.6,
+          15.3,
+          20.9
+        ]
+      },
+      "adjustments": {
+        "rest_home": 7,
+        "rest_away": 7,
+        "rest_diff": 0,
+        "travel_dist_miles": 2327.0,
+        "travel_adj": -10.0,
+        "home_elo_bonus": 65
+      },
+      "elo": {
+        "home": 1517.6,
+        "away": 1655.5,
+        "diff": -68.9
+      },
+      "bayesian": {
+        "home_mu": 1517.6,
+        "home_sigma": 75.0,
+        "away_mu": 1655.5,
+        "away_sigma": 75.0,
+        "home_band": [
+          1442.6,
+          1592.6
+        ],
+        "away_band": [
+          1580.5,
+          1730.5
+        ]
+      },
+      "injuries": {
+        "home": [],
+        "away": []
+      },
+      "injury_impact": {
+        "home_elo_penalty": 0.0,
+        "away_elo_penalty": 0.0,
+        "home_impact_score": 0.0,
+        "away_impact_score": 0.0,
+        "home_key_players_out": [],
+        "away_key_players_out": []
+      },
+      "prediction_drivers": [
+        "ELO advantage: LAR +138 rating points",
+        "Travel penalty: away team travels 2327 miles",
+        "Home field: BAL +65 ELO home advantage"
+      ],
+      "explanation": "The model gives Los Angeles Rams a 52.0% win probability \u2014 a slight favorite over Baltimore Ravens. The ELO gap is 138 points with home field adding approximately 65 ELO points. Travel distance 2327 miles factors into the away team rating."
+    },
+    {
+      "game_id": "401772859",
+      "game_time": "2025-10-12T20:05Z",
+      "week": 6,
+      "status": "STATUS_FINAL",
+      "is_future": true,
+      "home_team": "LV",
+      "away_team": "TEN",
+      "home_name": "Las Vegas Raiders",
+      "away_name": "Tennessee Titans",
+      "home_logo": "https://a.espncdn.com/i/teamlogos/nfl/500/lv.png",
+      "away_logo": "https://a.espncdn.com/i/teamlogos/nfl/500/ten.png",
+      "neutral": false,
+      "home_score": 20,
+      "away_score": 10,
+      "predictions": {
+        "ensemble_prob": 0.5388,
+        "logistic_prob": 0.5,
+        "elo_prob": 0.5681,
+        "xgb_prob": null,
+        "pyth_prob": 0.5785,
+        "eff_prob": 0.5368,
+        "bayesian_prob": 0.7364
+      },
+      "market": {
+        "home_prob": null,
+        "edge": null,
+        "kelly_pct": null,
+        "home_american": null,
+        "away_american": null
+      },
+      "monte_carlo": {
+        "win_prob": 0.5428,
+        "exp_margin": 1.62,
+        "prob_7plus": 0.353,
+        "prob_14plus": 0.2004,
+        "prob_21plus": 0.0939,
+        "margin_percentiles": [
+          -22.7,
+          -17.2,
+          -8.4,
+          1.6,
+          11.5,
+          20.5,
+          25.9
+        ]
+      },
+      "adjustments": {
+        "rest_home": 7,
+        "rest_away": 7,
+        "rest_diff": 0,
+        "travel_dist_miles": 1583.0,
+        "travel_adj": -10.0,
+        "home_elo_bonus": 65
+      },
+      "elo": {
+        "home": 1308.5,
+        "away": 1329.9,
+        "diff": 47.6
+      },
+      "bayesian": {
+        "home_mu": 1308.5,
+        "home_sigma": 75.0,
+        "away_mu": 1329.9,
+        "away_sigma": 75.0,
+        "home_band": [
+          1233.5,
+          1383.5
+        ],
+        "away_band": [
+          1254.9,
+          1404.9
+        ]
+      },
+      "injuries": {
+        "home": [],
+        "away": []
+      },
+      "injury_impact": {
+        "home_elo_penalty": 0.0,
+        "away_elo_penalty": 0.0,
+        "home_impact_score": 0.0,
+        "away_impact_score": 0.0,
+        "home_key_players_out": [],
+        "away_key_players_out": []
+      },
+      "prediction_drivers": [
+        "Efficiency gap: LV net -0.296 vs TEN net -0.099",
+        "Travel penalty: away team travels 1583 miles",
+        "Home field: LV +65 ELO home advantage"
+      ],
+      "explanation": "The model gives Las Vegas Raiders a 53.9% win probability \u2014 a slight favorite over Tennessee Titans. The ELO gap is 21 points with home field adding approximately 65 ELO points. Travel distance 1583 miles factors into the away team rating."
+    },
+    {
+      "game_id": "401772752",
+      "game_time": "2025-10-12T20:25Z",
+      "week": 6,
+      "status": "STATUS_FINAL",
+      "is_future": true,
+      "home_team": "GB",
+      "away_team": "CIN",
+      "home_name": "Green Bay Packers",
+      "away_name": "Cincinnati Bengals",
+      "home_logo": "https://a.espncdn.com/i/teamlogos/nfl/500/gb.png",
+      "away_logo": "https://a.espncdn.com/i/teamlogos/nfl/500/cin.png",
+      "neutral": false,
+      "home_score": 27,
+      "away_score": 18,
+      "predictions": {
+        "ensemble_prob": 0.5844,
+        "logistic_prob": 0.5,
+        "elo_prob": 0.6727,
+        "xgb_prob": null,
+        "pyth_prob": 0.6723,
+        "eff_prob": 0.5288,
+        "bayesian_prob": 0.9621
+      },
+      "market": {
+        "home_prob": null,
+        "edge": null,
+        "kelly_pct": null,
+        "home_american": null,
+        "away_american": null
+      },
+      "monte_carlo": {
+        "win_prob": 0.6471,
+        "exp_margin": 5.56,
+        "prob_7plus": 0.4611,
+        "prob_14plus": 0.2844,
+        "prob_21plus": 0.1495,
+        "margin_percentiles": [
+          -18.2,
+          -13.4,
+          -4.6,
+          5.5,
+          15.6,
+          24.2,
+          29.7
+        ]
+      },
+      "adjustments": {
+        "rest_home": 7,
+        "rest_away": 7,
+        "rest_diff": 0,
+        "travel_dist_miles": 416.0,
+        "travel_adj": 0.0,
+        "home_elo_bonus": 65
+      },
+      "elo": {
+        "home": 1506.8,
+        "away": 1434.6,
+        "diff": 125.2
+      },
+      "bayesian": {
+        "home_mu": 1506.8,
+        "home_sigma": 75.0,
+        "away_mu": 1434.6,
+        "away_sigma": 75.0,
+        "home_band": [
+          1431.8,
+          1581.8
+        ],
+        "away_band": [
+          1359.6,
+          1509.6
+        ]
+      },
+      "injuries": {
+        "home": [],
+        "away": []
+      },
+      "injury_impact": {
+        "home_elo_penalty": 0.0,
+        "away_elo_penalty": 0.0,
+        "home_impact_score": 0.0,
+        "away_impact_score": 0.0,
+        "home_key_players_out": [],
+        "away_key_players_out": []
+      },
+      "prediction_drivers": [
+        "ELO advantage: GB +72 rating points",
+        "Efficiency gap: GB net +0.030 vs CIN net +0.255",
+        "Home field: GB +65 ELO home advantage"
+      ],
+      "explanation": "The model gives Green Bay Packers a 58.4% win probability \u2014 a slight favorite over Cincinnati Bengals. The ELO gap is 72 points with home field adding approximately 65 ELO points."
+    },
+    {
+      "game_id": "401772749",
+      "game_time": "2025-10-12T20:25Z",
+      "week": 6,
+      "status": "STATUS_FINAL",
+      "is_future": true,
+      "home_team": "TB",
+      "away_team": "SF",
+      "home_name": "Tampa Bay Buccaneers",
+      "away_name": "San Francisco 49ers",
+      "home_logo": "https://a.espncdn.com/i/teamlogos/nfl/500/tb.png",
+      "away_logo": "https://a.espncdn.com/i/teamlogos/nfl/500/sf.png",
+      "neutral": false,
+      "home_score": 30,
+      "away_score": 19,
+      "predictions": {
+        "ensemble_prob": 0.4829,
+        "logistic_prob": 0.5,
+        "elo_prob": 0.3867,
+        "xgb_prob": null,
+        "pyth_prob": 0.5118,
+        "eff_prob": 0.5807,
+        "bayesian_prob": 0.137
+      },
+      "market": {
+        "home_prob": null,
+        "edge": null,
+        "kelly_pct": null,
+        "home_american": null,
+        "away_american": null
+      },
+      "monte_carlo": {
+        "win_prob": 0.41,
+        "exp_margin": -3.17,
+        "prob_7plus": 0.2456,
+        "prob_14plus": 0.1229,
+        "prob_21plus": 0.0521,
+        "margin_percentiles": [
+          -27.6,
+          -21.7,
+          -13.1,
+          -3.3,
+          6.8,
+          15.9,
+          21.4
+        ]
+      },
+      "adjustments": {
+        "rest_home": 7,
+        "rest_away": 7,
+        "rest_diff": 0,
+        "travel_dist_miles": 2371.0,
+        "travel_adj": -10.0,
+        "home_elo_bonus": 65
+      },
+      "elo": {
+        "home": 1458.9,
+        "away": 1602.0,
+        "diff": -80.1
+      },
+      "bayesian": {
+        "home_mu": 1458.9,
+        "home_sigma": 75.0,
+        "away_mu": 1602.0,
+        "away_sigma": 75.0,
+        "home_band": [
+          1383.9,
+          1533.9
+        ],
+        "away_band": [
+          1527.0,
+          1677.0
+        ]
+      },
+      "injuries": {
+        "home": [],
+        "away": []
+      },
+      "injury_impact": {
+        "home_elo_penalty": 0.0,
+        "away_elo_penalty": 0.0,
+        "home_impact_score": 0.0,
+        "away_impact_score": 0.0,
+        "home_key_players_out": [],
+        "away_key_players_out": []
+      },
+      "prediction_drivers": [
+        "ELO advantage: SF +143 rating points",
+        "Travel penalty: away team travels 2371 miles",
+        "Home field: TB +65 ELO home advantage"
+      ],
+      "explanation": "The model gives San Francisco 49ers a 51.7% win probability \u2014 a slight favorite over Tampa Bay Buccaneers. The ELO gap is 143 points with home field adding approximately 65 ELO points. Travel distance 2371 miles factors into the away team rating."
+    },
+    {
+      "game_id": "401772923",
+      "game_time": "2025-10-13T00:20Z",
+      "week": 6,
+      "status": "STATUS_FINAL",
+      "is_future": true,
+      "home_team": "KC",
+      "away_team": "DET",
+      "home_name": "Kansas City Chiefs",
+      "away_name": "Detroit Lions",
+      "home_logo": "https://a.espncdn.com/i/teamlogos/nfl/500/kc.png",
+      "away_logo": "https://a.espncdn.com/i/teamlogos/nfl/500/det.png",
+      "neutral": false,
+      "home_score": 30,
+      "away_score": 17,
+      "predictions": {
+        "ensemble_prob": 0.4958,
+        "logistic_prob": 0.5,
+        "elo_prob": 0.4602,
+        "xgb_prob": null,
+        "pyth_prob": 0.5751,
+        "eff_prob": 0.4357,
+        "bayesian_prob": 0.3802
+      },
+      "market": {
+        "home_prob": null,
+        "edge": null,
+        "kelly_pct": null,
+        "home_american": null,
+        "away_american": null
+      },
+      "monte_carlo": {
+        "win_prob": 0.4865,
+        "exp_margin": -0.69,
+        "prob_7plus": 0.3032,
+        "prob_14plus": 0.1609,
+        "prob_21plus": 0.0685,
+        "margin_percentiles": [
+          -25.2,
+          -19.9,
+          -10.6,
+          -0.5,
+          9.3,
+          18.3,
+          23.3
+        ]
+      },
+      "adjustments": {
+        "rest_home": 7,
+        "rest_away": 7,
+        "rest_diff": 0,
+        "travel_dist_miles": 642.0,
+        "travel_adj": -5.0,
+        "home_elo_bonus": 65
+      },
+      "elo": {
+        "home": 1441.3,
+        "away": 1527.0,
+        "diff": -27.7
+      },
+      "bayesian": {
+        "home_mu": 1441.3,
+        "home_sigma": 75.0,
+        "away_mu": 1527.0,
+        "away_sigma": 75.0,
+        "home_band": [
+          1366.3,
+          1516.3
+        ],
+        "away_band": [
+          1452.0,
+          1602.0
+        ]
+      },
+      "injuries": {
+        "home": [],
+        "away": []
+      },
+      "injury_impact": {
+        "home_elo_penalty": 0.0,
+        "away_elo_penalty": 0.0,
+        "home_impact_score": 0.0,
+        "away_impact_score": 0.0,
+        "home_key_players_out": [],
+        "away_key_players_out": []
+      },
+      "prediction_drivers": [
+        "ELO advantage: DET +86 rating points",
+        "Efficiency gap: KC net -0.277 vs DET net +0.273",
+        "Home field: KC +65 ELO home advantage"
+      ],
+      "explanation": "The model gives Detroit Lions a 50.4% win probability \u2014 a slight favorite over Kansas City Chiefs. The ELO gap is 86 points with home field adding approximately 65 ELO points."
+    },
+    {
+      "game_id": "401772815",
+      "game_time": "2025-10-13T23:15Z",
+      "week": 6,
+      "status": "STATUS_FINAL",
+      "is_future": true,
+      "home_team": "ATL",
+      "away_team": "BUF",
+      "home_name": "Atlanta Falcons",
+      "away_name": "Buffalo Bills",
+      "home_logo": "https://a.espncdn.com/i/teamlogos/nfl/500/atl.png",
+      "away_logo": "https://a.espncdn.com/i/teamlogos/nfl/500/buf.png",
+      "neutral": false,
+      "home_score": 24,
+      "away_score": 14,
+      "predictions": {
+        "ensemble_prob": 0.4725,
+        "logistic_prob": 0.5,
+        "elo_prob": 0.4136,
+        "xgb_prob": null,
+        "pyth_prob": 0.4595,
+        "eff_prob": 0.5276,
+        "bayesian_prob": 0.156
+      },
+      "market": {
+        "home_prob": null,
+        "edge": null,
+        "kelly_pct": null,
+        "home_american": null,
+        "away_american": null
+      },
+      "monte_carlo": {
+        "win_prob": 0.4172,
+        "exp_margin": -2.94,
+        "prob_7plus": 0.2484,
+        "prob_14plus": 0.1228,
+        "prob_21plus": 0.0493,
+        "margin_percentiles": [
+          -26.8,
+          -21.3,
+          -12.9,
+          -3.1,
+          6.9,
+          16.0,
+          20.9
+        ]
+      },
+      "adjustments": {
+        "rest_home": 7,
+        "rest_away": 7,
+        "rest_diff": 0,
+        "travel_dist_miles": 692.0,
+        "travel_adj": -5.0,
+        "home_elo_bonus": 65
+      },
+      "elo": {
+        "home": 1483.8,
+        "away": 1620.4,
+        "diff": -60.6
+      },
+      "bayesian": {
+        "home_mu": 1483.8,
+        "home_sigma": 75.0,
+        "away_mu": 1620.4,
+        "away_sigma": 75.0,
+        "home_band": [
+          1408.8,
+          1558.8
+        ],
+        "away_band": [
+          1545.4,
+          1695.4
+        ]
+      },
+      "injuries": {
+        "home": [],
+        "away": []
+      },
+      "injury_impact": {
+        "home_elo_penalty": 0.0,
+        "away_elo_penalty": 0.0,
+        "home_impact_score": 0.0,
+        "away_impact_score": 0.0,
+        "home_key_players_out": [],
+        "away_key_players_out": []
+      },
+      "prediction_drivers": [
+        "ELO advantage: BUF +137 rating points",
+        "Efficiency gap: ATL net -0.081 vs BUF net +0.148",
+        "Home field: ATL +65 ELO home advantage"
+      ],
+      "explanation": "The model gives Buffalo Bills a 52.8% win probability \u2014 a slight favorite over Atlanta Falcons. The ELO gap is 137 points with home field adding approximately 65 ELO points."
+    },
+    {
+      "game_id": "401772717",
+      "game_time": "2025-10-14T00:15Z",
+      "week": 6,
+      "status": "STATUS_FINAL",
+      "is_future": true,
+      "home_team": "WAS",
+      "away_team": "CHI",
+      "home_name": "Washington Commanders",
+      "away_name": "Chicago Bears",
+      "home_logo": "https://a.espncdn.com/i/teamlogos/nfl/500/wsh.png",
+      "away_logo": "https://a.espncdn.com/i/teamlogos/nfl/500/chi.png",
+      "neutral": false,
+      "home_score": 24,
+      "away_score": 25,
+      "predictions": {
+        "ensemble_prob": 0.4757,
+        "logistic_prob": 0.5,
+        "elo_prob": 0.3868,
+        "xgb_prob": null,
+        "pyth_prob": 0.4942,
+        "eff_prob": 0.5529,
+        "bayesian_prob": 0.1187
+      },
+      "market": {
+        "home_prob": null,
+        "edge": null,
+        "kelly_pct": null,
+        "home_american": null,
+        "away_american": null
+      },
+      "monte_carlo": {
+        "win_prob": 0.4106,
+        "exp_margin": -3.4,
+        "prob_7plus": 0.2407,
+        "prob_14plus": 0.118,
+        "prob_21plus": 0.0499,
+        "margin_percentiles": [
+          -27.5,
+          -22.5,
+          -13.5,
+          -3.4,
+          6.6,
+          15.4,
+          21.0
+        ]
+      },
+      "adjustments": {
+        "rest_home": 7,
+        "rest_away": 7,
+        "rest_diff": 0,
+        "travel_dist_miles": 602.0,
+        "travel_adj": -5.0,
+        "home_elo_bonus": 65
+      },
+      "elo": {
+        "home": 1399.1,
+        "away": 1549.2,
+        "diff": -80.1
+      },
+      "bayesian": {
+        "home_mu": 1399.1,
+        "home_sigma": 75.0,
+        "away_mu": 1549.2,
+        "away_sigma": 75.0,
+        "home_band": [
+          1324.1,
+          1474.1
+        ],
+        "away_band": [
+          1474.2,
+          1624.2
+        ]
+      },
+      "injuries": {
+        "home": [],
+        "away": []
+      },
+      "injury_impact": {
+        "home_elo_penalty": 0.0,
+        "away_elo_penalty": 0.0,
+        "home_impact_score": 0.0,
+        "away_impact_score": 0.0,
+        "home_key_players_out": [],
+        "away_key_players_out": []
+      },
+      "prediction_drivers": [
+        "ELO advantage: CHI +150 rating points",
+        "Efficiency gap: WAS net +0.035 vs CHI net +0.176",
+        "Home field: WAS +65 ELO home advantage"
+      ],
+      "explanation": "The model gives Chicago Bears a 52.4% win probability \u2014 a slight favorite over Washington Commanders. The ELO gap is 150 points with home field adding approximately 65 ELO points."
+    },
+    {
+      "game_id": "401772941",
+      "game_time": "2025-10-17T00:15Z",
+      "week": 7,
+      "status": "STATUS_FINAL",
+      "is_future": true,
+      "home_team": "CIN",
+      "away_team": "PIT",
+      "home_name": "Cincinnati Bengals",
+      "away_name": "Pittsburgh Steelers",
+      "home_logo": "https://a.espncdn.com/i/teamlogos/nfl/500/cin.png",
+      "away_logo": "https://a.espncdn.com/i/teamlogos/nfl/500/pit.png",
+      "neutral": false,
+      "home_score": 33,
+      "away_score": 31,
+      "predictions": {
+        "ensemble_prob": 0.5262,
+        "logistic_prob": 0.5,
+        "elo_prob": 0.4968,
+        "xgb_prob": null,
+        "pyth_prob": 0.5269,
+        "eff_prob": 0.6623,
+        "bayesian_prob": 0.5222
+      },
+      "market": {
+        "home_prob": null,
+        "edge": null,
+        "kelly_pct": null,
+        "home_american": null,
+        "away_american": null
+      },
+      "monte_carlo": {
+        "win_prob": 0.5043,
+        "exp_margin": 0.15,
+        "prob_7plus": 0.3252,
+        "prob_14plus": 0.175,
+        "prob_21plus": 0.0797,
+        "margin_percentiles": [
+          -24.4,
+          -19.1,
+          -9.7,
+          0.2,
+          10.3,
+          19.1,
+          24.4
+        ]
+      },
+      "adjustments": {
+        "rest_home": 7,
+        "rest_away": 7,
+        "rest_diff": 0,
+        "travel_dist_miles": 257.0,
+        "travel_adj": 0.0,
+        "home_elo_bonus": 65
+      },
+      "elo": {
+        "home": 1434.6,
+        "away": 1495.9,
+        "diff": -2.2
+      },
+      "bayesian": {
+        "home_mu": 1434.6,
+        "home_sigma": 75.0,
+        "away_mu": 1495.9,
+        "away_sigma": 75.0,
+        "home_band": [
+          1359.6,
+          1509.6
+        ],
+        "away_band": [
+          1420.9,
+          1570.9
+        ]
+      },
+      "injuries": {
+        "home": [],
+        "away": []
+      },
+      "injury_impact": {
+        "home_elo_penalty": 0.0,
+        "away_elo_penalty": 0.0,
+        "home_impact_score": 0.0,
+        "away_impact_score": 0.0,
+        "home_key_players_out": [],
+        "away_key_players_out": []
+      },
+      "prediction_drivers": [
+        "ELO advantage: PIT +61 rating points",
+        "Efficiency gap: CIN net +0.255 vs PIT net -0.005",
+        "Home field: CIN +65 ELO home advantage"
+      ],
+      "explanation": "The model gives Cincinnati Bengals a 52.6% win probability \u2014 a slight favorite over Pittsburgh Steelers. The ELO gap is 61 points with home field adding approximately 65 ELO points."
+    },
+    {
+      "game_id": "401772635",
+      "game_time": "2025-10-19T13:30Z",
+      "week": 7,
+      "status": "STATUS_FINAL",
+      "is_future": true,
+      "home_team": "JAX",
+      "away_team": "LAR",
+      "home_name": "Jacksonville Jaguars",
+      "away_name": "Los Angeles Rams",
+      "home_logo": "https://a.espncdn.com/i/teamlogos/nfl/500/jax.png",
+      "away_logo": "https://a.espncdn.com/i/teamlogos/nfl/500/lar.png",
+      "neutral": true,
+      "home_score": 7,
+      "away_score": 35,
+      "predictions": {
+        "ensemble_prob": 0.4868,
+        "logistic_prob": 0.5,
+        "elo_prob": 0.4842,
+        "xgb_prob": null,
+        "pyth_prob": 0.4832,
+        "eff_prob": 0.4581,
+        "bayesian_prob": 0.346
+      },
+      "market": {
+        "home_prob": null,
+        "edge": null,
+        "kelly_pct": null,
+        "home_american": null,
+        "away_american": null
+      },
+      "monte_carlo": {
+        "win_prob": 0.4692,
+        "exp_margin": -1.01,
+        "prob_7plus": 0.2881,
+        "prob_14plus": 0.1492,
+        "prob_21plus": 0.0684,
+        "margin_percentiles": [
+          -24.5,
+          -19.7,
+          -10.8,
+          -1.3,
+          8.7,
+          17.8,
+          23.3
+        ]
+      },
+      "adjustments": {
+        "rest_home": 7,
+        "rest_away": 7,
+        "rest_diff": 0,
+        "travel_dist_miles": 2155.0,
+        "travel_adj": -10.0,
+        "home_elo_bonus": 0
+      },
+      "elo": {
+        "home": 1628.5,
+        "away": 1655.5,
+        "diff": -11.0
+      },
+      "bayesian": {
+        "home_mu": 1628.5,
+        "home_sigma": 75.0,
+        "away_mu": 1655.5,
+        "away_sigma": 75.0,
+        "home_band": [
+          1553.5,
+          1703.5
+        ],
+        "away_band": [
+          1580.5,
+          1730.5
+        ]
+      },
+      "injuries": {
+        "home": [],
+        "away": []
+      },
+      "injury_impact": {
+        "home_elo_penalty": 0.0,
+        "away_elo_penalty": 0.0,
+        "home_impact_score": 0.0,
+        "away_impact_score": 0.0,
+        "home_key_players_out": [],
+        "away_key_players_out": []
+      },
+      "prediction_drivers": [
+        "Efficiency gap: JAX net +0.037 vs LAR net +0.183",
+        "Travel penalty: away team travels 2155 miles"
+      ],
+      "explanation": "The model gives Los Angeles Rams a 51.3% win probability \u2014 a slight favorite over Jacksonville Jaguars. The ELO gap is 27 points at a neutral site. Travel distance 2155 miles factors into the away team rating."
+    },
+    {
+      "game_id": "401772861",
+      "game_time": "2025-10-19T17:00Z",
+      "week": 7,
+      "status": "STATUS_FINAL",
+      "is_future": true,
+      "home_team": "CHI",
+      "away_team": "NO",
+      "home_name": "Chicago Bears",
+      "away_name": "New Orleans Saints",
+      "home_logo": "https://a.espncdn.com/i/teamlogos/nfl/500/chi.png",
+      "away_logo": "https://a.espncdn.com/i/teamlogos/nfl/500/no.png",
+      "neutral": false,
+      "home_score": 26,
+      "away_score": 14,
+      "predictions": {
+        "ensemble_prob": 0.6224,
+        "logistic_prob": 0.5,
+        "elo_prob": 0.7223,
+        "xgb_prob": null,
+        "pyth_prob": 0.6806,
+        "eff_prob": 0.7028,
+        "bayesian_prob": 0.9834
+      },
+      "market": {
+        "home_prob": null,
+        "edge": null,
+        "kelly_pct": null,
+        "home_american": null,
+        "away_american": null
+      },
+      "monte_carlo": {
+        "win_prob": 0.6818,
+        "exp_margin": 6.74,
+        "prob_7plus": 0.4939,
+        "prob_14plus": 0.3063,
+        "prob_21plus": 0.1642,
+        "margin_percentiles": [
+          -17.1,
+          -11.7,
+          -3.0,
+          6.8,
+          16.5,
+          25.1,
+          30.5
+        ]
+      },
+      "adjustments": {
+        "rest_home": 7,
+        "rest_away": 7,
+        "rest_diff": 0,
+        "travel_dist_miles": 833.0,
+        "travel_adj": -5.0,
+        "home_elo_bonus": 65
+      },
+      "elo": {
+        "home": 1549.2,
+        "away": 1441.2,
+        "diff": 166.1
+      },
+      "bayesian": {
+        "home_mu": 1549.2,
+        "home_sigma": 75.0,
+        "away_mu": 1441.2,
+        "away_sigma": 75.0,
+        "home_band": [
+          1474.2,
+          1624.2
+        ],
+        "away_band": [
+          1366.2,
+          1516.2
+        ]
+      },
+      "injuries": {
+        "home": [],
+        "away": []
+      },
+      "injury_impact": {
+        "home_elo_penalty": 0.0,
+        "away_elo_penalty": 0.0,
+        "home_impact_score": 0.0,
+        "away_impact_score": 0.0,
+        "home_key_players_out": [],
+        "away_key_players_out": []
+      },
+      "prediction_drivers": [
+        "ELO advantage: CHI +108 rating points",
+        "Efficiency gap: CHI net +0.176 vs NO net -0.247",
+        "Home field: CHI +65 ELO home advantage"
+      ],
+      "explanation": "The model gives Chicago Bears a 62.2% win probability \u2014 a moderate favorite over New Orleans Saints. The ELO gap is 108 points with home field adding approximately 65 ELO points."
+    },
+    {
+      "game_id": "401772754",
+      "game_time": "2025-10-19T17:00Z",
+      "week": 7,
+      "status": "STATUS_FINAL",
+      "is_future": true,
+      "home_team": "CLE",
+      "away_team": "MIA",
+      "home_name": "Cleveland Browns",
+      "away_name": "Miami Dolphins",
+      "home_logo": "https://a.espncdn.com/i/teamlogos/nfl/500/cle.png",
+      "away_logo": "https://a.espncdn.com/i/teamlogos/nfl/500/mia.png",
+      "neutral": false,
+      "home_score": 31,
+      "away_score": 6,
+      "predictions": {
+        "ensemble_prob": 0.5305,
+        "logistic_prob": 0.5,
+        "elo_prob": 0.5632,
+        "xgb_prob": null,
+        "pyth_prob": 0.5602,
+        "eff_prob": 0.5121,
+        "bayesian_prob": 0.7155
+      },
+      "market": {
+        "home_prob": null,
+        "edge": null,
+        "kelly_pct": null,
+        "home_american": null,
+        "away_american": null
+      },
+      "monte_carlo": {
+        "win_prob": 0.5499,
+        "exp_margin": 1.87,
+        "prob_7plus": 0.3655,
+        "prob_14plus": 0.2024,
+        "prob_21plus": 0.0965,
+        "margin_percentiles": [
+          -22.2,
+          -16.8,
+          -8.1,
+          1.8,
+          11.7,
+          20.6,
+          26.3
+        ]
+      },
+      "adjustments": {
+        "rest_home": 7,
+        "rest_away": 7,
+        "rest_diff": 0,
+        "travel_dist_miles": 1075.0,
+        "travel_adj": -5.0,
+        "home_elo_bonus": 65
+      },
+      "elo": {
+        "home": 1412.4,
+        "away": 1438.2,
+        "diff": 44.1
+      },
+      "bayesian": {
+        "home_mu": 1412.4,
+        "home_sigma": 75.0,
+        "away_mu": 1438.2,
+        "away_sigma": 75.0,
+        "home_band": [
+          1337.4,
+          1487.4
+        ],
+        "away_band": [
+          1363.2,
+          1513.2
+        ]
+      },
+      "injuries": {
+        "home": [],
+        "away": []
+      },
+      "injury_impact": {
+        "home_elo_penalty": 0.0,
+        "away_elo_penalty": 0.0,
+        "home_impact_score": 0.0,
+        "away_impact_score": 0.0,
+        "home_key_players_out": [],
+        "away_key_players_out": []
+      },
+      "prediction_drivers": [
+        "Efficiency gap: CLE net -0.327 vs MIA net -0.043",
+        "Home field: CLE +65 ELO home advantage"
+      ],
+      "explanation": "The model gives Cleveland Browns a 53.0% win probability \u2014 a slight favorite over Miami Dolphins. The ELO gap is 26 points with home field adding approximately 65 ELO points. Travel distance 1075 miles factors into the away team rating."
+    },
+    {
+      "game_id": "401772755",
+      "game_time": "2025-10-19T17:00Z",
+      "week": 7,
+      "status": "STATUS_FINAL",
+      "is_future": true,
+      "home_team": "TEN",
+      "away_team": "NE",
+      "home_name": "Tennessee Titans",
+      "away_name": "New England Patriots",
+      "home_logo": "https://a.espncdn.com/i/teamlogos/nfl/500/ten.png",
+      "away_logo": "https://a.espncdn.com/i/teamlogos/nfl/500/ne.png",
+      "neutral": false,
+      "home_score": 13,
+      "away_score": 31,
+      "predictions": {
+        "ensemble_prob": 0.3803,
+        "logistic_prob": 0.5,
+        "elo_prob": 0.1632,
+        "xgb_prob": null,
+        "pyth_prob": 0.3112,
+        "eff_prob": 0.5592,
+        "bayesian_prob": 0.0015
+      },
+      "market": {
+        "home_prob": null,
+        "edge": null,
+        "kelly_pct": null,
+        "home_american": null,
+        "away_american": null
+      },
+      "monte_carlo": {
+        "win_prob": 0.2238,
+        "exp_margin": -11.13,
+        "prob_7plus": 0.1078,
+        "prob_14plus": 0.0405,
+        "prob_21plus": 0.0136,
+        "margin_percentiles": [
+          -35.2,
+          -30.0,
+          -21.0,
+          -11.1,
+          -1.3,
+          7.5,
+          12.9
+        ]
+      },
+      "adjustments": {
+        "rest_home": 7,
+        "rest_away": 7,
+        "rest_diff": 0,
+        "travel_dist_miles": 926.0,
+        "travel_adj": -5.0,
+        "home_elo_bonus": 65
+      },
+      "elo": {
+        "home": 1329.9,
+        "away": 1671.9,
+        "diff": -284.0
+      },
+      "bayesian": {
+        "home_mu": 1329.9,
+        "home_sigma": 75.0,
+        "away_mu": 1671.9,
+        "away_sigma": 75.0,
+        "home_band": [
+          1254.9,
+          1404.9
+        ],
+        "away_band": [
+          1596.9,
+          1746.9
+        ]
+      },
+      "injuries": {
+        "home": [],
+        "away": []
+      },
+      "injury_impact": {
+        "home_elo_penalty": 0.0,
+        "away_elo_penalty": 0.0,
+        "home_impact_score": 0.0,
+        "away_impact_score": 0.0,
+        "home_key_players_out": [],
+        "away_key_players_out": []
+      },
+      "prediction_drivers": [
+        "ELO advantage: NE +342 rating points",
+        "Efficiency gap: TEN net -0.099 vs NE net +0.019",
+        "Home field: TEN +65 ELO home advantage"
+      ],
+      "explanation": "The model gives New England Patriots a 62.0% win probability \u2014 a moderate favorite over Tennessee Titans. The ELO gap is 342 points with home field adding approximately 65 ELO points."
+    },
+    {
+      "game_id": "401772753",
+      "game_time": "2025-10-19T17:00Z",
+      "week": 7,
+      "status": "STATUS_FINAL",
+      "is_future": true,
+      "home_team": "KC",
+      "away_team": "LV",
+      "home_name": "Kansas City Chiefs",
+      "away_name": "Las Vegas Raiders",
+      "home_logo": "https://a.espncdn.com/i/teamlogos/nfl/500/kc.png",
+      "away_logo": "https://a.espncdn.com/i/teamlogos/nfl/500/lv.png",
+      "neutral": false,
+      "home_score": 31,
+      "away_score": 0,
+      "predictions": {
+        "ensemble_prob": 0.635,
+        "logistic_prob": 0.5,
+        "elo_prob": 0.7563,
+        "xgb_prob": null,
+        "pyth_prob": 0.7682,
+        "eff_prob": 0.5979,
+        "bayesian_prob": 0.9906
+      },
+      "market": {
+        "home_prob": null,
+        "edge": null,
+        "kelly_pct": null,
+        "home_american": null,
+        "away_american": null
+      },
+      "monte_carlo": {
+        "win_prob": 0.6999,
+        "exp_margin": 7.7,
+        "prob_7plus": 0.519,
+        "prob_14plus": 0.3299,
+        "prob_21plus": 0.1811,
+        "margin_percentiles": [
+          -16.1,
+          -11.0,
+          -2.1,
+          7.6,
+          17.5,
+          26.7,
+          32.0
+        ]
+      },
+      "adjustments": {
+        "rest_home": 7,
+        "rest_away": 7,
+        "rest_diff": 0,
+        "travel_dist_miles": 1152.0,
+        "travel_adj": -5.0,
+        "home_elo_bonus": 65
+      },
+      "elo": {
+        "home": 1441.3,
+        "away": 1308.5,
+        "diff": 196.8
+      },
+      "bayesian": {
+        "home_mu": 1441.3,
+        "home_sigma": 75.0,
+        "away_mu": 1308.5,
+        "away_sigma": 75.0,
+        "home_band": [
+          1366.3,
+          1516.3
+        ],
+        "away_band": [
+          1233.5,
+          1383.5
+        ]
+      },
+      "injuries": {
+        "home": [],
+        "away": []
+      },
+      "injury_impact": {
+        "home_elo_penalty": 0.0,
+        "away_elo_penalty": 0.0,
+        "home_impact_score": 0.0,
+        "away_impact_score": 0.0,
+        "home_key_players_out": [],
+        "away_key_players_out": []
+      },
+      "prediction_drivers": [
+        "ELO advantage: KC +133 rating points",
+        "Home field: KC +65 ELO home advantage"
+      ],
+      "explanation": "The model gives Kansas City Chiefs a 63.5% win probability \u2014 a moderate favorite over Las Vegas Raiders. The ELO gap is 133 points with home field adding approximately 65 ELO points. Travel distance 1152 miles factors into the away team rating."
+    },
+    {
+      "game_id": "401772862",
+      "game_time": "2025-10-19T17:00Z",
+      "week": 7,
+      "status": "STATUS_FINAL",
+      "is_future": true,
+      "home_team": "MIN",
+      "away_team": "PHI",
+      "home_name": "Minnesota Vikings",
+      "away_name": "Philadelphia Eagles",
+      "home_logo": "https://a.espncdn.com/i/teamlogos/nfl/500/min.png",
+      "away_logo": "https://a.espncdn.com/i/teamlogos/nfl/500/phi.png",
+      "neutral": false,
+      "home_score": 22,
+      "away_score": 28,
+      "predictions": {
+        "ensemble_prob": 0.5551,
+        "logistic_prob": 0.5,
+        "elo_prob": 0.6292,
+        "xgb_prob": null,
+        "pyth_prob": 0.5526,
+        "eff_prob": 0.5757,
+        "bayesian_prob": 0.8538
+      },
+      "market": {
+        "home_prob": null,
+        "edge": null,
+        "kelly_pct": null,
+        "home_american": null,
+        "away_american": null
+      },
+      "monte_carlo": {
+        "win_prob": 0.5826,
+        "exp_margin": 3.0,
+        "prob_7plus": 0.3925,
+        "prob_14plus": 0.2263,
+        "prob_21plus": 0.1086,
+        "margin_percentiles": [
+          -20.8,
+          -15.8,
+          -6.8,
+          3.0,
+          12.9,
+          21.7,
+          26.8
+        ]
+      },
+      "adjustments": {
+        "rest_home": 7,
+        "rest_away": 7,
+        "rest_diff": 0,
+        "travel_dist_miles": 986.0,
+        "travel_adj": -5.0,
+        "home_elo_bonus": 65
+      },
+      "elo": {
+        "home": 1535.6,
+        "away": 1525.8,
+        "diff": 91.9
+      },
+      "bayesian": {
+        "home_mu": 1535.6,
+        "home_sigma": 75.0,
+        "away_mu": 1525.8,
+        "away_sigma": 75.0,
+        "home_band": [
+          1460.6,
+          1610.6
+        ],
+        "away_band": [
+          1450.8,
+          1600.8
+        ]
+      },
+      "injuries": {
+        "home": [],
+        "away": []
+      },
+      "injury_impact": {
+        "home_elo_penalty": 0.0,
+        "away_elo_penalty": 0.0,
+        "home_impact_score": 0.0,
+        "away_impact_score": 0.0,
+        "home_key_players_out": [],
+        "away_key_players_out": []
+      },
+      "prediction_drivers": [
+        "Home field: MIN +65 ELO home advantage"
+      ],
+      "explanation": "The model gives Minnesota Vikings a 55.5% win probability \u2014 a slight favorite over Philadelphia Eagles. The ELO gap is 10 points with home field adding approximately 65 ELO points."
+    },
+    {
+      "game_id": "401772860",
+      "game_time": "2025-10-19T17:00Z",
+      "week": 7,
+      "status": "STATUS_FINAL",
+      "is_future": true,
+      "home_team": "NYJ",
+      "away_team": "CAR",
+      "home_name": "New York Jets",
+      "away_name": "Carolina Panthers",
+      "home_logo": "https://a.espncdn.com/i/teamlogos/nfl/500/nyj.png",
+      "away_logo": "https://a.espncdn.com/i/teamlogos/nfl/500/car.png",
+      "neutral": false,
+      "home_score": 6,
+      "away_score": 13,
+      "predictions": {
+        "ensemble_prob": 0.4991,
+        "logistic_prob": 0.5,
+        "elo_prob": 0.4173,
+        "xgb_prob": null,
+        "pyth_prob": 0.5035,
+        "eff_prob": 0.6532,
+        "bayesian_prob": 0.2068
+      },
+      "market": {
+        "home_prob": null,
+        "edge": null,
+        "kelly_pct": null,
+        "home_american": null,
+        "away_american": null
+      },
+      "monte_carlo": {
+        "win_prob": 0.428,
+        "exp_margin": -2.5,
+        "prob_7plus": 0.2554,
+        "prob_14plus": 0.1305,
+        "prob_21plus": 0.0538,
+        "margin_percentiles": [
+          -26.5,
+          -21.1,
+          -12.3,
+          -2.5,
+          7.3,
+          16.4,
+          21.4
+        ]
+      },
+      "adjustments": {
+        "rest_home": 7,
+        "rest_away": 7,
+        "rest_diff": 0,
+        "travel_dist_miles": 534.0,
+        "travel_adj": -5.0,
+        "home_elo_bonus": 65
+      },
+      "elo": {
+        "home": 1316.0,
+        "away": 1438.1,
+        "diff": -58.0
+      },
+      "bayesian": {
+        "home_mu": 1316.0,
+        "home_sigma": 75.0,
+        "away_mu": 1438.1,
+        "away_sigma": 75.0,
+        "home_band": [
+          1241.0,
+          1391.0
+        ],
+        "away_band": [
+          1363.1,
+          1513.1
+        ]
+      },
+      "injuries": {
+        "home": [],
+        "away": []
+      },
+      "injury_impact": {
+        "home_elo_penalty": 0.0,
+        "away_elo_penalty": 0.0,
+        "home_impact_score": 0.0,
+        "away_impact_score": 0.0,
+        "home_key_players_out": [],
+        "away_key_players_out": []
+      },
+      "prediction_drivers": [
+        "ELO advantage: CAR +122 rating points",
+        "Efficiency gap: NYJ net -0.018 vs CAR net -0.242",
+        "Home field: NYJ +65 ELO home advantage"
+      ],
+      "explanation": "The model gives Carolina Panthers a 50.1% win probability \u2014 a slight favorite over New York Jets. The ELO gap is 122 points with home field adding approximately 65 ELO points."
+    },
+    {
+      "game_id": "401772757",
+      "game_time": "2025-10-19T20:05Z",
+      "week": 7,
+      "status": "STATUS_FINAL",
+      "is_future": true,
+      "home_team": "DEN",
+      "away_team": "NYG",
+      "home_name": "Denver Broncos",
+      "away_name": "New York Giants",
+      "home_logo": "https://a.espncdn.com/i/teamlogos/nfl/500/den.png",
+      "away_logo": "https://a.espncdn.com/i/teamlogos/nfl/500/nyg.png",
+      "neutral": false,
+      "home_score": 33,
+      "away_score": 32,
+      "predictions": {
+        "ensemble_prob": 0.6368,
+        "logistic_prob": 0.5,
+        "elo_prob": 0.8533,
+        "xgb_prob": null,
+        "pyth_prob": 0.7115,
+        "eff_prob": 0.5022,
+        "bayesian_prob": 0.9989
+      },
+      "market": {
+        "home_prob": null,
+        "edge": null,
+        "kelly_pct": null,
+        "home_american": null,
+        "away_american": null
+      },
+      "monte_carlo": {
+        "win_prob": 0.7918,
+        "exp_margin": 11.73,
+        "prob_7plus": 0.6307,
+        "prob_14plus": 0.4385,
+        "prob_21plus": 0.2604,
+        "margin_percentiles": [
+          -12.3,
+          -7.0,
+          1.8,
+          11.8,
+          21.5,
+          30.4,
+          35.7
+        ]
+      },
+      "adjustments": {
+        "rest_home": 7,
+        "rest_away": 7,
+        "rest_diff": 0,
+        "travel_dist_miles": 1628.0,
+        "travel_adj": -10.0,
+        "home_elo_bonus": 65
+      },
+      "elo": {
+        "home": 1633.9,
+        "away": 1408.9,
+        "diff": 305.9
+      },
+      "bayesian": {
+        "home_mu": 1633.9,
+        "home_sigma": 75.0,
+        "away_mu": 1408.9,
+        "away_sigma": 75.0,
+        "home_band": [
+          1558.9,
+          1708.9
+        ],
+        "away_band": [
+          1333.9,
+          1483.9
+        ]
+      },
+      "injuries": {
+        "home": [],
+        "away": []
+      },
+      "injury_impact": {
+        "home_elo_penalty": 0.0,
+        "away_elo_penalty": 0.0,
+        "home_impact_score": 0.0,
+        "away_impact_score": 0.0,
+        "home_key_players_out": [],
+        "away_key_players_out": []
+      },
+      "prediction_drivers": [
+        "ELO advantage: DEN +225 rating points",
+        "Efficiency gap: DEN net -0.243 vs NYG net +0.075",
+        "Travel penalty: away team travels 1628 miles",
+        "Home field: DEN +65 ELO home advantage"
+      ],
+      "explanation": "The model gives Denver Broncos a 63.7% win probability \u2014 a moderate favorite over New York Giants. The ELO gap is 225 points with home field adding approximately 65 ELO points. Travel distance 1628 miles factors into the away team rating."
+    },
+    {
+      "game_id": "401772756",
+      "game_time": "2025-10-19T20:05Z",
+      "week": 7,
+      "status": "STATUS_FINAL",
+      "is_future": true,
+      "home_team": "LAC",
+      "away_team": "IND",
+      "home_name": "Los Angeles Chargers",
+      "away_name": "Indianapolis Colts",
+      "home_logo": "https://a.espncdn.com/i/teamlogos/nfl/500/lac.png",
+      "away_logo": "https://a.espncdn.com/i/teamlogos/nfl/500/ind.png",
+      "neutral": false,
+      "home_score": 24,
+      "away_score": 38,
+      "predictions": {
+        "ensemble_prob": 0.563,
+        "logistic_prob": 0.5,
+        "elo_prob": 0.6957,
+        "xgb_prob": null,
+        "pyth_prob": 0.5781,
+        "eff_prob": 0.4637,
+        "bayesian_prob": 0.9462
+      },
+      "market": {
+        "home_prob": null,
+        "edge": null,
+        "kelly_pct": null,
+        "home_american": null,
+        "away_american": null
+      },
+      "monte_carlo": {
+        "win_prob": 0.6249,
+        "exp_margin": 4.71,
+        "prob_7plus": 0.4424,
+        "prob_14plus": 0.2693,
+        "prob_21plus": 0.1368,
+        "margin_percentiles": [
+          -19.8,
+          -14.3,
+          -5.2,
+          4.8,
+          14.8,
+          23.6,
+          28.5
+        ]
+      },
+      "adjustments": {
+        "rest_home": 7,
+        "rest_away": 7,
+        "rest_diff": 0,
+        "travel_dist_miles": 1815.0,
+        "travel_adj": -10.0,
+        "home_elo_bonus": 65
+      },
+      "elo": {
+        "home": 1535.6,
+        "away": 1478.9,
+        "diff": 143.7
+      },
+      "bayesian": {
+        "home_mu": 1535.6,
+        "home_sigma": 75.0,
+        "away_mu": 1478.9,
+        "away_sigma": 75.0,
+        "home_band": [
+          1460.6,
+          1610.6
+        ],
+        "away_band": [
+          1403.9,
+          1553.9
+        ]
+      },
+      "injuries": {
+        "home": [],
+        "away": []
+      },
+      "injury_impact": {
+        "home_elo_penalty": 0.0,
+        "away_elo_penalty": 0.0,
+        "home_impact_score": 0.0,
+        "away_impact_score": 0.0,
+        "home_key_players_out": [],
+        "away_key_players_out": []
+      },
+      "prediction_drivers": [
+        "ELO advantage: LAC +57 rating points",
+        "Efficiency gap: LAC net -0.219 vs IND net +0.232",
+        "Travel penalty: away team travels 1815 miles",
+        "Home field: LAC +65 ELO home advantage"
+      ],
+      "explanation": "The model gives Los Angeles Chargers a 56.3% win probability \u2014 a slight favorite over Indianapolis Colts. The ELO gap is 57 points with home field adding approximately 65 ELO points. Travel distance 1815 miles factors into the away team rating."
+    },
+    {
+      "game_id": "401772864",
+      "game_time": "2025-10-19T20:25Z",
+      "week": 7,
+      "status": "STATUS_FINAL",
+      "is_future": true,
+      "home_team": "DAL",
+      "away_team": "WAS",
+      "home_name": "Dallas Cowboys",
+      "away_name": "Washington Commanders",
+      "home_logo": "https://a.espncdn.com/i/teamlogos/nfl/500/dal.png",
+      "away_logo": "https://a.espncdn.com/i/teamlogos/nfl/500/wsh.png",
+      "neutral": false,
+      "home_score": 44,
+      "away_score": 22,
+      "predictions": {
+        "ensemble_prob": 0.5977,
+        "logistic_prob": 0.5,
+        "elo_prob": 0.6486,
+        "xgb_prob": null,
+        "pyth_prob": 0.6405,
+        "eff_prob": 0.7245,
+        "bayesian_prob": 0.9264
+      },
+      "market": {
+        "home_prob": null,
+        "edge": null,
+        "kelly_pct": null,
+        "home_american": null,
+        "away_american": null
+      },
+      "monte_carlo": {
+        "win_prob": 0.6042,
+        "exp_margin": 4.04,
+        "prob_7plus": 0.4188,
+        "prob_14plus": 0.2506,
+        "prob_21plus": 0.1232,
+        "margin_percentiles": [
+          -20.1,
+          -14.8,
+          -5.7,
+          3.9,
+          14.0,
+          22.7,
+          28.3
+        ]
+      },
+      "adjustments": {
+        "rest_home": 7,
+        "rest_away": 7,
+        "rest_diff": 0,
+        "travel_dist_miles": 1209.0,
+        "travel_adj": -5.0,
+        "home_elo_bonus": 65
+      },
+      "elo": {
+        "home": 1441.6,
+        "away": 1399.1,
+        "diff": 106.4
+      },
+      "bayesian": {
+        "home_mu": 1441.6,
+        "home_sigma": 75.0,
+        "away_mu": 1399.1,
+        "away_sigma": 75.0,
+        "home_band": [
+          1366.6,
+          1516.6
+        ],
+        "away_band": [
+          1324.1,
+          1474.1
+        ]
+      },
+      "injuries": {
+        "home": [],
+        "away": []
+      },
+      "injury_impact": {
+        "home_elo_penalty": 0.0,
+        "away_elo_penalty": 0.0,
+        "home_impact_score": 0.0,
+        "away_impact_score": 0.0,
+        "home_key_players_out": [],
+        "away_key_players_out": []
+      },
+      "prediction_drivers": [
+        "Efficiency gap: DAL net +0.550 vs WAS net +0.035",
+        "Home field: DAL +65 ELO home advantage"
+      ],
+      "explanation": "The model gives Dallas Cowboys a 59.8% win probability \u2014 a slight favorite over Washington Commanders. The ELO gap is 42 points with home field adding approximately 65 ELO points. Travel distance 1209 miles factors into the away team rating."
+    },
+    {
+      "game_id": "401772863",
+      "game_time": "2025-10-19T20:25Z",
+      "week": 7,
+      "status": "STATUS_FINAL",
+      "is_future": true,
+      "home_team": "ARI",
+      "away_team": "GB",
+      "home_name": "Arizona Cardinals",
+      "away_name": "Green Bay Packers",
+      "home_logo": "https://a.espncdn.com/i/teamlogos/nfl/500/ari.png",
+      "away_logo": "https://a.espncdn.com/i/teamlogos/nfl/500/gb.png",
+      "neutral": false,
+      "home_score": 23,
+      "away_score": 27,
+      "predictions": {
+        "ensemble_prob": 0.4761,
+        "logistic_prob": 0.5,
+        "elo_prob": 0.3834,
+        "xgb_prob": null,
+        "pyth_prob": 0.4619,
+        "eff_prob": 0.6114,
+        "bayesian_prob": 0.1126
+      },
+      "market": {
+        "home_prob": null,
+        "edge": null,
+        "kelly_pct": null,
+        "home_american": null,
+        "away_american": null
+      },
+      "monte_carlo": {
+        "win_prob": 0.4089,
+        "exp_margin": -3.35,
+        "prob_7plus": 0.2325,
+        "prob_14plus": 0.1156,
+        "prob_21plus": 0.0486,
+        "margin_percentiles": [
+          -27.2,
+          -21.9,
+          -13.1,
+          -3.5,
+          6.2,
+          15.3,
+          20.6
+        ]
+      },
+      "adjustments": {
+        "rest_home": 7,
+        "rest_away": 7,
+        "rest_diff": 0,
+        "travel_dist_miles": 1498.0,
+        "travel_adj": -5.0,
+        "home_elo_bonus": 65
+      },
+      "elo": {
+        "home": 1354.2,
+        "away": 1506.8,
+        "diff": -82.6
+      },
+      "bayesian": {
+        "home_mu": 1354.2,
+        "home_sigma": 75.0,
+        "away_mu": 1506.8,
+        "away_sigma": 75.0,
+        "home_band": [
+          1279.2,
+          1429.2
+        ],
+        "away_band": [
+          1431.8,
+          1581.8
+        ]
+      },
+      "injuries": {
+        "home": [],
+        "away": []
+      },
+      "injury_impact": {
+        "home_elo_penalty": 0.0,
+        "away_elo_penalty": 0.0,
+        "home_impact_score": 0.0,
+        "away_impact_score": 0.0,
+        "home_key_players_out": [],
+        "away_key_players_out": []
+      },
+      "prediction_drivers": [
+        "ELO advantage: GB +153 rating points",
+        "Home field: ARI +65 ELO home advantage"
+      ],
+      "explanation": "The model gives Green Bay Packers a 52.4% win probability \u2014 a slight favorite over Arizona Cardinals. The ELO gap is 153 points with home field adding approximately 65 ELO points. Travel distance 1498 miles factors into the away team rating."
+    },
+    {
+      "game_id": "401772924",
+      "game_time": "2025-10-20T00:20Z",
+      "week": 7,
+      "status": "STATUS_FINAL",
+      "is_future": true,
+      "home_team": "SF",
+      "away_team": "ATL",
+      "home_name": "San Francisco 49ers",
+      "away_name": "Atlanta Falcons",
+      "home_logo": "https://a.espncdn.com/i/teamlogos/nfl/500/sf.png",
+      "away_logo": "https://a.espncdn.com/i/teamlogos/nfl/500/atl.png",
+      "neutral": false,
+      "home_score": 20,
+      "away_score": 10,
+      "predictions": {
+        "ensemble_prob": 0.6195,
+        "logistic_prob": 0.5,
+        "elo_prob": 0.7461,
+        "xgb_prob": null,
+        "pyth_prob": 0.6829,
+        "eff_prob": 0.6293,
+        "bayesian_prob": 0.9869
+      },
+      "market": {
+        "home_prob": null,
+        "edge": null,
+        "kelly_pct": null,
+        "home_american": null,
+        "away_american": null
+      },
+      "monte_carlo": {
+        "win_prob": 0.6911,
+        "exp_margin": 7.14,
+        "prob_7plus": 0.5027,
+        "prob_14plus": 0.3177,
+        "prob_21plus": 0.1667,
+        "margin_percentiles": [
+          -16.5,
+          -11.1,
+          -2.4,
+          7.1,
+          16.8,
+          25.4,
+          31.0
+        ]
+      },
+      "adjustments": {
+        "rest_home": 7,
+        "rest_away": 7,
+        "rest_diff": 0,
+        "travel_dist_miles": 2117.0,
+        "travel_adj": -10.0,
+        "home_elo_bonus": 65
+      },
+      "elo": {
+        "home": 1602.0,
+        "away": 1483.8,
+        "diff": 187.3
+      },
+      "bayesian": {
+        "home_mu": 1602.0,
+        "home_sigma": 75.0,
+        "away_mu": 1483.8,
+        "away_sigma": 75.0,
+        "home_band": [
+          1527.0,
+          1677.0
+        ],
+        "away_band": [
+          1408.8,
+          1558.8
+        ]
+      },
+      "injuries": {
+        "home": [],
+        "away": []
+      },
+      "injury_impact": {
+        "home_elo_penalty": 0.0,
+        "away_elo_penalty": 0.0,
+        "home_impact_score": 0.0,
+        "away_impact_score": 0.0,
+        "home_key_players_out": [],
+        "away_key_players_out": []
+      },
+      "prediction_drivers": [
+        "ELO advantage: SF +118 rating points",
+        "Efficiency gap: SF net +0.053 vs ATL net -0.081",
+        "Travel penalty: away team travels 2117 miles",
+        "Home field: SF +65 ELO home advantage"
+      ],
+      "explanation": "The model gives San Francisco 49ers a 62.0% win probability \u2014 a moderate favorite over Atlanta Falcons. The ELO gap is 118 points with home field adding approximately 65 ELO points. Travel distance 2117 miles factors into the away team rating."
+    },
+    {
+      "game_id": "401772816",
+      "game_time": "2025-10-20T23:00Z",
+      "week": 7,
+      "status": "STATUS_FINAL",
+      "is_future": true,
+      "home_team": "DET",
+      "away_team": "TB",
+      "home_name": "Detroit Lions",
+      "away_name": "Tampa Bay Buccaneers",
+      "home_logo": "https://a.espncdn.com/i/teamlogos/nfl/500/det.png",
+      "away_logo": "https://a.espncdn.com/i/teamlogos/nfl/500/tb.png",
+      "neutral": false,
+      "home_score": 24,
+      "away_score": 9,
+      "predictions": {
+        "ensemble_prob": 0.607,
+        "logistic_prob": 0.5,
+        "elo_prob": 0.6962,
+        "xgb_prob": null,
+        "pyth_prob": 0.6651,
+        "eff_prob": 0.6628,
+        "bayesian_prob": 0.9584
+      },
+      "market": {
+        "home_prob": null,
+        "edge": null,
+        "kelly_pct": null,
+        "home_american": null,
+        "away_american": null
+      },
+      "monte_carlo": {
+        "win_prob": 0.6404,
+        "exp_margin": 5.37,
+        "prob_7plus": 0.4541,
+        "prob_14plus": 0.279,
+        "prob_21plus": 0.147,
+        "margin_percentiles": [
+          -19.0,
+          -13.7,
+          -4.6,
+          5.3,
+          15.2,
+          24.4,
+          29.9
+        ]
+      },
+      "adjustments": {
+        "rest_home": 7,
+        "rest_away": 7,
+        "rest_diff": 0,
+        "travel_dist_miles": 991.0,
+        "travel_adj": -5.0,
+        "home_elo_bonus": 65
+      },
+      "elo": {
+        "home": 1527.0,
+        "away": 1458.9,
+        "diff": 144.1
+      },
+      "bayesian": {
+        "home_mu": 1527.0,
+        "home_sigma": 75.0,
+        "away_mu": 1458.9,
+        "away_sigma": 75.0,
+        "home_band": [
+          1452.0,
+          1602.0
+        ],
+        "away_band": [
+          1383.9,
+          1533.9
+        ]
+      },
+      "injuries": {
+        "home": [],
+        "away": []
+      },
+      "injury_impact": {
+        "home_elo_penalty": 0.0,
+        "away_elo_penalty": 0.0,
+        "home_impact_score": 0.0,
+        "away_impact_score": 0.0,
+        "home_key_players_out": [],
+        "away_key_players_out": []
+      },
+      "prediction_drivers": [
+        "ELO advantage: DET +68 rating points",
+        "Efficiency gap: DET net +0.273 vs TB net +0.011",
+        "Home field: DET +65 ELO home advantage"
+      ],
+      "explanation": "The model gives Detroit Lions a 60.7% win probability \u2014 a moderate favorite over Tampa Bay Buccaneers. The ELO gap is 68 points with home field adding approximately 65 ELO points."
+    },
+    {
+      "game_id": "401772826",
+      "game_time": "2025-10-21T02:00Z",
+      "week": 7,
+      "status": "STATUS_FINAL",
+      "is_future": true,
+      "home_team": "SEA",
+      "away_team": "HOU",
+      "home_name": "Seattle Seahawks",
+      "away_name": "Houston Texans",
+      "home_logo": "https://a.espncdn.com/i/teamlogos/nfl/500/sea.png",
+      "away_logo": "https://a.espncdn.com/i/teamlogos/nfl/500/hou.png",
+      "neutral": false,
+      "home_score": 27,
+      "away_score": 19,
+      "predictions": {
+        "ensemble_prob": 0.6154,
+        "logistic_prob": 0.5,
+        "elo_prob": 0.7553,
+        "xgb_prob": null,
+        "pyth_prob": 0.6409,
+        "eff_prob": 0.6432,
+        "bayesian_prob": 0.9858
+      },
+      "market": {
+        "home_prob": null,
+        "edge": null,
+        "kelly_pct": null,
+        "home_american": null,
+        "away_american": null
+      },
+      "monte_carlo": {
+        "win_prob": 0.6957,
+        "exp_margin": 7.36,
+        "prob_7plus": 0.5115,
+        "prob_14plus": 0.3239,
+        "prob_21plus": 0.1752,
+        "margin_percentiles": [
+          -16.7,
+          -11.5,
+          -2.4,
+          7.4,
+          17.1,
+          25.9,
+          31.5
+        ]
+      },
+      "adjustments": {
+        "rest_home": 7,
+        "rest_away": 7,
+        "rest_diff": 0,
+        "travel_dist_miles": 1892.0,
+        "travel_adj": -10.0,
+        "home_elo_bonus": 65
+      },
+      "elo": {
+        "home": 1761.7,
+        "away": 1646.9,
+        "diff": 195.8
+      },
+      "bayesian": {
+        "home_mu": 1761.7,
+        "home_sigma": 75.0,
+        "away_mu": 1646.9,
+        "away_sigma": 75.0,
+        "home_band": [
+          1686.7,
+          1836.7
+        ],
+        "away_band": [
+          1571.9,
+          1721.9
+        ]
+      },
+      "injuries": {
+        "home": [],
+        "away": []
+      },
+      "injury_impact": {
+        "home_elo_penalty": 0.0,
+        "away_elo_penalty": 0.0,
+        "home_impact_score": 0.0,
+        "away_impact_score": 0.0,
+        "home_key_players_out": [],
+        "away_key_players_out": []
+      },
+      "prediction_drivers": [
+        "ELO advantage: SEA +115 rating points",
+        "Efficiency gap: SEA net -0.116 vs HOU net -0.304",
+        "Travel penalty: away team travels 1892 miles",
+        "Home field: SEA +65 ELO home advantage"
+      ],
+      "explanation": "The model gives Seattle Seahawks a 61.5% win probability \u2014 a moderate favorite over Houston Texans. The ELO gap is 115 points with home field adding approximately 65 ELO points. Travel distance 1892 miles factors into the away team rating."
+    },
+    {
+      "game_id": "401772942",
+      "game_time": "2025-10-24T00:15Z",
+      "week": 8,
+      "status": "STATUS_FINAL",
+      "is_future": true,
+      "home_team": "LAC",
+      "away_team": "MIN",
+      "home_name": "Los Angeles Chargers",
+      "away_name": "Minnesota Vikings",
+      "home_logo": "https://a.espncdn.com/i/teamlogos/nfl/500/lac.png",
+      "away_logo": "https://a.espncdn.com/i/teamlogos/nfl/500/min.png",
+      "neutral": false,
+      "home_score": 37,
+      "away_score": 10,
+      "predictions": {
+        "ensemble_prob": 0.5587,
+        "logistic_prob": 0.5,
+        "elo_prob": 0.5813,
+        "xgb_prob": null,
+        "pyth_prob": 0.6077,
+        "eff_prob": 0.616,
+        "bayesian_prob": 0.8222
+      },
+      "market": {
+        "home_prob": null,
+        "edge": null,
+        "kelly_pct": null,
+        "home_american": null,
+        "away_american": null
+      },
+      "monte_carlo": {
+        "win_prob": 0.5738,
+        "exp_margin": 2.71,
+        "prob_7plus": 0.3838,
+        "prob_14plus": 0.2142,
+        "prob_21plus": 0.1006,
+        "margin_percentiles": [
+          -20.9,
+          -15.8,
+          -6.9,
+          2.8,
+          12.2,
+          21.0,
+          26.3
+        ]
+      },
+      "adjustments": {
+        "rest_home": 7,
+        "rest_away": 7,
+        "rest_diff": 0,
+        "travel_dist_miles": 1533.0,
+        "travel_adj": -10.0,
+        "home_elo_bonus": 65
+      },
+      "elo": {
+        "home": 1535.6,
+        "away": 1535.6,
+        "diff": 57.0
+      },
+      "bayesian": {
+        "home_mu": 1535.6,
+        "home_sigma": 75.0,
+        "away_mu": 1535.6,
+        "away_sigma": 75.0,
+        "home_band": [
+          1460.6,
+          1610.6
+        ],
+        "away_band": [
+          1460.6,
+          1610.6
+        ]
+      },
+      "injuries": {
+        "home": [],
+        "away": []
+      },
+      "injury_impact": {
+        "home_elo_penalty": 0.0,
+        "away_elo_penalty": 0.0,
+        "home_impact_score": 0.0,
+        "away_impact_score": 0.0,
+        "home_key_players_out": [],
+        "away_key_players_out": []
+      },
+      "prediction_drivers": [
+        "Travel penalty: away team travels 1533 miles",
+        "Home field: LAC +65 ELO home advantage"
+      ],
+      "explanation": "The model gives Los Angeles Chargers a 55.9% win probability \u2014 a slight favorite over Minnesota Vikings. The ELO gap is 0 points with home field adding approximately 65 ELO points. Travel distance 1533 miles factors into the away team rating."
+    },
+    {
+      "game_id": "401772760",
+      "game_time": "2025-10-26T17:00Z",
+      "week": 8,
+      "status": "STATUS_FINAL",
+      "is_future": true,
+      "home_team": "ATL",
+      "away_team": "MIA",
+      "home_name": "Atlanta Falcons",
+      "away_name": "Miami Dolphins",
+      "home_logo": "https://a.espncdn.com/i/teamlogos/nfl/500/atl.png",
+      "away_logo": "https://a.espncdn.com/i/teamlogos/nfl/500/mia.png",
+      "neutral": false,
+      "home_score": 10,
+      "away_score": 34,
+      "predictions": {
+        "ensemble_prob": 0.5808,
+        "logistic_prob": 0.5,
+        "elo_prob": 0.6757,
+        "xgb_prob": null,
+        "pyth_prob": 0.6153,
+        "eff_prob": 0.5819,
+        "bayesian_prob": 0.9312
+      },
+      "market": {
+        "home_prob": null,
+        "edge": null,
+        "kelly_pct": null,
+        "home_american": null,
+        "away_american": null
+      },
+      "monte_carlo": {
+        "win_prob": 0.6169,
+        "exp_margin": 4.48,
+        "prob_7plus": 0.4276,
+        "prob_14plus": 0.2602,
+        "prob_21plus": 0.1295,
+        "margin_percentiles": [
+          -19.2,
+          -14.2,
+          -5.5,
+          4.4,
+          14.5,
+          23.3,
+          28.5
+        ]
+      },
+      "adjustments": {
+        "rest_home": 7,
+        "rest_away": 7,
+        "rest_diff": 0,
+        "travel_dist_miles": 592.0,
+        "travel_adj": -5.0,
+        "home_elo_bonus": 65
+      },
+      "elo": {
+        "home": 1483.8,
+        "away": 1438.2,
+        "diff": 127.5
+      },
+      "bayesian": {
+        "home_mu": 1483.8,
+        "home_sigma": 75.0,
+        "away_mu": 1438.2,
+        "away_sigma": 75.0,
+        "home_band": [
+          1408.8,
+          1558.8
+        ],
+        "away_band": [
+          1363.2,
+          1513.2
+        ]
+      },
+      "injuries": {
+        "home": [],
+        "away": []
+      },
+      "injury_impact": {
+        "home_elo_penalty": 0.0,
+        "away_elo_penalty": 0.0,
+        "home_impact_score": 0.0,
+        "away_impact_score": 0.0,
+        "home_key_players_out": [],
+        "away_key_players_out": []
+      },
+      "prediction_drivers": [
+        "Home field: ATL +65 ELO home advantage"
+      ],
+      "explanation": "The model gives Atlanta Falcons a 58.1% win probability \u2014 a slight favorite over Miami Dolphins. The ELO gap is 46 points with home field adding approximately 65 ELO points."
+    },
+    {
+      "game_id": "401772758",
+      "game_time": "2025-10-26T17:00Z",
+      "week": 8,
+      "status": "STATUS_FINAL",
+      "is_future": true,
+      "home_team": "CIN",
+      "away_team": "NYJ",
+      "home_name": "Cincinnati Bengals",
+      "away_name": "New York Jets",
+      "home_logo": "https://a.espncdn.com/i/teamlogos/nfl/500/cin.png",
+      "away_logo": "https://a.espncdn.com/i/teamlogos/nfl/500/nyj.png",
+      "neutral": false,
+      "home_score": 38,
+      "away_score": 39,
+      "predictions": {
+        "ensemble_prob": 0.6282,
+        "logistic_prob": 0.5,
+        "elo_prob": 0.7604,
+        "xgb_prob": null,
+        "pyth_prob": 0.6837,
+        "eff_prob": 0.6655,
+        "bayesian_prob": 0.987
+      },
+      "market": {
+        "home_prob": null,
+        "edge": null,
+        "kelly_pct": null,
+        "home_american": null,
+        "away_american": null
+      },
+      "monte_carlo": {
+        "win_prob": 0.6948,
+        "exp_margin": 7.39,
+        "prob_7plus": 0.5133,
+        "prob_14plus": 0.3253,
+        "prob_21plus": 0.1732,
+        "margin_percentiles": [
+          -16.7,
+          -11.5,
+          -2.4,
+          7.5,
+          17.3,
+          25.9,
+          30.9
+        ]
+      },
+      "adjustments": {
+        "rest_home": 7,
+        "rest_away": 7,
+        "rest_diff": 0,
+        "travel_dist_miles": 567.0,
+        "travel_adj": -5.0,
+        "home_elo_bonus": 65
+      },
+      "elo": {
+        "home": 1434.6,
+        "away": 1316.0,
+        "diff": 200.6
+      },
+      "bayesian": {
+        "home_mu": 1434.6,
+        "home_sigma": 75.0,
+        "away_mu": 1316.0,
+        "away_sigma": 75.0,
+        "home_band": [
+          1359.6,
+          1509.6
+        ],
+        "away_band": [
+          1241.0,
+          1391.0
+        ]
+      },
+      "injuries": {
+        "home": [],
+        "away": []
+      },
+      "injury_impact": {
+        "home_elo_penalty": 0.0,
+        "away_elo_penalty": 0.0,
+        "home_impact_score": 0.0,
+        "away_impact_score": 0.0,
+        "home_key_players_out": [],
+        "away_key_players_out": []
+      },
+      "prediction_drivers": [
+        "ELO advantage: CIN +119 rating points",
+        "Efficiency gap: CIN net +0.255 vs NYJ net -0.018",
+        "Home field: CIN +65 ELO home advantage"
+      ],
+      "explanation": "The model gives Cincinnati Bengals a 62.8% win probability \u2014 a moderate favorite over New York Jets. The ELO gap is 119 points with home field adding approximately 65 ELO points."
+    },
+    {
+      "game_id": "401772868",
+      "game_time": "2025-10-26T17:00Z",
+      "week": 8,
+      "status": "STATUS_FINAL",
+      "is_future": true,
+      "home_team": "NE",
+      "away_team": "CLE",
+      "home_name": "New England Patriots",
+      "away_name": "Cleveland Browns",
+      "home_logo": "https://a.espncdn.com/i/teamlogos/nfl/500/ne.png",
+      "away_logo": "https://a.espncdn.com/i/teamlogos/nfl/500/cle.png",
+      "neutral": false,
+      "home_score": 32,
+      "away_score": 13,
+      "predictions": {
+        "ensemble_prob": 0.6827,
+        "logistic_prob": 0.5,
+        "elo_prob": 0.8772,
+        "xgb_prob": null,
+        "pyth_prob": 0.7877,
+        "eff_prob": 0.6841,
+        "bayesian_prob": 0.9995
+      },
+      "market": {
+        "home_prob": null,
+        "edge": null,
+        "kelly_pct": null,
+        "home_american": null,
+        "away_american": null
+      },
+      "monte_carlo": {
+        "win_prob": 0.8103,
+        "exp_margin": 12.91,
+        "prob_7plus": 0.6574,
+        "prob_14plus": 0.4717,
+        "prob_21plus": 0.2891,
+        "margin_percentiles": [
+          -11.2,
+          -6.0,
+          3.1,
+          13.0,
+          22.6,
+          31.4,
+          37.1
+        ]
+      },
+      "adjustments": {
+        "rest_home": 7,
+        "rest_away": 7,
+        "rest_diff": 0,
+        "travel_dist_miles": 540.0,
+        "travel_adj": -5.0,
+        "home_elo_bonus": 65
+      },
+      "elo": {
+        "home": 1671.9,
+        "away": 1412.4,
+        "diff": 341.5
+      },
+      "bayesian": {
+        "home_mu": 1671.9,
+        "home_sigma": 75.0,
+        "away_mu": 1412.4,
+        "away_sigma": 75.0,
+        "home_band": [
+          1596.9,
+          1746.9
+        ],
+        "away_band": [
+          1337.4,
+          1487.4
+        ]
+      },
+      "injuries": {
+        "home": [],
+        "away": []
+      },
+      "injury_impact": {
+        "home_elo_penalty": 0.0,
+        "away_elo_penalty": 0.0,
+        "home_impact_score": 0.0,
+        "away_impact_score": 0.0,
+        "home_key_players_out": [],
+        "away_key_players_out": []
+      },
+      "prediction_drivers": [
+        "ELO advantage: NE +260 rating points",
+        "Efficiency gap: NE net +0.019 vs CLE net -0.327",
+        "Home field: NE +65 ELO home advantage"
+      ],
+      "explanation": "The model gives New England Patriots a 68.3% win probability \u2014 a moderate favorite over Cleveland Browns. The ELO gap is 260 points with home field adding approximately 65 ELO points."
+    },
+    {
+      "game_id": "401772867",
+      "game_time": "2025-10-26T17:00Z",
+      "week": 8,
+      "status": "STATUS_FINAL",
+      "is_future": true,
+      "home_team": "PHI",
+      "away_team": "NYG",
+      "home_name": "Philadelphia Eagles",
+      "away_name": "New York Giants",
+      "home_logo": "https://a.espncdn.com/i/teamlogos/nfl/500/phi.png",
+      "away_logo": "https://a.espncdn.com/i/teamlogos/nfl/500/nyg.png",
+      "neutral": false,
+      "home_score": 38,
+      "away_score": 20,
+      "predictions": {
+        "ensemble_prob": 0.6029,
+        "logistic_prob": 0.5,
+        "elo_prob": 0.7467,
+        "xgb_prob": null,
+        "pyth_prob": 0.6842,
+        "eff_prob": 0.5017,
+        "bayesian_prob": 0.9864
+      },
+      "market": {
+        "home_prob": null,
+        "edge": null,
+        "kelly_pct": null,
+        "home_american": null,
+        "away_american": null
+      },
+      "monte_carlo": {
+        "win_prob": 0.6857,
+        "exp_margin": 6.93,
+        "prob_7plus": 0.4966,
+        "prob_14plus": 0.3174,
+        "prob_21plus": 0.167,
+        "margin_percentiles": [
+          -17.0,
+          -11.8,
+          -3.1,
+          6.8,
+          16.7,
+          25.4,
+          30.9
+        ]
+      },
+      "adjustments": {
+        "rest_home": 7,
+        "rest_away": 7,
+        "rest_diff": 0,
+        "travel_dist_miles": 85.0,
+        "travel_adj": 0.0,
+        "home_elo_bonus": 65
+      },
+      "elo": {
+        "home": 1525.8,
+        "away": 1408.9,
+        "diff": 187.8
+      },
+      "bayesian": {
+        "home_mu": 1525.8,
+        "home_sigma": 75.0,
+        "away_mu": 1408.9,
+        "away_sigma": 75.0,
+        "home_band": [
+          1450.8,
+          1600.8
+        ],
+        "away_band": [
+          1333.9,
+          1483.9
+        ]
+      },
+      "injuries": {
+        "home": [],
+        "away": []
+      },
+      "injury_impact": {
+        "home_elo_penalty": 0.0,
+        "away_elo_penalty": 0.0,
+        "home_impact_score": 0.0,
+        "away_impact_score": 0.0,
+        "home_key_players_out": [],
+        "away_key_players_out": []
+      },
+      "prediction_drivers": [
+        "ELO advantage: PHI +117 rating points",
+        "Efficiency gap: PHI net -0.244 vs NYG net +0.075",
+        "Home field: PHI +65 ELO home advantage"
+      ],
+      "explanation": "The model gives Philadelphia Eagles a 60.3% win probability \u2014 a moderate favorite over New York Giants. The ELO gap is 117 points with home field adding approximately 65 ELO points."
+    },
+    {
+      "game_id": "401772865",
+      "game_time": "2025-10-26T17:00Z",
+      "week": 8,
+      "status": "STATUS_FINAL",
+      "is_future": true,
+      "home_team": "CAR",
+      "away_team": "BUF",
+      "home_name": "Carolina Panthers",
+      "away_name": "Buffalo Bills",
+      "home_logo": "https://a.espncdn.com/i/teamlogos/nfl/500/car.png",
+      "away_logo": "https://a.espncdn.com/i/teamlogos/nfl/500/buf.png",
+      "neutral": false,
+      "home_score": 9,
+      "away_score": 40,
+      "predictions": {
+        "ensemble_prob": 0.4389,
+        "logistic_prob": 0.5,
+        "elo_prob": 0.3283,
+        "xgb_prob": null,
+        "pyth_prob": 0.4359,
+        "eff_prob": 0.4813,
+        "bayesian_prob": 0.0592
+      },
+      "market": {
+        "home_prob": null,
+        "edge": null,
+        "kelly_pct": null,
+        "home_american": null,
+        "away_american": null
+      },
+      "monte_carlo": {
+        "win_prob": 0.3659,
+        "exp_margin": -4.66,
+        "prob_7plus": 0.2098,
+        "prob_14plus": 0.0997,
+        "prob_21plus": 0.0409,
+        "margin_percentiles": [
+          -28.2,
+          -22.9,
+          -14.3,
+          -4.8,
+          5.1,
+          14.0,
+          19.5
+        ]
+      },
+      "adjustments": {
+        "rest_home": 7,
+        "rest_away": 7,
+        "rest_diff": 0,
+        "travel_dist_miles": 532.0,
+        "travel_adj": -5.0,
+        "home_elo_bonus": 65
+      },
+      "elo": {
+        "home": 1438.1,
+        "away": 1620.4,
+        "diff": -124.4
+      },
+      "bayesian": {
+        "home_mu": 1438.1,
+        "home_sigma": 75.0,
+        "away_mu": 1620.4,
+        "away_sigma": 75.0,
+        "home_band": [
+          1363.1,
+          1513.1
+        ],
+        "away_band": [
+          1545.4,
+          1695.4
+        ]
+      },
+      "injuries": {
+        "home": [],
+        "away": []
+      },
+      "injury_impact": {
+        "home_elo_penalty": 0.0,
+        "away_elo_penalty": 0.0,
+        "home_impact_score": 0.0,
+        "away_impact_score": 0.0,
+        "home_key_players_out": [],
+        "away_key_players_out": []
+      },
+      "prediction_drivers": [
+        "ELO advantage: BUF +182 rating points",
+        "Efficiency gap: CAR net -0.242 vs BUF net +0.148",
+        "Home field: CAR +65 ELO home advantage"
+      ],
+      "explanation": "The model gives Buffalo Bills a 56.1% win probability \u2014 a slight favorite over Carolina Panthers. The ELO gap is 182 points with home field adding approximately 65 ELO points."
+    },
+    {
+      "game_id": "401772759",
+      "game_time": "2025-10-26T17:00Z",
+      "week": 8,
+      "status": "STATUS_FINAL",
+      "is_future": true,
+      "home_team": "BAL",
+      "away_team": "CHI",
+      "home_name": "Baltimore Ravens",
+      "away_name": "Chicago Bears",
+      "home_logo": "https://a.espncdn.com/i/teamlogos/nfl/500/bal.png",
+      "away_logo": "https://a.espncdn.com/i/teamlogos/nfl/500/chi.png",
+      "neutral": false,
+      "home_score": 30,
+      "away_score": 16,
+      "predictions": {
+        "ensemble_prob": 0.5425,
+        "logistic_prob": 0.5,
+        "elo_prob": 0.555,
+        "xgb_prob": null,
+        "pyth_prob": 0.5933,
+        "eff_prob": 0.5691,
+        "bayesian_prob": 0.6871
+      },
+      "market": {
+        "home_prob": null,
+        "edge": null,
+        "kelly_pct": null,
+        "home_american": null,
+        "away_american": null
+      },
+      "monte_carlo": {
+        "win_prob": 0.5298,
+        "exp_margin": 1.14,
+        "prob_7plus": 0.3475,
+        "prob_14plus": 0.1953,
+        "prob_21plus": 0.0906,
+        "margin_percentiles": [
+          -23.4,
+          -18.0,
+          -9.0,
+          1.1,
+          11.4,
+          20.2,
+          25.4
+        ]
+      },
+      "adjustments": {
+        "rest_home": 7,
+        "rest_away": 7,
+        "rest_diff": 0,
+        "travel_dist_miles": 605.0,
+        "travel_adj": -5.0,
+        "home_elo_bonus": 65
+      },
+      "elo": {
+        "home": 1517.6,
+        "away": 1549.2,
+        "diff": 38.4
+      },
+      "bayesian": {
+        "home_mu": 1517.6,
+        "home_sigma": 75.0,
+        "away_mu": 1549.2,
+        "away_sigma": 75.0,
+        "home_band": [
+          1442.6,
+          1592.6
+        ],
+        "away_band": [
+          1474.2,
+          1624.2
+        ]
+      },
+      "injuries": {
+        "home": [],
+        "away": []
+      },
+      "injury_impact": {
+        "home_elo_penalty": 0.0,
+        "away_elo_penalty": 0.0,
+        "home_impact_score": 0.0,
+        "away_impact_score": 0.0,
+        "home_key_players_out": [],
+        "away_key_players_out": []
+      },
+      "prediction_drivers": [
+        "Home field: BAL +65 ELO home advantage"
+      ],
+      "explanation": "The model gives Baltimore Ravens a 54.2% win probability \u2014 a slight favorite over Chicago Bears. The ELO gap is 32 points with home field adding approximately 65 ELO points."
+    },
+    {
+      "game_id": "401772866",
+      "game_time": "2025-10-26T17:00Z",
+      "week": 8,
+      "status": "STATUS_FINAL",
+      "is_future": true,
+      "home_team": "HOU",
+      "away_team": "SF",
+      "home_name": "Houston Texans",
+      "away_name": "San Francisco 49ers",
+      "home_logo": "https://a.espncdn.com/i/teamlogos/nfl/500/hou.png",
+      "away_logo": "https://a.espncdn.com/i/teamlogos/nfl/500/sf.png",
+      "neutral": false,
+      "home_score": 26,
+      "away_score": 15,
+      "predictions": {
+        "ensemble_prob": 0.5726,
+        "logistic_prob": 0.5,
+        "elo_prob": 0.6736,
+        "xgb_prob": null,
+        "pyth_prob": 0.6374,
+        "eff_prob": 0.4909,
+        "bayesian_prob": 0.9302
+      },
+      "market": {
+        "home_prob": null,
+        "edge": null,
+        "kelly_pct": null,
+        "home_american": null,
+        "away_american": null
+      },
+      "monte_carlo": {
+        "win_prob": 0.6183,
+        "exp_margin": 4.48,
+        "prob_7plus": 0.4268,
+        "prob_14plus": 0.2572,
+        "prob_21plus": 0.1253,
+        "margin_percentiles": [
+          -18.9,
+          -13.8,
+          -5.2,
+          4.2,
+          14.4,
+          22.8,
+          28.0
+        ]
+      },
+      "adjustments": {
+        "rest_home": 7,
+        "rest_away": 7,
+        "rest_diff": 0,
+        "travel_dist_miles": 1616.0,
+        "travel_adj": -10.0,
+        "home_elo_bonus": 65
+      },
+      "elo": {
+        "home": 1646.9,
+        "away": 1602.0,
+        "diff": 125.8
+      },
+      "bayesian": {
+        "home_mu": 1646.9,
+        "home_sigma": 75.0,
+        "away_mu": 1602.0,
+        "away_sigma": 75.0,
+        "home_band": [
+          1571.9,
+          1721.9
+        ],
+        "away_band": [
+          1527.0,
+          1677.0
+        ]
+      },
+      "injuries": {
+        "home": [],
+        "away": []
+      },
+      "injury_impact": {
+        "home_elo_penalty": 0.0,
+        "away_elo_penalty": 0.0,
+        "home_impact_score": 0.0,
+        "away_impact_score": 0.0,
+        "home_key_players_out": [],
+        "away_key_players_out": []
+      },
+      "prediction_drivers": [
+        "Efficiency gap: HOU net -0.304 vs SF net +0.053",
+        "Travel penalty: away team travels 1616 miles",
+        "Home field: HOU +65 ELO home advantage"
+      ],
+      "explanation": "The model gives Houston Texans a 57.3% win probability \u2014 a slight favorite over San Francisco 49ers. The ELO gap is 45 points with home field adding approximately 65 ELO points. Travel distance 1616 miles factors into the away team rating."
+    },
+    {
+      "game_id": "401772869",
+      "game_time": "2025-10-26T20:05Z",
+      "week": 8,
+      "status": "STATUS_FINAL",
+      "is_future": true,
+      "home_team": "NO",
+      "away_team": "TB",
+      "home_name": "New Orleans Saints",
+      "away_name": "Tampa Bay Buccaneers",
+      "home_logo": "https://a.espncdn.com/i/teamlogos/nfl/500/no.png",
+      "away_logo": "https://a.espncdn.com/i/teamlogos/nfl/500/tb.png",
+      "neutral": false,
+      "home_score": 3,
+      "away_score": 23,
+      "predictions": {
+        "ensemble_prob": 0.5363,
+        "logistic_prob": 0.5,
+        "elo_prob": 0.5928,
+        "xgb_prob": null,
+        "pyth_prob": 0.5452,
+        "eff_prob": 0.5193,
+        "bayesian_prob": 0.7526
+      },
+      "market": {
+        "home_prob": null,
+        "edge": null,
+        "kelly_pct": null,
+        "home_american": null,
+        "away_american": null
+      },
+      "monte_carlo": {
+        "win_prob": 0.5525,
+        "exp_margin": 1.83,
+        "prob_7plus": 0.3541,
+        "prob_14plus": 0.2033,
+        "prob_21plus": 0.0972,
+        "margin_percentiles": [
+          -22.1,
+          -16.8,
+          -8.0,
+          1.8,
+          11.6,
+          20.8,
+          25.9
+        ]
+      },
+      "adjustments": {
+        "rest_home": 7,
+        "rest_away": 7,
+        "rest_diff": 0,
+        "travel_dist_miles": 479.0,
+        "travel_adj": 0.0,
+        "home_elo_bonus": 65
+      },
+      "elo": {
+        "home": 1441.2,
+        "away": 1458.9,
+        "diff": 65.2
+      },
+      "bayesian": {
+        "home_mu": 1441.2,
+        "home_sigma": 75.0,
+        "away_mu": 1458.9,
+        "away_sigma": 75.0,
+        "home_band": [
+          1366.2,
+          1516.2
+        ],
+        "away_band": [
+          1383.9,
+          1533.9
+        ]
+      },
+      "injuries": {
+        "home": [],
+        "away": []
+      },
+      "injury_impact": {
+        "home_elo_penalty": 0.0,
+        "away_elo_penalty": 0.0,
+        "home_impact_score": 0.0,
+        "away_impact_score": 0.0,
+        "home_key_players_out": [],
+        "away_key_players_out": []
+      },
+      "prediction_drivers": [
+        "Efficiency gap: NO net -0.247 vs TB net +0.011",
+        "Home field: NO +65 ELO home advantage"
+      ],
+      "explanation": "The model gives New Orleans Saints a 53.6% win probability \u2014 a slight favorite over Tampa Bay Buccaneers. The ELO gap is 18 points with home field adding approximately 65 ELO points."
+    },
+    {
+      "game_id": "401772762",
+      "game_time": "2025-10-26T20:25Z",
+      "week": 8,
+      "status": "STATUS_FINAL",
+      "is_future": true,
+      "home_team": "DEN",
+      "away_team": "DAL",
+      "home_name": "Denver Broncos",
+      "away_name": "Dallas Cowboys",
+      "home_logo": "https://a.espncdn.com/i/teamlogos/nfl/500/den.png",
+      "away_logo": "https://a.espncdn.com/i/teamlogos/nfl/500/dal.png",
+      "neutral": false,
+      "home_score": 44,
+      "away_score": 24,
+      "predictions": {
+        "ensemble_prob": 0.6091,
+        "logistic_prob": 0.5,
+        "elo_prob": 0.829,
+        "xgb_prob": null,
+        "pyth_prob": 0.6947,
+        "eff_prob": 0.3685,
+        "bayesian_prob": 0.9977
+      },
+      "market": {
+        "home_prob": null,
+        "edge": null,
+        "kelly_pct": null,
+        "home_american": null,
+        "away_american": null
+      },
+      "monte_carlo": {
+        "win_prob": 0.7561,
+        "exp_margin": 10.17,
+        "prob_7plus": 0.5886,
+        "prob_14plus": 0.3968,
+        "prob_21plus": 0.2297,
+        "margin_percentiles": [
+          -14.2,
+          -8.7,
+          0.2,
+          10.3,
+          20.1,
+          28.8,
+          34.9
+        ]
+      },
+      "adjustments": {
+        "rest_home": 7,
+        "rest_away": 7,
+        "rest_diff": 0,
+        "travel_dist_miles": 654.0,
+        "travel_adj": -5.0,
+        "home_elo_bonus": 65
+      },
+      "elo": {
+        "home": 1633.9,
+        "away": 1441.6,
+        "diff": 274.3
+      },
+      "bayesian": {
+        "home_mu": 1633.9,
+        "home_sigma": 75.0,
+        "away_mu": 1441.6,
+        "away_sigma": 75.0,
+        "home_band": [
+          1558.9,
+          1708.9
+        ],
+        "away_band": [
+          1366.6,
+          1516.6
+        ]
+      },
+      "injuries": {
+        "home": [],
+        "away": []
+      },
+      "injury_impact": {
+        "home_elo_penalty": 0.0,
+        "away_elo_penalty": 0.0,
+        "home_impact_score": 0.0,
+        "away_impact_score": 0.0,
+        "home_key_players_out": [],
+        "away_key_players_out": []
+      },
+      "prediction_drivers": [
+        "ELO advantage: DEN +192 rating points",
+        "Efficiency gap: DEN net -0.243 vs DAL net +0.550",
+        "Home field: DEN +65 ELO home advantage"
+      ],
+      "explanation": "The model gives Denver Broncos a 60.9% win probability \u2014 a moderate favorite over Dallas Cowboys. The ELO gap is 192 points with home field adding approximately 65 ELO points."
+    },
+    {
+      "game_id": "401772761",
+      "game_time": "2025-10-26T20:25Z",
+      "week": 8,
+      "status": "STATUS_FINAL",
+      "is_future": true,
+      "home_team": "IND",
+      "away_team": "TEN",
+      "home_name": "Indianapolis Colts",
+      "away_name": "Tennessee Titans",
+      "home_logo": "https://a.espncdn.com/i/teamlogos/nfl/500/ind.png",
+      "away_logo": "https://a.espncdn.com/i/teamlogos/nfl/500/ten.png",
+      "neutral": false,
+      "home_score": 38,
+      "away_score": 14,
+      "predictions": {
+        "ensemble_prob": 0.6466,
+        "logistic_prob": 0.5,
+        "elo_prob": 0.7618,
+        "xgb_prob": null,
+        "pyth_prob": 0.7637,
+        "eff_prob": 0.6804,
+        "bayesian_prob": 0.9936
+      },
+      "market": {
+        "home_prob": null,
+        "edge": null,
+        "kelly_pct": null,
+        "home_american": null,
+        "away_american": null
+      },
+      "monte_carlo": {
+        "win_prob": 0.7091,
+        "exp_margin": 8.32,
+        "prob_7plus": 0.5327,
+        "prob_14plus": 0.3471,
+        "prob_21plus": 0.193,
+        "margin_percentiles": [
+          -15.6,
+          -10.4,
+          -1.8,
+          8.2,
+          18.3,
+          27.4,
+          32.6
+        ]
+      },
+      "adjustments": {
+        "rest_home": 7,
+        "rest_away": 7,
+        "rest_diff": 0,
+        "travel_dist_miles": 250.0,
+        "travel_adj": 0.0,
+        "home_elo_bonus": 65
+      },
+      "elo": {
+        "home": 1478.9,
+        "away": 1329.9,
+        "diff": 202.0
+      },
+      "bayesian": {
+        "home_mu": 1478.9,
+        "home_sigma": 75.0,
+        "away_mu": 1329.9,
+        "away_sigma": 75.0,
+        "home_band": [
+          1403.9,
+          1553.9
+        ],
+        "away_band": [
+          1254.9,
+          1404.9
+        ]
+      },
+      "injuries": {
+        "home": [],
+        "away": []
+      },
+      "injury_impact": {
+        "home_elo_penalty": 0.0,
+        "away_elo_penalty": 0.0,
+        "home_impact_score": 0.0,
+        "away_impact_score": 0.0,
+        "home_key_players_out": [],
+        "away_key_players_out": []
+      },
+      "prediction_drivers": [
+        "ELO advantage: IND +149 rating points",
+        "Efficiency gap: IND net +0.232 vs TEN net -0.099",
+        "Home field: IND +65 ELO home advantage"
+      ],
+      "explanation": "The model gives Indianapolis Colts a 64.7% win probability \u2014 a moderate favorite over Tennessee Titans. The ELO gap is 149 points with home field adding approximately 65 ELO points."
+    },
+    {
+      "game_id": "401772925",
+      "game_time": "2025-10-27T00:20Z",
+      "week": 8,
+      "status": "STATUS_FINAL",
+      "is_future": true,
+      "home_team": "PIT",
+      "away_team": "GB",
+      "home_name": "Pittsburgh Steelers",
+      "away_name": "Green Bay Packers",
+      "home_logo": "https://a.espncdn.com/i/teamlogos/nfl/500/pit.png",
+      "away_logo": "https://a.espncdn.com/i/teamlogos/nfl/500/gb.png",
+      "neutral": false,
+      "home_score": 25,
+      "away_score": 35,
+      "predictions": {
+        "ensemble_prob": 0.553,
+        "logistic_prob": 0.5,
+        "elo_prob": 0.6022,
+        "xgb_prob": null,
+        "pyth_prob": 0.5736,
+        "eff_prob": 0.5827,
+        "bayesian_prob": 0.7815
+      },
+      "market": {
+        "home_prob": null,
+        "edge": null,
+        "kelly_pct": null,
+        "home_american": null,
+        "away_american": null
+      },
+      "monte_carlo": {
+        "win_prob": 0.5522,
+        "exp_margin": 2.0,
+        "prob_7plus": 0.3655,
+        "prob_14plus": 0.2102,
+        "prob_21plus": 0.0979,
+        "margin_percentiles": [
+          -22.1,
+          -17.0,
+          -7.9,
+          1.9,
+          12.1,
+          20.8,
+          26.1
+        ]
+      },
+      "adjustments": {
+        "rest_home": 7,
+        "rest_away": 7,
+        "rest_diff": 0,
+        "travel_dist_miles": 497.0,
+        "travel_adj": 0.0,
+        "home_elo_bonus": 65
+      },
+      "elo": {
+        "home": 1495.9,
+        "away": 1506.8,
+        "diff": 72.1
+      },
+      "bayesian": {
+        "home_mu": 1495.9,
+        "home_sigma": 75.0,
+        "away_mu": 1506.8,
+        "away_sigma": 75.0,
+        "home_band": [
+          1420.9,
+          1570.9
+        ],
+        "away_band": [
+          1431.8,
+          1581.8
+        ]
+      },
+      "injuries": {
+        "home": [],
+        "away": []
+      },
+      "injury_impact": {
+        "home_elo_penalty": 0.0,
+        "away_elo_penalty": 0.0,
+        "home_impact_score": 0.0,
+        "away_impact_score": 0.0,
+        "home_key_players_out": [],
+        "away_key_players_out": []
+      },
+      "prediction_drivers": [
+        "Home field: PIT +65 ELO home advantage"
+      ],
+      "explanation": "The model gives Pittsburgh Steelers a 55.3% win probability \u2014 a slight favorite over Green Bay Packers. The ELO gap is 11 points with home field adding approximately 65 ELO points."
+    },
+    {
+      "game_id": "401772817",
+      "game_time": "2025-10-28T00:15Z",
+      "week": 8,
+      "status": "STATUS_FINAL",
+      "is_future": true,
+      "home_team": "KC",
+      "away_team": "WAS",
+      "home_name": "Kansas City Chiefs",
+      "away_name": "Washington Commanders",
+      "home_logo": "https://a.espncdn.com/i/teamlogos/nfl/500/kc.png",
+      "away_logo": "https://a.espncdn.com/i/teamlogos/nfl/500/wsh.png",
+      "neutral": false,
+      "home_score": 28,
+      "away_score": 7,
+      "predictions": {
+        "ensemble_prob": 0.5769,
+        "logistic_prob": 0.5,
+        "elo_prob": 0.6402,
+        "xgb_prob": null,
+        "pyth_prob": 0.6948,
+        "eff_prob": 0.5039,
+        "bayesian_prob": 0.9259
+      },
+      "market": {
+        "home_prob": null,
+        "edge": null,
+        "kelly_pct": null,
+        "home_american": null,
+        "away_american": null
+      },
+      "monte_carlo": {
+        "win_prob": 0.6113,
+        "exp_margin": 4.29,
+        "prob_7plus": 0.4201,
+        "prob_14plus": 0.2547,
+        "prob_21plus": 0.1297,
+        "margin_percentiles": [
+          -19.6,
+          -14.3,
+          -5.5,
+          3.9,
+          14.2,
+          23.5,
+          28.8
+        ]
+      },
+      "adjustments": {
+        "rest_home": 7,
+        "rest_away": 7,
+        "rest_diff": 0,
+        "travel_dist_miles": 947.0,
+        "travel_adj": -5.0,
+        "home_elo_bonus": 65
+      },
+      "elo": {
+        "home": 1441.3,
+        "away": 1399.1,
+        "diff": 100.1
+      },
+      "bayesian": {
+        "home_mu": 1441.3,
+        "home_sigma": 75.0,
+        "away_mu": 1399.1,
+        "away_sigma": 75.0,
+        "home_band": [
+          1366.3,
+          1516.3
+        ],
+        "away_band": [
+          1324.1,
+          1474.1
+        ]
+      },
+      "injuries": {
+        "home": [],
+        "away": []
+      },
+      "injury_impact": {
+        "home_elo_penalty": 0.0,
+        "away_elo_penalty": 0.0,
+        "home_impact_score": 0.0,
+        "away_impact_score": 0.0,
+        "home_key_players_out": [],
+        "away_key_players_out": []
+      },
+      "prediction_drivers": [
+        "Efficiency gap: KC net -0.277 vs WAS net +0.035",
+        "Home field: KC +65 ELO home advantage"
+      ],
+      "explanation": "The model gives Kansas City Chiefs a 57.7% win probability \u2014 a slight favorite over Washington Commanders. The ELO gap is 42 points with home field adding approximately 65 ELO points."
     }
   ]
 }
