@@ -3,26 +3,30 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NFL Prediction Dashboard</title>
+  <title>Sports Prediction Dashboard</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet" />
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 </head>
-<body>
+<body data-league="nfl">
 
 <!-- ═══════════════════════════ HEADER ═══════════════════════════ -->
 <header>
   <div class="container header-inner">
     <div class="logo">
-      <div class="logo-icon">🏈</div>
+      <div class="logo-icon" id="header-icon">🏈</div>
       <div>
-        <h1>NFL Prediction Dashboard</h1>
+        <h1 id="header-title">NFL Prediction Dashboard</h1>
         <p>12-Model Ensemble • Live Data • Monte Carlo Simulations</p>
       </div>
     </div>
     <div class="header-meta">
+      <div class="league-switcher">
+        <button class="league-btn active" data-league="nfl">🏈 NFL</button>
+        <button class="league-btn" data-league="nba">🏀 NBA</button>
+      </div>
       <div><span class="status-dot"></span>Auto-updated daily</div>
       <div id="last-updated" class="muted">Loading...</div>
       <div id="season-week" class="muted"></div>
@@ -34,11 +38,11 @@
 <nav>
   <div class="container">
     <div class="nav-tabs">
-      <button class="nav-tab active" data-tab="games">This Week's Games</button>
-      <button class="nav-tab" data-tab="controls">Model Controls</button>
-      <button class="nav-tab" data-tab="predictor">Matchup Predictor</button>
-      <button class="nav-tab" data-tab="leaderboard">ELO Leaderboard</button>
-      <button class="nav-tab" data-tab="performance">Model Performance</button>
+      <button class="nav-tab active" data-tab="games" id="tab-btn-games">This Week's Games</button>
+      <button class="nav-tab" data-tab="controls" id="tab-btn-controls">Model Controls</button>
+      <button class="nav-tab" data-tab="predictor" id="tab-btn-predictor">Matchup Predictor</button>
+      <button class="nav-tab" data-tab="leaderboard" id="tab-btn-leaderboard">ELO Leaderboard</button>
+      <button class="nav-tab" data-tab="performance" id="tab-btn-performance">Model Performance</button>
     </div>
   </div>
 </nav>
@@ -51,7 +55,7 @@
     <section id="tab-games" class="section active">
       <div class="section-header">
         <div class="section-title">
-          <h2>This Week's Games</h2>
+          <h2 id="games-section-title">This Week's Games</h2>
           <span class="section-badge" id="games-count-badge">0 games</span>
         </div>
       </div>
@@ -85,10 +89,10 @@
             </div>
             <div class="slider-item">
               <div class="slider-header">
-                <span class="slider-label">Home Field Advantage (ELO pts)</span>
+                <span class="slider-label" id="hfa-label">Home Field Advantage (ELO pts)</span>
                 <span class="slider-value" id="val-hfa">65</span>
               </div>
-              <input type="range" id="sl-hfa" min="0" max="80" step="5" value="65" />
+              <input type="range" id="sl-hfa" min="0" max="150" step="5" value="65" />
             </div>
             <div class="slider-item">
               <div class="slider-header">
@@ -217,23 +221,47 @@
             <label class="form-label" for="pred-away">Away Team</label>
             <select id="pred-away"><option value="">Select team...</option></select>
           </div>
-          <div class="form-group">
-            <label class="form-label" for="pred-rest-home">Home Team Rest Days</label>
-            <select id="pred-rest-home">
-              <option value="4">4 days (Thu game)</option>
-              <option value="7" selected>7 days (normal)</option>
-              <option value="10">10 days</option>
-              <option value="14">14 days (bye week)</option>
-            </select>
+          <!-- NFL rest options -->
+          <div id="nfl-rest-options">
+            <div class="form-group">
+              <label class="form-label" for="pred-rest-home">Home Team Rest Days</label>
+              <select id="pred-rest-home">
+                <option value="4">4 days (Thu game)</option>
+                <option value="7" selected>7 days (normal)</option>
+                <option value="10">10 days</option>
+                <option value="14">14 days (bye week)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="pred-rest-away">Away Team Rest Days</label>
+              <select id="pred-rest-away">
+                <option value="4">4 days (Thu game)</option>
+                <option value="7" selected>7 days (normal)</option>
+                <option value="10">10 days</option>
+                <option value="14">14 days (bye week)</option>
+              </select>
+            </div>
           </div>
-          <div class="form-group">
-            <label class="form-label" for="pred-rest-away">Away Team Rest Days</label>
-            <select id="pred-rest-away">
-              <option value="4">4 days (Thu game)</option>
-              <option value="7" selected>7 days (normal)</option>
-              <option value="10">10 days</option>
-              <option value="14">14 days (bye week)</option>
-            </select>
+          <!-- NBA rest options -->
+          <div id="nba-rest-options" style="display:none;">
+            <div class="form-group">
+              <label class="form-label" for="pred-nba-rest-home">Home Team Rest</label>
+              <select id="pred-nba-rest-home">
+                <option value="b2b">Back-to-back (0 days)</option>
+                <option value="1">1 day rest</option>
+                <option value="2" selected>2 days rest (normal)</option>
+                <option value="3">3+ days rest</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="pred-nba-rest-away">Away Team Rest</label>
+              <select id="pred-nba-rest-away">
+                <option value="b2b">Back-to-back (0 days)</option>
+                <option value="1">1 day rest</option>
+                <option value="2" selected>2 days rest (normal)</option>
+                <option value="3">3+ days rest</option>
+              </select>
+            </div>
           </div>
           <div class="form-group">
             <label class="form-label" for="pred-neutral">Venue</label>
@@ -247,7 +275,7 @@
 
         <div class="predictor-results" id="predictor-results">
           <div class="empty-state">
-            <div class="empty-state-icon">🏈</div>
+            <div class="empty-state-icon" id="predictor-empty-icon">🏈</div>
             <h3>Select Two Teams</h3>
             <p>Choose a home and away team, then click Run Prediction.</p>
           </div>
@@ -261,13 +289,13 @@
       <div class="section-header">
         <div class="section-title">
           <h2>ELO Leaderboard</h2>
-          <span class="section-badge">All 32 Teams</span>
+          <span class="section-badge" id="leaderboard-badge">All 32 Teams</span>
         </div>
         <div style="font-size:0.75rem;color:var(--text-muted);">Click column header to sort</div>
       </div>
       <div class="table-wrapper">
         <table id="leaderboard-table">
-          <thead>
+          <thead id="leaderboard-thead">
             <tr>
               <th data-col="rank">Rank</th>
               <th data-col="team">Team</th>
@@ -275,11 +303,11 @@
               <th data-col="band">±Band</th>
               <th data-col="record">Record</th>
               <th data-col="pyth">Pythagorean</th>
-              <th data-col="net_eff">Net Eff</th>
-              <th data-col="off_eff">Off Eff</th>
-              <th data-col="def_eff">Def Eff</th>
+              <th data-col="net_eff" id="col-net-eff">Net Eff</th>
+              <th data-col="off_eff" id="col-off-eff">Off Eff</th>
+              <th data-col="def_eff" id="col-def-eff">Def Eff</th>
               <th data-col="playoff_prob">Playoff %</th>
-              <th data-col="sb_prob">SB %</th>
+              <th data-col="sb_prob" id="col-sb-prob">SB %</th>
               <th data-col="trend">Trend</th>
             </tr>
           </thead>

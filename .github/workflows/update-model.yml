@@ -1,4 +1,4 @@
-name: Update NFL Model
+name: Update NFL + NBA Models
 
 on:
   schedule:
@@ -11,7 +11,7 @@ permissions:
 jobs:
   update:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 45
 
     steps:
       - name: Checkout repository
@@ -43,10 +43,15 @@ jobs:
           ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
         run: python scripts/update_data.py
 
+      - name: Run NBA prediction model
+        env:
+          ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
+        run: python scripts/update_nba_data.py
+
       - name: Commit updated predictions
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: 'chore: update predictions [skip ci]'
+          commit_message: 'chore: update NFL + NBA predictions [skip ci]'
           file_pattern: 'data/*.json'
           commit_user_name: 'github-actions[bot]'
           commit_user_email: 'github-actions[bot]@users.noreply.github.com'

@@ -1,0 +1,1260 @@
+"""
+NBA Prediction Model — Full pipeline.
+Downloads NBA data, trains models, writes JSON output files.
+Run daily via GitHub Actions alongside update_data.py.
+"""
+
+import os
+import sys
+import json
+import logging
+import requests
+import numpy as np
+import pandas as pd
+from datetime import datetime, timedelta, timezone
+from math import log, exp
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).parent.parent))
+
+from model.bayesian_model import update_ratings, predict_game as bayes_predict, get_all_ratings
+from model.monte_carlo import simulate_game, simulate_season
+from model.ensemble_model import kelly_criterion, american_to_prob, remove_vig
+from model.injury_model import compute_all_nba_team_impacts
+
+logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
+log = logging.getLogger(__name__)
+
+DATA_DIR = Path(__file__).parent.parent / "data"
+DATA_DIR.mkdir(exist_ok=True)
+
+ESPN_NBA_BASE = "https://site.api.espn.com/apis/site/v2/sports/basketball/nba"
+ODDS_BASE = "https://api.the-odds-api.com/v4/sports/basketball_nba/odds/"
+
+NBA_TEAMS = [
+    "ATL", "BOS", "BKN", "CHA", "CHI", "CLE", "DAL", "DEN", "DET", "GSW",
+    "HOU", "IND", "LAC", "LAL", "MEM", "MIA", "MIL", "MIN", "NOP", "NYK",
+    "OKC", "ORL", "PHI", "PHX", "POR", "SAC", "SAS", "TOR", "UTA", "WAS",
+]
+
+NBA_TEAM_NAMES = {
+    "ATL": "Atlanta Hawks", "BOS": "Boston Celtics", "BKN": "Brooklyn Nets",
+    "CHA": "Charlotte Hornets", "CHI": "Chicago Bulls", "CLE": "Cleveland Cavaliers",
+    "DAL": "Dallas Mavericks", "DEN": "Denver Nuggets", "DET": "Detroit Pistons",
+    "GSW": "Golden State Warriors", "HOU": "Houston Rockets", "IND": "Indiana Pacers",
+    "LAC": "LA Clippers", "LAL": "Los Angeles Lakers", "MEM": "Memphis Grizzlies",
+    "MIA": "Miami Heat", "MIL": "Milwaukee Bucks", "MIN": "Minnesota Timberwolves",
+    "NOP": "New Orleans Pelicans", "NYK": "New York Knicks", "OKC": "Oklahoma City Thunder",
+    "ORL": "Orlando Magic", "PHI": "Philadelphia 76ers", "PHX": "Phoenix Suns",
+    "POR": "Portland Trail Blazers", "SAC": "Sacramento Kings", "SAS": "San Antonio Spurs",
+    "TOR": "Toronto Raptors", "UTA": "Utah Jazz", "WAS": "Washington Wizards",
+}
+
+# ESPN abbreviation normalization for NBA
+ESPN_NBA_TO_ABBREV = {
+    "GS": "GSW", "NY": "NYK", "NO": "NOP", "SA": "SAS",
+    "OKC": "OKC", "BKN": "BKN", "WSH": "WAS", "CHA": "CHA",
+    "PHX": "PHX", "LAL": "LAL", "LAC": "LAC",
+}
+
+# ESPN team ID → abbrev mapping (populated dynamically)
+ESPN_ID_TO_ABBREV = {}
+
+# Home city coordinates for travel distance
+NBA_COORDS = {
+    "ATL": [33.7490, -84.3880], "BOS": [42.3601, -71.0589], "BKN": [40.6826, -73.9754],
+    "CHA": [35.2271, -80.8431], "CHI": [41.8781, -87.6298], "CLE": [41.4993, -81.6944],
+    "DAL": [32.7767, -96.7970], "DEN": [39.7392, -104.9903], "DET": [42.3314, -83.0458],
+    "GSW": [37.7680, -122.3877], "HOU": [29.7604, -95.3698], "IND": [39.7684, -86.1581],
+    "LAC": [34.0430, -118.2673], "LAL": [34.0430, -118.2673], "MEM": [35.1495, -90.0490],
+    "MIA": [25.7617, -80.1918], "MIL": [43.0389, -76.0253], "MIN": [44.9778, -93.2650],
+    "NOP": [29.9511, -90.0715], "NYK": [40.7505, -73.9934], "OKC": [35.4634, -97.5151],
+    "ORL": [28.5383, -81.3792], "PHI": [39.9012, -75.1720], "PHX": [33.4484, -112.0740],
+    "POR": [45.5231, -122.6765], "SAC": [38.5816, -121.4944], "SAS": [29.4241, -98.4936],
+    "TOR": [43.6532, -79.3832], "UTA": [40.7608, -111.8910], "WAS": [38.9072, -77.0369],
+}
+
+
+def abbrev_norm(abbrev):
+    a = abbrev.upper().strip()
+    return ESPN_NBA_TO_ABBREV.get(a, a)
+
+
+def safe_get(url, params=None, timeout=30):
+    try:
+        r = requests.get(url, params=params, timeout=timeout)
+        r.raise_for_status()
+        return r.json()
+    except Exception as e:
+        log.warning(f"Failed to fetch {url}: {e}")
+        return None
+
+
+def haversine(a, b):
+    R = 3959.0
+    dLat = (b[0] - a[0]) * 3.14159265 / 180
+    dLon = (b[1] - a[1]) * 3.14159265 / 180
+    x = (dLat / 2) ** 2 + (dLon / 2) ** 2  # simplified
+    import math
+    x = (math.sin(dLat / 2)) ** 2 + math.cos(a[0] * math.pi / 180) * math.cos(b[0] * math.pi / 180) * (math.sin(dLon / 2)) ** 2
+    return R * 2 * math.atan2(math.sqrt(x), math.sqrt(1 - x))
+
+
+def nba_travel_distance(home, away):
+    ch = NBA_COORDS.get(home)
+    ca = NBA_COORDS.get(away)
+    if ch and ca:
+        return haversine(ca, ch)
+    return 0.0
+
+
+# ─── ELO Model (NBA-specific) ─────────────────────────────────────────────────
+
+def nba_expected_score(elo_a, elo_b):
+    return 1.0 / (1.0 + 10 ** ((elo_b - elo_a) / 400.0))
+
+
+def nba_mov_multiplier(point_diff, elo_diff):
+    import math
+    return math.log(abs(point_diff) + 1) * (2.2 / (abs(elo_diff) * 0.001 + 2.2))
+
+
+def compute_nba_elo(games, k_base=20.0, hfa=100.0, initial_elo=1500.0, regress_pct=0.33):
+    """
+    Compute NBA ELO ratings from a list of completed games.
+    NBA home court advantage is higher than NFL (~100 vs 65 ELO pts).
+    """
+    if not games:
+        return {t: initial_elo for t in NBA_TEAMS}, {t: [] for t in NBA_TEAMS}
+
+    df = pd.DataFrame(games)
+    df["date"] = pd.to_datetime(df["date"])
+    df = df.sort_values("date").reset_index(drop=True)
+
+    elo_dict = {}
+    game_history = {}
+
+    seasons = sorted(df["season"].unique()) if "season" in df.columns else [df["date"].dt.year.max()]
+
+    for season in seasons:
+        if "season" in df.columns:
+            season_df = df[df["season"] == season]
+        else:
+            season_df = df
+
+        # Seasonal regression at start of each season
+        for team in list(elo_dict.keys()):
+            elo_dict[team] = elo_dict[team] * (1 - regress_pct) + initial_elo * regress_pct
+            game_history[team] = []
+
+        for _, row in season_df.iterrows():
+            team1 = row["team1"]
+            team2 = row["team2"]
+            score1 = row.get("score1", 0)
+            score2 = row.get("score2", 0)
+            neutral = row.get("neutral", 0)
+
+            if pd.isna(score1) or pd.isna(score2):
+                continue
+
+            score1 = int(score1)
+            score2 = int(score2)
+
+            if team1 not in elo_dict:
+                elo_dict[team1] = initial_elo
+                game_history[team1] = []
+            if team2 not in elo_dict:
+                elo_dict[team2] = initial_elo
+                game_history[team2] = []
+
+            e1 = elo_dict[team1]
+            e2 = elo_dict[team2]
+
+            hfa_adj = 0 if neutral else hfa
+            adj_e1 = e1 + hfa_adj
+
+            exp1 = nba_expected_score(adj_e1, e2)
+            exp2 = 1.0 - exp1
+
+            actual1 = 1.0 if score1 > score2 else (0.5 if score1 == score2 else 0.0)
+            actual2 = 1.0 - actual1
+
+            point_diff = abs(score1 - score2)
+            elo_diff_abs = abs(adj_e1 - e2)
+            mov = nba_mov_multiplier(point_diff, elo_diff_abs) if point_diff > 0 else 1.0
+
+            elo_dict[team1] = e1 + k_base * mov * (actual1 - exp1)
+            elo_dict[team2] = e2 + k_base * mov * (actual2 - exp2)
+
+            game_history.setdefault(team1, []).append({
+                "result": actual1,
+                "elo_diff": adj_e1 - e2,
+                "date": row["date"].isoformat(),
+            })
+            game_history.setdefault(team2, []).append({
+                "result": actual2,
+                "elo_diff": e2 - adj_e1,
+                "date": row["date"].isoformat(),
+            })
+
+    return elo_dict, game_history
+
+
+def nba_recent_form(game_history, team, n=5):
+    hist = game_history.get(team, [])
+    if not hist:
+        return 0.5
+    recent = hist[-n:]
+    return sum(g["result"] for g in recent) / len(recent)
+
+
+def nba_get_trend(game_history, team, window=5):
+    hist = game_history.get(team, [])
+    if len(hist) < window * 2:
+        return "neutral"
+    recent = sum(g["result"] for g in hist[-window:]) / window
+    older = sum(g["result"] for g in hist[-window * 2:-window]) / window
+    if recent > older + 0.15:
+        return "up"
+    elif recent < older - 0.15:
+        return "down"
+    return "neutral"
+
+
+# ─── Data Fetching ────────────────────────────────────────────────────────────
+
+def fetch_nba_scoreboard():
+    log.info("Fetching NBA scoreboard...")
+    data = safe_get(f"{ESPN_NBA_BASE}/scoreboard")
+    if not data:
+        return []
+
+    games = []
+    for event in data.get("events", []):
+        try:
+            comp = event["competitions"][0]
+            competitors = comp["competitors"]
+            home = next((c for c in competitors if c["homeAway"] == "home"), None)
+            away = next((c for c in competitors if c["homeAway"] == "away"), None)
+            if not home or not away:
+                continue
+
+            home_abbrev = abbrev_norm(home["team"]["abbreviation"])
+            away_abbrev = abbrev_norm(away["team"]["abbreviation"])
+
+            # Store ESPN team IDs for schedule fetching
+            home_id = home["team"].get("id", "")
+            away_id = away["team"].get("id", "")
+            if home_id:
+                ESPN_ID_TO_ABBREV[home_id] = home_abbrev
+            if away_id:
+                ESPN_ID_TO_ABBREV[away_id] = away_abbrev
+
+            game = {
+                "game_id": event["id"],
+                "game_time": event.get("date", ""),
+                "status": event.get("status", {}).get("type", {}).get("name", ""),
+                "home_team": home_abbrev,
+                "away_team": away_abbrev,
+                "home_name": home["team"].get("displayName", home_abbrev),
+                "away_name": away["team"].get("displayName", away_abbrev),
+                "home_score": int(home.get("score", 0) or 0),
+                "away_score": int(away.get("score", 0) or 0),
+                "home_logo": f"https://a.espncdn.com/i/teamlogos/nba/500/{home['team']['abbreviation'].lower()}.png",
+                "away_logo": f"https://a.espncdn.com/i/teamlogos/nba/500/{away['team']['abbreviation'].lower()}.png",
+                "neutral": int(comp.get("neutralSite", False)),
+            }
+            games.append(game)
+        except (KeyError, IndexError) as e:
+            log.debug(f"Error parsing NBA game: {e}")
+
+    log.info(f"Found {len(games)} NBA scoreboard games")
+    return games
+
+
+def fetch_nba_standings():
+    log.info("Fetching NBA standings...")
+    data = safe_get(f"{ESPN_NBA_BASE}/standings")
+    if not data:
+        return {}
+
+    standings = {}
+    try:
+        for group in data.get("children", []):
+            for div in group.get("children", []):
+                for entry in div.get("standings", {}).get("entries", []):
+                    team_abbrev = abbrev_norm(entry["team"]["abbreviation"])
+                    team_id = entry["team"].get("id", "")
+                    if team_id:
+                        ESPN_ID_TO_ABBREV[team_id] = team_abbrev
+
+                    stats = {s["name"]: s.get("value", 0) for s in entry.get("stats", [])}
+                    wins = int(stats.get("wins", 0))
+                    losses = int(stats.get("losses", 0))
+                    points_for = float(stats.get("pointsFor", 0))
+                    points_against = float(stats.get("pointsAgainst", 0))
+
+                    # NBA-specific advanced stats from standings
+                    off_rating = float(stats.get("offensiveRating", 110.0))
+                    def_rating = float(stats.get("defensiveRating", 110.0))
+                    net_rating = off_rating - def_rating
+                    pace = float(stats.get("pace", 100.0))
+
+                    standings[team_abbrev] = {
+                        "wins": wins,
+                        "losses": losses,
+                        "win_pct": float(stats.get("winPercent", 0)),
+                        "points_for": points_for,
+                        "points_against": points_against,
+                        "games_played": wins + losses,
+                        "offensive_rating": off_rating,
+                        "defensive_rating": def_rating,
+                        "net_rating": net_rating,
+                        "pace": pace,
+                        "assist_turnover_ratio": float(stats.get("assistToTurnoverRatio", 1.8)),
+                        "rebound_rate": float(stats.get("reboundRate", 0.5)),
+                        "three_point_rate": float(stats.get("threePointAttemptRate", 0.35)),
+                        "free_throw_rate": float(stats.get("freeThrowAttemptRate", 0.20)),
+                        "streak": stats.get("streak", 0),
+                    }
+    except Exception as e:
+        log.warning(f"Error parsing NBA standings: {e}")
+
+    log.info(f"NBA standings for {len(standings)} teams")
+    return standings
+
+
+def fetch_nba_injuries():
+    log.info("Fetching NBA injuries...")
+    data = safe_get(f"{ESPN_NBA_BASE}/injuries")
+    if not data:
+        return {}
+
+    injuries = {}
+    try:
+        for item in data.get("injuries", []):
+            team_abbrev = abbrev_norm(
+                item.get("team", {}).get("abbreviation", "")
+            )
+            if team_abbrev:
+                if team_abbrev not in injuries:
+                    injuries[team_abbrev] = []
+                player_name = item.get("athlete", {}).get("displayName", "")
+                position = item.get("athlete", {}).get("position", {}).get("abbreviation", "")
+                status = item.get("status", "")
+                injuries[team_abbrev].append({
+                    "player": player_name,
+                    "status": status,
+                    "position": position,
+                    "injury_description": item.get("longComment", item.get("shortComment", status)),
+                })
+    except Exception as e:
+        log.warning(f"Error parsing NBA injuries: {e}")
+
+    return injuries
+
+
+def fetch_nba_season_games(seasons=None):
+    """
+    Fetch completed NBA games for the given seasons via ESPN team schedules.
+    Used to build historical ELO ratings.
+    """
+    if seasons is None:
+        current_year = datetime.now().year
+        current_month = datetime.now().month
+        # NBA season: Oct–Jun. Current season year = year season ends
+        if current_month >= 10:
+            end_year = current_year + 1
+        else:
+            end_year = current_year
+        seasons = [end_year - 2, end_year - 1, end_year]
+
+    log.info(f"Fetching NBA season games for {seasons}...")
+    all_games = []
+    seen_ids = set()
+
+    # Fetch from scoreboard endpoint per week per season
+    for season_year in seasons:
+        for season_type in [2, 3]:  # 2=regular, 3=postseason
+            for week in range(1, 30):
+                url = f"{ESPN_NBA_BASE}/scoreboard"
+                params = {
+                    "seasontype": season_type,
+                    "week": week,
+                    "dates": season_year,
+                    "limit": 100,
+                }
+                data = safe_get(url, params=params)
+                if not data:
+                    break
+
+                events = data.get("events", [])
+                if not events:
+                    break
+
+                has_completed = False
+                for event in events:
+                    try:
+                        event_id = event.get("id", "")
+                        if event_id in seen_ids:
+                            continue
+                        seen_ids.add(event_id)
+
+                        status_type = event.get("status", {}).get("type", {}).get("name", "")
+                        if status_type != "STATUS_FINAL":
+                            continue
+
+                        has_completed = True
+                        comp = event["competitions"][0]
+                        competitors = comp["competitors"]
+                        home = next((c for c in competitors if c["homeAway"] == "home"), None)
+                        away = next((c for c in competitors if c["homeAway"] == "away"), None)
+                        if not home or not away:
+                            continue
+
+                        home_score = int(home.get("score", 0) or 0)
+                        away_score = int(away.get("score", 0) or 0)
+                        if home_score == 0 and away_score == 0:
+                            continue
+
+                        home_abbrev = abbrev_norm(home["team"]["abbreviation"])
+                        away_abbrev = abbrev_norm(away["team"]["abbreviation"])
+
+                        all_games.append({
+                            "date": event.get("date", "")[:10],
+                            "season": season_year,
+                            "team1": home_abbrev,
+                            "team2": away_abbrev,
+                            "score1": home_score,
+                            "score2": away_score,
+                            "neutral": int(comp.get("neutralSite", False)),
+                        })
+                    except (KeyError, IndexError, TypeError) as e:
+                        log.debug(f"Error parsing NBA game: {e}")
+
+                if not has_completed:
+                    break
+
+    log.info(f"Fetched {len(all_games)} NBA historical games")
+    return all_games
+
+
+def fetch_nba_odds(api_key):
+    if not api_key:
+        log.info("No ODDS_API_KEY set, skipping NBA betting lines")
+        return {}
+
+    log.info("Fetching NBA odds from The Odds API...")
+    params = {
+        "apiKey": api_key,
+        "regions": "us",
+        "markets": "h2h",
+        "oddsFormat": "american",
+        "sport": "basketball_nba",
+    }
+    data = safe_get(ODDS_BASE, params=params)
+    if not data:
+        return {}
+
+    odds_map = {}
+    for game in data:
+        try:
+            home_team = game.get("home_team", "")
+            away_team = game.get("away_team", "")
+            bookmakers = game.get("bookmakers", [])
+            if not bookmakers:
+                continue
+
+            home_odds_list = []
+            away_odds_list = []
+            for bm in bookmakers:
+                for market in bm.get("markets", []):
+                    if market["key"] == "h2h":
+                        for outcome in market.get("outcomes", []):
+                            if outcome["name"] == home_team:
+                                home_odds_list.append(float(outcome["price"]))
+                            elif outcome["name"] == away_team:
+                                away_odds_list.append(float(outcome["price"]))
+
+            if home_odds_list and away_odds_list:
+                avg_home = np.mean(home_odds_list)
+                avg_away = np.mean(away_odds_list)
+                raw_home = american_to_prob(avg_home)
+                raw_away = american_to_prob(avg_away)
+                clean_home, clean_away = remove_vig(raw_home, raw_away)
+                game_key = f"{away_team}_at_{home_team}"
+                odds_map[game_key] = {
+                    "home_prob": round(clean_home, 4),
+                    "away_prob": round(clean_away, 4),
+                    "home_american": avg_home,
+                    "away_american": avg_away,
+                    "home_team_name": home_team,
+                    "away_team_name": away_team,
+                }
+        except Exception as e:
+            log.debug(f"Error parsing NBA odds entry: {e}")
+
+    log.info(f"Got NBA odds for {len(odds_map)} games")
+    return odds_map
+
+
+def match_nba_odds(game, odds_map):
+    home = game.get("home_name", "")
+    away = game.get("away_name", "")
+    for key, odds in odds_map.items():
+        h = odds.get("home_team_name", "")
+        a = odds.get("away_team_name", "")
+        if (home.lower() in h.lower() or h.lower() in home.lower()) and \
+           (away.lower() in a.lower() or a.lower() in away.lower()):
+            return odds
+    return None
+
+
+# ─── NBA Efficiency Data ──────────────────────────────────────────────────────
+
+def build_nba_efficiency_data(standings):
+    """Build NBA efficiency stats from standings."""
+    efficiency = {}
+    # Compute league averages
+    teams_with_data = [s for s in standings.values() if s.get("games_played", 0) > 0]
+    if teams_with_data:
+        league_off = np.mean([s.get("offensive_rating", 110.0) for s in teams_with_data])
+        league_def = np.mean([s.get("defensive_rating", 110.0) for s in teams_with_data])
+        league_pace = np.mean([s.get("pace", 100.0) for s in teams_with_data])
+    else:
+        league_off = 110.0
+        league_def = 110.0
+        league_pace = 100.0
+
+    for team in NBA_TEAMS:
+        s = standings.get(team, {})
+        off_rtg = s.get("offensive_rating", league_off)
+        def_rtg = s.get("defensive_rating", league_def)
+        net_rtg = off_rtg - def_rtg
+        pace = s.get("pace", league_pace)
+        pf = s.get("points_for", 0)
+        pa = s.get("points_against", 0)
+        gp = max(s.get("games_played", 1), 1)
+
+        ppg_for = pf / gp
+        ppg_against = pa / gp
+
+        efficiency[team] = {
+            "offensive_rating": off_rtg,
+            "defensive_rating": def_rtg,
+            "net_rating": net_rtg,
+            "pace": pace,
+            "off_eff": off_rtg / max(league_off, 1),
+            "def_eff": league_def / max(def_rtg, 1),
+            "net_eff": net_rtg,
+            "turnover_rate": 1.0 / max(s.get("assist_turnover_ratio", 1.8), 0.1),
+            "three_point_rate": s.get("three_point_rate", 0.35),
+            "rebound_rate": s.get("rebound_rate", 0.5),
+            "free_throw_rate": s.get("free_throw_rate", 0.20),
+            "ppg_for": ppg_for,
+            "ppg_against": ppg_against,
+        }
+
+    return efficiency
+
+
+def compute_nba_pythagorean(efficiency_data):
+    """NBA Pythagorean expectation with exponent 16.5."""
+    pyth_data = {}
+    for team, eff in efficiency_data.items():
+        pf = max(eff.get("ppg_for", 110.0), 1.0)
+        pa = max(eff.get("ppg_against", 110.0), 1.0)
+        exp = 16.5
+        pyth = (pf ** exp) / ((pf ** exp) + (pa ** exp))
+        pyth_data[team] = {"pyth": round(pyth, 4)}
+    return pyth_data
+
+
+# ─── NBA Logistic Model ───────────────────────────────────────────────────────
+
+def build_nba_features(games, elo_dict, game_history, efficiency_data, pyth_data):
+    """Build feature matrix for NBA logistic/XGBoost training."""
+    from sklearn.preprocessing import StandardScaler
+    features = []
+    targets = []
+
+    for game in games:
+        t1 = game.get("team1", "")
+        t2 = game.get("team2", "")
+        s1 = game.get("score1", 0)
+        s2 = game.get("score2", 0)
+        neutral = game.get("neutral", 0)
+
+        if not t1 or not t2 or s1 == s2:
+            continue
+
+        e1 = elo_dict.get(t1, 1500.0)
+        e2 = elo_dict.get(t2, 1500.0)
+        hfa = 0 if neutral else 100.0
+        elo_diff = (e1 + hfa) - e2
+
+        eff1 = efficiency_data.get(t1, {})
+        eff2 = efficiency_data.get(t2, {})
+
+        off_diff = eff1.get("offensive_rating", 110.0) - eff2.get("offensive_rating", 110.0)
+        def_diff = eff2.get("defensive_rating", 110.0) - eff1.get("defensive_rating", 110.0)
+        net_diff = eff1.get("net_rating", 0.0) - eff2.get("net_rating", 0.0)
+        pace_diff = eff1.get("pace", 100.0) - eff2.get("pace", 100.0)
+        to_diff = eff2.get("turnover_rate", 0.5) - eff1.get("turnover_rate", 0.5)
+        three_diff = eff1.get("three_point_rate", 0.35) - eff2.get("three_point_rate", 0.35)
+        reb_diff = eff1.get("rebound_rate", 0.5) - eff2.get("rebound_rate", 0.5)
+        ft_diff = eff1.get("free_throw_rate", 0.20) - eff2.get("free_throw_rate", 0.20)
+
+        pyth1 = pyth_data.get(t1, {}).get("pyth", 0.5)
+        pyth2 = pyth_data.get(t2, {}).get("pyth", 0.5)
+        pyth_diff = (1500 + (pyth1 - 0.5) * 400) - (1500 + (pyth2 - 0.5) * 400)
+
+        form1 = nba_recent_form(game_history, t1)
+        form2 = nba_recent_form(game_history, t2)
+        form_diff = form1 - form2
+
+        feat = [
+            elo_diff, hfa, 0.0,  # rest_days_diff placeholder
+            pyth_diff, net_diff,
+            off_diff, def_diff, pace_diff,
+            to_diff, three_diff, reb_diff, ft_diff,
+            form_diff, 0.0,  # back_to_back placeholder
+        ]
+        features.append(feat)
+        targets.append(1 if s1 > s2 else 0)
+
+    return np.array(features) if features else np.array([]).reshape(0, 14), np.array(targets)
+
+
+def train_nba_logistic(X, y):
+    from sklearn.linear_model import LogisticRegression
+    from sklearn.preprocessing import StandardScaler
+    from sklearn.isotonic import IsotonicRegression
+    from sklearn.model_selection import TimeSeriesSplit
+
+    if len(X) < 50:
+        return None, None, None
+
+    scaler = StandardScaler()
+    X_scaled = scaler.fit_transform(X)
+
+    model = LogisticRegression(C=1.0, max_iter=1000, solver="lbfgs")
+    model.fit(X_scaled, y)
+
+    tscv = TimeSeriesSplit(n_splits=5)
+    probs_oos = np.zeros(len(y))
+    for train_idx, val_idx in tscv.split(X_scaled):
+        m = LogisticRegression(C=1.0, max_iter=1000, solver="lbfgs")
+        m.fit(X_scaled[train_idx], y[train_idx])
+        probs_oos[val_idx] = m.predict_proba(X_scaled[val_idx])[:, 1]
+
+    calibrator = IsotonicRegression(out_of_bounds="clip")
+    calibrator.fit(probs_oos, y)
+
+    return model, scaler, calibrator
+
+
+def predict_nba_logistic(home_feat, model, scaler, calibrator):
+    if model is None or scaler is None:
+        return 0.5
+    try:
+        x = scaler.transform([home_feat])
+        raw_prob = model.predict_proba(x)[0][1]
+        return float(calibrator.transform([raw_prob])[0]) if calibrator else raw_prob
+    except Exception:
+        return 0.5
+
+
+def train_nba_xgboost(X, y):
+    try:
+        import xgboost as xgb
+        from sklearn.preprocessing import StandardScaler
+
+        if len(X) < 50:
+            return None, None
+
+        scaler = StandardScaler()
+        X_scaled = scaler.fit_transform(X)
+
+        model = xgb.XGBClassifier(
+            n_estimators=300, max_depth=4, learning_rate=0.05,
+            subsample=0.8, colsample_bytree=0.8,
+            reg_alpha=0.1, reg_lambda=1.0,
+            eval_metric="logloss", random_state=42,
+        )
+        model.fit(X_scaled, y)
+        return model, scaler
+    except ImportError:
+        log.warning("XGBoost not available for NBA model")
+        return None, None
+    except Exception as e:
+        log.error(f"NBA XGBoost training failed: {e}")
+        return None, None
+
+
+# ─── NBA Model Metrics ────────────────────────────────────────────────────────
+
+def evaluate_nba_model(model, scaler, calibrator, X, y):
+    from sklearn.metrics import log_loss, brier_score_loss, roc_auc_score
+
+    if model is None or len(X) == 0:
+        return {"log_loss": None, "brier_score": None, "auc": None}
+
+    try:
+        X_scaled = scaler.transform(X)
+        probs = model.predict_proba(X_scaled)[:, 1]
+        if calibrator:
+            probs = calibrator.transform(probs)
+
+        return {
+            "log_loss": round(log_loss(y, probs), 4),
+            "brier_score": round(brier_score_loss(y, probs), 4),
+            "auc": round(roc_auc_score(y, probs), 4),
+        }
+    except Exception as e:
+        log.warning(f"NBA model evaluation failed: {e}")
+        return {"log_loss": None, "brier_score": None, "auc": None}
+
+
+# ─── Prediction Drivers ───────────────────────────────────────────────────────
+
+def generate_nba_prediction_drivers(game_info, home, away, elo_dict,
+                                      efficiency_data, injury_impacts, adj):
+    drivers = []
+
+    home_elo = elo_dict.get(home, 1500.0)
+    away_elo = elo_dict.get(away, 1500.0)
+    elo_diff = abs(home_elo - away_elo)
+
+    if elo_diff >= 75:
+        leader = home if home_elo > away_elo else away
+        drivers.append(f"ELO advantage: {leader} +{elo_diff:.0f} rating points")
+
+    # Key injured players
+    for team in [home, away]:
+        key_out = injury_impacts.get(team, {}).get("key_players_out", [])
+        for p in key_out[:3]:
+            drivers.append(
+                f"{p['player']} ({team}) {p['status'].upper()} "
+                f"— −{p['elo_impact']:.0f} rating impact"
+            )
+
+    # Efficiency gap
+    home_eff = efficiency_data.get(home, {})
+    away_eff = efficiency_data.get(away, {})
+    net_home = home_eff.get("net_rating", 0.0)
+    net_away = away_eff.get("net_rating", 0.0)
+    if abs(net_home - net_away) >= 3.0:
+        drivers.append(
+            f"Net rating gap: {home} {net_home:+.1f} vs {away} {net_away:+.1f}"
+        )
+
+    off_diff = home_eff.get("offensive_rating", 110) - away_eff.get("offensive_rating", 110)
+    if abs(off_diff) >= 3.0:
+        leader = home if off_diff > 0 else away
+        drivers.append(f"Offensive rating advantage: {leader} ({abs(off_diff):.1f} pts/100)")
+
+    # Rest / back-to-back
+    b2b_home = adj.get("b2b_home", False)
+    b2b_away = adj.get("b2b_away", False)
+    if b2b_home:
+        drivers.append(f"Back-to-back: {home} playing on zero days rest (−5 rating)")
+    if b2b_away:
+        drivers.append(f"Back-to-back: {away} playing on zero days rest (−5 rating)")
+
+    rest_diff = adj.get("rest_diff", 0)
+    if abs(rest_diff) >= 2 and not b2b_home and not b2b_away:
+        rested = home if rest_diff > 0 else away
+        drivers.append(f"Rest advantage: {rested} has {abs(rest_diff)} extra days rest")
+
+    # Travel
+    travel_mi = adj.get("travel_dist_miles", 0)
+    if travel_mi >= 1500:
+        drivers.append(f"Travel: away team travels {travel_mi:.0f} miles")
+
+    if not game_info.get("neutral", False):
+        drivers.append(f"Home court: {home} +100 ELO advantage")
+
+    return drivers
+
+
+# ─── NBA Season Simulation ────────────────────────────────────────────────────
+
+def nba_ensemble_predict(elo_prob, pyth_prob, eff_prob, log_prob=None, xgb_prob=None,
+                          weights=None):
+    if weights is None:
+        weights = {"elo": 0.25, "pyth": 0.20, "eff": 0.15, "log": 0.25, "xgb": 0.15}
+
+    xgb_val = xgb_prob if xgb_prob is not None else log_prob if log_prob is not None else elo_prob
+    log_val = log_prob if log_prob is not None else elo_prob
+
+    total_w = sum(weights.values())
+    val = (
+        weights["elo"] * elo_prob +
+        weights["pyth"] * pyth_prob +
+        weights["eff"] * eff_prob +
+        weights["log"] * log_val +
+        weights["xgb"] * xgb_val
+    ) / total_w
+
+    return float(max(0.01, min(0.99, val)))
+
+
+# ─── Main Runner ─────────────────────────────────────────────────────────────
+
+def run():
+    log.info("=== NBA Prediction Model Update Starting ===")
+    now_utc = datetime.now(timezone.utc).isoformat()
+    odds_api_key = os.environ.get("ODDS_API_KEY", "")
+
+    current_month = datetime.now().month
+    current_year = datetime.now().year
+    # NBA season: Oct–Jun. Current season year = year ending
+    if current_month >= 10:
+        season_year = current_year + 1
+    else:
+        season_year = current_year
+
+    # ── 1. Download data ────────────────────────────────────────────────────
+    scoreboard_games = fetch_nba_scoreboard()
+    standings = fetch_nba_standings()
+    injuries = fetch_nba_injuries()
+    odds_map = fetch_nba_odds(odds_api_key)
+
+    is_offseason = len(scoreboard_games) == 0
+
+    # ── 1b. Injury impacts ──────────────────────────────────────────────────
+    log.info("Computing NBA injury impacts...")
+    injury_impacts = compute_all_nba_team_impacts(injuries)
+
+    # Save NBA injuries file
+    nba_injuries_list = []
+    for team, players in injuries.items():
+        for p in players:
+            nba_injuries_list.append({
+                "player_name": p.get("player", ""),
+                "team": team,
+                "position": p.get("position", ""),
+                "status": p.get("status", ""),
+                "injury_description": p.get("injury_description", p.get("status", "")),
+            })
+    (DATA_DIR / "nba_injuries.json").write_text(
+        json.dumps({"updated": now_utc, "injuries": nba_injuries_list}, indent=2)
+    )
+
+    # ── 2. Fetch historical games for ELO ───────────────────────────────────
+    log.info("Fetching NBA historical games for ELO computation...")
+    historical_games = fetch_nba_season_games(
+        seasons=[season_year - 2, season_year - 1, season_year]
+    )
+
+    # ── 3. Compute NBA ELO ──────────────────────────────────────────────────
+    log.info("Computing NBA ELO ratings...")
+    if historical_games:
+        elo_dict, game_history = compute_nba_elo(historical_games)
+    else:
+        elo_dict = {t: 1500.0 for t in NBA_TEAMS}
+        game_history = {t: [] for t in NBA_TEAMS}
+
+    for team in NBA_TEAMS:
+        if team not in elo_dict:
+            elo_dict[team] = 1500.0
+        if team not in game_history:
+            game_history[team] = []
+
+    log.info(f"NBA ELO computed for {len(elo_dict)} teams")
+
+    # ── 4. Efficiency and Pythagorean ───────────────────────────────────────
+    log.info("Computing NBA efficiency and Pythagorean ratings...")
+    efficiency_data = build_nba_efficiency_data(standings)
+    pyth_data = compute_nba_pythagorean(efficiency_data)
+
+    # ── 5. Train NBA logistic model ─────────────────────────────────────────
+    log.info("Training NBA logistic model...")
+    logistic_model, logistic_scaler, logistic_calibrator = None, None, None
+    model_metrics = {"log_loss": None, "brier_score": None, "auc": None}
+
+    if historical_games and len(historical_games) > 100:
+        try:
+            X, y = build_nba_features(historical_games, elo_dict, game_history,
+                                       efficiency_data, pyth_data)
+            if len(X) > 50:
+                logistic_model, logistic_scaler, logistic_calibrator = train_nba_logistic(X, y)
+                if logistic_model:
+                    metrics = evaluate_nba_model(logistic_model, logistic_scaler,
+                                                  logistic_calibrator, X, y)
+                    model_metrics.update(metrics)
+                    log.info(f"NBA logistic model trained. Log loss: {metrics['log_loss']}")
+        except Exception as e:
+            log.error(f"NBA logistic training failed: {e}")
+
+    # ── 6. Train NBA XGBoost ────────────────────────────────────────────────
+    log.info("Training NBA XGBoost model...")
+    xgb_model, xgb_scaler = None, None
+    if historical_games and len(historical_games) > 100:
+        try:
+            X_xgb, y_xgb = build_nba_features(historical_games, elo_dict, game_history,
+                                                efficiency_data, pyth_data)
+            if len(X_xgb) > 50:
+                xgb_model, xgb_scaler = train_nba_xgboost(X_xgb, y_xgb)
+        except Exception as e:
+            log.error(f"NBA XGBoost training failed: {e}")
+
+    # ── 7. Bayesian ratings ─────────────────────────────────────────────────
+    log.info("Computing NBA Bayesian ratings...")
+    recent_games = [g for g in historical_games if
+                    g.get("season", 0) >= season_year - 1]
+    bayesian_ratings = update_ratings(recent_games, elo_dict)
+    for team in NBA_TEAMS:
+        if team not in bayesian_ratings:
+            bayesian_ratings[team] = {"mu": elo_dict.get(team, 1500.0), "sigma": 75.0}
+
+    # ── 8. Season simulation ────────────────────────────────────────────────
+    log.info("Running NBA season simulation...")
+    remaining_schedule = []
+    for game in scoreboard_games:
+        if game.get("status", "") in ("STATUS_SCHEDULED", "STATUS_IN_PROGRESS"):
+            remaining_schedule.append({
+                "team_a": game["home_team"],
+                "team_b": game["away_team"],
+                "is_home_a": True,
+                "neutral": bool(game.get("neutral", False)),
+            })
+
+    for team in NBA_TEAMS:
+        if team in bayesian_ratings:
+            bayesian_ratings[team]["wins"] = standings.get(team, {}).get("wins", 0)
+
+    try:
+        season_sim = simulate_season(
+            NBA_TEAMS, remaining_schedule, bayesian_ratings, n_sims=3000
+        )
+    except Exception as e:
+        log.error(f"NBA season simulation failed: {e}")
+        season_sim = {t: {"playoff_prob": 0.53, "division_win_prob": 0.25,
+                          "sb_prob": 0.033, "wins_avg": 41.0} for t in NBA_TEAMS}
+
+    # ── 9. Generate per-game predictions ────────────────────────────────────
+    log.info(f"Generating NBA predictions for {len(scoreboard_games)} games...")
+    predictions_list = []
+
+    for game in scoreboard_games:
+        try:
+            home = game["home_team"]
+            away = game["away_team"]
+            game_id = game["game_id"]
+            neutral = bool(game.get("neutral", False))
+
+            # Rest/travel adjustments
+            rest_home = 2  # NBA default
+            rest_away = 2
+            dist = nba_travel_distance(home, away)
+
+            # Back-to-back detection from game history
+            today = datetime.now().date()
+            yesterday = (datetime.now() - timedelta(days=1)).date()
+            b2b_home = any(
+                g.get("date", "")[:10] == str(yesterday)
+                for g in game_history.get(home, [])[-3:]
+            )
+            b2b_away = any(
+                g.get("date", "")[:10] == str(yesterday)
+                for g in game_history.get(away, [])[-3:]
+            )
+            b2b_adj_home = -5.0 if b2b_home else 0.0
+            b2b_adj_away = -5.0 if b2b_away else 0.0
+
+            rest_diff = rest_home - rest_away
+
+            # Injury adjustments
+            inj_adj_home = -injury_impacts.get(home, {}).get("elo_penalty", 0.0)
+            inj_adj_away = -injury_impacts.get(away, {}).get("elo_penalty", 0.0)
+
+            # ELO prediction
+            home_elo = elo_dict.get(home, 1500.0)
+            away_elo = elo_dict.get(away, 1500.0)
+            hfa = 0.0 if neutral else 100.0
+            total_home_elo = home_elo + hfa + inj_adj_home + b2b_adj_home
+            total_away_elo = away_elo + inj_adj_away + b2b_adj_away
+            elo_prob = nba_expected_score(total_home_elo, total_away_elo)
+
+            # Bayesian prediction
+            bayes_result = bayes_predict(home, away, bayesian_ratings,
+                                          is_home_a=True, neutral=neutral)
+            bayesian_prob = bayes_result.get("bayesian_prob", 0.5)
+
+            # Pythagorean prediction
+            pyth_home = pyth_data.get(home, {}).get("pyth", 0.5)
+            pyth_away = pyth_data.get(away, {}).get("pyth", 0.5)
+            pyth_elo_home = 1500 + (pyth_home - 0.5) * 400 + hfa
+            pyth_elo_away = 1500 + (pyth_away - 0.5) * 400
+            pyth_prob = nba_expected_score(pyth_elo_home, pyth_elo_away)
+
+            # Efficiency prediction
+            eff_home = efficiency_data.get(home, {}).get("net_rating", 0.0)
+            eff_away = efficiency_data.get(away, {}).get("net_rating", 0.0)
+            eff_elo_home = 1500 + eff_home * 10 + hfa
+            eff_elo_away = 1500 + eff_away * 10
+            eff_prob = nba_expected_score(eff_elo_home, eff_elo_away)
+
+            # Logistic prediction
+            home_eff = efficiency_data.get(home, {})
+            away_eff = efficiency_data.get(away, {})
+            feat = [
+                (home_elo + hfa) - away_elo,
+                hfa,
+                rest_diff,
+                pyth_elo_home - pyth_elo_away,
+                home_eff.get("net_rating", 0) - away_eff.get("net_rating", 0),
+                home_eff.get("offensive_rating", 110) - away_eff.get("offensive_rating", 110),
+                away_eff.get("defensive_rating", 110) - home_eff.get("defensive_rating", 110),
+                home_eff.get("pace", 100) - away_eff.get("pace", 100),
+                away_eff.get("turnover_rate", 0.5) - home_eff.get("turnover_rate", 0.5),
+                home_eff.get("three_point_rate", 0.35) - away_eff.get("three_point_rate", 0.35),
+                home_eff.get("rebound_rate", 0.5) - away_eff.get("rebound_rate", 0.5),
+                home_eff.get("free_throw_rate", 0.20) - away_eff.get("free_throw_rate", 0.20),
+                nba_recent_form(game_history, home) - nba_recent_form(game_history, away),
+                float(b2b_home) - float(b2b_away),
+            ]
+            log_prob = predict_nba_logistic(feat, logistic_model, logistic_scaler,
+                                             logistic_calibrator)
+
+            # XGBoost prediction
+            xgb_prob = None
+            if xgb_model and xgb_scaler:
+                try:
+                    x_scaled = xgb_scaler.transform([feat])
+                    xgb_prob = float(xgb_model.predict_proba(x_scaled)[0][1])
+                except Exception:
+                    pass
+
+            # Ensemble
+            ensemble_prob = nba_ensemble_predict(
+                elo_prob=elo_prob,
+                pyth_prob=pyth_prob,
+                eff_prob=eff_prob,
+                log_prob=log_prob,
+                xgb_prob=xgb_prob,
+            )
+
+            # Monte Carlo
+            mu_home = bayesian_ratings.get(home, {}).get("mu", home_elo)
+            mu_away = bayesian_ratings.get(away, {}).get("mu", away_elo)
+            sig_home = bayesian_ratings.get(home, {}).get("sigma", 75.0)
+            sig_away = bayesian_ratings.get(away, {}).get("sigma", 75.0)
+
+            mc_result = simulate_game(
+                mu_home, mu_away, sig_home, sig_away,
+                is_home_a=True, neutral=neutral, n=10000
+            )
+
+            # Market odds
+            market_odds = match_nba_odds(game, odds_map)
+            market_home_prob = None
+            market_edge = None
+            kelly_pct = None
+            if market_odds:
+                market_home_prob = market_odds.get("home_prob")
+                if market_home_prob:
+                    market_edge = round(ensemble_prob - market_home_prob, 4)
+                    kelly_pct = kelly_criterion(ensemble_prob, market_home_prob)
+
+            adj_dict = {
+                "rest_home": rest_home,
+                "rest_away": rest_away,
+                "rest_diff": rest_diff,
+                "travel_dist_miles": round(dist, 0),
+                "b2b_home": b2b_home,
+                "b2b_away": b2b_away,
+                "home_elo_bonus": 0 if neutral else 100,
+            }
+
+            pred_drivers = generate_nba_prediction_drivers(
+                game, home, away, elo_dict, efficiency_data, injury_impacts, adj_dict
+            )
+
+            # Plain-English explanation
+            winner = home if ensemble_prob >= 0.5 else away
+            winner_prob = ensemble_prob if ensemble_prob >= 0.5 else 1 - ensemble_prob
+            loser = away if ensemble_prob >= 0.5 else home
+            elo_gap = abs(home_elo - away_elo)
+            confidence = "strong" if winner_prob > 0.70 else "moderate" if winner_prob > 0.60 else "slight"
+            explanation = (
+                f"The model gives {NBA_TEAM_NAMES.get(winner, winner)} a "
+                f"{winner_prob*100:.1f}% win probability — a {confidence} favorite over "
+                f"{NBA_TEAM_NAMES.get(loser, loser)}. "
+                f"ELO gap is {elo_gap:.0f} points"
+                + (f" with home court adding approximately 100 ELO points." if not neutral else " at a neutral site.")
+                + (f" {home} is on a back-to-back." if b2b_home else "")
+                + (f" {away} is on a back-to-back." if b2b_away else "")
+                + (f" Net rating: {home} {efficiency_data.get(home, {}).get('net_rating', 0):+.1f} vs {away} {efficiency_data.get(away, {}).get('net_rating', 0):+.1f}.")
+            )
+
+            home_inj_impact = injury_impacts.get(home, {})
+            away_inj_impact = injury_impacts.get(away, {})
+
+            predictions_list.append({
+                "game_id": game_id,
+                "game_time": game["game_time"],
+                "status": game.get("status", ""),
+                "home_team": home,
+                "away_team": away,
+                "home_name": game.get("home_name", home),
+                "away_name": game.get("away_name", away),
+                "home_logo": game.get("home_logo", ""),
+                "away_logo": game.get("away_logo", ""),
+                "neutral": neutral,
+                "predictions": {
+                    "ensemble_prob": round(ensemble_prob, 4),
+                    "logistic_prob": round(log_prob, 4),
+                    "elo_prob": round(elo_prob, 4),
+                    "xgb_prob": round(xgb_prob, 4) if xgb_prob is not None else None,
+                    "pyth_prob": round(pyth_prob, 4),
+                    "eff_prob": round(eff_prob, 4),
+                    "bayesian_prob": round(bayesian_prob, 4),
+                },
+                "market": {
+                    "home_prob": market_home_prob,
+                    "edge": market_edge,
+                    "kelly_pct": kelly_pct,
+                    "home_american": market_odds.get("home_american") if market_odds else None,
+                    "away_american": market_odds.get("away_american") if market_odds else None,
+                },
+                "monte_carlo": mc_result,
+                "adjustments": adj_dict,
+                "elo": {
+                    "home": round(home_elo, 1),
+                    "away": round(away_elo, 1),
+                    "diff": round(home_elo - away_elo, 1),
+                },
+                "bayesian": {
+                    "home_mu": bayes_result.get("mu_a", mu_home),
+                    "home_sigma": bayes_result.get("sigma_a", sig_home),
+                    "away_mu": bayes_result.get("mu_b", mu_away),
+                    "away_sigma": bayes_result.get("sigma_b", sig_away),
+                    "home_band": bayes_result.get("uncertainty_band_a", sig_home),
+                    "away_band": bayes_result.get("uncertainty_band_b", sig_away),
+                },
+                "efficiency": {
+                    "home_off_rating": efficiency_data.get(home, {}).get("offensive_rating", 110.0),
+                    "home_def_rating": efficiency_data.get(home, {}).get("defensive_rating", 110.0),
+                    "home_net_rating": efficiency_data.get(home, {}).get("net_rating", 0.0),
+                    "away_off_rating": efficiency_data.get(away, {}).get("offensive_rating", 110.0),
+                    "away_def_rating": efficiency_data.get(away, {}).get("defensive_rating", 110.0),
+                    "away_net_rating": efficiency_data.get(away, {}).get("net_rating", 0.0),
+                    "home_pace": efficiency_data.get(home, {}).get("pace", 100.0),
+                    "away_pace": efficiency_data.get(away, {}).get("pace", 100.0),
+                },
+                "injuries": {
+                    "home": injuries.get(home, [])[:5],
+                    "away": injuries.get(away, [])[:5],
+                },
+                "injury_impact": {
+                    "home_elo_penalty": home_inj_impact.get("elo_penalty", 0.0),
+                    "away_elo_penalty": away_inj_impact.get("elo_penalty", 0.0),
+                    "home_key_players_out": home_inj_impact.get("key_players_out", []),
+                    "away_key_players_out": away_inj_impact.get("key_players_out", []),
+                },
+                "prediction_drivers": pred_drivers,
+                "explanation": explanation,
+            })
+
+        except Exception as e:
+            log.error(f"Error processing NBA game {game.get('game_id', '?')}: {e}")
+
+    # ── 10. Build NBA leaderboard ────────────────────────────────────────────
+    log.info("Building NBA leaderboard...")
+    leaderboard_list = []
+
+    for team in NBA_TEAMS:
+        elo = elo_dict.get(team, 1500.0)
+        bayes = bayesian_ratings.get(team, {"mu": elo, "sigma": 75.0})
+        eff = efficiency_data.get(team, {})
+        pyth = pyth_data.get(team, {}).get("pyth", 0.5)
+        wins = standings.get(team, {}).get("wins", 0)
+        losses = standings.get(team, {}).get("losses", 0)
+        playoff_prob = season_sim.get(team, {}).get("playoff_prob", 0.53)
+        champ_prob = season_sim.get(team, {}).get("sb_prob", 0.033)
+        trend = nba_get_trend(game_history, team)
+        team_inj = injury_impacts.get(team, {})
+
+        leaderboard_list.append({
+            "team": team,
+            "team_name": NBA_TEAM_NAMES.get(team, team),
+            "abbrev": team.lower(),
+            "logo": f"https://a.espncdn.com/i/teamlogos/nba/500/{team.lower()}.png",
+            "elo": round(elo, 1),
+            "sigma": round(bayes.get("sigma", 75.0), 1),
+            "mu": round(bayes.get("mu", elo), 1),
+            "lower_band": round(bayes.get("mu", elo) - bayes.get("sigma", 75.0), 1),
+            "upper_band": round(bayes.get("mu", elo) + bayes.get("sigma", 75.0), 1),
+            "pyth": round(pyth, 4),
+            "net_eff": round(eff.get("net_rating", 0.0), 2),
+            "off_eff": round(eff.get("offensive_rating", 110.0), 1),
+            "def_eff": round(eff.get("defensive_rating", 110.0), 1),
+            "net_rating": round(eff.get("net_rating", 0.0), 2),
+            "offensive_rating": round(eff.get("offensive_rating", 110.0), 1),
+            "defensive_rating": round(eff.get("defensive_rating", 110.0), 1),
+            "pace": round(eff.get("pace", 100.0), 1),
+            "wins": wins,
+            "losses": losses,
+            "ties": 0,
+            "playoff_prob": round(playoff_prob, 4),
+            "sb_prob": round(champ_prob, 4),
+            "champ_prob": round(champ_prob, 4),
+            "trend": trend,
+            "injury_elo_penalty": team_inj.get("elo_penalty", 0.0),
+            "injury_impact_score": team_inj.get("impact_score", 0.0),
+            "injury_players_count": team_inj.get("total_players", 0),
+        })
+
+    leaderboard_list.sort(key=lambda x: x["elo"], reverse=True)
+
+    # ── 11. Write output files ───────────────────────────────────────────────
+    log.info("Writing NBA JSON output files...")
+
+    predictions_json = {
+        "updated": now_utc,
+        "season": season_year,
+        "league": "nba",
+        "is_offseason": is_offseason,
+        "games": predictions_list,
+    }
+
+    leaderboard_json = {
+        "updated": now_utc,
+        "season": season_year,
+        "league": "nba",
+        "teams": leaderboard_list,
+    }
+
+    model_metrics_json = {
+        "updated": now_utc,
+        "league": "nba",
+        "log_loss": model_metrics.get("log_loss"),
+        "brier_score": model_metrics.get("brier_score"),
+        "auc": model_metrics.get("auc"),
+        "n_training_games": len(historical_games),
+        "xgboost_available": xgb_model is not None,
+        "calibration_buckets": [],
+        "historical_accuracy": [],
+    }
+
+    (DATA_DIR / "nba_predictions.json").write_text(
+        json.dumps(predictions_json, indent=2, default=str)
+    )
+    (DATA_DIR / "nba_leaderboard.json").write_text(
+        json.dumps(leaderboard_json, indent=2, default=str)
+    )
+    (DATA_DIR / "nba_model_metrics.json").write_text(
+        json.dumps(model_metrics_json, indent=2, default=str)
+    )
+
+    log.info("=== NBA Update complete ===")
+    log.info(f"  Games predicted: {len(predictions_list)}")
+    log.info(f"  Teams in leaderboard: {len(leaderboard_list)}")
+    log.info(f"  Historical games used: {len(historical_games)}")
+
+
+if __name__ == "__main__":
+    run()

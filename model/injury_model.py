@@ -2,6 +2,7 @@
 Injury Model — System 13 (Injury Prediction Drivers)
 Computes per-team injury impact scores based on player position importance
 and availability status. Returns ELO adjustments used in ensemble predictions.
+Supports both NFL and NBA leagues.
 """
 
 import logging
@@ -135,6 +136,131 @@ def compute_all_team_impacts(injuries: dict) -> dict:
         if impacts[team]["elo_penalty"] > 0:
             log.debug(
                 f"{team} injury penalty: {impacts[team]['elo_penalty']:.1f} ELO pts "
+                f"({impacts[team]['total_players']} players)"
+            )
+    return impacts
+
+
+# ─── NBA Injury System ────────────────────────────────────────────────────────
+
+# NBA position tier weights (ELO points lost per absence)
+NBA_POSITION_WEIGHTS = {
+    # Guard positions
+    "PG": 18.0,   # Point guard
+    "SG": 15.0,   # Shooting guard
+    "G":  15.0,   # Guard (generic)
+    # Forward positions
+    "SF": 15.0,   # Small forward
+    "PF": 14.0,   # Power forward
+    "F":  14.0,   # Forward (generic)
+    # Center
+    "C":  16.0,   # Center
+    # Generic
+    "G/F": 14.0,
+    "F/C": 15.0,
+    "F/G": 14.0,
+}
+
+# NBA player tier weights (used when position alone isn't enough)
+NBA_TIER_WEIGHTS = {
+    "superstar":  50.0,
+    "all-star":   30.0,
+    "starter":    15.0,
+    "rotation":    8.0,
+}
+
+# NBA status multipliers (same scale as NFL)
+NBA_STATUS_MULTIPLIERS = {
+    "out":             1.00,
+    "injured reserve": 1.00,
+    "ir":              1.00,
+    "day-to-day":      0.50,
+    "doubtful":        0.75,
+    "questionable":    0.40,
+    "probable":        0.10,
+    "game time decision": 0.35,
+}
+
+# Maximum NBA injury penalty per team
+NBA_MAX_INJURY_ELO_PENALTY = 80.0
+NBA_MAX_PLAYER_CONTRIBUTION = 50.0
+
+# Back-to-back rest risk penalty
+NBA_BACK_TO_BACK_PENALTY = 5.0
+
+
+def _nba_status_multiplier(status_str: str) -> float:
+    s = status_str.lower().strip()
+    for key, mult in NBA_STATUS_MULTIPLIERS.items():
+        if key in s:
+            return mult
+    return 0.0
+
+
+def _nba_position_weight(position_str: str) -> float:
+    pos = position_str.upper().strip()
+    return NBA_POSITION_WEIGHTS.get(pos, 8.0)  # default 8 for unlisted
+
+
+def compute_nba_injury_impact(team_injuries: list) -> dict:
+    """
+    Compute NBA injury impact for a single team.
+
+    Parameters
+    ----------
+    team_injuries : list of dicts
+        Each dict has keys: 'player', 'status', 'position', optionally 'tier'
+
+    Returns
+    -------
+    dict with 'elo_penalty', 'impact_score', 'key_players_out', 'total_players'
+    """
+    total_elo_penalty = 0.0
+    key_players_out = []
+
+    for player in team_injuries:
+        pos = player.get("position", "")
+        status = player.get("status", "")
+        name = player.get("player", "Unknown")
+        tier = player.get("tier", "").lower()
+
+        # Use tier weight if provided, otherwise position weight
+        if tier in NBA_TIER_WEIGHTS:
+            base_weight = NBA_TIER_WEIGHTS[tier]
+        else:
+            base_weight = _nba_position_weight(pos)
+
+        status_mult = _nba_status_multiplier(status)
+        contribution = min(base_weight * status_mult, NBA_MAX_PLAYER_CONTRIBUTION)
+        total_elo_penalty += contribution
+
+        if status_mult >= 0.75:
+            key_players_out.append({
+                "player": name,
+                "position": pos,
+                "status": status,
+                "elo_impact": round(contribution, 1),
+            })
+
+    capped_penalty = min(total_elo_penalty, NBA_MAX_INJURY_ELO_PENALTY)
+    impact_score = round(capped_penalty / NBA_MAX_INJURY_ELO_PENALTY, 4)
+
+    return {
+        "elo_penalty": round(capped_penalty, 2),
+        "impact_score": impact_score,
+        "key_players_out": key_players_out,
+        "total_players": len(team_injuries),
+    }
+
+
+def compute_all_nba_team_impacts(injuries: dict) -> dict:
+    """Compute NBA injury impacts for all teams."""
+    impacts = {}
+    for team, team_injuries in injuries.items():
+        impacts[team] = compute_nba_injury_impact(team_injuries)
+        if impacts[team]["elo_penalty"] > 0:
+            log.debug(
+                f"NBA {team} injury penalty: {impacts[team]['elo_penalty']:.1f} ELO pts "
                 f"({impacts[team]['total_players']} players)"
             )
     return impacts
