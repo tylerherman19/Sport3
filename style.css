@@ -179,6 +179,47 @@ main { padding: 2rem 0 4rem; }
   letter-spacing: 0.05em;
 }
 
+/* ── Live refresh controls ──────────────────────────────────── */
+.section-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.btn-live-refresh {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--text);
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.35rem 0.75rem;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.btn-live-refresh:hover:not(:disabled) {
+  background: var(--surface3, var(--surface2));
+  border-color: var(--accent, #3b82f6);
+}
+
+.btn-live-refresh:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.live-refresh-status {
+  color: var(--text-muted);
+  font-size: 0.75rem;
+}
+
+.live-clock {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--live-color, #ef4444);
+  margin-left: 0.15rem;
+}
+
 /* ── Cards ──────────────────────────────────────────────────── */
 .card {
   background: var(--surface);
@@ -1207,6 +1248,36 @@ tbody tr:hover { background: var(--surface2); }
   font-weight: 700;
   color: var(--text);
   margin-bottom: 1rem;
+}
+
+/* ── Log league toggle ──────────────────────────────────────── */
+.log-league-toggle {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.log-toggle-btn {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 0.875rem;
+  font-weight: 600;
+  padding: 0.4rem 1rem;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+
+.log-toggle-btn.active {
+  background: var(--accent, #3b82f6);
+  border-color: var(--accent, #3b82f6);
+  color: #fff;
+}
+
+.log-toggle-btn:hover:not(.active) {
+  background: var(--surface3, var(--surface2));
+  color: var(--text);
 }
 
 .log-empty {

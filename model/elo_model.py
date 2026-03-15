@@ -13,7 +13,12 @@ def expected_score(elo_a, elo_b):
 
 
 def mov_multiplier(point_diff, elo_diff):
-    return log(abs(point_diff) + 1) * (2.2 / (elo_diff * 0.001 + 2.2))
+    """Margin of Victory multiplier for ELO K-factor scaling.
+    Uses abs(elo_diff) to prevent sign issues; capped at 1.5 per 538 convention
+    to prevent blowouts from over-updating ratings.
+    """
+    raw = log(abs(point_diff) + 1) * (2.2 / (abs(elo_diff) * 0.001 + 2.2))
+    return min(raw, 1.5)
 
 
 def compute_elo(historical_df, k_base=20.0, hfa=65.0, initial_elo=1500.0, regress_pct=0.33):
@@ -102,15 +107,6 @@ def recent_form(game_history, team, n=5):
     recent = hist[-n:]
     return sum(g["result"] for g in recent) / len(recent)
 
-
-def head_to_head_modifier(game_history_full, team_a, team_b, n=10):
-    """Returns ELO modifier based on head-to-head record."""
-    h2h = [g for g in game_history_full.get(team_a, []) if g.get("opponent") == team_b]
-    if len(h2h) < 3:
-        return 0.0
-    h2h = h2h[-n:]
-    win_rate = sum(g["result"] for g in h2h) / len(h2h)
-    return (win_rate - 0.5) * 20.0
 
 
 def predict_game(team_a, team_b, elo_dict, game_history,

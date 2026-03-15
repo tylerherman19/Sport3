@@ -59,6 +59,12 @@
           <h2 id="games-section-title">This Week's Games</h2>
           <span class="section-badge" id="games-count-badge">0 games</span>
         </div>
+        <div class="section-actions">
+          <button class="btn-live-refresh" id="live-refresh-btn" onclick="fetchLiveScores()" title="Fetch latest scores from ESPN">
+            <span id="live-refresh-icon">↻</span> Live Scores
+          </button>
+          <span id="live-refresh-status" class="live-refresh-status"></span>
+        </div>
       </div>
       <div id="offseason-banner"></div>
       <div class="game-filter-pills" id="game-filter-pills">

@@ -9,6 +9,7 @@ import os
 import sys
 import json
 import logging
+import time
 import requests
 import numpy as np
 import pandas as pd
@@ -32,6 +33,8 @@ from model.ensemble_model import (build_xgb_features, train_xgboost, predict_xgb
                                    ensemble_predict, kelly_criterion,
                                    american_to_prob, remove_vig)
 from model.injury_model import compute_all_team_impacts, injury_elo_adjustment
+from model.srs_model import compute_srs, predict_game_srs
+from model.ensemble_model import compute_adaptive_weights
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
 log = logging.getLogger(__name__)
@@ -76,14 +79,32 @@ def abbrev_norm(abbrev):
     return ESPN_TO_ABBREV.get(abbrev.upper(), abbrev.upper())
 
 
-def safe_get(url, params=None, timeout=30):
-    try:
-        r = requests.get(url, params=params, timeout=timeout)
-        r.raise_for_status()
-        return r.json()
-    except Exception as e:
-        log.warning(f"Failed to fetch {url}: {e}")
-        return None
+def safe_get(url, params=None, timeout=30, max_retries=3):
+    """Fetch JSON from URL with exponential backoff retry on transient errors."""
+    for attempt in range(max_retries):
+        try:
+            r = requests.get(url, params=params, timeout=timeout)
+            if r.status_code == 429:
+                wait = 2 ** attempt
+                log.warning(f"Rate limited (429) fetching {url}. Retrying in {wait}s...")
+                time.sleep(wait)
+                continue
+            r.raise_for_status()
+            return r.json()
+        except requests.exceptions.Timeout:
+            log.warning(f"Timeout fetching {url} (attempt {attempt + 1}/{max_retries})")
+        except requests.exceptions.HTTPError as e:
+            status = e.response.status_code if e.response is not None else "?"
+            log.warning(f"HTTP {status} fetching {url}: {e}")
+            if e.response is not None and e.response.status_code < 500:
+                break  # Client-side errors — no point retrying
+        except Exception as e:
+            log.warning(f"Failed to fetch {url} (attempt {attempt + 1}/{max_retries}): {e}")
+
+        if attempt < max_retries - 1:
+            time.sleep(2 ** attempt)
+
+    return None
 
 
 def download_fte_data():
@@ -634,13 +655,18 @@ def run():
         json.dumps({"updated": now_utc, "injuries": nfl_injuries_list}, indent=2)
     )
 
-    season_year = datetime.now().year
-    current_month = datetime.now().month
-    # NFL season runs Sep–Feb; if before September treat as prior season
-    if current_month < 8:
+    now_utc = datetime.now(timezone.utc)
+    season_year = now_utc.year
+    current_month = now_utc.month
+    # NFL season runs Sep–Feb; months before September belong to prior season
+    if current_month < 9:
         season_year -= 1
 
-    is_offseason = len(scoreboard_games) == 0
+    # Calendar-based offseason detection: NFL is active Aug–Feb (months 8-12 and 1-2)
+    # This prevents bye weeks from falsely triggering offseason mode
+    is_nfl_active = current_month in (8, 9, 10, 11, 12, 1, 2)
+    is_offseason = not is_nfl_active
+    is_bye_week = is_nfl_active and len(scoreboard_games) == 0
 
     # ── 1c. Fetch future scheduled games ────────────────────────────────────
     future_games = fetch_espn_future_games(current_week, season_year, weeks_ahead=3)
@@ -660,6 +686,11 @@ def run():
         elo_dict = {t: 1500.0 for t in NFL_TEAMS}
         game_history = {t: [] for t in NFL_TEAMS}
 
+    # Dynamic fallback: if FTE data is missing/empty, use ~end of prior season
+    if fte_cutoff_date is None:
+        fte_cutoff_date = pd.Timestamp(f"{season_year - 1}-02-01")
+        log.warning(f"FTE cutoff date unavailable, using dynamic fallback: {fte_cutoff_date.date()}")
+
     # Fill missing teams
     for team in NFL_TEAMS:
         if team not in elo_dict:
@@ -678,6 +709,23 @@ def run():
             fte_cutoff_date=fte_cutoff_date
         )
     log.info(f"ELO updated for {len(elo_dict)} teams after live extension")
+
+    # Build last-game-date lookup for rest-days calculation
+    last_game_date_by_team = {}
+    for g in (espn_completed or []):
+        gdate = pd.to_datetime(g["date"])
+        for team in [g["team1"], g["team2"]]:
+            if team not in last_game_date_by_team or gdate > last_game_date_by_team[team]:
+                last_game_date_by_team[team] = gdate
+    # Include games on today's scoreboard (final/in-progress) as most recent dates
+    for g in scoreboard_games:
+        if g.get("status") in ("STATUS_FINAL", "STATUS_IN_PROGRESS"):
+            raw_date = g.get("game_time", "")[:10]
+            if raw_date:
+                gdate = pd.to_datetime(raw_date)
+                for team in [g["home_team"], g["away_team"]]:
+                    if team not in last_game_date_by_team or gdate > last_game_date_by_team[team]:
+                        last_game_date_by_team[team] = gdate
 
     # ── 3. Build efficiency & pythagorean data ──────────────────────────────
     log.info("Computing efficiency and pythagorean ratings...")
@@ -735,6 +783,28 @@ def run():
         except Exception as e:
             log.error(f"XGBoost training failed: {e}")
 
+    # ── 5b. SRS (Simple Rating System) ratings ─────────────────────────────
+    log.info("Computing SRS ratings...")
+    try:
+        srs_schedule = [
+            {"team1": g["team1"], "team2": g["team2"],
+             "score1": g["score1"], "score2": g["score2"]}
+            for g in (espn_completed or [])
+        ]
+        srs_ratings = compute_srs(standings, srs_schedule)
+        log.info(f"SRS computed for {len(srs_ratings)} teams")
+    except Exception as e:
+        log.error(f"SRS computation failed: {e}")
+        srs_ratings = {}
+
+    # ── 5c. Compute adaptive ensemble weights from model Brier scores ───────
+    model_brier_scores = {
+        "logistic": model_metrics.get("brier_score"),
+        "xgboost": None,  # XGBoost Brier score not separately tracked yet
+    }
+    adaptive_weights = compute_adaptive_weights(model_brier_scores)
+    log.info(f"Adaptive ensemble weights: {adaptive_weights}")
+
     # ── 6. Bayesian ratings ─────────────────────────────────────────────────
     log.info("Computing Bayesian ratings...")
     games_list = []
@@ -787,9 +857,21 @@ def run():
             game_id = game["game_id"]
             neutral = bool(game.get("neutral", False))
 
-            # Rest/travel adjustments
-            rest_home = 7  # default
+            # Rest/travel adjustments — compute actual rest days from game schedule
+            rest_home = 7  # default (bye week or first game of season)
             rest_away = 7
+            game_time_str = game.get("game_time", "")
+            if game_time_str:
+                try:
+                    game_date = pd.to_datetime(game_time_str[:10])
+                    if home in last_game_date_by_team:
+                        days = (game_date - last_game_date_by_team[home]).days
+                        rest_home = max(1, int(days))
+                    if away in last_game_date_by_team:
+                        days = (game_date - last_game_date_by_team[away]).days
+                        rest_away = max(1, int(days))
+                except Exception:
+                    pass  # keep defaults on parse failure
             dist = travel_distance(home, away, is_home_a=True)
             rest_adj_home = rest_elo_adjustment(rest_home, rest_away)
             rest_adj_away = -rest_adj_home
@@ -847,13 +929,19 @@ def run():
                 if xgb_preds and xgb_preds[0]["xgb_prob"] is not None:
                     xgb_prob = xgb_preds[0]["xgb_prob"]
 
-            # Ensemble
+            # SRS prediction (Simple Rating System — Massey/PFR style)
+            srs_result = predict_game_srs(home, away, srs_ratings,
+                                          is_home_a=True, neutral=neutral)
+            srs_prob = srs_result["prob_a"]
+
+            # Ensemble (with adaptive calibration-based weights)
             ensemble_prob = ensemble_predict(
                 logistic_prob=log_prob,
                 xgb_prob=xgb_prob,
                 elo_prob=elo_result["prob"],
                 pyth_prob=eff_result["pyth_prob"],
-                eff_prob=eff_result["eff_prob"]
+                eff_prob=eff_result["eff_prob"],
+                weights=adaptive_weights
             )
 
             # Monte Carlo
@@ -932,6 +1020,11 @@ def run():
                     "pyth_prob": eff_result["pyth_prob"],
                     "eff_prob": eff_result["eff_prob"],
                     "bayesian_prob": bayes_result["bayesian_prob"],
+                    "srs_prob": round(srs_prob, 4),
+                    "srs_home": srs_result.get("srs_a", 0.0),
+                    "srs_away": srs_result.get("srs_b", 0.0),
+                    "sos_home": srs_result.get("sos_a", 0.0),
+                    "sos_away": srs_result.get("sos_b", 0.0),
                 },
                 "market": {
                     "home_prob": market_home_prob,

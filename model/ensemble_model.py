@@ -37,17 +37,24 @@ XGB_FEATURE_COLS = [
 ]
 
 DEFAULT_WEIGHTS = {
-    "logistic": 0.30,
-    "xgboost": 0.25,
+    "logistic": 0.27,
+    "xgboost": 0.22,
     "elo": 0.20,
-    "pythagorean": 0.15,
-    "efficiency": 0.10,
+    "pythagorean": 0.12,
+    "efficiency": 0.09,
+    "srs": 0.10,  # Simple Rating System (Massey/PFR-inspired)
 }
 
 
 def build_xgb_features(df, elo_dict, game_history, efficiency_data, pythagorean_data, advanced_stats=None):
-    """Build extended feature matrix for XGBoost."""
+    """Build extended feature matrix for XGBoost.
+
+    Features must exactly match predict_xgboost() to avoid training/inference mismatch.
+    Rest days are computed from game date deltas; travel dist from team locations.
+    Turnover diff is 0.0 in both training and prediction (no historical data).
+    """
     from model.elo_model import recent_form
+    from model.efficiency_model import travel_distance
 
     rows = []
     labels = []
@@ -57,10 +64,28 @@ def build_xgb_features(df, elo_dict, game_history, efficiency_data, pythagorean_
     if advanced_stats is None:
         advanced_stats = {}
 
+    last_game_date = {}  # {team: pd.Timestamp} — track last game per team
+
     for _, row in df.iterrows():
         team1 = str(row["team1"])
         team2 = str(row["team2"])
         neutral = int(row.get("neutral", 0))
+
+        # Compute rest days from date delta (default 7 if first game)
+        game_date = pd.to_datetime(row["date"]) if row.get("date") is not None else None
+        rest1 = 7.0
+        rest2 = 7.0
+        if game_date is not None:
+            if team1 in last_game_date:
+                rest1 = max(1.0, float((game_date - last_game_date[team1]).days))
+            if team2 in last_game_date:
+                rest2 = max(1.0, float((game_date - last_game_date[team2]).days))
+        rest_diff = rest1 - rest2
+
+        # Update last game date for both teams
+        if game_date is not None:
+            last_game_date[team1] = game_date
+            last_game_date[team2] = game_date
 
         elo1 = float(row.get("elo1_pre", 1500))
         elo2 = float(row.get("elo2_pre", 1500))
@@ -84,14 +109,20 @@ def build_xgb_features(df, elo_dict, game_history, efficiency_data, pythagorean_
         adv1 = advanced_stats.get(team1, {})
         adv2 = advanced_stats.get(team2, {})
 
+        # Travel distance: team1 is home in FTE data
+        try:
+            dist = travel_distance(team1, team2, is_home_a=True)
+        except Exception:
+            dist = 0.0
+
         feature = [
             elo_diff,
             float(not neutral),
-            0.0,  # rest_days_diff
+            rest_diff,   # computed from game date deltas (was hardcoded 0.0)
             pyth1 - pyth2,
             eff1 - eff2,
-            0.0,  # turnover_diff
-            0.0,  # travel_diff
+            0.0,         # turnover_diff — not in FTE historical data; 0.0 in prediction too
+            dist,        # computed from team locations (was hardcoded 0.0)
             lr1 - lr2,
             off1 - off2,
             def1 - def2,
@@ -102,6 +133,9 @@ def build_xgb_features(df, elo_dict, game_history, efficiency_data, pythagorean_
             float(adv1.get("penalty_yards", 0)) - float(adv2.get("penalty_yards", 0)),
             float(adv1.get("time_of_possession", 0)) - float(adv2.get("time_of_possession", 0)),
         ]
+
+        assert len(feature) == len(XGB_FEATURE_COLS), \
+            f"Feature length mismatch: {len(feature)} vs {len(XGB_FEATURE_COLS)}"
 
         score1 = float(row["score1"])
         score2 = float(row["score2"])
@@ -215,36 +249,74 @@ def predict_xgboost(matchups, model, scaler, elo_dict, game_history,
     return results
 
 
-def ensemble_predict(logistic_prob, xgb_prob, elo_prob, pyth_prob, eff_prob, weights=None):
+def ensemble_predict(logistic_prob, xgb_prob, elo_prob, pyth_prob, eff_prob,
+                     srs_prob=None, weights=None):
     """
     System 12: Weighted ensemble of all models.
     Returns final ensemble probability.
+    Models with None probability are excluded and weights renormalized.
     """
     if weights is None:
         weights = DEFAULT_WEIGHTS
 
-    w_log = weights.get("logistic", 0.30)
-    w_xgb = weights.get("xgboost", 0.25)
-    w_elo = weights.get("elo", 0.20)
-    w_pyth = weights.get("pythagorean", 0.15)
-    w_eff = weights.get("efficiency", 0.10)
+    # Build list of (weight_key, prob) pairs, skip None probs
+    candidates = [
+        ("logistic",    logistic_prob),
+        ("xgboost",     xgb_prob),
+        ("elo",         elo_prob),
+        ("pythagorean", pyth_prob),
+        ("efficiency",  eff_prob),
+        ("srs",         srs_prob),
+    ]
 
-    # Handle None XGBoost (redistribute weight)
-    if xgb_prob is None:
-        total = w_log + w_elo + w_pyth + w_eff
-        if total == 0:
-            return 0.5
-        prob = (w_log * logistic_prob + w_elo * elo_prob +
-                w_pyth * pyth_prob + w_eff * eff_prob) / total
-    else:
-        total = w_log + w_xgb + w_elo + w_pyth + w_eff
-        if total == 0:
-            return 0.5
-        prob = (w_log * logistic_prob + w_xgb * xgb_prob +
-                w_elo * elo_prob + w_pyth * pyth_prob +
-                w_eff * eff_prob) / total
+    total_w = 0.0
+    weighted_sum = 0.0
+    for key, prob in candidates:
+        if prob is None:
+            continue
+        w = weights.get(key, 0.0)
+        total_w += w
+        weighted_sum += w * prob
 
+    if total_w == 0:
+        return 0.5
+
+    prob = weighted_sum / total_w
     return round(float(np.clip(prob, 0.01, 0.99)), 4)
+
+
+def compute_adaptive_weights(model_brier_scores, base_weights=None):
+    """
+    Compute ensemble weights inversely proportional to each model's Brier score.
+    Lower Brier score = better calibration = higher weight.
+    Falls back to base_weights for any model with no Brier score available.
+    Inspired by FiveThirtyEight's performance-weighted ensemble methodology.
+    """
+    if base_weights is None:
+        base_weights = DEFAULT_WEIGHTS.copy()
+
+    valid = {k: v for k, v in model_brier_scores.items() if v is not None and v > 0}
+    if not valid:
+        return base_weights.copy()
+
+    # Invert Brier scores: 1/score so better models get higher raw weight
+    inv_scores = {k: 1.0 / v for k, v in valid.items()}
+    total_inv = sum(inv_scores.values())
+
+    # Start from base weights; replace weights for models with Brier data
+    weights = base_weights.copy()
+    for k, inv_v in inv_scores.items():
+        if k in weights:
+            # Blend: 50% adaptive, 50% base to avoid extreme swings on small samples
+            adaptive_w = inv_v / total_inv
+            weights[k] = 0.5 * adaptive_w + 0.5 * base_weights.get(k, adaptive_w)
+
+    # Renormalize to sum to 1.0
+    total_w = sum(weights.values())
+    if total_w > 0:
+        weights = {k: round(v / total_w, 4) for k, v in weights.items()}
+
+    return weights
 
 
 def kelly_criterion(model_prob, market_prob, bankroll_fraction=1.0):

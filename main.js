@@ -257,6 +257,93 @@ loadNflData();
 loadNbaData();
 
 /* ══════════════════════════════════════════════════════════════
+   LIVE SCORE REFRESH
+   Fetches current scores directly from ESPN API and overlays
+   onto loaded state without re-running the full Python pipeline.
+   Win probability stays as pre-game prediction (correct behavior).
+══════════════════════════════════════════════════════════════ */
+let _liveRefreshInterval = null;
+
+async function fetchLiveScores() {
+  const btn = $('live-refresh-btn');
+  const statusEl = $('live-refresh-status');
+  const iconEl = $('live-refresh-icon');
+
+  if (btn) btn.disabled = true;
+  if (iconEl) iconEl.textContent = '⟳';
+  if (statusEl) statusEl.textContent = 'Fetching…';
+
+  const isNba = state.league === 'nba';
+  const sport = isNba ? 'basketball/nba' : 'football/nfl';
+  const url = `https://site.api.espn.com/apis/site/v2/sports/${sport}/scoreboard`;
+
+  try {
+    const data = await fetch(url).then(r => r.json()).catch(() => null);
+    if (!data) throw new Error('No data returned');
+
+    const games = isNba ? state.nba.predictions?.games : state.predictions?.games;
+    if (!games) throw new Error('No games in state');
+
+    // Build lookup by ESPN event ID
+    const espnById = {};
+    (data.events || []).forEach(ev => { espnById[ev.id] = ev; });
+
+    let updatedCount = 0;
+    games.forEach(game => {
+      const ev = espnById[String(game.game_id)];
+      if (!ev) return;
+      const comp = ev.competitions?.[0];
+      const competitors = comp?.competitors || [];
+      const home = competitors.find(c => c.homeAway === 'home');
+      const away = competitors.find(c => c.homeAway === 'away');
+      if (home) game.home_score = parseInt(home.score || 0);
+      if (away) game.away_score = parseInt(away.score || 0);
+      const prevStatus = game.status;
+      game.status = ev.status?.type?.name || game.status;
+      game.status_detail = ev.status?.type?.shortDetail || '';
+      game._live_refreshed = true;
+      updatedCount++;
+    });
+
+    const now = new Date();
+    const timeStr = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    if (statusEl) statusEl.textContent = `Updated ${timeStr}`;
+
+    renderGames();
+
+    // Auto-refresh every 60s while any game is in progress
+    const hasLive = games.some(g =>
+      g.status === 'STATUS_IN_PROGRESS' || g.status === 'STATUS_HALFTIME'
+    );
+    if (hasLive && !_liveRefreshInterval) {
+      _liveRefreshInterval = setInterval(fetchLiveScores, 60000);
+    } else if (!hasLive && _liveRefreshInterval) {
+      clearInterval(_liveRefreshInterval);
+      _liveRefreshInterval = null;
+    }
+  } catch (e) {
+    if (statusEl) statusEl.textContent = 'Failed to refresh';
+  } finally {
+    if (btn) btn.disabled = false;
+    if (iconEl) iconEl.textContent = '↻';
+  }
+}
+
+// Clear auto-refresh when switching leagues
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.league-btn').forEach(b => {
+    b.addEventListener('click', () => {
+      if (_liveRefreshInterval) {
+        clearInterval(_liveRefreshInterval);
+        _liveRefreshInterval = null;
+      }
+      const statusEl = $('live-refresh-status');
+      if (statusEl) statusEl.textContent = '';
+    });
+  });
+});
+
+/* ══════════════════════════════════════════════════════════════
    SECTION 1 — THIS WEEK'S GAMES
 ══════════════════════════════════════════════════════════════ */
 function renderGames() {
@@ -347,10 +434,17 @@ function buildScoreHtml(game) {
     const winner = isFinal
       ? (homeScore > awayScore ? 'home' : awayScore > homeScore ? 'away' : 'tie')
       : '';
+    // Show period/clock detail when available (populated by fetchLiveScores)
+    const clockDetail = (isLive && game.status_detail)
+      ? `<span class="live-clock">${game.status_detail}</span>`
+      : '';
+    const liveLabel = game.status_detail
+      ? `<span class="live-dot"></span>${game.status_detail}`
+      : '<span class="live-dot"></span>LIVE';
     return `
   <div class="score-display ${isLive ? 'score-live' : 'score-final'}">
     <span class="score-away ${winner === 'away' ? 'score-winner' : ''}">${game.away_team} <strong>${awayScore}</strong></span>
-    <span class="score-sep">${isLive ? '<span class="live-dot"></span>LIVE' : 'FINAL'}</span>
+    <span class="score-sep">${isLive ? liveLabel : 'FINAL'}</span>
     <span class="score-home ${winner === 'home' ? 'score-winner' : ''}"><strong>${homeScore}</strong> ${game.home_team}</span>
   </div>`;
   }
@@ -1877,6 +1971,13 @@ async function renderAccuracyTab() {
       </div>`;
   };
 
+  // Persist selected log view across tab switches
+  const savedView = localStorage.getItem('sport3_log_view') || 'nfl';
+  const activeLogView = (savedView === 'nba') ? 'nba' : 'nfl';
+
+  const activeLog   = activeLogView === 'nba' ? nbaLog : nflLog;
+  const activeLabel = activeLogView === 'nba' ? 'NBA' : 'NFL';
+
   container.innerHTML = `
     <div class="section-header">
       <div class="section-title">
@@ -1888,20 +1989,23 @@ async function renderAccuracyTab() {
       Model picks are logged automatically each time you view games. Actual results are fetched from ESPN for completed games.
     </p>
 
-    <div class="log-league-section">
-      <h3 class="log-league-title">🏈 NFL</h3>
-      ${renderLeagueSection(nflLog, 'NFL')}
+    <div class="log-league-toggle">
+      <button class="log-toggle-btn ${activeLogView === 'nfl' ? 'active' : ''}" onclick="switchLogView('nfl')">🏈 NFL</button>
+      <button class="log-toggle-btn ${activeLogView === 'nba' ? 'active' : ''}" onclick="switchLogView('nba')">🏀 NBA</button>
     </div>
 
-    <div class="log-league-section" style="margin-top:2rem;">
-      <h3 class="log-league-title">🏀 NBA</h3>
-      ${renderLeagueSection(nbaLog, 'NBA')}
+    <div id="log-league-content">
+      ${renderLeagueSection(activeLog, activeLabel)}
     </div>
 
-    <div style="margin-top:2rem;display:flex;gap:1rem;">
-      <button class="btn-clear-log" onclick="clearLog('nfl')">Clear NFL Log</button>
-      <button class="btn-clear-log" onclick="clearLog('nba')">Clear NBA Log</button>
+    <div style="margin-top:1.5rem;">
+      <button class="btn-clear-log" onclick="clearLog('${activeLogView}')">Clear ${activeLabel} Log</button>
     </div>`;
+}
+
+function switchLogView(league) {
+  localStorage.setItem('sport3_log_view', league);
+  renderAccuracyTab();
 }
 
 function clearLog(league) {

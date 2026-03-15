@@ -48,6 +48,26 @@ jobs:
           ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
         run: python scripts/update_nba_data.py
 
+      - name: Validate output JSON files
+        run: |
+          python -c "
+          import json, sys, os
+          required = ['data/nfl_predictions.json', 'data/nba_predictions.json']
+          for path in required:
+              if not os.path.exists(path):
+                  print(f'MISSING output file: {path}', file=sys.stderr)
+                  sys.exit(1)
+              try:
+                  d = json.load(open(path))
+              except json.JSONDecodeError as e:
+                  print(f'INVALID JSON in {path}: {e}', file=sys.stderr)
+                  sys.exit(1)
+              if 'games' not in d and 'teams' not in d:
+                  print(f'Unexpected structure in {path} — missing games/teams key', file=sys.stderr)
+                  sys.exit(1)
+          print('Output validation passed')
+          "
+
       - name: Commit updated predictions
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
