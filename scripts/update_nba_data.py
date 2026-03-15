@@ -266,12 +266,19 @@ def parse_nba_events(data):
 
 
 def fetch_nba_scoreboard():
-    log.info("Fetching NBA scoreboard...")
-    data = safe_get(f"{ESPN_NBA_BASE}/scoreboard")
-    if not data:
-        return []
-
-    games = parse_nba_events(data)
+    """Fetch NBA scoreboard for today + past 2 days to catch recently-completed games."""
+    log.info("Fetching NBA scoreboard (today + past 2 days)...")
+    games = []
+    seen_ids = set()
+    for delta in [0, -1, -2]:
+        date_str = (datetime.now() + timedelta(days=delta)).strftime('%Y%m%d')
+        data = safe_get(f"{ESPN_NBA_BASE}/scoreboard?dates={date_str}")
+        if not data:
+            continue
+        for g in parse_nba_events(data):
+            if g["game_id"] not in seen_ids:
+                seen_ids.add(g["game_id"])
+                games.append(g)
     log.info(f"Found {len(games)} NBA scoreboard games")
     return games
 
@@ -381,13 +388,14 @@ def fetch_nba_injuries():
 
 def fetch_nba_season_games(seasons=None):
     """
-    Fetch completed NBA games for the given seasons via ESPN team schedules.
-    Used to build historical ELO ratings.
+    Fetch completed NBA games by iterating day-by-day via ESPN scoreboard.
+    Uses dates=YYYYMMDD parameter (same approach as fetch_nba_future_games).
+    For older seasons uses weekly strides; for current season fetches every day.
     """
+    from datetime import date as date_cls
     if seasons is None:
         current_year = datetime.now().year
         current_month = datetime.now().month
-        # NBA season: Oct–Jun. Current season year = year season ends
         if current_month >= 10:
             end_year = current_year + 1
         else:
@@ -397,28 +405,26 @@ def fetch_nba_season_games(seasons=None):
     log.info(f"Fetching NBA season games for {seasons}...")
     all_games = []
     seen_ids = set()
+    today = date_cls.today()
 
-    # Fetch from scoreboard endpoint per week per season
     for season_year in seasons:
-        for season_type in [2, 3]:  # 2=regular, 3=postseason
-            for week in range(1, 30):
-                url = f"{ESPN_NBA_BASE}/scoreboard"
-                params = {
-                    "seasontype": season_type,
-                    "week": week,
-                    "dates": season_year,
-                    "limit": 100,
-                }
-                data = safe_get(url, params=params)
-                if not data:
-                    break
+        # NBA season runs Oct 1 (year-1) through Jun 30 (year)
+        season_start = date_cls(season_year - 1, 10, 1)
+        season_end = min(today, date_cls(season_year, 6, 30))
+        if season_start > today:
+            continue
 
-                events = data.get("events", [])
-                if not events:
-                    break
+        # Use weekly strides for older seasons (>1 year ago), daily for recent
+        is_current = (season_year == seasons[-1])
+        stride_days = 1 if is_current else 7
 
-                has_completed = False
-                for event in events:
+        current = season_start
+        while current <= season_end:
+            date_str = current.strftime('%Y%m%d')
+            url = f"{ESPN_NBA_BASE}/scoreboard?dates={date_str}&limit=20"
+            data = safe_get(url)
+            if data:
+                for event in data.get("events", []):
                     try:
                         event_id = event.get("id", "")
                         if event_id in seen_ids:
@@ -429,7 +435,6 @@ def fetch_nba_season_games(seasons=None):
                         if status_type != "STATUS_FINAL":
                             continue
 
-                        has_completed = True
                         comp = event["competitions"][0]
                         competitors = comp["competitors"]
                         home = next((c for c in competitors if c["homeAway"] == "home"), None)
@@ -455,10 +460,8 @@ def fetch_nba_season_games(seasons=None):
                             "neutral": int(comp.get("neutralSite", False)),
                         })
                     except (KeyError, IndexError, TypeError) as e:
-                        log.debug(f"Error parsing NBA game: {e}")
-
-                if not has_completed:
-                    break
+                        log.debug(f"Error parsing NBA game on {date_str}: {e}")
+            current += timedelta(days=stride_days)
 
     log.info(f"Fetched {len(all_games)} NBA historical games")
     return all_games
@@ -825,6 +828,71 @@ def nba_ensemble_predict(elo_prob, pyth_prob, eff_prob, log_prob=None, xgb_prob=
     return float(max(0.01, min(0.99, val)))
 
 
+# ─── Rest Days / H2H / Streak Helpers ─────────────────────────────────────────
+
+def days_since_last_game(game_history, team, today):
+    """Return days since a team's most recent completed game."""
+    from datetime import date as date_cls
+    hist = game_history.get(team, [])
+    dates = [g["date"] for g in hist if g.get("date") and g["date"] <= str(today)]
+    if not dates:
+        return 7  # unknown → use neutral default
+    last_date_str = max(dates)
+    try:
+        last_date = datetime.strptime(last_date_str, "%Y-%m-%d").date()
+        return max(0, (today - last_date).days)
+    except ValueError:
+        return 7
+
+
+def compute_h2h(home, away, historical_games, last_n=10):
+    """Head-to-head record between home and away teams from historical data."""
+    meetings = [
+        g for g in historical_games
+        if (g["team1"] == home and g["team2"] == away) or
+           (g["team1"] == away and g["team2"] == home)
+    ]
+    meetings = sorted(meetings, key=lambda g: g.get("date", ""))
+    home_wins = sum(
+        1 for g in meetings
+        if (g["team1"] == home and g["score1"] > g["score2"]) or
+           (g["team2"] == home and g["score2"] > g["score1"])
+    )
+    away_wins = len(meetings) - home_wins
+    recent = meetings[-last_n:]
+    last_n_list = []
+    for g in recent:
+        h_won = (g["team1"] == home and g["score1"] > g["score2"]) or \
+                (g["team2"] == home and g["score2"] > g["score1"])
+        last_n_list.append({
+            "date": g.get("date", ""),
+            "winner": home if h_won else away,
+            "margin": abs(g["score1"] - g["score2"]),
+        })
+    return {
+        "home_wins": home_wins,
+        "away_wins": away_wins,
+        "total_meetings": len(meetings),
+        "last_n": last_n_list,
+    }
+
+
+def compute_streak(game_history, team):
+    """Return current W/L streak type and length."""
+    hist = game_history.get(team, [])
+    if not hist:
+        return {"type": "N", "count": 0}
+    streak_type = "W" if hist[-1].get("result", 0) == 1 else "L"
+    count = 0
+    for g in reversed(hist):
+        result = g.get("result", 0)
+        if (result == 1 and streak_type == "W") or (result == 0 and streak_type == "L"):
+            count += 1
+        else:
+            break
+    return {"type": streak_type, "count": count}
+
+
 # ─── Main Runner ─────────────────────────────────────────────────────────────
 
 def run():
@@ -849,7 +917,7 @@ def run():
     is_offseason = len(scoreboard_games) == 0
 
     # ── 1c. Fetch future NBA games ───────────────────────────────────────────
-    future_games = fetch_nba_future_games(days_ahead=7)
+    future_games = fetch_nba_future_games(days_ahead=14)
     # Exclude games already in scoreboard
     existing_ids = {g["game_id"] for g in scoreboard_games}
     future_games = [g for g in future_games if g["game_id"] not in existing_ids]
@@ -977,14 +1045,15 @@ def run():
             game_id = game["game_id"]
             neutral = bool(game.get("neutral", False))
 
-            # Rest/travel adjustments
-            rest_home = 2  # NBA default
-            rest_away = 2
+            # Rest/travel adjustments — compute actual days since last game
+            from datetime import date as date_cls
+            today = date_cls.today()
+            yesterday = today - timedelta(days=1)
+            rest_home = days_since_last_game(game_history, home, today)
+            rest_away = days_since_last_game(game_history, away, today)
             dist = nba_travel_distance(home, away)
 
             # Back-to-back detection from game history
-            today = datetime.now().date()
-            yesterday = (datetime.now() - timedelta(days=1)).date()
             b2b_home = any(
                 g.get("date", "")[:10] == str(yesterday)
                 for g in game_history.get(home, [])[-3:]
@@ -1157,6 +1226,7 @@ def run():
                 },
                 "monte_carlo": mc_result,
                 "adjustments": adj_dict,
+                "h2h": compute_h2h(home, away, historical_games),
                 "elo": {
                     "home": round(home_elo, 1),
                     "away": round(away_elo, 1),
@@ -1238,6 +1308,8 @@ def run():
             "sb_prob": round(champ_prob, 4),
             "champ_prob": round(champ_prob, 4),
             "trend": trend,
+            "streak_type": compute_streak(game_history, team)["type"],
+            "streak_count": compute_streak(game_history, team)["count"],
             "injury_elo_penalty": team_inj.get("elo_penalty", 0.0),
             "injury_impact_score": team_inj.get("impact_score", 0.0),
             "injury_players_count": team_inj.get("total_players", 0),

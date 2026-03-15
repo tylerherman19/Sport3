@@ -21,6 +21,7 @@ const state = {
   },
   sortCol: 'elo',
   sortDir: 'desc',
+  gameFilter: 'all', // 'all' | 'today' | 'future'
   weights: { logistic: 0.30, xgboost: 0.25, elo: 0.20, pyth: 0.15, eff: 0.10 },
   params: { k: 20, hfa: 65, mov: 1.0, form: 0.30, sos: 0.5, h2h: 0.5, to: 1.0, rt: 1.0, lambda: 0.10 },
   gameOverrides: {}, // { [game_id]: { homeBoost, awayBoost, hfaMult, momentumBoost, restFactor } }
@@ -284,6 +285,19 @@ function renderGames() {
 
   $('games-count-badge').textContent = pred.games.length + ' game' + (pred.games.length !== 1 ? 's' : '');
 
+  // Apply game filter
+  let filteredGames = pred.games;
+  if (state.gameFilter === 'today') {
+    filteredGames = pred.games.filter(g => !g.is_future);
+  } else if (state.gameFilter === 'future') {
+    filteredGames = pred.games.filter(g => g.is_future);
+  }
+
+  // Update filter pill active state
+  document.querySelectorAll('.filter-pill').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.filter === state.gameFilter);
+  });
+
   if (pred.games.length === 0) {
     grid.innerHTML = `<div class="empty-state">
       <div class="empty-state-icon">${emptyIcon}</div>
@@ -293,7 +307,17 @@ function renderGames() {
     return;
   }
 
-  grid.innerHTML = pred.games.map(game => buildGameCard(game, isNba)).join('');
+  if (filteredGames.length === 0) {
+    const filterLabels = { today: 'today / live games', future: 'upcoming scheduled games' };
+    grid.innerHTML = `<div class="empty-state">
+      <div class="empty-state-icon">${emptyIcon}</div>
+      <h3>No ${filterLabels[state.gameFilter] || 'games'}</h3>
+      <p>Try switching the filter above to see all games.</p>
+    </div>`;
+    return;
+  }
+
+  grid.innerHTML = filteredGames.map(game => buildGameCard(game, isNba)).join('');
   logPredictions(pred.games, isNba ? 'nba' : 'nfl');
 }
 
@@ -390,6 +414,34 @@ function buildGameCard(game, isNba) {
   const homeRecordStr = `${homeWins}-${homeLosses}${homeTies > 0 ? `-${homeTies}` : ''}`;
   const awayRecordStr = `${awayWins}-${awayLosses}${awayTies > 0 ? `-${awayTies}` : ''}`;
 
+  // Streak badges
+  const homeStreakType = homeData.streak_type || '';
+  const homeStreakCount = homeData.streak_count || 0;
+  const awayStreakType = awayData.streak_type || '';
+  const awayStreakCount = awayData.streak_count || 0;
+  const homeStreakBadge = homeStreakType && homeStreakType !== 'N' && homeStreakCount > 0
+    ? `<span class="streak-badge streak-${homeStreakType.toLowerCase()}">${homeStreakType}${homeStreakCount}</span>` : '';
+  const awayStreakBadge = awayStreakType && awayStreakType !== 'N' && awayStreakCount > 0
+    ? `<span class="streak-badge streak-${awayStreakType.toLowerCase()}">${awayStreakType}${awayStreakCount}</span>` : '';
+
+  // H2H strip
+  const h2h = game.h2h;
+  const h2hHtml = h2h && h2h.total_meetings > 0 ? (() => {
+    const leader = h2h.home_wins > h2h.away_wins ? game.home_team
+                 : h2h.away_wins > h2h.home_wins ? game.away_team : null;
+    const leaderLabel = leader ? `<span class="h2h-leader">${leader} leads</span>` : `<span class="h2h-leader">Even</span>`;
+    const last5 = h2h.last_n ? h2h.last_n.slice(-5) : [];
+    const last5Dots = last5.map(m =>
+      `<span class="h2h-dot ${m.winner === game.home_team ? 'h2h-dot-home' : 'h2h-dot-away'}" title="${m.date}: ${m.winner} +${m.margin}"></span>`
+    ).join('');
+    return `<div class="h2h-strip">
+      <span class="h2h-label">H2H</span>
+      ${leaderLabel}
+      <span class="h2h-record">${game.home_team} ${h2h.home_wins}–${h2h.away_wins} ${game.away_team}</span>
+      ${last5Dots.length ? `<span class="h2h-dots-label">Last ${last5.length}:</span>${last5Dots}` : ''}
+    </div>`;
+  })() : '';
+
   // Score display
   const scoreHtml = buildScoreHtml(game);
 
@@ -463,14 +515,14 @@ function buildGameCard(game, isNba) {
     <div class="team-side away">
       <img class="team-logo" src="${game.away_logo}" alt="${game.away_team}" onerror="this.style.display='none'" loading="lazy" />
       <div class="team-name-abbrev" title="${game.away_name}">${game.away_team}</div>
-      <div class="team-record">${awayRecordStr}</div>
+      <div class="team-record">${awayRecordStr} ${awayStreakBadge}</div>
       <div class="team-elo">ELO ${eloFmt(elo.away)}</div>
     </div>
     <div class="vs-label">@</div>
     <div class="team-side home">
       <img class="team-logo" src="${game.home_logo}" alt="${game.home_team}" onerror="this.style.display='none'" loading="lazy" />
       <div class="team-name-abbrev" title="${game.home_name}">${game.home_team}</div>
-      <div class="team-record">${homeRecordStr}</div>
+      <div class="team-record">${homeRecordStr} ${homeStreakBadge}</div>
       <div class="team-elo">ELO ${eloFmt(elo.home)}</div>
     </div>
   </div>
@@ -490,6 +542,7 @@ function buildGameCard(game, isNba) {
   </div>
 
   ${effHtml}
+  ${h2hHtml}
   ${contextHtml}
 
   ${mc.win_prob != null ? `
@@ -709,6 +762,25 @@ function buildAdjPanelHtml(gameId, elo, game) {
         <input type="range" class="adj-slider" data-game-id="${gameId}" data-adj="weather" min="-15" max="15" step="1" value="${ov.weather || 0}" />
       </div>
     </div>
+    <div class="adj-section-label">H2H &amp; Streak Overrides</div>
+    <div class="adjust-sliders">
+      <div class="adjust-row">
+        <div class="adjust-row-label">
+          <span>-15</span>
+          <label>H2H Dominance (Home +) <span class="adj-val" id="adj-h2hFactor-val-${gameId}">${ov.h2hFactor || 0}</span></label>
+          <span>+15</span>
+        </div>
+        <input type="range" class="adj-slider" data-game-id="${gameId}" data-adj="h2hFactor" min="-15" max="15" step="1" value="${ov.h2hFactor || 0}" />
+      </div>
+      <div class="adjust-row">
+        <div class="adjust-row-label">
+          <span>-10</span>
+          <label>Streak Momentum (Home +) <span class="adj-val" id="adj-streakMomentum-val-${gameId}">${ov.streakMomentum || 0}</span></label>
+          <span>+10</span>
+        </div>
+        <input type="range" class="adj-slider" data-game-id="${gameId}" data-adj="streakMomentum" min="-10" max="10" step="1" value="${ov.streakMomentum || 0}" />
+      </div>
+    </div>
     <div class="adj-notes-wrap">
       <label class="adj-notes-label">Notes / Reasoning</label>
       <textarea class="adj-notes-input" data-game-id="${gameId}" placeholder="e.g. Starting QB listed questionable, home crowd advantage in cold weather…" rows="2">${ov.notes || ''}</textarea>
@@ -733,10 +805,12 @@ function recalcGameCard(gameId) {
   const injHome = ov.injHome || 0;
   const injAway = ov.injAway || 0;
   const weather = ov.weather || 0;
+  const h2hFactor = ov.h2hFactor || 0;
+  const streakMomentum = ov.streakMomentum || 0;
 
   const elo = game.elo || {};
   const hfa = state.params.hfa;
-  const adjHomeElo = (elo.home || 1500) + homeBoost + momentumBoost + restFactor + injHome + weather + hfa * hfaMult;
+  const adjHomeElo = (elo.home || 1500) + homeBoost + momentumBoost + restFactor + injHome + weather + h2hFactor + streakMomentum + hfa * hfaMult;
   const adjAwayElo = (elo.away || 1500) + awayBoost + injAway;
   const adjEloProb = clamp(1 / (1 + Math.pow(10, (adjAwayElo - adjHomeElo) / 400)), 0.01, 0.99);
 
@@ -767,7 +841,7 @@ function recalcGameCard(gameId) {
     probFill.style.marginLeft = `${((1 - newEns) * 100).toFixed(1)}%`;
   }
 
-  const isActive = homeBoost !== 0 || awayBoost !== 0 || hfaMult !== 1.0 || momentumBoost !== 0 || restFactor !== 0 || injHome !== 0 || injAway !== 0 || weather !== 0;
+  const isActive = homeBoost !== 0 || awayBoost !== 0 || hfaMult !== 1.0 || momentumBoost !== 0 || restFactor !== 0 || injHome !== 0 || injAway !== 0 || weather !== 0 || h2hFactor !== 0 || streakMomentum !== 0;
   if (adjResult) {
     adjResult.innerHTML = isActive
       ? `<div class="adj-result-row">Adjusted: <strong>${game.home_team} ${pct(newEns)}</strong> vs <strong>${game.away_team} ${pct(newAway)}</strong></div>`
@@ -778,6 +852,14 @@ function recalcGameCard(gameId) {
 
 /* ── Event delegation for game card interactions ──────────────── */
 document.addEventListener('click', e => {
+  // Game filter pills
+  const filterPill = e.target.closest('.filter-pill');
+  if (filterPill) {
+    state.gameFilter = filterPill.dataset.filter || 'all';
+    renderGames();
+    return;
+  }
+
   // Injury toggle
   const injBtn = e.target.closest('[data-injury-toggle]');
   if (injBtn) {
@@ -1555,6 +1637,12 @@ function logPredictions(games, league) {
     const ensProb = ensembleFromProbs(p, state.weights);
     const predictedWinner = ensProb >= 0.5 ? game.home_team : game.away_team;
     const predictedProb = ensProb >= 0.5 ? ensProb : (1 - ensProb);
+    // Per-model picks for accuracy breakdown
+    const eloProb = p.elo_prob || 0.5;
+    const bayesProb = p.bayesian_prob || 0.5;
+    const lrProb = p.logistic_prob || 0.5;
+    const pythProb = p.pyth_prob || 0.5;
+    const effProb = p.eff_prob || 0.5;
     existing.push({
       game_id: game.game_id,
       league,
@@ -1568,6 +1656,12 @@ function logPredictions(games, league) {
       predicted_prob: predictedProb,
       status: game.status,
       actual_winner: null,
+      // Individual model picks (home if prob >= 0.5)
+      elo_pick: eloProb >= 0.5 ? game.home_team : game.away_team,
+      bayes_pick: bayesProb >= 0.5 ? game.home_team : game.away_team,
+      lr_pick: lrProb >= 0.5 ? game.home_team : game.away_team,
+      pyth_pick: pythProb >= 0.5 ? game.home_team : game.away_team,
+      eff_pick: effProb >= 0.5 ? game.home_team : game.away_team,
     });
     added = true;
   });
@@ -1677,6 +1771,34 @@ async function renderAccuracyTab() {
       return { ...t, n: tier.length, correct: tierCorrect.length };
     });
 
+    // Per-model accuracy breakdown
+    const modelKeys = [
+      { key: 'predicted_winner', label: 'Ensemble' },
+      { key: 'elo_pick', label: 'ELO' },
+      { key: 'bayes_pick', label: 'Bayes' },
+      { key: 'lr_pick', label: 'LR' },
+      { key: 'pyth_pick', label: 'Pyth' },
+      { key: 'eff_pick', label: 'Eff' },
+    ];
+    const modelStatsHtml = resolved.length > 0 ? `
+      <div class="model-accuracy-section">
+        <div class="model-accuracy-title">Per-Model Accuracy</div>
+        <div class="model-accuracy-grid">
+          ${modelKeys.map(m => {
+            const modelResolved = resolved.filter(e => e[m.key] != null);
+            if (modelResolved.length === 0) return '';
+            const modelCorrect = modelResolved.filter(e => e.actual_winner === e[m.key]);
+            const modelAcc = (modelCorrect.length / modelResolved.length * 100).toFixed(0);
+            const accClass = modelAcc >= 60 ? 'good' : modelAcc < 50 ? 'bad' : '';
+            return `<div class="model-acc-cell ${accClass}">
+              <div class="model-acc-val">${modelAcc}%</div>
+              <div class="model-acc-lbl">${m.label}</div>
+              <div class="model-acc-sub">${modelCorrect.length}/${modelResolved.length}</div>
+            </div>`;
+          }).join('')}
+        </div>
+      </div>` : '';
+
     const summaryHtml = `
       ${recordBannerHtml}
       <div class="accuracy-summary">
@@ -1697,6 +1819,7 @@ async function renderAccuracyTab() {
           <div class="acc-stat-lbl">Accuracy</div>
         </div>
       </div>
+      ${modelStatsHtml}
       <div class="tier-breakdown">
         ${tierStats.map(t => `
           <div class="tier-item">
