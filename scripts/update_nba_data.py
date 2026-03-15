@@ -161,11 +161,11 @@ def parse_nba_events(data):
 
 
 def fetch_nba_scoreboard():
-    """Fetch NBA scoreboard for today + past 2 days to catch recently-completed games."""
-    log.info("Fetching NBA scoreboard (today + past 2 days)...")
+    """Fetch NBA scoreboard for today + past 5 days to catch recently-completed games."""
+    log.info("Fetching NBA scoreboard (today + past 5 days)...")
     games = []
     seen_ids = set()
-    for delta in [0, -1, -2]:
+    for delta in [0, -1, -2, -3, -4, -5]:
         date_str = (datetime.now() + timedelta(days=delta)).strftime('%Y%m%d')
         data = safe_get(f"{ESPN_NBA_BASE}/scoreboard?dates={date_str}")
         if not data:
@@ -846,7 +846,7 @@ def run():
     # ── 2. Fetch historical games for ELO ───────────────────────────────────
     log.info("Fetching NBA historical games for ELO computation...")
     historical_games = fetch_nba_season_games(
-        seasons=[season_year - 2, season_year - 1, season_year]
+        seasons=[season_year - 4, season_year - 3, season_year - 2, season_year - 1, season_year]
     )
 
     # ── 3. Compute NBA ELO ──────────────────────────────────────────────────
@@ -948,21 +948,31 @@ def run():
 
             # Rest/travel adjustments — compute actual days since last game
             from datetime import date as date_cls
-            today = date_cls.today()
-            yesterday = today - timedelta(days=1)
-            rest_home = days_since_last_game(game_history, home, today)
-            rest_away = days_since_last_game(game_history, away, today)
+            # Use the game's scheduled date for accurate rest/B2B calculation
+            game_date_str = game.get("game_time", "")[:10]  # "YYYY-MM-DD"
+            try:
+                game_date = datetime.strptime(game_date_str, "%Y-%m-%d").date()
+            except (ValueError, TypeError):
+                game_date = date_cls.today()
+            day_before_game = game_date - timedelta(days=1)
+            rest_home = days_since_last_game(game_history, home, game_date)
+            rest_away = days_since_last_game(game_history, away, game_date)
             dist = nba_travel_distance(home, away)
 
-            # Back-to-back detection from game history
+            # Back-to-back detection: played the day before this game
             b2b_home = any(
-                g.get("date", "")[:10] == str(yesterday)
+                g.get("date", "")[:10] == str(day_before_game)
                 for g in game_history.get(home, [])[-3:]
             )
             b2b_away = any(
-                g.get("date", "")[:10] == str(yesterday)
+                g.get("date", "")[:10] == str(day_before_game)
                 for g in game_history.get(away, [])[-3:]
             )
+            # Ensure rest days are consistent with B2B detection
+            if b2b_home:
+                rest_home = 1
+            if b2b_away:
+                rest_away = 1
             rest_diff = rest_home - rest_away
 
             # Injury adjustments

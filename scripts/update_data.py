@@ -640,7 +640,22 @@ def run():
     if current_month < 8:
         season_year -= 1
 
+    # Detect offseason: no games, or all games are final and most recent was >21 days ago
     is_offseason = len(scoreboard_games) == 0
+    if not is_offseason and scoreboard_games and all(
+        g.get("status") == "STATUS_FINAL" for g in scoreboard_games
+    ):
+        try:
+            recent_times = [g["game_time"] for g in scoreboard_games if g.get("game_time")]
+            if recent_times:
+                latest_str = max(recent_times)
+                latest_dt = datetime.fromisoformat(latest_str.replace("Z", "+00:00"))
+                days_since = (datetime.now(timezone.utc) - latest_dt).days
+                if days_since > 21:
+                    is_offseason = True
+                    log.info(f"Detected NFL offseason: most recent game was {days_since} days ago")
+        except Exception as e:
+            log.warning(f"Could not check offseason recency: {e}")
 
     # ── 1c. Fetch future scheduled games ────────────────────────────────────
     future_games = fetch_espn_future_games(current_week, season_year, weeks_ahead=3)
