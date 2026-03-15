@@ -76,6 +76,22 @@ def abbrev_norm(abbrev):
     return ESPN_TO_ABBREV.get(abbrev.upper(), abbrev.upper())
 
 
+def nfl_days_since_last_game(game_history, team, before_date):
+    """Return days since team's last completed game strictly before before_date."""
+    from datetime import date as date_cls
+    dates = [
+        g["date"] for g in game_history.get(team, [])
+        if g.get("date", "") < str(before_date)
+    ]
+    if not dates:
+        return 7  # default bye-equivalent
+    try:
+        last = max(dates)
+        return max(0, (before_date - datetime.strptime(last, "%Y-%m-%d").date()).days)
+    except ValueError:
+        return 7
+
+
 def safe_get(url, params=None, timeout=30):
     try:
         r = requests.get(url, params=params, timeout=timeout)
@@ -153,6 +169,7 @@ def fetch_espn_future_games(current_week, season_year, weeks_ahead=3):
     """Fetch upcoming scheduled games for the next N weeks."""
     future_games = []
     seen_ids = set()
+    fetch_failures = 0
     for offset in range(1, weeks_ahead + 1):
         week = current_week + offset
         if week > 22:
@@ -165,6 +182,7 @@ def fetch_espn_future_games(current_week, season_year, weeks_ahead=3):
             url = f"{ESPN_BASE}/scoreboard?seasontype=3&week={week - 18}"
             data = safe_get(url)
         if not data:
+            fetch_failures += 1
             continue
         games = parse_espn_events(data, default_week=week)
         for g in games:
@@ -172,6 +190,8 @@ def fetch_espn_future_games(current_week, season_year, weeks_ahead=3):
                 seen_ids.add(g["game_id"])
                 g["is_future"] = True
                 future_games.append(g)
+    if fetch_failures > 0:
+        log.warning(f"NFL future-games fetch: skipped {fetch_failures} week(s) due to fetch failures")
     log.info(f"Found {len(future_games)} future scheduled games")
     return future_games
 
@@ -254,6 +274,7 @@ def fetch_espn_completed_games(season_year):
     log.info(f"Fetching ESPN completed games for {season_year} season...")
     completed = []
     seen_ids = set()
+    fetch_failures = 0
 
     # Fetch regular season weeks 1-22 and postseason weeks 1-5
     season_types = [(2, range(1, 23)), (3, range(1, 6))]
@@ -269,6 +290,7 @@ def fetch_espn_completed_games(season_year):
             }
             data = safe_get(url, params=params)
             if not data:
+                fetch_failures += 1
                 continue
 
             events = data.get("events", [])
@@ -315,6 +337,8 @@ def fetch_espn_completed_games(season_year):
                 except (KeyError, IndexError, TypeError) as e:
                     log.debug(f"Error parsing ESPN game: {e}")
 
+    if fetch_failures > 0:
+        log.warning(f"NFL completed-games fetch: skipped {fetch_failures} week(s) due to fetch failures")
     log.info(f"Found {len(completed)} completed ESPN games for {season_year}")
     return completed
 
@@ -765,7 +789,7 @@ def run():
 
     # ── 7. Season simulation ────────────────────────────────────────────────
     log.info("Running season simulation...")
-    remaining_schedule = []  # Would populate from ESPN schedule API
+    remaining_schedule = []
     for game in all_games_for_prediction:
         if game.get("status", "") in ("STATUS_SCHEDULED", "STATUS_IN_PROGRESS"):
             remaining_schedule.append({
@@ -776,6 +800,9 @@ def run():
                 "week": game.get("week", 0),
                 "game_id": game.get("game_id", ""),
             })
+
+    if not remaining_schedule:
+        log.info("No remaining scheduled NFL games found; season simulation will use ratings only.")
 
     # Augment Bayesian ratings with win data
     for team in NFL_TEAMS:
@@ -788,8 +815,17 @@ def run():
         )
     except Exception as e:
         log.error(f"Season simulation failed: {e}")
-        season_sim = {t: {"playoff_prob": 0.5, "division_win_prob": 0.25,
-                          "sb_prob": 0.03, "wins_avg": 8.5} for t in NFL_TEAMS}
+        season_sim = {}
+        for t in NFL_TEAMS:
+            w = standings.get(t, {}).get("wins", 0)
+            gp = standings.get(t, {}).get("games_played", 1) or 1
+            win_pct = w / gp
+            season_sim[t] = {
+                "playoff_prob": min(0.95, max(0.05, win_pct * 1.2)),
+                "division_win_prob": min(0.9, max(0.02, win_pct * 0.6)),
+                "sb_prob": min(0.5, max(0.005, win_pct ** 2 * 0.5)),
+                "wins_avg": round(win_pct * 17, 1),
+            }
 
     # ── 8. Generate per-game predictions ────────────────────────────────────
     log.info(f"Generating predictions for {len(all_games_for_prediction)} games...")
@@ -802,9 +838,15 @@ def run():
             game_id = game["game_id"]
             neutral = bool(game.get("neutral", False))
 
-            # Rest/travel adjustments
-            rest_home = 7  # default
-            rest_away = 7
+            # Rest/travel adjustments — compute actual days since last game
+            from datetime import date as _date_cls
+            game_date_str = game.get("game_time", "")[:10]
+            try:
+                game_date = datetime.strptime(game_date_str, "%Y-%m-%d").date()
+            except (ValueError, TypeError):
+                game_date = _date_cls.today()
+            rest_home = nfl_days_since_last_game(game_history, home, game_date)
+            rest_away = nfl_days_since_last_game(game_history, away, game_date)
             dist = travel_distance(home, away, is_home_a=True)
             rest_adj_home = rest_elo_adjustment(rest_home, rest_away)
             rest_adj_away = -rest_adj_home

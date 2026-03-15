@@ -435,10 +435,10 @@ function renderGames() {
   // Apply game filter
   let filteredGames = displayGames;
   if (state.gameFilter === 'today') {
-    filteredGames = pred.games.filter(g => !g.is_future && isToday(g.game_time));
+    filteredGames = displayGames.filter(g => !g.is_future && isToday(g.game_time));
   } else if (state.gameFilter === 'future') {
     const now = new Date();
-    filteredGames = pred.games.filter(g =>
+    filteredGames = displayGames.filter(g =>
       g.is_future ||
       (!isToday(g.game_time) && new Date(g.game_time) > now &&
        g.status !== 'STATUS_FINAL' && g.status !== 'STATUS_IN_PROGRESS')
