@@ -2,7 +2,7 @@ name: Update NFL + NBA Models
 
 on:
   schedule:
-    - cron: '0 8 * * *'
+    - cron: '0 */3 * * *'   # every 3 hours — catches live game updates
   workflow_dispatch:
 
 permissions:

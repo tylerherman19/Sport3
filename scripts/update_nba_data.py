@@ -356,87 +356,142 @@ def fetch_nba_injuries():
 
 def fetch_nba_season_games(seasons=None):
     """
-    Fetch completed NBA games for the given seasons via ESPN team schedules.
+    Fetch completed NBA games for the given seasons via ESPN scoreboard.
+    Uses month-by-month date iteration (NBA has no 'weeks' like NFL).
     Used to build historical ELO ratings.
     """
+    now = datetime.now()
     if seasons is None:
-        current_year = datetime.now().year
-        current_month = datetime.now().month
+        current_month = now.month
+        current_year = now.year
         # NBA season: Oct–Jun. Current season year = year season ends
-        if current_month >= 10:
-            end_year = current_year + 1
-        else:
-            end_year = current_year
+        end_year = current_year + 1 if current_month >= 10 else current_year
         seasons = [end_year - 2, end_year - 1, end_year]
 
     log.info(f"Fetching NBA season games for {seasons}...")
     all_games = []
     seen_ids = set()
+    url = f"{ESPN_NBA_BASE}/scoreboard"
 
-    # Fetch from scoreboard endpoint per week per season
     for season_year in seasons:
-        for season_type in [2, 3]:  # 2=regular, 3=postseason
-            for week in range(1, 30):
-                url = f"{ESPN_NBA_BASE}/scoreboard"
-                params = {
-                    "seasontype": season_type,
-                    "week": week,
-                    "dates": season_year,
-                    "limit": 100,
-                }
-                data = safe_get(url, params=params)
-                if not data:
-                    break
+        # NBA season spans Oct of (season_year-1) through Jun of season_year
+        year_months = (
+            [(season_year - 1, m) for m in range(10, 13)] +
+            [(season_year, m) for m in range(1, 8)]
+        )
+        for y, m in year_months:
+            # Don't fetch future months
+            if (y, m) > (now.year, now.month):
+                break
+            date_str = f"{y}{m:02d}"
+            params = {"dates": date_str, "limit": 100}
+            data = safe_get(url, params=params)
+            if not data:
+                continue
 
-                events = data.get("events", [])
-                if not events:
-                    break
+            for event in data.get("events", []):
+                try:
+                    event_id = event.get("id", "")
+                    if event_id in seen_ids:
+                        continue
+                    seen_ids.add(event_id)
 
-                has_completed = False
-                for event in events:
-                    try:
-                        event_id = event.get("id", "")
-                        if event_id in seen_ids:
-                            continue
-                        seen_ids.add(event_id)
+                    status_type = event.get("status", {}).get("type", {}).get("name", "")
+                    if status_type != "STATUS_FINAL":
+                        continue
 
-                        status_type = event.get("status", {}).get("type", {}).get("name", "")
-                        if status_type != "STATUS_FINAL":
-                            continue
+                    comp = event["competitions"][0]
+                    competitors = comp["competitors"]
+                    home = next((c for c in competitors if c["homeAway"] == "home"), None)
+                    away = next((c for c in competitors if c["homeAway"] == "away"), None)
+                    if not home or not away:
+                        continue
 
-                        has_completed = True
-                        comp = event["competitions"][0]
-                        competitors = comp["competitors"]
-                        home = next((c for c in competitors if c["homeAway"] == "home"), None)
-                        away = next((c for c in competitors if c["homeAway"] == "away"), None)
-                        if not home or not away:
-                            continue
+                    home_score = int(home.get("score", 0) or 0)
+                    away_score = int(away.get("score", 0) or 0)
+                    if home_score == 0 and away_score == 0:
+                        continue
 
-                        home_score = int(home.get("score", 0) or 0)
-                        away_score = int(away.get("score", 0) or 0)
-                        if home_score == 0 and away_score == 0:
-                            continue
+                    home_abbrev = abbrev_norm(home["team"]["abbreviation"])
+                    away_abbrev = abbrev_norm(away["team"]["abbreviation"])
 
-                        home_abbrev = abbrev_norm(home["team"]["abbreviation"])
-                        away_abbrev = abbrev_norm(away["team"]["abbreviation"])
-
-                        all_games.append({
-                            "date": event.get("date", "")[:10],
-                            "season": season_year,
-                            "team1": home_abbrev,
-                            "team2": away_abbrev,
-                            "score1": home_score,
-                            "score2": away_score,
-                            "neutral": int(comp.get("neutralSite", False)),
-                        })
-                    except (KeyError, IndexError, TypeError) as e:
-                        log.debug(f"Error parsing NBA game: {e}")
-
-                if not has_completed:
-                    break
+                    all_games.append({
+                        "date": event.get("date", "")[:10],
+                        "season": season_year,
+                        "team1": home_abbrev,
+                        "team2": away_abbrev,
+                        "score1": home_score,
+                        "score2": away_score,
+                        "neutral": int(comp.get("neutralSite", False)),
+                    })
+                except (KeyError, IndexError, TypeError) as e:
+                    log.debug(f"Error parsing NBA game: {e}")
 
     log.info(f"Fetched {len(all_games)} NBA historical games")
     return all_games
+
+
+def fetch_nba_upcoming_games(days=7):
+    """
+    Fetch NBA games scheduled for the next N days (for future predictions).
+    Returns games with STATUS_SCHEDULED or STATUS_IN_PROGRESS.
+    """
+    today = datetime.now().date()
+    games = []
+    seen_ids = set()
+
+    for i in range(1, days + 1):
+        d = today + timedelta(days=i)
+        date_str = d.strftime("%Y%m%d")
+        data = safe_get(f"{ESPN_NBA_BASE}/scoreboard", params={"dates": date_str, "limit": 50})
+        if not data:
+            continue
+
+        for event in data.get("events", []):
+            try:
+                event_id = event.get("id", "")
+                if event_id in seen_ids:
+                    continue
+                seen_ids.add(event_id)
+
+                status_name = event.get("status", {}).get("type", {}).get("name", "")
+                if status_name not in ("STATUS_SCHEDULED", "STATUS_IN_PROGRESS"):
+                    continue
+
+                comp = event["competitions"][0]
+                competitors = comp["competitors"]
+                home = next((c for c in competitors if c["homeAway"] == "home"), None)
+                away = next((c for c in competitors if c["homeAway"] == "away"), None)
+                if not home or not away:
+                    continue
+
+                home_abbrev = abbrev_norm(home["team"]["abbreviation"])
+                away_abbrev = abbrev_norm(away["team"]["abbreviation"])
+
+                if home_abbrev:
+                    ESPN_ID_TO_ABBREV[home["team"].get("id", "")] = home_abbrev
+                if away_abbrev:
+                    ESPN_ID_TO_ABBREV[away["team"].get("id", "")] = away_abbrev
+
+                games.append({
+                    "game_id": event_id,
+                    "game_time": event.get("date", ""),
+                    "status": status_name,
+                    "home_team": home_abbrev,
+                    "away_team": away_abbrev,
+                    "home_name": home["team"].get("displayName", home_abbrev),
+                    "away_name": away["team"].get("displayName", away_abbrev),
+                    "home_score": None,
+                    "away_score": None,
+                    "home_logo": f"https://a.espncdn.com/i/teamlogos/nba/500/{home['team']['abbreviation'].lower()}.png",
+                    "away_logo": f"https://a.espncdn.com/i/teamlogos/nba/500/{away['team']['abbreviation'].lower()}.png",
+                    "neutral": int(comp.get("neutralSite", False)),
+                })
+            except (KeyError, IndexError, TypeError) as e:
+                log.debug(f"Error parsing upcoming NBA game: {e}")
+
+    log.info(f"Found {len(games)} upcoming NBA games (next {days} days)")
+    return games
 
 
 def fetch_nba_odds(api_key):
@@ -817,6 +872,15 @@ def run():
 
     # ── 1. Download data ────────────────────────────────────────────────────
     scoreboard_games = fetch_nba_scoreboard()
+    upcoming_games = fetch_nba_upcoming_games(days=7)
+
+    # Merge upcoming games, deduplicating by game_id
+    existing_ids = {g["game_id"] for g in scoreboard_games}
+    for g in upcoming_games:
+        if g["game_id"] not in existing_ids:
+            scoreboard_games.append(g)
+            existing_ids.add(g["game_id"])
+
     standings = fetch_nba_standings()
     injuries = fetch_nba_injuries()
     odds_map = fetch_nba_odds(odds_api_key)
@@ -1104,6 +1168,8 @@ def run():
                 "home_logo": game.get("home_logo", ""),
                 "away_logo": game.get("away_logo", ""),
                 "neutral": neutral,
+                "home_score": game.get("home_score"),
+                "away_score": game.get("away_score"),
                 "predictions": {
                     "ensemble_prob": round(ensemble_prob, 4),
                     "logistic_prob": round(log_prob, 4),

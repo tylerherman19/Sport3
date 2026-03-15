@@ -1340,3 +1340,53 @@ tbody tr:hover { background: var(--surface2); }
   border-color: var(--red-light);
   color: var(--red-light);
 }
+
+/* ── Score display on game cards ── */
+.team-score {
+  font-size: 1.4rem;
+  font-weight: 800;
+  font-family: var(--mono);
+  line-height: 1;
+  margin-top: 0.15rem;
+}
+.team-score.score-win  { color: var(--green-light); }
+.team-score.score-loss { color: var(--text-muted); }
+
+/* ── Live badge ── */
+.live-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3em;
+  color: var(--red-light);
+  font-weight: 700;
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  animation: livePulse 1.5s ease-in-out infinite;
+}
+@keyframes livePulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.35; }
+}
+
+/* ── Status badge on game header ── */
+.status-final {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* ── Game group section headers (Live / Upcoming / Final) ── */
+.games-section-header {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  margin: 1.5rem 0 0.5rem;
+  padding-bottom: 0.35rem;
+  border-bottom: 1px solid var(--border);
+  grid-column: 1 / -1;
+}
+.games-section-header:first-child { margin-top: 0; }

@@ -293,7 +293,25 @@ function renderGames() {
     return;
   }
 
-  grid.innerHTML = pred.games.map(game => buildGameCard(game, isNba)).join('');
+  // Group by status: live first, then upcoming, then final
+  const liveGames     = pred.games.filter(g => g.status === 'STATUS_IN_PROGRESS');
+  const upcomingGames = pred.games.filter(g => g.status === 'STATUS_SCHEDULED' || !g.status);
+  const finalGames    = pred.games.filter(g => g.status === 'STATUS_FINAL');
+
+  let html = '';
+  if (liveGames.length) {
+    html += `<div class="games-section-header">● Live Now</div>`;
+    html += liveGames.map(g => buildGameCard(g, isNba)).join('');
+  }
+  if (upcomingGames.length) {
+    html += `<div class="games-section-header">Upcoming</div>`;
+    html += upcomingGames.map(g => buildGameCard(g, isNba)).join('');
+  }
+  if (finalGames.length) {
+    html += `<div class="games-section-header">Final</div>`;
+    html += finalGames.map(g => buildGameCard(g, isNba)).join('');
+  }
+  grid.innerHTML = html;
   logPredictions(pred.games, isNba ? 'nba' : 'nfl');
 }
 
@@ -368,6 +386,13 @@ function buildGameCard(game, isNba) {
       ${market.home_american != null ? `<div class="stat-pill"><span class="stat-pill-label">ML</span><span class="stat-pill-value">${market.home_american > 0 ? '+' : ''}${market.home_american?.toFixed(0)}</span></div>` : ''}
     </div>` : '');
 
+  // Score display
+  const isFinal = game.status === 'STATUS_FINAL';
+  const isLive  = game.status === 'STATUS_IN_PROGRESS';
+  const homeScore = game.home_score != null ? game.home_score : null;
+  const awayScore = game.away_score != null ? game.away_score : null;
+  const hasScore = homeScore != null && awayScore != null && (homeScore > 0 || awayScore > 0 || isFinal);
+
   // Adjustment panel
   const adjPanelHtml = buildAdjPanelHtml(game.game_id, elo);
 
@@ -375,7 +400,8 @@ function buildGameCard(game, isNba) {
 <div class="game-card" data-game-id="${game.game_id}">
   <div class="game-header">
     <div class="game-meta">
-      ${game.status === 'STATUS_FINAL' ? '<span class="text-red">FINAL</span> · ' : ''}
+      ${isFinal ? '<span class="status-final">FINAL</span> · ' : ''}
+      ${isLive  ? '<span class="live-badge">● LIVE</span> · ' : ''}
       ${fmtDate(game.game_time)}
       ${game.neutral ? ' · Neutral Site' : ''}
     </div>
@@ -391,13 +417,15 @@ function buildGameCard(game, isNba) {
       <img class="team-logo" src="${game.away_logo}" alt="${game.away_team}" onerror="this.style.display='none'" loading="lazy" />
       <div class="team-name-abbrev" title="${game.away_name}">${game.away_team}</div>
       ${awayRecordStr ? `<div class="team-record">${awayRecordStr}</div>` : ''}
+      ${hasScore ? `<div class="team-score ${awayScore > homeScore ? 'score-win' : 'score-loss'}">${awayScore}</div>` : ''}
       <div class="team-elo">ELO ${eloFmt(elo.away)}</div>
     </div>
-    <div class="vs-label">@</div>
+    <div class="vs-label">${hasScore ? `<div class="score-sep">–</div>` : '@'}</div>
     <div class="team-side home">
       <img class="team-logo" src="${game.home_logo}" alt="${game.home_team}" onerror="this.style.display='none'" loading="lazy" />
       <div class="team-name-abbrev" title="${game.home_name}">${game.home_team}</div>
       ${homeRecordStr ? `<div class="team-record">${homeRecordStr}</div>` : ''}
+      ${hasScore ? `<div class="team-score ${homeScore > awayScore ? 'score-win' : 'score-loss'}">${homeScore}</div>` : ''}
       <div class="team-elo">ELO ${eloFmt(elo.home)}</div>
     </div>
   </div>
