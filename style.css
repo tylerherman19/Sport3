@@ -1396,6 +1396,23 @@ tbody tr:hover { background: var(--surface2); }
   50% { opacity: 0.5; transform: scale(0.8); }
 }
 .text-live { color: var(--red-light); font-weight: 700; font-size: 0.75rem; }
+.live-clock {
+  font-variant-numeric: tabular-nums;
+  color: var(--red-light);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+/* Live polling indicator on Refresh button */
+.live-pulse {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background: var(--red-light);
+  border-radius: 50%;
+  animation: pulse 1.2s ease-in-out infinite;
+  vertical-align: middle;
+  margin-right: 2px;
+}
 
 /* ═══════════════════════════════════════════════════════════════
    KEY FACTORS STRIP

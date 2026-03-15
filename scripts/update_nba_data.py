@@ -140,10 +140,14 @@ def parse_nba_events(data):
             if away_id:
                 ESPN_ID_TO_ABBREV[away_id] = away_abbrev
 
+            status_obj = event.get("status", {})
             game = {
                 "game_id": event["id"],
                 "game_time": event.get("date", ""),
-                "status": event.get("status", {}).get("type", {}).get("name", ""),
+                "status": status_obj.get("type", {}).get("name", ""),
+                "period": status_obj.get("period", 0),
+                "display_clock": status_obj.get("displayClock", ""),
+                "status_detail": status_obj.get("type", {}).get("detail", ""),
                 "home_team": home_abbrev,
                 "away_team": away_abbrev,
                 "home_name": home["team"].get("displayName", home_abbrev),
