@@ -28,7 +28,10 @@
         <button class="league-btn" data-league="nba">🏀 NBA</button>
       </div>
       <div><span class="status-dot"></span>Auto-updated daily</div>
-      <div id="last-updated" class="muted">Loading...</div>
+      <div style="display:flex;align-items:center;gap:0.5rem;">
+        <span id="last-updated" class="muted">Loading...</span>
+        <button id="btn-refresh" onclick="forceRefresh()" title="Force data reload" style="background:none;border:1px solid var(--border);border-radius:4px;color:var(--text-secondary);cursor:pointer;font-size:0.75rem;padding:2px 7px;line-height:1.4;">↻ Refresh</button>
+      </div>
       <div id="season-week" class="muted"></div>
     </div>
   </div>

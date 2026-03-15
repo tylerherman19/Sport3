@@ -193,15 +193,16 @@ async function loadAll() {
 
 async function loadNflData() {
   const base = './data/';
+  const t = Date.now();
   const [pred, elo, lb, metrics] = await Promise.all([
-    fetch(base + 'nfl_predictions.json').then(r => r.json()).catch(() =>
-      fetch(base + 'predictions.json').then(r => r.json()).catch(() => null)
+    fetch(base + 'nfl_predictions.json?t=' + t).then(r => r.json()).catch(() =>
+      fetch(base + 'predictions.json?t=' + t).then(r => r.json()).catch(() => null)
     ),
-    fetch(base + 'elo_ratings.json').then(r => r.json()).catch(() => null),
-    fetch(base + 'nfl_leaderboard.json').then(r => r.json()).catch(() =>
-      fetch(base + 'leaderboard.json').then(r => r.json()).catch(() => null)
+    fetch(base + 'elo_ratings.json?t=' + t).then(r => r.json()).catch(() => null),
+    fetch(base + 'nfl_leaderboard.json?t=' + t).then(r => r.json()).catch(() =>
+      fetch(base + 'leaderboard.json?t=' + t).then(r => r.json()).catch(() => null)
     ),
-    fetch(base + 'model_metrics.json').then(r => r.json()).catch(() => null),
+    fetch(base + 'model_metrics.json?t=' + t).then(r => r.json()).catch(() => null),
   ]);
 
   state.predictions = pred;
@@ -217,10 +218,11 @@ async function loadNflData() {
 
 async function loadNbaData() {
   const base = './data/';
+  const t = Date.now();
   const [pred, lb, metrics] = await Promise.all([
-    fetch(base + 'nba_predictions.json').then(r => r.json()).catch(() => null),
-    fetch(base + 'nba_leaderboard.json').then(r => r.json()).catch(() => null),
-    fetch(base + 'nba_model_metrics.json').then(r => r.json()).catch(() => null),
+    fetch(base + 'nba_predictions.json?t=' + t).then(r => r.json()).catch(() => null),
+    fetch(base + 'nba_leaderboard.json?t=' + t).then(r => r.json()).catch(() => null),
+    fetch(base + 'nba_model_metrics.json?t=' + t).then(r => r.json()).catch(() => null),
   ]);
 
   state.nba.predictions = pred;
@@ -252,6 +254,11 @@ function renderAll() {
   populatePredictor();
 }
 
+function forceRefresh() {
+  loadNflData();
+  loadNbaData();
+}
+
 // Start loading both leagues immediately
 loadNflData();
 loadNbaData();
@@ -280,8 +287,16 @@ function renderGames() {
     ? 'Check back later. The model updates daily at 8 AM UTC.'
     : 'Check back when the season is active. The model updates daily at 8 AM UTC.';
 
+  // Determine if we're effectively in offseason (explicit flag or all games are old finals)
+  const allOldFinals = pred.games.length > 0 && pred.games.every(g => {
+    if (g.status !== 'STATUS_FINAL') return false;
+    const gameDate = g.game_time ? new Date(g.game_time) : null;
+    return gameDate && (Date.now() - gameDate.getTime()) > 21 * 24 * 60 * 60 * 1000;
+  });
+  const effectiveOffseason = pred.is_offseason || allOldFinals;
+
   $('offseason-banner').innerHTML = '';
-  if (pred.is_offseason || pred.games.length === 0) {
+  if (effectiveOffseason || pred.games.length === 0) {
     $('offseason-banner').innerHTML = `
       <div class="offseason-banner">
         <div class="offseason-banner-icon">${bannerIcon}</div>
@@ -292,10 +307,12 @@ function renderGames() {
       </div>`;
   }
 
-  $('games-count-badge').textContent = pred.games.length + ' game' + (pred.games.length !== 1 ? 's' : '');
+  // When in offseason with only stale completed games, don't show the cards
+  const displayGames = effectiveOffseason ? [] : pred.games;
+  $('games-count-badge').textContent = displayGames.length + ' game' + (displayGames.length !== 1 ? 's' : '');
 
   // Apply game filter
-  let filteredGames = pred.games;
+  let filteredGames = displayGames;
   if (state.gameFilter === 'today') {
     filteredGames = pred.games.filter(g => !g.is_future && isToday(g.game_time));
   } else if (state.gameFilter === 'future') {
@@ -312,7 +329,7 @@ function renderGames() {
     btn.classList.toggle('active', btn.dataset.filter === state.gameFilter);
   });
 
-  if (pred.games.length === 0) {
+  if (displayGames.length === 0) {
     grid.innerHTML = `<div class="empty-state">
       <div class="empty-state-icon">${emptyIcon}</div>
       <h3>${emptyTitle}</h3>
@@ -367,16 +384,20 @@ function buildKeyFactorsStrip(game, adj, isNba) {
   const tzShift = tzAway - tzHome; // positive = away travelling east (gaining time)
   const absTz = Math.abs(tzShift);
 
-  // Rest days
+  // Rest days — show "B2B" text for back-to-back teams instead of stale rest day count
   if (restHome != null || restAway != null) {
     const rh = restHome ?? 7;
     const ra = restAway ?? 7;
-    const homeRestClass = rh <= 2 ? 'kf-bad' : rh >= 7 ? 'kf-good' : '';
-    const awayRestClass = ra <= 2 ? 'kf-bad' : ra >= 7 ? 'kf-good' : '';
+    const homeIsB2b = isNba && adj.b2b_home;
+    const awayIsB2b = isNba && adj.b2b_away;
+    const rhDisplay = homeIsB2b ? 'B2B' : `${rh}d`;
+    const raDisplay = awayIsB2b ? 'B2B' : `${ra}d`;
+    const homeRestClass = homeIsB2b ? 'kf-bad' : (rh <= 2 ? 'kf-bad' : rh >= 7 ? 'kf-good' : '');
+    const awayRestClass = awayIsB2b ? 'kf-bad' : (ra <= 2 ? 'kf-bad' : ra >= 7 ? 'kf-good' : '');
     items.push(`<div class="kf-item"><span class="kf-label">Rest</span>
-      <span class="kf-val ${homeRestClass}">${game.home_team} ${rh}d</span>
+      <span class="kf-val ${homeRestClass}">${game.home_team} ${rhDisplay}</span>
       <span class="kf-sep">vs</span>
-      <span class="kf-val ${awayRestClass}">${game.away_team} ${ra}d</span></div>`);
+      <span class="kf-val ${awayRestClass}">${game.away_team} ${raDisplay}</span></div>`);
   }
 
   // Timezone shift
@@ -385,9 +406,9 @@ function buildKeyFactorsStrip(game, adj, isNba) {
     items.push(`<div class="kf-item kf-tz"><span class="kf-label">TZ</span><span class="kf-val kf-warn">${dir}</span></div>`);
   }
 
-  // Back-to-back (NBA)
-  if (isNba && adj.home_b2b) items.push(`<div class="kf-item"><span class="kf-val kf-bad">${game.home_team} B2B</span></div>`);
-  if (isNba && adj.away_b2b) items.push(`<div class="kf-item"><span class="kf-val kf-bad">${game.away_team} B2B</span></div>`);
+  // Back-to-back (NBA) — using correct field names from JSON
+  if (isNba && adj.b2b_home) items.push(`<div class="kf-item"><span class="kf-val kf-bad">${game.home_team} B2B</span></div>`);
+  if (isNba && adj.b2b_away) items.push(`<div class="kf-item"><span class="kf-val kf-bad">${game.away_team} B2B</span></div>`);
 
   // Travel distance (NFL)
   if (!isNba && adj.travel_dist_miles > 1000) {
@@ -1748,6 +1769,8 @@ async function renderAccuracyTab() {
 
   const renderLeagueSection = (entries, label) => {
     if (!entries.length) return `<div class="log-empty">No ${label} predictions logged yet. Predictions are saved automatically when you view games.</div>`;
+    const hasResolved = entries.some(e => e.actual_winner);
+    if (!hasResolved) return `<div class="log-empty">No resolved ${label} predictions yet. Results will appear here once games finish.</div>`;
 
     const resolved = entries.filter(e => e.actual_winner);
     const correct = resolved.filter(e => e.actual_winner === e.predicted_winner);
@@ -1842,9 +1865,14 @@ async function renderAccuracyTab() {
           </div>`).join('')}
       </div>`;
 
-    const sortedEntries = [...entries].sort((a, b) => new Date(b.game_time) - new Date(a.game_time));
+    const sortedEntries = [...entries]
+      .filter(e => e.actual_winner)
+      .sort((a, b) => new Date(b.game_time) - new Date(a.game_time));
+    if (sortedEntries.length === 0) {
+      return `<div class="log-empty">No resolved predictions yet. Results will appear here once games finish.</div>`;
+    }
     const rowsHtml = sortedEntries.map(e => {
-      let resultHtml = '<span class="log-pending">Pending</span>';
+      let resultHtml = '';
       if (e.actual_winner) {
         const isCorrect = e.actual_winner === e.predicted_winner;
         resultHtml = isCorrect
