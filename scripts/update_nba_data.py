@@ -223,12 +223,8 @@ def nba_get_trend(game_history, team, window=5):
 
 # ─── Data Fetching ────────────────────────────────────────────────────────────
 
-def fetch_nba_scoreboard():
-    log.info("Fetching NBA scoreboard...")
-    data = safe_get(f"{ESPN_NBA_BASE}/scoreboard")
-    if not data:
-        return []
-
+def parse_nba_events(data):
+    """Parse ESPN NBA events list into game dicts."""
     games = []
     for event in data.get("events", []):
         try:
@@ -242,7 +238,6 @@ def fetch_nba_scoreboard():
             home_abbrev = abbrev_norm(home["team"]["abbreviation"])
             away_abbrev = abbrev_norm(away["team"]["abbreviation"])
 
-            # Store ESPN team IDs for schedule fetching
             home_id = home["team"].get("id", "")
             away_id = away["team"].get("id", "")
             if home_id:
@@ -267,9 +262,39 @@ def fetch_nba_scoreboard():
             games.append(game)
         except (KeyError, IndexError) as e:
             log.debug(f"Error parsing NBA game: {e}")
+    return games
 
+
+def fetch_nba_scoreboard():
+    log.info("Fetching NBA scoreboard...")
+    data = safe_get(f"{ESPN_NBA_BASE}/scoreboard")
+    if not data:
+        return []
+
+    games = parse_nba_events(data)
     log.info(f"Found {len(games)} NBA scoreboard games")
     return games
+
+
+def fetch_nba_future_games(days_ahead=7):
+    """Fetch NBA games scheduled in the next N days."""
+    future_games = []
+    seen_ids = set()
+    from datetime import timedelta
+    for offset in range(1, days_ahead + 1):
+        date_str = (datetime.now() + timedelta(days=offset)).strftime('%Y%m%d')
+        url = f"{ESPN_NBA_BASE}/scoreboard?dates={date_str}"
+        data = safe_get(url)
+        if not data:
+            continue
+        games = parse_nba_events(data)
+        for g in games:
+            if g["game_id"] not in seen_ids:
+                seen_ids.add(g["game_id"])
+                g["is_future"] = True
+                future_games.append(g)
+    log.info(f"Found {len(future_games)} future NBA games")
+    return future_games
 
 
 def fetch_nba_standings():
@@ -823,6 +848,13 @@ def run():
 
     is_offseason = len(scoreboard_games) == 0
 
+    # ── 1c. Fetch future NBA games ───────────────────────────────────────────
+    future_games = fetch_nba_future_games(days_ahead=7)
+    # Exclude games already in scoreboard
+    existing_ids = {g["game_id"] for g in scoreboard_games}
+    future_games = [g for g in future_games if g["game_id"] not in existing_ids]
+    all_games_for_prediction = scoreboard_games + future_games
+
     # ── 1b. Injury impacts ──────────────────────────────────────────────────
     log.info("Computing NBA injury impacts...")
     injury_impacts = compute_all_nba_team_impacts(injuries)
@@ -912,7 +944,7 @@ def run():
     # ── 8. Season simulation ────────────────────────────────────────────────
     log.info("Running NBA season simulation...")
     remaining_schedule = []
-    for game in scoreboard_games:
+    for game in all_games_for_prediction:
         if game.get("status", "") in ("STATUS_SCHEDULED", "STATUS_IN_PROGRESS"):
             remaining_schedule.append({
                 "team_a": game["home_team"],
@@ -935,10 +967,10 @@ def run():
                           "sb_prob": 0.033, "wins_avg": 41.0} for t in NBA_TEAMS}
 
     # ── 9. Generate per-game predictions ────────────────────────────────────
-    log.info(f"Generating NBA predictions for {len(scoreboard_games)} games...")
+    log.info(f"Generating NBA predictions for {len(all_games_for_prediction)} games...")
     predictions_list = []
 
-    for game in scoreboard_games:
+    for game in all_games_for_prediction:
         try:
             home = game["home_team"]
             away = game["away_team"]
@@ -1097,6 +1129,7 @@ def run():
                 "game_id": game_id,
                 "game_time": game["game_time"],
                 "status": game.get("status", ""),
+                "is_future": bool(game.get("is_future", False)),
                 "home_team": home,
                 "away_team": away,
                 "home_name": game.get("home_name", home),
@@ -1104,6 +1137,8 @@ def run():
                 "home_logo": game.get("home_logo", ""),
                 "away_logo": game.get("away_logo", ""),
                 "neutral": neutral,
+                "home_score": game.get("home_score", 0),
+                "away_score": game.get("away_score", 0),
                 "predictions": {
                     "ensemble_prob": round(ensemble_prob, 4),
                     "logistic_prob": round(log_prob, 4),
