@@ -40,6 +40,7 @@ DATA_DIR = Path(__file__).parent.parent / "data"
 DATA_DIR.mkdir(exist_ok=True)
 
 ESPN_BASE = "https://site.api.espn.com/apis/site/v2/sports/football/nfl"
+ESPN_NFL_STANDINGS_URL = "https://site.web.api.espn.com/apis/v2/sports/football/nfl/standings"
 FTE_URL = "https://raw.githubusercontent.com/fivethirtyeight/data/master/nfl-elo/nfl_elo.csv"
 ODDS_BASE = "https://api.the-odds-api.com/v4/sports/americanfootball_nfl/odds/"
 
@@ -177,35 +178,40 @@ def fetch_espn_future_games(current_week, season_year, weeks_ahead=3):
 
 def fetch_espn_standings():
     log.info("Fetching ESPN standings...")
-    data = safe_get(f"{ESPN_BASE}/standings")
+    # Use web API which returns conference-level entries with wins/losses
+    data = safe_get(ESPN_NFL_STANDINGS_URL)
     if not data:
         return {}
 
     standings = {}
     try:
         for group in data.get("children", []):
-            for div in group.get("children", []):
-                for entry in div.get("standings", {}).get("entries", []):
-                    team_abbrev = abbrev_norm(
-                        entry["team"]["abbreviation"]
-                    )
-                    stats = {s["name"]: s.get("value", 0)
-                             for s in entry.get("stats", [])}
-                    wins = int(stats.get("wins", 0))
-                    losses = int(stats.get("losses", 0))
-                    points_for = float(stats.get("pointsFor", 0))
-                    points_against = float(stats.get("pointsAgainst", 0))
+            # Try conference-level entries first (web API structure)
+            entries = group.get("standings", {}).get("entries", [])
+            # Fallback: division children (site.api structure)
+            if not entries:
+                for div in group.get("children", []):
+                    entries = entries + div.get("standings", {}).get("entries", [])
 
-                    standings[team_abbrev] = {
-                        "wins": wins,
-                        "losses": losses,
-                        "ties": int(stats.get("ties", 0)),
-                        "win_pct": float(stats.get("winPercent", 0)),
-                        "points_for": points_for,
-                        "points_against": points_against,
-                        "streak": stats.get("streak", 0),
-                        "games_played": wins + losses,
-                    }
+            for entry in entries:
+                team_abbrev = abbrev_norm(entry["team"]["abbreviation"])
+                stats = {s["name"]: s.get("value", 0)
+                         for s in entry.get("stats", [])}
+                wins = int(stats.get("wins", 0))
+                losses = int(stats.get("losses", 0))
+                points_for = float(stats.get("pointsFor", 0))
+                points_against = float(stats.get("pointsAgainst", 0))
+
+                standings[team_abbrev] = {
+                    "wins": wins,
+                    "losses": losses,
+                    "ties": int(stats.get("ties", 0)),
+                    "win_pct": float(stats.get("winPercent", 0)),
+                    "points_for": points_for,
+                    "points_against": points_against,
+                    "streak": stats.get("streak", 0),
+                    "games_played": wins + losses,
+                }
     except Exception as e:
         log.warning(f"Error parsing standings: {e}")
 
@@ -580,6 +586,34 @@ def run():
     standings = fetch_espn_standings()
     injuries = fetch_espn_injuries()
     odds_map = fetch_betting_odds(odds_api_key)
+
+    # ── 1a. Fallback standings from FTE data when ESPN returns empty (offseason) ──
+    if not standings and not fte_df.empty:
+        log.info("ESPN standings empty (offseason), computing W-L from FTE data...")
+        last_season = fte_df[fte_df["season"] == fte_df["season"].max()]
+        completed = last_season.dropna(subset=["score1", "score2"])
+        for _, row in completed.iterrows():
+            for team_col, opp_col, score_col, opp_score_col in [
+                ("team1", "team2", "score1", "score2"),
+                ("team2", "team1", "score2", "score1"),
+            ]:
+                team = abbrev_norm(str(row[team_col]))
+                if team not in standings:
+                    standings[team] = {"wins": 0, "losses": 0, "ties": 0,
+                                       "points_for": 0.0, "points_against": 0.0,
+                                       "games_played": 0}
+                won = float(row[score_col]) > float(row[opp_score_col])
+                tied = float(row[score_col]) == float(row[opp_score_col])
+                if won:
+                    standings[team]["wins"] += 1
+                elif tied:
+                    standings[team]["ties"] += 1
+                else:
+                    standings[team]["losses"] += 1
+                standings[team]["points_for"] += float(row[score_col])
+                standings[team]["points_against"] += float(row[opp_score_col])
+                standings[team]["games_played"] += 1
+        log.info(f"Built standings from FTE data for {len(standings)} teams")
 
     # ── 1b. Compute injury impacts ──────────────────────────────────────────
     log.info("Computing injury impact scores...")

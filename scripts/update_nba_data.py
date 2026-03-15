@@ -29,6 +29,7 @@ DATA_DIR = Path(__file__).parent.parent / "data"
 DATA_DIR.mkdir(exist_ok=True)
 
 ESPN_NBA_BASE = "https://site.api.espn.com/apis/site/v2/sports/basketball/nba"
+ESPN_NBA_STANDINGS_URL = "https://site.web.api.espn.com/apis/v2/sports/basketball/nba/standings"
 ODDS_BASE = "https://api.the-odds-api.com/v4/sports/basketball_nba/odds/"
 
 NBA_TEAMS = [
@@ -290,7 +291,7 @@ def fetch_nba_future_games(days_ahead=7):
     from datetime import timedelta
     for offset in range(1, days_ahead + 1):
         date_str = (datetime.now() + timedelta(days=offset)).strftime('%Y%m%d')
-        url = f"{ESPN_NBA_BASE}/scoreboard?dates={date_str}"
+        url = f"{ESPN_NBA_BASE}/scoreboard?dates={date_str}&limit=20&seasontype=2"
         data = safe_get(url)
         if not data:
             continue
@@ -306,49 +307,55 @@ def fetch_nba_future_games(days_ahead=7):
 
 def fetch_nba_standings():
     log.info("Fetching NBA standings...")
-    data = safe_get(f"{ESPN_NBA_BASE}/standings")
+    # site.web.api.espn.com returns conference-level entries with wins/losses/avg ratings
+    data = safe_get(ESPN_NBA_STANDINGS_URL)
     if not data:
         return {}
 
     standings = {}
     try:
         for group in data.get("children", []):
-            for div in group.get("children", []):
-                for entry in div.get("standings", {}).get("entries", []):
-                    team_abbrev = abbrev_norm(entry["team"]["abbreviation"])
-                    team_id = entry["team"].get("id", "")
-                    if team_id:
-                        ESPN_ID_TO_ABBREV[team_id] = team_abbrev
+            # Entries are directly on the conference object (no division sub-children)
+            entries = group.get("standings", {}).get("entries", [])
+            # Fallback: check division children if conference-level entries are missing
+            if not entries:
+                for div in group.get("children", []):
+                    entries = entries + div.get("standings", {}).get("entries", [])
 
-                    stats = {s["name"]: s.get("value", 0) for s in entry.get("stats", [])}
-                    wins = int(stats.get("wins", 0))
-                    losses = int(stats.get("losses", 0))
-                    points_for = float(stats.get("pointsFor", 0))
-                    points_against = float(stats.get("pointsAgainst", 0))
+            for entry in entries:
+                team_abbrev = abbrev_norm(entry["team"]["abbreviation"])
+                team_id = entry["team"].get("id", "")
+                if team_id:
+                    ESPN_ID_TO_ABBREV[team_id] = team_abbrev
 
-                    # NBA-specific advanced stats from standings
-                    off_rating = float(stats.get("offensiveRating", 110.0))
-                    def_rating = float(stats.get("defensiveRating", 110.0))
-                    net_rating = off_rating - def_rating
-                    pace = float(stats.get("pace", 100.0))
+                stats = {s["name"]: s.get("value", 0) for s in entry.get("stats", [])}
+                wins = int(stats.get("wins", 0))
+                losses = int(stats.get("losses", 0))
+                points_for = float(stats.get("pointsFor", 0))
+                points_against = float(stats.get("pointsAgainst", 0))
 
-                    standings[team_abbrev] = {
-                        "wins": wins,
-                        "losses": losses,
-                        "win_pct": float(stats.get("winPercent", 0)),
-                        "points_for": points_for,
-                        "points_against": points_against,
-                        "games_played": wins + losses,
-                        "offensive_rating": off_rating,
-                        "defensive_rating": def_rating,
-                        "net_rating": net_rating,
-                        "pace": pace,
-                        "assist_turnover_ratio": float(stats.get("assistToTurnoverRatio", 1.8)),
-                        "rebound_rate": float(stats.get("reboundRate", 0.5)),
-                        "three_point_rate": float(stats.get("threePointAttemptRate", 0.35)),
-                        "free_throw_rate": float(stats.get("freeThrowAttemptRate", 0.20)),
-                        "streak": stats.get("streak", 0),
-                    }
+                # Use per-game averages as offensive/defensive rating proxies
+                off_rating = float(stats.get("avgPointsFor", 110.0))
+                def_rating = float(stats.get("avgPointsAgainst", 110.0))
+                net_rating = off_rating - def_rating
+
+                standings[team_abbrev] = {
+                    "wins": wins,
+                    "losses": losses,
+                    "win_pct": float(stats.get("winPercent", 0)),
+                    "points_for": points_for,
+                    "points_against": points_against,
+                    "games_played": wins + losses,
+                    "offensive_rating": off_rating,
+                    "defensive_rating": def_rating,
+                    "net_rating": net_rating,
+                    "pace": 100.0,  # not available in standings endpoint
+                    "assist_turnover_ratio": 1.8,
+                    "rebound_rate": 0.5,
+                    "three_point_rate": 0.35,
+                    "free_throw_rate": 0.20,
+                    "streak": stats.get("streak", 0),
+                }
     except Exception as e:
         log.warning(f"Error parsing NBA standings: {e}")
 
