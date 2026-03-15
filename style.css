@@ -1324,6 +1324,32 @@ tbody tr:hover { background: var(--surface2); }
 .log-incorrect { color: var(--red-light); font-weight: 700; }
 .log-pending   { color: var(--text-muted); font-style: italic; }
 
+.log-postmortem-btn {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 0.65rem;
+  padding: 0 0.25rem;
+  margin-left: 0.35rem;
+  opacity: 0.6;
+  transition: opacity 0.15s, transform 0.2s;
+  vertical-align: middle;
+}
+.log-postmortem-btn:hover { opacity: 1; }
+.log-postmortem-btn.open { transform: rotate(180deg); opacity: 1; }
+
+.log-postmortem-text {
+  padding: 0.625rem 0.75rem;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin: 0.25rem 0 0.5rem;
+}
+
 .btn-clear-log {
   background: var(--surface2);
   border: 1px solid var(--border);

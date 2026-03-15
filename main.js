@@ -1041,6 +1041,18 @@ document.addEventListener('click', e => {
     return;
   }
 
+  // Post-mortem toggle (prediction log)
+  const pmBtn = e.target.closest('[data-postmortem]');
+  if (pmBtn) {
+    const row = document.getElementById('pm-' + pmBtn.dataset.postmortem);
+    if (row) {
+      const isOpen = row.style.display !== 'none';
+      row.style.display = isOpen ? 'none' : 'table-row';
+      pmBtn.classList.toggle('open', !isOpen);
+    }
+    return;
+  }
+
   // Injury toggle
   const injBtn = e.target.closest('[data-injury-toggle]');
   if (injBtn) {
@@ -1824,6 +1836,7 @@ function logPredictions(games, league) {
     const lrProb = p.logistic_prob || 0.5;
     const pythProb = p.pyth_prob || 0.5;
     const effProb = p.eff_prob || 0.5;
+    const eff = game.efficiency || {};
     existing.push({
       game_id: game.game_id,
       league,
@@ -1837,6 +1850,15 @@ function logPredictions(games, league) {
       predicted_prob: predictedProb,
       status: game.status,
       actual_winner: null,
+      home_score: null,
+      away_score: null,
+      // Pre-game efficiency data for post-mortem analysis
+      home_off_rating: eff.home_off_rating ?? null,
+      home_def_rating: eff.home_def_rating ?? null,
+      home_net_rating: eff.home_net_rating ?? null,
+      away_off_rating: eff.away_off_rating ?? null,
+      away_def_rating: eff.away_def_rating ?? null,
+      away_net_rating: eff.away_net_rating ?? null,
       // Individual model picks (home if prob >= 0.5)
       elo_pick: eloProb >= 0.5 ? game.home_team : game.away_team,
       bayes_pick: bayesProb >= 0.5 ? game.home_team : game.away_team,
@@ -1893,7 +1915,14 @@ async function resolveActualWinners(league) {
         );
         if (match && winnerAbbrev) {
           const entry = entries.find(e => e.game_id === match.game_id);
-          if (entry) entry.actual_winner = winnerAbbrev;
+          if (entry) {
+            entry.actual_winner = winnerAbbrev;
+            // Store actual scores for post-mortem analysis
+            const homeComp = competitors.find(c => c.homeAway === 'home');
+            const awayComp = competitors.find(c => c.homeAway === 'away');
+            if (homeComp?.score != null) entry.home_score = parseInt(homeComp.score, 10);
+            if (awayComp?.score != null) entry.away_score = parseInt(awayComp.score, 10);
+          }
         }
       });
     } catch { /* network failure, skip */ }
@@ -2021,11 +2050,20 @@ async function renderAccuracyTab() {
     }
     const rowsHtml = sortedEntries.map(e => {
       let resultHtml = '';
+      let caretHtml = '';
+      let postMortemRow = '';
       if (e.actual_winner) {
         const isCorrect = e.actual_winner === e.predicted_winner;
-        resultHtml = isCorrect
-          ? `<span class="log-correct">✓ ${e.actual_winner}</span>`
-          : `<span class="log-incorrect">✗ ${e.actual_winner}</span>`;
+        if (isCorrect) {
+          resultHtml = `<span class="log-correct">✓ ${e.actual_winner}</span>`;
+        } else {
+          resultHtml = `<span class="log-incorrect">✗ ${e.actual_winner}</span>`;
+          const pmText = generatePostMortemExplanation(e);
+          caretHtml = `<button class="log-postmortem-btn" data-postmortem="${e.game_id}" title="Why did the model miss?">▼</button>`;
+          postMortemRow = `<tr class="log-postmortem-row" id="pm-${e.game_id}" style="display:none">
+            <td colspan="5"><div class="log-postmortem-text">${pmText}</div></td>
+          </tr>`;
+        }
       }
       const gameDate = e.game_time
         ? (() => {
@@ -2038,8 +2076,8 @@ async function renderAccuracyTab() {
         <td class="log-matchup">${e.away_team} @ ${e.home_team}</td>
         <td class="log-pick ${e.predicted_winner === e.home_team ? 'home-pick' : 'away-pick'}">${e.predicted_winner}</td>
         <td class="log-conf">${(e.predicted_prob * 100).toFixed(1)}%</td>
-        <td>${resultHtml}</td>
-      </tr>`;
+        <td style="white-space:nowrap">${resultHtml}${caretHtml}</td>
+      </tr>${postMortemRow}`;
     }).join('');
 
     return `
@@ -2081,6 +2119,57 @@ async function renderAccuracyTab() {
     <div style="margin-top:2rem;">
       <button class="btn-clear-log" onclick="clearLog('${logLeague}')">Clear ${logLeague.toUpperCase()} Log</button>
     </div>`;
+}
+
+function generatePostMortemExplanation(e) {
+  const sentences = [];
+  const winnerName = e.actual_winner === e.home_team ? e.home_name : e.away_name;
+  const loserName  = e.actual_winner === e.home_team ? e.away_name : e.home_name;
+  const probPct = Math.round(e.predicted_prob * 100);
+
+  // Score context
+  if (e.home_score != null && e.away_score != null) {
+    const margin = Math.abs(e.home_score - e.away_score);
+    const scoreStr = e.actual_winner === e.home_team
+      ? `${e.home_score}–${e.away_score}`
+      : `${e.away_score}–${e.home_score}`;
+    if (margin <= 5) {
+      sentences.push(`${winnerName} won a close game ${scoreStr} (${margin}-pt margin). The model's ${probPct}% pick for ${loserName} was reasonable — this was essentially a toss-up.`);
+    } else {
+      sentences.push(`${winnerName} won ${scoreStr}, a ${margin}-point margin. The model gave ${loserName} a ${probPct}% win probability.`);
+    }
+  } else {
+    sentences.push(`The model gave ${loserName} a ${probPct}% win probability, but ${winnerName} won.`);
+  }
+
+  // Model consensus
+  const modelPicks = [e.elo_pick, e.bayes_pick, e.lr_pick, e.pyth_pick, e.eff_pick].filter(Boolean);
+  if (modelPicks.length) {
+    const actualFavored = modelPicks.filter(p => p === e.actual_winner).length;
+    if (actualFavored === 0) {
+      sentences.push(`All ${modelPicks.length} sub-models agreed on ${loserName} — a genuine upset across the board.`);
+    } else if (actualFavored >= Math.ceil(modelPicks.length / 2)) {
+      sentences.push(`${actualFavored} of ${modelPicks.length} sub-models actually favored ${winnerName}, but ensemble weighting still leaned toward ${loserName}.`);
+    } else {
+      sentences.push(`${actualFavored} of ${modelPicks.length} sub-models picked ${winnerName}, suggesting the models were split.`);
+    }
+  }
+
+  // Pre-game efficiency context
+  const wNet = e.actual_winner === e.home_team ? e.home_net_rating : e.away_net_rating;
+  const lNet = e.actual_winner === e.home_team ? e.away_net_rating : e.home_net_rating;
+  const wOff = e.actual_winner === e.home_team ? e.home_off_rating : e.away_off_rating;
+  const lOff = e.actual_winner === e.home_team ? e.away_off_rating : e.home_off_rating;
+  if (wNet != null && lNet != null) {
+    const gap = lNet - wNet;
+    if (gap > 3) {
+      sentences.push(`${winnerName} overcame a ${gap.toFixed(1)}-pt net rating disadvantage going into the game.`);
+    } else if (lOff != null && wOff != null && lOff - wOff > 3) {
+      sentences.push(`${loserName}'s offense (${lOff.toFixed(1)} pts/100) was expected to be a significant advantage, but it didn't translate on the night.`);
+    }
+  }
+
+  return sentences.join(' ');
 }
 
 function clearLog(league) {
