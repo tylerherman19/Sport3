@@ -1156,16 +1156,80 @@ def run():
             loser = away if ensemble_prob >= 0.5 else home
             elo_gap = abs(home_elo - away_elo)
             confidence = "strong" if winner_prob > 0.70 else "moderate" if winner_prob > 0.60 else "slight"
-            explanation = (
-                f"The model gives {NBA_TEAM_NAMES.get(winner, winner)} a "
-                f"{winner_prob*100:.1f}% win probability — a {confidence} favorite over "
-                f"{NBA_TEAM_NAMES.get(loser, loser)}. "
-                f"ELO gap is {elo_gap:.0f} points"
-                + (f" with home court adding approximately 100 ELO points." if not neutral else " at a neutral site.")
-                + (f" {home} is on a back-to-back." if b2b_home else "")
-                + (f" {away} is on a back-to-back." if b2b_away else "")
-                + (f" Net rating: {home} {efficiency_data.get(home, {}).get('net_rating', 0):+.1f} vs {away} {efficiency_data.get(away, {}).get('net_rating', 0):+.1f}.")
+
+            # Compute league-wide rankings from efficiency_data for richer narrative
+            def _ordinal(n):
+                suffix = "th" if 11 <= n <= 13 else {1: "st", 2: "nd", 3: "rd"}.get(n % 10, "th")
+                return f"{n}{suffix}"
+
+            def _off_label(rank, n):
+                pct = rank / max(n, 1)
+                return "elite" if pct <= 0.15 else "strong" if pct <= 0.35 else "average" if pct <= 0.65 else "below-average" if pct <= 0.85 else "weak"
+
+            def _def_label(rank, n):
+                pct = rank / max(n, 1)
+                return "elite" if pct <= 0.15 else "strong" if pct <= 0.35 else "average" if pct <= 0.65 else "below-average" if pct <= 0.85 else "weak"
+
+            all_teams = list(efficiency_data.keys())
+            n_teams = max(len(all_teams), 1)
+            teams_by_off = sorted(all_teams, key=lambda t: efficiency_data[t].get("offensive_rating", 0), reverse=True)
+            teams_by_def = sorted(all_teams, key=lambda t: efficiency_data[t].get("defensive_rating", 999))
+
+            def _off_rank(t):
+                return teams_by_off.index(t) + 1 if t in teams_by_off else n_teams
+
+            def _def_rank(t):
+                return teams_by_def.index(t) + 1 if t in teams_by_def else n_teams
+
+            w_eff = efficiency_data.get(winner, {})
+            l_eff = efficiency_data.get(loser, {})
+            w_off_rtg = w_eff.get("offensive_rating", 110.0)
+            w_def_rtg = w_eff.get("defensive_rating", 110.0)
+            w_net = w_eff.get("net_rating", 0.0)
+            l_off_rtg = l_eff.get("offensive_rating", 110.0)
+            l_net = l_eff.get("net_rating", 0.0)
+            w_off_rank = _off_rank(winner)
+            w_def_rank = _def_rank(winner)
+            l_off_rank = _off_rank(loser)
+
+            winner_name = NBA_TEAM_NAMES.get(winner, winner)
+            loser_name = NBA_TEAM_NAMES.get(loser, loser)
+            home_name_str = NBA_TEAM_NAMES.get(home, home)
+
+            exp_sentences = [
+                f"The model gives {winner_name} a {winner_prob*100:.1f}% win probability — "
+                f"a {confidence} favorite over {loser_name}."
+            ]
+
+            # Winner strengths
+            exp_sentences.append(
+                f"{winner_name} has a {_off_label(w_off_rank, n_teams)} offense "
+                f"({_ordinal(w_off_rank)} in NBA at {w_off_rtg:.1f} pts/100) and a "
+                f"{_def_label(w_def_rank, n_teams)} defense "
+                f"({_ordinal(w_def_rank)} in pts allowed at {w_def_rtg:.1f}), "
+                f"giving them a net rating of {w_net:+.1f}."
             )
+
+            # Opponent weakness (if notable)
+            if l_off_rank > int(n_teams * 0.65):
+                exp_sentences.append(
+                    f"{loser_name}'s offense has struggled this season "
+                    f"({_ordinal(l_off_rank)} in NBA at {l_off_rtg:.1f} pts/100)."
+                )
+            elif l_net < -3.0:
+                exp_sentences.append(
+                    f"{loser_name} has a negative net rating ({l_net:+.1f}), indicating an overall below-average team this season."
+                )
+
+            # Situational factors
+            if b2b_home:
+                exp_sentences.append(f"{home_name_str} is on a back-to-back (−5 ELO penalty).")
+            if b2b_away:
+                exp_sentences.append(f"{NBA_TEAM_NAMES.get(away, away)} is on a back-to-back (−5 ELO penalty).")
+            if not neutral:
+                exp_sentences.append(f"Home court adds approximately 100 ELO points for {home_name_str}.")
+
+            explanation = " ".join(exp_sentences)
 
             home_inj_impact = injury_impacts.get(home, {})
             away_inj_impact = injury_impacts.get(away, {})
