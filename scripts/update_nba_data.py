@@ -307,10 +307,17 @@ def fetch_nba_season_games(seasons=None):
             end_year = current_year
         seasons = [end_year - 2, end_year - 1, end_year]
 
+    from concurrent.futures import ThreadPoolExecutor, as_completed
+
+    def _fetch_nba_day(date_str):
+        url = f"{ESPN_NBA_BASE}/scoreboard?dates={date_str}&limit=20"
+        return date_str, safe_get(url)
+
     log.info(f"Fetching NBA season games for {seasons}...")
     all_games = []
     seen_ids = set()
     today = date_cls.today()
+    fetch_failures = 0
 
     for season_year in seasons:
         # NBA season runs Oct 1 (year-1) through Jun 30 (year)
@@ -323,51 +330,67 @@ def fetch_nba_season_games(seasons=None):
         is_current = (season_year == seasons[-1])
         stride_days = 1 if is_current else 7
 
+        # Build list of all dates to fetch for this season
+        date_list = []
         current = season_start
         while current <= season_end:
-            date_str = current.strftime('%Y%m%d')
-            url = f"{ESPN_NBA_BASE}/scoreboard?dates={date_str}&limit=20"
-            data = safe_get(url)
-            if data:
-                for event in data.get("events", []):
-                    try:
-                        event_id = event.get("id", "")
-                        if event_id in seen_ids:
-                            continue
-                        seen_ids.add(event_id)
-
-                        status_type = event.get("status", {}).get("type", {}).get("name", "")
-                        if status_type != "STATUS_FINAL":
-                            continue
-
-                        comp = event["competitions"][0]
-                        competitors = comp["competitors"]
-                        home = next((c for c in competitors if c["homeAway"] == "home"), None)
-                        away = next((c for c in competitors if c["homeAway"] == "away"), None)
-                        if not home or not away:
-                            continue
-
-                        home_score = int(home.get("score", 0) or 0)
-                        away_score = int(away.get("score", 0) or 0)
-                        if home_score == 0 and away_score == 0:
-                            continue
-
-                        home_abbrev = abbrev_norm(home["team"]["abbreviation"])
-                        away_abbrev = abbrev_norm(away["team"]["abbreviation"])
-
-                        all_games.append({
-                            "date": event.get("date", "")[:10],
-                            "season": season_year,
-                            "team1": home_abbrev,
-                            "team2": away_abbrev,
-                            "score1": home_score,
-                            "score2": away_score,
-                            "neutral": int(comp.get("neutralSite", False)),
-                        })
-                    except (KeyError, IndexError, TypeError) as e:
-                        log.debug(f"Error parsing NBA game on {date_str}: {e}")
+            date_list.append(current.strftime('%Y%m%d'))
             current += timedelta(days=stride_days)
 
+        # Fetch concurrently (max 10 workers to avoid rate limiting)
+        results_by_date = {}
+        with ThreadPoolExecutor(max_workers=10) as executor:
+            futures = {executor.submit(_fetch_nba_day, d): d for d in date_list}
+            for future in as_completed(futures):
+                date_str, data = future.result()
+                results_by_date[date_str] = data
+
+        # Process in chronological order for consistent seen_ids deduplication
+        for date_str in sorted(date_list):
+            data = results_by_date.get(date_str)
+            if not data:
+                fetch_failures += 1
+                continue
+            for event in data.get("events", []):
+                try:
+                    event_id = event.get("id", "")
+                    if event_id in seen_ids:
+                        continue
+                    seen_ids.add(event_id)
+
+                    status_type = event.get("status", {}).get("type", {}).get("name", "")
+                    if status_type != "STATUS_FINAL":
+                        continue
+
+                    comp = event["competitions"][0]
+                    competitors = comp["competitors"]
+                    home = next((c for c in competitors if c["homeAway"] == "home"), None)
+                    away = next((c for c in competitors if c["homeAway"] == "away"), None)
+                    if not home or not away:
+                        continue
+
+                    home_score = int(home.get("score", 0) or 0)
+                    away_score = int(away.get("score", 0) or 0)
+                    if home_score == 0 and away_score == 0:
+                        continue
+
+                    home_abbrev = abbrev_norm(home["team"]["abbreviation"])
+                    away_abbrev = abbrev_norm(away["team"]["abbreviation"])
+
+                    all_games.append({
+                        "date": event.get("date", "")[:10],
+                        "season": season_year,
+                        "team1": home_abbrev,
+                        "team2": away_abbrev,
+                        "score1": home_score,
+                        "score2": away_score,
+                        "neutral": int(comp.get("neutralSite", False)),
+                    })
+                except (KeyError, IndexError, TypeError) as e:
+                    log.debug(f"Error parsing NBA game on {date_str}: {e}")
+
+    if fetch_failures > 0:
+        log.warning(f"NBA season fetch: skipped {fetch_failures} date(s) due to fetch failures")
     log.info(f"Fetched {len(all_games)} NBA historical games")
     return all_games
 
@@ -546,12 +569,24 @@ def build_nba_features(games, elo_dict, game_history, efficiency_data, pyth_data
         form2 = nba_recent_form(game_history, t2)
         form_diff = form1 - form2
 
+        # Compute actual rest days to match what the prediction loop uses
+        game_date_str = game.get("date", "")
+        try:
+            game_date = datetime.strptime(game_date_str, "%Y-%m-%d").date()
+            rest1 = days_since_last_game(game_history, t1, game_date)
+            rest2 = days_since_last_game(game_history, t2, game_date)
+            rest_diff = float(rest1 - rest2)
+            b2b1 = 1.0 if rest1 <= 1 else 0.0
+        except (ValueError, TypeError):
+            rest_diff = 0.0
+            b2b1 = 0.0
+
         feat = [
-            elo_diff, hfa, 0.0,  # rest_days_diff placeholder
+            elo_diff, hfa, rest_diff,
             pyth_diff, net_diff,
             off_diff, def_diff, pace_diff,
             to_diff, three_diff, reb_diff, ft_diff,
-            form_diff, 0.0,  # back_to_back placeholder
+            form_diff, b2b1,
         ]
         features.append(feat)
         targets.append(1 if s1 > s2 else 0)
@@ -594,7 +629,8 @@ def predict_nba_logistic(home_feat, model, scaler, calibrator):
         x = scaler.transform([home_feat])
         raw_prob = model.predict_proba(x)[0][1]
         return float(calibrator.transform([raw_prob])[0]) if calibrator else raw_prob
-    except Exception:
+    except Exception as e:
+        log.warning(f"NBA logistic prediction failed: {e}")
         return 0.5
 
 
@@ -926,6 +962,9 @@ def run():
                 "neutral": bool(game.get("neutral", False)),
             })
 
+    if not remaining_schedule:
+        log.info("No remaining scheduled NBA games found; season simulation will use ratings only.")
+
     for team in NBA_TEAMS:
         if team in bayesian_ratings:
             bayesian_ratings[team]["wins"] = standings.get(team, {}).get("wins", 0)
@@ -936,12 +975,28 @@ def run():
         )
     except Exception as e:
         log.error(f"NBA season simulation failed: {e}")
-        season_sim = {t: {"playoff_prob": 0.53, "division_win_prob": 0.25,
-                          "sb_prob": 0.033, "wins_avg": 41.0} for t in NBA_TEAMS}
+        season_sim = {}
+        for t in NBA_TEAMS:
+            w = standings.get(t, {}).get("wins", 0)
+            gp = standings.get(t, {}).get("games_played", 1) or 1
+            win_pct = w / gp
+            season_sim[t] = {
+                "playoff_prob": min(0.95, max(0.05, win_pct * 1.3)),
+                "division_win_prob": min(0.9, max(0.02, win_pct * 0.5)),
+                "sb_prob": min(0.5, max(0.003, win_pct ** 2 * 0.4)),
+                "wins_avg": round(win_pct * 82, 1),
+            }
 
     # ── 9. Generate per-game predictions ────────────────────────────────────
     log.info(f"Generating NBA predictions for {len(all_games_for_prediction)} games...")
     predictions_list = []
+
+    # Pre-compute H2H cache to avoid O(n*m) recomputation per game
+    h2h_cache = {}
+    for _g in all_games_for_prediction:
+        _pair = (_g["home_team"], _g["away_team"])
+        if _pair not in h2h_cache:
+            h2h_cache[_pair] = compute_h2h(_g["home_team"], _g["away_team"], historical_games)
 
     for game in all_games_for_prediction:
         try:
@@ -1047,8 +1102,8 @@ def run():
                 try:
                     x_scaled = xgb_scaler.transform([feat])
                     xgb_prob = float(xgb_model.predict_proba(x_scaled)[0][1])
-                except Exception:
-                    pass
+                except Exception as e:
+                    log.warning(f"NBA XGBoost prediction failed for {home} vs {away}: {e}")
 
             # Ensemble
             ensemble_prob = nba_ensemble_predict(
@@ -1147,7 +1202,7 @@ def run():
                 },
                 "monte_carlo": mc_result,
                 "adjustments": adj_dict,
-                "h2h": compute_h2h(home, away, historical_games),
+                "h2h": h2h_cache.get((home, away), compute_h2h(home, away, historical_games)),
                 "elo": {
                     "home": round(home_elo, 1),
                     "away": round(away_elo, 1),
