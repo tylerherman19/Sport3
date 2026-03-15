@@ -23,6 +23,7 @@ const state = {
   sortDir: 'desc',
   weights: { logistic: 0.30, xgboost: 0.25, elo: 0.20, pyth: 0.15, eff: 0.10 },
   params: { k: 20, hfa: 65, mov: 1.0, form: 0.30, sos: 0.5, h2h: 0.5, to: 1.0, rt: 1.0, lambda: 0.10 },
+  gameOverrides: {}, // { [game_id]: { homeBoost, awayBoost, hfaMult, momentumBoost, restFactor } }
 };
 
 /* ── Chart instances ──────────────────────────────────────────── */
@@ -52,6 +53,28 @@ function fmtUpdated(iso) {
 }
 
 function clamp(v, lo, hi) { return Math.max(lo, Math.min(hi, v)); }
+
+/* ── Team Timezone Offsets (standard/non-DST UTC offset) ─────── */
+const TEAM_TZ = {
+  // NBA — Eastern
+  BOS:-5, NYK:-5, BKN:-5, PHI:-5, TOR:-5, MIA:-5, ORL:-5, ATL:-5, CHA:-5, WAS:-5,
+  CLE:-5, DET:-5, IND:-5,
+  // NBA — Central
+  CHI:-6, MIL:-6, MEM:-6, NOP:-6, SAS:-6, HOU:-6, DAL:-6, OKC:-6, MIN:-6,
+  // NBA — Mountain
+  DEN:-7, UTA:-7, PHX:-7,
+  // NBA — Pacific
+  LAL:-8, LAC:-8, SAC:-8, POR:-8, GSW:-8, SEA:-8,
+  // NFL — Eastern
+  NE:-5, NYG:-5, NYJ:-5, PHI:-5, DAL:-6, WAS:-5, MIA:-5, BUF:-5, BAL:-5, PIT:-5,
+  CLE:-5, CIN:-5, ATL:-5, CAR:-5, TB:-5, NO:-6, JAX:-5,
+  // NFL — Central
+  GB:-6, CHI:-6, MIN:-6, DET:-5, HOU:-6, TEN:-6, IND:-5,
+  // NFL — Mountain
+  DEN:-7, KC:-6, LV:-8, LAR:-8, LAC:-8, ARI:-7,
+  // NFL — Pacific
+  SF:-8, SEA:-8,
+};
 
 function ensembleFromProbs(probs, weights) {
   const w = weights;
@@ -145,6 +168,10 @@ document.querySelectorAll('.nav-tab').forEach(btn => {
     if (btn.dataset.tab === 'performance') {
       const metrics = state.league === 'nba' ? state.nba.modelMetrics : state.modelMetrics;
       if (metrics) renderCharts();
+    }
+    // Render prediction log on accuracy tab
+    if (btn.dataset.tab === 'accuracy') {
+      renderAccuracyTab();
     }
   });
 });
@@ -267,6 +294,7 @@ function renderGames() {
   }
 
   grid.innerHTML = pred.games.map(game => buildGameCard(game, isNba)).join('');
+  logPredictions(pred.games, isNba ? 'nba' : 'nfl');
 }
 
 function buildGameCard(game, isNba) {
@@ -290,12 +318,21 @@ function buildGameCard(game, isNba) {
   const homeData = lbData.find(t => t.team === game.home_team) || {};
   const awayData = lbData.find(t => t.team === game.away_team) || {};
 
-  const homeWins = homeData.wins ?? '';
-  const homeLosses = homeData.losses ?? '';
-  const awayWins = awayData.wins ?? '';
-  const awayLosses = awayData.losses ?? '';
-  const homeRecordStr = (homeWins !== '' ? `${homeWins}-${homeLosses}` : '');
-  const awayRecordStr = (awayWins !== '' ? `${awayWins}-${awayLosses}` : '');
+  const homeWins = homeData.wins ?? 0;
+  const homeLosses = homeData.losses ?? 0;
+  const awayWins = awayData.wins ?? 0;
+  const awayLosses = awayData.losses ?? 0;
+  const homeRecordStr = (homeWins + homeLosses) > 0 ? `${homeWins}-${homeLosses}` : '';
+  const awayRecordStr = (awayWins + awayLosses) > 0 ? `${awayWins}-${awayLosses}` : '';
+
+  // Game context: rest, streak, travel, timezone
+  const homeTrend = homeData.trend || 'neutral';
+  const awayTrend = awayData.trend || 'neutral';
+  const tzShift = Math.abs((TEAM_TZ[game.home_team] || -5) - (TEAM_TZ[game.away_team] || -5));
+  const contextHtml = buildContextHtml(game, adj, isNba, homeTrend, awayTrend, tzShift);
+
+  // Injury panel
+  const injuryHtml = buildInjuryHtml(game, isNba);
 
   // Prediction drivers
   const drivers = game.prediction_drivers || [];
@@ -304,7 +341,7 @@ function buildGameCard(game, isNba) {
       <div class="drivers-title">Prediction Drivers</div>
       ${drivers.map(d => {
         const cls = d.includes('OUT') || d.includes('DOUBTFUL') ? 'negative'
-                  : d.includes('advantage') || d.includes('advantage') ? 'positive'
+                  : d.includes('advantage') ? 'positive'
                   : '';
         return `<div class="driver-item ${cls}">${d}</div>`;
       }).join('')}
@@ -315,46 +352,51 @@ function buildGameCard(game, isNba) {
   const explanationHtml = explanation
     ? `<div class="explanation-box">${explanation}</div>` : '';
 
-  // NBA-specific efficiency display
+  // Efficiency stats (original display)
   const effHtml = isNba && game.efficiency ? `
     <div class="game-stats">
       ${game.efficiency.home_off_rating != null ? `<div class="stat-pill"><span class="stat-pill-label">Home ORtg</span><span class="stat-pill-value">${game.efficiency.home_off_rating.toFixed(1)}</span></div>` : ''}
       ${game.efficiency.away_off_rating != null ? `<div class="stat-pill"><span class="stat-pill-label">Away ORtg</span><span class="stat-pill-value">${game.efficiency.away_off_rating.toFixed(1)}</span></div>` : ''}
       ${game.efficiency.home_net_rating != null ? `<div class="stat-pill"><span class="stat-pill-label">Home Net</span><span class="stat-pill-value">${game.efficiency.home_net_rating >= 0 ? '+' : ''}${game.efficiency.home_net_rating.toFixed(1)}</span></div>` : ''}
       ${game.efficiency.away_net_rating != null ? `<div class="stat-pill"><span class="stat-pill-label">Away Net</span><span class="stat-pill-value">${game.efficiency.away_net_rating >= 0 ? '+' : ''}${game.efficiency.away_net_rating.toFixed(1)}</span></div>` : ''}
-      ${adj.b2b_home ? `<div class="stat-pill warn"><span class="stat-pill-label">B2B</span><span class="stat-pill-value">${game.home_team}</span></div>` : ''}
-      ${adj.b2b_away ? `<div class="stat-pill warn"><span class="stat-pill-label">B2B</span><span class="stat-pill-value">${game.away_team}</span></div>` : ''}
-    </div>` : `
+    </div>` : (adj.rest_diff != null || adj.travel_dist_miles ? `
     <div class="game-stats">
       ${adj.rest_diff != null ? `<div class="stat-pill"><span class="stat-pill-label">Rest</span><span class="stat-pill-value">${adj.rest_home}d / ${adj.rest_away}d</span></div>` : ''}
       ${adj.travel_dist_miles ? `<div class="stat-pill"><span class="stat-pill-label">Travel</span><span class="stat-pill-value">${Math.round(adj.travel_dist_miles)} mi</span></div>` : ''}
       ${mc.exp_margin != null ? `<div class="stat-pill"><span class="stat-pill-label">Exp Margin</span><span class="stat-pill-value">${mc.exp_margin > 0 ? '+' : ''}${mc.exp_margin?.toFixed(1)} pts</span></div>` : ''}
       ${market.home_prob != null ? `<div class="stat-pill"><span class="stat-pill-label">Market</span><span class="stat-pill-value">${pct(market.home_prob)}</span></div>` : ''}
       ${market.home_american != null ? `<div class="stat-pill"><span class="stat-pill-label">ML</span><span class="stat-pill-value">${market.home_american > 0 ? '+' : ''}${market.home_american?.toFixed(0)}</span></div>` : ''}
-    </div>`;
+    </div>` : '');
+
+  // Adjustment panel
+  const adjPanelHtml = buildAdjPanelHtml(game.game_id, elo);
 
   return `
-<div class="game-card">
+<div class="game-card" data-game-id="${game.game_id}">
   <div class="game-header">
     <div class="game-meta">
       ${game.status === 'STATUS_FINAL' ? '<span class="text-red">FINAL</span> · ' : ''}
       ${fmtDate(game.game_time)}
       ${game.neutral ? ' · Neutral Site' : ''}
     </div>
-    ${edgeBadge}
+    <div class="game-header-right">
+      <span class="adj-badge" style="display:none">Adjusted</span>
+      ${edgeBadge}
+      <button class="adj-toggle-btn" data-adj-toggle="${game.game_id}" title="Adjust factors">⚙ Adjust</button>
+    </div>
   </div>
 
   <div class="matchup-row">
     <div class="team-side away">
       <img class="team-logo" src="${game.away_logo}" alt="${game.away_team}" onerror="this.style.display='none'" loading="lazy" />
-      <div class="team-name-abbrev">${game.away_team}</div>
+      <div class="team-name-abbrev" title="${game.away_name}">${game.away_team}</div>
       ${awayRecordStr ? `<div class="team-record">${awayRecordStr}</div>` : ''}
       <div class="team-elo">ELO ${eloFmt(elo.away)}</div>
     </div>
     <div class="vs-label">@</div>
     <div class="team-side home">
       <img class="team-logo" src="${game.home_logo}" alt="${game.home_team}" onerror="this.style.display='none'" loading="lazy" />
-      <div class="team-name-abbrev">${game.home_team}</div>
+      <div class="team-name-abbrev" title="${game.home_name}">${game.home_team}</div>
       ${homeRecordStr ? `<div class="team-record">${homeRecordStr}</div>` : ''}
       <div class="team-elo">ELO ${eloFmt(elo.home)}</div>
     </div>
@@ -362,8 +404,8 @@ function buildGameCard(game, isNba) {
 
   <div class="prob-bar-section">
     <div class="prob-labels">
-      <span class="${awayProb > ensProb ? 'text-blue' : ''}">${game.away_team} ${pct(awayProb)}</span>
-      <span class="${ensProb >= awayProb ? 'text-blue' : ''}">${game.home_team} ${pct(ensProb)}</span>
+      <span class="prob-away-label ${awayProb > ensProb ? 'text-blue' : ''}">${game.away_team} ${pct(awayProb)}</span>
+      <span class="prob-home-label ${ensProb >= awayProb ? 'text-blue' : ''}">${game.home_team} ${pct(ensProb)}</span>
     </div>
     <div class="prob-bar">
       <div class="prob-fill ${edge != null ? (edge > 0.02 ? 'fill-green' : edge < -0.02 ? 'fill-red' : '') : ''}"
@@ -372,6 +414,7 @@ function buildGameCard(game, isNba) {
   </div>
 
   ${effHtml}
+  ${contextHtml}
 
   ${mc.win_prob != null ? `
   <div class="mc-row">
@@ -381,15 +424,15 @@ function buildGameCard(game, isNba) {
     </div>
     <div class="mc-cell">
       <div class="mc-cell-val">${pct(mc.prob_7plus)}</div>
-      <div class="mc-cell-lbl">${isNba ? 'Win 7+' : 'Win 7+'}</div>
+      <div class="mc-cell-lbl">Win 7+</div>
     </div>
     <div class="mc-cell">
       <div class="mc-cell-val">${pct(mc.prob_14plus)}</div>
-      <div class="mc-cell-lbl">${isNba ? 'Win 14+' : 'Win 14+'}</div>
+      <div class="mc-cell-lbl">Win 14+</div>
     </div>
     <div class="mc-cell">
       <div class="mc-cell-val">${pct(mc.prob_21plus)}</div>
-      <div class="mc-cell-lbl">${isNba ? 'Win 21+' : 'Win 21+'}</div>
+      <div class="mc-cell-lbl">Win 21+</div>
     </div>
   </div>` : ''}
 
@@ -402,10 +445,278 @@ function buildGameCard(game, isNba) {
     ${p.bayesian_prob != null ? `<div class="model-prob-pill"><span class="model-prob-label">Bayes</span><span class="model-prob-val">${pct(p.bayesian_prob)}</span></div>` : ''}
   </div>
 
+  ${injuryHtml}
   ${driversHtml}
   ${explanationHtml}
+  ${adjPanelHtml}
 </div>`;
 }
+
+/* ── Game context: rest, streak, travel, timezone ─────────────── */
+function buildContextHtml(game, adj, isNba, homeTrend, awayTrend, tzShift) {
+  const pills = [];
+
+  // Rest days
+  if (adj.rest_home != null && adj.rest_away != null) {
+    const restClass = (adj.rest_home <= 1 || adj.rest_away <= 1) ? 'warn' : '';
+    pills.push(`<div class="stat-pill ${restClass}"><span class="stat-pill-label">Rest</span><span class="stat-pill-value">${game.home_team} ${adj.rest_home}d / ${game.away_team} ${adj.rest_away}d</span></div>`);
+  }
+
+  // B2B (NBA)
+  if (isNba) {
+    if (adj.b2b_home) pills.push(`<div class="stat-pill warn"><span class="stat-pill-label">B2B</span><span class="stat-pill-value">${game.home_team}</span></div>`);
+    if (adj.b2b_away) pills.push(`<div class="stat-pill warn"><span class="stat-pill-label">B2B</span><span class="stat-pill-value">${game.away_team}</span></div>`);
+  }
+
+  // Travel + timezone
+  if (adj.travel_dist_miles > 0) {
+    const longTrip = adj.travel_dist_miles > 2000 || tzShift >= 2;
+    const travelClass = longTrip ? 'warn' : '';
+    const tzStr = tzShift > 0 ? ` · ${tzShift}hr TZ` : '';
+    pills.push(`<div class="stat-pill ${travelClass}"><span class="stat-pill-label">Travel</span><span class="stat-pill-value">${Math.round(adj.travel_dist_miles).toLocaleString()} mi${tzStr}</span></div>`);
+  }
+
+  // Hot/cold streak
+  if (homeTrend === 'up') pills.push(`<div class="stat-pill streak-hot"><span class="stat-pill-label">${game.home_team}</span><span class="stat-pill-value">🔥 Hot</span></div>`);
+  else if (homeTrend === 'down') pills.push(`<div class="stat-pill streak-cold"><span class="stat-pill-label">${game.home_team}</span><span class="stat-pill-value">❄️ Cold</span></div>`);
+
+  if (awayTrend === 'up') pills.push(`<div class="stat-pill streak-hot"><span class="stat-pill-label">${game.away_team}</span><span class="stat-pill-value">🔥 Hot</span></div>`);
+  else if (awayTrend === 'down') pills.push(`<div class="stat-pill streak-cold"><span class="stat-pill-label">${game.away_team}</span><span class="stat-pill-value">❄️ Cold</span></div>`);
+
+  if (!pills.length) return '';
+  return `<div class="game-stats context-stats">${pills.join('')}</div>`;
+}
+
+/* ── Injury panel ─────────────────────────────────────────────── */
+function buildInjuryHtml(game, isNba) {
+  const injuries = game.injuries || {};
+  const impact = game.injury_impact || {};
+  const homeInjuries = injuries.home || [];
+  const awayInjuries = injuries.away || [];
+  const totalInjured = homeInjuries.length + awayInjuries.length;
+
+  if (totalInjured === 0 && !impact.home_elo_penalty && !impact.away_elo_penalty) return '';
+
+  const statusClass = s => {
+    const sl = (s || '').toLowerCase();
+    if (sl === 'out' || sl === 'injured reserve' || sl === 'ir') return 'out';
+    if (sl === 'doubtful') return 'doubtful';
+    if (sl === 'questionable') return 'questionable';
+    return 'probable';
+  };
+
+  const playerChip = p => {
+    const cls = statusClass(p.status);
+    const name = p.name || p.player || 'Unknown';
+    const pos = p.position || p.pos || '';
+    const status = p.status || '';
+    return `<span class="injury-chip ${cls}" title="${name} — ${status}">${pos ? `<span class="inj-pos">${pos}</span>` : ''}${name}<span class="inj-status">${status}</span></span>`;
+  };
+
+  const homePenalty = impact.home_elo_penalty || 0;
+  const awayPenalty = impact.away_elo_penalty || 0;
+
+  const homeSection = homeInjuries.length ? `
+    <div class="inj-team-section">
+      <div class="inj-team-label">${game.home_team} ${homePenalty > 0 ? `<span class="inj-elo-penalty">-${homePenalty.toFixed(0)} ELO</span>` : ''}</div>
+      <div class="inj-chips">${homeInjuries.map(playerChip).join('')}</div>
+    </div>` : '';
+
+  const awaySection = awayInjuries.length ? `
+    <div class="inj-team-section">
+      <div class="inj-team-label">${game.away_team} ${awayPenalty > 0 ? `<span class="inj-elo-penalty">-${awayPenalty.toFixed(0)} ELO</span>` : ''}</div>
+      <div class="inj-chips">${awayInjuries.map(playerChip).join('')}</div>
+    </div>` : '';
+
+  const keyOut = (impact.home_key_players_out || []).concat(impact.away_key_players_out || []);
+  const keyOutHtml = keyOut.length ? `<div class="inj-key-out">Key out: ${keyOut.join(', ')}</div>` : '';
+
+  return `
+  <div class="injury-panel">
+    <button class="inj-toggle-btn" data-injury-toggle="${game.game_id}">
+      🏥 Injuries (${totalInjured}) ${(homePenalty + awayPenalty) > 0 ? '· Impact active' : ''}
+    </button>
+    <div class="inj-content hidden" id="inj-${game.game_id}">
+      ${keyOutHtml}
+      ${homeSection}
+      ${awaySection}
+    </div>
+  </div>`;
+}
+
+/* ── Per-game adjustment panel ────────────────────────────────── */
+function buildAdjPanelHtml(gameId, elo) {
+  const ov = state.gameOverrides[gameId] || {};
+  return `
+  <div class="adjust-panel" id="adj-${gameId}" style="display:none">
+    <div class="adjust-panel-header">
+      <span>Manual Factor Adjustments</span>
+      <button class="adj-reset-btn" data-adj-reset="${gameId}">Reset</button>
+    </div>
+    <div class="adjust-sliders">
+      <div class="adjust-row">
+        <div class="adjust-row-label">
+          <span>${(elo.home || 1500).toFixed(0)} ELO</span>
+          <label>Home ELO Boost <span class="adj-val" id="adj-homeBoost-val-${gameId}">${ov.homeBoost || 0}</span></label>
+          <span></span>
+        </div>
+        <input type="range" class="adj-slider" data-game-id="${gameId}" data-adj="homeBoost" min="-50" max="50" step="1" value="${ov.homeBoost || 0}" />
+      </div>
+      <div class="adjust-row">
+        <div class="adjust-row-label">
+          <span>${(elo.away || 1500).toFixed(0)} ELO</span>
+          <label>Away ELO Boost <span class="adj-val" id="adj-awayBoost-val-${gameId}">${ov.awayBoost || 0}</span></label>
+          <span></span>
+        </div>
+        <input type="range" class="adj-slider" data-game-id="${gameId}" data-adj="awayBoost" min="-50" max="50" step="1" value="${ov.awayBoost || 0}" />
+      </div>
+      <div class="adjust-row">
+        <div class="adjust-row-label">
+          <span>0×</span>
+          <label>Home Court/Field Multiplier <span class="adj-val" id="adj-hfaMult-val-${gameId}">${(ov.hfaMult != null ? ov.hfaMult : 1.0).toFixed(1)}</span>×</label>
+          <span>2×</span>
+        </div>
+        <input type="range" class="adj-slider" data-game-id="${gameId}" data-adj="hfaMult" min="0" max="2" step="0.1" value="${ov.hfaMult != null ? ov.hfaMult : 1.0}" />
+      </div>
+      <div class="adjust-row">
+        <div class="adjust-row-label">
+          <span>-15</span>
+          <label>Momentum (Home) <span class="adj-val" id="adj-momentumBoost-val-${gameId}">${ov.momentumBoost || 0}</span></label>
+          <span>+15</span>
+        </div>
+        <input type="range" class="adj-slider" data-game-id="${gameId}" data-adj="momentumBoost" min="-15" max="15" step="1" value="${ov.momentumBoost || 0}" />
+      </div>
+      <div class="adjust-row">
+        <div class="adjust-row-label">
+          <span>-20</span>
+          <label>Rest Advantage (Home) <span class="adj-val" id="adj-restFactor-val-${gameId}">${ov.restFactor || 0}</span></label>
+          <span>+20</span>
+        </div>
+        <input type="range" class="adj-slider" data-game-id="${gameId}" data-adj="restFactor" min="-20" max="20" step="1" value="${ov.restFactor || 0}" />
+      </div>
+    </div>
+    <div class="adj-result" id="adj-result-${gameId}"></div>
+  </div>`;
+}
+
+/* ── Recalculate a game card's probability with overrides ─────── */
+function recalcGameCard(gameId) {
+  const isNba = state.league === 'nba';
+  const pred = isNba ? state.nba.predictions : state.predictions;
+  const game = pred?.games?.find(g => g.game_id === gameId);
+  if (!game) return;
+
+  const ov = state.gameOverrides[gameId] || {};
+  const homeBoost = ov.homeBoost || 0;
+  const awayBoost = ov.awayBoost || 0;
+  const hfaMult = ov.hfaMult != null ? ov.hfaMult : 1.0;
+  const momentumBoost = ov.momentumBoost || 0;
+  const restFactor = ov.restFactor || 0;
+
+  const elo = game.elo || {};
+  const hfa = state.params.hfa;
+  const adjHomeElo = (elo.home || 1500) + homeBoost + momentumBoost + restFactor + hfa * hfaMult;
+  const adjAwayElo = (elo.away || 1500) + awayBoost;
+  const adjEloProb = clamp(1 / (1 + Math.pow(10, (adjAwayElo - adjHomeElo) / 400)), 0.01, 0.99);
+
+  const p = game.predictions || {};
+  const modifiedProbs = { ...p, elo_prob: adjEloProb };
+  const newEns = ensembleFromProbs(modifiedProbs, state.weights);
+  const newAway = 1 - newEns;
+
+  const card = document.querySelector(`.game-card[data-game-id="${gameId}"]`);
+  if (!card) return;
+
+  const homeLabel = card.querySelector('.prob-home-label');
+  const awayLabel = card.querySelector('.prob-away-label');
+  const probFill = card.querySelector('.prob-fill');
+  const adjResult = document.getElementById(`adj-result-${gameId}`);
+  const adjBadge = card.querySelector('.adj-badge');
+
+  if (homeLabel) {
+    homeLabel.textContent = `${game.home_team} ${pct(newEns)}`;
+    homeLabel.className = `prob-home-label ${newEns >= newAway ? 'text-blue' : ''}`;
+  }
+  if (awayLabel) {
+    awayLabel.textContent = `${game.away_team} ${pct(newAway)}`;
+    awayLabel.className = `prob-away-label ${newAway > newEns ? 'text-blue' : ''}`;
+  }
+  if (probFill) {
+    probFill.style.width = `${(newEns * 100).toFixed(1)}%`;
+    probFill.style.marginLeft = `${((1 - newEns) * 100).toFixed(1)}%`;
+  }
+
+  const isActive = homeBoost !== 0 || awayBoost !== 0 || hfaMult !== 1.0 || momentumBoost !== 0 || restFactor !== 0;
+  if (adjResult) {
+    adjResult.innerHTML = isActive
+      ? `<div class="adj-result-row">Adjusted: <strong>${game.home_team} ${pct(newEns)}</strong> vs <strong>${game.away_team} ${pct(newAway)}</strong></div>`
+      : '';
+  }
+  if (adjBadge) adjBadge.style.display = isActive ? 'inline-block' : 'none';
+}
+
+/* ── Event delegation for game card interactions ──────────────── */
+document.addEventListener('click', e => {
+  // Injury toggle
+  const injBtn = e.target.closest('[data-injury-toggle]');
+  if (injBtn) {
+    const panel = document.getElementById('inj-' + injBtn.dataset.injuryToggle);
+    if (panel) panel.classList.toggle('hidden');
+    return;
+  }
+
+  // Adjust toggle
+  const adjBtn = e.target.closest('[data-adj-toggle]');
+  if (adjBtn) {
+    const panel = document.getElementById('adj-' + adjBtn.dataset.adjToggle);
+    if (panel) {
+      const isOpen = panel.style.display !== 'none';
+      panel.style.display = isOpen ? 'none' : 'block';
+      adjBtn.classList.toggle('active', !isOpen);
+    }
+    return;
+  }
+
+  // Adjust reset
+  const resetBtn = e.target.closest('[data-adj-reset]');
+  if (resetBtn) {
+    const gameId = resetBtn.dataset.adjReset;
+    delete state.gameOverrides[gameId];
+    // Reset sliders
+    const panel = document.getElementById('adj-' + gameId);
+    if (panel) {
+      panel.querySelectorAll('.adj-slider').forEach(sl => {
+        const adjType = sl.dataset.adj;
+        sl.value = adjType === 'hfaMult' ? 1.0 : 0;
+        const valEl = document.getElementById(`adj-${adjType}-val-${gameId}`);
+        if (valEl) valEl.textContent = adjType === 'hfaMult' ? '1.0' : '0';
+      });
+    }
+    recalcGameCard(gameId);
+    return;
+  }
+});
+
+document.addEventListener('input', e => {
+  const slider = e.target.closest('.adj-slider');
+  if (!slider) return;
+  const gameId = slider.dataset.gameId;
+  const adjType = slider.dataset.adj;
+  if (!gameId || !adjType) return;
+
+  if (!state.gameOverrides[gameId]) {
+    state.gameOverrides[gameId] = { homeBoost: 0, awayBoost: 0, hfaMult: 1.0, momentumBoost: 0, restFactor: 0 };
+  }
+  state.gameOverrides[gameId][adjType] = parseFloat(slider.value);
+
+  const valEl = document.getElementById(`adj-${adjType}-val-${gameId}`);
+  if (valEl) {
+    valEl.textContent = adjType === 'hfaMult'
+      ? parseFloat(slider.value).toFixed(1)
+      : slider.value;
+  }
+  recalcGameCard(gameId);
+});
 
 /* ══════════════════════════════════════════════════════════════
    SECTION 2 — MODEL CONTROLS (sliders)
@@ -1092,3 +1403,218 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
+
+/* ══════════════════════════════════════════════════════════════
+   SECTION 6 — PREDICTION LOG & ACCURACY TRACKING
+══════════════════════════════════════════════════════════════ */
+
+function logPredictions(games, league) {
+  if (!games || !games.length) return;
+  const key = `sport3_log_${league}`;
+  let existing = [];
+  try { existing = JSON.parse(localStorage.getItem(key) || '[]'); } catch { existing = []; }
+  const existingIds = new Set(existing.map(e => e.game_id));
+
+  let added = false;
+  games.forEach(game => {
+    if (existingIds.has(game.game_id)) return;
+    const p = game.predictions || {};
+    const ensProb = ensembleFromProbs(p, state.weights);
+    const predictedWinner = ensProb >= 0.5 ? game.home_team : game.away_team;
+    const predictedProb = ensProb >= 0.5 ? ensProb : (1 - ensProb);
+    existing.push({
+      game_id: game.game_id,
+      league,
+      saved_at: new Date().toISOString(),
+      home_team: game.home_team,
+      home_name: game.home_name || game.home_team,
+      away_team: game.away_team,
+      away_name: game.away_name || game.away_team,
+      game_time: game.game_time,
+      predicted_winner: predictedWinner,
+      predicted_prob: predictedProb,
+      status: game.status,
+      actual_winner: null,
+    });
+    added = true;
+  });
+
+  if (added) {
+    try { localStorage.setItem(key, JSON.stringify(existing)); } catch {}
+  }
+}
+
+async function resolveActualWinners(league) {
+  const key = `sport3_log_${league}`;
+  let entries = [];
+  try { entries = JSON.parse(localStorage.getItem(key) || '[]'); } catch { return; }
+
+  const unresolved = entries.filter(e => e.status === 'STATUS_FINAL' && !e.actual_winner);
+  if (!unresolved.length) return;
+
+  // Group by date
+  const dateGroups = {};
+  unresolved.forEach(e => {
+    const d = e.game_time ? e.game_time.slice(0, 10).replace(/-/g, '') : null;
+    if (!d) return;
+    if (!dateGroups[d]) dateGroups[d] = [];
+    dateGroups[d].push(e);
+  });
+
+  const sport = league === 'nba' ? 'basketball/nba' : 'football/nfl';
+
+  for (const [date, dayEntries] of Object.entries(dateGroups)) {
+    try {
+      const url = `https://site.api.espn.com/apis/site/v2/sports/${sport}/scoreboard?dates=${date}`;
+      const data = await fetch(url).then(r => r.json());
+      const espnEvents = data.events || [];
+      espnEvents.forEach(ev => {
+        const comp = (ev.competitions || [])[0];
+        if (!comp) return;
+        const competitors = comp.competitors || [];
+        if (competitors.length < 2) return;
+        const winner = competitors.find(c => c.winner);
+        if (!winner) return;
+        const winnerAbbrev = winner.team?.abbreviation?.toUpperCase();
+
+        // Match to our log entry by game_id or team names
+        const match = dayEntries.find(e =>
+          e.game_id === ev.id ||
+          (e.home_team === (competitors.find(c => c.homeAway === 'home')?.team?.abbreviation?.toUpperCase()) &&
+           e.away_team === (competitors.find(c => c.homeAway === 'away')?.team?.abbreviation?.toUpperCase()))
+        );
+        if (match && winnerAbbrev) {
+          const entry = entries.find(e => e.game_id === match.game_id);
+          if (entry) entry.actual_winner = winnerAbbrev;
+        }
+      });
+    } catch { /* network failure, skip */ }
+  }
+
+  try { localStorage.setItem(key, JSON.stringify(entries)); } catch {}
+}
+
+async function renderAccuracyTab() {
+  const container = $('tab-accuracy');
+  if (!container) return;
+
+  // Resolve winners in background
+  await Promise.all([resolveActualWinners('nfl'), resolveActualWinners('nba')]);
+
+  let nflLog = [], nbaLog = [];
+  try { nflLog = JSON.parse(localStorage.getItem('sport3_log_nfl') || '[]'); } catch {}
+  try { nbaLog = JSON.parse(localStorage.getItem('sport3_log_nba') || '[]'); } catch {}
+
+  const renderLeagueSection = (entries, label) => {
+    if (!entries.length) return `<div class="log-empty">No ${label} predictions logged yet. Predictions are saved automatically when you view games.</div>`;
+
+    const resolved = entries.filter(e => e.actual_winner);
+    const correct = resolved.filter(e => e.actual_winner === e.predicted_winner);
+    const accuracy = resolved.length > 0 ? (correct.length / resolved.length * 100).toFixed(1) : null;
+
+    // Confidence tier breakdown
+    const tiers = [
+      { label: '<55%', min: 0, max: 0.55 },
+      { label: '55–65%', min: 0.55, max: 0.65 },
+      { label: '65–75%', min: 0.65, max: 0.75 },
+      { label: '75%+', min: 0.75, max: 1 },
+    ];
+    const tierStats = tiers.map(t => {
+      const tier = resolved.filter(e => e.predicted_prob >= t.min && e.predicted_prob < t.max);
+      const tierCorrect = tier.filter(e => e.actual_winner === e.predicted_winner);
+      return { ...t, n: tier.length, correct: tierCorrect.length };
+    });
+
+    const summaryHtml = `
+      <div class="accuracy-summary">
+        <div class="acc-stat">
+          <div class="acc-stat-val">${entries.length}</div>
+          <div class="acc-stat-lbl">Logged</div>
+        </div>
+        <div class="acc-stat">
+          <div class="acc-stat-val">${resolved.length}</div>
+          <div class="acc-stat-lbl">Resolved</div>
+        </div>
+        <div class="acc-stat">
+          <div class="acc-stat-val">${correct.length}</div>
+          <div class="acc-stat-lbl">Correct</div>
+        </div>
+        <div class="acc-stat ${accuracy >= 60 ? 'good' : accuracy !== null && accuracy < 50 ? 'bad' : ''}">
+          <div class="acc-stat-val">${accuracy !== null ? accuracy + '%' : '—'}</div>
+          <div class="acc-stat-lbl">Accuracy</div>
+        </div>
+      </div>
+      <div class="tier-breakdown">
+        ${tierStats.map(t => `
+          <div class="tier-item">
+            <div class="tier-label">${t.label}</div>
+            <div class="tier-val">${t.n > 0 ? (t.correct / t.n * 100).toFixed(0) + '% ('+t.correct+'/'+t.n+')' : '—'}</div>
+          </div>`).join('')}
+      </div>`;
+
+    const sortedEntries = [...entries].sort((a, b) => new Date(b.game_time) - new Date(a.game_time));
+    const rowsHtml = sortedEntries.map(e => {
+      let resultHtml = '<span class="log-pending">Pending</span>';
+      if (e.actual_winner) {
+        const isCorrect = e.actual_winner === e.predicted_winner;
+        resultHtml = isCorrect
+          ? `<span class="log-correct">✓ ${e.actual_winner}</span>`
+          : `<span class="log-incorrect">✗ ${e.actual_winner}</span>`;
+      }
+      const gameDate = e.game_time ? new Date(e.game_time).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }) : '—';
+      return `<tr>
+        <td class="log-date">${gameDate}</td>
+        <td class="log-matchup">${e.away_team} @ ${e.home_team}</td>
+        <td class="log-pick ${e.predicted_winner === e.home_team ? 'home-pick' : 'away-pick'}">${e.predicted_winner}</td>
+        <td class="log-conf">${(e.predicted_prob * 100).toFixed(1)}%</td>
+        <td>${resultHtml}</td>
+      </tr>`;
+    }).join('');
+
+    return `
+      ${summaryHtml}
+      <div class="log-table-wrap">
+        <table class="log-table">
+          <thead><tr>
+            <th>Date</th>
+            <th>Matchup</th>
+            <th>Model Pick</th>
+            <th>Confidence</th>
+            <th>Result</th>
+          </tr></thead>
+          <tbody>${rowsHtml}</tbody>
+        </table>
+      </div>`;
+  };
+
+  container.innerHTML = `
+    <div class="section-header">
+      <div class="section-title">
+        <h2>Prediction Log</h2>
+        <span class="section-badge">Auto-tracked</span>
+      </div>
+    </div>
+    <p class="muted" style="font-size:0.8125rem;margin-bottom:1.5rem;">
+      Model picks are logged automatically each time you view games. Actual results are fetched from ESPN for completed games.
+    </p>
+
+    <div class="log-league-section">
+      <h3 class="log-league-title">🏈 NFL</h3>
+      ${renderLeagueSection(nflLog, 'NFL')}
+    </div>
+
+    <div class="log-league-section" style="margin-top:2rem;">
+      <h3 class="log-league-title">🏀 NBA</h3>
+      ${renderLeagueSection(nbaLog, 'NBA')}
+    </div>
+
+    <div style="margin-top:2rem;display:flex;gap:1rem;">
+      <button class="btn-clear-log" onclick="clearLog('nfl')">Clear NFL Log</button>
+      <button class="btn-clear-log" onclick="clearLog('nba')">Clear NBA Log</button>
+    </div>`;
+}
+
+function clearLog(league) {
+  localStorage.removeItem(`sport3_log_${league}`);
+  renderAccuracyTab();
+}
