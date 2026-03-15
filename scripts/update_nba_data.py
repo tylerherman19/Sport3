@@ -21,6 +21,10 @@ from model.bayesian_model import update_ratings, predict_game as bayes_predict, 
 from model.monte_carlo import simulate_game, simulate_season
 from model.ensemble_model import kelly_criterion, american_to_prob, remove_vig
 from model.injury_model import compute_all_nba_team_impacts
+from model.nba_elo import (
+    compute_nba_elo, predict_nba_game,
+    nba_recent_form, nba_get_trend, nba_expected_score,
+)
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
 log = logging.getLogger(__name__)
@@ -109,117 +113,7 @@ def nba_travel_distance(home, away):
     return 0.0
 
 
-# ─── ELO Model (NBA-specific) ─────────────────────────────────────────────────
-
-def nba_expected_score(elo_a, elo_b):
-    return 1.0 / (1.0 + 10 ** ((elo_b - elo_a) / 400.0))
-
-
-def nba_mov_multiplier(point_diff, elo_diff):
-    import math
-    return math.log(abs(point_diff) + 1) * (2.2 / (abs(elo_diff) * 0.001 + 2.2))
-
-
-def compute_nba_elo(games, k_base=20.0, hfa=100.0, initial_elo=1500.0, regress_pct=0.33):
-    """
-    Compute NBA ELO ratings from a list of completed games.
-    NBA home court advantage is higher than NFL (~100 vs 65 ELO pts).
-    """
-    if not games:
-        return {t: initial_elo for t in NBA_TEAMS}, {t: [] for t in NBA_TEAMS}
-
-    df = pd.DataFrame(games)
-    df["date"] = pd.to_datetime(df["date"])
-    df = df.sort_values("date").reset_index(drop=True)
-
-    elo_dict = {}
-    game_history = {}
-
-    seasons = sorted(df["season"].unique()) if "season" in df.columns else [df["date"].dt.year.max()]
-
-    for season in seasons:
-        if "season" in df.columns:
-            season_df = df[df["season"] == season]
-        else:
-            season_df = df
-
-        # Seasonal regression at start of each season
-        for team in list(elo_dict.keys()):
-            elo_dict[team] = elo_dict[team] * (1 - regress_pct) + initial_elo * regress_pct
-            game_history[team] = []
-
-        for _, row in season_df.iterrows():
-            team1 = row["team1"]
-            team2 = row["team2"]
-            score1 = row.get("score1", 0)
-            score2 = row.get("score2", 0)
-            neutral = row.get("neutral", 0)
-
-            if pd.isna(score1) or pd.isna(score2):
-                continue
-
-            score1 = int(score1)
-            score2 = int(score2)
-
-            if team1 not in elo_dict:
-                elo_dict[team1] = initial_elo
-                game_history[team1] = []
-            if team2 not in elo_dict:
-                elo_dict[team2] = initial_elo
-                game_history[team2] = []
-
-            e1 = elo_dict[team1]
-            e2 = elo_dict[team2]
-
-            hfa_adj = 0 if neutral else hfa
-            adj_e1 = e1 + hfa_adj
-
-            exp1 = nba_expected_score(adj_e1, e2)
-            exp2 = 1.0 - exp1
-
-            actual1 = 1.0 if score1 > score2 else (0.5 if score1 == score2 else 0.0)
-            actual2 = 1.0 - actual1
-
-            point_diff = abs(score1 - score2)
-            elo_diff_abs = abs(adj_e1 - e2)
-            mov = nba_mov_multiplier(point_diff, elo_diff_abs) if point_diff > 0 else 1.0
-
-            elo_dict[team1] = e1 + k_base * mov * (actual1 - exp1)
-            elo_dict[team2] = e2 + k_base * mov * (actual2 - exp2)
-
-            game_history.setdefault(team1, []).append({
-                "result": actual1,
-                "elo_diff": adj_e1 - e2,
-                "date": row["date"].isoformat(),
-            })
-            game_history.setdefault(team2, []).append({
-                "result": actual2,
-                "elo_diff": e2 - adj_e1,
-                "date": row["date"].isoformat(),
-            })
-
-    return elo_dict, game_history
-
-
-def nba_recent_form(game_history, team, n=5):
-    hist = game_history.get(team, [])
-    if not hist:
-        return 0.5
-    recent = hist[-n:]
-    return sum(g["result"] for g in recent) / len(recent)
-
-
-def nba_get_trend(game_history, team, window=5):
-    hist = game_history.get(team, [])
-    if len(hist) < window * 2:
-        return "neutral"
-    recent = sum(g["result"] for g in hist[-window:]) / window
-    older = sum(g["result"] for g in hist[-window * 2:-window]) / window
-    if recent > older + 0.15:
-        return "up"
-    elif recent < older - 0.15:
-        return "down"
-    return "neutral"
+# ELO functions are provided by model/nba_elo.py (imported above)
 
 
 # ─── Data Fetching ────────────────────────────────────────────────────────────
@@ -1069,22 +963,28 @@ def run():
                 g.get("date", "")[:10] == str(yesterday)
                 for g in game_history.get(away, [])[-3:]
             )
-            b2b_adj_home = -5.0 if b2b_home else 0.0
-            b2b_adj_away = -5.0 if b2b_away else 0.0
-
             rest_diff = rest_home - rest_away
 
             # Injury adjustments
             inj_adj_home = -injury_impacts.get(home, {}).get("elo_penalty", 0.0)
             inj_adj_away = -injury_impacts.get(away, {}).get("elo_penalty", 0.0)
 
-            # ELO prediction
+            # ELO prediction — use model/nba_elo.py with full NBA-specific adjustments
             home_elo = elo_dict.get(home, 1500.0)
             away_elo = elo_dict.get(away, 1500.0)
             hfa = 0.0 if neutral else 100.0
-            total_home_elo = home_elo + hfa + inj_adj_home + b2b_adj_home
-            total_away_elo = away_elo + inj_adj_away + b2b_adj_away
-            elo_prob = nba_expected_score(total_home_elo, total_away_elo)
+            elo_result = predict_nba_game(
+                home, away, elo_dict,
+                home_b2b=b2b_home, away_b2b=b2b_away,
+                rest_diff=rest_diff, travel_miles=dist,
+                neutral=neutral,
+            )
+            elo_prob = elo_result["prob"]
+            # Apply injury adjustments on top of the ELO-model result
+            if inj_adj_home != 0.0 or inj_adj_away != 0.0:
+                inj_home_adj_elo = elo_result["home_adj_elo"] + inj_adj_home
+                inj_away_adj_elo = elo_result["away_adj_elo"] + inj_adj_away
+                elo_prob = nba_expected_score(inj_home_adj_elo, inj_away_adj_elo)
 
             # Bayesian prediction
             bayes_result = bayes_predict(home, away, bayesian_ratings,

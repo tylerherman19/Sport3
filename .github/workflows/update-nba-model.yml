@@ -1,0 +1,52 @@
+name: Update NBA Model
+
+on:
+  schedule:
+    - cron: '0 9 * * *'   # 9 AM UTC — 1 hour after the combined NFL+NBA job
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-nba:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install \
+            nba_api \
+            pandas==2.1.4 \
+            numpy==1.26.4 \
+            scikit-learn==1.4.2 \
+            xgboost==2.0.3 \
+            requests==2.31.0 \
+            scipy==1.12.0
+
+      - name: Run NBA prediction model
+        env:
+          ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
+        run: python scripts/update_nba_data.py
+
+      - name: Commit updated NBA predictions
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: 'chore: update NBA predictions [skip ci]'
+          file_pattern: 'data/nba_*.json'
+          commit_user_name: 'github-actions[bot]'
+          commit_user_email: 'github-actions[bot]@users.noreply.github.com'
