@@ -1,0 +1,680 @@
+{
+  "updated": "2026-03-15T04:25:02.006842+00:00",
+  "season": 2026,
+  "league": "nba",
+  "is_offseason": false,
+  "games": [
+    {
+      "game_id": "401810824",
+      "game_time": "2026-03-14T17:00Z",
+      "status": "STATUS_FINAL",
+      "home_team": "PHI",
+      "away_team": "BKN",
+      "home_name": "Philadelphia 76ers",
+      "away_name": "Brooklyn Nets",
+      "home_logo": "https://a.espncdn.com/i/teamlogos/nba/500/phi.png",
+      "away_logo": "https://a.espncdn.com/i/teamlogos/nba/500/bkn.png",
+      "neutral": false,
+      "predictions": {
+        "ensemble_prob": 0.584,
+        "logistic_prob": 0.5,
+        "elo_prob": 0.6401,
+        "xgb_prob": null,
+        "pyth_prob": 0.6401,
+        "eff_prob": 0.6401,
+        "bayesian_prob": 0.8223
+      },
+      "market": {
+        "home_prob": null,
+        "edge": null,
+        "kelly_pct": null,
+        "home_american": null,
+        "away_american": null
+      },
+      "monte_carlo": {
+        "win_prob": 0.5696,
+        "exp_margin": 2.55,
+        "prob_7plus": 0.3858,
+        "prob_14plus": 0.2211,
+        "prob_21plus": 0.1062,
+        "margin_percentiles": [
+          -22.1,
+          -16.5,
+          -7.3,
+          2.6,
+          12.5,
+          21.5,
+          26.7
+        ]
+      },
+      "adjustments": {
+        "rest_home": 2,
+        "rest_away": 2,
+        "rest_diff": 0,
+        "travel_dist_miles": 83.0,
+        "b2b_home": false,
+        "b2b_away": false,
+        "home_elo_bonus": 100
+      },
+      "elo": {
+        "home": 1500.0,
+        "away": 1500.0,
+        "diff": 0.0
+      },
+      "bayesian": {
+        "home_mu": 1500.0,
+        "home_sigma": 75.0,
+        "away_mu": 1500.0,
+        "away_sigma": 75.0,
+        "home_band": [
+          1425.0,
+          1575.0
+        ],
+        "away_band": [
+          1425.0,
+          1575.0
+        ]
+      },
+      "efficiency": {
+        "home_off_rating": 110.0,
+        "home_def_rating": 110.0,
+        "home_net_rating": 0.0,
+        "away_off_rating": 110.0,
+        "away_def_rating": 110.0,
+        "away_net_rating": 0.0,
+        "home_pace": 100.0,
+        "away_pace": 100.0
+      },
+      "injuries": {
+        "home": [],
+        "away": []
+      },
+      "injury_impact": {
+        "home_elo_penalty": 0.0,
+        "away_elo_penalty": 0.0,
+        "home_key_players_out": [],
+        "away_key_players_out": []
+      },
+      "prediction_drivers": [
+        "Home court: PHI +100 ELO advantage"
+      ],
+      "explanation": "The model gives Philadelphia 76ers a 58.4% win probability \u2014 a slight favorite over Brooklyn Nets. ELO gap is 0 points with home court adding approximately 100 ELO points. Net rating: PHI +0.0 vs BKN +0.0."
+    },
+    {
+      "game_id": "401810825",
+      "game_time": "2026-03-14T19:00Z",
+      "status": "STATUS_FINAL",
+      "home_team": "ATL",
+      "away_team": "MIL",
+      "home_name": "Atlanta Hawks",
+      "away_name": "Milwaukee Bucks",
+      "home_logo": "https://a.espncdn.com/i/teamlogos/nba/500/atl.png",
+      "away_logo": "https://a.espncdn.com/i/teamlogos/nba/500/mil.png",
+      "neutral": false,
+      "predictions": {
+        "ensemble_prob": 0.584,
+        "logistic_prob": 0.5,
+        "elo_prob": 0.6401,
+        "xgb_prob": null,
+        "pyth_prob": 0.6401,
+        "eff_prob": 0.6401,
+        "bayesian_prob": 0.8223
+      },
+      "market": {
+        "home_prob": null,
+        "edge": null,
+        "kelly_pct": null,
+        "home_american": null,
+        "away_american": null
+      },
+      "monte_carlo": {
+        "win_prob": 0.5598,
+        "exp_margin": 2.31,
+        "prob_7plus": 0.373,
+        "prob_14plus": 0.2151,
+        "prob_21plus": 0.101,
+        "margin_percentiles": [
+          -22.0,
+          -16.7,
+          -7.4,
+          2.2,
+          12.2,
+          21.1,
+          27.0
+        ]
+      },
+      "adjustments": {
+        "rest_home": 2,
+        "rest_away": 2,
+        "rest_diff": 0,
+        "travel_dist_miles": 785.0,
+        "b2b_home": false,
+        "b2b_away": false,
+        "home_elo_bonus": 100
+      },
+      "elo": {
+        "home": 1500.0,
+        "away": 1500.0,
+        "diff": 0.0
+      },
+      "bayesian": {
+        "home_mu": 1500.0,
+        "home_sigma": 75.0,
+        "away_mu": 1500.0,
+        "away_sigma": 75.0,
+        "home_band": [
+          1425.0,
+          1575.0
+        ],
+        "away_band": [
+          1425.0,
+          1575.0
+        ]
+      },
+      "efficiency": {
+        "home_off_rating": 110.0,
+        "home_def_rating": 110.0,
+        "home_net_rating": 0.0,
+        "away_off_rating": 110.0,
+        "away_def_rating": 110.0,
+        "away_net_rating": 0.0,
+        "home_pace": 100.0,
+        "away_pace": 100.0
+      },
+      "injuries": {
+        "home": [],
+        "away": []
+      },
+      "injury_impact": {
+        "home_elo_penalty": 0.0,
+        "away_elo_penalty": 0.0,
+        "home_key_players_out": [],
+        "away_key_players_out": []
+      },
+      "prediction_drivers": [
+        "Home court: ATL +100 ELO advantage"
+      ],
+      "explanation": "The model gives Atlanta Hawks a 58.4% win probability \u2014 a slight favorite over Milwaukee Bucks. ELO gap is 0 points with home court adding approximately 100 ELO points. Net rating: ATL +0.0 vs MIL +0.0."
+    },
+    {
+      "game_id": "401810828",
+      "game_time": "2026-03-14T19:30Z",
+      "status": "STATUS_FINAL",
+      "home_team": "SAS",
+      "away_team": "CHA",
+      "home_name": "San Antonio Spurs",
+      "away_name": "Charlotte Hornets",
+      "home_logo": "https://a.espncdn.com/i/teamlogos/nba/500/sa.png",
+      "away_logo": "https://a.espncdn.com/i/teamlogos/nba/500/cha.png",
+      "neutral": false,
+      "predictions": {
+        "ensemble_prob": 0.584,
+        "logistic_prob": 0.5,
+        "elo_prob": 0.6401,
+        "xgb_prob": null,
+        "pyth_prob": 0.6401,
+        "eff_prob": 0.6401,
+        "bayesian_prob": 0.8223
+      },
+      "market": {
+        "home_prob": null,
+        "edge": null,
+        "kelly_pct": null,
+        "home_american": null,
+        "away_american": null
+      },
+      "monte_carlo": {
+        "win_prob": 0.5671,
+        "exp_margin": 2.47,
+        "prob_7plus": 0.3827,
+        "prob_14plus": 0.2135,
+        "prob_21plus": 0.1049,
+        "margin_percentiles": [
+          -22.0,
+          -16.4,
+          -7.4,
+          2.6,
+          12.4,
+          21.4,
+          26.8
+        ]
+      },
+      "adjustments": {
+        "rest_home": 2,
+        "rest_away": 2,
+        "rest_diff": 0,
+        "travel_dist_miles": 1104.0,
+        "b2b_home": false,
+        "b2b_away": false,
+        "home_elo_bonus": 100
+      },
+      "elo": {
+        "home": 1500.0,
+        "away": 1500.0,
+        "diff": 0.0
+      },
+      "bayesian": {
+        "home_mu": 1500.0,
+        "home_sigma": 75.0,
+        "away_mu": 1500.0,
+        "away_sigma": 75.0,
+        "home_band": [
+          1425.0,
+          1575.0
+        ],
+        "away_band": [
+          1425.0,
+          1575.0
+        ]
+      },
+      "efficiency": {
+        "home_off_rating": 110.0,
+        "home_def_rating": 110.0,
+        "home_net_rating": 0.0,
+        "away_off_rating": 110.0,
+        "away_def_rating": 110.0,
+        "away_net_rating": 0.0,
+        "home_pace": 100.0,
+        "away_pace": 100.0
+      },
+      "injuries": {
+        "home": [],
+        "away": []
+      },
+      "injury_impact": {
+        "home_elo_penalty": 0.0,
+        "away_elo_penalty": 0.0,
+        "home_key_players_out": [],
+        "away_key_players_out": []
+      },
+      "prediction_drivers": [
+        "Home court: SAS +100 ELO advantage"
+      ],
+      "explanation": "The model gives San Antonio Spurs a 58.4% win probability \u2014 a slight favorite over Charlotte Hornets. ELO gap is 0 points with home court adding approximately 100 ELO points. Net rating: SAS +0.0 vs CHA +0.0."
+    },
+    {
+      "game_id": "401810826",
+      "game_time": "2026-03-14T22:00Z",
+      "status": "STATUS_FINAL",
+      "home_team": "BOS",
+      "away_team": "WAS",
+      "home_name": "Boston Celtics",
+      "away_name": "Washington Wizards",
+      "home_logo": "https://a.espncdn.com/i/teamlogos/nba/500/bos.png",
+      "away_logo": "https://a.espncdn.com/i/teamlogos/nba/500/wsh.png",
+      "neutral": false,
+      "predictions": {
+        "ensemble_prob": 0.584,
+        "logistic_prob": 0.5,
+        "elo_prob": 0.6401,
+        "xgb_prob": null,
+        "pyth_prob": 0.6401,
+        "eff_prob": 0.6401,
+        "bayesian_prob": 0.8223
+      },
+      "market": {
+        "home_prob": null,
+        "edge": null,
+        "kelly_pct": null,
+        "home_american": null,
+        "away_american": null
+      },
+      "monte_carlo": {
+        "win_prob": 0.5768,
+        "exp_margin": 2.71,
+        "prob_7plus": 0.3831,
+        "prob_14plus": 0.2185,
+        "prob_21plus": 0.1093,
+        "margin_percentiles": [
+          -21.6,
+          -16.2,
+          -7.2,
+          2.7,
+          12.6,
+          21.5,
+          27.1
+        ]
+      },
+      "adjustments": {
+        "rest_home": 2,
+        "rest_away": 2,
+        "rest_diff": 0,
+        "travel_dist_miles": 394.0,
+        "b2b_home": false,
+        "b2b_away": false,
+        "home_elo_bonus": 100
+      },
+      "elo": {
+        "home": 1500.0,
+        "away": 1500.0,
+        "diff": 0.0
+      },
+      "bayesian": {
+        "home_mu": 1500.0,
+        "home_sigma": 75.0,
+        "away_mu": 1500.0,
+        "away_sigma": 75.0,
+        "home_band": [
+          1425.0,
+          1575.0
+        ],
+        "away_band": [
+          1425.0,
+          1575.0
+        ]
+      },
+      "efficiency": {
+        "home_off_rating": 110.0,
+        "home_def_rating": 110.0,
+        "home_net_rating": 0.0,
+        "away_off_rating": 110.0,
+        "away_def_rating": 110.0,
+        "away_net_rating": 0.0,
+        "home_pace": 100.0,
+        "away_pace": 100.0
+      },
+      "injuries": {
+        "home": [],
+        "away": []
+      },
+      "injury_impact": {
+        "home_elo_penalty": 0.0,
+        "away_elo_penalty": 0.0,
+        "home_key_players_out": [],
+        "away_key_players_out": []
+      },
+      "prediction_drivers": [
+        "Home court: BOS +100 ELO advantage"
+      ],
+      "explanation": "The model gives Boston Celtics a 58.4% win probability \u2014 a slight favorite over Washington Wizards. ELO gap is 0 points with home court adding approximately 100 ELO points. Net rating: BOS +0.0 vs WAS +0.0."
+    },
+    {
+      "game_id": "401810827",
+      "game_time": "2026-03-15T00:00Z",
+      "status": "STATUS_FINAL",
+      "home_team": "MIA",
+      "away_team": "ORL",
+      "home_name": "Miami Heat",
+      "away_name": "Orlando Magic",
+      "home_logo": "https://a.espncdn.com/i/teamlogos/nba/500/mia.png",
+      "away_logo": "https://a.espncdn.com/i/teamlogos/nba/500/orl.png",
+      "neutral": false,
+      "predictions": {
+        "ensemble_prob": 0.584,
+        "logistic_prob": 0.5,
+        "elo_prob": 0.6401,
+        "xgb_prob": null,
+        "pyth_prob": 0.6401,
+        "eff_prob": 0.6401,
+        "bayesian_prob": 0.8223
+      },
+      "market": {
+        "home_prob": null,
+        "edge": null,
+        "kelly_pct": null,
+        "home_american": null,
+        "away_american": null
+      },
+      "monte_carlo": {
+        "win_prob": 0.5763,
+        "exp_margin": 2.78,
+        "prob_7plus": 0.3817,
+        "prob_14plus": 0.2198,
+        "prob_21plus": 0.1068,
+        "margin_percentiles": [
+          -20.9,
+          -15.8,
+          -7.2,
+          2.7,
+          12.5,
+          21.5,
+          26.9
+        ]
+      },
+      "adjustments": {
+        "rest_home": 2,
+        "rest_away": 2,
+        "rest_diff": 0,
+        "travel_dist_miles": 205.0,
+        "b2b_home": false,
+        "b2b_away": false,
+        "home_elo_bonus": 100
+      },
+      "elo": {
+        "home": 1500.0,
+        "away": 1500.0,
+        "diff": 0.0
+      },
+      "bayesian": {
+        "home_mu": 1500.0,
+        "home_sigma": 75.0,
+        "away_mu": 1500.0,
+        "away_sigma": 75.0,
+        "home_band": [
+          1425.0,
+          1575.0
+        ],
+        "away_band": [
+          1425.0,
+          1575.0
+        ]
+      },
+      "efficiency": {
+        "home_off_rating": 110.0,
+        "home_def_rating": 110.0,
+        "home_net_rating": 0.0,
+        "away_off_rating": 110.0,
+        "away_def_rating": 110.0,
+        "away_net_rating": 0.0,
+        "home_pace": 100.0,
+        "away_pace": 100.0
+      },
+      "injuries": {
+        "home": [],
+        "away": []
+      },
+      "injury_impact": {
+        "home_elo_penalty": 0.0,
+        "away_elo_penalty": 0.0,
+        "home_key_players_out": [],
+        "away_key_players_out": []
+      },
+      "prediction_drivers": [
+        "Home court: MIA +100 ELO advantage"
+      ],
+      "explanation": "The model gives Miami Heat a 58.4% win probability \u2014 a slight favorite over Orlando Magic. ELO gap is 0 points with home court adding approximately 100 ELO points. Net rating: MIA +0.0 vs ORL +0.0."
+    },
+    {
+      "game_id": "401810829",
+      "game_time": "2026-03-15T00:30Z",
+      "status": "STATUS_FINAL",
+      "home_team": "LAL",
+      "away_team": "DEN",
+      "home_name": "Los Angeles Lakers",
+      "away_name": "Denver Nuggets",
+      "home_logo": "https://a.espncdn.com/i/teamlogos/nba/500/lal.png",
+      "away_logo": "https://a.espncdn.com/i/teamlogos/nba/500/den.png",
+      "neutral": false,
+      "predictions": {
+        "ensemble_prob": 0.584,
+        "logistic_prob": 0.5,
+        "elo_prob": 0.6401,
+        "xgb_prob": null,
+        "pyth_prob": 0.6401,
+        "eff_prob": 0.6401,
+        "bayesian_prob": 0.8223
+      },
+      "market": {
+        "home_prob": null,
+        "edge": null,
+        "kelly_pct": null,
+        "home_american": null,
+        "away_american": null
+      },
+      "monte_carlo": {
+        "win_prob": 0.5748,
+        "exp_margin": 2.72,
+        "prob_7plus": 0.3838,
+        "prob_14plus": 0.2204,
+        "prob_21plus": 0.1052,
+        "margin_percentiles": [
+          -20.9,
+          -15.7,
+          -7.1,
+          2.6,
+          12.6,
+          21.5,
+          26.9
+        ]
+      },
+      "adjustments": {
+        "rest_home": 2,
+        "rest_away": 2,
+        "rest_diff": 0,
+        "travel_dist_miles": 831.0,
+        "b2b_home": false,
+        "b2b_away": false,
+        "home_elo_bonus": 100
+      },
+      "elo": {
+        "home": 1500.0,
+        "away": 1500.0,
+        "diff": 0.0
+      },
+      "bayesian": {
+        "home_mu": 1500.0,
+        "home_sigma": 75.0,
+        "away_mu": 1500.0,
+        "away_sigma": 75.0,
+        "home_band": [
+          1425.0,
+          1575.0
+        ],
+        "away_band": [
+          1425.0,
+          1575.0
+        ]
+      },
+      "efficiency": {
+        "home_off_rating": 110.0,
+        "home_def_rating": 110.0,
+        "home_net_rating": 0.0,
+        "away_off_rating": 110.0,
+        "away_def_rating": 110.0,
+        "away_net_rating": 0.0,
+        "home_pace": 100.0,
+        "away_pace": 100.0
+      },
+      "injuries": {
+        "home": [],
+        "away": []
+      },
+      "injury_impact": {
+        "home_elo_penalty": 0.0,
+        "away_elo_penalty": 0.0,
+        "home_key_players_out": [],
+        "away_key_players_out": []
+      },
+      "prediction_drivers": [
+        "Home court: LAL +100 ELO advantage"
+      ],
+      "explanation": "The model gives Los Angeles Lakers a 58.4% win probability \u2014 a slight favorite over Denver Nuggets. ELO gap is 0 points with home court adding approximately 100 ELO points. Net rating: LAL +0.0 vs DEN +0.0."
+    },
+    {
+      "game_id": "401810830",
+      "game_time": "2026-03-15T02:30Z",
+      "status": "STATUS_IN_PROGRESS",
+      "home_team": "LAC",
+      "away_team": "SAC",
+      "home_name": "LA Clippers",
+      "away_name": "Sacramento Kings",
+      "home_logo": "https://a.espncdn.com/i/teamlogos/nba/500/lac.png",
+      "away_logo": "https://a.espncdn.com/i/teamlogos/nba/500/sac.png",
+      "neutral": false,
+      "predictions": {
+        "ensemble_prob": 0.584,
+        "logistic_prob": 0.5,
+        "elo_prob": 0.6401,
+        "xgb_prob": null,
+        "pyth_prob": 0.6401,
+        "eff_prob": 0.6401,
+        "bayesian_prob": 0.8223
+      },
+      "market": {
+        "home_prob": null,
+        "edge": null,
+        "kelly_pct": null,
+        "home_american": null,
+        "away_american": null
+      },
+      "monte_carlo": {
+        "win_prob": 0.5747,
+        "exp_margin": 2.76,
+        "prob_7plus": 0.3894,
+        "prob_14plus": 0.2201,
+        "prob_21plus": 0.1051,
+        "margin_percentiles": [
+          -20.9,
+          -15.9,
+          -7.6,
+          2.9,
+          12.6,
+          21.4,
+          27.2
+        ]
+      },
+      "adjustments": {
+        "rest_home": 2,
+        "rest_away": 2,
+        "rest_diff": 0,
+        "travel_dist_miles": 361.0,
+        "b2b_home": false,
+        "b2b_away": false,
+        "home_elo_bonus": 100
+      },
+      "elo": {
+        "home": 1500.0,
+        "away": 1500.0,
+        "diff": 0.0
+      },
+      "bayesian": {
+        "home_mu": 1500.0,
+        "home_sigma": 75.0,
+        "away_mu": 1500.0,
+        "away_sigma": 75.0,
+        "home_band": [
+          1425.0,
+          1575.0
+        ],
+        "away_band": [
+          1425.0,
+          1575.0
+        ]
+      },
+      "efficiency": {
+        "home_off_rating": 110.0,
+        "home_def_rating": 110.0,
+        "home_net_rating": 0.0,
+        "away_off_rating": 110.0,
+        "away_def_rating": 110.0,
+        "away_net_rating": 0.0,
+        "home_pace": 100.0,
+        "away_pace": 100.0
+      },
+      "injuries": {
+        "home": [],
+        "away": []
+      },
+      "injury_impact": {
+        "home_elo_penalty": 0.0,
+        "away_elo_penalty": 0.0,
+        "home_key_players_out": [],
+        "away_key_players_out": []
+      },
+      "prediction_drivers": [
+        "Home court: LAC +100 ELO advantage"
+      ],
+      "explanation": "The model gives LA Clippers a 58.4% win probability \u2014 a slight favorite over Sacramento Kings. ELO gap is 0 points with home court adding approximately 100 ELO points. Net rating: LAC +0.0 vs SAC +0.0."
+    }
+  ]
+}
