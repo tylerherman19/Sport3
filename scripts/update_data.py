@@ -96,13 +96,11 @@ def download_fte_data():
         return pd.DataFrame()
 
 
-def fetch_espn_scoreboard():
-    log.info("Fetching ESPN scoreboard...")
-    data = safe_get(f"{ESPN_BASE}/scoreboard")
-    if not data:
-        return []
-
+def parse_espn_events(data, default_week=0):
+    """Parse ESPN events list into game dicts."""
     games = []
+    week_num = data.get("week", {}).get("number", default_week)
+    season_year = data.get("season", {}).get("year", datetime.now().year)
     for event in data.get("events", []):
         try:
             comp = event["competitions"][0]
@@ -114,13 +112,14 @@ def fetch_espn_scoreboard():
 
             home_abbrev = abbrev_norm(home["team"]["abbreviation"])
             away_abbrev = abbrev_norm(away["team"]["abbreviation"])
+            status = event.get("status", {}).get("type", {}).get("name", "")
 
             game = {
                 "game_id": event["id"],
                 "game_time": event.get("date", ""),
-                "status": event.get("status", {}).get("type", {}).get("name", ""),
-                "week": data.get("week", {}).get("number", 0),
-                "season": data.get("season", {}).get("year", datetime.now().year),
+                "status": status,
+                "week": week_num,
+                "season": season_year,
                 "home_team": home_abbrev,
                 "away_team": away_abbrev,
                 "home_name": home["team"].get("displayName", home_abbrev),
@@ -134,9 +133,46 @@ def fetch_espn_scoreboard():
             games.append(game)
         except (KeyError, IndexError) as e:
             log.debug(f"Error parsing game: {e}")
-
-    log.info(f"Found {len(games)} scoreboard games")
     return games
+
+
+def fetch_espn_scoreboard():
+    log.info("Fetching ESPN scoreboard (current week)...")
+    data = safe_get(f"{ESPN_BASE}/scoreboard")
+    if not data:
+        return [], 0
+
+    games = parse_espn_events(data)
+    current_week = data.get("week", {}).get("number", 0)
+    log.info(f"Found {len(games)} scoreboard games (week {current_week})")
+    return games, current_week
+
+
+def fetch_espn_future_games(current_week, season_year, weeks_ahead=3):
+    """Fetch upcoming scheduled games for the next N weeks."""
+    future_games = []
+    seen_ids = set()
+    for offset in range(1, weeks_ahead + 1):
+        week = current_week + offset
+        if week > 22:
+            break
+        # Regular season
+        url = f"{ESPN_BASE}/scoreboard?seasontype=2&week={week}"
+        data = safe_get(url)
+        if not data:
+            # Try postseason (type 3)
+            url = f"{ESPN_BASE}/scoreboard?seasontype=3&week={week - 18}"
+            data = safe_get(url)
+        if not data:
+            continue
+        games = parse_espn_events(data, default_week=week)
+        for g in games:
+            if g["game_id"] not in seen_ids:
+                seen_ids.add(g["game_id"])
+                g["is_future"] = True
+                future_games.append(g)
+    log.info(f"Found {len(future_games)} future scheduled games")
+    return future_games
 
 
 def fetch_espn_standings():
@@ -540,7 +576,7 @@ def run():
 
     # ── 1. Download data ────────────────────────────────────────────────────
     fte_df = download_fte_data()
-    scoreboard_games = fetch_espn_scoreboard()
+    scoreboard_games, current_week = fetch_espn_scoreboard()
     standings = fetch_espn_standings()
     injuries = fetch_espn_injuries()
     odds_map = fetch_betting_odds(odds_api_key)
@@ -571,6 +607,10 @@ def run():
         season_year -= 1
 
     is_offseason = len(scoreboard_games) == 0
+
+    # ── 1c. Fetch future scheduled games ────────────────────────────────────
+    future_games = fetch_espn_future_games(current_week, season_year, weeks_ahead=3)
+    all_games_for_prediction = scoreboard_games + future_games
 
     # ── 2. Build ELO ratings (FTE historical + ESPN live continuation) ─────
     log.info("Computing ELO ratings from FTE data...")
@@ -677,7 +717,7 @@ def run():
     # ── 7. Season simulation ────────────────────────────────────────────────
     log.info("Running season simulation...")
     remaining_schedule = []  # Would populate from ESPN schedule API
-    for game in scoreboard_games:
+    for game in all_games_for_prediction:
         if game.get("status", "") in ("STATUS_SCHEDULED", "STATUS_IN_PROGRESS"):
             remaining_schedule.append({
                 "team_a": game["home_team"],
@@ -703,10 +743,10 @@ def run():
                           "sb_prob": 0.03, "wins_avg": 8.5} for t in NFL_TEAMS}
 
     # ── 8. Generate per-game predictions ────────────────────────────────────
-    log.info(f"Generating predictions for {len(scoreboard_games)} games...")
+    log.info(f"Generating predictions for {len(all_games_for_prediction)} games...")
     predictions_list = []
 
-    for game in scoreboard_games:
+    for game in all_games_for_prediction:
         try:
             home = game["home_team"]
             away = game["away_team"]
@@ -840,6 +880,7 @@ def run():
                 "game_time": game["game_time"],
                 "week": game.get("week", 0),
                 "status": game.get("status", ""),
+                "is_future": bool(game.get("is_future", False)),
                 "home_team": home,
                 "away_team": away,
                 "home_name": game.get("home_name", home),
@@ -847,6 +888,8 @@ def run():
                 "home_logo": game.get("home_logo", ""),
                 "away_logo": game.get("away_logo", ""),
                 "neutral": neutral,
+                "home_score": game.get("home_score", 0),
+                "away_score": game.get("away_score", 0),
                 "predictions": {
                     "ensemble_prob": ensemble_prob,
                     "logistic_prob": round(log_prob, 4),
@@ -949,7 +992,7 @@ def run():
     # ── 10. Write JSON files ─────────────────────────────────────────────────
     log.info("Writing JSON output files...")
 
-    week_num = scoreboard_games[0].get("week", 0) if scoreboard_games else 0
+    week_num = current_week if current_week else (scoreboard_games[0].get("week", 0) if scoreboard_games else 0)
 
     predictions_json = {
         "updated": now_utc,

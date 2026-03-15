@@ -297,6 +297,69 @@ function renderGames() {
   logPredictions(pred.games, isNba ? 'nba' : 'nfl');
 }
 
+/* ── Score display (FINAL / live) ─────────────────────────────── */
+function buildScoreHtml(game) {
+  const status = game.status || '';
+  const isFinal = status === 'STATUS_FINAL';
+  const isLive  = status === 'STATUS_IN_PROGRESS' || status === 'STATUS_HALFTIME';
+  const homeScore = game.home_score;
+  const awayScore = game.away_score;
+
+  if ((isFinal || isLive) && homeScore != null && awayScore != null) {
+    const winner = isFinal
+      ? (homeScore > awayScore ? 'home' : awayScore > homeScore ? 'away' : 'tie')
+      : '';
+    return `
+  <div class="score-display ${isLive ? 'score-live' : 'score-final'}">
+    <span class="score-away ${winner === 'away' ? 'score-winner' : ''}">${game.away_team} <strong>${awayScore}</strong></span>
+    <span class="score-sep">${isLive ? '<span class="live-dot"></span>LIVE' : 'FINAL'}</span>
+    <span class="score-home ${winner === 'home' ? 'score-winner' : ''}"><strong>${homeScore}</strong> ${game.home_team}</span>
+  </div>`;
+  }
+  return '';
+}
+
+/* ── Key factors strip (always-visible rest/timezone/B2B) ──────── */
+function buildKeyFactorsStrip(game, adj, isNba) {
+  const items = [];
+  const restHome = adj.rest_home ?? adj.rest_home_days;
+  const restAway = adj.rest_away ?? adj.rest_away_days;
+  const tzHome = TEAM_TZ[game.home_team] || -5;
+  const tzAway = TEAM_TZ[game.away_team] || -5;
+  const tzShift = tzAway - tzHome; // positive = away travelling east (gaining time)
+  const absTz = Math.abs(tzShift);
+
+  // Rest days
+  if (restHome != null || restAway != null) {
+    const rh = restHome ?? 7;
+    const ra = restAway ?? 7;
+    const homeRestClass = rh <= 2 ? 'kf-bad' : rh >= 7 ? 'kf-good' : '';
+    const awayRestClass = ra <= 2 ? 'kf-bad' : ra >= 7 ? 'kf-good' : '';
+    items.push(`<div class="kf-item"><span class="kf-label">Rest</span>
+      <span class="kf-val ${homeRestClass}">${game.home_team} ${rh}d</span>
+      <span class="kf-sep">vs</span>
+      <span class="kf-val ${awayRestClass}">${game.away_team} ${ra}d</span></div>`);
+  }
+
+  // Timezone shift
+  if (absTz >= 2) {
+    const dir = tzShift > 0 ? `${game.away_team} travels east +${absTz}hr` : `${game.away_team} travels west ${absTz}hr`;
+    items.push(`<div class="kf-item kf-tz"><span class="kf-label">TZ</span><span class="kf-val kf-warn">${dir}</span></div>`);
+  }
+
+  // Back-to-back (NBA)
+  if (isNba && adj.home_b2b) items.push(`<div class="kf-item"><span class="kf-val kf-bad">${game.home_team} B2B</span></div>`);
+  if (isNba && adj.away_b2b) items.push(`<div class="kf-item"><span class="kf-val kf-bad">${game.away_team} B2B</span></div>`);
+
+  // Travel distance (NFL)
+  if (!isNba && adj.travel_dist_miles > 1000) {
+    items.push(`<div class="kf-item"><span class="kf-label">Travel</span><span class="kf-val kf-warn">${Math.round(adj.travel_dist_miles)} mi</span></div>`);
+  }
+
+  if (!items.length) return '';
+  return `<div class="key-factors-strip">${items.join('')}</div>`;
+}
+
 function buildGameCard(game, isNba) {
   const p = game.predictions || {};
   const ensProb = ensembleFromProbs(p, state.weights);
@@ -320,10 +383,18 @@ function buildGameCard(game, isNba) {
 
   const homeWins = homeData.wins ?? 0;
   const homeLosses = homeData.losses ?? 0;
+  const homeTies = homeData.ties ?? 0;
   const awayWins = awayData.wins ?? 0;
   const awayLosses = awayData.losses ?? 0;
-  const homeRecordStr = (homeWins + homeLosses) > 0 ? `${homeWins}-${homeLosses}` : '';
-  const awayRecordStr = (awayWins + awayLosses) > 0 ? `${awayWins}-${awayLosses}` : '';
+  const awayTies = awayData.ties ?? 0;
+  const homeRecordStr = `${homeWins}-${homeLosses}${homeTies > 0 ? `-${homeTies}` : ''}`;
+  const awayRecordStr = `${awayWins}-${awayLosses}${awayTies > 0 ? `-${awayTies}` : ''}`;
+
+  // Score display
+  const scoreHtml = buildScoreHtml(game);
+
+  // Key factors strip (always visible: rest, timezone, B2B, travel)
+  const keyFactorsHtml = buildKeyFactorsStrip(game, adj, isNba);
 
   // Game context: rest, streak, travel, timezone
   const homeTrend = homeData.trend || 'neutral';
@@ -369,13 +440,15 @@ function buildGameCard(game, isNba) {
     </div>` : '');
 
   // Adjustment panel
-  const adjPanelHtml = buildAdjPanelHtml(game.game_id, elo);
+  const adjPanelHtml = buildAdjPanelHtml(game.game_id, elo, game);
 
   return `
-<div class="game-card" data-game-id="${game.game_id}">
+<div class="game-card${game.is_future ? ' game-card-future' : ''}" data-game-id="${game.game_id}">
   <div class="game-header">
     <div class="game-meta">
+      ${game.status === 'STATUS_IN_PROGRESS' || game.status === 'STATUS_HALFTIME' ? '<span class="text-live">● LIVE</span> · ' : ''}
       ${game.status === 'STATUS_FINAL' ? '<span class="text-red">FINAL</span> · ' : ''}
+      ${game.is_future ? '<span class="future-badge">Upcoming</span> · ' : ''}
       ${fmtDate(game.game_time)}
       ${game.neutral ? ' · Neutral Site' : ''}
     </div>
@@ -390,17 +463,20 @@ function buildGameCard(game, isNba) {
     <div class="team-side away">
       <img class="team-logo" src="${game.away_logo}" alt="${game.away_team}" onerror="this.style.display='none'" loading="lazy" />
       <div class="team-name-abbrev" title="${game.away_name}">${game.away_team}</div>
-      ${awayRecordStr ? `<div class="team-record">${awayRecordStr}</div>` : ''}
+      <div class="team-record">${awayRecordStr}</div>
       <div class="team-elo">ELO ${eloFmt(elo.away)}</div>
     </div>
     <div class="vs-label">@</div>
     <div class="team-side home">
       <img class="team-logo" src="${game.home_logo}" alt="${game.home_team}" onerror="this.style.display='none'" loading="lazy" />
       <div class="team-name-abbrev" title="${game.home_name}">${game.home_team}</div>
-      ${homeRecordStr ? `<div class="team-record">${homeRecordStr}</div>` : ''}
+      <div class="team-record">${homeRecordStr}</div>
       <div class="team-elo">ELO ${eloFmt(elo.home)}</div>
     </div>
   </div>
+
+  ${scoreHtml}
+  ${keyFactorsHtml}
 
   <div class="prob-bar-section">
     <div class="prob-labels">
@@ -495,7 +571,12 @@ function buildInjuryHtml(game, isNba) {
   const awayInjuries = injuries.away || [];
   const totalInjured = homeInjuries.length + awayInjuries.length;
 
-  if (totalInjured === 0 && !impact.home_elo_penalty && !impact.away_elo_penalty) return '';
+  if (totalInjured === 0 && !impact.home_elo_penalty && !impact.away_elo_penalty) {
+    return `
+  <div class="injury-panel">
+    <div class="inj-none">✅ No reported injuries for either team</div>
+  </div>`;
+  }
 
   const statusClass = s => {
     const sl = (s || '').toLowerCase();
@@ -536,7 +617,7 @@ function buildInjuryHtml(game, isNba) {
     <button class="inj-toggle-btn" data-injury-toggle="${game.game_id}">
       🏥 Injuries (${totalInjured}) ${(homePenalty + awayPenalty) > 0 ? '· Impact active' : ''}
     </button>
-    <div class="inj-content hidden" id="inj-${game.game_id}">
+    <div class="inj-content" id="inj-${game.game_id}">
       ${keyOutHtml}
       ${homeSection}
       ${awaySection}
@@ -545,19 +626,22 @@ function buildInjuryHtml(game, isNba) {
 }
 
 /* ── Per-game adjustment panel ────────────────────────────────── */
-function buildAdjPanelHtml(gameId, elo) {
+function buildAdjPanelHtml(gameId, elo, game) {
   const ov = state.gameOverrides[gameId] || {};
+  const homeTeam = game?.home_team || 'Home';
+  const awayTeam = game?.away_team || 'Away';
   return `
   <div class="adjust-panel" id="adj-${gameId}" style="display:none">
     <div class="adjust-panel-header">
       <span>Manual Factor Adjustments</span>
       <button class="adj-reset-btn" data-adj-reset="${gameId}">Reset</button>
     </div>
+    <div class="adj-section-label">ELO &amp; Momentum</div>
     <div class="adjust-sliders">
       <div class="adjust-row">
         <div class="adjust-row-label">
           <span>${(elo.home || 1500).toFixed(0)} ELO</span>
-          <label>Home ELO Boost <span class="adj-val" id="adj-homeBoost-val-${gameId}">${ov.homeBoost || 0}</span></label>
+          <label>${homeTeam} ELO Boost <span class="adj-val" id="adj-homeBoost-val-${gameId}">${ov.homeBoost || 0}</span></label>
           <span></span>
         </div>
         <input type="range" class="adj-slider" data-game-id="${gameId}" data-adj="homeBoost" min="-50" max="50" step="1" value="${ov.homeBoost || 0}" />
@@ -565,7 +649,7 @@ function buildAdjPanelHtml(gameId, elo) {
       <div class="adjust-row">
         <div class="adjust-row-label">
           <span>${(elo.away || 1500).toFixed(0)} ELO</span>
-          <label>Away ELO Boost <span class="adj-val" id="adj-awayBoost-val-${gameId}">${ov.awayBoost || 0}</span></label>
+          <label>${awayTeam} ELO Boost <span class="adj-val" id="adj-awayBoost-val-${gameId}">${ov.awayBoost || 0}</span></label>
           <span></span>
         </div>
         <input type="range" class="adj-slider" data-game-id="${gameId}" data-adj="awayBoost" min="-50" max="50" step="1" value="${ov.awayBoost || 0}" />
@@ -595,6 +679,40 @@ function buildAdjPanelHtml(gameId, elo) {
         <input type="range" class="adj-slider" data-game-id="${gameId}" data-adj="restFactor" min="-20" max="20" step="1" value="${ov.restFactor || 0}" />
       </div>
     </div>
+    <div class="adj-section-label">Injury Overrides</div>
+    <div class="adjust-sliders">
+      <div class="adjust-row">
+        <div class="adjust-row-label">
+          <span>-30</span>
+          <label>${homeTeam} Injury Override <span class="adj-val" id="adj-injHome-val-${gameId}">${ov.injHome || 0}</span></label>
+          <span>+30</span>
+        </div>
+        <input type="range" class="adj-slider" data-game-id="${gameId}" data-adj="injHome" min="-30" max="30" step="1" value="${ov.injHome || 0}" />
+      </div>
+      <div class="adjust-row">
+        <div class="adjust-row-label">
+          <span>-30</span>
+          <label>${awayTeam} Injury Override <span class="adj-val" id="adj-injAway-val-${gameId}">${ov.injAway || 0}</span></label>
+          <span>+30</span>
+        </div>
+        <input type="range" class="adj-slider" data-game-id="${gameId}" data-adj="injAway" min="-30" max="30" step="1" value="${ov.injAway || 0}" />
+      </div>
+    </div>
+    <div class="adj-section-label">Conditions</div>
+    <div class="adjust-sliders">
+      <div class="adjust-row">
+        <div class="adjust-row-label">
+          <span>-15</span>
+          <label>Weather / Conditions (Home) <span class="adj-val" id="adj-weather-val-${gameId}">${ov.weather || 0}</span></label>
+          <span>+15</span>
+        </div>
+        <input type="range" class="adj-slider" data-game-id="${gameId}" data-adj="weather" min="-15" max="15" step="1" value="${ov.weather || 0}" />
+      </div>
+    </div>
+    <div class="adj-notes-wrap">
+      <label class="adj-notes-label">Notes / Reasoning</label>
+      <textarea class="adj-notes-input" data-game-id="${gameId}" placeholder="e.g. Starting QB listed questionable, home crowd advantage in cold weather…" rows="2">${ov.notes || ''}</textarea>
+    </div>
     <div class="adj-result" id="adj-result-${gameId}"></div>
   </div>`;
 }
@@ -612,11 +730,14 @@ function recalcGameCard(gameId) {
   const hfaMult = ov.hfaMult != null ? ov.hfaMult : 1.0;
   const momentumBoost = ov.momentumBoost || 0;
   const restFactor = ov.restFactor || 0;
+  const injHome = ov.injHome || 0;
+  const injAway = ov.injAway || 0;
+  const weather = ov.weather || 0;
 
   const elo = game.elo || {};
   const hfa = state.params.hfa;
-  const adjHomeElo = (elo.home || 1500) + homeBoost + momentumBoost + restFactor + hfa * hfaMult;
-  const adjAwayElo = (elo.away || 1500) + awayBoost;
+  const adjHomeElo = (elo.home || 1500) + homeBoost + momentumBoost + restFactor + injHome + weather + hfa * hfaMult;
+  const adjAwayElo = (elo.away || 1500) + awayBoost + injAway;
   const adjEloProb = clamp(1 / (1 + Math.pow(10, (adjAwayElo - adjHomeElo) / 400)), 0.01, 0.99);
 
   const p = game.predictions || {};
@@ -646,7 +767,7 @@ function recalcGameCard(gameId) {
     probFill.style.marginLeft = `${((1 - newEns) * 100).toFixed(1)}%`;
   }
 
-  const isActive = homeBoost !== 0 || awayBoost !== 0 || hfaMult !== 1.0 || momentumBoost !== 0 || restFactor !== 0;
+  const isActive = homeBoost !== 0 || awayBoost !== 0 || hfaMult !== 1.0 || momentumBoost !== 0 || restFactor !== 0 || injHome !== 0 || injAway !== 0 || weather !== 0;
   if (adjResult) {
     adjResult.innerHTML = isActive
       ? `<div class="adj-result-row">Adjusted: <strong>${game.home_team} ${pct(newEns)}</strong> vs <strong>${game.away_team} ${pct(newAway)}</strong></div>`
@@ -682,7 +803,7 @@ document.addEventListener('click', e => {
   if (resetBtn) {
     const gameId = resetBtn.dataset.adjReset;
     delete state.gameOverrides[gameId];
-    // Reset sliders
+    // Reset sliders and notes
     const panel = document.getElementById('adj-' + gameId);
     if (panel) {
       panel.querySelectorAll('.adj-slider').forEach(sl => {
@@ -691,6 +812,8 @@ document.addEventListener('click', e => {
         const valEl = document.getElementById(`adj-${adjType}-val-${gameId}`);
         if (valEl) valEl.textContent = adjType === 'hfaMult' ? '1.0' : '0';
       });
+      const notesEl = panel.querySelector('.adj-notes-input');
+      if (notesEl) notesEl.value = '';
     }
     recalcGameCard(gameId);
     return;
@@ -705,7 +828,7 @@ document.addEventListener('input', e => {
   if (!gameId || !adjType) return;
 
   if (!state.gameOverrides[gameId]) {
-    state.gameOverrides[gameId] = { homeBoost: 0, awayBoost: 0, hfaMult: 1.0, momentumBoost: 0, restFactor: 0 };
+    state.gameOverrides[gameId] = { homeBoost: 0, awayBoost: 0, hfaMult: 1.0, momentumBoost: 0, restFactor: 0, injHome: 0, injAway: 0, weather: 0, notes: '' };
   }
   state.gameOverrides[gameId][adjType] = parseFloat(slider.value);
 
@@ -716,6 +839,16 @@ document.addEventListener('input', e => {
       : slider.value;
   }
   recalcGameCard(gameId);
+});
+
+// Notes textarea handler
+document.addEventListener('input', e => {
+  const notes = e.target.closest('.adj-notes-input');
+  if (!notes) return;
+  const gameId = notes.dataset.gameId;
+  if (!gameId) return;
+  if (!state.gameOverrides[gameId]) state.gameOverrides[gameId] = {};
+  state.gameOverrides[gameId].notes = notes.value;
 });
 
 /* ══════════════════════════════════════════════════════════════
@@ -1512,6 +1645,25 @@ async function renderAccuracyTab() {
     const correct = resolved.filter(e => e.actual_winner === e.predicted_winner);
     const accuracy = resolved.length > 0 ? (correct.length / resolved.length * 100).toFixed(1) : null;
 
+    // Season record banner
+    const recordBannerHtml = resolved.length > 0 ? (() => {
+      const wins = correct.length;
+      const losses = resolved.length - correct.length;
+      const accNum = parseFloat(accuracy);
+      const accClass = accNum >= 60 ? 'record-good' : accNum < 50 ? 'record-bad' : 'record-neutral';
+      // Recent streak (last 10 resolved)
+      const last10 = [...resolved].sort((a, b) => new Date(b.game_time) - new Date(a.game_time)).slice(0, 10);
+      const streakDots = last10.map(e => {
+        const isW = e.actual_winner === e.predicted_winner;
+        return `<span class="streak-dot ${isW ? 'streak-w' : 'streak-l'}" title="${e.away_team} @ ${e.home_team}: ${isW ? 'W' : 'L'}">${isW ? 'W' : 'L'}</span>`;
+      }).join('');
+      return `
+      <div class="season-record-banner ${accClass}">
+        <div class="season-record-main">Season Record: <strong>${wins}–${losses}</strong> <span class="season-acc">(${accuracy}%)</span></div>
+        <div class="streak-row"><span class="streak-label">Last ${last10.length}:</span> ${streakDots}</div>
+      </div>`;
+    })() : '';
+
     // Confidence tier breakdown
     const tiers = [
       { label: '<55%', min: 0, max: 0.55 },
@@ -1526,6 +1678,7 @@ async function renderAccuracyTab() {
     });
 
     const summaryHtml = `
+      ${recordBannerHtml}
       <div class="accuracy-summary">
         <div class="acc-stat">
           <div class="acc-stat-val">${entries.length}</div>
