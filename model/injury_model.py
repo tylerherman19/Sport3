@@ -47,8 +47,8 @@ STATUS_MULTIPLIERS = {
     "day-to-day":   0.30,
 }
 
-# Cap maximum ELO penalty per team (prevents extreme swings)
-MAX_INJURY_ELO_PENALTY = 80.0  # raised from 60 to accommodate franchise-player losses
+# Cap maximum ELO penalty per team (allows stacked star absences to register fully)
+MAX_INJURY_ELO_PENALTY = 110.0
 # Cap per-player contribution — scales with player value for elite players
 MAX_PLAYER_CONTRIBUTION = 30.0
 
@@ -134,7 +134,20 @@ def compute_injury_impact(team_injuries: list, player_values: dict = None) -> di
                 "value_tier": tier,
             })
 
-    capped_penalty = min(total_elo_penalty, MAX_INJURY_ELO_PENALTY)
+    # Star stack multiplier: multiple elite absences compound the impact
+    star_count = sum(
+        1 for p in key_players_out
+        if p["value_tier"] in ("superstar", "all-star")
+    )
+    if star_count >= 3:
+        stack_mult = 1.30
+    elif star_count == 2:
+        stack_mult = 1.15
+    else:
+        stack_mult = 1.0
+    stacked_penalty = total_elo_penalty * stack_mult
+
+    capped_penalty = min(stacked_penalty, MAX_INJURY_ELO_PENALTY)
     # Normalised impact score: 0 = no injuries, 1 = max possible penalty
     impact_score = round(capped_penalty / MAX_INJURY_ELO_PENALTY, 4)
 
@@ -143,6 +156,8 @@ def compute_injury_impact(team_injuries: list, player_values: dict = None) -> di
         "impact_score": impact_score,
         "key_players_out": key_players_out,
         "total_players": len(team_injuries),
+        "star_count": star_count,
+        "star_stack_multiplier": stack_mult,
     }
 
 
@@ -211,8 +226,8 @@ NBA_STATUS_MULTIPLIERS = {
     "game time decision": 0.35,
 }
 
-# Maximum NBA injury penalty per team
-NBA_MAX_INJURY_ELO_PENALTY = 80.0
+# Maximum NBA injury penalty per team (allows stacked star absences to register fully)
+NBA_MAX_INJURY_ELO_PENALTY = 120.0
 NBA_MAX_PLAYER_CONTRIBUTION = 50.0
 
 # Back-to-back rest risk penalty
@@ -300,7 +315,20 @@ def compute_nba_injury_impact(team_injuries: list, player_values: dict = None) -
                 "value_tier": tier_label,
             })
 
-    capped_penalty = min(total_elo_penalty, NBA_MAX_INJURY_ELO_PENALTY)
+    # Star stack multiplier: multiple elite absences compound the impact
+    star_count = sum(
+        1 for p in key_players_out
+        if p["value_tier"] in ("superstar", "all-star")
+    )
+    if star_count >= 3:
+        stack_mult = 1.30
+    elif star_count == 2:
+        stack_mult = 1.15
+    else:
+        stack_mult = 1.0
+    stacked_penalty = total_elo_penalty * stack_mult
+
+    capped_penalty = min(stacked_penalty, NBA_MAX_INJURY_ELO_PENALTY)
     impact_score = round(capped_penalty / NBA_MAX_INJURY_ELO_PENALTY, 4)
 
     return {
@@ -308,6 +336,8 @@ def compute_nba_injury_impact(team_injuries: list, player_values: dict = None) -
         "impact_score": impact_score,
         "key_players_out": key_players_out,
         "total_players": len(team_injuries),
+        "star_count": star_count,
+        "star_stack_multiplier": stack_mult,
     }
 
 
