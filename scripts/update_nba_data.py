@@ -64,6 +64,7 @@ NBA_TEAM_NAMES = {
 # ESPN abbreviation normalization for NBA
 ESPN_NBA_TO_ABBREV = {
     "GS": "GSW", "NY": "NYK", "NO": "NOP", "SA": "SAS",
+    "UTAH": "UTA",
     "OKC": "OKC", "BKN": "BKN", "WSH": "WAS", "CHA": "CHA",
     "PHX": "PHX", "LAL": "LAL", "LAC": "LAC",
 }
@@ -321,12 +322,23 @@ def fetch_nba_injuries():
         log.warning("NBA injuries endpoint returned no data")
         return {}
 
+    log.info(f"ESPN injuries API top-level keys: {list(data.keys())}")
+
+    # Try multiple possible ESPN response keys in case structure changes
+    team_entries = (
+        data.get("injuries")
+        or data.get("items")
+        or data.get("teams")
+        or []
+    )
+    log.info(f"ESPN injuries: found {len(team_entries)} team entries")
+
     injuries = {}
     try:
         # ESPN response: {"injuries": [{"abbreviation": "ATL", "displayName": "Atlanta Hawks",
         #                                "injuries": [{athlete+status entries}]}]}
         # The team abbreviation lives on team_entry, NOT inside the athlete sub-object.
-        for team_entry in data.get("injuries", []):
+        for team_entry in team_entries:
             # Primary: use top-level abbreviation on the team entry
             raw_abbrev = (
                 team_entry.get("abbreviation", "")
@@ -1202,6 +1214,9 @@ def run():
             # Pythagorean prediction — direct ratio (Bradley-Terry), not ELO transform
             pyth_home = pyth_data.get(home, {}).get("pyth", 0.5)
             pyth_away = pyth_data.get(away, {}).get("pyth", 0.5)
+            # ELO-scaled versions used in logistic feature vector
+            pyth_elo_home = 1500 + (pyth_home - 0.5) * 400 + hfa
+            pyth_elo_away = 1500 + (pyth_away - 0.5) * 400
             # Scale home court advantage into pythagorean space (hfa=100 ELO ≈ +6.7% win prob)
             pyth_home_adj = pyth_home * (1.0 + hfa / 1500.0)
             _pyth_denom = pyth_home_adj + pyth_away
