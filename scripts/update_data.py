@@ -283,6 +283,75 @@ def fetch_espn_injuries():
     return injuries
 
 
+def fetch_espn_depth_charts():
+    """
+    Fetch NFL depth chart positions for all teams from ESPN.
+    Returns {player_name: depth_position_int} where 1 = first string (starter).
+    """
+    log.info("Fetching ESPN NFL depth charts for player value scoring...")
+    player_depth = {}
+    try:
+        teams_data = safe_get(f"{ESPN_BASE}/teams")
+        if not teams_data:
+            log.warning("Could not fetch ESPN teams list for depth charts")
+            return {}
+        teams_list = (
+            teams_data.get("sports", [{}])[0]
+            .get("leagues", [{}])[0]
+            .get("teams", [])
+        )
+        for team_entry in teams_list:
+            team_id = team_entry.get("team", {}).get("id", "")
+            if not team_id:
+                continue
+            depth_data = safe_get(f"{ESPN_BASE}/teams/{team_id}/depthcharts")
+            if not depth_data:
+                continue
+            for pos_group in depth_data.get("positionGroups", []):
+                for position in pos_group.get("positions", []):
+                    for athlete_entry in position.get("athletes", []):
+                        name = athlete_entry.get("athlete", {}).get("displayName", "")
+                        depth_pos = int(athlete_entry.get("rank", 99))
+                        if not name:
+                            continue
+                        # Keep the best (lowest) depth position seen for this player
+                        if name not in player_depth or depth_pos < player_depth[name]:
+                            player_depth[name] = depth_pos
+    except Exception as e:
+        log.warning(f"Error fetching depth charts: {e}")
+    log.info(f"Depth chart loaded: {len(player_depth)} player entries")
+    return player_depth
+
+
+# Depth position → value multiplier (how impactful vs an average starter)
+_DEPTH_VALUE_MAP = {1: 1.0, 2: 0.55, 3: 0.25}
+
+
+def _depth_to_value_mult(depth_pos: int) -> float:
+    return _DEPTH_VALUE_MAP.get(depth_pos, 0.15)
+
+
+def build_player_values(depth_charts: dict) -> dict:
+    """
+    Convert depth chart positions to value multipliers.
+    Returns {player_name: multiplier} where 1.0 = first-string starter.
+    """
+    return {name: _depth_to_value_mult(pos) for name, pos in depth_charts.items()}
+
+
+def value_tier_label(mult: float) -> str:
+    """Return tier label for a player value multiplier."""
+    if mult >= 1.8:
+        return "superstar"
+    if mult >= 1.3:
+        return "all-star"
+    if mult >= 0.8:
+        return "starter"
+    if mult >= 0.4:
+        return "backup"
+    return "rotation"
+
+
 def fetch_espn_completed_games(season_year):
     """
     Fetch completed NFL games from ESPN for the given season year.
@@ -657,21 +726,28 @@ def run():
                 standings[team]["games_played"] += 1
         log.info(f"Built standings from FTE data for {len(standings)} teams")
 
-    # ── 1b. Compute injury impacts ──────────────────────────────────────────
+    # ── 1b. Fetch depth charts and compute player values ────────────────────
+    depth_charts = fetch_espn_depth_charts()
+    player_values = build_player_values(depth_charts)
+
+    # ── 1c. Compute injury impacts (using player-specific value multipliers) ─
     log.info("Computing injury impact scores...")
-    injury_impacts = compute_all_team_impacts(injuries)
+    injury_impacts = compute_all_team_impacts(injuries, player_values)
 
     # Save NFL injuries file (only overwrite if we actually fetched data)
     if injuries:
         nfl_injuries_list = []
         for team, players in injuries.items():
             for p in players:
+                pname = p.get("player", "")
+                pmult = player_values.get(pname, 1.0)
                 nfl_injuries_list.append({
-                    "player": p.get("player", ""),
+                    "player": pname,
                     "team": team,
                     "position": p.get("position", ""),
                     "status": p.get("status", ""),
                     "injury_description": p.get("status", ""),
+                    "value_tier": value_tier_label(pmult),
                 })
         (DATA_DIR / "nfl_injuries.json").write_text(
             json.dumps({"updated": now_utc, "injuries": nfl_injuries_list}, indent=2)
@@ -1034,8 +1110,14 @@ def run():
                     "away_band": bayes_result["uncertainty_band_b"],
                 },
                 "injuries": {
-                    "home": injuries.get(home, [])[:5],
-                    "away": injuries.get(away, [])[:5],
+                    "home": [
+                        {**p, "value_tier": value_tier_label(player_values.get(p.get("player", ""), 1.0))}
+                        for p in injuries.get(home, [])[:5]
+                    ],
+                    "away": [
+                        {**p, "value_tier": value_tier_label(player_values.get(p.get("player", ""), 1.0))}
+                        for p in injuries.get(away, [])[:5]
+                    ],
                 },
                 "injury_impact": {
                     "home_elo_penalty": home_inj_impact.get("elo_penalty", 0.0),
