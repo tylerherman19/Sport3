@@ -266,7 +266,7 @@ function buildInjuriesMap(injData) {
     const team = p.team;
     if (!team) continue;
     if (!map[team]) map[team] = [];
-    map[team].push({ player: p.player, status: p.status, position: p.position, injury_description: p.injury_description || p.status });
+    map[team].push({ player: p.player, status: p.status, position: p.position, injury_description: p.injury_description || p.status, value_tier: p.value_tier || 'starter' });
   }
   return map;
 }
@@ -973,12 +973,20 @@ function buildInjuryHtml(game, isNba) {
     return 'probable';
   };
 
+  const tierBadge = tier => {
+    if (!tier || tier === 'starter') return '';
+    const badgeClass = { superstar: 'tier-superstar', 'all-star': 'tier-allstar', backup: 'tier-backup', rotation: 'tier-rotation' }[tier] || '';
+    if (!badgeClass) return '';
+    return `<span class="inj-tier-badge ${badgeClass}">${tier}</span>`;
+  };
+
   const playerChip = p => {
     const cls = statusClass(p.status);
     const name = p.name || p.player || 'Unknown';
     const pos = p.position || p.pos || '';
     const status = p.status || '';
-    return `<span class="injury-chip ${cls}" title="${name} — ${status}">${pos ? `<span class="inj-pos">${pos}</span>` : ''}${name}<span class="inj-status">${status}</span></span>`;
+    const tier = p.value_tier || '';
+    return `<span class="injury-chip ${cls}" title="${name} — ${status}${tier ? ' · ' + tier : ''}">${pos ? `<span class="inj-pos">${pos}</span>` : ''}${tierBadge(tier)}${name}<span class="inj-status">${status}</span></span>`;
   };
 
   const homePenalty = impact.home_elo_penalty || 0;
@@ -997,7 +1005,11 @@ function buildInjuryHtml(game, isNba) {
     </div>` : '';
 
   const keyOut = (impact.home_key_players_out || []).concat(impact.away_key_players_out || []);
-  const keyOutHtml = keyOut.length ? `<div class="inj-key-out">Key out: ${keyOut.join(', ')}</div>` : '';
+  const keyOutHtml = keyOut.length ? `<div class="inj-key-out">Key out: ${keyOut.map(p => {
+    const tier = p.value_tier || '';
+    const tierLabel = (tier && tier !== 'starter') ? ` <span class="inj-tier-badge ${{ superstar: 'tier-superstar', 'all-star': 'tier-allstar', backup: 'tier-backup', rotation: 'tier-rotation' }[tier] || ''}">${tier}</span>` : '';
+    return `<strong>${p.player}</strong>${tierLabel} (${p.position}, ${p.status}, −${p.elo_impact} ELO)`;
+  }).join(' · ')}</div>` : '';
 
   return `
   <div class="injury-panel">

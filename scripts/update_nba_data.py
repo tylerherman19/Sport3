@@ -132,6 +132,38 @@ NBA_PLAYER_TIERS = {
     "Kawhi Leonard":             "all-star",
 }
 
+# Numeric value multipliers for each tier (used as player_values for injury_model)
+_NBA_TIER_VALUE = {
+    "superstar": 2.0,
+    "all-star":  1.5,
+    "starter":   1.0,
+    "rotation":  0.5,
+}
+
+
+def build_nba_player_values():
+    """
+    Convert the curated NBA_PLAYER_TIERS dict to numeric value multipliers.
+    Returns {player_name: value_multiplier}.
+    """
+    return {
+        name: _NBA_TIER_VALUE.get(tier, 1.0)
+        for name, tier in NBA_PLAYER_TIERS.items()
+    }
+
+
+def nba_value_tier_label(mult: float) -> str:
+    """Convert NBA player value multiplier to human-readable tier label."""
+    if mult >= 1.8:
+        return "superstar"
+    if mult >= 1.3:
+        return "all-star"
+    if mult >= 0.8:
+        return "starter"
+    if mult >= 0.4:
+        return "backup"
+    return "rotation"
+
 
 def abbrev_norm(abbrev):
     a = abbrev.upper().strip()
@@ -947,19 +979,23 @@ def run():
 
     # ── 1b. Injury impacts ──────────────────────────────────────────────────
     log.info("Computing NBA injury impacts...")
-    injury_impacts = compute_all_nba_team_impacts(injuries)
+    nba_player_values = build_nba_player_values()
+    injury_impacts = compute_all_nba_team_impacts(injuries, nba_player_values)
 
     # Save NBA injuries file (only overwrite if we actually fetched data)
     if injuries:
         nba_injuries_list = []
         for team, players in injuries.items():
             for p in players:
+                pname = p.get("player", "")
+                pmult = nba_player_values.get(pname, 1.0)
                 nba_injuries_list.append({
-                    "player": p.get("player", ""),
+                    "player": pname,
                     "team": team,
                     "position": p.get("position", ""),
                     "status": p.get("status", ""),
                     "injury_description": p.get("injury_description", p.get("status", "")),
+                    "value_tier": nba_value_tier_label(pmult),
                 })
         (DATA_DIR / "nba_injuries.json").write_text(
             json.dumps({"updated": now_utc, "injuries": nba_injuries_list}, indent=2)
@@ -1436,8 +1472,14 @@ def run():
                     "away_pace": efficiency_data.get(away, {}).get("pace", 100.0),
                 },
                 "injuries": {
-                    "home": injuries.get(home, [])[:5],
-                    "away": injuries.get(away, [])[:5],
+                    "home": [
+                        {**p, "value_tier": nba_value_tier_label(nba_player_values.get(p.get("player", ""), 1.0))}
+                        for p in injuries.get(home, [])[:5]
+                    ],
+                    "away": [
+                        {**p, "value_tier": nba_value_tier_label(nba_player_values.get(p.get("player", ""), 1.0))}
+                        for p in injuries.get(away, [])[:5]
+                    ],
                 },
                 "injury_impact": {
                     "home_elo_penalty": home_inj_impact.get("elo_penalty", 0.0),

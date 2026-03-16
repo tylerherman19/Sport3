@@ -1169,6 +1169,38 @@ tbody tr:hover { background: var(--surface2); }
   color: var(--text-muted);
   margin-left: 0.2rem;
 }
+/* Player value tier badges */
+.inj-tier-badge {
+  display: inline-block;
+  font-size: 0.58rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  padding: 0.08rem 0.28rem;
+  border-radius: 3px;
+  margin-right: 0.18rem;
+  vertical-align: middle;
+}
+.tier-superstar {
+  background: rgba(255, 200, 0, 0.2);
+  color: #f5c400;
+  border: 1px solid rgba(255, 200, 0, 0.35);
+}
+.tier-allstar {
+  background: rgba(80, 150, 255, 0.18);
+  color: #6aadff;
+  border: 1px solid rgba(80, 150, 255, 0.35);
+}
+.tier-backup {
+  background: rgba(150, 150, 150, 0.15);
+  color: var(--text-muted);
+  border: 1px solid rgba(150, 150, 150, 0.25);
+}
+.tier-rotation {
+  background: rgba(130, 130, 130, 0.12);
+  color: var(--text-muted);
+  border: 1px solid rgba(130, 130, 130, 0.2);
+}
 
 /* ═══════════════════════════════════════════════════════════════
    PER-GAME ADJUSTMENT PANEL
