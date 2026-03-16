@@ -25,6 +25,12 @@ from model.nba_elo import (
     compute_nba_elo, predict_nba_game,
     nba_recent_form, nba_get_trend, nba_expected_score,
 )
+try:
+    from model.nba_elo_model import save_ratings as save_nba_elo_ratings
+    HAS_NBA_ELO_MODEL = True
+except ImportError:
+    HAS_NBA_ELO_MODEL = False
+    save_nba_elo_ratings = None
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
 log = logging.getLogger(__name__)
@@ -265,35 +271,55 @@ def fetch_nba_injuries():
     log.info("Fetching NBA injuries...")
     data = safe_get(f"{ESPN_NBA_BASE}/injuries")
     if not data:
+        log.warning("NBA injuries endpoint returned no data")
         return {}
 
     injuries = {}
     try:
-        # Response structure: {"injuries": [{"displayName": "Team", "injuries": [{player entries}]}]}
+        # ESPN response: {"injuries": [{"abbreviation": "ATL", "displayName": "Atlanta Hawks",
+        #                                "injuries": [{athlete+status entries}]}]}
+        # The team abbreviation lives on team_entry, NOT inside the athlete sub-object.
         for team_entry in data.get("injuries", []):
+            # Primary: use top-level abbreviation on the team entry
+            raw_abbrev = (
+                team_entry.get("abbreviation", "")
+                or team_entry.get("team", {}).get("abbreviation", "")
+            )
+            team_abbrev = abbrev_norm(raw_abbrev) if raw_abbrev else ""
+
             for item in team_entry.get("injuries", []):
-                team_abbrev = abbrev_norm(
-                    item.get("athlete", {}).get("team", {}).get("abbreviation", "")
-                )
-                if team_abbrev:
-                    if team_abbrev not in injuries:
-                        injuries[team_abbrev] = []
-                    player_name = item.get("athlete", {}).get("displayName", "")
-                    position = item.get("athlete", {}).get("position", {}).get("abbreviation", "")
-                    status_raw = item.get("status", "")
-                    if isinstance(status_raw, dict):
-                        status = status_raw.get("name", status_raw.get("abbreviation", ""))
-                    else:
-                        status = str(status_raw) if status_raw else ""
-                    injuries[team_abbrev].append({
-                        "player": player_name,
-                        "status": status,
-                        "position": position,
-                        "injury_description": item.get("longComment", item.get("shortComment", status)),
-                    })
+                # Fallback: try athlete.team.abbreviation if outer abbrev is missing
+                if not team_abbrev:
+                    raw_fallback = item.get("athlete", {}).get("team", {}).get("abbreviation", "")
+                    team_abbrev = abbrev_norm(raw_fallback) if raw_fallback else ""
+
+                if not team_abbrev:
+                    continue
+
+                if team_abbrev not in injuries:
+                    injuries[team_abbrev] = []
+
+                athlete     = item.get("athlete", {})
+                player_name = athlete.get("displayName", "")
+                position    = athlete.get("position", {}).get("abbreviation", "")
+                status_raw  = item.get("status", "")
+                if isinstance(status_raw, dict):
+                    status = status_raw.get("name", status_raw.get("abbreviation", ""))
+                else:
+                    status = str(status_raw) if status_raw else ""
+
+                injuries[team_abbrev].append({
+                    "player":             player_name,
+                    "status":             status,
+                    "position":           position,
+                    "injury_description": item.get("longComment", item.get("shortComment", status)),
+                })
+
     except Exception as e:
         log.warning(f"Error parsing NBA injuries: {e}")
 
+    total = sum(len(v) for v in injuries.values())
+    log.info(f"NBA injuries: {total} players across {len(injuries)} teams")
     return injuries
 
 
@@ -910,6 +936,13 @@ def run():
             game_history[team] = []
 
     log.info(f"NBA ELO computed for {len(elo_dict)} teams")
+
+    # Save nba_elo_ratings.json using the new nba_elo_model module
+    if HAS_NBA_ELO_MODEL and save_nba_elo_ratings:
+        try:
+            save_nba_elo_ratings(elo_dict, game_history, season_year)
+        except Exception as e:
+            log.warning(f"save_nba_elo_ratings failed: {e}")
 
     # ── 4. Efficiency and Pythagorean ───────────────────────────────────────
     log.info("Computing NBA efficiency and Pythagorean ratings...")

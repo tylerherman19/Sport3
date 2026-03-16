@@ -11,7 +11,7 @@ permissions:
 jobs:
   update-nba:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 55
 
     steps:
       - name: Checkout repository
@@ -36,7 +36,16 @@ jobs:
             scikit-learn==1.4.2 \
             xgboost==2.0.3 \
             requests==2.31.0 \
-            scipy==1.12.0
+            scipy==1.12.0 \
+            geopy==2.4.1
+
+      - name: Run NBA feature pipeline
+        run: python scripts/nba_data.py
+        continue-on-error: true
+
+      - name: Run NBA ELO model
+        run: python model/nba_elo_model.py
+        continue-on-error: true
 
       - name: Run NBA prediction model
         env:
@@ -47,6 +56,6 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: 'chore: update NBA predictions [skip ci]'
-          file_pattern: 'data/nba_*.json'
+          file_pattern: 'data/nba_*.json data/fte_nba_elo.csv data/nba_fetch_log.txt'
           commit_user_name: 'github-actions[bot]'
           commit_user_email: 'github-actions[bot]@users.noreply.github.com'
