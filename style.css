@@ -366,11 +366,19 @@ main { padding: 2rem 0 4rem; }
 }
 
 /* Model probs breakdown */
+.model-probs-header {
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  margin-top: 0.75rem;
+  margin-bottom: 0.25rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
 .model-probs {
   display: flex;
   gap: 0.4rem;
   flex-wrap: wrap;
-  margin-top: 0.75rem;
 }
 
 .model-prob-pill {
@@ -384,8 +392,19 @@ main { padding: 2rem 0 4rem; }
   font-size: 0.68rem;
 }
 
-.model-prob-label { color: var(--text-muted); }
-.model-prob-val   { font-weight: 700; font-family: var(--mono); }
+.model-prob-pill.agrees  { border-color: var(--blue); }
+.model-prob-pill.disagrees { opacity: 0.5; }
+
+.model-prob-label { color: var(--text-muted); margin-right: 0.1rem; }
+.model-prob-team  { font-weight: 700; font-family: var(--mono); color: var(--text); }
+.model-prob-val   { font-family: var(--mono); color: var(--text-muted); }
+
+.adj-hint {
+  font-size: 0.6rem;
+  color: var(--text-muted);
+  font-style: italic;
+  white-space: nowrap;
+}
 
 /* ── Section 2: Model Controls ──────────────────────────────── */
 .controls-grid {
