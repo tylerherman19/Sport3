@@ -13,7 +13,7 @@ import math
 
 # ── Default parameters ────────────────────────────────────────────────────────
 
-K_BASE = 20.0
+K_BASE = 25.0   # higher base; decays dynamically toward 12.5 by end of season
 HFA = 100.0           # home court advantage in ELO points
 INITIAL_ELO = 1500.0
 REGRESS_PCT = 0.25    # 25% end-of-season reversion toward mean
@@ -35,10 +35,11 @@ def nba_expected_score(elo_a, elo_b):
 
 def nba_mov_multiplier(point_diff, elo_diff):
     """
-    Margin-of-victory multiplier for ELO update.
-    Mirrors the NFL formula: log(|margin|+1) * (2.2 / (elo_gap*0.001 + 2.2))
+    NBA-calibrated margin-of-victory multiplier for ELO update.
+    Uses 1.5 constant (vs NFL 2.2) reflecting tighter NBA margin distributions
+    (NBA mean ~10 pts vs NFL ~13 pts, higher game total dampens per-point signal).
     """
-    return math.log(abs(point_diff) + 1) * (2.2 / (abs(elo_diff) * 0.001 + 2.2))
+    return math.log(abs(point_diff) + 1) * (1.5 / (abs(elo_diff) * 0.001 + 1.5))
 
 
 # ── Historical ELO computation ────────────────────────────────────────────────
@@ -93,6 +94,10 @@ def compute_nba_elo(games, k_base=K_BASE, hfa=HFA,
             elo_dict[team] = elo_dict[team] * (1 - regress_pct) + initial_elo * regress_pct
             game_history[team] = []
 
+        # Track per-team games played this season for dynamic K-factor
+        team_game_counts: dict = {}
+        NBA_SEASON_GAMES = 82  # regular season games per team
+
         for _, row in season_df.iterrows():
             team1 = row["team1"]
             team2 = row["team2"]
@@ -129,8 +134,15 @@ def compute_nba_elo(games, k_base=K_BASE, hfa=HFA,
             elo_diff_abs = abs(adj_e1 - e2)
             mov = nba_mov_multiplier(point_diff, elo_diff_abs) if point_diff > 0 else 1.0
 
-            elo_dict[team1] = e1 + k_base * mov * (actual1 - exp1)
-            elo_dict[team2] = e2 + k_base * mov * (actual2 - exp2)
+            # Dynamic K-factor: decays from k_base to k_base/2 over the season
+            progress = min(1.0, team_game_counts.get(team1, 0) / NBA_SEASON_GAMES)
+            k = k_base * (1.0 - 0.5 * progress)
+
+            elo_dict[team1] = e1 + k * mov * (actual1 - exp1)
+            elo_dict[team2] = e2 + k * mov * (actual2 - exp2)
+
+            team_game_counts[team1] = team_game_counts.get(team1, 0) + 1
+            team_game_counts[team2] = team_game_counts.get(team2, 0) + 1
 
             date_str = row["date"].isoformat()
             game_history.setdefault(team1, []).append({

@@ -446,13 +446,13 @@ function renderGames() {
       g.is_future
     );
   } else if (state.gameFilter === 'live') {
-    filteredGames = displayGames.filter(g =>
-      g.status === 'STATUS_IN_PROGRESS' ||
-      g.status === 'STATUS_HALFTIME' ||
-      (!g.is_future && g.status !== 'STATUS_FINAL' && isToday(g.game_time))
-    );
+    filteredGames = displayGames.filter(g => {
+      const s = mergeLiveGame(g).status;
+      return s === 'STATUS_IN_PROGRESS' || s === 'STATUS_HALFTIME' ||
+        (!g.is_future && s !== 'STATUS_FINAL' && s !== 'STATUS_SCHEDULED' && isToday(g.game_time));
+    });
   } else if (state.gameFilter === 'completed') {
-    filteredGames = displayGames.filter(g => g.status === 'STATUS_FINAL');
+    filteredGames = displayGames.filter(g => mergeLiveGame(g).status === 'STATUS_FINAL');
   }
 
   // Update filter pill active state
@@ -566,6 +566,79 @@ function buildKeyFactorsStrip(game, adj, isNba) {
   return `<div class="key-factors-strip">${items.join('')}</div>`;
 }
 
+function computeLeagueRanks(lbData) {
+  if (!lbData || !lbData.length) return {};
+  const sorted_off = [...lbData].sort((a, b) => (b.off_eff || 0) - (a.off_eff || 0));
+  const sorted_def = [...lbData].sort((a, b) => (a.def_eff || 0) - (b.def_eff || 0)); // lower def allowed = better
+  const sorted_net = [...lbData].sort((a, b) => (b.net_eff || 0) - (a.net_eff || 0));
+  const ranks = {};
+  sorted_off.forEach((t, i) => { ranks[t.team] = ranks[t.team] || {}; ranks[t.team].offRank = i + 1; });
+  sorted_def.forEach((t, i) => { ranks[t.team] = ranks[t.team] || {}; ranks[t.team].defRank = i + 1; });
+  sorted_net.forEach((t, i) => { ranks[t.team] = ranks[t.team] || {}; ranks[t.team].netRank = i + 1; });
+  return ranks;
+}
+
+function buildRichExplanationHtml(game, homeData, awayData, lbData, isNba) {
+  const explanation = game.explanation || '';
+  const eff = game.efficiency;
+  if (!explanation && (!isNba || !eff)) return '';
+
+  const narrativeHtml = explanation ? `<p class="explanation-narrative">${explanation}</p>` : '';
+
+  let effPanelHtml = '';
+  if (isNba && eff) {
+    const ranks = computeLeagueRanks(lbData);
+    const hr = ranks[game.home_team] || {};
+    const ar = ranks[game.away_team] || {};
+    const sign = v => v >= 0 ? '+' : '';
+    const rank = n => n ? `<span class="eff-rank">#${n}</span>` : '';
+
+    const homeOffAdv = eff.home_off_rating != null && eff.away_def_rating != null
+      ? eff.home_off_rating - eff.away_def_rating : null;
+    const awayOffAdv = eff.away_off_rating != null && eff.home_def_rating != null
+      ? eff.away_off_rating - eff.home_def_rating : null;
+
+    const matchupRows = [];
+    if (homeOffAdv != null) {
+      const cls = homeOffAdv > 3 ? 'positive' : homeOffAdv < -3 ? 'negative' : '';
+      const leader = homeOffAdv > 0 ? game.home_team : game.away_team;
+      matchupRows.push(`<div class="explanation-matchup-row ${cls}">
+        ${game.home_team} offense (${eff.home_off_rating.toFixed(1)}) vs ${game.away_team} defense (${eff.away_def_rating.toFixed(1)})
+        → <strong>${leader}</strong> ${sign(homeOffAdv)}${homeOffAdv.toFixed(1)} edge
+      </div>`);
+    }
+    if (awayOffAdv != null) {
+      const cls = awayOffAdv > 3 ? 'positive' : awayOffAdv < -3 ? 'negative' : '';
+      const leader = awayOffAdv > 0 ? game.away_team : game.home_team;
+      matchupRows.push(`<div class="explanation-matchup-row ${cls}">
+        ${game.away_team} offense (${eff.away_off_rating.toFixed(1)}) vs ${game.home_team} defense (${eff.home_def_rating.toFixed(1)})
+        → <strong>${leader}</strong> ${sign(awayOffAdv)}${awayOffAdv.toFixed(1)} edge
+      </div>`);
+    }
+
+    effPanelHtml = `
+    <div class="explanation-eff-panel">
+      <div class="explanation-eff-header">Efficiency Breakdown</div>
+      <div class="explanation-eff-team-row">
+        <span class="eff-team-name">${game.home_team}</span>
+        ${eff.home_off_rating != null ? `<span class="eff-stat">Off <strong>${eff.home_off_rating.toFixed(1)}</strong>${rank(hr.offRank)}</span>` : ''}
+        ${eff.home_def_rating != null ? `<span class="eff-stat">Def <strong>${eff.home_def_rating.toFixed(1)}</strong>${rank(hr.defRank)}</span>` : ''}
+        ${eff.home_net_rating != null ? `<span class="eff-stat">Net <strong>${sign(eff.home_net_rating)}${eff.home_net_rating.toFixed(1)}</strong>${rank(hr.netRank)}</span>` : ''}
+      </div>
+      <div class="explanation-eff-team-row">
+        <span class="eff-team-name">${game.away_team}</span>
+        ${eff.away_off_rating != null ? `<span class="eff-stat">Off <strong>${eff.away_off_rating.toFixed(1)}</strong>${rank(ar.offRank)}</span>` : ''}
+        ${eff.away_def_rating != null ? `<span class="eff-stat">Def <strong>${eff.away_def_rating.toFixed(1)}</strong>${rank(ar.defRank)}</span>` : ''}
+        ${eff.away_net_rating != null ? `<span class="eff-stat">Net <strong>${sign(eff.away_net_rating)}${eff.away_net_rating.toFixed(1)}</strong>${rank(ar.netRank)}</span>` : ''}
+      </div>
+      ${matchupRows.join('')}
+    </div>`;
+  }
+
+  if (!narrativeHtml && !effPanelHtml) return '';
+  return `<div class="explanation-box">${narrativeHtml}${effPanelHtml}</div>`;
+}
+
 function buildGameCard(game, isNba) {
   const p = game.predictions || {};
   const g = mergeLiveGame(game);
@@ -657,10 +730,8 @@ function buildGameCard(game, isNba) {
       }).join('')}
     </div>` : '';
 
-  // Explanation
-  const explanation = game.explanation || '';
-  const explanationHtml = explanation
-    ? `<div class="explanation-box">${explanation}</div>` : '';
+  // Rich explanation with efficiency breakdown + league ranks
+  const explanationHtml = buildRichExplanationHtml(game, homeData, awayData, lbData, isNba);
 
   // Efficiency stats (original display)
   const effHtml = isNba && game.efficiency ? `
@@ -2128,40 +2199,92 @@ async function renderAccuracyTab() {
 }
 
 function generatePostMortemExplanation(e) {
-  const sentences = [];
   const winnerName = e.actual_winner === e.home_team ? e.home_name : e.away_name;
   const loserName  = e.actual_winner === e.home_team ? e.away_name : e.home_name;
+  const winnerTeam = e.actual_winner;
+  const loserTeam  = e.actual_winner === e.home_team ? e.away_team : e.home_team;
   const probPct = Math.round(e.predicted_prob * 100);
 
-  // Score context
+  // ── Score header ──────────────────────────────────────────────
+  let scoreHeaderHtml = '';
+  let narrativeText = '';
   if (e.home_score != null && e.away_score != null) {
     const margin = Math.abs(e.home_score - e.away_score);
-    const scoreStr = e.actual_winner === e.home_team
-      ? `${e.home_score}–${e.away_score}`
-      : `${e.away_score}–${e.home_score}`;
+    const winScore = e.actual_winner === e.home_team ? e.home_score : e.away_score;
+    const lossScore = e.actual_winner === e.home_team ? e.away_score : e.home_score;
+    scoreHeaderHtml = `<div class="pm-score-header">
+      Final: <strong>${winnerName} ${winScore} – ${lossScore} ${loserName}</strong>
+      <span class="pm-margin">(${margin}-pt margin)</span>
+    </div>`;
     if (margin <= 5) {
-      sentences.push(`${winnerName} won a close game ${scoreStr} (${margin}-pt margin). The model's ${probPct}% pick for ${loserName} was reasonable — this was essentially a toss-up.`);
+      narrativeText = `The model picked ${loserName} at ${probPct}% — a reasonable call in a coin-flip game.`;
+    } else if (margin <= 12) {
+      narrativeText = `${winnerName} won by ${margin} pts. The model favored ${loserName} at ${probPct}%.`;
     } else {
-      sentences.push(`${winnerName} won ${scoreStr}, a ${margin}-point margin. The model gave ${loserName} a ${probPct}% win probability.`);
+      narrativeText = `${winnerName} dominated, winning by ${margin} pts despite the model giving ${loserName} a ${probPct}% chance.`;
     }
   } else {
-    sentences.push(`The model gave ${loserName} a ${probPct}% win probability, but ${winnerName} won.`);
+    narrativeText = `The model gave ${loserName} a ${probPct}% win probability, but ${winnerName} won.`;
   }
 
-  // Model consensus
-  const modelPicks = [e.elo_pick, e.bayes_pick, e.lr_pick, e.pyth_pick, e.eff_pick].filter(Boolean);
-  if (modelPicks.length) {
-    const actualFavored = modelPicks.filter(p => p === e.actual_winner).length;
-    if (actualFavored === 0) {
-      sentences.push(`All ${modelPicks.length} sub-models agreed on ${loserName} — a genuine upset across the board.`);
-    } else if (actualFavored >= Math.ceil(modelPicks.length / 2)) {
-      sentences.push(`${actualFavored} of ${modelPicks.length} sub-models actually favored ${winnerName}, but ensemble weighting still leaned toward ${loserName}.`);
+  // ── Pre-game efficiency table ─────────────────────────────────
+  let effHtml = '';
+  const hasEff = e.home_off_rating != null || e.away_off_rating != null;
+  if (hasEff) {
+    const fmt = (v, sign) => v != null ? `${sign && v >= 0 ? '+' : ''}${v.toFixed(1)}` : '—';
+    effHtml = `
+    <div class="pm-section-label">Pre-game Efficiency</div>
+    <div class="pm-eff-table">
+      <div class="pm-eff-row pm-eff-header">
+        <span></span><span>Off Rtg</span><span>Def Rtg</span><span>Net Rtg</span>
+      </div>
+      <div class="pm-eff-row ${e.actual_winner === e.home_team ? 'pm-winner-row' : ''}">
+        <span>${e.home_name || e.home_team}</span>
+        <span>${fmt(e.home_off_rating)}</span>
+        <span>${fmt(e.home_def_rating)}</span>
+        <span>${fmt(e.home_net_rating, true)}</span>
+      </div>
+      <div class="pm-eff-row ${e.actual_winner === e.away_team ? 'pm-winner-row' : ''}">
+        <span>${e.away_name || e.away_team}</span>
+        <span>${fmt(e.away_off_rating)}</span>
+        <span>${fmt(e.away_def_rating)}</span>
+        <span>${fmt(e.away_net_rating, true)}</span>
+      </div>
+    </div>`;
+  }
+
+  // ── Model vote breakdown ──────────────────────────────────────
+  const modelDefs = [
+    { label: 'ELO', pick: e.elo_pick },
+    { label: 'Bayes', pick: e.bayes_pick },
+    { label: 'LR', pick: e.lr_pick },
+    { label: 'Pyth', pick: e.pyth_pick },
+    { label: 'Eff', pick: e.eff_pick },
+  ].filter(m => m.pick);
+
+  let votesHtml = '';
+  if (modelDefs.length) {
+    const correctCount = modelDefs.filter(m => m.pick === winnerTeam).length;
+    const votePills = modelDefs.map(m => {
+      const correct = m.pick === winnerTeam;
+      return `<span class="pm-vote ${correct ? 'pm-vote-correct' : 'pm-vote-wrong'}">${m.label} → ${m.pick}</span>`;
+    }).join('');
+    let consensusText = '';
+    if (correctCount === 0) {
+      consensusText = `All ${modelDefs.length} sub-models picked ${loserTeam} — genuine upset.`;
+    } else if (correctCount >= Math.ceil(modelDefs.length / 2)) {
+      consensusText = `${correctCount}/${modelDefs.length} sub-models picked the winner; ensemble weighting still favored ${loserTeam}.`;
     } else {
-      sentences.push(`${actualFavored} of ${modelPicks.length} sub-models picked ${winnerName}, suggesting the models were split.`);
+      consensusText = `${correctCount}/${modelDefs.length} sub-models picked the winner — models were split.`;
     }
+    votesHtml = `
+    <div class="pm-section-label">Model Votes</div>
+    <div class="pm-model-votes">${votePills}</div>
+    <div class="pm-vote-summary">${consensusText}</div>`;
   }
 
-  // Pre-game efficiency context
+  // ── Efficiency reason sentence ────────────────────────────────
+  let reasonHtml = '';
   const wNet = e.actual_winner === e.home_team ? e.home_net_rating : e.away_net_rating;
   const lNet = e.actual_winner === e.home_team ? e.away_net_rating : e.home_net_rating;
   const wOff = e.actual_winner === e.home_team ? e.home_off_rating : e.away_off_rating;
@@ -2169,13 +2292,19 @@ function generatePostMortemExplanation(e) {
   if (wNet != null && lNet != null) {
     const gap = lNet - wNet;
     if (gap > 3) {
-      sentences.push(`${winnerName} overcame a ${gap.toFixed(1)}-pt net rating disadvantage going into the game.`);
+      reasonHtml = `<div class="pm-reason">${winnerName} overcame a ${gap.toFixed(1)}-pt pre-game net rating disadvantage.</div>`;
     } else if (lOff != null && wOff != null && lOff - wOff > 3) {
-      sentences.push(`${loserName}'s offense (${lOff.toFixed(1)} pts/100) was expected to be a significant advantage, but it didn't translate on the night.`);
+      reasonHtml = `<div class="pm-reason">${loserName}'s offense (${lOff.toFixed(1)}) looked superior on paper but didn't translate.</div>`;
     }
   }
 
-  return sentences.join(' ');
+  return `<div class="pm-content">
+    ${scoreHeaderHtml}
+    <div class="pm-narrative">${narrativeText}</div>
+    ${effHtml}
+    ${votesHtml}
+    ${reasonHtml}
+  </div>`;
 }
 
 function clearLog(league) {

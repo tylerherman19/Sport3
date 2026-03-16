@@ -180,16 +180,18 @@ def efficiency_predict_game(team_a, team_b, efficiency_data, pythagorean_data,
     """
     eff_a = efficiency_data.get(team_a, {}).get("elo_equiv", 1500.0)
     eff_b = efficiency_data.get(team_b, {}).get("elo_equiv", 1500.0)
-    pyth_a = pythagorean_data.get(team_a, {}).get("elo_equiv", 1500.0)
-    pyth_b = pythagorean_data.get(team_b, {}).get("elo_equiv", 1500.0)
+    pyth_a = pythagorean_data.get(team_a, {}).get("pyth", 0.5)
+    pyth_b = pythagorean_data.get(team_b, {}).get("pyth", 0.5)
 
     hfa = 65.0 if (is_home_a and not neutral) else 0.0
 
     eff_diff = (eff_a + hfa) - eff_b
     eff_prob = 1.0 / (1.0 + 10 ** (-eff_diff / 400.0))
 
-    pyth_diff = (pyth_a + hfa) - pyth_b
-    pyth_prob = 1.0 / (1.0 + 10 ** (-pyth_diff / 400.0))
+    # Direct ratio — correct Bradley-Terry formulation for pythagorean matchup
+    pyth_a_adj = pyth_a * (1.0 + hfa / 1500.0)
+    _denom = pyth_a_adj + pyth_b
+    pyth_prob = pyth_a_adj / _denom if _denom > 0 else 0.5
 
     return {
         "eff_prob": round(float(eff_prob), 4),
