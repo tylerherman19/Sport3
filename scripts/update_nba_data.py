@@ -323,9 +323,9 @@ def fetch_nba_injuries():
 
     injuries = {}
     try:
-        # ESPN response: {"injuries": [{"abbreviation": "ATL", "displayName": "Atlanta Hawks",
-        #                                "injuries": [{athlete+status entries}]}]}
-        # The team abbreviation lives on team_entry, NOT inside the athlete sub-object.
+        # ESPN response: {"injuries": [{"displayName": "Atlanta Hawks", "injuries": [...]}]}
+        # Note: ESPN removed top-level "abbreviation" from team entries; it now lives at
+        # item.athlete.team.abbreviation only.
         for team_entry in data.get("injuries", []):
             # Primary: use top-level abbreviation on the team entry
             raw_abbrev = (
@@ -335,16 +335,17 @@ def fetch_nba_injuries():
             team_abbrev = abbrev_norm(raw_abbrev) if raw_abbrev else ""
 
             for item in team_entry.get("injuries", []):
-                # Fallback: try athlete.team.abbreviation if outer abbrev is missing
-                if not team_abbrev:
+                # Fallback: derive abbreviation from athlete's team when outer entry lacks it
+                item_abbrev = team_abbrev
+                if not item_abbrev:
                     raw_fallback = item.get("athlete", {}).get("team", {}).get("abbreviation", "")
-                    team_abbrev = abbrev_norm(raw_fallback) if raw_fallback else ""
+                    item_abbrev = abbrev_norm(raw_fallback) if raw_fallback else ""
 
-                if not team_abbrev:
+                if not item_abbrev:
                     continue
 
-                if team_abbrev not in injuries:
-                    injuries[team_abbrev] = []
+                if item_abbrev not in injuries:
+                    injuries[item_abbrev] = []
 
                 athlete     = item.get("athlete", {})
                 player_name = athlete.get("displayName", "")
@@ -355,7 +356,7 @@ def fetch_nba_injuries():
                 else:
                     status = str(status_raw) if status_raw else ""
 
-                injuries[team_abbrev].append({
+                injuries[item_abbrev].append({
                     "player":             player_name,
                     "status":             status,
                     "position":           position,
@@ -948,20 +949,23 @@ def run():
     log.info("Computing NBA injury impacts...")
     injury_impacts = compute_all_nba_team_impacts(injuries)
 
-    # Save NBA injuries file
-    nba_injuries_list = []
-    for team, players in injuries.items():
-        for p in players:
-            nba_injuries_list.append({
-                "player": p.get("player", ""),
-                "team": team,
-                "position": p.get("position", ""),
-                "status": p.get("status", ""),
-                "injury_description": p.get("injury_description", p.get("status", "")),
-            })
-    (DATA_DIR / "nba_injuries.json").write_text(
-        json.dumps({"updated": now_utc, "injuries": nba_injuries_list}, indent=2)
-    )
+    # Save NBA injuries file (only overwrite if we actually fetched data)
+    if injuries:
+        nba_injuries_list = []
+        for team, players in injuries.items():
+            for p in players:
+                nba_injuries_list.append({
+                    "player": p.get("player", ""),
+                    "team": team,
+                    "position": p.get("position", ""),
+                    "status": p.get("status", ""),
+                    "injury_description": p.get("injury_description", p.get("status", "")),
+                })
+        (DATA_DIR / "nba_injuries.json").write_text(
+            json.dumps({"updated": now_utc, "injuries": nba_injuries_list}, indent=2)
+        )
+    else:
+        log.warning("No NBA injury data fetched — keeping existing nba_injuries.json")
 
     # ── 2. Fetch historical games for ELO ───────────────────────────────────
     log.info("Fetching NBA historical games for ELO computation...")
