@@ -251,7 +251,7 @@ def fetch_espn_injuries():
         for team_entry in data.get("injuries", []):
             for item in team_entry.get("injuries", []):
                 team_abbrev = abbrev_norm(
-                    item.get("athlete", {}).get("team", {}).get("abbreviation", "")
+                    team_entry.get("abbreviation", "")
                 )
                 if team_abbrev:
                     if team_abbrev not in injuries:
