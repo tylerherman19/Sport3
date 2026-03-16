@@ -30,7 +30,13 @@ const state = {
   // Note: weights are overwritten from localStorage below if saved values exist
   params: { k: 20, hfa: 65, mov: 1.0, form: 0.30, sos: 0.5, h2h: 0.5, to: 1.0, rt: 1.0, lambda: 0.10 },
   gameOverrides: {}, // { [game_id]: { homeBoost, awayBoost, hfaMult, momentumBoost, restFactor } }
-  kalshiData: null, // cached Kalshi market list
+  kalshiData: null, // cached Kalshi market list (shared; re-matched per league)
+  kalshi: {
+    rows: [],
+    sortCol: 'mismatch',
+    sortDir: 'desc',
+    league: 'nfl', // which league to display in the tab
+  },
 };
 
 /* ── Load persisted weights ───────────────────────────────────── */
@@ -359,6 +365,7 @@ function renderAll() {
   renderLeaderboard();
   renderMetrics();
   populatePredictor();
+  renderKalshiIfOpen();
 }
 
 function forceRefresh() {
@@ -2776,194 +2783,289 @@ function setLogLeague(league) {
 
 /* ── Kalshi Odds Comparison ───────────────────────────────────── */
 
-async function loadKalshiMarkets() {
-  const base = 'https://api.elections.kalshi.com/trade-api/v2';
-  let markets = [];
+const KALSHI_EXCLUDE_KWS = [
+  'super bowl', 'championship', 'mvp', 'season wins', 'total wins',
+  'make playoffs', 'win division', 'draft', 'spread', 'cover',
+  'over/under', 'first quarter', 'first half', 'halftime',
+];
+
+/* Build token→abbrev lookup from TEAM_NAMES or NBA_TEAM_NAMES */
+function buildKalshiTokenMap(teamNames) {
+  const map = {};
+  for (const [abbrev, fullName] of Object.entries(teamNames)) {
+    const parts = fullName.toLowerCase().split(/\s+/);
+    map[parts[parts.length - 1]] = abbrev;              // nickname: "chiefs"
+    if (parts.length >= 2) map[parts.slice(0, -1).join(' ')] = abbrev; // city: "kansas city"
+    map[abbrev.toLowerCase()] = abbrev;                 // abbrev: "kc"
+  }
+  return map;
+}
+
+/* Extract up to 2 team abbrevs from a market title using the token map.
+   Returns { teamA, teamB, yesIsTeamA } or null if fewer than 2 found. */
+function kalshiExtractTeams(title, tokenMap) {
+  const lower = title.toLowerCase().replace(/[^a-z0-9 ]/g, ' ');
+  // Sort tokens longest-first to prefer "kansas city" over "city"
+  const tokens = Object.keys(tokenMap).sort((a, b) => b.length - a.length);
+  const found = [];
+  let scratch = lower;
+  for (const tok of tokens) {
+    if (found.length >= 2) break;
+    if (scratch.includes(tok)) {
+      const abbrev = tokenMap[tok];
+      if (!found.some(f => f.abbrev === abbrev)) {
+        found.push({ abbrev, idx: lower.indexOf(tok) });
+        scratch = scratch.replaceAll(tok, ' ');
+      }
+    }
+  }
+  if (found.length < 2) return null;
+  // Team mentioned first in title is typically the "yes" side
+  found.sort((a, b) => a.idx - b.idx);
+  return { teamA: found[0].abbrev, teamB: found[1].abbrev, yesIsTeamA: true };
+}
+
+/* Fetch open markets from Kalshi API with 10-second timeout & pagination */
+async function fetchKalshiMarkets() {
+  const BASE = 'https://api.elections.kalshi.com/trade-api/v2';
+  const ctrl = new AbortController();
+  const tid = setTimeout(() => ctrl.abort(), 10000);
   try {
-    const res = await fetch(`${base}/markets?status=open&limit=200`);
-    if (!res.ok) throw new Error(`Kalshi API ${res.status}`);
+    const res = await fetch(`${BASE}/markets?status=open&limit=200`, { signal: ctrl.signal });
+    clearTimeout(tid);
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const data = await res.json();
-    markets = data.markets || [];
-    // Follow up to 4 pages of pagination
+    let markets = data.markets || [];
     let cursor = data.cursor;
     let pages = 0;
     while (cursor && pages < 4) {
-      const r2 = await fetch(`${base}/markets?status=open&limit=200&cursor=${encodeURIComponent(cursor)}`);
+      const r2 = await fetch(`${BASE}/markets?status=open&limit=200&cursor=${encodeURIComponent(cursor)}`);
       if (!r2.ok) break;
       const d2 = await r2.json();
       markets = markets.concat(d2.markets || []);
       cursor = d2.cursor;
       pages++;
     }
+    return markets;
   } catch (e) {
-    return null;
+    clearTimeout(tid);
+    throw e;
   }
-  return markets;
 }
 
-function extractTeamKeywords(name, abbrev) {
-  // "New England Patriots", "NE" → ["patriots", "new england patriots", "ne"]
-  const words = name.toLowerCase().split(/\s+/);
-  const nickname = words[words.length - 1]; // last word = nickname
-  return [nickname, name.toLowerCase(), abbrev.toLowerCase()];
-}
+/* Match Kalshi markets to prediction games and compute mismatch rows */
+function buildKalshiRows(markets, games, tokenMap) {
+  const gameMap = new Map();
+  for (const g of games) {
+    gameMap.set(`${g.home_team}|${g.away_team}`, g);
+    gameMap.set(`${g.away_team}|${g.home_team}`, g);
+  }
 
-function findKalshiMarket(game, markets) {
-  const homeKws = extractTeamKeywords(game.home_name, game.home_team);
-  const awayKws = extractTeamKeywords(game.away_name, game.away_team);
+  const matched = new Set();
+  const rows = [];
 
   for (const m of markets) {
-    const combined = ((m.title || '') + ' ' + (m.ticker || '')).toLowerCase();
-    const hasHome = homeKws.some(kw => combined.includes(kw));
-    const hasAway = awayKws.some(kw => combined.includes(kw));
-    if (hasHome && hasAway) {
-      // Determine which team is the YES outcome by position in title
-      const homePos = Math.min(...homeKws.map(kw => { const i = combined.indexOf(kw); return i === -1 ? Infinity : i; }));
-      const awayPos = Math.min(...awayKws.map(kw => { const i = combined.indexOf(kw); return i === -1 ? Infinity : i; }));
-      return { market: m, homeIsYes: homePos < awayPos };
+    const titleLower = (m.title || '').toLowerCase();
+    if (KALSHI_EXCLUDE_KWS.some(kw => titleLower.includes(kw))) continue;
+    const teams = kalshiExtractTeams(m.title, tokenMap);
+    if (!teams) continue;
+    const { teamA, teamB, yesIsTeamA } = teams;
+    const game = gameMap.get(`${teamA}|${teamB}`) || gameMap.get(`${teamB}|${teamA}`);
+    if (!game || matched.has(game.game_id)) continue;
+    matched.add(game.game_id);
+
+    // Kalshi mid-price (yes_bid / yes_ask in cents 0–99)
+    const bid = m.yes_bid != null ? m.yes_bid : (m.yes_bid_dollars || 0) * 100;
+    const ask = m.yes_ask != null ? m.yes_ask : (m.yes_ask_dollars || 0) * 100;
+    const yesMid = Math.max(1, Math.min(99, (bid + ask) / 2)) / 100;
+    const yesTeam = yesIsTeamA ? teamA : teamB;
+    const kalshiHomeProb = yesTeam === game.home_team ? yesMid : 1 - yesMid;
+
+    const modelProb = ensembleFromProbs(game.predictions || {}, state.weights);
+    const mismatch = modelProb - kalshiHomeProb; // signed: + = model more bullish on home
+
+    rows.push({ game, market: m, modelProb, kalshiHomeProb, mismatch, volume: m.volume || 0 });
+  }
+
+  // Append unmatched upcoming games
+  for (const g of games) {
+    if (!matched.has(g.game_id)) {
+      rows.push({ game: g, market: null, modelProb: ensembleFromProbs(g.predictions || {}, state.weights), kalshiHomeProb: null, mismatch: null, volume: 0 });
     }
   }
-  return null;
+
+  return rows;
 }
 
-function getKalshiImpliedProb(market, homeIsYes) {
-  // yes_bid and yes_ask are in cents (0–99); use mid-price for fair value
-  const bid = market.yes_bid != null ? market.yes_bid
-            : market.yes_bid_dollars != null ? market.yes_bid_dollars * 100 : 0;
-  const ask = market.yes_ask != null ? market.yes_ask
-            : market.yes_ask_dollars != null ? market.yes_ask_dollars * 100 : bid;
-  const midCents = (bid + ask) / 2;
-  const yesProb = Math.max(0.01, Math.min(0.99, midCents / 100));
-  return homeIsYes ? yesProb : 1 - yesProb;
+/* Sort rows per state.kalshi sort settings */
+function sortKalshiRows(rows) {
+  const { sortCol, sortDir } = state.kalshi;
+  const dir = sortDir === 'asc' ? 1 : -1;
+  rows.sort((a, b) => {
+    // Nulls (unmatched) always sink to bottom
+    if (a.mismatch == null && b.mismatch == null) return 0;
+    if (sortCol !== 'matchup') {
+      if (a.market == null) return 1;
+      if (b.market == null) return -1;
+    }
+    if (sortCol === 'mismatch') return dir * (Math.abs(b.mismatch) - Math.abs(a.mismatch));
+    if (sortCol === 'model')   return dir * (a.modelProb - b.modelProb);
+    if (sortCol === 'kalshi')  return dir * (a.kalshiHomeProb - b.kalshiHomeProb);
+    if (sortCol === 'volume')  return dir * (a.volume - b.volume);
+    if (sortCol === 'matchup') return dir * (`${a.game.away_team}@${a.game.home_team}`).localeCompare(`${b.game.away_team}@${b.game.home_team}`);
+    return 0;
+  });
 }
 
-async function renderKalshiTab() {
+/* Render the Kalshi table into container (called from renderKalshiTab and on re-sort) */
+function renderKalshiTable(rows, isNba) {
   const container = $('kalshi-content');
+  const badge = $('kalshi-badge');
   if (!container) return;
 
-  container.innerHTML = '<div class="loading"><div class="spinner"></div><span>Fetching Kalshi markets...</span></div>';
-
-  if (!state.kalshiData) {
-    const markets = await loadKalshiMarkets();
-    if (markets === null) {
-      container.innerHTML = `<div class="empty-state">
-        <div class="empty-state-icon">⚠️</div>
-        <h3>Kalshi API Unavailable</h3>
-        <p>Could not fetch market data. Try again later.</p>
-        <button class="btn btn-primary" onclick="state.kalshiData=null;renderKalshiTab()">Retry</button>
-      </div>`;
-      return;
-    }
-    state.kalshiData = markets;
-  }
-
-  const pred = state.league === 'nba' ? state.nba.predictions : state.predictions;
-  if (!pred?.games?.length) {
-    container.innerHTML = `<div class="empty-state">
-      <div class="empty-state-icon">📊</div>
-      <h3>No Predictions Loaded</h3>
-      <p>Game predictions have not loaded yet.</p>
-    </div>`;
+  if (!rows.length) {
+    container.innerHTML = `<div class="empty-state"><div class="empty-state-icon">${isNba ? '🏀' : '🏈'}</div><h3>No Upcoming Games</h3><p>No upcoming or live games to compare with Kalshi markets.</p></div>`;
     return;
   }
 
-  // Only compare non-final games
-  const games = pred.games.filter(g => g.status !== 'STATUS_FINAL');
+  const matchedCount = rows.filter(r => r.market !== null).length;
+  if (badge) badge.textContent = `${matchedCount} of ${rows.length} matched`;
 
-  const rows = [];
-  for (const g of games) {
-    const modelProb = g.predictions?.ensemble_prob;
-    if (modelProb == null) continue;
-    const match = findKalshiMarket(g, state.kalshiData);
-    if (match) {
-      const kalshiProb = getKalshiImpliedProb(match.market, match.homeIsYes);
-      const mismatch = modelProb - kalshiProb;
-      rows.push({ game: g, market: match.market, modelProb, kalshiProb, mismatch });
+  const { sortCol, sortDir } = state.kalshi;
+  const arrow = col => sortCol === col ? (sortDir === 'desc' ? ' ▼' : ' ▲') : '';
+  const cls   = col => sortCol === col ? 'sorted' : '';
+
+  const rowsHtml = rows.map(r => {
+    const g = r.game;
+    const live = g.status === 'STATUS_IN_PROGRESS' || g.status === 'STATUS_HALFTIME';
+    const matchup = `${live ? '● ' : ''}${g.away_team} @ ${g.home_team}`;
+
+    if (!r.market) {
+      return `<tr class="kalshi-row-unmatched">
+        <td><span class="mono" style="font-weight:600;">${matchup}</span></td>
+        <td class="num-cell mono">${(r.modelProb * 100).toFixed(1)}%</td>
+        <td class="num-cell muted">—</td>
+        <td class="num-cell muted">—</td>
+        <td><span class="muted">No market</span></td>
+        <td class="num-cell muted">—</td>
+      </tr>`;
+    }
+
+    const absMis = Math.abs(r.mismatch);
+    const mismatchClass = absMis >= 0.10 ? 'mismatch-high' : absMis >= 0.05 ? 'mismatch-mid' : 'mismatch-low';
+    let edgeHtml;
+    if (absMis < 0.02) {
+      edgeHtml = '<span class="muted">≈ Aligned</span>';
+    } else if (r.mismatch > 0) {
+      edgeHtml = `<span class="edge-model">▲ Model favors ${g.home_team}</span>`;
     } else {
-      rows.push({ game: g, market: null, modelProb, kalshiProb: null, mismatch: null });
-    }
-  }
-
-  // Sort matched rows by |mismatch| descending; unmatched at end
-  const matched = rows.filter(r => r.mismatch !== null)
-    .sort((a, b) => Math.abs(b.mismatch) - Math.abs(a.mismatch));
-  const unmatched = rows.filter(r => r.mismatch === null);
-  const sorted = [...matched, ...unmatched];
-
-  if (!sorted.length) {
-    container.innerHTML = `<div class="empty-state">
-      <div class="empty-state-icon">🎯</div>
-      <h3>No Upcoming Games</h3>
-      <p>No upcoming or live games to compare with Kalshi markets.</p>
-    </div>`;
-    return;
-  }
-
-  const badge = $('kalshi-badge');
-  if (badge) badge.textContent = `${matched.length} of ${sorted.length} matched`;
-
-  const rows_html = sorted.map(r => {
-    const { game: g, market, modelProb, kalshiProb, mismatch } = r;
-    const modelPct = (modelProb * 100).toFixed(1);
-    const kalshiPct = kalshiProb !== null ? (kalshiProb * 100).toFixed(1) : '—';
-    const mismatchPct = mismatch !== null ? (Math.abs(mismatch) * 100).toFixed(1) : '—';
-
-    let edgeHtml = '<span class="muted">—</span>';
-    let mismatchClass = '';
-    if (mismatch !== null) {
-      const abs = Math.abs(mismatch);
-      mismatchClass = abs >= 0.10 ? 'mismatch-high' : abs >= 0.05 ? 'mismatch-mid' : 'mismatch-low';
-      if (mismatch > 0.02) {
-        edgeHtml = `<span class="edge-model">▲ Model favors ${g.home_team}</span>`;
-      } else if (mismatch < -0.02) {
-        edgeHtml = `<span class="edge-market">▲ Market favors ${g.away_team}</span>`;
-      } else {
-        edgeHtml = `<span class="muted">≈ Aligned</span>`;
-      }
+      edgeHtml = `<span class="edge-market">▲ Market favors ${g.away_team}</span>`;
     }
 
-    const volumeHtml = market?.volume
-      ? `<span class="kalshi-volume">${Number(market.volume).toLocaleString()} vol</span>` : '';
-    const marketTicker = market?.event_ticker || market?.ticker || '';
-    const matchHtml = market
-      ? `<a class="kalshi-link" href="https://kalshi.com/markets/${marketTicker}" target="_blank" rel="noopener">${market.ticker || marketTicker}</a>${volumeHtml}`
-      : '<span class="muted">No market found</span>';
-
-    const gameStatus = g.status === 'STATUS_IN_PROGRESS' || g.status === 'STATUS_HALFTIME'
-      ? '<span class="live-dot" style="width:6px;height:6px;margin-right:4px;"></span>' : '';
+    const marketTicker = r.market.event_ticker || r.market.ticker || '';
+    const volStr = r.volume > 0 ? r.volume.toLocaleString() : '—';
 
     return `<tr>
-      <td><span class="game-matchup">${gameStatus}${g.away_team} @ ${g.home_team}</span></td>
-      <td class="num-cell">${modelPct}%</td>
-      <td class="num-cell">${kalshiPct}%</td>
-      <td class="num-cell ${mismatchClass}">${mismatch !== null ? mismatchPct + '%' : '—'}</td>
+      <td>
+        <span class="mono" style="font-weight:600;">${matchup}</span>
+        <a class="kalshi-link" href="https://kalshi.com/markets/${marketTicker}" target="_blank" rel="noopener" style="display:block;">${r.market.ticker || marketTicker}</a>
+      </td>
+      <td class="num-cell mono">${(r.modelProb * 100).toFixed(1)}%</td>
+      <td class="num-cell mono">${(r.kalshiHomeProb * 100).toFixed(1)}%</td>
+      <td class="num-cell mono ${mismatchClass}">${(absMis * 100).toFixed(1)}%</td>
       <td>${edgeHtml}</td>
-      <td class="kalshi-market-cell">${matchHtml}</td>
+      <td class="num-cell mono muted">${volStr}</td>
     </tr>`;
   }).join('');
 
   container.innerHTML = `
     <div class="kalshi-note">
-      Mismatch = |Model% − Kalshi implied%|. Larger mismatches may indicate where the model disagrees with market consensus.
-      <strong>Not financial advice.</strong>
+      Mismatch = |Model% − Kalshi implied%| for home team winning. Kalshi % uses mid-price of bid+ask.
+      Ranked by biggest gap first. <strong>Not financial advice.</strong>
     </div>
     <div class="table-wrapper">
       <table class="kalshi-table">
-        <thead>
-          <tr>
-            <th>Matchup</th>
-            <th class="num-cell">Model (Home%)</th>
-            <th class="num-cell">Kalshi (Home%)</th>
-            <th class="num-cell">Mismatch</th>
-            <th>Edge Direction</th>
-            <th>Market</th>
-          </tr>
-        </thead>
-        <tbody>${rows_html}</tbody>
+        <thead><tr>
+          <th data-kcol="matchup" class="${cls('matchup')}" style="cursor:pointer;">Matchup${arrow('matchup')}</th>
+          <th data-kcol="model" class="${cls('model')} num-cell" style="cursor:pointer;">Model (Home%)${arrow('model')}</th>
+          <th data-kcol="kalshi" class="${cls('kalshi')} num-cell" style="cursor:pointer;">Kalshi (Home%)${arrow('kalshi')}</th>
+          <th data-kcol="mismatch" class="${cls('mismatch')} num-cell" style="cursor:pointer;">Mismatch${arrow('mismatch')}</th>
+          <th>Edge Direction</th>
+          <th data-kcol="volume" class="${cls('volume')} num-cell" style="cursor:pointer;">Volume${arrow('volume')}</th>
+        </tr></thead>
+        <tbody>${rowsHtml}</tbody>
       </table>
     </div>
     <div style="text-align:right;margin-top:0.75rem;">
       <button class="btn" onclick="state.kalshiData=null;renderKalshiTab()" style="font-size:0.75rem;padding:4px 10px;">↻ Refresh Markets</button>
-    </div>
-  `;
+    </div>`;
+
+  // Column sort bindings
+  container.querySelectorAll('th[data-kcol]').forEach(th => {
+    th.addEventListener('click', () => {
+      const col = th.dataset.kcol;
+      if (state.kalshi.sortCol === col) {
+        state.kalshi.sortDir = state.kalshi.sortDir === 'desc' ? 'asc' : 'desc';
+      } else {
+        state.kalshi.sortCol = col;
+        state.kalshi.sortDir = col === 'matchup' ? 'asc' : 'desc';
+      }
+      sortKalshiRows(state.kalshi.rows);
+      renderKalshiTable(state.kalshi.rows, state.league === 'nba');
+    });
+  });
+}
+
+/* Switch the Kalshi tab's own league filter (independent of global league) */
+function setKalshiLeague(league) {
+  state.kalshi.league = league;
+  document.querySelectorAll('#kalshi-league-pills .filter-pill').forEach(p => {
+    p.classList.toggle('active', p.dataset.kleague === league);
+  });
+  renderKalshiTab(false);
+}
+
+async function renderKalshiTab(forceRefetch) {
+  const container = $('kalshi-content');
+  if (!container) return;
+
+  const isNba = state.kalshi.league === 'nba';
+  const pred = isNba ? state.nba.predictions : state.predictions;
+  const teamNames = isNba ? NBA_TEAM_NAMES : TEAM_NAMES;
+  const tokenMap = buildKalshiTokenMap(teamNames);
+  const games = (pred?.games || []).filter(g => g.status !== 'STATUS_FINAL');
+
+  // Re-render from cache on league toggle or repeated visits
+  if (!forceRefetch && state.kalshiData) {
+    state.kalshi.rows = buildKalshiRows(state.kalshiData, games, tokenMap);
+    sortKalshiRows(state.kalshi.rows);
+    renderKalshiTable(state.kalshi.rows, isNba);
+    return;
+  }
+
+  container.innerHTML = '<div class="loading"><div class="spinner"></div><span>Fetching Kalshi markets…</span></div>';
+
+  try {
+    const allMarkets = await fetchKalshiMarkets();
+    state.kalshiData = allMarkets;
+    state.kalshi.rows = buildKalshiRows(allMarkets, games, tokenMap);
+    sortKalshiRows(state.kalshi.rows);
+    renderKalshiTable(state.kalshi.rows, isNba);
+  } catch (err) {
+    const isTimeout = err.name === 'AbortError';
+    container.innerHTML = `<div class="empty-state">
+      <div class="empty-state-icon">⚠️</div>
+      <h3>Could not load Kalshi data</h3>
+      <p>${isTimeout ? 'Request timed out (10 s).' : 'Network error: ' + err.message}</p>
+      <button class="btn btn-primary" onclick="state.kalshiData=null;renderKalshiTab(true)" style="margin-top:0.75rem;">Retry</button>
+    </div>`;
+    const badge = $('kalshi-badge');
+    if (badge) badge.textContent = 'Error';
+  }
+}
+
+/* Re-render Kalshi tab if it is currently active (called from renderAll) */
+function renderKalshiIfOpen() {
+  const sec = $('tab-kalshi');
+  if (sec && sec.classList.contains('active')) renderKalshiTab(false);
 }

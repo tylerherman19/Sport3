@@ -371,6 +371,10 @@
         </div>
         <div style="font-size:0.75rem;color:var(--text-muted);">Ranked by prediction mismatch</div>
       </div>
+      <div class="game-filter-pills" id="kalshi-league-pills">
+        <button class="filter-pill active" data-kleague="nfl" onclick="setKalshiLeague('nfl')">🏈 NFL</button>
+        <button class="filter-pill" data-kleague="nba" onclick="setKalshiLeague('nba')">🏀 NBA</button>
+      </div>
       <div id="kalshi-content">
         <div class="loading"><div class="spinner"></div><span>Loading Kalshi markets...</span></div>
       </div>
