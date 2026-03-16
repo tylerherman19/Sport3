@@ -21,7 +21,7 @@ const state = {
   },
   sortCol: 'elo',
   sortDir: 'desc',
-  gameFilter: 'all', // 'all' | 'today' | 'future'
+  gameFilter: 'live', // 'upcoming' | 'live' | 'completed'
   weights: { logistic: 0.30, xgboost: 0.25, elo: 0.20, pyth: 0.15, eff: 0.10 },
   params: { k: 20, hfa: 65, mov: 1.0, form: 0.30, sos: 0.5, h2h: 0.5, to: 1.0, rt: 1.0, lambda: 0.10 },
   gameOverrides: {}, // { [game_id]: { homeBoost, awayBoost, hfaMult, momentumBoost, restFactor } }
@@ -438,15 +438,21 @@ function renderGames() {
 
   // Apply game filter
   let filteredGames = displayGames;
-  if (state.gameFilter === 'today') {
-    filteredGames = displayGames.filter(g => !g.is_future && isToday(g.game_time));
-  } else if (state.gameFilter === 'future') {
-    const now = new Date();
+  if (state.gameFilter === 'upcoming') {
     filteredGames = displayGames.filter(g =>
-      g.is_future ||
-      (!isToday(g.game_time) && new Date(g.game_time) > now &&
-       g.status !== 'STATUS_FINAL' && g.status !== 'STATUS_IN_PROGRESS')
+      g.status !== 'STATUS_FINAL' &&
+      g.status !== 'STATUS_IN_PROGRESS' &&
+      g.status !== 'STATUS_HALFTIME' &&
+      g.is_future
     );
+  } else if (state.gameFilter === 'live') {
+    filteredGames = displayGames.filter(g =>
+      g.status === 'STATUS_IN_PROGRESS' ||
+      g.status === 'STATUS_HALFTIME' ||
+      (!g.is_future && g.status !== 'STATUS_FINAL' && isToday(g.game_time))
+    );
+  } else if (state.gameFilter === 'completed') {
+    filteredGames = displayGames.filter(g => g.status === 'STATUS_FINAL');
   }
 
   // Update filter pill active state
@@ -464,7 +470,7 @@ function renderGames() {
   }
 
   if (filteredGames.length === 0) {
-    const filterLabels = { today: 'today / live games', future: 'upcoming scheduled games' };
+    const filterLabels = { upcoming: 'upcoming scheduled games', live: 'live games right now', completed: 'completed games' };
     grid.innerHTML = `<div class="empty-state">
       <div class="empty-state-icon">${emptyIcon}</div>
       <h3>No ${filterLabels[state.gameFilter] || 'games'}</h3>
@@ -1036,7 +1042,7 @@ document.addEventListener('click', e => {
   // Game filter pills
   const filterPill = e.target.closest('.filter-pill');
   if (filterPill) {
-    state.gameFilter = filterPill.dataset.filter || 'all';
+    state.gameFilter = filterPill.dataset.filter || 'live';
     renderGames();
     return;
   }
