@@ -676,6 +676,17 @@ function buildGameCard(game, isNba) {
       ensProb = logEntry.predicted_winner === game.home_team
         ? logEntry.predicted_prob
         : (1 - logEntry.predicted_prob);
+      // Restore pre-game injuries (ESPN clears injury report after game ends)
+      if (logEntry.home_injuries !== undefined || logEntry.away_injuries !== undefined) {
+        game = {
+          ...game,
+          injuries: {
+            home: logEntry.home_injuries || [],
+            away: logEntry.away_injuries || [],
+          },
+          injury_impact: logEntry.injury_impact || {},
+        };
+      }
     }
   }
   const awayProb = 1 - ensProb;
@@ -1997,6 +2008,10 @@ function logPredictions(games, league) {
       lr_prob: lrProb,
       pyth_prob: pythProb,
       eff_prob: effProb,
+      // Pre-game injury snapshot (ESPN clears this after game ends)
+      home_injuries: game.injuries?.home || [],
+      away_injuries: game.injuries?.away || [],
+      injury_impact: game.injury_impact || {},
     });
     added = true;
   });
@@ -2314,8 +2329,9 @@ async function renderAccuracyTab() {
       ${renderLeagueSection(activeLog, logLeague.toUpperCase())}
     </div>
 
-    <div style="margin-top:2rem;">
+    <div style="margin-top:2rem;display:flex;gap:0.75rem;flex-wrap:wrap;">
       <button class="btn-clear-log" onclick="clearLog('${logLeague}')">Clear ${logLeague.toUpperCase()} Log</button>
+      <button class="btn-clear-log" style="background:var(--accent-blue,#3b82f6)" onclick="relogAllGames('${logLeague}')">Re-log All Games</button>
     </div>`;
 }
 
@@ -2474,6 +2490,91 @@ function generatePostMortemExplanation(e) {
 
 function clearLog(league) {
   localStorage.removeItem(`sport3_log_${league}`);
+  renderAccuracyTab();
+}
+
+function relogAllGames(league) {
+  const games = league === 'nba'
+    ? (state.nba.predictions?.games || [])
+    : (state.predictions?.games || []);
+  if (!games.length) { alert('No games loaded. Open the Games tab first.'); return; }
+
+  const key = `sport3_log_${league}`;
+  let existing = [];
+  try { existing = JSON.parse(localStorage.getItem(key) || '[]'); } catch { existing = []; }
+
+  const existingMap = new Map(existing.map(e => [e.game_id, e]));
+  let changed = false;
+
+  games.forEach(game => {
+    const p = game.predictions || {};
+    const ensProb = ensembleFromProbs(p, state.weights);
+    const predictedWinner = ensProb >= 0.5 ? game.home_team : game.away_team;
+    const predictedProb = ensProb >= 0.5 ? ensProb : (1 - ensProb);
+    const eloProb = p.elo_prob || 0.5;
+    const bayesProb = p.bayesian_prob || 0.5;
+    const lrProb = p.logistic_prob || 0.5;
+    const pythProb = p.pyth_prob || 0.5;
+    const effProb = p.eff_prob || 0.5;
+    const eff = game.efficiency || {};
+    const homeInj = game.injuries?.home || [];
+    const awayInj = game.injuries?.away || [];
+    const injImpact = game.injury_impact || {};
+
+    if (!existingMap.has(game.game_id)) {
+      // New entry — add it
+      existing.push({
+        game_id: game.game_id,
+        league,
+        saved_at: new Date().toISOString(),
+        home_team: game.home_team,
+        home_name: game.home_name || game.home_team,
+        away_team: game.away_team,
+        away_name: game.away_name || game.away_team,
+        game_time: game.game_time,
+        predicted_winner: predictedWinner,
+        predicted_prob: predictedProb,
+        status: game.status,
+        actual_winner: null,
+        home_score: null,
+        away_score: null,
+        home_off_rating: eff.home_off_rating ?? null,
+        home_def_rating: eff.home_def_rating ?? null,
+        home_net_rating: eff.home_net_rating ?? null,
+        away_off_rating: eff.away_off_rating ?? null,
+        away_def_rating: eff.away_def_rating ?? null,
+        away_net_rating: eff.away_net_rating ?? null,
+        elo_pick: eloProb >= 0.5 ? game.home_team : game.away_team,
+        bayes_pick: bayesProb >= 0.5 ? game.home_team : game.away_team,
+        lr_pick: lrProb >= 0.5 ? game.home_team : game.away_team,
+        pyth_pick: pythProb >= 0.5 ? game.home_team : game.away_team,
+        eff_pick: effProb >= 0.5 ? game.home_team : game.away_team,
+        elo_prob: eloProb,
+        bayes_prob: bayesProb,
+        lr_prob: lrProb,
+        pyth_prob: pythProb,
+        eff_prob: effProb,
+        home_injuries: homeInj,
+        away_injuries: awayInj,
+        injury_impact: injImpact,
+      });
+      existingMap.set(game.game_id, existing[existing.length - 1]);
+      changed = true;
+    } else {
+      // Existing entry — backfill injury data if it was never saved
+      const entry = existingMap.get(game.game_id);
+      if ((!entry.home_injuries || !entry.home_injuries.length) && homeInj.length) {
+        entry.home_injuries = homeInj;
+        entry.away_injuries = awayInj;
+        entry.injury_impact = injImpact;
+        changed = true;
+      }
+    }
+  });
+
+  if (changed) {
+    try { localStorage.setItem(key, JSON.stringify(existing)); } catch {}
+  }
   renderAccuracyTab();
 }
 
