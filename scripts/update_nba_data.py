@@ -78,11 +78,58 @@ NBA_COORDS = {
     "DAL": [32.7767, -96.7970], "DEN": [39.7392, -104.9903], "DET": [42.3314, -83.0458],
     "GSW": [37.7680, -122.3877], "HOU": [29.7604, -95.3698], "IND": [39.7684, -86.1581],
     "LAC": [34.0430, -118.2673], "LAL": [34.0430, -118.2673], "MEM": [35.1495, -90.0490],
-    "MIA": [25.7617, -80.1918], "MIL": [43.0389, -76.0253], "MIN": [44.9778, -93.2650],
+    "MIA": [25.7617, -80.1918], "MIL": [43.0436, -87.9166], "MIN": [44.9778, -93.2650],
     "NOP": [29.9511, -90.0715], "NYK": [40.7505, -73.9934], "OKC": [35.4634, -97.5151],
     "ORL": [28.5383, -81.3792], "PHI": [39.9012, -75.1720], "PHX": [33.4484, -112.0740],
     "POR": [45.5231, -122.6765], "SAC": [38.5816, -121.4944], "SAS": [29.4241, -98.4936],
     "TOR": [43.6532, -79.3832], "UTA": [40.7608, -111.8910], "WAS": [38.9072, -77.0369],
+}
+
+
+# Player tier lookup for injury impact weighting (2025-26 season)
+# Keys match ESPN displayName. Tiers: "superstar", "all-star", "starter", "rotation"
+# injury_model.py maps: superstar→50 ELO, all-star→30, starter→15, rotation→8
+NBA_PLAYER_TIERS = {
+    # Superstars
+    "LeBron James":              "superstar",
+    "Stephen Curry":             "superstar",
+    "Kevin Durant":              "superstar",
+    "Giannis Antetokounmpo":     "superstar",
+    "Nikola Jokic":              "superstar",
+    "Luka Doncic":               "superstar",
+    "Joel Embiid":               "superstar",
+    "Jayson Tatum":              "superstar",
+    "Shai Gilgeous-Alexander":   "superstar",
+    "Anthony Edwards":           "superstar",
+    "Victor Wembanyama":         "superstar",
+    # All-Stars
+    "Damian Lillard":            "all-star",
+    "Devin Booker":              "all-star",
+    "Anthony Davis":             "all-star",
+    "Bam Adebayo":               "all-star",
+    "Tyrese Haliburton":         "all-star",
+    "Donovan Mitchell":          "all-star",
+    "Jalen Brunson":             "all-star",
+    "De'Aaron Fox":              "all-star",
+    "Trae Young":                "all-star",
+    "Darius Garland":            "all-star",
+    "Alperen Sengun":            "all-star",
+    "Evan Mobley":               "all-star",
+    "Karl-Anthony Towns":        "all-star",
+    "Cade Cunningham":           "all-star",
+    "Zach LaVine":               "all-star",
+    "Kyrie Irving":              "all-star",
+    "Jimmy Butler":              "all-star",
+    "Pascal Siakam":             "all-star",
+    "Scottie Barnes":            "all-star",
+    "Jaren Jackson Jr.":         "all-star",
+    "Jaylen Brown":              "all-star",
+    "Paolo Banchero":            "all-star",
+    "Franz Wagner":              "all-star",
+    "Domantas Sabonis":          "all-star",
+    "James Harden":              "all-star",
+    "Paul George":               "all-star",
+    "Kawhi Leonard":             "all-star",
 }
 
 
@@ -312,6 +359,7 @@ def fetch_nba_injuries():
                     "player":             player_name,
                     "status":             status,
                     "position":           position,
+                    "tier":               NBA_PLAYER_TIERS.get(player_name, ""),
                     "injury_description": item.get("longComment", item.get("shortComment", status)),
                 })
 
