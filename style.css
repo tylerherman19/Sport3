@@ -1201,6 +1201,88 @@ tbody tr:hover { background: var(--surface2); }
   color: var(--text-muted);
   border: 1px solid rgba(130, 130, 130, 0.2);
 }
+.tier-starter {
+  background: rgba(160, 160, 160, 0.10);
+  color: #888;
+  border: 1px solid rgba(160, 160, 160, 0.20);
+}
+
+/* Always-visible injury tier summary box */
+.inj-tier-box {
+  background: rgba(255, 60, 60, 0.05);
+  border: 1px solid rgba(255, 60, 60, 0.18);
+  border-radius: 6px;
+  padding: 0.55rem 0.75rem;
+  margin: 0.4rem 0 0.3rem 0;
+  font-size: 0.78rem;
+}
+.inj-tier-box-title {
+  font-size: 0.6rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  margin-bottom: 0.35rem;
+}
+.inj-tier-row {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.12rem 0;
+  color: var(--text-secondary);
+}
+.inj-tier-row .inj-player-name {
+  flex: 1;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.inj-tier-row .inj-tier-status {
+  font-size: 0.68rem;
+  color: var(--text-muted);
+}
+.inj-tier-elo {
+  margin-left: auto;
+  color: #ff6b6b;
+  font-weight: 600;
+  font-size: 0.75rem;
+  white-space: nowrap;
+}
+.inj-tier-total {
+  border-top: 1px solid rgba(255,255,255,0.07);
+  margin-top: 0.3rem;
+  padding-top: 0.3rem;
+  display: flex;
+  justify-content: space-between;
+  font-weight: 600;
+  font-size: 0.76rem;
+  color: var(--text-primary);
+}
+.inj-tier-total .inj-tier-total-elo {
+  color: #ff6b6b;
+}
+.inj-stack-note {
+  font-size: 0.67rem;
+  color: #f5c400;
+  margin-top: 0.2rem;
+}
+.inj-tier-team-label {
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+  margin: 0.35rem 0 0.1rem 0;
+}
+.inj-tier-team-label:first-of-type {
+  margin-top: 0;
+}
+
+/* Prediction driver tier highlights */
+.driver-item.superstar-injury { color: #f5c400; font-weight: 600; }
+.driver-item.allstar-injury   { color: #6aadff; }
+.driver-item.stack-bonus      { color: #f5c400; font-style: italic; font-size: 0.78rem; }
 
 /* ═══════════════════════════════════════════════════════════════
    PER-GAME ADJUSTMENT PANEL

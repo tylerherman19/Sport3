@@ -812,13 +812,24 @@ def generate_nba_prediction_drivers(game_info, home, away, elo_dict,
         leader = home if home_elo > away_elo else away
         drivers.append(f"ELO advantage: {leader} +{elo_diff:.0f} rating points")
 
-    # Key injured players
+    # Key injured players with tier labels
     for team in [home, away]:
-        key_out = injury_impacts.get(team, {}).get("key_players_out", [])
+        impact = injury_impacts.get(team, {})
+        key_out = impact.get("key_players_out", [])
         for p in key_out[:3]:
+            tier_label = p.get("value_tier", "starter").title()
             drivers.append(
-                f"{p['player']} ({team}) {p['status'].upper()} "
-                f"— −{p['elo_impact']:.0f} rating impact"
+                f"{p['player']} ({team}) [{tier_label}] {p['status'].upper()} "
+                f"— −{p['elo_impact']:.0f} ELO"
+            )
+        # Cumulative star stack driver
+        star_count = impact.get("star_count", 0)
+        stack_mult = impact.get("star_stack_multiplier", 1.0)
+        total_penalty = impact.get("elo_penalty", 0.0)
+        if star_count >= 2 and total_penalty > 0:
+            drivers.append(
+                f"{team} star stack: {star_count}× elite players out "
+                f"→ ×{stack_mult:.2f} multiplier (combined −{total_penalty:.0f} ELO)"
             )
 
     # Efficiency gap
@@ -1486,6 +1497,10 @@ def run():
                     "away_elo_penalty": away_inj_impact.get("elo_penalty", 0.0),
                     "home_key_players_out": home_inj_impact.get("key_players_out", []),
                     "away_key_players_out": away_inj_impact.get("key_players_out", []),
+                    "home_star_count": home_inj_impact.get("star_count", 0),
+                    "away_star_count": away_inj_impact.get("star_count", 0),
+                    "home_star_stack_multiplier": home_inj_impact.get("star_stack_multiplier", 1.0),
+                    "away_star_stack_multiplier": away_inj_impact.get("star_stack_multiplier", 1.0),
                 },
                 "prediction_drivers": pred_drivers,
                 "explanation": explanation,

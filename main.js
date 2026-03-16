@@ -292,6 +292,9 @@ async function loadNflData() {
   state.modelMetrics = metrics;
   state.injuriesMap = buildInjuriesMap(injData);
 
+  // Log all games at load time so predictions are captured even if user never views Games tab
+  if (pred?.games) logPredictions(pred.games, 'nfl');
+
   if (state.league === 'nfl') {
     updateHeader(pred, 'nfl');
     renderAll();
@@ -312,6 +315,9 @@ async function loadNbaData() {
   state.nba.leaderboard = lb;
   state.nba.modelMetrics = metrics;
   state.nba.injuriesMap = buildInjuriesMap(injData);
+
+  // Log all games at load time so predictions are captured even if user never views Games tab
+  if (pred?.games) logPredictions(pred.games, 'nba');
 
   if (state.league === 'nba') {
     updateHeader(pred, 'nba');
@@ -382,8 +388,12 @@ async function fetchLiveScores() {
   if (updated && state.league === 'nba') renderAll();
   manageLivePolling();
   updateRefreshButtonState();
-  // Resolve any same-day finished games into the log
-  if (updated) resolveActualWinners('nba');
+  // Ensure any newly-FINAL games are logged before resolving winners
+  if (updated) {
+    const nbaGames = state.nba.predictions?.games;
+    if (nbaGames) logPredictions(nbaGames, 'nba');
+    resolveActualWinners('nba');
+  }
 }
 
 function manageLivePolling() {
@@ -778,7 +788,10 @@ function buildGameCard(game, isNba) {
   const tzShift = Math.abs((TEAM_TZ[game.home_team] || -5) - (TEAM_TZ[game.away_team] || -5));
   const contextHtml = buildContextHtml(game, adj, isNba, homeTrend, awayTrend, tzShift);
 
-  // Injury panel
+  // Always-visible injury tier impact summary
+  const injuryTierSummaryHtml = buildInjuryTierSummaryHtml(game);
+
+  // Injury panel (collapsible)
   const injuryHtml = buildInjuryHtml(game, isNba);
 
   // Prediction drivers
@@ -787,9 +800,12 @@ function buildGameCard(game, isNba) {
     <div class="drivers-section">
       <div class="drivers-title">Prediction Drivers</div>
       ${drivers.map(d => {
-        const cls = d.includes('OUT') || d.includes('DOUBTFUL') ? 'negative'
-                  : d.includes('advantage') ? 'positive'
-                  : '';
+        let cls = '';
+        if (d.includes('[Superstar]')) cls = 'negative superstar-injury';
+        else if (d.includes('[All-Star]') || d.includes('[All-star]')) cls = 'negative allstar-injury';
+        else if (d.includes('star stack')) cls = 'stack-bonus';
+        else if (d.includes('OUT') || d.includes('DOUBTFUL')) cls = 'negative';
+        else if (d.includes('advantage')) cls = 'positive';
         return `<div class="driver-item ${cls}">${d}</div>`;
       }).join('')}
     </div>` : '';
@@ -896,6 +912,7 @@ function buildGameCard(game, isNba) {
     ${p.bayesian_prob != null ? `<div class="model-prob-pill"><span class="model-prob-label">Bayes</span><span class="model-prob-val">${pct(p.bayesian_prob)}</span></div>` : ''}
   </div>
 
+  ${injuryTierSummaryHtml}
   ${injuryHtml}
   ${driversHtml}
   ${explanationHtml}
@@ -938,6 +955,59 @@ function buildContextHtml(game, adj, isNba, homeTrend, awayTrend, tzShift) {
   return `<div class="game-stats context-stats">${pills.join('')}</div>`;
 }
 
+/* ── Always-visible injury tier impact summary ────────────────── */
+function buildInjuryTierSummaryHtml(game) {
+  const impact = game.injury_impact || {};
+  const TIER_BADGE_CLASS = { superstar: 'tier-superstar', 'all-star': 'tier-allstar', starter: 'tier-starter', backup: 'tier-backup', rotation: 'tier-rotation' };
+
+  const renderTeamRows = (team, keyPlayers, eloPenalty, starCount, stackMult) => {
+    if (!keyPlayers || !keyPlayers.length) return '';
+    const rows = keyPlayers.map(p => {
+      const tier = p.value_tier || 'starter';
+      const badgeClass = TIER_BADGE_CLASS[tier] || '';
+      const badge = badgeClass ? `<span class="inj-tier-badge ${badgeClass}">${tier}</span>` : '';
+      return `<div class="inj-tier-row">
+        <span class="inj-player-name">${badge} ${p.player}</span>
+        <span class="inj-tier-status">${p.position} · ${p.status}</span>
+        <span class="inj-tier-elo">−${p.elo_impact} ELO</span>
+      </div>`;
+    }).join('');
+
+    const stackNote = (starCount >= 2 && stackMult > 1.0)
+      ? `<div class="inj-stack-note">★ Star stack ×${stackMult.toFixed(2)} applied (${starCount} elite players out)</div>`
+      : '';
+
+    const total = `<div class="inj-tier-total">
+      <span>${team} total impact</span>
+      <span class="inj-tier-total-elo">−${Math.round(eloPenalty)} ELO</span>
+    </div>`;
+
+    return `<div class="inj-tier-team-label">${team}</div>${rows}${stackNote}${total}`;
+  };
+
+  const homeRows = renderTeamRows(
+    game.home_team,
+    impact.home_key_players_out || [],
+    impact.home_elo_penalty || 0,
+    impact.home_star_count || 0,
+    impact.home_star_stack_multiplier || 1.0
+  );
+  const awayRows = renderTeamRows(
+    game.away_team,
+    impact.away_key_players_out || [],
+    impact.away_elo_penalty || 0,
+    impact.away_star_count || 0,
+    impact.away_star_stack_multiplier || 1.0
+  );
+
+  if (!homeRows && !awayRows) return '';
+
+  return `<div class="inj-tier-box">
+    <div class="inj-tier-box-title">Injury Impact</div>
+    ${homeRows}${awayRows}
+  </div>`;
+}
+
 /* ── Injury panel ─────────────────────────────────────────────── */
 function buildInjuryHtml(game, isNba) {
   // For non-completed games, prefer live injury data from the injuries JSON file
@@ -974,8 +1044,8 @@ function buildInjuryHtml(game, isNba) {
   };
 
   const tierBadge = tier => {
-    if (!tier || tier === 'starter') return '';
-    const badgeClass = { superstar: 'tier-superstar', 'all-star': 'tier-allstar', backup: 'tier-backup', rotation: 'tier-rotation' }[tier] || '';
+    if (!tier) return '';
+    const badgeClass = { superstar: 'tier-superstar', 'all-star': 'tier-allstar', starter: 'tier-starter', backup: 'tier-backup', rotation: 'tier-rotation' }[tier] || '';
     if (!badgeClass) return '';
     return `<span class="inj-tier-badge ${badgeClass}">${tier}</span>`;
   };
@@ -1007,8 +1077,7 @@ function buildInjuryHtml(game, isNba) {
   const keyOut = (impact.home_key_players_out || []).concat(impact.away_key_players_out || []);
   const keyOutHtml = keyOut.length ? `<div class="inj-key-out">Key out: ${keyOut.map(p => {
     const tier = p.value_tier || '';
-    const tierLabel = (tier && tier !== 'starter') ? ` <span class="inj-tier-badge ${{ superstar: 'tier-superstar', 'all-star': 'tier-allstar', backup: 'tier-backup', rotation: 'tier-rotation' }[tier] || ''}">${tier}</span>` : '';
-    return `<strong>${p.player}</strong>${tierLabel} (${p.position}, ${p.status}, −${p.elo_impact} ELO)`;
+    return `<strong>${p.player}</strong>${tierBadge(tier)} (${p.position}, ${p.status}, −${p.elo_impact} ELO)`;
   }).join(' · ')}</div>` : '';
 
   return `
@@ -2539,7 +2608,7 @@ function clearLog(league) {
   renderAccuracyTab();
 }
 
-function relogAllGames(league) {
+async function relogAllGames(league) {
   const games = league === 'nba'
     ? (state.nba.predictions?.games || [])
     : (state.predictions?.games || []);
@@ -2621,6 +2690,8 @@ function relogAllGames(league) {
   if (changed) {
     try { localStorage.setItem(key, JSON.stringify(existing)); } catch {}
   }
+  // Resolve actual winners for any newly added (or previously unresolved) entries
+  await resolveActualWinners(league);
   renderAccuracyTab();
 }
 
