@@ -151,16 +151,28 @@ const TEAM_TZ = {
 };
 
 function ensembleFromProbs(probs, weights) {
-  const w = weights;
+  const w = { ...weights };
+  // If XGBoost unavailable, redistribute its weight proportionally to remaining models
+  // (previously fell back to logistic_prob, giving logistic double weight)
+  if (probs.xgb_prob == null) {
+    const xgbW = w.xgboost;
+    const rem = w.logistic + w.elo + w.pyth + w.eff;
+    if (rem > 0) {
+      w.logistic += xgbW * (w.logistic / rem);
+      w.elo      += xgbW * (w.elo / rem);
+      w.pyth     += xgbW * (w.pyth / rem);
+      w.eff      += xgbW * (w.eff / rem);
+    }
+    w.xgboost = 0;
+  }
   const total = w.logistic + w.xgboost + w.elo + w.pyth + w.eff;
   if (total === 0) return 0.5;
-  const xgb = probs.xgb_prob != null ? probs.xgb_prob : probs.logistic_prob;
   const val = (
     w.logistic * (probs.logistic_prob || 0.5) +
-    w.xgboost  * (xgb || 0.5) +
-    w.elo      * (probs.elo_prob || 0.5) +
-    w.pyth     * (probs.pyth_prob || 0.5) +
-    w.eff      * (probs.eff_prob || 0.5)
+    w.xgboost  * (probs.xgb_prob     || 0.5) +
+    w.elo      * (probs.elo_prob      || 0.5) +
+    w.pyth     * (probs.pyth_prob     || 0.5) +
+    w.eff      * (probs.eff_prob      || 0.5)
   ) / total;
   return clamp(val, 0.01, 0.99);
 }
@@ -903,14 +915,25 @@ function buildGameCard(game, isNba) {
     </div>
   </div>` : ''}
 
-  <div class="model-probs">
-    ${p.logistic_prob != null ? `<div class="model-prob-pill"><span class="model-prob-label">LR</span><span class="model-prob-val">${pct(p.logistic_prob)}</span></div>` : ''}
-    ${p.xgb_prob != null ? `<div class="model-prob-pill"><span class="model-prob-label">XGB</span><span class="model-prob-val">${pct(p.xgb_prob)}</span></div>` : ''}
-    ${p.elo_prob != null ? `<div class="model-prob-pill"><span class="model-prob-label">ELO</span><span class="model-prob-val">${pct(p.elo_prob)}</span></div>` : ''}
-    ${p.pyth_prob != null ? `<div class="model-prob-pill"><span class="model-prob-label">Pyth</span><span class="model-prob-val">${pct(p.pyth_prob)}</span></div>` : ''}
-    ${p.eff_prob != null ? `<div class="model-prob-pill"><span class="model-prob-label">Eff</span><span class="model-prob-val">${pct(p.eff_prob)}</span></div>` : ''}
-    ${p.bayesian_prob != null ? `<div class="model-prob-pill"><span class="model-prob-label">Bayes</span><span class="model-prob-val">${pct(p.bayesian_prob)}</span></div>` : ''}
-  </div>
+  ${(() => {
+    const ensWinner = ensProb >= 0.5 ? game.home_team : game.away_team;
+    function modelPill(prob, label, fullName) {
+      if (prob == null) return '';
+      const pick = prob >= 0.5 ? game.home_team : game.away_team;
+      const conf = prob >= 0.5 ? prob : 1 - prob;
+      const cls = pick === ensWinner ? 'agrees' : 'disagrees';
+      return `<div class="model-prob-pill ${cls}" title="${fullName}"><span class="model-prob-label">${label}</span><span class="model-prob-team">${pick}</span><span class="model-prob-val">${pct(conf)}</span></div>`;
+    }
+    const pills = [
+      modelPill(p.logistic_prob, 'Logistic',     'Logistic Regression'),
+      modelPill(p.xgb_prob,      'XGBoost',      'XGBoost'),
+      modelPill(p.elo_prob,      'ELO',          'ELO Rating'),
+      modelPill(p.pyth_prob,     'Pythagorean',  'Pythagorean Expectation'),
+      modelPill(p.eff_prob,      'Efficiency',   'Efficiency Model'),
+      modelPill(p.bayesian_prob, 'Bayesian',     'Bayesian Model'),
+    ].filter(Boolean).join('');
+    return pills ? `<div class="model-probs-header">Sub-models</div><div class="model-probs">${pills}</div>` : '';
+  })()}
 
   ${injuryTierSummaryHtml}
   ${injuryHtml}
@@ -1151,17 +1174,17 @@ function buildAdjPanelHtml(gameId, elo, game) {
     <div class="adjust-sliders">
       <div class="adjust-row">
         <div class="adjust-row-label">
-          <span>-30</span>
-          <label>${homeTeam} Injury Override <span class="adj-val" id="adj-injHome-val-${gameId}">${ov.injHome || 0}</span></label>
-          <span>+30</span>
+          <span class="adj-hint">← More injured</span>
+          <label>${homeTeam} Injury Impact <span class="adj-val" id="adj-injHome-val-${gameId}">${ov.injHome || 0}</span></label>
+          <span class="adj-hint">Healthier →</span>
         </div>
         <input type="range" class="adj-slider" data-game-id="${gameId}" data-adj="injHome" min="-30" max="30" step="1" value="${ov.injHome || 0}" />
       </div>
       <div class="adjust-row">
         <div class="adjust-row-label">
-          <span>-30</span>
-          <label>${awayTeam} Injury Override <span class="adj-val" id="adj-injAway-val-${gameId}">${ov.injAway || 0}</span></label>
-          <span>+30</span>
+          <span class="adj-hint">← More injured</span>
+          <label>${awayTeam} Injury Impact <span class="adj-val" id="adj-injAway-val-${gameId}">${ov.injAway || 0}</span></label>
+          <span class="adj-hint">Healthier →</span>
         </div>
         <input type="range" class="adj-slider" data-game-id="${gameId}" data-adj="injAway" min="-30" max="30" step="1" value="${ov.injAway || 0}" />
       </div>
