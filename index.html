@@ -47,6 +47,7 @@
       <button class="nav-tab" data-tab="leaderboard" id="tab-btn-leaderboard">ELO Leaderboard</button>
       <button class="nav-tab" data-tab="performance" id="tab-btn-performance">Model Performance</button>
       <button class="nav-tab" data-tab="accuracy" id="tab-btn-accuracy">Prediction Log</button>
+      <button class="nav-tab" data-tab="kalshi" id="tab-btn-kalshi">Kalshi Odds</button>
     </div>
   </div>
 </nav>
@@ -359,6 +360,20 @@
     <!-- ── Section 6: Prediction Log ── -->
     <section id="tab-accuracy" class="section">
       <div class="loading"><div class="spinner"></div><span>Loading prediction log...</span></div>
+    </section>
+
+    <!-- ── Section 7: Kalshi Odds ── -->
+    <section id="tab-kalshi" class="section">
+      <div class="section-header">
+        <div class="section-title">
+          <h2>Kalshi Odds Comparison</h2>
+          <span class="section-badge" id="kalshi-badge">Model vs Market</span>
+        </div>
+        <div style="font-size:0.75rem;color:var(--text-muted);">Ranked by prediction mismatch</div>
+      </div>
+      <div id="kalshi-content">
+        <div class="loading"><div class="spinner"></div><span>Loading Kalshi markets...</span></div>
+      </div>
     </section>
 
   </div><!-- /container -->
