@@ -52,10 +52,16 @@ jobs:
           ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
         run: python scripts/update_nba_data.py
 
+      - name: Fetch Kalshi markets
+        env:
+          KALSHI_API_KEY: ${{ secrets.KALSHI_API_KEY }}
+        run: python scripts/updatekalshi.py
+        continue-on-error: true
+
       - name: Commit updated NBA predictions
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: 'chore: update NBA predictions [skip ci]'
-          file_pattern: 'data/nba_*.json data/fte_nba_elo.csv data/nba_fetch_log.txt'
+          file_pattern: 'data/nba_*.json data/fte_nba_elo.csv data/nba_fetch_log.txt data/kalshidata.json'
           commit_user_name: 'github-actions[bot]'
           commit_user_email: 'github-actions[bot]@users.noreply.github.com'
