@@ -248,24 +248,35 @@ def fetch_espn_injuries():
     injuries = {}
     try:
         # Response structure: {"injuries": [{"displayName": "Team", "injuries": [{player entries}]}]}
+        # Note: ESPN removed top-level "abbreviation" from team entries; it now lives at
+        # item.athlete.team.abbreviation only.
         for team_entry in data.get("injuries", []):
+            raw_abbrev = (
+                team_entry.get("abbreviation", "")
+                or team_entry.get("team", {}).get("abbreviation", "")
+            )
+            team_abbrev = abbrev_norm(raw_abbrev) if raw_abbrev else ""
+
             for item in team_entry.get("injuries", []):
-                team_abbrev = abbrev_norm(
-                    team_entry.get("abbreviation", "")
-                )
-                if team_abbrev:
-                    if team_abbrev not in injuries:
-                        injuries[team_abbrev] = []
-                    status_raw = item.get("status", "")
-                    if isinstance(status_raw, dict):
-                        status = status_raw.get("name", status_raw.get("abbreviation", ""))
-                    else:
-                        status = str(status_raw) if status_raw else ""
-                    injuries[team_abbrev].append({
-                        "player": item.get("athlete", {}).get("displayName", ""),
-                        "status": status,
-                        "position": item.get("athlete", {}).get("position", {}).get("abbreviation", "")
-                    })
+                # Fallback: derive abbreviation from athlete's team when outer entry lacks it
+                item_abbrev = team_abbrev
+                if not item_abbrev:
+                    raw_fallback = item.get("athlete", {}).get("team", {}).get("abbreviation", "")
+                    item_abbrev = abbrev_norm(raw_fallback) if raw_fallback else ""
+                if not item_abbrev:
+                    continue
+                if item_abbrev not in injuries:
+                    injuries[item_abbrev] = []
+                status_raw = item.get("status", "")
+                if isinstance(status_raw, dict):
+                    status = status_raw.get("name", status_raw.get("abbreviation", ""))
+                else:
+                    status = str(status_raw) if status_raw else ""
+                injuries[item_abbrev].append({
+                    "player": item.get("athlete", {}).get("displayName", ""),
+                    "status": status,
+                    "position": item.get("athlete", {}).get("position", {}).get("abbreviation", "")
+                })
     except Exception as e:
         log.warning(f"Error parsing injuries: {e}")
 
@@ -650,20 +661,23 @@ def run():
     log.info("Computing injury impact scores...")
     injury_impacts = compute_all_team_impacts(injuries)
 
-    # Save NFL injuries file
-    nfl_injuries_list = []
-    for team, players in injuries.items():
-        for p in players:
-            nfl_injuries_list.append({
-                "player": p.get("player", ""),
-                "team": team,
-                "position": p.get("position", ""),
-                "status": p.get("status", ""),
-                "injury_description": p.get("status", ""),
-            })
-    (DATA_DIR / "nfl_injuries.json").write_text(
-        json.dumps({"updated": now_utc, "injuries": nfl_injuries_list}, indent=2)
-    )
+    # Save NFL injuries file (only overwrite if we actually fetched data)
+    if injuries:
+        nfl_injuries_list = []
+        for team, players in injuries.items():
+            for p in players:
+                nfl_injuries_list.append({
+                    "player": p.get("player", ""),
+                    "team": team,
+                    "position": p.get("position", ""),
+                    "status": p.get("status", ""),
+                    "injury_description": p.get("status", ""),
+                })
+        (DATA_DIR / "nfl_injuries.json").write_text(
+            json.dumps({"updated": now_utc, "injuries": nfl_injuries_list}, indent=2)
+        )
+    else:
+        log.warning("No NFL injury data fetched — keeping existing nfl_injuries.json")
 
     season_year = datetime.now().year
     current_month = datetime.now().month

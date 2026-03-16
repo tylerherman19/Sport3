@@ -13,11 +13,15 @@ const state = {
   eloRatings: null,
   leaderboard: null,
   modelMetrics: null,
+  // NFL injury map: { TEAM: [{player, status, position}, ...] }
+  injuriesMap: {},
   // NBA data
   nba: {
     predictions: null,
     leaderboard: null,
     modelMetrics: null,
+    // NBA injury map: { TEAM: [{player, status, position}, ...] }
+    injuriesMap: {},
   },
   sortCol: 'elo',
   sortDir: 'desc',
@@ -253,10 +257,24 @@ async function loadAll() {
   await Promise.all([loadNflData(), loadNbaData()]);
 }
 
+/* Build a team-keyed injury map from the flat injuries JSON file.
+   Returns { TEAM: [{player, status, position, injury_description}, ...] } */
+function buildInjuriesMap(injData) {
+  const map = {};
+  if (!injData?.injuries) return map;
+  for (const p of injData.injuries) {
+    const team = p.team;
+    if (!team) continue;
+    if (!map[team]) map[team] = [];
+    map[team].push({ player: p.player, status: p.status, position: p.position, injury_description: p.injury_description || p.status });
+  }
+  return map;
+}
+
 async function loadNflData() {
   const base = './data/';
   const t = Date.now();
-  const [pred, elo, lb, metrics] = await Promise.all([
+  const [pred, elo, lb, metrics, injData] = await Promise.all([
     fetch(base + 'nfl_predictions.json?t=' + t).then(r => r.json()).catch(() =>
       fetch(base + 'predictions.json?t=' + t).then(r => r.json()).catch(() => null)
     ),
@@ -265,12 +283,14 @@ async function loadNflData() {
       fetch(base + 'leaderboard.json?t=' + t).then(r => r.json()).catch(() => null)
     ),
     fetch(base + 'model_metrics.json?t=' + t).then(r => r.json()).catch(() => null),
+    fetch(base + 'nfl_injuries.json?t=' + t).then(r => r.json()).catch(() => null),
   ]);
 
   state.predictions = pred;
   state.eloRatings = elo;
   state.leaderboard = lb;
   state.modelMetrics = metrics;
+  state.injuriesMap = buildInjuriesMap(injData);
 
   if (state.league === 'nfl') {
     updateHeader(pred, 'nfl');
@@ -281,15 +301,17 @@ async function loadNflData() {
 async function loadNbaData() {
   const base = './data/';
   const t = Date.now();
-  const [pred, lb, metrics] = await Promise.all([
+  const [pred, lb, metrics, injData] = await Promise.all([
     fetch(base + 'nba_predictions.json?t=' + t).then(r => r.json()).catch(() => null),
     fetch(base + 'nba_leaderboard.json?t=' + t).then(r => r.json()).catch(() => null),
     fetch(base + 'nba_model_metrics.json?t=' + t).then(r => r.json()).catch(() => null),
+    fetch(base + 'nba_injuries.json?t=' + t).then(r => r.json()).catch(() => null),
   ]);
 
   state.nba.predictions = pred;
   state.nba.leaderboard = lb;
   state.nba.modelMetrics = metrics;
+  state.nba.injuriesMap = buildInjuriesMap(injData);
 
   if (state.league === 'nba') {
     updateHeader(pred, 'nba');
@@ -918,10 +940,22 @@ function buildContextHtml(game, adj, isNba, homeTrend, awayTrend, tzShift) {
 
 /* ── Injury panel ─────────────────────────────────────────────── */
 function buildInjuryHtml(game, isNba) {
-  const injuries = game.injuries || {};
+  // For non-completed games, prefer live injury data from the injuries JSON file
+  // (loaded into state.injuriesMap / state.nba.injuriesMap). This ensures the display
+  // always reflects current injuries without needing to rebuild the predictions JSON.
+  // For completed games, game.injuries is restored from the prediction log snapshot.
+  const isCompleted = (game.status || '').includes('FINAL');
+  const liveMap = isNba ? state.nba.injuriesMap : state.injuriesMap;
+  let homeInjuries, awayInjuries;
+  if (!isCompleted && liveMap && Object.keys(liveMap).length > 0) {
+    homeInjuries = (liveMap[game.home_team] || []).slice(0, 5);
+    awayInjuries = (liveMap[game.away_team] || []).slice(0, 5);
+  } else {
+    const injuries = game.injuries || {};
+    homeInjuries = injuries.home || [];
+    awayInjuries = injuries.away || [];
+  }
   const impact = game.injury_impact || {};
-  const homeInjuries = injuries.home || [];
-  const awayInjuries = injuries.away || [];
   const totalInjured = homeInjuries.length + awayInjuries.length;
 
   if (totalInjured === 0 && !impact.home_elo_penalty && !impact.away_elo_penalty) {
