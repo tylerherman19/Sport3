@@ -135,7 +135,6 @@ def train_xgboost(X, y):
         min_child_weight=10,
         reg_alpha=0.1,
         reg_lambda=1.0,
-        use_label_encoder=False,
         eval_metric="logloss",
         early_stopping_rounds=20,
         random_state=42,

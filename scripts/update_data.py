@@ -1151,4 +1151,8 @@ def run():
 
 
 if __name__ == "__main__":
-    run()
+    try:
+        run()
+    except Exception as e:
+        log.error(f"Fatal error in NFL prediction update: {e}", exc_info=True)
+        sys.exit(1)
