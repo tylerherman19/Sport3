@@ -488,6 +488,8 @@ function renderGames() {
 
   grid.innerHTML = filteredGames.map(game => buildGameCard(game, isNba)).join('');
   logPredictions(pred.games, isNba ? 'nba' : 'nfl');
+  // Auto-resolve any completed games in the background without waiting
+  resolveActualWinners(isNba ? 'nba' : 'nfl');
 }
 
 /* ── Score display (FINAL / live) ─────────────────────────────── */
@@ -647,12 +649,34 @@ function buildRichExplanationHtml(game, homeData, awayData, lbData, isNba) {
 }
 
 function buildGameCard(game, isNba) {
-  const p = game.predictions || {};
+  let p = game.predictions || {};
   const g = mergeLiveGame(game);
   const isLiveGame = isNba && (g.status === 'STATUS_IN_PROGRESS' || g.status === 'STATUS_HALFTIME');
   let ensProb = ensembleFromProbs(p, state.weights);
   if (isLiveGame && g.period) {
     ensProb = calcLiveWinProb(ensProb, g.home_score, g.away_score, g.period, g.display_clock);
+  }
+  // For completed games, restore the pre-game prediction from the log
+  // (backend regenerates predictions daily with current stats, overwriting pre-game values)
+  if (g.status === 'STATUS_FINAL') {
+    const logKey = `sport3_log_${isNba ? 'nba' : 'nfl'}`;
+    let logEntries = [];
+    try { logEntries = JSON.parse(localStorage.getItem(logKey) || '[]'); } catch {}
+    const logEntry = logEntries.find(e => e.game_id === game.game_id);
+    if (logEntry) {
+      p = {
+        ...p,
+        elo_prob:      logEntry.elo_prob,
+        bayesian_prob: logEntry.bayes_prob,
+        logistic_prob: logEntry.lr_prob,
+        pyth_prob:     logEntry.pyth_prob,
+        eff_prob:      logEntry.eff_prob,
+      };
+      // Use stored ensemble probability (captured before game, not recalculated with today's ratings)
+      ensProb = logEntry.predicted_winner === game.home_team
+        ? logEntry.predicted_prob
+        : (1 - logEntry.predicted_prob);
+    }
   }
   const awayProb = 1 - ensProb;
   const mc = game.monte_carlo || {};
@@ -2011,7 +2035,20 @@ async function resolveActualWinners(league) {
         if (!comp) return;
         const competitors = comp.competitors || [];
         if (competitors.length < 2) return;
-        const winner = competitors.find(c => c.winner);
+        const isFinalEvent = ev.status?.type?.name === 'STATUS_FINAL';
+        let winner = competitors.find(c => c.winner);
+        if (!winner && isFinalEvent) {
+          // Fallback: determine winner by score when winner flag isn't set
+          const homeComp = competitors.find(c => c.homeAway === 'home');
+          const awayComp = competitors.find(c => c.homeAway === 'away');
+          if (homeComp && awayComp) {
+            const hs = parseInt(homeComp.score, 10);
+            const as_ = parseInt(awayComp.score, 10);
+            if (!isNaN(hs) && !isNaN(as_) && hs !== as_) {
+              winner = hs > as_ ? homeComp : awayComp;
+            }
+          }
+        }
         if (!winner) return;
         const winnerAbbrev = winner.team?.abbreviation?.toUpperCase();
 
@@ -2091,6 +2128,10 @@ function adjustWeightsFromLog(league) {
 async function renderAccuracyTab() {
   const container = $('tab-accuracy');
   if (!container) return;
+
+  // Log any games not yet captured (handles case where user skips Games tab)
+  if (state.predictions?.games) logPredictions(state.predictions.games, 'nfl');
+  if (state.nba.predictions?.games) logPredictions(state.nba.predictions.games, 'nba');
 
   // Resolve winners in background
   await Promise.all([resolveActualWinners('nfl'), resolveActualWinners('nba')]);
