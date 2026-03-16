@@ -2147,13 +2147,26 @@ async function resolveActualWinners(league) {
   // Group by date
   const dateGroups = {};
   unresolved.forEach(e => {
-    const d = e.game_time ? e.game_time.slice(0, 10).replace(/-/g, '') : null;
+    const d = e.game_time ? (() => {
+      const dt = new Date(e.game_time);
+      const y = dt.getFullYear();
+      const m = String(dt.getMonth() + 1).padStart(2, '0');
+      const day = String(dt.getDate()).padStart(2, '0');
+      return `${y}${m}${day}`;
+    })() : null;
     if (!d) return;
     if (!dateGroups[d]) dateGroups[d] = [];
     dateGroups[d].push(e);
   });
 
   const sport = league === 'nba' ? 'basketball/nba' : 'football/nfl';
+
+  // ESPN often returns short abbreviations that differ from what we store
+  const ESPNFIX = {
+    'GS': 'GSW', 'NY': 'NYK', 'NO': 'NOP', 'SA': 'SAS', 'WSH': 'WAS',
+    'UTH': 'UTA', 'JAC': 'JAX', 'ARZ': 'ARI', 'CLV': 'CLE', 'HST': 'HOU', 'LV': 'LVR'
+  };
+  const normAbbr = a => { const u = (a || '').toUpperCase(); return ESPNFIX[u] || u; };
 
   for (const [date, dayEntries] of Object.entries(dateGroups)) {
     try {
@@ -2180,13 +2193,13 @@ async function resolveActualWinners(league) {
           }
         }
         if (!winner) return;
-        const winnerAbbrev = winner.team?.abbreviation?.toUpperCase();
+        const winnerAbbrev = normAbbr(winner.team?.abbreviation);
 
         // Match to our log entry by game_id or team names
         const match = dayEntries.find(e =>
           e.game_id === ev.id ||
-          (e.home_team === (competitors.find(c => c.homeAway === 'home')?.team?.abbreviation?.toUpperCase()) &&
-           e.away_team === (competitors.find(c => c.homeAway === 'away')?.team?.abbreviation?.toUpperCase()))
+          (e.home_team === normAbbr(competitors.find(c => c.homeAway === 'home')?.team?.abbreviation) &&
+           e.away_team === normAbbr(competitors.find(c => c.homeAway === 'away')?.team?.abbreviation))
         );
         if (match && winnerAbbrev) {
           const entry = entries.find(e => e.game_id === match.game_id);
@@ -2371,6 +2384,7 @@ async function renderAccuracyTab() {
       </div>`;
 
     const sortedEntries = [...entries]
+      .filter(e => e.actual_winner)
       .sort((a, b) => new Date(b.game_time) - new Date(a.game_time));
     if (sortedEntries.length === 0) {
       return `<div class="log-empty">No predictions logged yet. Results will appear here once games finish.</div>`;
@@ -2381,15 +2395,15 @@ async function renderAccuracyTab() {
       let postMortemRow = '';
       if (e.actual_winner) {
         const isCorrect = e.actual_winner === e.predicted_winner;
+        const pmText = generatePostMortemExplanation(e);
+        caretHtml = `<button class="log-postmortem-btn" data-postmortem="${e.game_id}" title="Game analysis">▼</button>`;
+        postMortemRow = `<tr class="log-postmortem-row" id="pm-${e.game_id}" style="display:none">
+            <td colspan="5"><div class="log-postmortem-text">${pmText}</div></td>
+          </tr>`;
         if (isCorrect) {
           resultHtml = `<span class="log-correct">✓ ${e.actual_winner}</span>`;
         } else {
           resultHtml = `<span class="log-incorrect">✗ ${e.actual_winner}</span>`;
-          const pmText = generatePostMortemExplanation(e);
-          caretHtml = `<button class="log-postmortem-btn" data-postmortem="${e.game_id}" title="Why did the model miss?">▼</button>`;
-          postMortemRow = `<tr class="log-postmortem-row" id="pm-${e.game_id}" style="display:none">
-            <td colspan="5"><div class="log-postmortem-text">${pmText}</div></td>
-          </tr>`;
         }
       } else {
         resultHtml = `<span class="log-pending">Pending</span>`;
