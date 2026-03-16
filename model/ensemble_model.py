@@ -22,7 +22,6 @@ XGB_FEATURE_COLS = [
     "home_field",
     "rest_days_diff",
     "pythagorean_diff",
-    "net_efficiency_diff",
     "turnover_diff",
     "travel_diff",
     "last5_win_rate_diff",
@@ -89,7 +88,6 @@ def build_xgb_features(df, elo_dict, game_history, efficiency_data, pythagorean_
             float(not neutral),
             0.0,  # rest_days_diff
             pyth1 - pyth2,
-            eff1 - eff2,
             0.0,  # turnover_diff
             0.0,  # travel_diff
             lr1 - lr2,
@@ -116,15 +114,20 @@ def build_xgb_features(df, elo_dict, game_history, efficiency_data, pythagorean_
 
 
 def train_xgboost(X, y):
-    """Train XGBoost classifier."""
+    """Train XGBoost classifier with early stopping on a held-out validation set."""
     if not HAS_XGB:
         return None, None
 
     scaler = StandardScaler()
     X_scaled = scaler.fit_transform(X)
 
+    # Reserve last 20% of (time-ordered) data for early-stopping validation
+    split = max(1, int(len(X_scaled) * 0.8))
+    X_train, X_val = X_scaled[:split], X_scaled[split:]
+    y_train, y_val = y[:split], y[split:]
+
     model = xgb.XGBClassifier(
-        n_estimators=300,
+        n_estimators=500,
         max_depth=4,
         learning_rate=0.05,
         subsample=0.8,
@@ -134,11 +137,12 @@ def train_xgboost(X, y):
         reg_lambda=1.0,
         use_label_encoder=False,
         eval_metric="logloss",
+        early_stopping_rounds=20,
         random_state=42,
         n_jobs=-1,
         verbosity=0
     )
-    model.fit(X_scaled, y)
+    model.fit(X_train, y_train, eval_set=[(X_val, y_val)], verbose=False)
     return model, scaler
 
 
@@ -190,7 +194,6 @@ def predict_xgboost(matchups, model, scaler, elo_dict, game_history,
             float(is_home and not neutral),
             float(m.get("rest_diff", 0)),
             pyth_a - pyth_b,
-            eff_a - eff_b,
             float(m.get("turnover_diff", 0)),
             float(m.get("travel_diff", 0)),
             lr_a - lr_b,
@@ -245,6 +248,55 @@ def ensemble_predict(logistic_prob, xgb_prob, elo_prob, pyth_prob, eff_prob, wei
                 w_eff * eff_prob) / total
 
     return round(float(np.clip(prob, 0.01, 0.99)), 4)
+
+
+def learn_ensemble_weights(sub_probs, actuals, weight_keys=None):
+    """
+    Learn optimal ensemble weights empirically by minimising log-loss on
+    historical predictions using scipy.optimize.
+
+    Parameters
+    ----------
+    sub_probs : list[dict]
+        Each dict maps model name → probability for the home team.
+        Keys should be a subset of: 'elo', 'pyth', 'eff', 'log', 'xgb'.
+    actuals : list[int]
+        1 if home team won, 0 otherwise.
+    weight_keys : list[str], optional
+        Ordered list of model keys to include. Defaults to all present in sub_probs[0].
+
+    Returns
+    -------
+    dict[str, float]  — normalised weights summing to 1.0
+    """
+    from scipy.optimize import minimize
+
+    if not sub_probs or not actuals:
+        return {}
+
+    if weight_keys is None:
+        weight_keys = [k for k in sub_probs[0].keys() if sub_probs[0][k] is not None]
+
+    # Build matrix: rows=games, cols=models
+    P = np.array([
+        [float(row.get(k, 0.5) or 0.5) for k in weight_keys]
+        for row in sub_probs
+    ], dtype=np.float64)
+    y = np.array(actuals, dtype=np.float64)
+
+    def neg_log_loss(w):
+        w = np.clip(w, 1e-6, None)
+        w = w / w.sum()
+        probs = np.clip(P @ w, 1e-7, 1 - 1e-7)
+        return -np.mean(y * np.log(probs) + (1 - y) * np.log(1 - probs))
+
+    n = len(weight_keys)
+    w0 = np.ones(n) / n
+    result = minimize(neg_log_loss, w0, method="L-BFGS-B",
+                      bounds=[(0.0, 1.0)] * n)
+    w_opt = np.clip(result.x, 0.0, None)
+    w_norm = w_opt / w_opt.sum() if w_opt.sum() > 0 else w0
+    return {k: round(float(v), 4) for k, v in zip(weight_keys, w_norm)}
 
 
 def kelly_criterion(model_prob, market_prob, bankroll_fraction=1.0):

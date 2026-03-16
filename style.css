@@ -941,6 +941,67 @@ tbody tr:hover { background: var(--surface2); }
 .explanation-box strong {
   color: var(--text);
 }
+.explanation-narrative {
+  margin: 0 0 0.625rem;
+}
+.explanation-eff-panel {
+  margin-top: 0.625rem;
+  padding-top: 0.625rem;
+  border-top: 1px solid var(--border);
+}
+.explanation-eff-header {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  margin-bottom: 0.4rem;
+}
+.explanation-eff-team-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.3rem;
+  flex-wrap: wrap;
+}
+.eff-team-name {
+  font-weight: 600;
+  color: var(--text);
+  min-width: 2.5rem;
+  font-size: 0.8rem;
+}
+.eff-stat {
+  font-size: 0.775rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+.eff-stat strong {
+  color: var(--text);
+}
+.eff-rank {
+  font-size: 0.65rem;
+  color: var(--blue-light);
+  margin-left: 0.2rem;
+  opacity: 0.85;
+}
+.explanation-matchup-row {
+  font-size: 0.775rem;
+  color: var(--text-muted);
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  margin-top: 0.25rem;
+}
+.explanation-matchup-row.positive {
+  background: rgba(var(--green-rgb, 52,199,89), 0.08);
+  color: var(--green);
+}
+.explanation-matchup-row.negative {
+  background: rgba(var(--red-rgb, 255,59,48), 0.08);
+  color: var(--red);
+}
+.explanation-matchup-row strong {
+  color: inherit;
+}
 
 /* ── Prob bar fill color variants ───────────────────────────── */
 .prob-fill.fill-green {
@@ -1348,6 +1409,82 @@ tbody tr:hover { background: var(--surface2); }
   color: var(--text-muted);
   line-height: 1.6;
   margin: 0.25rem 0 0.5rem;
+}
+/* ── Rich post-mortem panel ─── */
+.pm-content { font-size: 0.8rem; }
+.pm-score-header {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 0.35rem;
+}
+.pm-margin {
+  font-weight: 400;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-left: 0.4rem;
+}
+.pm-narrative {
+  font-style: italic;
+  color: var(--text-muted);
+  margin-bottom: 0.5rem;
+  line-height: 1.5;
+}
+.pm-section-label {
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  margin: 0.5rem 0 0.25rem;
+  opacity: 0.7;
+}
+.pm-eff-table { margin-bottom: 0.4rem; }
+.pm-eff-row {
+  display: grid;
+  grid-template-columns: 6rem repeat(3, 1fr);
+  gap: 0.25rem;
+  font-size: 0.775rem;
+  padding: 0.2rem 0;
+  border-bottom: 1px solid var(--border);
+  color: var(--text-muted);
+}
+.pm-eff-row:last-child { border-bottom: none; }
+.pm-eff-header { font-size: 0.65rem; opacity: 0.6; }
+.pm-winner-row { color: var(--text); font-weight: 500; }
+.pm-model-votes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-bottom: 0.35rem;
+}
+.pm-vote {
+  font-size: 0.7rem;
+  padding: 0.15rem 0.45rem;
+  border-radius: 99px;
+  font-weight: 500;
+}
+.pm-vote-correct {
+  background: rgba(52,199,89,0.15);
+  color: var(--green);
+  border: 1px solid rgba(52,199,89,0.25);
+}
+.pm-vote-wrong {
+  background: rgba(255,59,48,0.12);
+  color: var(--red);
+  border: 1px solid rgba(255,59,48,0.2);
+}
+.pm-vote-summary {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  margin-bottom: 0.35rem;
+}
+.pm-reason {
+  font-style: italic;
+  font-size: 0.775rem;
+  color: var(--text-muted);
+  margin-top: 0.25rem;
+  line-height: 1.5;
 }
 
 .btn-clear-log {

@@ -987,6 +987,58 @@ def run():
                 "wins_avg": round(win_pct * 82, 1),
             }
 
+    # ── 8b. Learn ensemble weights from historical data ──────────────────────
+    log.info("Learning NBA ensemble weights...")
+    nba_weights = {"elo": 0.25, "pyth": 0.20, "eff": 0.15, "log": 0.25, "xgb": 0.15}
+    weights_path = DATA_DIR / "ensemble_weights_nba.json"
+    try:
+        from model.ensemble_model import learn_ensemble_weights
+        completed_hist = [g for g in historical_games if g.get("home_score") is not None
+                          and g.get("away_score") is not None][-500:]  # last 500 games
+        if len(completed_hist) >= 50:
+            from model.nba_elo import nba_expected_score as _nes
+            sub_probs_hist = []
+            actuals_hist = []
+            for _g in completed_hist:
+                _home, _away = _g["team1"], _g["team2"]
+                _eh = elo_dict.get(_home, 1500.0) + (100.0 if not _g.get("neutral") else 0.0)
+                _ea = elo_dict.get(_away, 1500.0)
+                _ph = pyth_data.get(_home, {}).get("pyth", 0.5)
+                _pa = pyth_data.get(_away, {}).get("pyth", 0.5)
+                _ph_adj = _ph * (1.0 + (100.0 if not _g.get("neutral") else 0.0) / 1500.0)
+                _pd = _ph_adj + _pa
+                _ep = elo_dict.get(_home, {}) and efficiency_data.get(_home, {}).get("net_rating", 0.0)
+                _ea2 = efficiency_data.get(_away, {}).get("net_rating", 0.0)
+                sub_probs_hist.append({
+                    "elo": _nes(_eh, _ea),
+                    "pyth": _ph_adj / _pd if _pd > 0 else 0.5,
+                    "eff": _nes(1500 + float(_ep or 0) * 10 + (100.0 if not _g.get("neutral") else 0.0),
+                                1500 + _ea2 * 10),
+                    "log": 0.5,  # logistic not available per-historical game
+                    "xgb": 0.5,
+                })
+                actuals_hist.append(1 if _g.get("score1", 0) > _g.get("score2", 0) else 0)
+            learned = learn_ensemble_weights(
+                sub_probs_hist, actuals_hist, weight_keys=["elo", "pyth", "eff"]
+            )
+            if learned:
+                # Blend into full 5-model default; keep log/xgb at fixed proportion
+                nba_weights["elo"] = round(learned.get("elo", 0.25) * 0.6, 4)
+                nba_weights["pyth"] = round(learned.get("pyth", 0.20) * 0.6, 4)
+                nba_weights["eff"] = round(learned.get("eff", 0.15) * 0.6, 4)
+                # Normalise all five to sum to 1
+                _total = sum(nba_weights.values())
+                nba_weights = {k: round(v / _total, 4) for k, v in nba_weights.items()}
+                weights_path.write_text(json.dumps(nba_weights, indent=2))
+                log.info(f"Learned NBA weights: {nba_weights}")
+    except Exception as e:
+        log.warning(f"Ensemble weight learning skipped: {e}")
+        if weights_path.exists():
+            try:
+                nba_weights = json.loads(weights_path.read_text())
+            except Exception:
+                pass
+
     # ── 9. Generate per-game predictions ────────────────────────────────────
     log.info(f"Generating NBA predictions for {len(all_games_for_prediction)} games...")
     predictions_list = []
@@ -1060,12 +1112,13 @@ def run():
                                           is_home_a=True, neutral=neutral)
             bayesian_prob = bayes_result.get("bayesian_prob", 0.5)
 
-            # Pythagorean prediction
+            # Pythagorean prediction — direct ratio (Bradley-Terry), not ELO transform
             pyth_home = pyth_data.get(home, {}).get("pyth", 0.5)
             pyth_away = pyth_data.get(away, {}).get("pyth", 0.5)
-            pyth_elo_home = 1500 + (pyth_home - 0.5) * 400 + hfa
-            pyth_elo_away = 1500 + (pyth_away - 0.5) * 400
-            pyth_prob = nba_expected_score(pyth_elo_home, pyth_elo_away)
+            # Scale home court advantage into pythagorean space (hfa=100 ELO ≈ +6.7% win prob)
+            pyth_home_adj = pyth_home * (1.0 + hfa / 1500.0)
+            _pyth_denom = pyth_home_adj + pyth_away
+            pyth_prob = pyth_home_adj / _pyth_denom if _pyth_denom > 0 else 0.5
 
             # Efficiency prediction
             eff_home = efficiency_data.get(home, {}).get("net_rating", 0.0)
@@ -1105,13 +1158,14 @@ def run():
                 except Exception as e:
                     log.warning(f"NBA XGBoost prediction failed for {home} vs {away}: {e}")
 
-            # Ensemble
+            # Ensemble — use empirically learned weights when available
             ensemble_prob = nba_ensemble_predict(
                 elo_prob=elo_prob,
                 pyth_prob=pyth_prob,
                 eff_prob=eff_prob,
                 log_prob=log_prob,
                 xgb_prob=xgb_prob,
+                weights=nba_weights,
             )
 
             # Monte Carlo
