@@ -269,22 +269,28 @@ def fetch_nba_injuries():
 
     injuries = {}
     try:
-        for item in data.get("injuries", []):
-            team_abbrev = abbrev_norm(
-                item.get("team", {}).get("abbreviation", "")
-            )
-            if team_abbrev:
-                if team_abbrev not in injuries:
-                    injuries[team_abbrev] = []
-                player_name = item.get("athlete", {}).get("displayName", "")
-                position = item.get("athlete", {}).get("position", {}).get("abbreviation", "")
-                status = item.get("status", "")
-                injuries[team_abbrev].append({
-                    "player": player_name,
-                    "status": status,
-                    "position": position,
-                    "injury_description": item.get("longComment", item.get("shortComment", status)),
-                })
+        # Response structure: {"injuries": [{"displayName": "Team", "injuries": [{player entries}]}]}
+        for team_entry in data.get("injuries", []):
+            for item in team_entry.get("injuries", []):
+                team_abbrev = abbrev_norm(
+                    item.get("athlete", {}).get("team", {}).get("abbreviation", "")
+                )
+                if team_abbrev:
+                    if team_abbrev not in injuries:
+                        injuries[team_abbrev] = []
+                    player_name = item.get("athlete", {}).get("displayName", "")
+                    position = item.get("athlete", {}).get("position", {}).get("abbreviation", "")
+                    status_raw = item.get("status", "")
+                    if isinstance(status_raw, dict):
+                        status = status_raw.get("name", status_raw.get("abbreviation", ""))
+                    else:
+                        status = str(status_raw) if status_raw else ""
+                    injuries[team_abbrev].append({
+                        "player": player_name,
+                        "status": status,
+                        "position": position,
+                        "injury_description": item.get("longComment", item.get("shortComment", status)),
+                    })
     except Exception as e:
         log.warning(f"Error parsing NBA injuries: {e}")
 
@@ -873,7 +879,7 @@ def run():
     for team, players in injuries.items():
         for p in players:
             nba_injuries_list.append({
-                "player_name": p.get("player", ""),
+                "player": p.get("player", ""),
                 "team": team,
                 "position": p.get("position", ""),
                 "status": p.get("status", ""),

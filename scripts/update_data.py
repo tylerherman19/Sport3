@@ -247,18 +247,25 @@ def fetch_espn_injuries():
 
     injuries = {}
     try:
-        for item in data.get("injuries", []):
-            team_abbrev = abbrev_norm(
-                item.get("team", {}).get("abbreviation", "")
-            )
-            if team_abbrev:
-                if team_abbrev not in injuries:
-                    injuries[team_abbrev] = []
-                injuries[team_abbrev].append({
-                    "player": item.get("athlete", {}).get("displayName", ""),
-                    "status": item.get("status", ""),
-                    "position": item.get("athlete", {}).get("position", {}).get("abbreviation", "")
-                })
+        # Response structure: {"injuries": [{"displayName": "Team", "injuries": [{player entries}]}]}
+        for team_entry in data.get("injuries", []):
+            for item in team_entry.get("injuries", []):
+                team_abbrev = abbrev_norm(
+                    item.get("athlete", {}).get("team", {}).get("abbreviation", "")
+                )
+                if team_abbrev:
+                    if team_abbrev not in injuries:
+                        injuries[team_abbrev] = []
+                    status_raw = item.get("status", "")
+                    if isinstance(status_raw, dict):
+                        status = status_raw.get("name", status_raw.get("abbreviation", ""))
+                    else:
+                        status = str(status_raw) if status_raw else ""
+                    injuries[team_abbrev].append({
+                        "player": item.get("athlete", {}).get("displayName", ""),
+                        "status": status,
+                        "position": item.get("athlete", {}).get("position", {}).get("abbreviation", "")
+                    })
     except Exception as e:
         log.warning(f"Error parsing injuries: {e}")
 
@@ -648,7 +655,7 @@ def run():
     for team, players in injuries.items():
         for p in players:
             nfl_injuries_list.append({
-                "player_name": p.get("player", ""),
+                "player": p.get("player", ""),
                 "team": team,
                 "position": p.get("position", ""),
                 "status": p.get("status", ""),
