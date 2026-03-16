@@ -19,7 +19,7 @@ logging.basicConfig(level=logging.INFO, format="%(levelname)s %(message)s")
 log = logging.getLogger(__name__)
 
 DATA_DIR = Path(__file__).parent.parent / "data"
-KALSHI_BASE = "https://api.elections.kalshi.com/trade-api/v2"
+KALSHI_BASE = "https://trading-api.kalshi.com/trade-api/v2"
 
 EXCLUDE_KEYWORDS = [
     'super bowl', 'championship', 'mvp', 'season wins', 'total wins',
