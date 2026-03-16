@@ -266,7 +266,7 @@ function buildInjuriesMap(injData) {
     const team = p.team;
     if (!team) continue;
     if (!map[team]) map[team] = [];
-    map[team].push({ player: p.player, status: p.status, position: p.position, injury_description: p.injury_description || p.status, value_tier: p.value_tier || 'starter' });
+    map[team].push({ player: p.player, status: p.status, position: p.position, injury_description: p.injury_description || p.status, value_tier: p.value_tier || null });
   }
   return map;
 }
@@ -963,8 +963,8 @@ function buildInjuryTierSummaryHtml(game) {
   const renderTeamRows = (team, keyPlayers, eloPenalty, starCount, stackMult) => {
     if (!keyPlayers || !keyPlayers.length) return '';
     const rows = keyPlayers.map(p => {
-      const tier = p.value_tier || 'starter';
-      const badgeClass = TIER_BADGE_CLASS[tier] || '';
+      const tier = p.value_tier || null;
+      const badgeClass = tier ? (TIER_BADGE_CLASS[tier] || '') : '';
       const badge = badgeClass ? `<span class="inj-tier-badge ${badgeClass}">${tier}</span>` : '';
       return `<div class="inj-tier-row">
         <span class="inj-player-name">${badge} ${p.player}</span>
@@ -2371,10 +2371,9 @@ async function renderAccuracyTab() {
       </div>`;
 
     const sortedEntries = [...entries]
-      .filter(e => e.actual_winner)
       .sort((a, b) => new Date(b.game_time) - new Date(a.game_time));
     if (sortedEntries.length === 0) {
-      return `<div class="log-empty">No resolved predictions yet. Results will appear here once games finish.</div>`;
+      return `<div class="log-empty">No predictions logged yet. Results will appear here once games finish.</div>`;
     }
     const rowsHtml = sortedEntries.map(e => {
       let resultHtml = '';
@@ -2392,6 +2391,8 @@ async function renderAccuracyTab() {
             <td colspan="5"><div class="log-postmortem-text">${pmText}</div></td>
           </tr>`;
         }
+      } else {
+        resultHtml = `<span class="log-pending">Pending</span>`;
       }
       const gameDate = e.game_time
         ? (() => {
@@ -2676,9 +2677,9 @@ async function relogAllGames(league) {
       existingMap.set(game.game_id, existing[existing.length - 1]);
       changed = true;
     } else {
-      // Existing entry — backfill injury data if it was never saved
+      // Existing entry — always refresh injury snapshot so corrected tiers propagate
       const entry = existingMap.get(game.game_id);
-      if ((!entry.home_injuries || !entry.home_injuries.length) && homeInj.length) {
+      if (homeInj.length || awayInj.length || Object.keys(injImpact).length) {
         entry.home_injuries = homeInj;
         entry.away_injuries = awayInj;
         entry.injury_impact = injImpact;
