@@ -30,7 +30,8 @@ const state = {
   // Note: weights are overwritten from localStorage below if saved values exist
   params: { k: 20, hfa: 65, mov: 1.0, form: 0.30, sos: 0.5, h2h: 0.5, to: 1.0, rt: 1.0, lambda: 0.10 },
   gameOverrides: {}, // { [game_id]: { homeBoost, awayBoost, hfaMult, momentumBoost, restFactor } }
-  kalshiData: null, // cached Kalshi market list (shared; re-matched per league)
+  kalshiData: null,    // cached Kalshi market list (shared; re-matched per league)
+  kalshiUpdated: null, // ISO timestamp from kalshidata.json
   kalshi: {
     rows: [],
     sortCol: 'mismatch',
@@ -2783,6 +2784,19 @@ function setLogLeague(league) {
 
 /* ── Kalshi Odds Comparison ───────────────────────────────────── */
 
+function kalshiRelativeTime(isoStr) {
+  try {
+    const diff = Date.now() - new Date(isoStr).getTime();
+    if (diff < 0 || new Date(isoStr).getFullYear() < 2000) return null;
+    const mins = Math.floor(diff / 60000);
+    if (mins < 2) return 'just now';
+    if (mins < 60) return `${mins}m ago`;
+    const hrs = Math.floor(mins / 60);
+    if (hrs < 24) return `${hrs}h ago`;
+    return `${Math.floor(hrs / 24)}d ago`;
+  } catch { return null; }
+}
+
 const KALSHI_EXCLUDE_KWS = [
   'super bowl', 'championship', 'mvp', 'season wins', 'total wins',
   'make playoffs', 'win division', 'draft', 'spread', 'cover',
@@ -2958,6 +2972,9 @@ function renderKalshiTable(rows, isNba) {
     </tr>`;
   }).join('');
 
+  const updatedStr = state.kalshiUpdated ? kalshiRelativeTime(state.kalshiUpdated) : null;
+  const updatedNote = updatedStr ? `<span style="color:var(--text-muted);font-size:0.75rem;">Updated ${updatedStr}</span>` : '';
+
   container.innerHTML = `
     <div class="kalshi-note">
       Mismatch = |Model% − Kalshi implied%| for home team winning. Kalshi % uses mid-price of bid+ask.
@@ -2976,8 +2993,10 @@ function renderKalshiTable(rows, isNba) {
         <tbody>${rowsHtml}</tbody>
       </table>
     </div>
-    <div style="text-align:right;margin-top:0.75rem;">
-      <button class="btn" onclick="state.kalshiData=null;renderKalshiTab()" style="font-size:0.75rem;padding:4px 10px;">↻ Refresh Markets</button>
+    <div style="display:flex;align-items:center;justify-content:flex-end;gap:0.75rem;margin-top:0.75rem;">
+      ${updatedNote}
+      <button class="btn" onclick="state.kalshiData=null;renderKalshiTab(true)" style="font-size:0.75rem;padding:4px 10px;">↻ Refresh Markets</button>
+      <a class="btn" href="https://github.com/tylerherman19/Sport3/actions/workflows/update-kalshi.yml" target="_blank" rel="noopener" style="font-size:0.75rem;padding:4px 10px;text-decoration:none;">⚡ Force Update</a>
     </div>`;
 
   // Column sort bindings
@@ -3028,6 +3047,7 @@ async function renderKalshiTab(forceRefetch) {
   try {
     const data = await loadKalshiData();
     state.kalshiData = data.markets || [];
+    state.kalshiUpdated = data.updated || null;
     state.kalshi.rows = buildKalshiRows(state.kalshiData, games, tokenMap);
     sortKalshiRows(state.kalshi.rows);
     renderKalshiTable(state.kalshi.rows, isNba);
@@ -3035,8 +3055,11 @@ async function renderKalshiTab(forceRefetch) {
     container.innerHTML = `<div class="empty-state">
       <div class="empty-state-icon">⚠️</div>
       <h3>Could not load Kalshi data</h3>
-      <p>kalshidata.json is unavailable. The GitHub Actions workflow generates this file daily — check back after the next scheduled run.</p>
-      <button class="btn btn-primary" onclick="state.kalshiData=null;renderKalshiTab(true)" style="margin-top:0.75rem;">Retry</button>
+      <p>kalshidata.json is unavailable. Use the Force Update button to trigger a fresh fetch via GitHub Actions.</p>
+      <div style="display:flex;gap:0.75rem;justify-content:center;margin-top:0.75rem;flex-wrap:wrap;">
+        <button class="btn btn-primary" onclick="state.kalshiData=null;renderKalshiTab(true)">Retry</button>
+        <a class="btn" href="https://github.com/tylerherman19/Sport3/actions/workflows/update-kalshi.yml" target="_blank" rel="noopener" style="text-decoration:none;">⚡ Force Update on GitHub</a>
+      </div>
     </div>`;
     const badge = $('kalshi-badge');
     if (badge) badge.textContent = 'Error';
