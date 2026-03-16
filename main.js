@@ -2495,6 +2495,8 @@ function generatePostMortemExplanation(e) {
   const loserTeam  = e.actual_winner === e.home_team ? e.away_team : e.home_team;
   const probPct = Math.round(e.predicted_prob * 100);
   const winnerWasHome = e.actual_winner === e.home_team;
+  const modelWasCorrect = e.predicted_winner === e.actual_winner;
+  const predictedName   = e.predicted_winner === e.home_team ? e.home_name : e.away_name;
 
   // ── Score header ──────────────────────────────────────────────
   let scoreHeaderHtml = '';
@@ -2511,11 +2513,23 @@ function generatePostMortemExplanation(e) {
 
     // Sentence 1 — margin context
     if (margin <= 5) {
-      narrativeLines.push(`The model picked ${loserName} at ${probPct}% — a reasonable call in a coin-flip game.`);
+      if (modelWasCorrect) {
+        narrativeLines.push(`The model correctly backed ${predictedName} at ${probPct}% — a well-called coin-flip game.`);
+      } else {
+        narrativeLines.push(`The model picked ${predictedName} at ${probPct}% — a reasonable call in a coin-flip game.`);
+      }
     } else if (margin <= 12) {
-      narrativeLines.push(`${winnerName} won by ${margin} pts. The model favoured ${loserName} at ${probPct}%.`);
+      if (modelWasCorrect) {
+        narrativeLines.push(`${winnerName} won by ${margin} pts — the model's ${probPct}% on ${predictedName} proved correct.`);
+      } else {
+        narrativeLines.push(`${winnerName} won by ${margin} pts. The model favoured ${predictedName} at ${probPct}%.`);
+      }
     } else {
-      narrativeLines.push(`${winnerName} dominated, winning by ${margin} pts despite the model giving ${loserName} a ${probPct}% chance.`);
+      if (modelWasCorrect) {
+        narrativeLines.push(`${winnerName} dominated, winning by ${margin} pts — the model's confidence in ${predictedName} was well placed.`);
+      } else {
+        narrativeLines.push(`${winnerName} dominated, winning by ${margin} pts despite the model giving ${predictedName} a ${probPct}% chance.`);
+      }
     }
 
     // Sentence 2 — home/away context
@@ -2525,7 +2539,11 @@ function generatePostMortemExplanation(e) {
       narrativeLines.push(`${winnerName} pulled this off on the road — away wins are harder to predict and often reflect a team peaking at the right time.`);
     }
   } else {
-    narrativeLines.push(`The model gave ${loserName} a ${probPct}% win probability, but ${winnerName} won.`);
+    if (modelWasCorrect) {
+      narrativeLines.push(`The model gave ${predictedName} a ${probPct}% win probability — the correct call.`);
+    } else {
+      narrativeLines.push(`The model gave ${predictedName} a ${probPct}% win probability, but ${winnerName} won.`);
+    }
   }
 
   // ── Pre-game efficiency table ─────────────────────────────────
@@ -2602,11 +2620,24 @@ function generatePostMortemExplanation(e) {
     // Named consensus text
     let consensusText = '';
     if (correctCount === 0) {
+      // All visible sub-models wrong
       consensusText = `All ${modelDefs.length} sub-models were unanimous on ${loserTeam} — a genuine statistical upset.`;
+    } else if (correctCount === modelDefs.length) {
+      // All visible sub-models correct
+      if (modelWasCorrect) {
+        consensusText = `All ${modelDefs.length} sub-models unanimously called ${winnerTeam} — the ensemble agreed.`;
+      } else {
+        // Hidden XGBoost component overrode unanimous sub-model vote
+        consensusText = `All ${modelDefs.length} visible sub-models called ${winnerTeam}, but the ensemble still favoured ${loserTeam} — likely driven by the XGBoost component.`;
+      }
     } else if (correctCount >= Math.ceil(modelDefs.length / 2)) {
       const rightNames = correctModels.map(m => m.label).join(', ');
       const wrongNames = wrongModels.map(m => m.label).join(', ');
-      consensusText = `${rightNames} correctly called ${winnerTeam}, but ${wrongNames} backed ${loserTeam} and pulled the ensemble vote with them.`;
+      if (modelWasCorrect) {
+        consensusText = `${rightNames} correctly called ${winnerTeam}; ${wrongNames} backed ${loserTeam} but the ensemble sided with the majority.`;
+      } else {
+        consensusText = `${rightNames} correctly called ${winnerTeam}, but ${wrongNames} backed ${loserTeam} and pulled the ensemble vote with them.`;
+      }
     } else {
       const rightNames = correctModels.map(m => m.label).join(', ');
       const wrongNames = wrongModels.map(m => m.label).join(', ');
@@ -2618,7 +2649,7 @@ function generatePostMortemExplanation(e) {
       insightText = `High-confidence unanimous misses are the model's blind spot for genuine upsets — worth watching if this team keeps defying expectations.`;
     } else if (correctCount > 0 && correctCount < modelDefs.length && correctCount < Math.ceil(modelDefs.length / 2)) {
       insightText = `When sub-models disagree this strongly, treat the ensemble confidence with extra scepticism.`;
-    } else if (margin != null && margin <= 5) {
+    } else if (margin != null && margin <= 5 && !modelWasCorrect) {
       insightText = `Coin-flip games like this are inherently hard to predict — a miss in a 5-pt game is expected noise, not a model failure.`;
     } else if (correctCount === 0 && probPct < 65) {
       insightText = `The model wasn't hugely confident here — this kind of miss is within normal variance.`;
