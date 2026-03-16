@@ -6,6 +6,7 @@ Includes live ESPN continuation past FiveThirtyEight 2024 cutoff.
 """
 
 import os
+import re
 import sys
 import json
 import logging
@@ -283,6 +284,19 @@ def fetch_espn_injuries():
     return injuries
 
 
+def normalize_player_name(name: str) -> str:
+    """Normalize player name for cross-source matching.
+
+    Strips name suffixes (Jr/Sr/II/III/IV) and normalizes apostrophes so that
+    names from ESPN injuries ('Mack Wilson Sr.') match depth chart entries
+    ('Mack Wilson').
+    """
+    n = name.lower().strip()
+    n = n.replace("\u2019", "'").replace("`", "'")  # curly → straight apostrophe
+    n = re.sub(r"\s+\b(jr\.?|sr\.?|ii|iii|iv)\b\.?$", "", n).strip()
+    return n
+
+
 def fetch_espn_depth_charts():
     """
     Fetch NFL depth chart positions for all teams from ESPN.
@@ -311,12 +325,16 @@ def fetch_espn_depth_charts():
                 for position in pos_group.get("positions", []):
                     for athlete_entry in position.get("athletes", []):
                         name = athlete_entry.get("athlete", {}).get("displayName", "")
-                        depth_pos = int(athlete_entry.get("rank", 99))
+                        # ESPN changed "rank" to "slot" — check both fields
+                        depth_pos = int(athlete_entry.get("rank") or athlete_entry.get("slot", 99))
                         if not name:
                             continue
-                        # Keep the best (lowest) depth position seen for this player
-                        if name not in player_depth or depth_pos < player_depth[name]:
-                            player_depth[name] = depth_pos
+                        # Keep the best (lowest) depth position seen for this player.
+                        # Store under both the raw display name and the normalized form
+                        # so lookups succeed regardless of suffix differences (Jr/Sr/etc.).
+                        for key in [name, normalize_player_name(name)]:
+                            if key and (key not in player_depth or depth_pos < player_depth[key]):
+                                player_depth[key] = depth_pos
     except Exception as e:
         log.warning(f"Error fetching depth charts: {e}")
     log.info(f"Depth chart loaded: {len(player_depth)} player entries")
@@ -751,7 +769,7 @@ def run():
         for team, players in injuries.items():
             for p in players:
                 pname = p.get("player", "")
-                pmult = player_values.get(pname, 1.0)
+                pmult = player_values.get(pname) or player_values.get(normalize_player_name(pname), 1.0)
                 nfl_injuries_list.append({
                     "player": pname,
                     "team": team,
