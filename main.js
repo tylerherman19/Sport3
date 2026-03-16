@@ -2825,32 +2825,12 @@ function kalshiExtractTeams(title, tokenMap) {
   return { teamA: found[0].abbrev, teamB: found[1].abbrev, yesIsTeamA: true };
 }
 
-/* Fetch open markets from Kalshi API with 10-second timeout & pagination */
-async function fetchKalshiMarkets() {
-  const BASE = 'https://api.elections.kalshi.com/trade-api/v2';
-  const ctrl = new AbortController();
-  const tid = setTimeout(() => ctrl.abort(), 10000);
-  try {
-    const res = await fetch(`${BASE}/markets?status=open&limit=200`, { signal: ctrl.signal });
-    clearTimeout(tid);
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    const data = await res.json();
-    let markets = data.markets || [];
-    let cursor = data.cursor;
-    let pages = 0;
-    while (cursor && pages < 4) {
-      const r2 = await fetch(`${BASE}/markets?status=open&limit=200&cursor=${encodeURIComponent(cursor)}`);
-      if (!r2.ok) break;
-      const d2 = await r2.json();
-      markets = markets.concat(d2.markets || []);
-      cursor = d2.cursor;
-      pages++;
-    }
-    return markets;
-  } catch (e) {
-    clearTimeout(tid);
-    throw e;
-  }
+/* Load pre-fetched Kalshi markets from data/kalshidata.json (generated server-side by updatekalshi.py) */
+async function loadKalshiData() {
+  const t = Date.now();
+  const res = await fetch(`./data/kalshidata.json?t=${t}`);
+  if (!res.ok) throw new Error(`HTTP ${res.status}`);
+  return res.json();
 }
 
 /* Match Kalshi markets to prediction games and compute mismatch rows */
@@ -3043,20 +3023,19 @@ async function renderKalshiTab(forceRefetch) {
     return;
   }
 
-  container.innerHTML = '<div class="loading"><div class="spinner"></div><span>Fetching Kalshi markets…</span></div>';
+  container.innerHTML = '<div class="loading"><div class="spinner"></div><span>Loading Kalshi markets…</span></div>';
 
   try {
-    const allMarkets = await fetchKalshiMarkets();
-    state.kalshiData = allMarkets;
-    state.kalshi.rows = buildKalshiRows(allMarkets, games, tokenMap);
+    const data = await loadKalshiData();
+    state.kalshiData = data.markets || [];
+    state.kalshi.rows = buildKalshiRows(state.kalshiData, games, tokenMap);
     sortKalshiRows(state.kalshi.rows);
     renderKalshiTable(state.kalshi.rows, isNba);
   } catch (err) {
-    const isTimeout = err.name === 'AbortError';
     container.innerHTML = `<div class="empty-state">
       <div class="empty-state-icon">⚠️</div>
       <h3>Could not load Kalshi data</h3>
-      <p>${isTimeout ? 'Request timed out (10 s).' : 'Network error: ' + err.message}</p>
+      <p>kalshidata.json is unavailable. The GitHub Actions workflow generates this file daily — check back after the next scheduled run.</p>
       <button class="btn btn-primary" onclick="state.kalshiData=null;renderKalshiTab(true)" style="margin-top:0.75rem;">Retry</button>
     </div>`;
     const badge = $('kalshi-badge');
