@@ -19,7 +19,7 @@ logging.basicConfig(level=logging.INFO, format="%(levelname)s %(message)s")
 log = logging.getLogger(__name__)
 
 DATA_DIR = Path(__file__).parent.parent / "data"
-KALSHI_BASE = "https://trading-api.kalshi.com/trade-api/v2"
+KALSHI_BASE = "https://api.elections.kalshi.com/trade-api/v2"
 
 EXCLUDE_KEYWORDS = [
     'super bowl', 'championship', 'mvp', 'season wins', 'total wins',
@@ -43,13 +43,59 @@ SPORTS_KEYWORDS = [
 ]
 
 
+def fetch_series_markets(series_ticker, headers):
+    """Fetch all open markets for a specific series ticker."""
+    markets, cursor, pages = [], None, 0
+    while pages < 10:
+        params = {'status': 'open', 'limit': 200, 'series_ticker': series_ticker}
+        if cursor:
+            params['cursor'] = cursor
+        try:
+            resp = requests.get(
+                f'{KALSHI_BASE}/markets',
+                params=params,
+                headers=headers,
+                timeout=30,
+            )
+            resp.raise_for_status()
+        except requests.RequestException as e:
+            log.error(f"Kalshi request failed for {series_ticker} (page {pages}): {e}")
+            break
+
+        data = resp.json()
+        batch = data.get('markets', [])
+        markets.extend(batch)
+        log.info(f"  {series_ticker} page {pages + 1}: {len(batch)} markets")
+
+        cursor = data.get('cursor')
+        if not cursor or not batch:
+            break
+        pages += 1
+        time.sleep(0.3)
+
+    return markets
+
+
 def fetch_all_markets(api_key):
-    """Fetch all open markets from Kalshi API with pagination and optional auth."""
+    """Fetch NBA/NFL game-winner markets plus a general sports sweep."""
     headers = {}
     if api_key:
         headers['Authorization'] = f'Bearer {api_key}'
 
-    markets, cursor, pages = [], None, 0
+    seen = set()
+    markets = []
+
+    # Fetch game-winner series directly (they don't surface in the generic open-markets listing
+    # within the first 1000 results because Kalshi returns composite/MVE markets first).
+    for series in ('KXNBAGAME', 'KXNFLGAME'):
+        log.info(f"Fetching series {series}...")
+        for m in fetch_series_markets(series, headers):
+            if m['ticker'] not in seen:
+                seen.add(m['ticker'])
+                markets.append(m)
+
+    # General sweep to catch other sports markets (e.g. team-nickname mentions)
+    cursor, pages = None, 0
     while pages < 5:
         params = {'status': 'open', 'limit': 200}
         if cursor:
@@ -63,19 +109,22 @@ def fetch_all_markets(api_key):
             )
             resp.raise_for_status()
         except requests.RequestException as e:
-            log.error(f"Kalshi request failed (page {pages}): {e}")
+            log.error(f"Kalshi request failed (general page {pages}): {e}")
             break
 
         data = resp.json()
         batch = data.get('markets', [])
-        markets.extend(batch)
-        log.info(f"Page {pages + 1}: {len(batch)} markets (total: {len(markets)})")
+        for m in batch:
+            if m['ticker'] not in seen:
+                seen.add(m['ticker'])
+                markets.append(m)
+        log.info(f"General page {pages + 1}: {len(batch)} markets (running total: {len(markets)})")
 
         cursor = data.get('cursor')
         if not cursor or not batch:
             break
         pages += 1
-        time.sleep(0.5)  # respect rate limits
+        time.sleep(0.5)
 
     return markets
 
@@ -85,6 +134,12 @@ def is_sports_market(market):
     title = (market.get('title') or '').lower()
     if any(kw in title for kw in EXCLUDE_KEYWORDS):
         return False
+    # Kalshi NBA/NFL game-winner markets use event tickers like KXNBAGAME-... / KXNFLGAME-...
+    # Their titles are abbreviated (e.g. "Los Angeles L at Houston Winner?") so don't contain
+    # team nicknames — check event_ticker directly.
+    event_ticker = (market.get('event_ticker') or '').upper()
+    if event_ticker.startswith('KXNBA') or event_ticker.startswith('KXNFL'):
+        return True
     text = ' '.join([
         title,
         (market.get('subtitle') or '').lower(),

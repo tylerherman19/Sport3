@@ -2815,9 +2815,25 @@ function buildKalshiTokenMap(teamNames) {
   return map;
 }
 
-/* Extract up to 2 team abbrevs from a market title using the token map.
+/* Extract up to 2 team abbrevs from a market object.
+   For KXNBAGAME / KXNFLGAME markets, parses team codes directly from event_ticker
+   (e.g. "KXNBAGAME-26MAR18LALHOU" → LAL, HOU) which is unambiguous.
+   Falls back to title token-matching for other market types.
    Returns { teamA, teamB, yesIsTeamA } or null if fewer than 2 found. */
-function kalshiExtractTeams(title, tokenMap) {
+function kalshiExtractTeams(market, tokenMap) {
+  // Prefer ticker-based extraction for game-winner markets
+  const eventTicker = market.event_ticker || '';
+  const tickerMatch = eventTicker.match(/^KX(?:NBA|NFL)GAME-\d{2}[A-Z]{3}\d{2}([A-Z]{3})([A-Z]{3})$/i);
+  if (tickerMatch) {
+    const teamA = tickerMatch[1].toUpperCase();
+    const teamB = tickerMatch[2].toUpperCase();
+    // The market ticker suffix (-LAL / -HOU) identifies which team "yes" resolves on
+    const yesSuffix = (market.ticker || '').split('-').pop().toUpperCase();
+    const yesIsTeamA = yesSuffix === teamA;
+    return { teamA, teamB, yesIsTeamA };
+  }
+  // Fall back to title token matching
+  const title = market.title || '';
   const lower = title.toLowerCase().replace(/[^a-z0-9 ]/g, ' ');
   // Sort tokens longest-first to prefer "kansas city" over "city"
   const tokens = Object.keys(tokenMap).sort((a, b) => b.length - a.length);
@@ -2861,7 +2877,7 @@ function buildKalshiRows(markets, games, tokenMap) {
   for (const m of markets) {
     const titleLower = (m.title || '').toLowerCase();
     if (KALSHI_EXCLUDE_KWS.some(kw => titleLower.includes(kw))) continue;
-    const teams = kalshiExtractTeams(m.title, tokenMap);
+    const teams = kalshiExtractTeams(m, tokenMap);
     if (!teams) continue;
     const { teamA, teamB, yesIsTeamA } = teams;
     const game = gameMap.get(`${teamA}|${teamB}`) || gameMap.get(`${teamB}|${teamA}`);
@@ -2878,7 +2894,7 @@ function buildKalshiRows(markets, games, tokenMap) {
     const modelProb = ensembleFromProbs(game.predictions || {}, state.weights);
     const mismatch = modelProb - kalshiHomeProb; // signed: + = model more bullish on home
 
-    rows.push({ game, market: m, modelProb, kalshiHomeProb, mismatch, volume: m.volume || 0 });
+    rows.push({ game, market: m, modelProb, kalshiHomeProb, mismatch, volume: parseFloat(m.volume_fp || m.volume || 0) });
   }
 
   // Append unmatched upcoming games
