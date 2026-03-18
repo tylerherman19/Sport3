@@ -1,7 +1,655 @@
 {
-  "updated": "2026-03-18T13:03:56.818612+00:00",
-  "market_count": 37,
+  "updated": "2026-03-18T16:56:17.485069+00:00",
+  "market_count": 46,
   "markets": [
+    {
+      "can_close_early": true,
+      "close_time": "2026-04-04T00:00:00Z",
+      "created_time": "2026-03-18T16:03:10.429087Z",
+      "custom_strike": {
+        "basketball_team": "1cfe70b8-4dfc-47dc-acca-b68d4a725972"
+      },
+      "early_close_condition": "This market will close and expire after a winner is declared.",
+      "event_ticker": "KXNBAGAME-26MAR20BOSMEM",
+      "expected_expiration_time": "2026-03-21T03:00:00Z",
+      "expiration_time": "2026-04-04T00:00:00Z",
+      "expiration_value": "",
+      "fractional_trading_enabled": false,
+      "last_price_dollars": "0.0000",
+      "latest_expiration_time": "2026-04-04T00:00:00Z",
+      "liquidity_dollars": "0.0000",
+      "market_type": "binary",
+      "no_ask_dollars": "0.8600",
+      "no_bid_dollars": "0.8500",
+      "no_sub_title": "Memphis",
+      "notional_value_dollars": "1.0000",
+      "open_interest_fp": "0.00",
+      "open_time": "2026-03-18T16:07:00Z",
+      "previous_price_dollars": "0.0000",
+      "previous_yes_ask_dollars": "0.0000",
+      "previous_yes_bid_dollars": "0.0000",
+      "price_level_structure": "linear_cent",
+      "price_ranges": [
+        {
+          "end": "1.0000",
+          "start": "0.0000",
+          "step": "0.0100"
+        }
+      ],
+      "response_price_units": "usd_cent",
+      "result": "",
+      "rules_primary": "If Memphis wins the Boston at Memphis professional basketball game originally scheduled for Mar 20, 2026, then the market resolves to Yes.",
+      "rules_secondary": "",
+      "settlement_timer_seconds": 30,
+      "status": "active",
+      "strike_type": "structured",
+      "subtitle": "",
+      "tick_size": 1,
+      "ticker": "KXNBAGAME-26MAR20BOSMEM-MEM",
+      "title": "Boston at Memphis Winner?",
+      "updated_time": "2026-03-18T16:07:00.714937Z",
+      "volume_24h_fp": "0.00",
+      "volume_fp": "0.00",
+      "yes_ask_dollars": "0.1500",
+      "yes_ask_size_fp": "1.00",
+      "yes_bid_dollars": "0.1400",
+      "yes_bid_size_fp": "1.00",
+      "yes_sub_title": "Memphis"
+    },
+    {
+      "can_close_early": true,
+      "close_time": "2026-04-04T00:00:00Z",
+      "created_time": "2026-03-18T16:03:10.429087Z",
+      "custom_strike": {
+        "basketball_team": "6dd427f5-fa02-40ef-aa90-cfa73e0c539e"
+      },
+      "early_close_condition": "This market will close and expire after a winner is declared.",
+      "event_ticker": "KXNBAGAME-26MAR20BOSMEM",
+      "expected_expiration_time": "2026-03-21T03:00:00Z",
+      "expiration_time": "2026-04-04T00:00:00Z",
+      "expiration_value": "",
+      "fractional_trading_enabled": false,
+      "last_price_dollars": "0.8600",
+      "latest_expiration_time": "2026-04-04T00:00:00Z",
+      "liquidity_dollars": "0.0000",
+      "market_type": "binary",
+      "no_ask_dollars": "0.4900",
+      "no_bid_dollars": "0.1400",
+      "no_sub_title": "Boston",
+      "notional_value_dollars": "1.0000",
+      "open_interest_fp": "1.00",
+      "open_time": "2026-03-18T16:07:00Z",
+      "previous_price_dollars": "0.0000",
+      "previous_yes_ask_dollars": "0.0000",
+      "previous_yes_bid_dollars": "0.0000",
+      "price_level_structure": "linear_cent",
+      "price_ranges": [
+        {
+          "end": "1.0000",
+          "start": "0.0000",
+          "step": "0.0100"
+        }
+      ],
+      "response_price_units": "usd_cent",
+      "result": "",
+      "rules_primary": "If Boston wins the Boston at Memphis professional basketball game originally scheduled for Mar 20, 2026, then the market resolves to Yes.",
+      "rules_secondary": "",
+      "settlement_timer_seconds": 30,
+      "status": "active",
+      "strike_type": "structured",
+      "subtitle": "",
+      "tick_size": 1,
+      "ticker": "KXNBAGAME-26MAR20BOSMEM-BOS",
+      "title": "Boston at Memphis Winner?",
+      "updated_time": "2026-03-18T16:07:00.714937Z",
+      "volume_24h_fp": "1.00",
+      "volume_fp": "1.00",
+      "yes_ask_dollars": "0.8600",
+      "yes_ask_size_fp": "5.00",
+      "yes_bid_dollars": "0.5100",
+      "yes_bid_size_fp": "5.00",
+      "yes_sub_title": "Boston"
+    },
+    {
+      "can_close_early": true,
+      "close_time": "2026-04-04T01:00:00Z",
+      "created_time": "2026-03-18T16:03:10.304046Z",
+      "custom_strike": {
+        "basketball_team": "96c447dd-2cdd-4c58-a151-ef0df87de981"
+      },
+      "early_close_condition": "This market will close and expire after a winner is declared.",
+      "event_ticker": "KXNBAGAME-26MAR20TORDEN",
+      "expected_expiration_time": "2026-03-21T04:00:00Z",
+      "expiration_time": "2026-04-04T01:00:00Z",
+      "expiration_value": "",
+      "fractional_trading_enabled": false,
+      "last_price_dollars": "0.0000",
+      "latest_expiration_time": "2026-04-04T01:00:00Z",
+      "liquidity_dollars": "0.0000",
+      "market_type": "binary",
+      "no_ask_dollars": "0.8600",
+      "no_bid_dollars": "0.7200",
+      "no_sub_title": "Toronto",
+      "notional_value_dollars": "1.0000",
+      "open_interest_fp": "0.00",
+      "open_time": "2026-03-18T16:07:00Z",
+      "previous_price_dollars": "0.0000",
+      "previous_yes_ask_dollars": "0.0000",
+      "previous_yes_bid_dollars": "0.0000",
+      "price_level_structure": "linear_cent",
+      "price_ranges": [
+        {
+          "end": "1.0000",
+          "start": "0.0000",
+          "step": "0.0100"
+        }
+      ],
+      "response_price_units": "usd_cent",
+      "result": "",
+      "rules_primary": "If Toronto wins the Toronto at Denver professional basketball game originally scheduled for Mar 20, 2026, then the market resolves to Yes.",
+      "rules_secondary": "",
+      "settlement_timer_seconds": 30,
+      "status": "active",
+      "strike_type": "structured",
+      "subtitle": "",
+      "tick_size": 1,
+      "ticker": "KXNBAGAME-26MAR20TORDEN-TOR",
+      "title": "Toronto at Denver Winner?",
+      "updated_time": "2026-03-18T16:07:00.714937Z",
+      "volume_24h_fp": "0.00",
+      "volume_fp": "0.00",
+      "yes_ask_dollars": "0.2800",
+      "yes_ask_size_fp": "1.00",
+      "yes_bid_dollars": "0.1400",
+      "yes_bid_size_fp": "1.00",
+      "yes_sub_title": "Toronto"
+    },
+    {
+      "can_close_early": true,
+      "close_time": "2026-04-04T01:00:00Z",
+      "created_time": "2026-03-18T16:03:10.304046Z",
+      "custom_strike": {
+        "basketball_team": "ba2cb6be-9827-46a8-8e6f-d8661307ba77"
+      },
+      "early_close_condition": "This market will close and expire after a winner is declared.",
+      "event_ticker": "KXNBAGAME-26MAR20TORDEN",
+      "expected_expiration_time": "2026-03-21T04:00:00Z",
+      "expiration_time": "2026-04-04T01:00:00Z",
+      "expiration_value": "",
+      "fractional_trading_enabled": false,
+      "last_price_dollars": "0.4000",
+      "latest_expiration_time": "2026-04-04T01:00:00Z",
+      "liquidity_dollars": "0.0000",
+      "market_type": "binary",
+      "no_ask_dollars": "0.6000",
+      "no_bid_dollars": "0.2500",
+      "no_sub_title": "Denver",
+      "notional_value_dollars": "1.0000",
+      "open_interest_fp": "7.00",
+      "open_time": "2026-03-18T16:07:00Z",
+      "previous_price_dollars": "0.0000",
+      "previous_yes_ask_dollars": "0.0000",
+      "previous_yes_bid_dollars": "0.0000",
+      "price_level_structure": "linear_cent",
+      "price_ranges": [
+        {
+          "end": "1.0000",
+          "start": "0.0000",
+          "step": "0.0100"
+        }
+      ],
+      "response_price_units": "usd_cent",
+      "result": "",
+      "rules_primary": "If Denver wins the Toronto at Denver professional basketball game originally scheduled for Mar 20, 2026, then the market resolves to Yes.",
+      "rules_secondary": "",
+      "settlement_timer_seconds": 30,
+      "status": "active",
+      "strike_type": "structured",
+      "subtitle": "",
+      "tick_size": 1,
+      "ticker": "KXNBAGAME-26MAR20TORDEN-DEN",
+      "title": "Toronto at Denver Winner?",
+      "updated_time": "2026-03-18T16:07:00.714937Z",
+      "volume_24h_fp": "14.00",
+      "volume_fp": "14.00",
+      "yes_ask_dollars": "0.7500",
+      "yes_ask_size_fp": "206.00",
+      "yes_bid_dollars": "0.4000",
+      "yes_bid_size_fp": "293.00",
+      "yes_sub_title": "Denver"
+    },
+    {
+      "can_close_early": true,
+      "close_time": "2026-04-04T00:00:00Z",
+      "created_time": "2026-03-18T16:03:08.838789Z",
+      "custom_strike": {
+        "basketball_team": "a8625e4b-4ae6-4062-a7c1-0b6e1f4ae211"
+      },
+      "early_close_condition": "This market will close and expire after a winner is declared.",
+      "event_ticker": "KXNBAGAME-26MAR20ATLHOU",
+      "expected_expiration_time": "2026-03-21T03:00:00Z",
+      "expiration_time": "2026-04-04T00:00:00Z",
+      "expiration_value": "",
+      "fractional_trading_enabled": false,
+      "last_price_dollars": "0.0000",
+      "latest_expiration_time": "2026-04-04T00:00:00Z",
+      "liquidity_dollars": "0.0000",
+      "market_type": "binary",
+      "no_ask_dollars": "0.7000",
+      "no_bid_dollars": "0.3300",
+      "no_sub_title": "Houston",
+      "notional_value_dollars": "1.0000",
+      "open_interest_fp": "0.00",
+      "open_time": "2026-03-18T16:07:00Z",
+      "previous_price_dollars": "0.0000",
+      "previous_yes_ask_dollars": "0.0000",
+      "previous_yes_bid_dollars": "0.0000",
+      "price_level_structure": "linear_cent",
+      "price_ranges": [
+        {
+          "end": "1.0000",
+          "start": "0.0000",
+          "step": "0.0100"
+        }
+      ],
+      "response_price_units": "usd_cent",
+      "result": "",
+      "rules_primary": "If Houston wins the Atlanta at Houston professional basketball game originally scheduled for Mar 20, 2026, then the market resolves to Yes.",
+      "rules_secondary": "",
+      "settlement_timer_seconds": 30,
+      "status": "active",
+      "strike_type": "structured",
+      "subtitle": "",
+      "tick_size": 1,
+      "ticker": "KXNBAGAME-26MAR20ATLHOU-HOU",
+      "title": "Atlanta at Houston Winner?",
+      "updated_time": "2026-03-18T16:07:00.714937Z",
+      "volume_24h_fp": "0.00",
+      "volume_fp": "0.00",
+      "yes_ask_dollars": "0.6700",
+      "yes_ask_size_fp": "208.00",
+      "yes_bid_dollars": "0.3000",
+      "yes_bid_size_fp": "500.00",
+      "yes_sub_title": "Houston"
+    },
+    {
+      "can_close_early": true,
+      "close_time": "2026-04-04T00:00:00Z",
+      "created_time": "2026-03-18T16:03:08.838789Z",
+      "custom_strike": {
+        "basketball_team": "e0729403-9c95-4ee2-b5d4-f704d8322570"
+      },
+      "early_close_condition": "This market will close and expire after a winner is declared.",
+      "event_ticker": "KXNBAGAME-26MAR20ATLHOU",
+      "expected_expiration_time": "2026-03-21T03:00:00Z",
+      "expiration_time": "2026-04-04T00:00:00Z",
+      "expiration_value": "",
+      "fractional_trading_enabled": false,
+      "last_price_dollars": "0.0000",
+      "latest_expiration_time": "2026-04-04T00:00:00Z",
+      "liquidity_dollars": "0.0000",
+      "market_type": "binary",
+      "no_ask_dollars": "0.7000",
+      "no_bid_dollars": "0.3000",
+      "no_sub_title": "Atlanta",
+      "notional_value_dollars": "1.0000",
+      "open_interest_fp": "0.00",
+      "open_time": "2026-03-18T16:07:00Z",
+      "previous_price_dollars": "0.0000",
+      "previous_yes_ask_dollars": "0.0000",
+      "previous_yes_bid_dollars": "0.0000",
+      "price_level_structure": "linear_cent",
+      "price_ranges": [
+        {
+          "end": "1.0000",
+          "start": "0.0000",
+          "step": "0.0100"
+        }
+      ],
+      "response_price_units": "usd_cent",
+      "result": "",
+      "rules_primary": "If Atlanta wins the Atlanta at Houston professional basketball game originally scheduled for Mar 20, 2026, then the market resolves to Yes.",
+      "rules_secondary": "",
+      "settlement_timer_seconds": 30,
+      "status": "active",
+      "strike_type": "structured",
+      "subtitle": "",
+      "tick_size": 1,
+      "ticker": "KXNBAGAME-26MAR20ATLHOU-ATL",
+      "title": "Atlanta at Houston Winner?",
+      "updated_time": "2026-03-18T16:07:00.714937Z",
+      "volume_24h_fp": "0.00",
+      "volume_fp": "0.00",
+      "yes_ask_dollars": "0.7000",
+      "yes_ask_size_fp": "500.00",
+      "yes_bid_dollars": "0.3000",
+      "yes_bid_size_fp": "500.00",
+      "yes_sub_title": "Atlanta"
+    },
+    {
+      "can_close_early": true,
+      "close_time": "2026-04-04T00:00:00Z",
+      "created_time": "2026-03-18T16:03:08.509616Z",
+      "custom_strike": {
+        "basketball_team": "2229b01e-68eb-46ad-adf4-71a9533c84fc"
+      },
+      "early_close_condition": "This market will close and expire after a winner is declared.",
+      "event_ticker": "KXNBAGAME-26MAR20PORMIN",
+      "expected_expiration_time": "2026-03-21T03:00:00Z",
+      "expiration_time": "2026-04-04T00:00:00Z",
+      "expiration_value": "",
+      "fractional_trading_enabled": false,
+      "last_price_dollars": "0.0000",
+      "latest_expiration_time": "2026-04-04T00:00:00Z",
+      "liquidity_dollars": "0.0000",
+      "market_type": "binary",
+      "no_ask_dollars": "0.8600",
+      "no_bid_dollars": "0.5800",
+      "no_sub_title": "Portland",
+      "notional_value_dollars": "1.0000",
+      "open_interest_fp": "0.00",
+      "open_time": "2026-03-18T16:07:00Z",
+      "previous_price_dollars": "0.0000",
+      "previous_yes_ask_dollars": "0.0000",
+      "previous_yes_bid_dollars": "0.0000",
+      "price_level_structure": "linear_cent",
+      "price_ranges": [
+        {
+          "end": "1.0000",
+          "start": "0.0000",
+          "step": "0.0100"
+        }
+      ],
+      "response_price_units": "usd_cent",
+      "result": "",
+      "rules_primary": "If Portland wins the Portland at Minnesota professional basketball game originally scheduled for Mar 20, 2026, then the market resolves to Yes.",
+      "rules_secondary": "",
+      "settlement_timer_seconds": 30,
+      "status": "active",
+      "strike_type": "structured",
+      "subtitle": "",
+      "tick_size": 1,
+      "ticker": "KXNBAGAME-26MAR20PORMIN-POR",
+      "title": "Portland at Minnesota Winner?",
+      "updated_time": "2026-03-18T16:07:00.714937Z",
+      "volume_24h_fp": "0.00",
+      "volume_fp": "0.00",
+      "yes_ask_dollars": "0.4200",
+      "yes_ask_size_fp": "679.00",
+      "yes_bid_dollars": "0.1400",
+      "yes_bid_size_fp": "10.00",
+      "yes_sub_title": "Portland"
+    },
+    {
+      "can_close_early": true,
+      "close_time": "2026-04-04T00:00:00Z",
+      "created_time": "2026-03-18T16:03:08.509616Z",
+      "custom_strike": {
+        "basketball_team": "29e3c04e-fadb-4006-be20-cbb8c159ce0e"
+      },
+      "early_close_condition": "This market will close and expire after a winner is declared.",
+      "event_ticker": "KXNBAGAME-26MAR20PORMIN",
+      "expected_expiration_time": "2026-03-21T03:00:00Z",
+      "expiration_time": "2026-04-04T00:00:00Z",
+      "expiration_value": "",
+      "fractional_trading_enabled": false,
+      "last_price_dollars": "0.8700",
+      "latest_expiration_time": "2026-04-04T00:00:00Z",
+      "liquidity_dollars": "0.0000",
+      "market_type": "binary",
+      "no_ask_dollars": "0.5900",
+      "no_bid_dollars": "0.3700",
+      "no_sub_title": "Minnesota",
+      "notional_value_dollars": "1.0000",
+      "open_interest_fp": "6.00",
+      "open_time": "2026-03-18T16:07:00Z",
+      "previous_price_dollars": "0.0000",
+      "previous_yes_ask_dollars": "0.0000",
+      "previous_yes_bid_dollars": "0.0000",
+      "price_level_structure": "linear_cent",
+      "price_ranges": [
+        {
+          "end": "1.0000",
+          "start": "0.0000",
+          "step": "0.0100"
+        }
+      ],
+      "response_price_units": "usd_cent",
+      "result": "",
+      "rules_primary": "If Minnesota wins the Portland at Minnesota professional basketball game originally scheduled for Mar 20, 2026, then the market resolves to Yes.",
+      "rules_secondary": "",
+      "settlement_timer_seconds": 30,
+      "status": "active",
+      "strike_type": "structured",
+      "subtitle": "",
+      "tick_size": 1,
+      "ticker": "KXNBAGAME-26MAR20PORMIN-MIN",
+      "title": "Portland at Minnesota Winner?",
+      "updated_time": "2026-03-18T16:07:00.714937Z",
+      "volume_24h_fp": "6.00",
+      "volume_fp": "6.00",
+      "yes_ask_dollars": "0.6300",
+      "yes_ask_size_fp": "321.00",
+      "yes_bid_dollars": "0.4100",
+      "yes_bid_size_fp": "5.00",
+      "yes_sub_title": "Minnesota"
+    },
+    {
+      "can_close_early": true,
+      "close_time": "2026-04-03T23:30:00Z",
+      "created_time": "2026-03-18T16:03:08.136217Z",
+      "custom_strike": {
+        "basketball_team": "67468ecc-b868-43a4-b9dc-751a52894bb0"
+      },
+      "early_close_condition": "This market will close and expire after a winner is declared.",
+      "event_ticker": "KXNBAGAME-26MAR20NYKBKN",
+      "expected_expiration_time": "2026-03-21T02:30:00Z",
+      "expiration_time": "2026-04-03T23:30:00Z",
+      "expiration_value": "",
+      "fractional_trading_enabled": false,
+      "last_price_dollars": "0.5000",
+      "latest_expiration_time": "2026-04-03T23:30:00Z",
+      "liquidity_dollars": "0.0000",
+      "market_type": "binary",
+      "no_ask_dollars": "0.4900",
+      "no_bid_dollars": "0.1400",
+      "no_sub_title": "New York",
+      "notional_value_dollars": "1.0000",
+      "open_interest_fp": "7.00",
+      "open_time": "2026-03-18T16:07:00Z",
+      "previous_price_dollars": "0.0000",
+      "previous_yes_ask_dollars": "0.0000",
+      "previous_yes_bid_dollars": "0.0000",
+      "price_level_structure": "linear_cent",
+      "price_ranges": [
+        {
+          "end": "1.0000",
+          "start": "0.0000",
+          "step": "0.0100"
+        }
+      ],
+      "response_price_units": "usd_cent",
+      "result": "",
+      "rules_primary": "If New York wins the New York at Brooklyn professional basketball game originally scheduled for Mar 20, 2026, then the market resolves to Yes.",
+      "rules_secondary": "",
+      "settlement_timer_seconds": 30,
+      "status": "active",
+      "strike_type": "structured",
+      "subtitle": "",
+      "tick_size": 1,
+      "ticker": "KXNBAGAME-26MAR20NYKBKN-NYK",
+      "title": "New York at Brooklyn Winner?",
+      "updated_time": "2026-03-18T16:07:00.714937Z",
+      "volume_24h_fp": "9.00",
+      "volume_fp": "9.00",
+      "yes_ask_dollars": "0.8600",
+      "yes_ask_size_fp": "5.00",
+      "yes_bid_dollars": "0.5100",
+      "yes_bid_size_fp": "5.00",
+      "yes_sub_title": "New York"
+    },
+    {
+      "can_close_early": true,
+      "close_time": "2026-04-03T23:30:00Z",
+      "created_time": "2026-03-18T16:03:08.136217Z",
+      "custom_strike": {
+        "basketball_team": "7cc1eb26-46ee-44b7-94ad-248ee3b0fbd3"
+      },
+      "early_close_condition": "This market will close and expire after a winner is declared.",
+      "event_ticker": "KXNBAGAME-26MAR20NYKBKN",
+      "expected_expiration_time": "2026-03-21T02:30:00Z",
+      "expiration_time": "2026-04-03T23:30:00Z",
+      "expiration_value": "",
+      "fractional_trading_enabled": false,
+      "last_price_dollars": "0.1300",
+      "latest_expiration_time": "2026-04-03T23:30:00Z",
+      "liquidity_dollars": "0.0000",
+      "market_type": "binary",
+      "no_ask_dollars": "0.8600",
+      "no_bid_dollars": "0.8500",
+      "no_sub_title": "Brooklyn",
+      "notional_value_dollars": "1.0000",
+      "open_interest_fp": "5.00",
+      "open_time": "2026-03-18T16:07:00Z",
+      "previous_price_dollars": "0.0000",
+      "previous_yes_ask_dollars": "0.0000",
+      "previous_yes_bid_dollars": "0.0000",
+      "price_level_structure": "linear_cent",
+      "price_ranges": [
+        {
+          "end": "1.0000",
+          "start": "0.0000",
+          "step": "0.0100"
+        }
+      ],
+      "response_price_units": "usd_cent",
+      "result": "",
+      "rules_primary": "If Brooklyn wins the New York at Brooklyn professional basketball game originally scheduled for Mar 20, 2026, then the market resolves to Yes.",
+      "rules_secondary": "",
+      "settlement_timer_seconds": 30,
+      "status": "active",
+      "strike_type": "structured",
+      "subtitle": "",
+      "tick_size": 1,
+      "ticker": "KXNBAGAME-26MAR20NYKBKN-BKN",
+      "title": "New York at Brooklyn Winner?",
+      "updated_time": "2026-03-18T16:07:00.714937Z",
+      "volume_24h_fp": "5.00",
+      "volume_fp": "5.00",
+      "yes_ask_dollars": "0.1500",
+      "yes_ask_size_fp": "1.00",
+      "yes_bid_dollars": "0.1400",
+      "yes_bid_size_fp": "1.00",
+      "yes_sub_title": "Brooklyn"
+    },
+    {
+      "can_close_early": true,
+      "close_time": "2026-04-03T23:30:00Z",
+      "created_time": "2026-03-18T16:03:06.282365Z",
+      "custom_strike": {
+        "basketball_team": "502c629b-4da7-40fd-92ab-20cb55411c35"
+      },
+      "early_close_condition": "This market will close and expire after a winner is declared.",
+      "event_ticker": "KXNBAGAME-26MAR20GSWDET",
+      "expected_expiration_time": "2026-03-21T02:30:00Z",
+      "expiration_time": "2026-04-03T23:30:00Z",
+      "expiration_value": "",
+      "fractional_trading_enabled": false,
+      "last_price_dollars": "0.1300",
+      "latest_expiration_time": "2026-04-03T23:30:00Z",
+      "liquidity_dollars": "0.0000",
+      "market_type": "binary",
+      "no_ask_dollars": "0.8700",
+      "no_bid_dollars": "0.8600",
+      "no_sub_title": "Golden State",
+      "notional_value_dollars": "1.0000",
+      "open_interest_fp": "5.00",
+      "open_time": "2026-03-18T16:07:00Z",
+      "previous_price_dollars": "0.0000",
+      "previous_yes_ask_dollars": "0.0000",
+      "previous_yes_bid_dollars": "0.0000",
+      "price_level_structure": "linear_cent",
+      "price_ranges": [
+        {
+          "end": "1.0000",
+          "start": "0.0000",
+          "step": "0.0100"
+        }
+      ],
+      "response_price_units": "usd_cent",
+      "result": "",
+      "rules_primary": "If Golden State wins the Golden State at Detroit professional basketball game originally scheduled for Mar 20, 2026, then the market resolves to Yes.",
+      "rules_secondary": "",
+      "settlement_timer_seconds": 30,
+      "status": "active",
+      "strike_type": "structured",
+      "subtitle": "",
+      "tick_size": 1,
+      "ticker": "KXNBAGAME-26MAR20GSWDET-GSW",
+      "title": "Golden State at Detroit Winner?",
+      "updated_time": "2026-03-18T16:07:00.714937Z",
+      "volume_24h_fp": "5.00",
+      "volume_fp": "5.00",
+      "yes_ask_dollars": "0.1400",
+      "yes_ask_size_fp": "11.00",
+      "yes_bid_dollars": "0.1300",
+      "yes_bid_size_fp": "496.00",
+      "yes_sub_title": "Golden State"
+    },
+    {
+      "can_close_early": true,
+      "close_time": "2026-04-03T23:30:00Z",
+      "created_time": "2026-03-18T16:03:06.282365Z",
+      "custom_strike": {
+        "basketball_team": "65569528-1888-40aa-9d62-2b0e8142a9b4"
+      },
+      "early_close_condition": "This market will close and expire after a winner is declared.",
+      "event_ticker": "KXNBAGAME-26MAR20GSWDET",
+      "expected_expiration_time": "2026-03-21T02:30:00Z",
+      "expiration_time": "2026-04-03T23:30:00Z",
+      "expiration_value": "",
+      "fractional_trading_enabled": false,
+      "last_price_dollars": "0.1300",
+      "latest_expiration_time": "2026-04-03T23:30:00Z",
+      "liquidity_dollars": "0.0000",
+      "market_type": "binary",
+      "no_ask_dollars": "0.5000",
+      "no_bid_dollars": "0.1400",
+      "no_sub_title": "Detroit",
+      "notional_value_dollars": "1.0000",
+      "open_interest_fp": "5.00",
+      "open_time": "2026-03-18T16:07:00Z",
+      "previous_price_dollars": "0.0000",
+      "previous_yes_ask_dollars": "0.0000",
+      "previous_yes_bid_dollars": "0.0000",
+      "price_level_structure": "linear_cent",
+      "price_ranges": [
+        {
+          "end": "1.0000",
+          "start": "0.0000",
+          "step": "0.0100"
+        }
+      ],
+      "response_price_units": "usd_cent",
+      "result": "",
+      "rules_primary": "If Detroit wins the Golden State at Detroit professional basketball game originally scheduled for Mar 20, 2026, then the market resolves to Yes.",
+      "rules_secondary": "",
+      "settlement_timer_seconds": 30,
+      "status": "active",
+      "strike_type": "structured",
+      "subtitle": "",
+      "tick_size": 1,
+      "ticker": "KXNBAGAME-26MAR20GSWDET-DET",
+      "title": "Golden State at Detroit Winner?",
+      "updated_time": "2026-03-18T16:07:00.714937Z",
+      "volume_24h_fp": "5.00",
+      "volume_fp": "5.00",
+      "yes_ask_dollars": "0.8600",
+      "yes_ask_size_fp": "5.00",
+      "yes_bid_dollars": "0.5000",
+      "yes_bid_size_fp": "300.00",
+      "yes_sub_title": "Detroit"
+    },
     {
       "can_close_early": true,
       "close_time": "2026-04-03T02:00:00Z",
@@ -15,19 +663,19 @@
       "expiration_time": "2026-04-03T02:00:00Z",
       "expiration_value": "",
       "fractional_trading_enabled": false,
-      "last_price_dollars": "0.3800",
+      "last_price_dollars": "0.3400",
       "latest_expiration_time": "2026-04-03T02:00:00Z",
       "liquidity_dollars": "0.0000",
       "market_type": "binary",
       "no_ask_dollars": "0.6600",
-      "no_bid_dollars": "0.6200",
+      "no_bid_dollars": "0.6300",
       "no_sub_title": "Sacramento",
       "notional_value_dollars": "1.0000",
-      "open_interest_fp": "193.00",
+      "open_interest_fp": "276.00",
       "open_time": "2026-03-17T16:06:00Z",
       "previous_price_dollars": "0.0000",
-      "previous_yes_ask_dollars": "0.0000",
-      "previous_yes_bid_dollars": "0.0000",
+      "previous_yes_ask_dollars": "0.8600",
+      "previous_yes_bid_dollars": "0.1400",
       "price_level_structure": "linear_cent",
       "price_ranges": [
         {
@@ -48,12 +696,12 @@
       "ticker": "KXNBAGAME-26MAR19PHISAC-SAC",
       "title": "Philadelphia at Sacramento Winner?",
       "updated_time": "2026-03-17T16:06:00.716836Z",
-      "volume_24h_fp": "236.00",
-      "volume_fp": "236.00",
-      "yes_ask_dollars": "0.3800",
-      "yes_ask_size_fp": "1474.00",
+      "volume_24h_fp": "401.00",
+      "volume_fp": "415.00",
+      "yes_ask_dollars": "0.3700",
+      "yes_ask_size_fp": "207.00",
       "yes_bid_dollars": "0.3400",
-      "yes_bid_size_fp": "279.00",
+      "yes_bid_size_fp": "197.00",
       "yes_sub_title": "Sacramento"
     },
     {
@@ -74,14 +722,14 @@
       "liquidity_dollars": "0.0000",
       "market_type": "binary",
       "no_ask_dollars": "0.3700",
-      "no_bid_dollars": "0.3600",
+      "no_bid_dollars": "0.3500",
       "no_sub_title": "Philadelphia",
       "notional_value_dollars": "1.0000",
-      "open_interest_fp": "3469.00",
+      "open_interest_fp": "3754.00",
       "open_time": "2026-03-17T16:06:00Z",
       "previous_price_dollars": "0.0000",
-      "previous_yes_ask_dollars": "0.0000",
-      "previous_yes_bid_dollars": "0.0000",
+      "previous_yes_ask_dollars": "0.6300",
+      "previous_yes_bid_dollars": "0.1300",
       "price_level_structure": "linear_cent",
       "price_ranges": [
         {
@@ -102,12 +750,12 @@
       "ticker": "KXNBAGAME-26MAR19PHISAC-PHI",
       "title": "Philadelphia at Sacramento Winner?",
       "updated_time": "2026-03-17T16:06:00.716836Z",
-      "volume_24h_fp": "3530.00",
-      "volume_fp": "3530.00",
-      "yes_ask_dollars": "0.6400",
-      "yes_ask_size_fp": "100.00",
+      "volume_24h_fp": "3820.00",
+      "volume_fp": "3820.00",
+      "yes_ask_dollars": "0.6500",
+      "yes_ask_size_fp": "37.00",
       "yes_bid_dollars": "0.6300",
-      "yes_bid_size_fp": "200.00",
+      "yes_bid_size_fp": "355.00",
       "yes_sub_title": "Philadelphia"
     },
     {
@@ -127,15 +775,15 @@
       "latest_expiration_time": "2026-04-03T00:00:00Z",
       "liquidity_dollars": "0.0000",
       "market_type": "binary",
-      "no_ask_dollars": "0.5300",
-      "no_bid_dollars": "0.4900",
+      "no_ask_dollars": "0.4900",
+      "no_bid_dollars": "0.4800",
       "no_sub_title": "Miami",
       "notional_value_dollars": "1.0000",
-      "open_interest_fp": "587.00",
+      "open_interest_fp": "1112.00",
       "open_time": "2026-03-17T16:06:00Z",
-      "previous_price_dollars": "0.0000",
-      "previous_yes_ask_dollars": "0.0000",
-      "previous_yes_bid_dollars": "0.0000",
+      "previous_price_dollars": "0.1300",
+      "previous_yes_ask_dollars": "0.5800",
+      "previous_yes_bid_dollars": "0.1300",
       "price_level_structure": "linear_cent",
       "price_ranges": [
         {
@@ -156,12 +804,12 @@
       "ticker": "KXNBAGAME-26MAR19LALMIA-MIA",
       "title": "Los Angeles L at Miami Winner?",
       "updated_time": "2026-03-17T16:06:00.716836Z",
-      "volume_24h_fp": "651.00",
-      "volume_fp": "651.00",
-      "yes_ask_dollars": "0.5100",
-      "yes_ask_size_fp": "103.00",
-      "yes_bid_dollars": "0.4700",
-      "yes_bid_size_fp": "445.00",
+      "volume_24h_fp": "1171.00",
+      "volume_fp": "1178.00",
+      "yes_ask_dollars": "0.5200",
+      "yes_ask_size_fp": "8799.00",
+      "yes_bid_dollars": "0.5100",
+      "yes_bid_size_fp": "15.00",
       "yes_sub_title": "Miami"
     },
     {
@@ -185,11 +833,11 @@
       "no_bid_dollars": "0.4900",
       "no_sub_title": "Los Angeles L",
       "notional_value_dollars": "1.0000",
-      "open_interest_fp": "15783.00",
+      "open_interest_fp": "17786.00",
       "open_time": "2026-03-17T16:06:00Z",
-      "previous_price_dollars": "0.0000",
-      "previous_yes_ask_dollars": "0.0000",
-      "previous_yes_bid_dollars": "0.0000",
+      "previous_price_dollars": "0.1300",
+      "previous_yes_ask_dollars": "0.8600",
+      "previous_yes_bid_dollars": "0.1400",
       "price_level_structure": "linear_cent",
       "price_ranges": [
         {
@@ -210,12 +858,12 @@
       "ticker": "KXNBAGAME-26MAR19LALMIA-LAL",
       "title": "Los Angeles L at Miami Winner?",
       "updated_time": "2026-03-17T16:06:00.716836Z",
-      "volume_24h_fp": "15637.00",
-      "volume_fp": "15921.00",
+      "volume_24h_fp": "17958.00",
+      "volume_fp": "17961.00",
       "yes_ask_dollars": "0.5100",
-      "yes_ask_size_fp": "19.00",
+      "yes_ask_size_fp": "2367.00",
       "yes_bid_dollars": "0.5000",
-      "yes_bid_size_fp": "307.00",
+      "yes_bid_size_fp": "180.00",
       "yes_sub_title": "Los Angeles L"
     },
     {
@@ -231,19 +879,19 @@
       "expiration_time": "2026-04-03T01:00:00Z",
       "expiration_value": "",
       "fractional_trading_enabled": false,
-      "last_price_dollars": "0.3500",
+      "last_price_dollars": "0.3400",
       "latest_expiration_time": "2026-04-03T01:00:00Z",
       "liquidity_dollars": "0.0000",
       "market_type": "binary",
-      "no_ask_dollars": "0.6600",
+      "no_ask_dollars": "0.6700",
       "no_bid_dollars": "0.6500",
       "no_sub_title": "Utah",
       "notional_value_dollars": "1.0000",
-      "open_interest_fp": "460.00",
+      "open_interest_fp": "811.00",
       "open_time": "2026-03-17T16:06:00Z",
-      "previous_price_dollars": "0.0000",
-      "previous_yes_ask_dollars": "0.0000",
-      "previous_yes_bid_dollars": "0.0000",
+      "previous_price_dollars": "0.3200",
+      "previous_yes_ask_dollars": "0.2900",
+      "previous_yes_bid_dollars": "0.1800",
       "price_level_structure": "linear_cent",
       "price_ranges": [
         {
@@ -264,12 +912,12 @@
       "ticker": "KXNBAGAME-26MAR19MILUTA-UTA",
       "title": "Milwaukee at Utah Winner?",
       "updated_time": "2026-03-17T16:06:00.716836Z",
-      "volume_24h_fp": "524.00",
-      "volume_fp": "524.00",
+      "volume_24h_fp": "852.00",
+      "volume_fp": "886.00",
       "yes_ask_dollars": "0.3500",
-      "yes_ask_size_fp": "1405.00",
-      "yes_bid_dollars": "0.3400",
-      "yes_bid_size_fp": "205.00",
+      "yes_ask_size_fp": "1055.00",
+      "yes_bid_dollars": "0.3300",
+      "yes_bid_size_fp": "342.00",
       "yes_sub_title": "Utah"
     },
     {
@@ -293,11 +941,11 @@
       "no_bid_dollars": "0.3400",
       "no_sub_title": "Milwaukee",
       "notional_value_dollars": "1.0000",
-      "open_interest_fp": "2819.00",
+      "open_interest_fp": "3539.00",
       "open_time": "2026-03-17T16:06:00Z",
-      "previous_price_dollars": "0.0000",
-      "previous_yes_ask_dollars": "0.0000",
-      "previous_yes_bid_dollars": "0.0000",
+      "previous_price_dollars": "0.1300",
+      "previous_yes_ask_dollars": "0.7000",
+      "previous_yes_bid_dollars": "0.1900",
       "price_level_structure": "linear_cent",
       "price_ranges": [
         {
@@ -318,12 +966,12 @@
       "ticker": "KXNBAGAME-26MAR19MILUTA-MIL",
       "title": "Milwaukee at Utah Winner?",
       "updated_time": "2026-03-17T16:06:00.716836Z",
-      "volume_24h_fp": "2934.00",
-      "volume_fp": "2934.00",
+      "volume_24h_fp": "3651.00",
+      "volume_fp": "3661.00",
       "yes_ask_dollars": "0.6600",
-      "yes_ask_size_fp": "2360.00",
+      "yes_ask_size_fp": "1796.00",
       "yes_bid_dollars": "0.6500",
-      "yes_bid_size_fp": "600.00",
+      "yes_bid_size_fp": "523.00",
       "yes_sub_title": "Milwaukee"
     },
     {
@@ -339,19 +987,19 @@
       "expiration_time": "2026-04-03T00:00:00Z",
       "expiration_value": "",
       "fractional_trading_enabled": false,
-      "last_price_dollars": "0.8200",
+      "last_price_dollars": "0.8400",
       "latest_expiration_time": "2026-04-03T00:00:00Z",
       "liquidity_dollars": "0.0000",
       "market_type": "binary",
       "no_ask_dollars": "0.2000",
-      "no_bid_dollars": "0.1700",
+      "no_bid_dollars": "0.1600",
       "no_sub_title": "San Antonio",
       "notional_value_dollars": "1.0000",
-      "open_interest_fp": "11216.00",
+      "open_interest_fp": "14375.00",
       "open_time": "2026-03-17T16:06:00Z",
-      "previous_price_dollars": "0.0000",
-      "previous_yes_ask_dollars": "0.0000",
-      "previous_yes_bid_dollars": "0.0000",
+      "previous_price_dollars": "0.8000",
+      "previous_yes_ask_dollars": "0.8000",
+      "previous_yes_bid_dollars": "0.1300",
       "price_level_structure": "linear_cent",
       "price_ranges": [
         {
@@ -372,10 +1020,10 @@
       "ticker": "KXNBAGAME-26MAR19PHXSAS-SAS",
       "title": "Phoenix at San Antonio Winner?",
       "updated_time": "2026-03-17T16:06:00.716836Z",
-      "volume_24h_fp": "11246.00",
-      "volume_fp": "11352.00",
-      "yes_ask_dollars": "0.8300",
-      "yes_ask_size_fp": "1046.00",
+      "volume_24h_fp": "14589.00",
+      "volume_fp": "14591.00",
+      "yes_ask_dollars": "0.8400",
+      "yes_ask_size_fp": "4837.00",
       "yes_bid_dollars": "0.8000",
       "yes_bid_size_fp": "821.00",
       "yes_sub_title": "San Antonio"
@@ -393,7 +1041,7 @@
       "expiration_time": "2026-04-03T00:00:00Z",
       "expiration_value": "",
       "fractional_trading_enabled": false,
-      "last_price_dollars": "0.1700",
+      "last_price_dollars": "0.1800",
       "latest_expiration_time": "2026-04-03T00:00:00Z",
       "liquidity_dollars": "0.0000",
       "market_type": "binary",
@@ -401,11 +1049,11 @@
       "no_bid_dollars": "0.8200",
       "no_sub_title": "Phoenix",
       "notional_value_dollars": "1.0000",
-      "open_interest_fp": "1811.00",
+      "open_interest_fp": "1917.00",
       "open_time": "2026-03-17T16:06:00Z",
-      "previous_price_dollars": "0.0000",
-      "previous_yes_ask_dollars": "0.0000",
-      "previous_yes_bid_dollars": "0.0000",
+      "previous_price_dollars": "0.2300",
+      "previous_yes_ask_dollars": "0.2300",
+      "previous_yes_bid_dollars": "0.1400",
       "price_level_structure": "linear_cent",
       "price_ranges": [
         {
@@ -426,12 +1074,12 @@
       "ticker": "KXNBAGAME-26MAR19PHXSAS-PHX",
       "title": "Phoenix at San Antonio Winner?",
       "updated_time": "2026-03-17T16:06:00.716836Z",
-      "volume_24h_fp": "2983.00",
-      "volume_fp": "2983.00",
+      "volume_24h_fp": "3169.00",
+      "volume_fp": "3175.00",
       "yes_ask_dollars": "0.1800",
-      "yes_ask_size_fp": "315.00",
+      "yes_ask_size_fp": "961.00",
       "yes_bid_dollars": "0.1700",
-      "yes_bid_size_fp": "20.00",
+      "yes_bid_size_fp": "1.00",
       "yes_sub_title": "Phoenix"
     },
     {
@@ -447,19 +1095,19 @@
       "expiration_time": "2026-04-03T00:00:00Z",
       "expiration_value": "",
       "fractional_trading_enabled": false,
-      "last_price_dollars": "0.8200",
+      "last_price_dollars": "0.8100",
       "latest_expiration_time": "2026-04-03T00:00:00Z",
       "liquidity_dollars": "0.0000",
       "market_type": "binary",
-      "no_ask_dollars": "0.1900",
-      "no_bid_dollars": "0.1800",
+      "no_ask_dollars": "0.2100",
+      "no_bid_dollars": "0.1900",
       "no_sub_title": "Cleveland",
       "notional_value_dollars": "1.0000",
-      "open_interest_fp": "1985.00",
+      "open_interest_fp": "2286.00",
       "open_time": "2026-03-17T16:06:00Z",
       "previous_price_dollars": "0.0000",
-      "previous_yes_ask_dollars": "0.0000",
-      "previous_yes_bid_dollars": "0.0000",
+      "previous_yes_ask_dollars": "0.8100",
+      "previous_yes_bid_dollars": "0.1400",
       "price_level_structure": "linear_cent",
       "price_ranges": [
         {
@@ -480,12 +1128,12 @@
       "ticker": "KXNBAGAME-26MAR19CLECHI-CLE",
       "title": "Cleveland at Chicago Winner?",
       "updated_time": "2026-03-17T16:06:00.716836Z",
-      "volume_24h_fp": "2592.00",
-      "volume_fp": "2592.00",
-      "yes_ask_dollars": "0.8200",
-      "yes_ask_size_fp": "100.00",
-      "yes_bid_dollars": "0.8100",
-      "yes_bid_size_fp": "535.00",
+      "volume_24h_fp": "2897.00",
+      "volume_fp": "2897.00",
+      "yes_ask_dollars": "0.8100",
+      "yes_ask_size_fp": "85.00",
+      "yes_bid_dollars": "0.7900",
+      "yes_bid_size_fp": "1485.00",
       "yes_sub_title": "Cleveland"
     },
     {
@@ -505,15 +1153,15 @@
       "latest_expiration_time": "2026-04-03T00:00:00Z",
       "liquidity_dollars": "0.0000",
       "market_type": "binary",
-      "no_ask_dollars": "0.8600",
+      "no_ask_dollars": "0.8400",
       "no_bid_dollars": "0.8200",
       "no_sub_title": "Chicago",
       "notional_value_dollars": "1.0000",
-      "open_interest_fp": "390.00",
+      "open_interest_fp": "475.00",
       "open_time": "2026-03-17T16:06:00Z",
-      "previous_price_dollars": "0.0000",
-      "previous_yes_ask_dollars": "0.0000",
-      "previous_yes_bid_dollars": "0.0000",
+      "previous_price_dollars": "0.2400",
+      "previous_yes_ask_dollars": "0.2400",
+      "previous_yes_bid_dollars": "0.1300",
       "price_level_structure": "linear_cent",
       "price_ranges": [
         {
@@ -534,12 +1182,12 @@
       "ticker": "KXNBAGAME-26MAR19CLECHI-CHI",
       "title": "Cleveland at Chicago Winner?",
       "updated_time": "2026-03-17T16:06:00.716836Z",
-      "volume_24h_fp": "405.00",
-      "volume_fp": "405.00",
+      "volume_24h_fp": "485.00",
+      "volume_fp": "490.00",
       "yes_ask_dollars": "0.1800",
-      "yes_ask_size_fp": "204.00",
-      "yes_bid_dollars": "0.1400",
-      "yes_bid_size_fp": "1364.00",
+      "yes_ask_size_fp": "35.00",
+      "yes_bid_dollars": "0.1600",
+      "yes_bid_size_fp": "565.00",
       "yes_sub_title": "Chicago"
     },
     {
@@ -555,19 +1203,19 @@
       "expiration_time": "2026-04-03T00:00:00Z",
       "expiration_value": "",
       "fractional_trading_enabled": false,
-      "last_price_dollars": "0.5400",
+      "last_price_dollars": "0.5200",
       "latest_expiration_time": "2026-04-03T00:00:00Z",
       "liquidity_dollars": "0.0000",
       "market_type": "binary",
-      "no_ask_dollars": "0.5000",
-      "no_bid_dollars": "0.4600",
+      "no_ask_dollars": "0.4800",
+      "no_bid_dollars": "0.4500",
       "no_sub_title": "New Orleans",
       "notional_value_dollars": "1.0000",
-      "open_interest_fp": "1629.00",
+      "open_interest_fp": "3448.00",
       "open_time": "2026-03-17T16:06:00Z",
       "previous_price_dollars": "0.0000",
-      "previous_yes_ask_dollars": "0.0000",
-      "previous_yes_bid_dollars": "0.0000",
+      "previous_yes_ask_dollars": "0.5000",
+      "previous_yes_bid_dollars": "0.1400",
       "price_level_structure": "linear_cent",
       "price_ranges": [
         {
@@ -588,12 +1236,12 @@
       "ticker": "KXNBAGAME-26MAR19LACNOP-NOP",
       "title": "Los Angeles C at New Orleans Winner?",
       "updated_time": "2026-03-17T16:06:00.716836Z",
-      "volume_24h_fp": "1651.00",
-      "volume_fp": "1651.00",
-      "yes_ask_dollars": "0.5400",
-      "yes_ask_size_fp": "2208.00",
-      "yes_bid_dollars": "0.5000",
-      "yes_bid_size_fp": "18.00",
+      "volume_24h_fp": "3531.00",
+      "volume_fp": "3533.00",
+      "yes_ask_dollars": "0.5500",
+      "yes_ask_size_fp": "6643.00",
+      "yes_bid_dollars": "0.5200",
+      "yes_bid_size_fp": "621.00",
       "yes_sub_title": "New Orleans"
     },
     {
@@ -609,19 +1257,19 @@
       "expiration_time": "2026-04-03T00:00:00Z",
       "expiration_value": "",
       "fractional_trading_enabled": false,
-      "last_price_dollars": "0.4900",
+      "last_price_dollars": "0.4800",
       "latest_expiration_time": "2026-04-03T00:00:00Z",
       "liquidity_dollars": "0.0000",
       "market_type": "binary",
-      "no_ask_dollars": "0.5300",
-      "no_bid_dollars": "0.5100",
+      "no_ask_dollars": "0.5400",
+      "no_bid_dollars": "0.5200",
       "no_sub_title": "Los Angeles C",
       "notional_value_dollars": "1.0000",
-      "open_interest_fp": "3551.00",
+      "open_interest_fp": "4173.00",
       "open_time": "2026-03-17T16:06:00Z",
       "previous_price_dollars": "0.0000",
-      "previous_yes_ask_dollars": "0.0000",
-      "previous_yes_bid_dollars": "0.0000",
+      "previous_yes_ask_dollars": "0.5300",
+      "previous_yes_bid_dollars": "0.1400",
       "price_level_structure": "linear_cent",
       "price_ranges": [
         {
@@ -642,12 +1290,12 @@
       "ticker": "KXNBAGAME-26MAR19LACNOP-LAC",
       "title": "Los Angeles C at New Orleans Winner?",
       "updated_time": "2026-03-17T16:06:00.716836Z",
-      "volume_24h_fp": "3558.00",
-      "volume_fp": "3558.00",
-      "yes_ask_dollars": "0.4900",
-      "yes_ask_size_fp": "83.00",
-      "yes_bid_dollars": "0.4700",
-      "yes_bid_size_fp": "329.00",
+      "volume_24h_fp": "4319.00",
+      "volume_fp": "4325.00",
+      "yes_ask_dollars": "0.4800",
+      "yes_ask_size_fp": "1508.00",
+      "yes_bid_dollars": "0.4600",
+      "yes_bid_size_fp": "250.00",
       "yes_sub_title": "Los Angeles C"
     },
     {
@@ -663,19 +1311,19 @@
       "expiration_time": "2026-04-02T23:00:00Z",
       "expiration_value": "",
       "fractional_trading_enabled": false,
-      "last_price_dollars": "0.3700",
+      "last_price_dollars": "0.3600",
       "latest_expiration_time": "2026-04-02T23:00:00Z",
       "liquidity_dollars": "0.0000",
       "market_type": "binary",
       "no_ask_dollars": "0.6400",
-      "no_bid_dollars": "0.6300",
+      "no_bid_dollars": "0.6100",
       "no_sub_title": "Orlando",
       "notional_value_dollars": "1.0000",
-      "open_interest_fp": "2541.00",
+      "open_interest_fp": "3373.00",
       "open_time": "2026-03-17T13:07:00Z",
-      "previous_price_dollars": "0.0000",
-      "previous_yes_ask_dollars": "0.0000",
-      "previous_yes_bid_dollars": "0.0000",
+      "previous_price_dollars": "0.3700",
+      "previous_yes_ask_dollars": "0.3700",
+      "previous_yes_bid_dollars": "0.3300",
       "price_level_structure": "linear_cent",
       "price_ranges": [
         {
@@ -696,12 +1344,12 @@
       "ticker": "KXNBAGAME-26MAR19ORLCHA-ORL",
       "title": "Orlando at Charlotte Winner?",
       "updated_time": "2026-03-17T13:07:00.714017Z",
-      "volume_24h_fp": "2658.00",
-      "volume_fp": "2658.00",
-      "yes_ask_dollars": "0.3700",
-      "yes_ask_size_fp": "10.00",
+      "volume_24h_fp": "3112.00",
+      "volume_fp": "3492.00",
+      "yes_ask_dollars": "0.3900",
+      "yes_ask_size_fp": "374.00",
       "yes_bid_dollars": "0.3600",
-      "yes_bid_size_fp": "156.00",
+      "yes_bid_size_fp": "285.00",
       "yes_sub_title": "Orlando"
     },
     {
@@ -717,19 +1365,19 @@
       "expiration_time": "2026-04-02T23:00:00Z",
       "expiration_value": "",
       "fractional_trading_enabled": false,
-      "last_price_dollars": "0.6700",
+      "last_price_dollars": "0.6400",
       "latest_expiration_time": "2026-04-02T23:00:00Z",
       "liquidity_dollars": "0.0000",
       "market_type": "binary",
-      "no_ask_dollars": "0.3700",
-      "no_bid_dollars": "0.3400",
+      "no_ask_dollars": "0.3900",
+      "no_bid_dollars": "0.3600",
       "no_sub_title": "Charlotte",
       "notional_value_dollars": "1.0000",
-      "open_interest_fp": "1167.00",
+      "open_interest_fp": "2213.00",
       "open_time": "2026-03-17T13:07:00Z",
-      "previous_price_dollars": "0.0000",
-      "previous_yes_ask_dollars": "0.0000",
-      "previous_yes_bid_dollars": "0.0000",
+      "previous_price_dollars": "0.6500",
+      "previous_yes_ask_dollars": "0.6500",
+      "previous_yes_bid_dollars": "0.6100",
       "price_level_structure": "linear_cent",
       "price_ranges": [
         {
@@ -750,12 +1398,12 @@
       "ticker": "KXNBAGAME-26MAR19ORLCHA-CHA",
       "title": "Orlando at Charlotte Winner?",
       "updated_time": "2026-03-17T13:07:00.714017Z",
-      "volume_24h_fp": "1315.00",
-      "volume_fp": "1315.00",
-      "yes_ask_dollars": "0.6600",
-      "yes_ask_size_fp": "1258.00",
-      "yes_bid_dollars": "0.6300",
-      "yes_bid_size_fp": "135.00",
+      "volume_24h_fp": "2355.00",
+      "volume_fp": "2407.00",
+      "yes_ask_dollars": "0.6400",
+      "yes_ask_size_fp": "3593.00",
+      "yes_bid_dollars": "0.6100",
+      "yes_bid_size_fp": "312.00",
       "yes_sub_title": "Charlotte"
     },
     {
@@ -771,19 +1419,19 @@
       "expiration_time": "2026-04-02T23:00:00Z",
       "expiration_value": "",
       "fractional_trading_enabled": false,
-      "last_price_dollars": "0.1000",
+      "last_price_dollars": "0.0800",
       "latest_expiration_time": "2026-04-02T23:00:00Z",
       "liquidity_dollars": "0.0000",
       "market_type": "binary",
       "no_ask_dollars": "0.9200",
-      "no_bid_dollars": "0.9000",
+      "no_bid_dollars": "0.9100",
       "no_sub_title": "Washington",
       "notional_value_dollars": "1.0000",
-      "open_interest_fp": "37590.00",
+      "open_interest_fp": "38109.00",
       "open_time": "2026-03-17T13:07:00Z",
-      "previous_price_dollars": "0.0000",
-      "previous_yes_ask_dollars": "0.0000",
-      "previous_yes_bid_dollars": "0.0000",
+      "previous_price_dollars": "0.0800",
+      "previous_yes_ask_dollars": "0.0800",
+      "previous_yes_bid_dollars": "0.0700",
       "price_level_structure": "linear_cent",
       "price_ranges": [
         {
@@ -804,12 +1452,12 @@
       "ticker": "KXNBAGAME-26MAR19DETWAS-WAS",
       "title": "Detroit at Washington Winner?",
       "updated_time": "2026-03-17T13:07:00.714017Z",
-      "volume_24h_fp": "40453.00",
-      "volume_fp": "40461.00",
-      "yes_ask_dollars": "0.1000",
-      "yes_ask_size_fp": "6369.00",
+      "volume_24h_fp": "36840.00",
+      "volume_fp": "41354.00",
+      "yes_ask_dollars": "0.0900",
+      "yes_ask_size_fp": "757.00",
       "yes_bid_dollars": "0.0800",
-      "yes_bid_size_fp": "9713.00",
+      "yes_bid_size_fp": "9354.00",
       "yes_sub_title": "Washington"
     },
     {
@@ -829,15 +1477,15 @@
       "latest_expiration_time": "2026-04-02T23:00:00Z",
       "liquidity_dollars": "0.0000",
       "market_type": "binary",
-      "no_ask_dollars": "0.0900",
+      "no_ask_dollars": "0.0800",
       "no_bid_dollars": "0.0700",
       "no_sub_title": "Detroit",
       "notional_value_dollars": "1.0000",
-      "open_interest_fp": "10467.00",
+      "open_interest_fp": "11041.00",
       "open_time": "2026-03-17T13:07:00Z",
-      "previous_price_dollars": "0.0000",
-      "previous_yes_ask_dollars": "0.0000",
-      "previous_yes_bid_dollars": "0.0000",
+      "previous_price_dollars": "0.9100",
+      "previous_yes_ask_dollars": "0.9100",
+      "previous_yes_bid_dollars": "0.9000",
       "price_level_structure": "linear_cent",
       "price_ranges": [
         {
@@ -858,12 +1506,12 @@
       "ticker": "KXNBAGAME-26MAR19DETWAS-DET",
       "title": "Detroit at Washington Winner?",
       "updated_time": "2026-03-17T13:07:00.714017Z",
-      "volume_24h_fp": "13144.00",
-      "volume_fp": "13144.00",
+      "volume_24h_fp": "12250.00",
+      "volume_fp": "13829.00",
       "yes_ask_dollars": "0.9300",
-      "yes_ask_size_fp": "13240.00",
-      "yes_bid_dollars": "0.9100",
-      "yes_bid_size_fp": "932.00",
+      "yes_ask_size_fp": "1287.00",
+      "yes_bid_dollars": "0.9200",
+      "yes_bid_size_fp": "673.00",
       "yes_sub_title": "Detroit"
     },
     {
@@ -883,14 +1531,14 @@
       "latest_expiration_time": "2026-04-02T01:30:00Z",
       "liquidity_dollars": "0.0000",
       "market_type": "binary",
-      "no_ask_dollars": "0.5500",
+      "no_ask_dollars": "0.5600",
       "no_bid_dollars": "0.5400",
       "no_sub_title": "Los Angeles L",
       "notional_value_dollars": "1.0000",
-      "open_interest_fp": "306720.00",
+      "open_interest_fp": "368726.00",
       "open_time": "2026-03-16T16:07:00Z",
-      "previous_price_dollars": "0.5100",
-      "previous_yes_ask_dollars": "0.5100",
+      "previous_price_dollars": "0.5000",
+      "previous_yes_ask_dollars": "0.5000",
       "previous_yes_bid_dollars": "0.4800",
       "price_level_structure": "linear_cent",
       "price_ranges": [
@@ -912,12 +1560,12 @@
       "ticker": "KXNBAGAME-26MAR18LALHOU-LAL",
       "title": "Los Angeles L at Houston Winner?",
       "updated_time": "2026-03-16T16:07:00.713942Z",
-      "volume_24h_fp": "334673.00",
-      "volume_fp": "389729.00",
+      "volume_24h_fp": "402444.00",
+      "volume_fp": "466419.00",
       "yes_ask_dollars": "0.4600",
-      "yes_ask_size_fp": "95442.00",
-      "yes_bid_dollars": "0.4500",
-      "yes_bid_size_fp": "1213.00",
+      "yes_ask_size_fp": "479892.00",
+      "yes_bid_dollars": "0.4400",
+      "yes_bid_size_fp": "150487.00",
       "yes_sub_title": "Los Angeles L"
     },
     {
@@ -933,19 +1581,19 @@
       "expiration_time": "2026-04-02T01:30:00Z",
       "expiration_value": "",
       "fractional_trading_enabled": false,
-      "last_price_dollars": "0.5600",
+      "last_price_dollars": "0.5400",
       "latest_expiration_time": "2026-04-02T01:30:00Z",
       "liquidity_dollars": "0.0000",
       "market_type": "binary",
-      "no_ask_dollars": "0.4500",
+      "no_ask_dollars": "0.4600",
       "no_bid_dollars": "0.4400",
       "no_sub_title": "Houston",
       "notional_value_dollars": "1.0000",
-      "open_interest_fp": "63240.00",
+      "open_interest_fp": "84135.00",
       "open_time": "2026-03-16T16:07:00Z",
       "previous_price_dollars": "0.5300",
       "previous_yes_ask_dollars": "0.5300",
-      "previous_yes_bid_dollars": "0.5000",
+      "previous_yes_bid_dollars": "0.5100",
       "price_level_structure": "linear_cent",
       "price_ranges": [
         {
@@ -966,12 +1614,12 @@
       "ticker": "KXNBAGAME-26MAR18LALHOU-HOU",
       "title": "Los Angeles L at Houston Winner?",
       "updated_time": "2026-03-16T16:07:00.713942Z",
-      "volume_24h_fp": "50026.00",
-      "volume_fp": "76643.00",
+      "volume_24h_fp": "72189.00",
+      "volume_fp": "102371.00",
       "yes_ask_dollars": "0.5600",
-      "yes_ask_size_fp": "16553.00",
-      "yes_bid_dollars": "0.5500",
-      "yes_bid_size_fp": "84.00",
+      "yes_ask_size_fp": "554633.00",
+      "yes_bid_dollars": "0.5400",
+      "yes_bid_size_fp": "144169.00",
       "yes_sub_title": "Houston"
     },
     {
@@ -987,19 +1635,19 @@
       "expiration_time": "2026-04-02T00:00:00Z",
       "expiration_value": "",
       "fractional_trading_enabled": false,
-      "last_price_dollars": "0.5500",
+      "last_price_dollars": "0.5600",
       "latest_expiration_time": "2026-04-02T00:00:00Z",
       "liquidity_dollars": "0.0000",
       "market_type": "binary",
-      "no_ask_dollars": "0.4600",
-      "no_bid_dollars": "0.4500",
+      "no_ask_dollars": "0.4500",
+      "no_bid_dollars": "0.4400",
       "no_sub_title": "New Orleans",
       "notional_value_dollars": "1.0000",
-      "open_interest_fp": "39409.00",
+      "open_interest_fp": "60542.00",
       "open_time": "2026-03-16T16:07:00Z",
-      "previous_price_dollars": "0.4900",
-      "previous_yes_ask_dollars": "0.4900",
-      "previous_yes_bid_dollars": "0.4500",
+      "previous_price_dollars": "0.4800",
+      "previous_yes_ask_dollars": "0.4800",
+      "previous_yes_bid_dollars": "0.4600",
       "price_level_structure": "linear_cent",
       "price_ranges": [
         {
@@ -1020,12 +1668,12 @@
       "ticker": "KXNBAGAME-26MAR18LACNOP-NOP",
       "title": "Los Angeles C at New Orleans Winner?",
       "updated_time": "2026-03-16T16:07:00.713942Z",
-      "volume_24h_fp": "39626.00",
-      "volume_fp": "42230.00",
-      "yes_ask_dollars": "0.5500",
-      "yes_ask_size_fp": "67705.00",
-      "yes_bid_dollars": "0.5400",
-      "yes_bid_size_fp": "597.00",
+      "volume_24h_fp": "64145.00",
+      "volume_fp": "67223.00",
+      "yes_ask_dollars": "0.5600",
+      "yes_ask_size_fp": "72357.00",
+      "yes_bid_dollars": "0.5500",
+      "yes_bid_size_fp": "93121.00",
       "yes_sub_title": "New Orleans"
     },
     {
@@ -1041,17 +1689,17 @@
       "expiration_time": "2026-04-02T00:00:00Z",
       "expiration_value": "",
       "fractional_trading_enabled": false,
-      "last_price_dollars": "0.4700",
+      "last_price_dollars": "0.4500",
       "latest_expiration_time": "2026-04-02T00:00:00Z",
       "liquidity_dollars": "0.0000",
       "market_type": "binary",
-      "no_ask_dollars": "0.5400",
-      "no_bid_dollars": "0.5300",
+      "no_ask_dollars": "0.5600",
+      "no_bid_dollars": "0.5500",
       "no_sub_title": "Los Angeles C",
       "notional_value_dollars": "1.0000",
-      "open_interest_fp": "129093.00",
+      "open_interest_fp": "151572.00",
       "open_time": "2026-03-16T16:07:00Z",
-      "previous_price_dollars": "0.5200",
+      "previous_price_dollars": "0.5300",
       "previous_yes_ask_dollars": "0.5300",
       "previous_yes_bid_dollars": "0.5200",
       "price_level_structure": "linear_cent",
@@ -1074,12 +1722,12 @@
       "ticker": "KXNBAGAME-26MAR18LACNOP-LAC",
       "title": "Los Angeles C at New Orleans Winner?",
       "updated_time": "2026-03-16T16:07:00.713942Z",
-      "volume_24h_fp": "163721.00",
-      "volume_fp": "172332.00",
-      "yes_ask_dollars": "0.4700",
-      "yes_ask_size_fp": "97523.00",
-      "yes_bid_dollars": "0.4600",
-      "yes_bid_size_fp": "484.00",
+      "volume_24h_fp": "188098.00",
+      "volume_fp": "198754.00",
+      "yes_ask_dollars": "0.4500",
+      "yes_ask_size_fp": "270884.00",
+      "yes_bid_dollars": "0.4400",
+      "yes_bid_size_fp": "38639.00",
       "yes_sub_title": "Los Angeles C"
     },
     {
@@ -1095,19 +1743,19 @@
       "expiration_time": "2026-04-02T00:30:00Z",
       "expiration_value": "",
       "fractional_trading_enabled": false,
-      "last_price_dollars": "0.1200",
+      "last_price_dollars": "0.1300",
       "latest_expiration_time": "2026-04-02T00:30:00Z",
       "liquidity_dollars": "0.0000",
       "market_type": "binary",
-      "no_ask_dollars": "0.8900",
-      "no_bid_dollars": "0.8800",
+      "no_ask_dollars": "0.8800",
+      "no_bid_dollars": "0.8700",
       "no_sub_title": "Memphis",
       "notional_value_dollars": "1.0000",
-      "open_interest_fp": "17531.00",
+      "open_interest_fp": "20080.00",
       "open_time": "2026-03-16T16:07:00Z",
-      "previous_price_dollars": "0.1400",
-      "previous_yes_ask_dollars": "0.1400",
-      "previous_yes_bid_dollars": "0.1300",
+      "previous_price_dollars": "0.1300",
+      "previous_yes_ask_dollars": "0.1300",
+      "previous_yes_bid_dollars": "0.1200",
       "price_level_structure": "linear_cent",
       "price_ranges": [
         {
@@ -1128,12 +1776,12 @@
       "ticker": "KXNBAGAME-26MAR18DENMEM-MEM",
       "title": "Denver at Memphis Winner?",
       "updated_time": "2026-03-16T16:07:00.713942Z",
-      "volume_24h_fp": "15343.00",
-      "volume_fp": "17748.00",
-      "yes_ask_dollars": "0.1200",
-      "yes_ask_size_fp": "1153.00",
-      "yes_bid_dollars": "0.1100",
-      "yes_bid_size_fp": "13512.00",
+      "volume_24h_fp": "17281.00",
+      "volume_fp": "20327.00",
+      "yes_ask_dollars": "0.1300",
+      "yes_ask_size_fp": "215746.00",
+      "yes_bid_dollars": "0.1200",
+      "yes_bid_size_fp": "104059.00",
       "yes_sub_title": "Memphis"
     },
     {
@@ -1149,19 +1797,19 @@
       "expiration_time": "2026-04-02T00:30:00Z",
       "expiration_value": "",
       "fractional_trading_enabled": false,
-      "last_price_dollars": "0.8900",
+      "last_price_dollars": "0.8800",
       "latest_expiration_time": "2026-04-02T00:30:00Z",
       "liquidity_dollars": "0.0000",
       "market_type": "binary",
-      "no_ask_dollars": "0.1200",
-      "no_bid_dollars": "0.1100",
+      "no_ask_dollars": "0.1300",
+      "no_bid_dollars": "0.1200",
       "no_sub_title": "Denver",
       "notional_value_dollars": "1.0000",
-      "open_interest_fp": "67813.00",
+      "open_interest_fp": "96403.00",
       "open_time": "2026-03-16T16:07:00Z",
-      "previous_price_dollars": "0.8700",
-      "previous_yes_ask_dollars": "0.8700",
-      "previous_yes_bid_dollars": "0.8600",
+      "previous_price_dollars": "0.8800",
+      "previous_yes_ask_dollars": "0.8900",
+      "previous_yes_bid_dollars": "0.8700",
       "price_level_structure": "linear_cent",
       "price_ranges": [
         {
@@ -1182,12 +1830,12 @@
       "ticker": "KXNBAGAME-26MAR18DENMEM-DEN",
       "title": "Denver at Memphis Winner?",
       "updated_time": "2026-03-16T16:07:00.713942Z",
-      "volume_24h_fp": "68133.00",
-      "volume_fp": "69198.00",
-      "yes_ask_dollars": "0.8900",
-      "yes_ask_size_fp": "15001.00",
-      "yes_bid_dollars": "0.8800",
-      "yes_bid_size_fp": "7.00",
+      "volume_24h_fp": "96647.00",
+      "volume_fp": "98132.00",
+      "yes_ask_dollars": "0.8800",
+      "yes_ask_size_fp": "264902.00",
+      "yes_bid_dollars": "0.8700",
+      "yes_bid_size_fp": "279.00",
       "yes_sub_title": "Denver"
     },
     {
@@ -1211,7 +1859,7 @@
       "no_bid_dollars": "0.7500",
       "no_sub_title": "Dallas",
       "notional_value_dollars": "1.0000",
-      "open_interest_fp": "13857.00",
+      "open_interest_fp": "31865.00",
       "open_time": "2026-03-16T16:07:00Z",
       "previous_price_dollars": "0.2600",
       "previous_yes_ask_dollars": "0.2600",
@@ -1236,12 +1884,12 @@
       "ticker": "KXNBAGAME-26MAR18ATLDAL-DAL",
       "title": "Atlanta at Dallas Winner?",
       "updated_time": "2026-03-16T16:07:00.713942Z",
-      "volume_24h_fp": "12681.00",
-      "volume_fp": "14608.00",
+      "volume_24h_fp": "30527.00",
+      "volume_fp": "33041.00",
       "yes_ask_dollars": "0.2500",
-      "yes_ask_size_fp": "54.00",
+      "yes_ask_size_fp": "7763.00",
       "yes_bid_dollars": "0.2400",
-      "yes_bid_size_fp": "331.00",
+      "yes_bid_size_fp": "69347.00",
       "yes_sub_title": "Dallas"
     },
     {
@@ -1257,19 +1905,19 @@
       "expiration_time": "2026-04-02T00:30:00Z",
       "expiration_value": "",
       "fractional_trading_enabled": false,
-      "last_price_dollars": "0.7600",
+      "last_price_dollars": "0.7400",
       "latest_expiration_time": "2026-04-02T00:30:00Z",
       "liquidity_dollars": "0.0000",
       "market_type": "binary",
-      "no_ask_dollars": "0.2500",
-      "no_bid_dollars": "0.2400",
+      "no_ask_dollars": "0.2600",
+      "no_bid_dollars": "0.2500",
       "no_sub_title": "Atlanta",
       "notional_value_dollars": "1.0000",
-      "open_interest_fp": "130385.00",
+      "open_interest_fp": "157772.00",
       "open_time": "2026-03-16T16:07:00Z",
-      "previous_price_dollars": "0.7400",
-      "previous_yes_ask_dollars": "0.7400",
-      "previous_yes_bid_dollars": "0.7300",
+      "previous_price_dollars": "0.7600",
+      "previous_yes_ask_dollars": "0.7600",
+      "previous_yes_bid_dollars": "0.7400",
       "price_level_structure": "linear_cent",
       "price_ranges": [
         {
@@ -1290,12 +1938,12 @@
       "ticker": "KXNBAGAME-26MAR18ATLDAL-ATL",
       "title": "Atlanta at Dallas Winner?",
       "updated_time": "2026-03-16T16:07:00.713942Z",
-      "volume_24h_fp": "120230.00",
-      "volume_fp": "130778.00",
-      "yes_ask_dollars": "0.7600",
-      "yes_ask_size_fp": "400.00",
-      "yes_bid_dollars": "0.7500",
-      "yes_bid_size_fp": "809.00",
+      "volume_24h_fp": "147425.00",
+      "volume_fp": "158552.00",
+      "yes_ask_dollars": "0.7500",
+      "yes_ask_size_fp": "12551.00",
+      "yes_bid_dollars": "0.7400",
+      "yes_bid_size_fp": "188244.00",
       "yes_sub_title": "Atlanta"
     },
     {
@@ -1311,17 +1959,17 @@
       "expiration_time": "2026-04-01T23:30:00Z",
       "expiration_value": "",
       "fractional_trading_enabled": false,
-      "last_price_dollars": "0.8300",
+      "last_price_dollars": "0.8600",
       "latest_expiration_time": "2026-04-01T23:30:00Z",
       "liquidity_dollars": "0.0000",
       "market_type": "binary",
-      "no_ask_dollars": "0.1700",
-      "no_bid_dollars": "0.1600",
+      "no_ask_dollars": "0.1400",
+      "no_bid_dollars": "0.1300",
       "no_sub_title": "Portland",
       "notional_value_dollars": "1.0000",
-      "open_interest_fp": "62906.00",
+      "open_interest_fp": "82952.00",
       "open_time": "2026-03-16T16:07:00Z",
-      "previous_price_dollars": "0.8100",
+      "previous_price_dollars": "0.8200",
       "previous_yes_ask_dollars": "0.8200",
       "previous_yes_bid_dollars": "0.8100",
       "price_level_structure": "linear_cent",
@@ -1344,12 +1992,12 @@
       "ticker": "KXNBAGAME-26MAR18PORIND-POR",
       "title": "Portland at Indiana Winner?",
       "updated_time": "2026-03-16T16:07:00.713942Z",
-      "volume_24h_fp": "58762.00",
-      "volume_fp": "63516.00",
-      "yes_ask_dollars": "0.8400",
-      "yes_ask_size_fp": "152413.00",
-      "yes_bid_dollars": "0.8300",
-      "yes_bid_size_fp": "1344.00",
+      "volume_24h_fp": "75794.00",
+      "volume_fp": "83828.00",
+      "yes_ask_dollars": "0.8700",
+      "yes_ask_size_fp": "284029.00",
+      "yes_bid_dollars": "0.8600",
+      "yes_bid_size_fp": "45744.00",
       "yes_sub_title": "Portland"
     },
     {
@@ -1365,15 +2013,15 @@
       "expiration_time": "2026-04-01T23:30:00Z",
       "expiration_value": "",
       "fractional_trading_enabled": false,
-      "last_price_dollars": "0.1800",
+      "last_price_dollars": "0.1400",
       "latest_expiration_time": "2026-04-01T23:30:00Z",
       "liquidity_dollars": "0.0000",
       "market_type": "binary",
-      "no_ask_dollars": "0.8400",
-      "no_bid_dollars": "0.8200",
+      "no_ask_dollars": "0.8700",
+      "no_bid_dollars": "0.8600",
       "no_sub_title": "Indiana",
       "notional_value_dollars": "1.0000",
-      "open_interest_fp": "25152.00",
+      "open_interest_fp": "60180.00",
       "open_time": "2026-03-16T16:07:00Z",
       "previous_price_dollars": "0.1900",
       "previous_yes_ask_dollars": "0.1900",
@@ -1398,12 +2046,12 @@
       "ticker": "KXNBAGAME-26MAR18PORIND-IND",
       "title": "Portland at Indiana Winner?",
       "updated_time": "2026-03-16T16:07:00.713942Z",
-      "volume_24h_fp": "26796.00",
-      "volume_fp": "27681.00",
-      "yes_ask_dollars": "0.1800",
-      "yes_ask_size_fp": "65939.00",
-      "yes_bid_dollars": "0.1600",
-      "yes_bid_size_fp": "30483.00",
+      "volume_24h_fp": "60672.00",
+      "volume_fp": "63246.00",
+      "yes_ask_dollars": "0.1400",
+      "yes_ask_size_fp": "159058.00",
+      "yes_bid_dollars": "0.1300",
+      "yes_bid_size_fp": "94095.00",
       "yes_sub_title": "Indiana"
     },
     {
@@ -1419,7 +2067,7 @@
       "expiration_time": "2026-04-02T00:00:00Z",
       "expiration_value": "",
       "fractional_trading_enabled": false,
-      "last_price_dollars": "0.1200",
+      "last_price_dollars": "0.1300",
       "latest_expiration_time": "2026-04-02T00:00:00Z",
       "liquidity_dollars": "0.0000",
       "market_type": "binary",
@@ -1427,11 +2075,11 @@
       "no_bid_dollars": "0.8700",
       "no_sub_title": "Utah",
       "notional_value_dollars": "1.0000",
-      "open_interest_fp": "25316.00",
+      "open_interest_fp": "30283.00",
       "open_time": "2026-03-16T16:07:00Z",
-      "previous_price_dollars": "0.1400",
-      "previous_yes_ask_dollars": "0.1400",
-      "previous_yes_bid_dollars": "0.1300",
+      "previous_price_dollars": "0.1200",
+      "previous_yes_ask_dollars": "0.1200",
+      "previous_yes_bid_dollars": "0.1100",
       "price_level_structure": "linear_cent",
       "price_ranges": [
         {
@@ -1452,12 +2100,12 @@
       "ticker": "KXNBAGAME-26MAR18UTAMIN-UTA",
       "title": "Utah at Minnesota Winner?",
       "updated_time": "2026-03-16T16:07:00.713942Z",
-      "volume_24h_fp": "25985.00",
-      "volume_fp": "30143.00",
+      "volume_24h_fp": "29966.00",
+      "volume_fp": "35373.00",
       "yes_ask_dollars": "0.1300",
-      "yes_ask_size_fp": "71370.00",
+      "yes_ask_size_fp": "160204.00",
       "yes_bid_dollars": "0.1200",
-      "yes_bid_size_fp": "15233.00",
+      "yes_bid_size_fp": "111004.00",
       "yes_sub_title": "Utah"
     },
     {
@@ -1473,19 +2121,19 @@
       "expiration_time": "2026-04-02T00:00:00Z",
       "expiration_value": "",
       "fractional_trading_enabled": false,
-      "last_price_dollars": "0.8900",
+      "last_price_dollars": "0.8800",
       "latest_expiration_time": "2026-04-02T00:00:00Z",
       "liquidity_dollars": "0.0000",
       "market_type": "binary",
-      "no_ask_dollars": "0.1200",
-      "no_bid_dollars": "0.1100",
+      "no_ask_dollars": "0.1300",
+      "no_bid_dollars": "0.1200",
       "no_sub_title": "Minnesota",
       "notional_value_dollars": "1.0000",
-      "open_interest_fp": "62653.00",
+      "open_interest_fp": "69499.00",
       "open_time": "2026-03-16T16:07:00Z",
-      "previous_price_dollars": "0.8800",
-      "previous_yes_ask_dollars": "0.8800",
-      "previous_yes_bid_dollars": "0.8700",
+      "previous_price_dollars": "0.8900",
+      "previous_yes_ask_dollars": "0.8900",
+      "previous_yes_bid_dollars": "0.8800",
       "price_level_structure": "linear_cent",
       "price_ranges": [
         {
@@ -1506,12 +2154,12 @@
       "ticker": "KXNBAGAME-26MAR18UTAMIN-MIN",
       "title": "Utah at Minnesota Winner?",
       "updated_time": "2026-03-16T16:07:00.713942Z",
-      "volume_24h_fp": "60116.00",
-      "volume_fp": "64866.00",
-      "yes_ask_dollars": "0.8900",
-      "yes_ask_size_fp": "250841.00",
-      "yes_bid_dollars": "0.8800",
-      "yes_bid_size_fp": "7.00",
+      "volume_24h_fp": "66779.00",
+      "volume_fp": "71755.00",
+      "yes_ask_dollars": "0.8800",
+      "yes_ask_size_fp": "439135.00",
+      "yes_bid_dollars": "0.8700",
+      "yes_bid_size_fp": "9372.00",
       "yes_sub_title": "Minnesota"
     },
     {
@@ -1527,19 +2175,19 @@
       "expiration_time": "2026-04-01T23:30:00Z",
       "expiration_value": "",
       "fractional_trading_enabled": false,
-      "last_price_dollars": "0.9600",
+      "last_price_dollars": "0.9500",
       "latest_expiration_time": "2026-04-01T23:30:00Z",
       "liquidity_dollars": "0.0000",
       "market_type": "binary",
-      "no_ask_dollars": "0.0500",
-      "no_bid_dollars": "0.0400",
+      "no_ask_dollars": "0.0600",
+      "no_bid_dollars": "0.0500",
       "no_sub_title": "Oklahoma City",
       "notional_value_dollars": "1.0000",
-      "open_interest_fp": "119883.00",
+      "open_interest_fp": "159245.00",
       "open_time": "2026-03-16T16:07:00Z",
-      "previous_price_dollars": "0.9100",
-      "previous_yes_ask_dollars": "0.9100",
-      "previous_yes_bid_dollars": "0.9000",
+      "previous_price_dollars": "0.9300",
+      "previous_yes_ask_dollars": "0.9400",
+      "previous_yes_bid_dollars": "0.9200",
       "price_level_structure": "linear_cent",
       "price_ranges": [
         {
@@ -1560,12 +2208,12 @@
       "ticker": "KXNBAGAME-26MAR18OKCBKN-OKC",
       "title": "Oklahoma City at Brooklyn Winner?",
       "updated_time": "2026-03-16T16:07:00.713942Z",
-      "volume_24h_fp": "121993.00",
-      "volume_fp": "124079.00",
-      "yes_ask_dollars": "0.9600",
-      "yes_ask_size_fp": "591272.00",
-      "yes_bid_dollars": "0.9500",
-      "yes_bid_size_fp": "5165.00",
+      "volume_24h_fp": "163221.00",
+      "volume_fp": "165715.00",
+      "yes_ask_dollars": "0.9500",
+      "yes_ask_size_fp": "426554.00",
+      "yes_bid_dollars": "0.9400",
+      "yes_bid_size_fp": "82231.00",
       "yes_sub_title": "Oklahoma City"
     },
     {
@@ -1585,15 +2233,15 @@
       "latest_expiration_time": "2026-04-01T23:30:00Z",
       "liquidity_dollars": "0.0000",
       "market_type": "binary",
-      "no_ask_dollars": "0.9600",
+      "no_ask_dollars": "0.9500",
       "no_bid_dollars": "0.9400",
       "no_sub_title": "Brooklyn",
       "notional_value_dollars": "1.0000",
-      "open_interest_fp": "95893.00",
+      "open_interest_fp": "162743.00",
       "open_time": "2026-03-16T16:07:00Z",
-      "previous_price_dollars": "0.1000",
-      "previous_yes_ask_dollars": "0.1000",
-      "previous_yes_bid_dollars": "0.0900",
+      "previous_price_dollars": "0.0800",
+      "previous_yes_ask_dollars": "0.0800",
+      "previous_yes_bid_dollars": "0.0700",
       "price_level_structure": "linear_cent",
       "price_ranges": [
         {
@@ -1614,12 +2262,12 @@
       "ticker": "KXNBAGAME-26MAR18OKCBKN-BKN",
       "title": "Oklahoma City at Brooklyn Winner?",
       "updated_time": "2026-03-16T16:07:00.713942Z",
-      "volume_24h_fp": "95426.00",
-      "volume_fp": "100064.00",
+      "volume_24h_fp": "157209.00",
+      "volume_fp": "167531.00",
       "yes_ask_dollars": "0.0600",
-      "yes_ask_size_fp": "246048.00",
-      "yes_bid_dollars": "0.0400",
-      "yes_bid_size_fp": "225582.00",
+      "yes_ask_size_fp": "523201.00",
+      "yes_bid_dollars": "0.0500",
+      "yes_bid_size_fp": "54430.00",
       "yes_sub_title": "Brooklyn"
     },
     {
@@ -1635,19 +2283,19 @@
       "expiration_time": "2026-04-02T00:00:00Z",
       "expiration_value": "",
       "fractional_trading_enabled": false,
-      "last_price_dollars": "0.7500",
+      "last_price_dollars": "0.7300",
       "latest_expiration_time": "2026-04-02T00:00:00Z",
       "liquidity_dollars": "0.0000",
       "market_type": "binary",
-      "no_ask_dollars": "0.2500",
-      "no_bid_dollars": "0.2400",
+      "no_ask_dollars": "0.2800",
+      "no_bid_dollars": "0.2700",
       "no_sub_title": "Toronto",
       "notional_value_dollars": "1.0000",
-      "open_interest_fp": "97404.00",
+      "open_interest_fp": "133191.00",
       "open_time": "2026-03-16T16:07:00Z",
-      "previous_price_dollars": "0.6900",
-      "previous_yes_ask_dollars": "0.6900",
-      "previous_yes_bid_dollars": "0.6600",
+      "previous_price_dollars": "0.7100",
+      "previous_yes_ask_dollars": "0.7100",
+      "previous_yes_bid_dollars": "0.7000",
       "price_level_structure": "linear_cent",
       "price_ranges": [
         {
@@ -1668,12 +2316,12 @@
       "ticker": "KXNBAGAME-26MAR18TORCHI-TOR",
       "title": "Toronto at Chicago Winner?",
       "updated_time": "2026-03-16T16:07:00.713942Z",
-      "volume_24h_fp": "94744.00",
-      "volume_fp": "97788.00",
-      "yes_ask_dollars": "0.7600",
-      "yes_ask_size_fp": "311173.00",
-      "yes_bid_dollars": "0.7500",
-      "yes_bid_size_fp": "9415.00",
+      "volume_24h_fp": "131370.00",
+      "volume_fp": "134629.00",
+      "yes_ask_dollars": "0.7300",
+      "yes_ask_size_fp": "10000.00",
+      "yes_bid_dollars": "0.7200",
+      "yes_bid_size_fp": "148558.00",
       "yes_sub_title": "Toronto"
     },
     {
@@ -1689,19 +2337,19 @@
       "expiration_time": "2026-04-02T00:00:00Z",
       "expiration_value": "",
       "fractional_trading_enabled": false,
-      "last_price_dollars": "0.2700",
+      "last_price_dollars": "0.2800",
       "latest_expiration_time": "2026-04-02T00:00:00Z",
       "liquidity_dollars": "0.0000",
       "market_type": "binary",
       "no_ask_dollars": "0.7400",
-      "no_bid_dollars": "0.7300",
+      "no_bid_dollars": "0.7200",
       "no_sub_title": "Chicago",
       "notional_value_dollars": "1.0000",
-      "open_interest_fp": "6654.00",
+      "open_interest_fp": "8116.00",
       "open_time": "2026-03-16T16:07:00Z",
-      "previous_price_dollars": "0.3400",
-      "previous_yes_ask_dollars": "0.3400",
-      "previous_yes_bid_dollars": "0.3100",
+      "previous_price_dollars": "0.3100",
+      "previous_yes_ask_dollars": "0.3100",
+      "previous_yes_bid_dollars": "0.2900",
       "price_level_structure": "linear_cent",
       "price_ranges": [
         {
@@ -1722,12 +2370,12 @@
       "ticker": "KXNBAGAME-26MAR18TORCHI-CHI",
       "title": "Toronto at Chicago Winner?",
       "updated_time": "2026-03-16T16:07:00.713942Z",
-      "volume_24h_fp": "6496.00",
-      "volume_fp": "6799.00",
-      "yes_ask_dollars": "0.2700",
-      "yes_ask_size_fp": "230.00",
+      "volume_24h_fp": "7945.00",
+      "volume_fp": "8314.00",
+      "yes_ask_dollars": "0.2800",
+      "yes_ask_size_fp": "517296.00",
       "yes_bid_dollars": "0.2600",
-      "yes_bid_size_fp": "20368.00",
+      "yes_bid_size_fp": "109529.00",
       "yes_sub_title": "Chicago"
     },
     {
@@ -1743,19 +2391,19 @@
       "expiration_time": "2026-04-01T23:00:00Z",
       "expiration_value": "",
       "fractional_trading_enabled": false,
-      "last_price_dollars": "0.1500",
+      "last_price_dollars": "0.1600",
       "latest_expiration_time": "2026-04-01T23:00:00Z",
       "liquidity_dollars": "0.0000",
       "market_type": "binary",
-      "no_ask_dollars": "0.8600",
-      "no_bid_dollars": "0.8500",
+      "no_ask_dollars": "0.8500",
+      "no_bid_dollars": "0.8400",
       "no_sub_title": "Golden State",
       "notional_value_dollars": "1.0000",
-      "open_interest_fp": "80288.00",
+      "open_interest_fp": "129995.00",
       "open_time": "2026-03-16T13:06:00Z",
-      "previous_price_dollars": "0.1600",
-      "previous_yes_ask_dollars": "0.1600",
-      "previous_yes_bid_dollars": "0.1500",
+      "previous_price_dollars": "0.1800",
+      "previous_yes_ask_dollars": "0.1900",
+      "previous_yes_bid_dollars": "0.1700",
       "price_level_structure": "linear_cent",
       "price_ranges": [
         {
@@ -1776,12 +2424,12 @@
       "ticker": "KXNBAGAME-26MAR18GSWBOS-GSW",
       "title": "Golden State at Boston Winner?",
       "updated_time": "2026-03-16T13:06:00.714592Z",
-      "volume_24h_fp": "76747.00",
-      "volume_fp": "84392.00",
-      "yes_ask_dollars": "0.1500",
-      "yes_ask_size_fp": "309.00",
-      "yes_bid_dollars": "0.1400",
-      "yes_bid_size_fp": "38692.00",
+      "volume_24h_fp": "126303.00",
+      "volume_fp": "135223.00",
+      "yes_ask_dollars": "0.1600",
+      "yes_ask_size_fp": "169584.00",
+      "yes_bid_dollars": "0.1500",
+      "yes_bid_size_fp": "82933.00",
       "yes_sub_title": "Golden State"
     },
     {
@@ -1797,7 +2445,7 @@
       "expiration_time": "2026-04-01T23:00:00Z",
       "expiration_value": "",
       "fractional_trading_enabled": false,
-      "last_price_dollars": "0.8600",
+      "last_price_dollars": "0.8500",
       "latest_expiration_time": "2026-04-01T23:00:00Z",
       "liquidity_dollars": "0.0000",
       "market_type": "binary",
@@ -1805,11 +2453,11 @@
       "no_bid_dollars": "0.1400",
       "no_sub_title": "Boston",
       "notional_value_dollars": "1.0000",
-      "open_interest_fp": "212227.00",
+      "open_interest_fp": "315704.00",
       "open_time": "2026-03-16T13:06:00Z",
-      "previous_price_dollars": "0.8500",
-      "previous_yes_ask_dollars": "0.8500",
-      "previous_yes_bid_dollars": "0.8400",
+      "previous_price_dollars": "0.8400",
+      "previous_yes_ask_dollars": "0.8400",
+      "previous_yes_bid_dollars": "0.8300",
       "price_level_structure": "linear_cent",
       "price_ranges": [
         {
@@ -1830,1033 +2478,13 @@
       "ticker": "KXNBAGAME-26MAR18GSWBOS-BOS",
       "title": "Golden State at Boston Winner?",
       "updated_time": "2026-03-16T13:06:00.714592Z",
-      "volume_24h_fp": "213618.00",
-      "volume_fp": "218577.00",
+      "volume_24h_fp": "318225.00",
+      "volume_fp": "323674.00",
       "yes_ask_dollars": "0.8600",
-      "yes_ask_size_fp": "114510.00",
+      "yes_ask_size_fp": "464630.00",
       "yes_bid_dollars": "0.8500",
-      "yes_bid_size_fp": "13652.00",
+      "yes_bid_size_fp": "9369.00",
       "yes_sub_title": "Boston"
-    },
-    {
-      "can_close_early": true,
-      "close_time": "2026-03-31T15:00:00Z",
-      "created_time": "2026-03-18T13:00:54.104448Z",
-      "custom_strike": {
-        "Associated Events": "KXATPMATCH-26MAR17BERBRO,KXATPMATCH-26MAR17BLASTR,KXATPMATCH-26MAR17DUCBAU,KXATPMATCH-26MAR17MARFON,KXATPMATCH-26MAR17MPEUGO,KXATPMATCH-26MAR17MULBER,KXATPMATCH-26MAR17NAVMAC,KXATPMATCH-26MAR17OPEBOR,KXATPMATCH-26MAR17QUIHUR,KXATPMATCH-26MAR17SHAVAN,KXATPMATCH-26MAR17TABCOM,KXATPMATCH-26MAR17ZHAMAN,KXATPMATCH-26MAR18BASNAV,KXATPMATCH-26MAR18GIRLAN,KXATPMATCH-26MAR18JODHAN,KXATPMATCH-26MAR18TSIFER,KXBTCD-26MAR2017,KXNHLGAME-26MAR18DALCOL,KXNHLGAME-26MAR18NJNYR,KXNHLGAME-26MAR18OTTWSH,KXNHLGAME-26MAR18PHIANA,KXNHLGAME-26MAR18PITCAR,KXNHLGAME-26MAR18STLCGY,KXNHLGAME-26MAR19BUFSJ,KXNHLGAME-26MAR19CHIMIN,KXNHLGAME-26MAR19FLAEDM,KXNHLGAME-26MAR19MTLDET,KXNHLGAME-26MAR19NYIOTT,KXNHLGAME-26MAR19NYRCBJ,KXNHLGAME-26MAR19PHILA,KXNHLGAME-26MAR19SEANSH,KXNHLGAME-26MAR19TBVAN,KXNHLGAME-26MAR19UTAVGK,KXNHLGAME-26MAR19WPGBOS,KXNHLGAME-26MAR20ANAUTA,KXNHLGAME-26MAR20CARTOR,KXNHLGAME-26MAR20COLCHI,KXNHLGAME-26MAR20FLACGY,KXNHLGAME-26MAR20NJWSH,KXUCLGAME-26MAR18BARNEW,KXUCLGAME-26MAR18BMUATA,KXUCLGAME-26MAR18LFCGAL,KXUCLGAME-26MAR18TOTATM,KXUFCFIGHT-26MAR21BARLAN,KXUFCFIGHT-26MAR21CAMSIL,KXUFCFIGHT-26MAR21DOLDUN,KXUFCFIGHT-26MAR21DYEOLI,KXUFCFIGHT-26MAR21EVLMUR,KXUFCFIGHT-26MAR21JONSOL,KXUFCFIGHT-26MAR21KONTRO,KXUFCFIGHT-26MAR21MULCAR,KXUFCFIGHT-26MAR21PAGPAT,KXUFCFIGHT-26MAR21PINFRA,KXUFCFIGHT-26MAR21RILASW,KXUFCFIGHT-26MAR21ROCALS,KXUFCFIGHT-26MAR21SUTPER,KXUFCFIGHT-26MAR21WOOKEI",
-        "Associated Market Sides": "yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes",
-        "Associated Markets": "KXATPMATCH-26MAR17BERBRO-BRO,KXATPMATCH-26MAR17BLASTR-STR,KXATPMATCH-26MAR17DUCBAU-BAU,KXATPMATCH-26MAR17MARFON-FON,KXATPMATCH-26MAR17MPEUGO-MPE,KXATPMATCH-26MAR17MULBER-BER,KXATPMATCH-26MAR17NAVMAC-MAC,KXATPMATCH-26MAR17OPEBOR-BOR,KXATPMATCH-26MAR17QUIHUR-HUR,KXATPMATCH-26MAR17SHAVAN-SHA,KXATPMATCH-26MAR17TABCOM-TAB,KXATPMATCH-26MAR17ZHAMAN-MAN,KXATPMATCH-26MAR18BASNAV-NAV,KXATPMATCH-26MAR18GIRLAN-GIR,KXATPMATCH-26MAR18JODHAN-HAN,KXATPMATCH-26MAR18TSIFER-TSI,KXBTCD-26MAR2017-T71749.99,KXNHLGAME-26MAR18DALCOL-DAL,KXNHLGAME-26MAR18NJNYR-NYR,KXNHLGAME-26MAR18OTTWSH-OTT,KXNHLGAME-26MAR18PHIANA-PHI,KXNHLGAME-26MAR18PITCAR-CAR,KXNHLGAME-26MAR18STLCGY-STL,KXNHLGAME-26MAR19BUFSJ-BUF,KXNHLGAME-26MAR19CHIMIN-CHI,KXNHLGAME-26MAR19FLAEDM-FLA,KXNHLGAME-26MAR19MTLDET-MTL,KXNHLGAME-26MAR19NYIOTT-NYI,KXNHLGAME-26MAR19NYRCBJ-NYR,KXNHLGAME-26MAR19PHILA-LA,KXNHLGAME-26MAR19SEANSH-SEA,KXNHLGAME-26MAR19TBVAN-TB,KXNHLGAME-26MAR19UTAVGK-VGK,KXNHLGAME-26MAR19WPGBOS-BOS,KXNHLGAME-26MAR20ANAUTA-ANA,KXNHLGAME-26MAR20CARTOR-CAR,KXNHLGAME-26MAR20COLCHI-COL,KXNHLGAME-26MAR20FLACGY-FLA,KXNHLGAME-26MAR20NJWSH-WSH,KXUCLGAME-26MAR18BARNEW-BAR,KXUCLGAME-26MAR18BMUATA-BMU,KXUCLGAME-26MAR18LFCGAL-LFC,KXUCLGAME-26MAR18TOTATM-TOT,KXUFCFIGHT-26MAR21BARLAN-LAN,KXUFCFIGHT-26MAR21CAMSIL-CAM,KXUFCFIGHT-26MAR21DOLDUN-DUN,KXUFCFIGHT-26MAR21DYEOLI-DYE,KXUFCFIGHT-26MAR21EVLMUR-MUR,KXUFCFIGHT-26MAR21JONSOL-JON,KXUFCFIGHT-26MAR21KONTRO-KON,KXUFCFIGHT-26MAR21MULCAR-CAR,KXUFCFIGHT-26MAR21PAGPAT-PAG,KXUFCFIGHT-26MAR21PINFRA-PIN,KXUFCFIGHT-26MAR21RILASW-RIL,KXUFCFIGHT-26MAR21ROCALS-ALS,KXUFCFIGHT-26MAR21SUTPER-SUT,KXUFCFIGHT-26MAR21WOOKEI-KEI",
-        "Multivariate Event Ticker": "KXMVECROSSCATEGORY-R"
-      },
-      "event_ticker": "KXMVECROSSCATEGORY-S2026A7C00BF4F51",
-      "expected_expiration_time": "2026-03-22T02:40:00Z",
-      "expiration_time": "2026-03-31T15:00:00Z",
-      "expiration_value": "",
-      "fractional_trading_enabled": false,
-      "is_provisional": true,
-      "last_price_dollars": "0.0000",
-      "latest_expiration_time": "2026-03-31T15:00:00Z",
-      "liquidity_dollars": "0.0000",
-      "market_type": "binary",
-      "mve_collection_ticker": "KXMVECROSSCATEGORY-R",
-      "mve_selected_legs": [
-        {
-          "event_ticker": "KXATPMATCH-26MAR17BERBRO",
-          "market_ticker": "KXATPMATCH-26MAR17BERBRO-BRO",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXATPMATCH-26MAR17BLASTR",
-          "market_ticker": "KXATPMATCH-26MAR17BLASTR-STR",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXATPMATCH-26MAR17DUCBAU",
-          "market_ticker": "KXATPMATCH-26MAR17DUCBAU-BAU",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXATPMATCH-26MAR17MARFON",
-          "market_ticker": "KXATPMATCH-26MAR17MARFON-FON",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXATPMATCH-26MAR17MPEUGO",
-          "market_ticker": "KXATPMATCH-26MAR17MPEUGO-MPE",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXATPMATCH-26MAR17MULBER",
-          "market_ticker": "KXATPMATCH-26MAR17MULBER-BER",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXATPMATCH-26MAR17NAVMAC",
-          "market_ticker": "KXATPMATCH-26MAR17NAVMAC-MAC",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXATPMATCH-26MAR17OPEBOR",
-          "market_ticker": "KXATPMATCH-26MAR17OPEBOR-BOR",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXATPMATCH-26MAR17QUIHUR",
-          "market_ticker": "KXATPMATCH-26MAR17QUIHUR-HUR",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXATPMATCH-26MAR17SHAVAN",
-          "market_ticker": "KXATPMATCH-26MAR17SHAVAN-SHA",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXATPMATCH-26MAR17TABCOM",
-          "market_ticker": "KXATPMATCH-26MAR17TABCOM-TAB",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXATPMATCH-26MAR17ZHAMAN",
-          "market_ticker": "KXATPMATCH-26MAR17ZHAMAN-MAN",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXATPMATCH-26MAR18BASNAV",
-          "market_ticker": "KXATPMATCH-26MAR18BASNAV-NAV",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXATPMATCH-26MAR18GIRLAN",
-          "market_ticker": "KXATPMATCH-26MAR18GIRLAN-GIR",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXATPMATCH-26MAR18JODHAN",
-          "market_ticker": "KXATPMATCH-26MAR18JODHAN-HAN",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXATPMATCH-26MAR18TSIFER",
-          "market_ticker": "KXATPMATCH-26MAR18TSIFER-TSI",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXBTCD-26MAR2017",
-          "market_ticker": "KXBTCD-26MAR2017-T71749.99",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXNHLGAME-26MAR18DALCOL",
-          "market_ticker": "KXNHLGAME-26MAR18DALCOL-DAL",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXNHLGAME-26MAR18NJNYR",
-          "market_ticker": "KXNHLGAME-26MAR18NJNYR-NYR",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXNHLGAME-26MAR18OTTWSH",
-          "market_ticker": "KXNHLGAME-26MAR18OTTWSH-OTT",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXNHLGAME-26MAR18PHIANA",
-          "market_ticker": "KXNHLGAME-26MAR18PHIANA-PHI",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXNHLGAME-26MAR18PITCAR",
-          "market_ticker": "KXNHLGAME-26MAR18PITCAR-CAR",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXNHLGAME-26MAR18STLCGY",
-          "market_ticker": "KXNHLGAME-26MAR18STLCGY-STL",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXNHLGAME-26MAR19BUFSJ",
-          "market_ticker": "KXNHLGAME-26MAR19BUFSJ-BUF",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXNHLGAME-26MAR19CHIMIN",
-          "market_ticker": "KXNHLGAME-26MAR19CHIMIN-CHI",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXNHLGAME-26MAR19FLAEDM",
-          "market_ticker": "KXNHLGAME-26MAR19FLAEDM-FLA",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXNHLGAME-26MAR19MTLDET",
-          "market_ticker": "KXNHLGAME-26MAR19MTLDET-MTL",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXNHLGAME-26MAR19NYIOTT",
-          "market_ticker": "KXNHLGAME-26MAR19NYIOTT-NYI",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXNHLGAME-26MAR19NYRCBJ",
-          "market_ticker": "KXNHLGAME-26MAR19NYRCBJ-NYR",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXNHLGAME-26MAR19PHILA",
-          "market_ticker": "KXNHLGAME-26MAR19PHILA-LA",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXNHLGAME-26MAR19SEANSH",
-          "market_ticker": "KXNHLGAME-26MAR19SEANSH-SEA",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXNHLGAME-26MAR19TBVAN",
-          "market_ticker": "KXNHLGAME-26MAR19TBVAN-TB",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXNHLGAME-26MAR19UTAVGK",
-          "market_ticker": "KXNHLGAME-26MAR19UTAVGK-VGK",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXNHLGAME-26MAR19WPGBOS",
-          "market_ticker": "KXNHLGAME-26MAR19WPGBOS-BOS",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXNHLGAME-26MAR20ANAUTA",
-          "market_ticker": "KXNHLGAME-26MAR20ANAUTA-ANA",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXNHLGAME-26MAR20CARTOR",
-          "market_ticker": "KXNHLGAME-26MAR20CARTOR-CAR",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXNHLGAME-26MAR20COLCHI",
-          "market_ticker": "KXNHLGAME-26MAR20COLCHI-COL",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXNHLGAME-26MAR20FLACGY",
-          "market_ticker": "KXNHLGAME-26MAR20FLACGY-FLA",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXNHLGAME-26MAR20NJWSH",
-          "market_ticker": "KXNHLGAME-26MAR20NJWSH-WSH",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXUCLGAME-26MAR18BARNEW",
-          "market_ticker": "KXUCLGAME-26MAR18BARNEW-BAR",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXUCLGAME-26MAR18BMUATA",
-          "market_ticker": "KXUCLGAME-26MAR18BMUATA-BMU",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXUCLGAME-26MAR18LFCGAL",
-          "market_ticker": "KXUCLGAME-26MAR18LFCGAL-LFC",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXUCLGAME-26MAR18TOTATM",
-          "market_ticker": "KXUCLGAME-26MAR18TOTATM-TOT",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXUFCFIGHT-26MAR21BARLAN",
-          "market_ticker": "KXUFCFIGHT-26MAR21BARLAN-LAN",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXUFCFIGHT-26MAR21CAMSIL",
-          "market_ticker": "KXUFCFIGHT-26MAR21CAMSIL-CAM",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXUFCFIGHT-26MAR21DOLDUN",
-          "market_ticker": "KXUFCFIGHT-26MAR21DOLDUN-DUN",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXUFCFIGHT-26MAR21DYEOLI",
-          "market_ticker": "KXUFCFIGHT-26MAR21DYEOLI-DYE",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXUFCFIGHT-26MAR21EVLMUR",
-          "market_ticker": "KXUFCFIGHT-26MAR21EVLMUR-MUR",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXUFCFIGHT-26MAR21JONSOL",
-          "market_ticker": "KXUFCFIGHT-26MAR21JONSOL-JON",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXUFCFIGHT-26MAR21KONTRO",
-          "market_ticker": "KXUFCFIGHT-26MAR21KONTRO-KON",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXUFCFIGHT-26MAR21MULCAR",
-          "market_ticker": "KXUFCFIGHT-26MAR21MULCAR-CAR",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXUFCFIGHT-26MAR21PAGPAT",
-          "market_ticker": "KXUFCFIGHT-26MAR21PAGPAT-PAG",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXUFCFIGHT-26MAR21PINFRA",
-          "market_ticker": "KXUFCFIGHT-26MAR21PINFRA-PIN",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXUFCFIGHT-26MAR21RILASW",
-          "market_ticker": "KXUFCFIGHT-26MAR21RILASW-RIL",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXUFCFIGHT-26MAR21ROCALS",
-          "market_ticker": "KXUFCFIGHT-26MAR21ROCALS-ALS",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXUFCFIGHT-26MAR21SUTPER",
-          "market_ticker": "KXUFCFIGHT-26MAR21SUTPER-SUT",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXUFCFIGHT-26MAR21WOOKEI",
-          "market_ticker": "KXUFCFIGHT-26MAR21WOOKEI-KEI",
-          "side": "yes"
-        }
-      ],
-      "no_ask_dollars": "1.0000",
-      "no_bid_dollars": "1.0000",
-      "no_sub_title": "yes Jenson Brooksby,yes Jan-Lennard Struff,yes Roberto Bautista Agut,yes Joao Fonseca,yes Giovanni Mpetshi Perricard,yes Matteo Berrettini,yes Tomas Machac,yes Nuno Borges,yes Hubert Hurkacz,yes Denis Shapovalov,yes Alejandro Tabilo,yes Adrian Mannarino,yes Mariano Navone,yes Marcos Giron,yes Yannick Hanfmann,yes Stefanos Tsitsipas,yes $71,750 or above,yes DAL Stars,yes NYR Rangers,yes OTT Senators,yes PHI Flyers,yes CAR Hurricanes,yes STL Blues,yes BUF Sabres,yes CHI Blackhawks,yes FLA Panthers,yes MTL Canadiens,yes NYI Islanders,yes NYR Rangers,yes LA Kings,yes SEA Kraken,yes TB Lightning,yes VGK Golden Knights,yes BOS Bruins,yes ANA Ducks,yes CAR Hurricanes,yes COL Avalanche,yes FLA Panthers,yes WSH Capitals,yes Barcelona,yes Bayern Munich,yes Liverpool,yes Tottenham,yes Austen Lane,yes Kurtis Campbell,yes Christian Duncan,yes Shanelle Dyer,yes Lerone Murphy,yes Mason Jones,yes Mantas Kondratavicius,yes Luana Carolina,yes Michael Page,yes Mario Pinto,yes Luke Riley,yes Abdul Kareem Alselwady,yes Louie Sutherland,yes Losene Keita",
-      "notional_value_dollars": "1.0000",
-      "open_interest_fp": "0.00",
-      "open_time": "2026-03-18T13:00:54.07108Z",
-      "previous_price_dollars": "0.0000",
-      "previous_yes_ask_dollars": "0.0000",
-      "previous_yes_bid_dollars": "0.0000",
-      "price_level_structure": "deci_cent",
-      "price_ranges": [
-        {
-          "end": "1.0000",
-          "start": "0.0000",
-          "step": "0.0010"
-        }
-      ],
-      "response_price_units": "usd_cent",
-      "result": "",
-      "rules_primary": "",
-      "rules_secondary": "",
-      "settlement_timer_seconds": 5,
-      "status": "active",
-      "strike_type": "custom",
-      "subtitle": "",
-      "tick_size": 1,
-      "ticker": "KXMVECROSSCATEGORY-S2026A7C00BF4F51-E9CA7F53C98",
-      "title": "yes Jenson Brooksby,yes Jan-Lennard Struff,yes Roberto Bautista Agut,yes Joao Fonseca,yes Giovanni Mpetshi Perricard,yes Matteo Berrettini,yes Tomas Machac,yes Nuno Borges,yes Hubert Hurkacz,yes Denis Shapovalov,yes Alejandro Tabilo,yes Adrian Mannarino,yes Mariano Navone,yes Marcos Giron,yes Yannick Hanfmann,yes Stefanos Tsitsipas,yes $71,750 or above,yes DAL Stars,yes NYR Rangers,yes OTT Senators,yes PHI Flyers,yes CAR Hurricanes,yes STL Blues,yes BUF Sabres,yes CHI Blackhawks,yes FLA Panthers,yes MTL Canadiens,yes NYI Islanders,yes NYR Rangers,yes LA Kings,yes SEA Kraken,yes TB Lightning,yes VGK Golden Knights,yes BOS Bruins,yes ANA Ducks,yes CAR Hurricanes,yes COL Avalanche,yes FLA Panthers,yes WSH Capitals,yes Barcelona,yes Bayern Munich,yes Liverpool,yes Tottenham,yes Austen Lane,yes Kurtis Campbell,yes Christian Duncan,yes Shanelle Dyer,yes Lerone Murphy,yes Mason Jones,yes Mantas Kondratavicius,yes Luana Carolina,yes Michael Page,yes Mario Pinto,yes Luke Riley,yes Abdul Kareem Alselwady,yes Louie Sutherland,yes Losene Keita",
-      "updated_time": "2026-03-18T13:00:54.713982Z",
-      "volume_24h_fp": "0.00",
-      "volume_fp": "0.00",
-      "yes_ask_dollars": "0.0000",
-      "yes_ask_size_fp": "0.00",
-      "yes_bid_dollars": "0.0000",
-      "yes_bid_size_fp": "0.00",
-      "yes_sub_title": "yes Jenson Brooksby,yes Jan-Lennard Struff,yes Roberto Bautista Agut,yes Joao Fonseca,yes Giovanni Mpetshi Perricard,yes Matteo Berrettini,yes Tomas Machac,yes Nuno Borges,yes Hubert Hurkacz,yes Denis Shapovalov,yes Alejandro Tabilo,yes Adrian Mannarino,yes Mariano Navone,yes Marcos Giron,yes Yannick Hanfmann,yes Stefanos Tsitsipas,yes $71,750 or above,yes DAL Stars,yes NYR Rangers,yes OTT Senators,yes PHI Flyers,yes CAR Hurricanes,yes STL Blues,yes BUF Sabres,yes CHI Blackhawks,yes FLA Panthers,yes MTL Canadiens,yes NYI Islanders,yes NYR Rangers,yes LA Kings,yes SEA Kraken,yes TB Lightning,yes VGK Golden Knights,yes BOS Bruins,yes ANA Ducks,yes CAR Hurricanes,yes COL Avalanche,yes FLA Panthers,yes WSH Capitals,yes Barcelona,yes Bayern Munich,yes Liverpool,yes Tottenham,yes Austen Lane,yes Kurtis Campbell,yes Christian Duncan,yes Shanelle Dyer,yes Lerone Murphy,yes Mason Jones,yes Mantas Kondratavicius,yes Luana Carolina,yes Michael Page,yes Mario Pinto,yes Luke Riley,yes Abdul Kareem Alselwady,yes Louie Sutherland,yes Losene Keita"
-    },
-    {
-      "can_close_early": true,
-      "close_time": "2026-03-31T15:00:00Z",
-      "created_time": "2026-03-18T13:00:53.213658Z",
-      "custom_strike": {
-        "Associated Events": "KXATPMATCH-26MAR17BERBRO,KXATPMATCH-26MAR17BLASTR,KXATPMATCH-26MAR17DUCBAU,KXATPMATCH-26MAR17MPEUGO,KXATPMATCH-26MAR17MULBER,KXATPMATCH-26MAR17NAVMAC,KXATPMATCH-26MAR17OPEBOR,KXATPMATCH-26MAR17QUIHUR,KXATPMATCH-26MAR17SHAVAN,KXATPMATCH-26MAR17TABCOM,KXATPMATCH-26MAR17ZHAMAN,KXATPMATCH-26MAR18BASNAV,KXATPMATCH-26MAR18GIRLAN,KXATPMATCH-26MAR18JODHAN,KXATPMATCH-26MAR18TSIFER,KXBTCD-26MAR2017,KXNHLGAME-26MAR18DALCOL,KXNHLGAME-26MAR18NJNYR,KXNHLGAME-26MAR18OTTWSH,KXNHLGAME-26MAR18PHIANA,KXNHLGAME-26MAR18PITCAR,KXNHLGAME-26MAR18STLCGY,KXNHLGAME-26MAR19BUFSJ,KXNHLGAME-26MAR19CHIMIN,KXNHLGAME-26MAR19FLAEDM,KXNHLGAME-26MAR19MTLDET,KXNHLGAME-26MAR19NYIOTT,KXNHLGAME-26MAR19NYRCBJ,KXNHLGAME-26MAR19PHILA,KXNHLGAME-26MAR19SEANSH,KXNHLGAME-26MAR19TBVAN,KXNHLGAME-26MAR19UTAVGK,KXNHLGAME-26MAR19WPGBOS,KXNHLGAME-26MAR20ANAUTA,KXNHLGAME-26MAR20CARTOR,KXNHLGAME-26MAR20COLCHI,KXNHLGAME-26MAR20FLACGY,KXNHLGAME-26MAR20NJWSH,KXUCLGAME-26MAR18BARNEW,KXUCLGAME-26MAR18BMUATA,KXUCLGAME-26MAR18LFCGAL,KXUCLGAME-26MAR18TOTATM,KXUFCFIGHT-26MAR21BARLAN,KXUFCFIGHT-26MAR21CAMSIL,KXUFCFIGHT-26MAR21DOLDUN,KXUFCFIGHT-26MAR21DYEOLI,KXUFCFIGHT-26MAR21EVLMUR,KXUFCFIGHT-26MAR21JONSOL,KXUFCFIGHT-26MAR21KONTRO,KXUFCFIGHT-26MAR21MULCAR,KXUFCFIGHT-26MAR21PAGPAT,KXUFCFIGHT-26MAR21PINFRA,KXUFCFIGHT-26MAR21RILASW,KXUFCFIGHT-26MAR21ROCALS,KXUFCFIGHT-26MAR21SUTPER,KXUFCFIGHT-26MAR21WOOKEI",
-        "Associated Market Sides": "yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes",
-        "Associated Markets": "KXATPMATCH-26MAR17BERBRO-BRO,KXATPMATCH-26MAR17BLASTR-STR,KXATPMATCH-26MAR17DUCBAU-BAU,KXATPMATCH-26MAR17MPEUGO-MPE,KXATPMATCH-26MAR17MULBER-BER,KXATPMATCH-26MAR17NAVMAC-MAC,KXATPMATCH-26MAR17OPEBOR-BOR,KXATPMATCH-26MAR17QUIHUR-HUR,KXATPMATCH-26MAR17SHAVAN-SHA,KXATPMATCH-26MAR17TABCOM-TAB,KXATPMATCH-26MAR17ZHAMAN-MAN,KXATPMATCH-26MAR18BASNAV-NAV,KXATPMATCH-26MAR18GIRLAN-GIR,KXATPMATCH-26MAR18JODHAN-HAN,KXATPMATCH-26MAR18TSIFER-TSI,KXBTCD-26MAR2017-T71749.99,KXNHLGAME-26MAR18DALCOL-DAL,KXNHLGAME-26MAR18NJNYR-NYR,KXNHLGAME-26MAR18OTTWSH-OTT,KXNHLGAME-26MAR18PHIANA-PHI,KXNHLGAME-26MAR18PITCAR-CAR,KXNHLGAME-26MAR18STLCGY-STL,KXNHLGAME-26MAR19BUFSJ-BUF,KXNHLGAME-26MAR19CHIMIN-CHI,KXNHLGAME-26MAR19FLAEDM-FLA,KXNHLGAME-26MAR19MTLDET-MTL,KXNHLGAME-26MAR19NYIOTT-NYI,KXNHLGAME-26MAR19NYRCBJ-NYR,KXNHLGAME-26MAR19PHILA-LA,KXNHLGAME-26MAR19SEANSH-SEA,KXNHLGAME-26MAR19TBVAN-TB,KXNHLGAME-26MAR19UTAVGK-VGK,KXNHLGAME-26MAR19WPGBOS-BOS,KXNHLGAME-26MAR20ANAUTA-ANA,KXNHLGAME-26MAR20CARTOR-CAR,KXNHLGAME-26MAR20COLCHI-COL,KXNHLGAME-26MAR20FLACGY-FLA,KXNHLGAME-26MAR20NJWSH-WSH,KXUCLGAME-26MAR18BARNEW-BAR,KXUCLGAME-26MAR18BMUATA-BMU,KXUCLGAME-26MAR18LFCGAL-LFC,KXUCLGAME-26MAR18TOTATM-TOT,KXUFCFIGHT-26MAR21BARLAN-LAN,KXUFCFIGHT-26MAR21CAMSIL-CAM,KXUFCFIGHT-26MAR21DOLDUN-DUN,KXUFCFIGHT-26MAR21DYEOLI-DYE,KXUFCFIGHT-26MAR21EVLMUR-MUR,KXUFCFIGHT-26MAR21JONSOL-JON,KXUFCFIGHT-26MAR21KONTRO-KON,KXUFCFIGHT-26MAR21MULCAR-CAR,KXUFCFIGHT-26MAR21PAGPAT-PAG,KXUFCFIGHT-26MAR21PINFRA-PIN,KXUFCFIGHT-26MAR21RILASW-RIL,KXUFCFIGHT-26MAR21ROCALS-ALS,KXUFCFIGHT-26MAR21SUTPER-SUT,KXUFCFIGHT-26MAR21WOOKEI-KEI",
-        "Multivariate Event Ticker": "KXMVECROSSCATEGORY-R"
-      },
-      "event_ticker": "KXMVECROSSCATEGORY-S2026AD78F2690C7",
-      "expected_expiration_time": "2026-03-22T02:40:00Z",
-      "expiration_time": "2026-03-31T15:00:00Z",
-      "expiration_value": "",
-      "fractional_trading_enabled": false,
-      "is_provisional": true,
-      "last_price_dollars": "0.0000",
-      "latest_expiration_time": "2026-03-31T15:00:00Z",
-      "liquidity_dollars": "0.0000",
-      "market_type": "binary",
-      "mve_collection_ticker": "KXMVECROSSCATEGORY-R",
-      "mve_selected_legs": [
-        {
-          "event_ticker": "KXATPMATCH-26MAR17BERBRO",
-          "market_ticker": "KXATPMATCH-26MAR17BERBRO-BRO",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXATPMATCH-26MAR17BLASTR",
-          "market_ticker": "KXATPMATCH-26MAR17BLASTR-STR",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXATPMATCH-26MAR17DUCBAU",
-          "market_ticker": "KXATPMATCH-26MAR17DUCBAU-BAU",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXATPMATCH-26MAR17MPEUGO",
-          "market_ticker": "KXATPMATCH-26MAR17MPEUGO-MPE",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXATPMATCH-26MAR17MULBER",
-          "market_ticker": "KXATPMATCH-26MAR17MULBER-BER",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXATPMATCH-26MAR17NAVMAC",
-          "market_ticker": "KXATPMATCH-26MAR17NAVMAC-MAC",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXATPMATCH-26MAR17OPEBOR",
-          "market_ticker": "KXATPMATCH-26MAR17OPEBOR-BOR",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXATPMATCH-26MAR17QUIHUR",
-          "market_ticker": "KXATPMATCH-26MAR17QUIHUR-HUR",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXATPMATCH-26MAR17SHAVAN",
-          "market_ticker": "KXATPMATCH-26MAR17SHAVAN-SHA",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXATPMATCH-26MAR17TABCOM",
-          "market_ticker": "KXATPMATCH-26MAR17TABCOM-TAB",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXATPMATCH-26MAR17ZHAMAN",
-          "market_ticker": "KXATPMATCH-26MAR17ZHAMAN-MAN",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXATPMATCH-26MAR18BASNAV",
-          "market_ticker": "KXATPMATCH-26MAR18BASNAV-NAV",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXATPMATCH-26MAR18GIRLAN",
-          "market_ticker": "KXATPMATCH-26MAR18GIRLAN-GIR",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXATPMATCH-26MAR18JODHAN",
-          "market_ticker": "KXATPMATCH-26MAR18JODHAN-HAN",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXATPMATCH-26MAR18TSIFER",
-          "market_ticker": "KXATPMATCH-26MAR18TSIFER-TSI",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXBTCD-26MAR2017",
-          "market_ticker": "KXBTCD-26MAR2017-T71749.99",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXNHLGAME-26MAR18DALCOL",
-          "market_ticker": "KXNHLGAME-26MAR18DALCOL-DAL",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXNHLGAME-26MAR18NJNYR",
-          "market_ticker": "KXNHLGAME-26MAR18NJNYR-NYR",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXNHLGAME-26MAR18OTTWSH",
-          "market_ticker": "KXNHLGAME-26MAR18OTTWSH-OTT",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXNHLGAME-26MAR18PHIANA",
-          "market_ticker": "KXNHLGAME-26MAR18PHIANA-PHI",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXNHLGAME-26MAR18PITCAR",
-          "market_ticker": "KXNHLGAME-26MAR18PITCAR-CAR",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXNHLGAME-26MAR18STLCGY",
-          "market_ticker": "KXNHLGAME-26MAR18STLCGY-STL",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXNHLGAME-26MAR19BUFSJ",
-          "market_ticker": "KXNHLGAME-26MAR19BUFSJ-BUF",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXNHLGAME-26MAR19CHIMIN",
-          "market_ticker": "KXNHLGAME-26MAR19CHIMIN-CHI",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXNHLGAME-26MAR19FLAEDM",
-          "market_ticker": "KXNHLGAME-26MAR19FLAEDM-FLA",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXNHLGAME-26MAR19MTLDET",
-          "market_ticker": "KXNHLGAME-26MAR19MTLDET-MTL",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXNHLGAME-26MAR19NYIOTT",
-          "market_ticker": "KXNHLGAME-26MAR19NYIOTT-NYI",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXNHLGAME-26MAR19NYRCBJ",
-          "market_ticker": "KXNHLGAME-26MAR19NYRCBJ-NYR",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXNHLGAME-26MAR19PHILA",
-          "market_ticker": "KXNHLGAME-26MAR19PHILA-LA",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXNHLGAME-26MAR19SEANSH",
-          "market_ticker": "KXNHLGAME-26MAR19SEANSH-SEA",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXNHLGAME-26MAR19TBVAN",
-          "market_ticker": "KXNHLGAME-26MAR19TBVAN-TB",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXNHLGAME-26MAR19UTAVGK",
-          "market_ticker": "KXNHLGAME-26MAR19UTAVGK-VGK",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXNHLGAME-26MAR19WPGBOS",
-          "market_ticker": "KXNHLGAME-26MAR19WPGBOS-BOS",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXNHLGAME-26MAR20ANAUTA",
-          "market_ticker": "KXNHLGAME-26MAR20ANAUTA-ANA",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXNHLGAME-26MAR20CARTOR",
-          "market_ticker": "KXNHLGAME-26MAR20CARTOR-CAR",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXNHLGAME-26MAR20COLCHI",
-          "market_ticker": "KXNHLGAME-26MAR20COLCHI-COL",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXNHLGAME-26MAR20FLACGY",
-          "market_ticker": "KXNHLGAME-26MAR20FLACGY-FLA",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXNHLGAME-26MAR20NJWSH",
-          "market_ticker": "KXNHLGAME-26MAR20NJWSH-WSH",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXUCLGAME-26MAR18BARNEW",
-          "market_ticker": "KXUCLGAME-26MAR18BARNEW-BAR",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXUCLGAME-26MAR18BMUATA",
-          "market_ticker": "KXUCLGAME-26MAR18BMUATA-BMU",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXUCLGAME-26MAR18LFCGAL",
-          "market_ticker": "KXUCLGAME-26MAR18LFCGAL-LFC",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXUCLGAME-26MAR18TOTATM",
-          "market_ticker": "KXUCLGAME-26MAR18TOTATM-TOT",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXUFCFIGHT-26MAR21BARLAN",
-          "market_ticker": "KXUFCFIGHT-26MAR21BARLAN-LAN",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXUFCFIGHT-26MAR21CAMSIL",
-          "market_ticker": "KXUFCFIGHT-26MAR21CAMSIL-CAM",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXUFCFIGHT-26MAR21DOLDUN",
-          "market_ticker": "KXUFCFIGHT-26MAR21DOLDUN-DUN",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXUFCFIGHT-26MAR21DYEOLI",
-          "market_ticker": "KXUFCFIGHT-26MAR21DYEOLI-DYE",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXUFCFIGHT-26MAR21EVLMUR",
-          "market_ticker": "KXUFCFIGHT-26MAR21EVLMUR-MUR",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXUFCFIGHT-26MAR21JONSOL",
-          "market_ticker": "KXUFCFIGHT-26MAR21JONSOL-JON",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXUFCFIGHT-26MAR21KONTRO",
-          "market_ticker": "KXUFCFIGHT-26MAR21KONTRO-KON",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXUFCFIGHT-26MAR21MULCAR",
-          "market_ticker": "KXUFCFIGHT-26MAR21MULCAR-CAR",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXUFCFIGHT-26MAR21PAGPAT",
-          "market_ticker": "KXUFCFIGHT-26MAR21PAGPAT-PAG",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXUFCFIGHT-26MAR21PINFRA",
-          "market_ticker": "KXUFCFIGHT-26MAR21PINFRA-PIN",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXUFCFIGHT-26MAR21RILASW",
-          "market_ticker": "KXUFCFIGHT-26MAR21RILASW-RIL",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXUFCFIGHT-26MAR21ROCALS",
-          "market_ticker": "KXUFCFIGHT-26MAR21ROCALS-ALS",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXUFCFIGHT-26MAR21SUTPER",
-          "market_ticker": "KXUFCFIGHT-26MAR21SUTPER-SUT",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXUFCFIGHT-26MAR21WOOKEI",
-          "market_ticker": "KXUFCFIGHT-26MAR21WOOKEI-KEI",
-          "side": "yes"
-        }
-      ],
-      "no_ask_dollars": "1.0000",
-      "no_bid_dollars": "1.0000",
-      "no_sub_title": "yes Jenson Brooksby,yes Jan-Lennard Struff,yes Roberto Bautista Agut,yes Giovanni Mpetshi Perricard,yes Matteo Berrettini,yes Tomas Machac,yes Nuno Borges,yes Hubert Hurkacz,yes Denis Shapovalov,yes Alejandro Tabilo,yes Adrian Mannarino,yes Mariano Navone,yes Marcos Giron,yes Yannick Hanfmann,yes Stefanos Tsitsipas,yes $71,750 or above,yes DAL Stars,yes NYR Rangers,yes OTT Senators,yes PHI Flyers,yes CAR Hurricanes,yes STL Blues,yes BUF Sabres,yes CHI Blackhawks,yes FLA Panthers,yes MTL Canadiens,yes NYI Islanders,yes NYR Rangers,yes LA Kings,yes SEA Kraken,yes TB Lightning,yes VGK Golden Knights,yes BOS Bruins,yes ANA Ducks,yes CAR Hurricanes,yes COL Avalanche,yes FLA Panthers,yes WSH Capitals,yes Barcelona,yes Bayern Munich,yes Liverpool,yes Tottenham,yes Austen Lane,yes Kurtis Campbell,yes Christian Duncan,yes Shanelle Dyer,yes Lerone Murphy,yes Mason Jones,yes Mantas Kondratavicius,yes Luana Carolina,yes Michael Page,yes Mario Pinto,yes Luke Riley,yes Abdul Kareem Alselwady,yes Louie Sutherland,yes Losene Keita",
-      "notional_value_dollars": "1.0000",
-      "open_interest_fp": "0.00",
-      "open_time": "2026-03-18T13:00:53.185856Z",
-      "previous_price_dollars": "0.0000",
-      "previous_yes_ask_dollars": "0.0000",
-      "previous_yes_bid_dollars": "0.0000",
-      "price_level_structure": "deci_cent",
-      "price_ranges": [
-        {
-          "end": "1.0000",
-          "start": "0.0000",
-          "step": "0.0010"
-        }
-      ],
-      "response_price_units": "usd_cent",
-      "result": "",
-      "rules_primary": "",
-      "rules_secondary": "",
-      "settlement_timer_seconds": 5,
-      "status": "active",
-      "strike_type": "custom",
-      "subtitle": "",
-      "tick_size": 1,
-      "ticker": "KXMVECROSSCATEGORY-S2026AD78F2690C7-0AA9EAE8A70",
-      "title": "yes Jenson Brooksby,yes Jan-Lennard Struff,yes Roberto Bautista Agut,yes Giovanni Mpetshi Perricard,yes Matteo Berrettini,yes Tomas Machac,yes Nuno Borges,yes Hubert Hurkacz,yes Denis Shapovalov,yes Alejandro Tabilo,yes Adrian Mannarino,yes Mariano Navone,yes Marcos Giron,yes Yannick Hanfmann,yes Stefanos Tsitsipas,yes $71,750 or above,yes DAL Stars,yes NYR Rangers,yes OTT Senators,yes PHI Flyers,yes CAR Hurricanes,yes STL Blues,yes BUF Sabres,yes CHI Blackhawks,yes FLA Panthers,yes MTL Canadiens,yes NYI Islanders,yes NYR Rangers,yes LA Kings,yes SEA Kraken,yes TB Lightning,yes VGK Golden Knights,yes BOS Bruins,yes ANA Ducks,yes CAR Hurricanes,yes COL Avalanche,yes FLA Panthers,yes WSH Capitals,yes Barcelona,yes Bayern Munich,yes Liverpool,yes Tottenham,yes Austen Lane,yes Kurtis Campbell,yes Christian Duncan,yes Shanelle Dyer,yes Lerone Murphy,yes Mason Jones,yes Mantas Kondratavicius,yes Luana Carolina,yes Michael Page,yes Mario Pinto,yes Luke Riley,yes Abdul Kareem Alselwady,yes Louie Sutherland,yes Losene Keita",
-      "updated_time": "2026-03-18T13:00:53.714334Z",
-      "volume_24h_fp": "0.00",
-      "volume_fp": "0.00",
-      "yes_ask_dollars": "0.0000",
-      "yes_ask_size_fp": "0.00",
-      "yes_bid_dollars": "0.0000",
-      "yes_bid_size_fp": "0.00",
-      "yes_sub_title": "yes Jenson Brooksby,yes Jan-Lennard Struff,yes Roberto Bautista Agut,yes Giovanni Mpetshi Perricard,yes Matteo Berrettini,yes Tomas Machac,yes Nuno Borges,yes Hubert Hurkacz,yes Denis Shapovalov,yes Alejandro Tabilo,yes Adrian Mannarino,yes Mariano Navone,yes Marcos Giron,yes Yannick Hanfmann,yes Stefanos Tsitsipas,yes $71,750 or above,yes DAL Stars,yes NYR Rangers,yes OTT Senators,yes PHI Flyers,yes CAR Hurricanes,yes STL Blues,yes BUF Sabres,yes CHI Blackhawks,yes FLA Panthers,yes MTL Canadiens,yes NYI Islanders,yes NYR Rangers,yes LA Kings,yes SEA Kraken,yes TB Lightning,yes VGK Golden Knights,yes BOS Bruins,yes ANA Ducks,yes CAR Hurricanes,yes COL Avalanche,yes FLA Panthers,yes WSH Capitals,yes Barcelona,yes Bayern Munich,yes Liverpool,yes Tottenham,yes Austen Lane,yes Kurtis Campbell,yes Christian Duncan,yes Shanelle Dyer,yes Lerone Murphy,yes Mason Jones,yes Mantas Kondratavicius,yes Luana Carolina,yes Michael Page,yes Mario Pinto,yes Luke Riley,yes Abdul Kareem Alselwady,yes Louie Sutherland,yes Losene Keita"
-    },
-    {
-      "can_close_early": true,
-      "close_time": "2026-03-31T15:00:00Z",
-      "created_time": "2026-03-18T13:00:47.106889Z",
-      "custom_strike": {
-        "Associated Events": "KXATPMATCH-26MAR17BERBRO,KXATPMATCH-26MAR17BLASTR,KXATPMATCH-26MAR17DUCBAU,KXATPMATCH-26MAR17MPEUGO,KXATPMATCH-26MAR17MULBER,KXATPMATCH-26MAR17NAVMAC,KXATPMATCH-26MAR17OPEBOR,KXATPMATCH-26MAR17QUIHUR,KXATPMATCH-26MAR17SHAVAN,KXATPMATCH-26MAR17ZHAMAN,KXATPMATCH-26MAR18BASNAV,KXATPMATCH-26MAR18GIRLAN,KXATPMATCH-26MAR18JODHAN,KXATPMATCH-26MAR18TSIFER,KXBTCD-26MAR2017,KXNHLGAME-26MAR18DALCOL,KXNHLGAME-26MAR18NJNYR,KXNHLGAME-26MAR18OTTWSH,KXNHLGAME-26MAR18PHIANA,KXNHLGAME-26MAR18PITCAR,KXNHLGAME-26MAR18STLCGY,KXNHLGAME-26MAR19BUFSJ,KXNHLGAME-26MAR19CHIMIN,KXNHLGAME-26MAR19FLAEDM,KXNHLGAME-26MAR19MTLDET,KXNHLGAME-26MAR19NYIOTT,KXNHLGAME-26MAR19NYRCBJ,KXNHLGAME-26MAR19PHILA,KXNHLGAME-26MAR19SEANSH,KXNHLGAME-26MAR19TBVAN,KXNHLGAME-26MAR19UTAVGK,KXNHLGAME-26MAR19WPGBOS,KXNHLGAME-26MAR20ANAUTA,KXNHLGAME-26MAR20CARTOR,KXNHLGAME-26MAR20COLCHI,KXNHLGAME-26MAR20FLACGY,KXNHLGAME-26MAR20NJWSH,KXUCLGAME-26MAR18BARNEW,KXUCLGAME-26MAR18BMUATA,KXUCLGAME-26MAR18LFCGAL,KXUCLGAME-26MAR18TOTATM,KXUFCFIGHT-26MAR21BARLAN,KXUFCFIGHT-26MAR21CAMSIL,KXUFCFIGHT-26MAR21DOLDUN,KXUFCFIGHT-26MAR21DYEOLI,KXUFCFIGHT-26MAR21EVLMUR,KXUFCFIGHT-26MAR21JONSOL,KXUFCFIGHT-26MAR21KONTRO,KXUFCFIGHT-26MAR21MULCAR,KXUFCFIGHT-26MAR21PAGPAT,KXUFCFIGHT-26MAR21PINFRA,KXUFCFIGHT-26MAR21RILASW,KXUFCFIGHT-26MAR21ROCALS,KXUFCFIGHT-26MAR21SUTPER,KXUFCFIGHT-26MAR21WOOKEI",
-        "Associated Market Sides": "yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes",
-        "Associated Markets": "KXATPMATCH-26MAR17BERBRO-BRO,KXATPMATCH-26MAR17BLASTR-STR,KXATPMATCH-26MAR17DUCBAU-BAU,KXATPMATCH-26MAR17MPEUGO-MPE,KXATPMATCH-26MAR17MULBER-BER,KXATPMATCH-26MAR17NAVMAC-MAC,KXATPMATCH-26MAR17OPEBOR-BOR,KXATPMATCH-26MAR17QUIHUR-HUR,KXATPMATCH-26MAR17SHAVAN-SHA,KXATPMATCH-26MAR17ZHAMAN-MAN,KXATPMATCH-26MAR18BASNAV-NAV,KXATPMATCH-26MAR18GIRLAN-GIR,KXATPMATCH-26MAR18JODHAN-HAN,KXATPMATCH-26MAR18TSIFER-TSI,KXBTCD-26MAR2017-T71749.99,KXNHLGAME-26MAR18DALCOL-DAL,KXNHLGAME-26MAR18NJNYR-NYR,KXNHLGAME-26MAR18OTTWSH-OTT,KXNHLGAME-26MAR18PHIANA-PHI,KXNHLGAME-26MAR18PITCAR-CAR,KXNHLGAME-26MAR18STLCGY-STL,KXNHLGAME-26MAR19BUFSJ-BUF,KXNHLGAME-26MAR19CHIMIN-CHI,KXNHLGAME-26MAR19FLAEDM-FLA,KXNHLGAME-26MAR19MTLDET-MTL,KXNHLGAME-26MAR19NYIOTT-NYI,KXNHLGAME-26MAR19NYRCBJ-NYR,KXNHLGAME-26MAR19PHILA-LA,KXNHLGAME-26MAR19SEANSH-SEA,KXNHLGAME-26MAR19TBVAN-TB,KXNHLGAME-26MAR19UTAVGK-VGK,KXNHLGAME-26MAR19WPGBOS-BOS,KXNHLGAME-26MAR20ANAUTA-ANA,KXNHLGAME-26MAR20CARTOR-CAR,KXNHLGAME-26MAR20COLCHI-COL,KXNHLGAME-26MAR20FLACGY-FLA,KXNHLGAME-26MAR20NJWSH-WSH,KXUCLGAME-26MAR18BARNEW-BAR,KXUCLGAME-26MAR18BMUATA-BMU,KXUCLGAME-26MAR18LFCGAL-LFC,KXUCLGAME-26MAR18TOTATM-TOT,KXUFCFIGHT-26MAR21BARLAN-LAN,KXUFCFIGHT-26MAR21CAMSIL-CAM,KXUFCFIGHT-26MAR21DOLDUN-DUN,KXUFCFIGHT-26MAR21DYEOLI-DYE,KXUFCFIGHT-26MAR21EVLMUR-MUR,KXUFCFIGHT-26MAR21JONSOL-JON,KXUFCFIGHT-26MAR21KONTRO-KON,KXUFCFIGHT-26MAR21MULCAR-CAR,KXUFCFIGHT-26MAR21PAGPAT-PAG,KXUFCFIGHT-26MAR21PINFRA-PIN,KXUFCFIGHT-26MAR21RILASW-RIL,KXUFCFIGHT-26MAR21ROCALS-ALS,KXUFCFIGHT-26MAR21SUTPER-SUT,KXUFCFIGHT-26MAR21WOOKEI-KEI",
-        "Multivariate Event Ticker": "KXMVECROSSCATEGORY-R"
-      },
-      "event_ticker": "KXMVECROSSCATEGORY-S2026D34D0A70E62",
-      "expected_expiration_time": "2026-03-22T02:40:00Z",
-      "expiration_time": "2026-03-31T15:00:00Z",
-      "expiration_value": "",
-      "fractional_trading_enabled": false,
-      "is_provisional": true,
-      "last_price_dollars": "0.0000",
-      "latest_expiration_time": "2026-03-31T15:00:00Z",
-      "liquidity_dollars": "0.0000",
-      "market_type": "binary",
-      "mve_collection_ticker": "KXMVECROSSCATEGORY-R",
-      "mve_selected_legs": [
-        {
-          "event_ticker": "KXATPMATCH-26MAR17BERBRO",
-          "market_ticker": "KXATPMATCH-26MAR17BERBRO-BRO",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXATPMATCH-26MAR17BLASTR",
-          "market_ticker": "KXATPMATCH-26MAR17BLASTR-STR",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXATPMATCH-26MAR17DUCBAU",
-          "market_ticker": "KXATPMATCH-26MAR17DUCBAU-BAU",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXATPMATCH-26MAR17MPEUGO",
-          "market_ticker": "KXATPMATCH-26MAR17MPEUGO-MPE",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXATPMATCH-26MAR17MULBER",
-          "market_ticker": "KXATPMATCH-26MAR17MULBER-BER",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXATPMATCH-26MAR17NAVMAC",
-          "market_ticker": "KXATPMATCH-26MAR17NAVMAC-MAC",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXATPMATCH-26MAR17OPEBOR",
-          "market_ticker": "KXATPMATCH-26MAR17OPEBOR-BOR",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXATPMATCH-26MAR17QUIHUR",
-          "market_ticker": "KXATPMATCH-26MAR17QUIHUR-HUR",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXATPMATCH-26MAR17SHAVAN",
-          "market_ticker": "KXATPMATCH-26MAR17SHAVAN-SHA",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXATPMATCH-26MAR17ZHAMAN",
-          "market_ticker": "KXATPMATCH-26MAR17ZHAMAN-MAN",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXATPMATCH-26MAR18BASNAV",
-          "market_ticker": "KXATPMATCH-26MAR18BASNAV-NAV",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXATPMATCH-26MAR18GIRLAN",
-          "market_ticker": "KXATPMATCH-26MAR18GIRLAN-GIR",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXATPMATCH-26MAR18JODHAN",
-          "market_ticker": "KXATPMATCH-26MAR18JODHAN-HAN",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXATPMATCH-26MAR18TSIFER",
-          "market_ticker": "KXATPMATCH-26MAR18TSIFER-TSI",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXBTCD-26MAR2017",
-          "market_ticker": "KXBTCD-26MAR2017-T71749.99",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXNHLGAME-26MAR18DALCOL",
-          "market_ticker": "KXNHLGAME-26MAR18DALCOL-DAL",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXNHLGAME-26MAR18NJNYR",
-          "market_ticker": "KXNHLGAME-26MAR18NJNYR-NYR",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXNHLGAME-26MAR18OTTWSH",
-          "market_ticker": "KXNHLGAME-26MAR18OTTWSH-OTT",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXNHLGAME-26MAR18PHIANA",
-          "market_ticker": "KXNHLGAME-26MAR18PHIANA-PHI",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXNHLGAME-26MAR18PITCAR",
-          "market_ticker": "KXNHLGAME-26MAR18PITCAR-CAR",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXNHLGAME-26MAR18STLCGY",
-          "market_ticker": "KXNHLGAME-26MAR18STLCGY-STL",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXNHLGAME-26MAR19BUFSJ",
-          "market_ticker": "KXNHLGAME-26MAR19BUFSJ-BUF",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXNHLGAME-26MAR19CHIMIN",
-          "market_ticker": "KXNHLGAME-26MAR19CHIMIN-CHI",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXNHLGAME-26MAR19FLAEDM",
-          "market_ticker": "KXNHLGAME-26MAR19FLAEDM-FLA",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXNHLGAME-26MAR19MTLDET",
-          "market_ticker": "KXNHLGAME-26MAR19MTLDET-MTL",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXNHLGAME-26MAR19NYIOTT",
-          "market_ticker": "KXNHLGAME-26MAR19NYIOTT-NYI",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXNHLGAME-26MAR19NYRCBJ",
-          "market_ticker": "KXNHLGAME-26MAR19NYRCBJ-NYR",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXNHLGAME-26MAR19PHILA",
-          "market_ticker": "KXNHLGAME-26MAR19PHILA-LA",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXNHLGAME-26MAR19SEANSH",
-          "market_ticker": "KXNHLGAME-26MAR19SEANSH-SEA",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXNHLGAME-26MAR19TBVAN",
-          "market_ticker": "KXNHLGAME-26MAR19TBVAN-TB",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXNHLGAME-26MAR19UTAVGK",
-          "market_ticker": "KXNHLGAME-26MAR19UTAVGK-VGK",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXNHLGAME-26MAR19WPGBOS",
-          "market_ticker": "KXNHLGAME-26MAR19WPGBOS-BOS",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXNHLGAME-26MAR20ANAUTA",
-          "market_ticker": "KXNHLGAME-26MAR20ANAUTA-ANA",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXNHLGAME-26MAR20CARTOR",
-          "market_ticker": "KXNHLGAME-26MAR20CARTOR-CAR",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXNHLGAME-26MAR20COLCHI",
-          "market_ticker": "KXNHLGAME-26MAR20COLCHI-COL",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXNHLGAME-26MAR20FLACGY",
-          "market_ticker": "KXNHLGAME-26MAR20FLACGY-FLA",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXNHLGAME-26MAR20NJWSH",
-          "market_ticker": "KXNHLGAME-26MAR20NJWSH-WSH",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXUCLGAME-26MAR18BARNEW",
-          "market_ticker": "KXUCLGAME-26MAR18BARNEW-BAR",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXUCLGAME-26MAR18BMUATA",
-          "market_ticker": "KXUCLGAME-26MAR18BMUATA-BMU",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXUCLGAME-26MAR18LFCGAL",
-          "market_ticker": "KXUCLGAME-26MAR18LFCGAL-LFC",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXUCLGAME-26MAR18TOTATM",
-          "market_ticker": "KXUCLGAME-26MAR18TOTATM-TOT",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXUFCFIGHT-26MAR21BARLAN",
-          "market_ticker": "KXUFCFIGHT-26MAR21BARLAN-LAN",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXUFCFIGHT-26MAR21CAMSIL",
-          "market_ticker": "KXUFCFIGHT-26MAR21CAMSIL-CAM",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXUFCFIGHT-26MAR21DOLDUN",
-          "market_ticker": "KXUFCFIGHT-26MAR21DOLDUN-DUN",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXUFCFIGHT-26MAR21DYEOLI",
-          "market_ticker": "KXUFCFIGHT-26MAR21DYEOLI-DYE",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXUFCFIGHT-26MAR21EVLMUR",
-          "market_ticker": "KXUFCFIGHT-26MAR21EVLMUR-MUR",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXUFCFIGHT-26MAR21JONSOL",
-          "market_ticker": "KXUFCFIGHT-26MAR21JONSOL-JON",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXUFCFIGHT-26MAR21KONTRO",
-          "market_ticker": "KXUFCFIGHT-26MAR21KONTRO-KON",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXUFCFIGHT-26MAR21MULCAR",
-          "market_ticker": "KXUFCFIGHT-26MAR21MULCAR-CAR",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXUFCFIGHT-26MAR21PAGPAT",
-          "market_ticker": "KXUFCFIGHT-26MAR21PAGPAT-PAG",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXUFCFIGHT-26MAR21PINFRA",
-          "market_ticker": "KXUFCFIGHT-26MAR21PINFRA-PIN",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXUFCFIGHT-26MAR21RILASW",
-          "market_ticker": "KXUFCFIGHT-26MAR21RILASW-RIL",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXUFCFIGHT-26MAR21ROCALS",
-          "market_ticker": "KXUFCFIGHT-26MAR21ROCALS-ALS",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXUFCFIGHT-26MAR21SUTPER",
-          "market_ticker": "KXUFCFIGHT-26MAR21SUTPER-SUT",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXUFCFIGHT-26MAR21WOOKEI",
-          "market_ticker": "KXUFCFIGHT-26MAR21WOOKEI-KEI",
-          "side": "yes"
-        }
-      ],
-      "no_ask_dollars": "1.0000",
-      "no_bid_dollars": "1.0000",
-      "no_sub_title": "yes Jenson Brooksby,yes Jan-Lennard Struff,yes Roberto Bautista Agut,yes Giovanni Mpetshi Perricard,yes Matteo Berrettini,yes Tomas Machac,yes Nuno Borges,yes Hubert Hurkacz,yes Denis Shapovalov,yes Adrian Mannarino,yes Mariano Navone,yes Marcos Giron,yes Yannick Hanfmann,yes Stefanos Tsitsipas,yes $71,750 or above,yes DAL Stars,yes NYR Rangers,yes OTT Senators,yes PHI Flyers,yes CAR Hurricanes,yes STL Blues,yes BUF Sabres,yes CHI Blackhawks,yes FLA Panthers,yes MTL Canadiens,yes NYI Islanders,yes NYR Rangers,yes LA Kings,yes SEA Kraken,yes TB Lightning,yes VGK Golden Knights,yes BOS Bruins,yes ANA Ducks,yes CAR Hurricanes,yes COL Avalanche,yes FLA Panthers,yes WSH Capitals,yes Barcelona,yes Bayern Munich,yes Liverpool,yes Tottenham,yes Austen Lane,yes Kurtis Campbell,yes Christian Duncan,yes Shanelle Dyer,yes Lerone Murphy,yes Mason Jones,yes Mantas Kondratavicius,yes Luana Carolina,yes Michael Page,yes Mario Pinto,yes Luke Riley,yes Abdul Kareem Alselwady,yes Louie Sutherland,yes Losene Keita",
-      "notional_value_dollars": "1.0000",
-      "open_interest_fp": "0.00",
-      "open_time": "2026-03-18T13:00:47.086267Z",
-      "previous_price_dollars": "0.0000",
-      "previous_yes_ask_dollars": "0.0000",
-      "previous_yes_bid_dollars": "0.0000",
-      "price_level_structure": "deci_cent",
-      "price_ranges": [
-        {
-          "end": "1.0000",
-          "start": "0.0000",
-          "step": "0.0010"
-        }
-      ],
-      "response_price_units": "usd_cent",
-      "result": "",
-      "rules_primary": "",
-      "rules_secondary": "",
-      "settlement_timer_seconds": 5,
-      "status": "active",
-      "strike_type": "custom",
-      "subtitle": "",
-      "tick_size": 1,
-      "ticker": "KXMVECROSSCATEGORY-S2026D34D0A70E62-CBE28693785",
-      "title": "yes Jenson Brooksby,yes Jan-Lennard Struff,yes Roberto Bautista Agut,yes Giovanni Mpetshi Perricard,yes Matteo Berrettini,yes Tomas Machac,yes Nuno Borges,yes Hubert Hurkacz,yes Denis Shapovalov,yes Adrian Mannarino,yes Mariano Navone,yes Marcos Giron,yes Yannick Hanfmann,yes Stefanos Tsitsipas,yes $71,750 or above,yes DAL Stars,yes NYR Rangers,yes OTT Senators,yes PHI Flyers,yes CAR Hurricanes,yes STL Blues,yes BUF Sabres,yes CHI Blackhawks,yes FLA Panthers,yes MTL Canadiens,yes NYI Islanders,yes NYR Rangers,yes LA Kings,yes SEA Kraken,yes TB Lightning,yes VGK Golden Knights,yes BOS Bruins,yes ANA Ducks,yes CAR Hurricanes,yes COL Avalanche,yes FLA Panthers,yes WSH Capitals,yes Barcelona,yes Bayern Munich,yes Liverpool,yes Tottenham,yes Austen Lane,yes Kurtis Campbell,yes Christian Duncan,yes Shanelle Dyer,yes Lerone Murphy,yes Mason Jones,yes Mantas Kondratavicius,yes Luana Carolina,yes Michael Page,yes Mario Pinto,yes Luke Riley,yes Abdul Kareem Alselwady,yes Louie Sutherland,yes Losene Keita",
-      "updated_time": "2026-03-18T13:00:47.714929Z",
-      "volume_24h_fp": "0.00",
-      "volume_fp": "0.00",
-      "yes_ask_dollars": "0.0000",
-      "yes_ask_size_fp": "0.00",
-      "yes_bid_dollars": "0.0000",
-      "yes_bid_size_fp": "0.00",
-      "yes_sub_title": "yes Jenson Brooksby,yes Jan-Lennard Struff,yes Roberto Bautista Agut,yes Giovanni Mpetshi Perricard,yes Matteo Berrettini,yes Tomas Machac,yes Nuno Borges,yes Hubert Hurkacz,yes Denis Shapovalov,yes Adrian Mannarino,yes Mariano Navone,yes Marcos Giron,yes Yannick Hanfmann,yes Stefanos Tsitsipas,yes $71,750 or above,yes DAL Stars,yes NYR Rangers,yes OTT Senators,yes PHI Flyers,yes CAR Hurricanes,yes STL Blues,yes BUF Sabres,yes CHI Blackhawks,yes FLA Panthers,yes MTL Canadiens,yes NYI Islanders,yes NYR Rangers,yes LA Kings,yes SEA Kraken,yes TB Lightning,yes VGK Golden Knights,yes BOS Bruins,yes ANA Ducks,yes CAR Hurricanes,yes COL Avalanche,yes FLA Panthers,yes WSH Capitals,yes Barcelona,yes Bayern Munich,yes Liverpool,yes Tottenham,yes Austen Lane,yes Kurtis Campbell,yes Christian Duncan,yes Shanelle Dyer,yes Lerone Murphy,yes Mason Jones,yes Mantas Kondratavicius,yes Luana Carolina,yes Michael Page,yes Mario Pinto,yes Luke Riley,yes Abdul Kareem Alselwady,yes Louie Sutherland,yes Losene Keita"
     }
   ]
 }
