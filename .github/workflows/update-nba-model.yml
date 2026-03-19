@@ -25,19 +25,12 @@ jobs:
         with:
           python-version: '3.11'
           cache: 'pip'
+          cache-dependency-path: 'requirements.txt'
 
       - name: Install dependencies
         run: |
           pip install --upgrade pip
-          pip install \
-            nba_api \
-            pandas==2.1.4 \
-            numpy==1.26.4 \
-            scikit-learn==1.4.2 \
-            xgboost==2.0.3 \
-            requests==2.31.0 \
-            scipy==1.12.0 \
-            geopy==2.4.1
+          pip install -r requirements.txt
 
       - name: Run NBA feature pipeline
         run: python scripts/nba_data.py
