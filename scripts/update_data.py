@@ -276,7 +276,8 @@ def fetch_espn_injuries():
                 injuries[item_abbrev].append({
                     "player": item.get("athlete", {}).get("displayName", ""),
                     "status": status,
-                    "position": item.get("athlete", {}).get("position", {}).get("abbreviation", "")
+                    "position": item.get("athlete", {}).get("position", {}).get("abbreviation", ""),
+                    "injury_description": item.get("longComment", item.get("shortComment", status)),
                 })
     except Exception as e:
         log.warning(f"Error parsing injuries: {e}")
@@ -775,7 +776,7 @@ def run():
                     "team": team,
                     "position": p.get("position", ""),
                     "status": p.get("status", ""),
-                    "injury_description": p.get("status", ""),
+                    "injury_description": p.get("injury_description", p.get("status", "")),
                     "value_tier": value_tier_label(pmult),
                 })
         (DATA_DIR / "nfl_injuries.json").write_text(
@@ -878,7 +879,7 @@ def run():
                 )
                 model_metrics["historical_accuracy"] = historical_accuracy_by_year(
                     fte_df, logistic_model, logistic_scaler, logistic_calibrator,
-                    game_history, efficiency_data, pythagorean_data
+                    elo_dict, game_history, efficiency_data, pythagorean_data
                 )
                 log.info(f"Logistic model trained. Log loss: {metrics['log_loss']:.4f}")
         except Exception as e:
@@ -1282,6 +1283,7 @@ def run():
 if __name__ == "__main__":
     try:
         run()
-    except Exception as e:
-        log.error(f"Fatal error in NFL prediction update: {e}", exc_info=True)
+    except Exception:
+        import traceback
+        traceback.print_exc()
         sys.exit(1)

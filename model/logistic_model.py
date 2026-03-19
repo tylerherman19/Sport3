@@ -29,7 +29,7 @@ def build_features(df, elo_dict, game_history, efficiency_data, pythagorean_data
     """
     Build feature matrix from historical data.
     df: FiveThirtyEight game-level dataframe
-    Returns X (features), y (outcomes), game_ids
+    Returns X (features), y (outcomes)
     """
     rows = []
     labels = []
@@ -46,28 +46,22 @@ def build_features(df, elo_dict, game_history, efficiency_data, pythagorean_data
         elo2 = float(row.get("elo2_pre", 1500))
         elo_diff = elo1 - elo2 + (65 if not neutral else 0)
 
-        # Pythagorean diff from pre-computed data (or fallback)
         pyth1 = pythagorean_data.get(team1, {}).get("pyth", 0.5)
         pyth2 = pythagorean_data.get(team2, {}).get("pyth", 0.5)
         pyth_diff = pyth1 - pyth2
 
-        # Efficiency diff
         eff1 = efficiency_data.get(team1, {}).get("net_eff", 0.0)
         eff2 = efficiency_data.get(team2, {}).get("net_eff", 0.0)
-        eff_diff = eff1 - eff2
 
         off1 = efficiency_data.get(team1, {}).get("off_eff", 1.0)
         off2 = efficiency_data.get(team2, {}).get("off_eff", 1.0)
         def1 = efficiency_data.get(team1, {}).get("def_eff", 1.0)
         def2 = efficiency_data.get(team2, {}).get("def_eff", 1.0)
 
-        # ELO-derived rest proxy (use qbelo if available)
         rest_diff = 0.0
-
         travel_diff = 0.0
         turnover_diff = 0.0
 
-        # Last 5 win rate from game history
         from model.elo_model import recent_form
         lr1 = recent_form(game_history, team1)
         lr2 = recent_form(game_history, team2)
@@ -110,7 +104,6 @@ def train_logistic(X, y):
     )
     model.fit(X_scaled, y)
 
-    # Isotonic calibration on out-of-fold predictions
     tscv = TimeSeriesSplit(n_splits=5)
     oof_probs = np.zeros(len(y))
     for train_idx, val_idx in tscv.split(X_scaled):
@@ -187,9 +180,6 @@ def predict_matchups(matchups, model, scaler, calibrator,
         pyth_a = pythagorean_data.get(team_a, {}).get("pyth", 0.5)
         pyth_b = pythagorean_data.get(team_b, {}).get("pyth", 0.5)
 
-        eff_a = efficiency_data.get(team_a, {}).get("net_eff", 0.0)
-        eff_b = efficiency_data.get(team_b, {}).get("net_eff", 0.0)
-
         off_a = efficiency_data.get(team_a, {}).get("off_eff", 1.0)
         off_b = efficiency_data.get(team_b, {}).get("off_eff", 1.0)
         def_a = efficiency_data.get(team_a, {}).get("def_eff", 1.0)
@@ -223,8 +213,12 @@ def predict_matchups(matchups, model, scaler, calibrator,
 
 
 def historical_accuracy_by_year(df, model, scaler, calibrator,
-                                game_history, efficiency_data, pythagorean_data):
-    """Returns per-year accuracy for model performance section."""
+                                elo_dict, game_history, efficiency_data, pythagorean_data):
+    """Returns per-year accuracy for model performance section.
+
+    elo_dict is passed through to build_features so ELO-based features are
+    populated correctly. Previously called with {} which zeroed all ELO lookups.
+    """
     results = []
     years = sorted(df["season"].unique())[-10:]
 
@@ -234,7 +228,7 @@ def historical_accuracy_by_year(df, model, scaler, calibrator,
             continue
 
         X_year, y_year = build_features(
-            year_df, {}, game_history, efficiency_data, pythagorean_data
+            year_df, elo_dict, game_history, efficiency_data, pythagorean_data
         )
         if len(X_year) == 0:
             continue
