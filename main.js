@@ -347,6 +347,180 @@ async function loadNbaData() {
     updateHeader(pred, 'nba');
     renderAll();
   }
+
+  // Augment with live ESPN data (async, re-renders when ready)
+  fetchLiveNBAStandings();
+  fetchLiveNBAData();
+}
+
+/* ── ESPN abbreviation normalization (mirrors Python backend) ─── */
+const ESPN_NBA_ABBREV_MAP = {
+  'GS': 'GSW', 'NY': 'NYK', 'NO': 'NOP', 'SA': 'SAS',
+  'WSH': 'WAS', 'PHO': 'PHX', 'UTAH': 'UTA',
+};
+function normNBAabbrev(a) {
+  const u = (a || '').toUpperCase().trim();
+  return ESPN_NBA_ABBREV_MAP[u] || u;
+}
+
+/* ── Parse a single ESPN NBA event into a game object ─────────── */
+function parseLiveNBAEvent(event) {
+  try {
+    const comp = (event.competitions || [])[0];
+    if (!comp) return null;
+    const competitors = comp.competitors || [];
+    const home = competitors.find(c => c.homeAway === 'home');
+    const away = competitors.find(c => c.homeAway === 'away');
+    if (!home || !away) return null;
+
+    const homeAbbrev = normNBAabbrev(home.team.abbreviation);
+    const awayAbbrev = normNBAabbrev(away.team.abbreviation);
+    const status = event.status?.type?.name || '';
+    const gameTime = event.date || '';
+    const isFuture = status === 'STATUS_SCHEDULED' ||
+      (gameTime && new Date(gameTime).getTime() > Date.now() + 1800000); // >30 min away
+
+    const homeScore = parseInt(home.score || 0) || 0;
+    const awayScore = parseInt(away.score || 0) || 0;
+
+    return {
+      game_id: event.id,
+      game_time: gameTime,
+      status,
+      is_future: isFuture,
+      home_team: homeAbbrev,
+      away_team: awayAbbrev,
+      home_name: home.team.displayName || homeAbbrev,
+      away_name: away.team.displayName || awayAbbrev,
+      home_logo: `https://a.espncdn.com/i/teamlogos/nba/500/${home.team.abbreviation.toLowerCase()}.png`,
+      away_logo: `https://a.espncdn.com/i/teamlogos/nba/500/${away.team.abbreviation.toLowerCase()}.png`,
+      neutral: comp.neutralSite || false,
+      home_score: homeScore,
+      away_score: awayScore,
+      // Default prediction fields for new games not in static JSON
+      predictions: { ensemble_prob: 0.5, elo_prob: 0.5, pyth_prob: 0.5, eff_prob: 0.5, bayesian_prob: 0.5, logistic_prob: 0.5, xgb_prob: null },
+      market: { home_prob: null, edge: null, kelly_pct: null, home_american: null, away_american: null },
+      monte_carlo: null,
+      adjustments: { rest_home: 2, rest_away: 2, rest_diff: 0, travel_dist_miles: 0, b2b_home: false, b2b_away: false, home_elo_bonus: 100 },
+      elo: { home: 1500, away: 1500, diff: 0 },
+      efficiency: null,
+      injuries: { home: [], away: [] },
+      injury_impact: { home_elo_penalty: 0, away_elo_penalty: 0, home_key_players_out: [], away_key_players_out: [] },
+      prediction_drivers: [],
+      explanation: '',
+      h2h: null,
+    };
+  } catch { return null; }
+}
+
+/* ── Fetch live NBA scoreboard: today + next 7 days ───────────── */
+async function fetchLiveNBAData() {
+  const ESPN = 'https://site.api.espn.com/apis/site/v2/sports/basketball/nba';
+  const liveMap = new Map();
+
+  for (let delta = 0; delta <= 7; delta++) {
+    const d = new Date();
+    d.setDate(d.getDate() + delta);
+    const dateStr = d.toISOString().slice(0, 10).replace(/-/g, '');
+    try {
+      const data = await fetch(`${ESPN}/scoreboard?dates=${dateStr}`).then(r => r.json());
+      for (const event of data.events || []) {
+        const parsed = parseLiveNBAEvent(event);
+        if (parsed) liveMap.set(parsed.game_id, parsed);
+      }
+    } catch { /* network failure — skip day */ }
+  }
+
+  if (!liveMap.size) return;
+
+  // Ensure predictions container exists
+  if (!state.nba.predictions) {
+    state.nba.predictions = { games: [], is_offseason: false, season: new Date().getFullYear(), league: 'nba', updated: new Date().toISOString() };
+  }
+
+  const existingMap = new Map(state.nba.predictions.games.map(g => [g.game_id, g]));
+
+  for (const [id, live] of liveMap) {
+    if (existingMap.has(id)) {
+      // Update mutable fields on the existing enriched game object
+      const g = existingMap.get(id);
+      g.status = live.status;
+      g.home_score = live.home_score;
+      g.away_score = live.away_score;
+      g.is_future = live.is_future;
+    } else {
+      // New game not in static JSON — add with live data + default predictions
+      state.nba.predictions.games.push(live);
+    }
+  }
+
+  if (state.league === 'nba') renderGames();
+}
+
+/* ── Fetch live NBA standings and patch leaderboard ───────────── */
+async function fetchLiveNBAStandings() {
+  try {
+    const data = await fetch('https://site.api.espn.com/apis/site/v2/sports/basketball/nba/standings').then(r => r.json());
+    const liveTeams = {};
+
+    for (const group of data.children || []) {
+      for (const div of (group.children || [group])) {
+        for (const entry of div.standings?.entries || []) {
+          const abbrev = normNBAabbrev(entry.team?.abbreviation || '');
+          if (!abbrev) continue;
+          const stats = Object.fromEntries((entry.stats || []).map(s => [s.name, parseFloat(s.value) || 0]));
+          const offRtg = stats.offensiveRating || stats.pointsFor || 110;
+          const defRtg = stats.defensiveRating || stats.pointsAgainst || 110;
+          liveTeams[abbrev] = {
+            wins: Math.round(stats.wins || 0),
+            losses: Math.round(stats.losses || 0),
+            offensive_rating: offRtg,
+            defensive_rating: defRtg,
+            net_rating: offRtg - defRtg,
+          };
+        }
+      }
+    }
+
+    if (!Object.keys(liveTeams).length) return;
+
+    // Ensure leaderboard exists (may be null if static JSON failed)
+    if (!state.nba.leaderboard) {
+      state.nba.leaderboard = { teams: [] };
+    }
+
+    // Patch existing leaderboard entries with live records + ratings
+    const patchedTeams = new Set();
+    state.nba.leaderboard.teams.forEach(t => {
+      const live = liveTeams[t.team];
+      if (!live) return;
+      t.wins = live.wins;
+      t.losses = live.losses;
+      t.offensive_rating = live.offensive_rating;
+      t.off_eff = live.offensive_rating;
+      t.defensive_rating = live.defensive_rating;
+      t.def_eff = live.defensive_rating;
+      t.net_rating = live.net_rating;
+      t.net_eff = live.net_rating;
+      patchedTeams.add(t.team);
+    });
+
+    // Add any teams missing from leaderboard (e.g. all-default JSON)
+    for (const [abbrev, live] of Object.entries(liveTeams)) {
+      if (patchedTeams.has(abbrev)) continue;
+      state.nba.leaderboard.teams.push({
+        team: abbrev, team_name: abbrev, abbrev: abbrev.toLowerCase(),
+        logo: `https://a.espncdn.com/i/teamlogos/nba/500/${abbrev.toLowerCase()}.png`,
+        elo: 1500, sigma: 75, mu: 1500, lower_band: 1425, upper_band: 1575,
+        pyth: 0.5, trend: 'neutral', streak_type: 'N', streak_count: 0,
+        playoff_prob: 0, sb_prob: 0, champ_prob: 0, ties: 0,
+        injury_elo_penalty: 0, injury_impact_score: 0, injury_players_count: 0,
+        ...live,
+      });
+    }
+
+    if (state.league === 'nba') sortAndRenderLeaderboard();
+  } catch { /* network failure — keep static JSON data */ }
 }
 
 function updateHeader(pred, league) {
@@ -374,7 +548,7 @@ function forceRefresh() {
   loadNbaData().then(() => fetchLiveScores());
 }
 
-/* ── Live score overlay ────────────────────────────────────────── */
+/* ── Live score overlay ─────────���──────────────────────────────── */
 function mergeLiveGame(game) {
   const live = liveScoreCache[game.game_id];
   if (!live) return game;
@@ -498,25 +672,28 @@ function renderGames() {
 
   // When in offseason with only stale completed games, don't show the cards
   const displayGames = effectiveOffseason ? [] : pred.games;
-  $('games-count-badge').textContent = displayGames.length + ' game' + (displayGames.length !== 1 ? 's' : '');
+  $('games-count-badge').textContent = pred.games.length + ' game' + (pred.games.length !== 1 ? 's' : '');
 
-  // Apply game filter
-  let filteredGames = displayGames;
-  if (state.gameFilter === 'upcoming') {
-    filteredGames = displayGames.filter(g =>
-      g.status !== 'STATUS_FINAL' &&
-      g.status !== 'STATUS_IN_PROGRESS' &&
-      g.status !== 'STATUS_HALFTIME' &&
-      g.is_future
-    );
-  } else if (state.gameFilter === 'live') {
-    filteredGames = displayGames.filter(g => {
-      const s = mergeLiveGame(g).status;
-      return s === 'STATUS_IN_PROGRESS' || s === 'STATUS_HALFTIME' ||
-        (!g.is_future && s !== 'STATUS_FINAL' && s !== 'STATUS_SCHEDULED' && isToday(g.game_time));
+  // Apply game filter — use status + game_time in addition to is_future flag
+  const nowMs = Date.now();
+  const todayDateStr = new Date().toISOString().slice(0, 10);
+  let filteredGames = pred.games;
+  if (state.gameFilter === 'today') {
+    // Today/Live: games that are live, finished, or scheduled for today's date
+    filteredGames = pred.games.filter(g => {
+      if (g.status === 'STATUS_IN_PROGRESS' || g.status === 'STATUS_HALFTIME') return true;
+      if (g.status === 'STATUS_FINAL') return true;
+      if (g.status === 'STATUS_SCHEDULED' && g.game_time && g.game_time.slice(0, 10) === todayDateStr) return true;
+      if (!g.is_future && g.game_time && g.game_time.slice(0, 10) === todayDateStr) return true;
+      return false;
     });
-  } else if (state.gameFilter === 'completed') {
-    filteredGames = displayGames.filter(g => mergeLiveGame(g).status === 'STATUS_FINAL');
+  } else if (state.gameFilter === 'future') {
+    // Upcoming: explicitly flagged as future, or status scheduled, or game time >30min away
+    filteredGames = pred.games.filter(g =>
+      g.is_future ||
+      g.status === 'STATUS_SCHEDULED' ||
+      (g.game_time && new Date(g.game_time).getTime() > nowMs + 1800000)
+    );
   }
 
   // Update filter pill active state
@@ -623,9 +800,10 @@ function buildKeyFactorsStrip(game, adj, isNba) {
   if (isNba && adj.b2b_home) items.push(`<div class="kf-item"><span class="kf-val kf-bad">${game.home_team} B2B</span></div>`);
   if (isNba && adj.b2b_away) items.push(`<div class="kf-item"><span class="kf-val kf-bad">${game.away_team} B2B</span></div>`);
 
-  // Travel distance (NFL)
-  if (!isNba && adj.travel_dist_miles > 1000) {
-    items.push(`<div class="kf-item"><span class="kf-label">Travel</span><span class="kf-val kf-warn">${Math.round(adj.travel_dist_miles)} mi</span></div>`);
+  // Travel distance — show for both NBA and NFL when significant
+  if (adj.travel_dist_miles > 300) {
+    const travelClass = adj.travel_dist_miles > 2000 ? 'kf-bad' : 'kf-warn';
+    items.push(`<div class="kf-item"><span class="kf-label">Travel</span><span class="kf-val ${travelClass}">${game.away_team} ${Math.round(adj.travel_dist_miles)} mi</span></div>`);
   }
 
   if (!items.length) return '';
@@ -848,7 +1026,7 @@ function buildGameCard(game, isNba) {
     </div>` : (adj.rest_diff != null || adj.travel_dist_miles ? `
     <div class="game-stats">
       ${adj.rest_diff != null ? `<div class="stat-pill"><span class="stat-pill-label">Rest</span><span class="stat-pill-value">${adj.rest_home}d / ${adj.rest_away}d</span></div>` : ''}
-      ${adj.travel_dist_miles ? `<div class="stat-pill"><span class="stat-pill-label">Travel</span><span class="stat-pill-value">${Math.round(adj.travel_dist_miles)} mi</span></div>` : ''}
+      ${adj.travel_dist_miles ? `<div class="stat-pill"><span class="stat-pill-label">Travel</span><span class="stat-pill-value">${game.away_team} ${Math.round(adj.travel_dist_miles)} mi</span></div>` : ''}
       ${mc.exp_margin != null ? `<div class="stat-pill"><span class="stat-pill-label">Exp Margin</span><span class="stat-pill-value">${mc.exp_margin > 0 ? '+' : ''}${mc.exp_margin?.toFixed(1)} pts</span></div>` : ''}
       ${market.home_prob != null ? `<div class="stat-pill"><span class="stat-pill-label">Market</span><span class="stat-pill-value">${pct(market.home_prob)}</span></div>` : ''}
       ${market.home_american != null ? `<div class="stat-pill"><span class="stat-pill-label">ML</span><span class="stat-pill-value">${market.home_american > 0 ? '+' : ''}${market.home_american?.toFixed(0)}</span></div>` : ''}
@@ -972,12 +1150,13 @@ function buildContextHtml(game, adj, isNba, homeTrend, awayTrend, tzShift) {
     if (adj.b2b_away) pills.push(`<div class="stat-pill warn"><span class="stat-pill-label">B2B</span><span class="stat-pill-value">${game.away_team}</span></div>`);
   }
 
-  // Travel + timezone
+  // Travel + timezone — always label the away team as the traveler
   if (adj.travel_dist_miles > 0) {
-    const longTrip = adj.travel_dist_miles > 2000 || tzShift >= 2;
+    const absTzShift = Math.abs(tzShift);
+    const longTrip = adj.travel_dist_miles > 2000 || absTzShift >= 2;
     const travelClass = longTrip ? 'warn' : '';
-    const tzStr = tzShift > 0 ? ` · ${tzShift}hr TZ` : '';
-    pills.push(`<div class="stat-pill ${travelClass}"><span class="stat-pill-label">Travel</span><span class="stat-pill-value">${game.away_team}: ${Math.round(adj.travel_dist_miles).toLocaleString()} mi${tzStr}</span></div>`);
+    const tzStr = absTzShift >= 1 ? ` · ${absTzShift}hr TZ` : '';
+    pills.push(`<div class="stat-pill ${travelClass}"><span class="stat-pill-label">Travel</span><span class="stat-pill-value">${game.away_team} ${Math.round(adj.travel_dist_miles).toLocaleString()} mi${tzStr}</span></div>`);
   }
 
   // Hot/cold streak
