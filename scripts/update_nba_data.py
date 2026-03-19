@@ -141,15 +141,73 @@ _NBA_TIER_VALUE = {
 }
 
 
+def fetch_nba_depth_charts():
+    """
+    Fetch live NBA depth chart positions from ESPN for all teams.
+    Returns {player_name: depth_position_int} where 1 = starter.
+    Mirrors the NFL fetch_espn_depth_charts() approach.
+    """
+    log.info("Fetching ESPN NBA depth charts for player value scoring...")
+    player_depth = {}
+    try:
+        teams_data = safe_get(f"{ESPN_NBA_BASE}/teams")
+        if not teams_data:
+            log.warning("Could not fetch ESPN NBA teams list for depth charts")
+            return {}
+        teams_list = (
+            teams_data.get("sports", [{}])[0]
+            .get("leagues", [{}])[0]
+            .get("teams", [])
+        )
+        for team_entry in teams_list:
+            team_id = team_entry.get("team", {}).get("id", "")
+            if not team_id:
+                continue
+            depth_data = safe_get(f"{ESPN_NBA_BASE}/teams/{team_id}/depthcharts")
+            if not depth_data:
+                continue
+            for pos_group in depth_data.get("positionGroups", []):
+                for position in pos_group.get("positions", []):
+                    for athlete_entry in position.get("athletes", []):
+                        name = athlete_entry.get("athlete", {}).get("displayName", "")
+                        depth_pos = int(athlete_entry.get("rank") or athlete_entry.get("slot", 99))
+                        if not name:
+                            continue
+                        if name not in player_depth or depth_pos < player_depth[name]:
+                            player_depth[name] = depth_pos
+    except Exception as e:
+        log.warning(f"Error fetching NBA depth charts: {e}")
+    log.info(f"NBA depth chart loaded: {len(player_depth)} player entries")
+    return player_depth
+
+
+# Depth position → NBA value multiplier
+_NBA_DEPTH_VALUE_MAP = {1: 2.0, 2: 1.2, 3: 0.7}
+
+
+def _nba_depth_to_value(depth_pos: int) -> float:
+    return _NBA_DEPTH_VALUE_MAP.get(depth_pos, 0.4)
+
+
 def build_nba_player_values():
     """
-    Convert the curated NBA_PLAYER_TIERS dict to numeric value multipliers.
+    Build NBA player value multipliers.
+    Tries live ESPN depth charts first; falls back to static NBA_PLAYER_TIERS.
     Returns {player_name: value_multiplier}.
     """
-    return {
+    # Start with static curated tiers as baseline
+    values = {
         name: _NBA_TIER_VALUE.get(tier, 1.0)
         for name, tier in NBA_PLAYER_TIERS.items()
     }
+    # Override / supplement with live depth chart positions
+    live_depth = fetch_nba_depth_charts()
+    for name, depth_pos in live_depth.items():
+        live_val = _nba_depth_to_value(depth_pos)
+        # Only override if live depth indicates confirmed starter or not in static list
+        if name not in values or depth_pos == 1:
+            values[name] = live_val
+    return values
 
 
 def nba_value_tier_label(mult: float) -> str:
@@ -639,7 +697,7 @@ def compute_nba_pythagorean(efficiency_data):
     return pyth_data
 
 
-# ─── NBA Logistic Model ───────────────────────────────────────────────────────
+# ─── NBA Logistic Model ──────────────────────────────────��────────────────────
 
 def build_nba_features(games, elo_dict, game_history, efficiency_data, pyth_data):
     """Build feature matrix for NBA logistic/XGBoost training."""
@@ -1606,4 +1664,10 @@ def run():
 
 
 if __name__ == "__main__":
-    run()
+    try:
+        run()
+    except Exception:
+        import traceback
+        traceback.print_exc()
+        import sys
+        sys.exit(1)
