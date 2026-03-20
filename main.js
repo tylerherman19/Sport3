@@ -635,7 +635,7 @@ function renderGames() {
   const pred = isNba ? state.nba.predictions : state.predictions;
 
   if (!pred) {
-    grid.innerHTML = '<div class="empty-state"><div class="empty-state-icon">⚠️</div><h3>Failed to load</h3><p>Could not load predictions data.</p></div>';
+    grid.innerHTML = '<div class="empty-state"><div class="empty-state-icon">��️</div><h3>Failed to load</h3><p>Could not load predictions data.</p></div>';
     return;
   }
 
@@ -2435,7 +2435,7 @@ async function resolveActualWinners(league) {
   adjustWeightsFromLog(league);
 }
 
-// ── Weight feedback loop ──────────────────────────────────────────
+// ��─ Weight feedback loop ──────────────────────────────────────────
 // After each batch of resolved games, nudge sub-model weights toward
 // whichever models have been most accurate recently (last 20 games).
 // Adjustments are intentionally tiny (±0.02 max per call).
@@ -2870,10 +2870,20 @@ function clearLog(league) {
 }
 
 async function relogAllGames(league) {
-  const games = league === 'nba'
+  // If predictions are not yet loaded, force a re-fetch before proceeding
+  let games = league === 'nba'
     ? (state.nba.predictions?.games || [])
     : (state.predictions?.games || []);
-  if (!games.length) { alert('No games loaded. Open the Games tab first.'); return; }
+  if (!games.length) {
+    if (league === 'nba') {
+      await loadNbaData();
+      games = state.nba.predictions?.games || [];
+    } else {
+      await loadNflData();
+      games = state.predictions?.games || [];
+    }
+  }
+  if (!games.length) { alert('No games loaded — data fetch returned no games.'); return; }
 
   const key = `sport3_log_${league}`;
   let existing = [];
@@ -2937,14 +2947,24 @@ async function relogAllGames(league) {
       existingMap.set(game.game_id, existing[existing.length - 1]);
       changed = true;
     } else {
-      // Existing entry — always refresh injury snapshot so corrected tiers propagate
+      // Existing entry — refresh predictions snapshot AND injury data with latest values
       const entry = existingMap.get(game.game_id);
-      if (homeInj.length || awayInj.length || Object.keys(injImpact).length) {
-        entry.home_injuries = homeInj;
-        entry.away_injuries = awayInj;
-        entry.injury_impact = injImpact;
-        changed = true;
-      }
+      entry.predicted_winner = predictedWinner;
+      entry.predicted_prob = predictedProb;
+      entry.elo_pick = eloProb >= 0.5 ? game.home_team : game.away_team;
+      entry.bayes_pick = bayesProb >= 0.5 ? game.home_team : game.away_team;
+      entry.lr_pick = lrProb >= 0.5 ? game.home_team : game.away_team;
+      entry.pyth_pick = pythProb >= 0.5 ? game.home_team : game.away_team;
+      entry.eff_pick = effProb >= 0.5 ? game.home_team : game.away_team;
+      entry.elo_prob = eloProb;
+      entry.bayes_prob = bayesProb;
+      entry.lr_prob = lrProb;
+      entry.pyth_prob = pythProb;
+      entry.eff_prob = effProb;
+      entry.home_injuries = homeInj;
+      entry.away_injuries = awayInj;
+      entry.injury_impact = injImpact;
+      changed = true;
     }
   });
 
