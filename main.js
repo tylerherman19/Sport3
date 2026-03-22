@@ -158,6 +158,32 @@ const TEAM_TZ = {
   SF:-8, SEA:-8,
 };
 
+function normalizeGame(game) {
+  if (!game) return {};
+  game.predictions  = game.predictions  || {};
+  game.adjustments  = game.adjustments  || {
+    rest_home: 0, rest_away: 0, rest_diff: 0,
+    b2b_home: false, b2b_away: false,
+    home_elo_bonus: 0, travel_dist_miles: 0,
+  };
+  game.elo          = game.elo          || {};
+  game.efficiency   = game.efficiency   || {};
+  game.market       = game.market       || {};
+  game.monte_carlo  = game.monte_carlo  || {};
+  game.injuries     = game.injuries     || { home: [], away: [] };
+  game.h2h          = game.h2h          || {};
+  return game;
+}
+
+function normalizePredictionPayload(p) {
+  if (!p) return {};
+  const fields = ['logistic_prob','xgb_prob','elo_prob','pyth_prob','eff_prob','bayesian_prob'];
+  for (const f of fields) {
+    if (p[f] === undefined) p[f] = null;
+  }
+  return p;
+}
+
 function ensembleFromProbs(probs, weights) {
   const w = { ...weights };
   // If XGBoost unavailable, redistribute its weight proportionally to remaining models
@@ -176,11 +202,11 @@ function ensembleFromProbs(probs, weights) {
   const total = w.logistic + w.xgboost + w.elo + w.pyth + w.eff;
   if (total === 0) return 0.5;
   const val = (
-    w.logistic * (probs.logistic_prob || 0.5) +
-    w.xgboost  * (probs.xgb_prob     || 0.5) +
-    w.elo      * (probs.elo_prob      || 0.5) +
-    w.pyth     * (probs.pyth_prob     || 0.5) +
-    w.eff      * (probs.eff_prob      || 0.5)
+    w.logistic * (probs.logistic_prob ?? 0.5) +
+    w.xgboost  * (probs.xgb_prob     ?? 0.5) +
+    w.elo      * (probs.elo_prob      ?? 0.5) +
+    w.pyth     * (probs.pyth_prob     ?? 0.5) +
+    w.eff      * (probs.eff_prob      ?? 0.5)
   ) / total;
   return clamp(val, 0.01, 0.99);
 }
@@ -1789,8 +1815,8 @@ function runNflPredictor(home, away, neutral) {
   const homeData = lb.find(t => t.team === home) || {};
   const awayData = lb.find(t => t.team === away) || {};
 
-  const homeElo = homeData.elo || 1500;
-  const awayElo = awayData.elo || 1500;
+  const homeElo = homeData.elo ?? homeData.mu ?? 1500;
+  const awayElo = awayData.elo ?? awayData.mu ?? 1500;
   const hfa = neutral ? 0 : state.params.hfa;
 
   const eloDiff = (homeElo + hfa) - awayElo;
@@ -1862,8 +1888,8 @@ function runNbaPredictor(home, away, neutral) {
   const homeData = lb.find(t => t.team === home) || {};
   const awayData = lb.find(t => t.team === away) || {};
 
-  const homeElo = homeData.elo || 1500;
-  const awayElo = awayData.elo || 1500;
+  const homeElo = homeData.elo ?? homeData.mu ?? 1500;
+  const awayElo = awayData.elo ?? awayData.mu ?? 1500;
   const hfa = neutral ? 0 : 100;
 
   const b2bAdjHome = b2bHome ? -5 : 0;
@@ -2320,11 +2346,11 @@ function logPredictions(games, league) {
     const predictedWinner = ensProb >= 0.5 ? game.home_team : game.away_team;
     const predictedProb = ensProb >= 0.5 ? ensProb : (1 - ensProb);
     // Per-model picks for accuracy breakdown
-    const eloProb = p.elo_prob || 0.5;
-    const bayesProb = p.bayesian_prob || 0.5;
-    const lrProb = p.logistic_prob || 0.5;
-    const pythProb = p.pyth_prob || 0.5;
-    const effProb = p.eff_prob || 0.5;
+    const eloProb = p.elo_prob ?? 0.5;
+    const bayesProb = p.bayesian_prob ?? 0.5;
+    const lrProb = p.logistic_prob ?? 0.5;
+    const pythProb = p.pyth_prob ?? 0.5;
+    const effProb = p.eff_prob ?? 0.5;
     const eff = game.efficiency || {};
     existing.push({
       game_id: game.game_id,
@@ -2386,9 +2412,11 @@ async function resolveActualWinners(league) {
   unresolved.forEach(e => {
     const d = e.game_time ? (() => {
       const dt = new Date(e.game_time);
-      const y = dt.getFullYear();
-      const m = String(dt.getMonth() + 1).padStart(2, '0');
-      const day = String(dt.getDate()).padStart(2, '0');
+      // Use UTC methods — game_time is a UTC ISO string; local getDate()
+      // can shift the date by 1 day for evening games in US time zones (UTC-5/6).
+      const y = dt.getUTCFullYear();
+      const m = String(dt.getUTCMonth() + 1).padStart(2, '0');
+      const day = String(dt.getUTCDate()).padStart(2, '0');
       return `${y}${m}${day}`;
     })() : null;
     if (!d) return;
@@ -2401,7 +2429,7 @@ async function resolveActualWinners(league) {
   // ESPN often returns short abbreviations that differ from what we store
   const ESPNFIX = {
     'GS': 'GSW', 'NY': 'NYK', 'NO': 'NOP', 'SA': 'SAS', 'WSH': 'WAS',
-    'UTH': 'UTA', 'JAC': 'JAX', 'ARZ': 'ARI', 'CLV': 'CLE', 'HST': 'HOU', 'LV': 'LVR'
+    'UTH': 'UTA', 'JAC': 'JAX', 'ARZ': 'ARI', 'CLV': 'CLE', 'HST': 'HOU', 'LVR': 'LV'
   };
   const normAbbr = a => { const u = (a || '').toUpperCase(); return ESPNFIX[u] || u; };
 
@@ -2472,13 +2500,15 @@ function adjustWeightsFromLog(league) {
   // Use the most recent 20 resolved games
   const recent = resolved.slice(-20);
 
-  // Map log pick fields to ensemble weight keys
+  // Map log pick fields to ensemble weight keys.
+  // bayes_pick removed — the Bayesian model is not part of the ensemble
+  // weight set (logistic/xgboost/elo/pyth/eff), so feeding its accuracy back
+  // into the xgboost weight slot was incorrect cross-model contamination.
   const modelMap = [
-    { pickKey: 'elo_pick',   weightKey: 'elo'      },
-    { pickKey: 'bayes_pick', weightKey: 'xgboost'  },
-    { pickKey: 'lr_pick',    weightKey: 'logistic' },
-    { pickKey: 'pyth_pick',  weightKey: 'pyth'     },
-    { pickKey: 'eff_pick',   weightKey: 'eff'      },
+    { pickKey: 'elo_pick',  weightKey: 'elo'      },
+    { pickKey: 'lr_pick',   weightKey: 'logistic' },
+    { pickKey: 'pyth_pick', weightKey: 'pyth'     },
+    { pickKey: 'eff_pick',  weightKey: 'eff'      },
   ];
 
   // Compute accuracy per model
@@ -2795,7 +2825,9 @@ function generatePostMortemExplanation(e) {
       const gap = lNet - wNet;
       if (gap > 3) {
         narrativeLines.push(`${winnerName} overcame a ${gap.toFixed(1)}-pt pre-game net rating disadvantage — the stats favoured ${loserName} on paper.`);
-      } else if (gap < -3) {
+      } else if (gap < -3 && !modelWasCorrect) {
+        // Only note model failure when model was actually wrong (gap<-3 means
+        // winner had the stronger net rating, which alone does not imply a model error).
         narrativeLines.push(`${winnerName} had the stronger net rating (+${Math.abs(gap).toFixed(1)} advantage) yet the model still went wrong — efficiency didn't tell the whole story.`);
       } else if (lOff != null && wOff != null && lOff - wOff > 3) {
         narrativeLines.push(`${loserName}'s offense (${lOff.toFixed(1)}) looked superior on paper but couldn't convert that into points on the night.`);
@@ -2919,11 +2951,11 @@ async function relogAllGames(league) {
     const ensProb = ensembleFromProbs(p, state.weights);
     const predictedWinner = ensProb >= 0.5 ? game.home_team : game.away_team;
     const predictedProb = ensProb >= 0.5 ? ensProb : (1 - ensProb);
-    const eloProb = p.elo_prob || 0.5;
-    const bayesProb = p.bayesian_prob || 0.5;
-    const lrProb = p.logistic_prob || 0.5;
-    const pythProb = p.pyth_prob || 0.5;
-    const effProb = p.eff_prob || 0.5;
+    const eloProb = p.elo_prob ?? 0.5;
+    const bayesProb = p.bayesian_prob ?? 0.5;
+    const lrProb = p.logistic_prob ?? 0.5;
+    const pythProb = p.pyth_prob ?? 0.5;
+    const effProb = p.eff_prob ?? 0.5;
     const eff = game.efficiency || {};
     const homeInj = game.injuries?.home || [];
     const awayInj = game.injuries?.away || [];

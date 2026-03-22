@@ -32,18 +32,10 @@ jobs:
           pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Run NBA feature pipeline
-        run: python scripts/nba_data.py
-        continue-on-error: true
-
-      - name: Run NBA ELO model
-        run: python model/nba_elo_model.py
-        continue-on-error: true
-
-      - name: Run NBA prediction model
+      - name: Run NBA prediction pipeline
         env:
           ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
-        run: python scripts/update_nba_data.py
+        run: python scripts/main.py --nba
 
       - name: Fetch Kalshi markets
         env:
@@ -55,6 +47,6 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: 'chore: update NBA predictions [skip ci]'
-          file_pattern: 'data/nba_*.json data/fte_nba_elo.csv data/nba_fetch_log.txt data/kalshidata.json'
+          file_pattern: 'data/nba_*.json data/nba_fetch_log.txt data/kalshidata.json'
           commit_user_name: 'github-actions[bot]'
           commit_user_email: 'github-actions[bot]@users.noreply.github.com'
