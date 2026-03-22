@@ -4,7 +4,11 @@ Implements Dynamic ELO for all 30 NBA teams with:
   - FiveThirtyEight historical initialization (1946–present)
   - K = 20 (NBA standard per spec)
   - HFA = 100 ELO points (home court advantage, probability calc only)
-  - MOV multiplier: ln(|margin|+1) * (2.2 / (0.001 * elo_diff + 2.2))
+  - MOV multiplier: ln(|margin|+1) * (1.5 / (0.001 * elo_diff + 1.5))
+    FIX (Issue 3): constant changed from 2.2 (NFL-derived) to 1.5 (NBA-calibrated).
+    NBA average margin (~10 pts) is lower than NFL (~13 pts), and higher
+    game totals mean each scoring play carries less predictive signal.
+    Constant 1.5 matches the value already used in model/nba_elo.py.
   - Season regression: 25% toward 1500 at start of each season
   - REST_ELO_BONUS = 15 points added/subtracted for rest differential >= 2
 
@@ -29,7 +33,7 @@ log = logging.getLogger(__name__)
 DATA_DIR = Path(__file__).parent.parent / "data"
 DATA_DIR.mkdir(exist_ok=True)
 
-# ─── Parameters ───────────────────────────────────────────────────────────────
+# ─── Parameters ────────────────────────────────────────────────────────────────────────────────
 K_BASE          = 20.0     # K-factor base (NBA standard)
 HFA             = 100.0    # Home court advantage (added to home ELO for prob calc only)
 INITIAL_ELO     = 1500.0   # Starting ELO for every team
@@ -55,7 +59,7 @@ FTE_TO_ABBREV = {
     "VAN": "MEM", "WAS": "WAS", "WSB": "WAS",
     # Older franchises that merged or relocated
     "AND": None, "BAL": None, "BUF": None, "CAP": "WAS",
-    "CHZ": "WAS", "CIN": None, "CLE": "CLE", "FTW": "DET",
+    "CHZ": "WAS", "CIN": None, "FTW": "DET",
     "INO": "IND", "KCK": "SAC", "KCO": "SAC", "MLH": "ATL",
     "MNL": "LAL", "MNB": None, "NOJ": "UTA", "SDC": "LAC",
     "SDR": "HOU", "SFW": "GSW", "STL": "ATL", "SYR": "PHI",
@@ -69,7 +73,7 @@ NBA_TEAMS = [
 ]
 
 
-# ─── Core ELO functions (mirror elo_model.py structure) ──────────────────────
+# ─── Core ELO functions (mirror elo_model.py structure) ──────────────────────────────
 
 def expected_score(elo_a: float, elo_b: float) -> float:
     """Win probability for team A given ELO ratings."""
@@ -79,9 +83,12 @@ def expected_score(elo_a: float, elo_b: float) -> float:
 def mov_multiplier(point_diff: float, elo_diff: float) -> float:
     """
     Margin of Victory multiplier applied to K before ELO update.
-    Uses NFL-equivalent constant 2.2 per spec.
+    FIX (Issue 3): Uses NBA-calibrated constant 1.5 (not NFL's 2.2).
+    NBA average margin (~10 pts) is lower than NFL (~13 pts), and higher
+    game totals mean each scoring play carries less predictive signal.
+    Constant 1.5 matches model/nba_elo.py (the actively-used NBA ELO module).
     """
-    return log(abs(point_diff) + 1) * (2.2 / (abs(elo_diff) * 0.001 + 2.2))
+    return log(abs(point_diff) + 1) * (1.5 / (abs(elo_diff) * 0.001 + 1.5))
 
 
 def apply_season_regression(elo_dict: dict) -> dict:
@@ -135,13 +142,11 @@ def compute_nba_elo(
         if last_season is not None and season != last_season:
             regressed = apply_season_regression(elo_dict)
             elo_dict.update(regressed)
-            # Clear game history at season start (mirror elo_model.py)
             for t in list(game_history.keys()):
                 game_history[t] = []
 
         last_season = season
 
-        # Initialise new teams
         for t in (team1, team2):
             if t not in elo_dict:
                 elo_dict[t]     = initial_elo
@@ -150,7 +155,6 @@ def compute_nba_elo(
         e1 = elo_dict[team1]
         e2 = elo_dict[team2]
 
-        # Home court adjustment (prob calc only)
         hfa_adj = 0.0 if neutral else hfa
         adj_e1  = e1 + hfa_adj
 
@@ -168,22 +172,14 @@ def compute_nba_elo(
         elo_dict[team1] = e1 + k * mov * (actual1 - exp1)
         elo_dict[team2] = e2 + k * mov * (actual2 - exp2)
 
-        game_history[team1].append({
-            "result":   actual1,
-            "elo_diff": float(adj_e1 - e2),
-            "date":     gdate,
-        })
-        game_history[team2].append({
-            "result":   actual2,
-            "elo_diff": float(e2 - adj_e1),
-            "date":     gdate,
-        })
+        game_history[team1].append({"result": actual1, "elo_diff": float(adj_e1 - e2), "date": gdate})
+        game_history[team2].append({"result": actual2, "elo_diff": float(e2 - adj_e1), "date": gdate})
 
     return elo_dict, game_history
 
 
 def recent_form(game_history: dict, team: str, n: int = 5) -> float:
-    """Win rate over last n games. Mirrors elo_model.py recent_form."""
+    """Win rate over last n games."""
     hist = game_history.get(team, [])
     if not hist:
         return 0.5
@@ -192,7 +188,7 @@ def recent_form(game_history: dict, team: str, n: int = 5) -> float:
 
 
 def get_trend(game_history: dict, team: str, window: int = 5) -> str:
-    """Return 'up', 'down', or 'neutral'. Mirrors elo_model.py get_trend."""
+    """Return 'up', 'down', or 'neutral'."""
     hist = game_history.get(team, [])
     if len(hist) < window * 2:
         return "neutral"
@@ -206,24 +202,16 @@ def get_trend(game_history: dict, team: str, window: int = 5) -> str:
 
 
 def predict_game(
-    home_team: str,
-    away_team: str,
-    elo_dict: dict,
-    game_history: dict,
-    neutral: bool = False,
-    rest_diff: int = 0,       # home_days_rest − away_days_rest
-    hfa: float = HFA,
-    form_blend: float = 0.2,
+    home_team: str, away_team: str, elo_dict: dict, game_history: dict,
+    neutral: bool = False, rest_diff: int = 0, hfa: float = HFA, form_blend: float = 0.2,
 ) -> dict:
     """
     Predict win probability for home_team vs away_team.
     REST_ELO_BONUS applied when |rest_diff| >= 2 (prob calc only).
-    Returns dict mirroring elo_model.py predict_game.
     """
     base_elo_home = elo_dict.get(home_team, INITIAL_ELO)
     base_elo_away = elo_dict.get(away_team, INITIAL_ELO)
 
-    # Recent form adjustment (same formula as elo_model.py)
     form_home = recent_form(game_history, home_team)
     form_away = recent_form(game_history, away_team)
     form_adj_home = (form_home - 0.5) * form_blend * 100.0
@@ -232,11 +220,9 @@ def predict_game(
     adj_home = base_elo_home + form_adj_home
     adj_away = base_elo_away + form_adj_away
 
-    # Home court advantage (prob calc only)
     if not neutral:
         adj_home += hfa
 
-    # Rest adjustment (prob calc only, parameterized by REST_ELO_BONUS)
     if rest_diff >= 2:
         adj_home += REST_ELO_BONUS
     elif rest_diff <= -2:
@@ -245,37 +231,26 @@ def predict_game(
     prob_home = expected_score(adj_home, adj_away)
 
     return {
-        "prob":         float(prob_home),
-        "elo_home":     float(base_elo_home),
-        "elo_away":     float(base_elo_away),
-        "adj_elo_home": float(adj_home),
-        "adj_elo_away": float(adj_away),
-        "form_home":    float(form_home),
-        "form_away":    float(form_away),
-        "elo_diff":     float(adj_home - adj_away),
+        "prob": float(prob_home),
+        "elo_home": float(base_elo_home), "elo_away": float(base_elo_away),
+        "adj_elo_home": float(adj_home), "adj_elo_away": float(adj_away),
+        "form_home": float(form_home), "form_away": float(form_away),
+        "elo_diff": float(adj_home - adj_away),
     }
 
 
-# ─── FiveThirtyEight data ─────────────────────────────────────────────────────
+# ─── FiveThirtyEight data ───────────────────────────────────────────────────────────────────────────────────
 
 def load_fte_data(force_download: bool = False) -> pd.DataFrame:
-    """
-    Load FiveThirtyEight historical NBA ELO CSV.
-    Downloads once and caches locally at data/fte_nba_elo.csv.
-    """
     if FTE_CACHE_PATH.exists() and not force_download:
-        log.info(f"Loading FTE NBA ELO from cache: {FTE_CACHE_PATH}")
         try:
             return pd.read_csv(FTE_CACHE_PATH, low_memory=False)
-        except Exception as e:
-            log.warning(f"Cache read failed ({e}), re-downloading...")
-
-    log.info(f"Downloading FTE NBA ELO from {FTE_NBA_URL}")
+        except Exception:
+            pass
     try:
         resp = requests.get(FTE_NBA_URL, timeout=60)
         resp.raise_for_status()
         FTE_CACHE_PATH.write_bytes(resp.content)
-        log.info(f"FTE NBA ELO cached at {FTE_CACHE_PATH}")
         return pd.read_csv(FTE_CACHE_PATH, low_memory=False)
     except Exception as e:
         log.error(f"Failed to download FTE NBA ELO: {e}")
@@ -283,192 +258,100 @@ def load_fte_data(force_download: bool = False) -> pd.DataFrame:
 
 
 def fte_to_game_list(df: pd.DataFrame) -> list:
-    """
-    Convert FiveThirtyEight nbaallelo.csv to the format expected by compute_nba_elo().
-    FTE columns: date, season, team_id, fran_id, pts, opp_pts, game_location, game_result.
-    Each row is one team's view — we reconstruct full games.
-    """
     if df.empty:
         return []
-
     df = df.copy()
-    # Normalise column names to lowercase
     df.columns = [c.lower() for c in df.columns]
-
     required = {"date", "season", "team_id", "pts", "opp_pts"}
     if not required.issubset(df.columns):
-        log.warning(f"FTE CSV missing columns. Found: {list(df.columns)}")
         return []
-
     df["date"] = pd.to_datetime(df["date"], errors="coerce")
-    df = df.dropna(subset=["date", "pts", "opp_pts"])
-    df = df.sort_values("date")
-
-    # Filter to home games only to avoid duplicates (game_location == 'H')
-    if "game_location" in df.columns:
-        home_df = df[df["game_location"] == "H"].copy()
-    elif "is_playoffs" in df.columns or "playoff" in df.columns:
-        # Fallback: take every-other row by game_id grouping
-        home_df = df.drop_duplicates(subset=["date", "season", "pts", "opp_pts"])
-    else:
-        # If no location column, deduplicate using game_id or pts pairing
-        home_df = df.copy()
-
+    df = df.dropna(subset=["date", "pts", "opp_pts"]).sort_values("date")
+    home_df = df[df["game_location"] == "H"].copy() if "game_location" in df.columns else df.copy()
     games = []
     for _, row in home_df.iterrows():
         raw_team = str(row.get("team_id", "") or row.get("fran_id", "")).upper()
-        team1    = FTE_TO_ABBREV.get(raw_team)
+        team1 = FTE_TO_ABBREV.get(raw_team)
         if team1 is None:
             continue
-
-        # Opponent is harder — FTE only has opponent's pts in this row
-        # We reconstruct from the pair in the dataframe
-        # Use game_id if available; otherwise match by date+pts
         raw_opp = str(row.get("opp_id", "") or "").upper()
-        team2   = FTE_TO_ABBREV.get(raw_opp)
+        team2 = FTE_TO_ABBREV.get(raw_opp)
         if team2 is None:
-            continue  # skip games with unknown/historical teams
-
+            continue
         games.append({
-            "date":    row["date"].strftime("%Y-%m-%d"),
-            "season":  int(row.get("season", 1946)),
-            "team1":   team1,
-            "team2":   team2,
-            "score1":  float(row["pts"]),
-            "score2":  float(row["opp_pts"]),
+            "date": row["date"].strftime("%Y-%m-%d"),
+            "season": int(row.get("season", 1946)),
+            "team1": team1, "team2": team2,
+            "score1": float(row["pts"]), "score2": float(row["opp_pts"]),
             "neutral": int(row.get("neutral", 0) if "neutral" in row.index else 0),
         })
-
-    log.info(f"Parsed {len(games)} games from FTE NBA ELO data")
     return games
 
 
-# ─── Save ratings ─────────────────────────────────────────────────────────────
+# ─── Save ratings ───────────────────────────────────────────────────────────────────────────────────────
 
-def save_ratings(
-    elo_dict: dict,
-    game_history: dict,
-    season_year: int,
-    path: Path = None,
-) -> None:
-    """
-    Write nba_elo_ratings.json mirroring the format of elo_ratings.json.
-    """
+def save_ratings(elo_dict: dict, game_history: dict, season_year: int, path: Path = None) -> None:
     if path is None:
         path = DATA_DIR / "nba_elo_ratings.json"
-
     ratings = []
     for team in sorted(elo_dict.keys()):
         hist = game_history.get(team, [])
-        wins   = sum(1 for g in hist if g["result"] == 1.0)
+        wins = sum(1 for g in hist if g["result"] == 1.0)
         losses = sum(1 for g in hist if g["result"] == 0.0)
-        elo    = elo_dict[team]
         ratings.append({
-            "team":         team,
-            "elo":          round(elo, 1),
-            "games_played": wins + losses,
-            "wins":         wins,
-            "losses":       losses,
-            "trend":        get_trend(game_history, team),
+            "team": team, "elo": round(elo_dict[team], 1),
+            "games_played": wins + losses, "wins": wins, "losses": losses,
+            "trend": get_trend(game_history, team),
         })
-
-    # Sort by ELO descending
     ratings.sort(key=lambda r: r["elo"], reverse=True)
-
-    output = {
+    path.write_text(json.dumps({
         "updated": datetime.now(timezone.utc).isoformat(),
-        "season":  season_year,
-        "ratings": ratings,
-    }
-
-    path.write_text(json.dumps(output, indent=2))
-    log.info(f"Wrote NBA ELO ratings for {len(ratings)} teams to {path}")
+        "season": season_year, "ratings": ratings,
+    }, indent=2))
 
 
-# ─── Main ─────────────────────────────────────────────────────────────────────
+# ─── Main ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
 def main():
     from datetime import datetime as dt
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
-
-    now          = dt.now()
-    season_year  = now.year + (1 if now.month >= 10 else 0)
-
+    now = dt.now()
+    season_year = now.year + (1 if now.month >= 10 else 0)
     log.info("=== NBA ELO Model (nba_elo_model.py) starting ===")
-    log.info(f"K_BASE={K_BASE}, HFA={HFA}, REGRESS_PCT={REGRESS_PCT}, REST_ELO_BONUS={REST_ELO_BONUS}")
-
-    # ── 1. Load FiveThirtyEight historical data ───────────────────────────────
-    log.info("Loading FiveThirtyEight NBA ELO data...")
     fte_df = load_fte_data()
-
     if not fte_df.empty:
-        log.info(f"FTE data: {len(fte_df)} rows, seasons {fte_df['season'].min()}–{fte_df['season'].max()}" if "season" in fte_df.columns else f"FTE data: {len(fte_df)} rows")
         fte_games = fte_to_game_list(fte_df)
     else:
-        log.warning("FTE data unavailable — starting from scratch with all teams at 1500.")
         fte_games = []
-
-    # ── 2. Compute ELO from FTE history ──────────────────────────────────────
     if fte_games:
-        log.info(f"Computing ELO from {len(fte_games)} historical FTE games...")
         elo_dict, game_history = compute_nba_elo(fte_games)
     else:
-        elo_dict     = {t: INITIAL_ELO for t in NBA_TEAMS}
+        elo_dict = {t: INITIAL_ELO for t in NBA_TEAMS}
         game_history = {t: [] for t in NBA_TEAMS}
-
-    # Ensure all 30 current teams are present
     for team in NBA_TEAMS:
         if team not in elo_dict:
-            elo_dict[team]     = INITIAL_ELO
+            elo_dict[team] = INITIAL_ELO
             game_history[team] = []
-
-    # ── 3. Load recent season data for final ELO updates ─────────────────────
-    # Try to import ESPN-fetched game list from update_nba_data to extend
     try:
         recent_json = DATA_DIR / "nba_results.json"
         if recent_json.exists():
             results = json.loads(recent_json.read_text()).get("results", [])
-            if results:
-                log.info(f"Extending ELO with {len(results)} recent games from nba_results.json...")
-                # Only use games after the FTE cutoff date
-                fte_cutoff = "2024-10-01"  # FTE data typically lags; use recent games
-                recent_only = [g for g in results if g.get("game_date", "") >= fte_cutoff]
-                if recent_only:
-                    recent_games = [
-                        {
-                            "date":    g["game_date"],
-                            "season":  g["season"],
-                            "team1":   g["home_team"],
-                            "team2":   g["away_team"],
-                            "score1":  g["home_score"],
-                            "score2":  g["away_score"],
-                            "neutral": 0,
-                        }
-                        for g in recent_only
-                        if g.get("home_score") and g.get("away_score")
-                    ]
-                    if recent_games:
-                        # Apply one more season regression if crossing a season boundary
-                        elo_dict, game_history = compute_nba_elo(
-                            recent_games,
-                            k_base=K_BASE,
-                            hfa=HFA,
-                            initial_elo=INITIAL_ELO,
-                            regress_pct=REGRESS_PCT,
-                        )
-                        log.info("ELO extended with recent ESPN results.")
+            recent_only = [g for g in results if g.get("game_date", "") >= "2024-10-01"]
+            if recent_only:
+                recent_games = [
+                    {"date": g["game_date"], "season": g["season"],
+                     "team1": g["home_team"], "team2": g["away_team"],
+                     "score1": g["home_score"], "score2": g["away_score"], "neutral": 0}
+                    for g in recent_only if g.get("home_score") and g.get("away_score")
+                ]
+                if recent_games:
+                    elo_dict, game_history = compute_nba_elo(recent_games)
     except Exception as e:
         log.warning(f"Could not extend ELO with recent results: {e}")
-
-    # ── 4. Save ratings ───────────────────────────────────────────────────────
-    log.info("Saving NBA ELO ratings...")
     save_ratings(elo_dict, game_history, season_year)
-
-    # Quick sanity check
     if elo_dict:
-        elos  = list(elo_dict.values())
+        elos = list(elo_dict.values())
         log.info(f"ELO range: {min(elos):.0f} – {max(elos):.0f}, mean: {sum(elos)/len(elos):.0f}")
-
     log.info("=== NBA ELO Model complete ===")
 
 
