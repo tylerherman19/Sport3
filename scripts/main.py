@@ -282,6 +282,7 @@ def run_nfl():
                 lps = predict_matchups(md,logistic_model,logistic_scaler,logistic_calibrator,
                                        elo_dict,game_history,efficiency_data,pythagorean_data)
                 if lps: lp = lps[0]["logistic_prob"]
+            exported_lp = lp if lp is not None else 0.5
             xp = None
             if xgb_model and xgb_scaler:
                 xps = predict_xgboost(md,xgb_model,xgb_scaler,elo_dict,game_history,efficiency_data,pythagorean_data)
@@ -316,7 +317,7 @@ def run_nfl():
                 "home_name":game.get("home_name",home),"away_name":game.get("away_name",away),
                 "home_logo":game.get("home_logo",""),"away_logo":game.get("away_logo",""),
                 "neutral":neutral,"home_score":game.get("home_score",0),"away_score":game.get("away_score",0),
-                "predictions":{"ensemble_prob":ep,"logistic_prob":round(lp,4) if lp is not None else None,"elo_prob":round(er["prob"],4),
+                "predictions":{"ensemble_prob":ep,"logistic_prob":round(exported_lp,4),"elo_prob":round(er["prob"],4),
                                "xgb_prob":xp,"pyth_prob":effr["pyth_prob"],"eff_prob":effr["eff_prob"],
                                "bayesian_prob":br["bayesian_prob"]},
                 "market":{"home_prob":mhp,"edge":me,"kelly_pct":kp,
