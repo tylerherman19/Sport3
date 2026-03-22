@@ -544,7 +544,7 @@ def run_nba():
             log.error(f"NBA XGBoost training failed: {e}")
 
     rec_games = [g for g in historical_games if g.get("season",0)>=season_year-1]
-    bayesian_ratings = update_ratings(rec_games, elo_dict)
+    bayesian_ratings = update_ratings(rec_games, elo_dict, hfa=100.0)
     for t in NBA_TEAMS: bayesian_ratings.setdefault(t,{"mu":elo_dict.get(t,1500.0),"sigma":75.0})
 
     remaining = [{"team_a":g["home_team"],"team_b":g["away_team"],"is_home_a":True,"neutral":bool(g.get("neutral",False))}
@@ -618,7 +618,7 @@ def run_nba():
             ep2  = er["prob"]
             if ijah!=0.0 or ijaa!=0.0:
                 ep2 = nba_expected_score(er["home_adj_elo"]+ijah, er["away_adj_elo"]+ijaa)
-            br  = bayes_predict(home,away,bayesian_ratings,is_home_a=True,neutral=neutral)
+            br  = bayes_predict(home,away,bayesian_ratings,is_home_a=True,neutral=neutral,hfa=100.0)
             bpr = br.get("bayesian_prob",0.5)
             phome = pyth_data.get(home,{}).get("pyth",0.5); paway = pyth_data.get(away,{}).get("pyth",0.5)
             phj  = phome*(1.0+hfa/1500.0); _pd = phj+paway
