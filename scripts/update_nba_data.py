@@ -32,6 +32,9 @@ except ImportError:
     HAS_NBA_ELO_MODEL = False
     save_nba_elo_ratings = None
 
+from scripts.output_writer import write_nba_abort_log
+from scripts.data_fetcher import fetch_nba_player_stats_cdn
+
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
 log = logging.getLogger(__name__)
 
@@ -272,10 +275,10 @@ def _ppg_to_value_mult(ppg: float) -> float:
     return min(raw, 2.5)
 
 
-def build_nba_player_values():
+def build_nba_player_values(season_year=None):
     """
     Build NBA player value multipliers using a priority stack:
-      1. PPG-based continuous value (if available from ESPN stats fetch)
+      1. PPG-based continuous value — CDN primary, ESPN fallback
       2. Live ESPN depth chart position
       3. Static NBA_PLAYER_TIERS curated list (fallback)
 
@@ -296,7 +299,16 @@ def build_nba_player_values():
             values[name] = live_val
 
     # ── Tier 1 (highest priority): PPG-based continuous value ────────────────
-    player_ppg = fetch_nba_player_ppg()
+    # Use CDN as primary source; fall back to ESPN athletes path
+    player_ppg = {}
+    if season_year is not None:
+        try:
+            player_ppg = fetch_nba_player_stats_cdn(season_year)
+        except Exception as e:
+            log.warning(f"CDN player stats failed: {e} — falling back to ESPN")
+    if not player_ppg:
+        player_ppg = fetch_nba_player_ppg()
+
     for name, ppg in player_ppg.items():
         ppg_val = _ppg_to_value_mult(ppg)
         # Always apply PPG value when available — it reflects current production
@@ -474,33 +486,50 @@ def fetch_nba_standings():
     if cdn_data:
         standings = {}
         try:
-            rows = cdn_data.get("standings", [])
-            if rows and isinstance(rows[0], dict):
-                for row in rows:
-                    team_abbrev = abbrev_norm(row.get("teamAbbreviation", ""))
-                    if not team_abbrev:
-                        continue
-                    wins = int(row.get("wins", 0))
-                    losses = int(row.get("losses", 0))
-                    off_rtg = float(row.get("offensiveRating", row.get("OffRating", 110.0)))
-                    def_rtg = float(row.get("defensiveRating", row.get("DefRating", 110.0)))
-                    standings[team_abbrev] = {
-                        "wins": wins,
-                        "losses": losses,
-                        "win_pct": wins / max(wins + losses, 1),
-                        "points_for": 0.0,   # CDN static doesn't include totals;
-                        "points_against": 0.0,  # PPG overridden from game history later
-                        "games_played": wins + losses,
-                        "offensive_rating": off_rtg,
-                        "defensive_rating": def_rtg,
-                        "net_rating": off_rtg - def_rtg,
-                        "pace": float(row.get("pace", 100.0)),
-                        "assist_turnover_ratio": 1.8,
-                        "rebound_rate": 0.5,
-                        "three_point_rate": 0.35,
-                        "free_throw_rate": 0.20,
-                        "streak": 0,
-                    }
+            # CDN schema may be nested {"standings": {"teams": [...]}} or flat {"standings": [...]}
+            raw = cdn_data.get("standings", {})
+            if isinstance(raw, dict):
+                rows = raw.get("teams", raw.get("rows", raw.get("TeamStandings", [])))
+            elif isinstance(raw, list):
+                rows = raw
+            else:
+                rows = []
+            for row in rows:
+                if not isinstance(row, dict):
+                    continue
+                team_abbrev = abbrev_norm(row.get("teamAbbreviation", row.get("TeamAbbreviation", "")))
+                if not team_abbrev:
+                    continue
+                wins = int(row.get("wins", row.get("WINS", 0)))
+                losses = int(row.get("losses", row.get("LOSSES", 0)))
+                # Try multiple key name conventions for ORTG/DRTG
+                off_rtg = float(row.get("offensiveRating",
+                                row.get("OffRating",
+                                row.get("offRating",
+                                row.get("ortg",
+                                row.get("OffensiveRating", 110.0))))))
+                def_rtg = float(row.get("defensiveRating",
+                                row.get("DefRating",
+                                row.get("defRating",
+                                row.get("drtg",
+                                row.get("DefensiveRating", 110.0))))))
+                standings[team_abbrev] = {
+                    "wins": wins,
+                    "losses": losses,
+                    "win_pct": wins / max(wins + losses, 1),
+                    "points_for": 0.0,   # CDN static doesn't include totals;
+                    "points_against": 0.0,  # PPG overridden from game history later
+                    "games_played": wins + losses,
+                    "offensive_rating": off_rtg,
+                    "defensive_rating": def_rtg,
+                    "net_rating": off_rtg - def_rtg,
+                    "pace": float(row.get("pace", row.get("Pace", 100.0))),
+                    "assist_turnover_ratio": 1.8,
+                    "rebound_rate": 0.5,
+                    "three_point_rate": 0.35,
+                    "free_throw_rate": 0.20,
+                    "streak": 0,
+                }
             if standings:
                 log.info(f"NBA standings (cdn) for {len(standings)} teams")
                 return standings
@@ -533,10 +562,8 @@ def fetch_nba_standings():
                 losses = int(stats.get("losses", 0))
                 points_for = float(stats.get("pointsFor", 0))
                 points_against = float(stats.get("pointsAgainst", 0))
-                # avgPointsFor/avgPointsAgainst ≈ PPG scored/allowed ≈ ORTG/DRTG numerically
-                off_rating = float(stats.get("avgPointsFor", 110.0))
-                def_rating = float(stats.get("avgPointsAgainst", 110.0))
-                net_rating = off_rating - def_rating
+                # avgPointsFor/avgPointsAgainst are raw PPG, NOT pace-adjusted ORTG/DRTG.
+                # Store as ppg_for/ppg_against; use 110.0 defaults for ORTG/DRTG.
 
                 standings[team_abbrev] = {
                     "wins": wins,
@@ -544,10 +571,12 @@ def fetch_nba_standings():
                     "win_pct": float(stats.get("winPercent", 0)),
                     "points_for": points_for,
                     "points_against": points_against,
+                    "ppg_for": float(stats.get("avgPointsFor", 0.0)),
+                    "ppg_against": float(stats.get("avgPointsAgainst", 0.0)),
                     "games_played": wins + losses,
-                    "offensive_rating": off_rating,
-                    "defensive_rating": def_rating,
-                    "net_rating": net_rating,
+                    "offensive_rating": 110.0,  # ESPN does not provide real ORTG
+                    "defensive_rating": 110.0,  # ESPN does not provide real DRTG
+                    "net_rating": 0.0,
                     "pace": 100.0,
                     "assist_turnover_ratio": 1.8,
                     "rebound_rate": 0.5,
@@ -845,12 +874,12 @@ def build_nba_efficiency_data(standings):
 
 
 def compute_nba_pythagorean(efficiency_data):
-    """NBA Pythagorean expectation with exponent 16.5."""
+    """NBA Pythagorean expectation with exponent 13.91 (NBA canonical Morey exponent)."""
     pyth_data = {}
     for team, eff in efficiency_data.items():
         pf = max(eff.get("ppg_for", 110.0), 1.0)
         pa = max(eff.get("ppg_against", 110.0), 1.0)
-        exp = 16.5
+        exp = 13.91  # NBA canonical Morey exponent (was 16.5, NFL-calibrated)
         pyth = (pf ** exp) / ((pf ** exp) + (pa ** exp))
         pyth_data[team] = {"pyth": round(pyth, 4)}
     return pyth_data
@@ -907,16 +936,18 @@ def build_nba_features(games, elo_dict, game_history, efficiency_data, pyth_data
             rest2 = days_since_last_game(game_history, t2, game_date)
             rest_diff = float(rest1 - rest2)
             b2b1 = 1.0 if rest1 <= 1 else 0.0
+            b2b2 = 1.0 if rest2 <= 1 else 0.0  # away team b2b
         except (ValueError, TypeError):
             rest_diff = 0.0
             b2b1 = 0.0
+            b2b2 = 0.0
 
         feat = [
             elo_diff, hfa, rest_diff,
             pyth_diff, net_diff,
             off_diff, def_diff, pace_diff,
             to_diff, three_diff, reb_diff, ft_diff,
-            form_diff, b2b1,
+            form_diff, b2b1 - b2b2,  # difference, not home-only (matches inference)
         ]
         features.append(feat)
         targets.append(1 if s1 > s2 else 0)
@@ -954,14 +985,14 @@ def train_nba_logistic(X, y):
 
 def predict_nba_logistic(home_feat, model, scaler, calibrator):
     if model is None or scaler is None:
-        return 0.5
+        return None
     try:
         x = scaler.transform([home_feat])
         raw_prob = model.predict_proba(x)[0][1]
         return float(calibrator.transform([raw_prob])[0]) if calibrator else raw_prob
     except Exception as e:
         log.warning(f"NBA logistic prediction failed: {e}")
-        return 0.5
+        return None
 
 
 def train_nba_xgboost(X, y):
@@ -1095,17 +1126,24 @@ def nba_ensemble_predict(elo_prob, pyth_prob, eff_prob, log_prob=None, xgb_prob=
     if weights is None:
         weights = {"elo": 0.25, "pyth": 0.20, "eff": 0.15, "log": 0.25, "xgb": 0.15}
 
-    xgb_val = xgb_prob if xgb_prob is not None else log_prob if log_prob is not None else elo_prob
-    log_val = log_prob if log_prob is not None else elo_prob
-
-    total_w = sum(weights.values())
-    val = (
-        weights["elo"] * elo_prob +
-        weights["pyth"] * pyth_prob +
-        weights["eff"] * eff_prob +
-        weights["log"] * log_val +
-        weights["xgb"] * xgb_val
-    ) / total_w
+    # Handle None models by excluding their weights (avoids 50/50 contamination)
+    if xgb_prob is None and log_prob is None:
+        total_w = weights["elo"] + weights["pyth"] + weights["eff"]
+        val = (weights["elo"] * elo_prob + weights["pyth"] * pyth_prob +
+               weights["eff"] * eff_prob) / max(total_w, 1e-9)
+    elif xgb_prob is None:
+        total_w = weights["elo"] + weights["pyth"] + weights["eff"] + weights["log"]
+        val = (weights["elo"] * elo_prob + weights["pyth"] * pyth_prob +
+               weights["eff"] * eff_prob + weights["log"] * log_prob) / max(total_w, 1e-9)
+    elif log_prob is None:
+        total_w = weights["elo"] + weights["pyth"] + weights["eff"] + weights["xgb"]
+        val = (weights["elo"] * elo_prob + weights["pyth"] * pyth_prob +
+               weights["eff"] * eff_prob + weights["xgb"] * xgb_prob) / max(total_w, 1e-9)
+    else:
+        total_w = sum(weights.values())
+        val = (weights["elo"] * elo_prob + weights["pyth"] * pyth_prob +
+               weights["eff"] * eff_prob + weights["log"] * log_prob +
+               weights["xgb"] * xgb_prob) / max(total_w, 1e-9)
 
     return float(max(0.01, min(0.99, val)))
 
@@ -1225,6 +1263,23 @@ def run():
         all_games_for_prediction = scoreboard_games + future_games
 
     if len(scoreboard_games) == 0 and len(future_games) == 0:
+        # Try wider fallback window (±3 days) before deciding to abort
+        log.warning("Still 0 games after initial fallback — trying wider ±3-day window...")
+        for _delta in range(-3, 4):
+            _ds = (datetime.now(timezone.utc) + timedelta(days=_delta)).strftime('%Y%m%d')
+            _d = safe_get(f"{ESPN_NBA_WEB_BASE}/scoreboard?dates={_ds}&limit=20&seasontype=2")
+            if not _d or not _d.get("events"):
+                _d = safe_get(f"{ESPN_NBA_BASE}/scoreboard?dates={_ds}&limit=20&seasontype=2")
+            if _d:
+                for _g in parse_nba_events(_d):
+                    if _g["game_id"] not in existing_ids:
+                        existing_ids.add(_g["game_id"])
+                        if _delta > 0:
+                            _g["is_future"] = True
+                        future_games.append(_g)
+        all_games_for_prediction = scoreboard_games + future_games
+
+    if len(scoreboard_games) == 0 and len(future_games) == 0:
         # Only abort if the existing file already contains game data worth preserving
         existing_predictions_path = DATA_DIR / "nba_predictions.json"
         has_existing_data = False
@@ -1235,13 +1290,19 @@ def run():
             except Exception:
                 has_existing_data = False
         if has_existing_data:
-            log.error("Both scoreboard and future game fetches returned 0 games — aborting to preserve existing nba_predictions.json")
+            msg = "Both scoreboard and future game fetches returned 0 games — aborting to preserve existing nba_predictions.json"
+            log.error(msg)
+            write_nba_abort_log(
+                reason=msg,
+                now_utc=now_utc,
+                counts={"scoreboard_games": 0, "future_games": 0},
+            )
             return
         log.warning("Both fetches returned 0 games and no existing data found — proceeding with empty games list")
 
     # ── 1b. Injury impacts ──────────────────────────────────────────────────
     log.info("Computing NBA injury impacts...")
-    nba_player_values = build_nba_player_values()
+    nba_player_values = build_nba_player_values(season_year=season_year)
     injury_impacts = compute_all_nba_team_impacts(injuries, nba_player_values)
 
     # Save NBA injuries file (only overwrite if we actually fetched data)
@@ -1275,10 +1336,21 @@ def run():
     # will fall back to 50% neutral defaults (ELO=1500 everywhere) and
     # overwrite any good predictions that already exist. Abort instead.
     if len(historical_games) < 200:
-        log.critical(
+        msg = (
             f"NBA historical fetch returned only {len(historical_games)} games "
-            f"(need >= 200) — aborting to preserve existing nba_predictions.json. "
-            f"Check ESPN scoreboard API availability."
+            f"(need >= 200) — aborting NBA pipeline to prevent overwriting "
+            f"predictions with 50% defaults. Check ESPN scoreboard API availability."
+        )
+        log.critical(msg)
+        write_nba_abort_log(
+            reason=msg,
+            now_utc=now_utc,
+            counts={
+                "historical_games": len(historical_games),
+                "required_minimum": 200,
+                "scoreboard_games": len(scoreboard_games),
+                "future_games": len(future_games),
+            },
         )
         return
 
@@ -1321,10 +1393,12 @@ def run():
             efficiency_data[_t]["ppg_against"] = _ppg[_t]["pa"] / _ppg[_t]["gp"]
     pyth_data = compute_nba_pythagorean(efficiency_data)
 
-    # ── 5. Train NBA logistic model ─────────────────────────────────────────
+    # ── 5 & 6. Build features once, train logistic and XGBoost on same X, y ──
     log.info("Training NBA logistic model...")
     logistic_model, logistic_scaler, logistic_calibrator = None, None, None
     model_metrics = {"log_loss": None, "brier_score": None, "auc": None}
+    xgb_model, xgb_scaler = None, None
+    X, y = np.array([]).reshape(0, 14), np.array([])
 
     if historical_games and len(historical_games) > 100:
         try:
@@ -1340,15 +1414,11 @@ def run():
         except Exception as e:
             log.error(f"NBA logistic training failed: {e}")
 
-    # ── 6. Train NBA XGBoost ───────────────────────────��────────────────────
+    # ── 6. Train NBA XGBoost (reuse same X, y — no redundant build_nba_features call) ──
     log.info("Training NBA XGBoost model...")
-    xgb_model, xgb_scaler = None, None
-    if historical_games and len(historical_games) > 100:
+    if len(X) > 50:
         try:
-            X_xgb, y_xgb = build_nba_features(historical_games, elo_dict, game_history,
-                                                efficiency_data, pyth_data)
-            if len(X_xgb) > 50:
-                xgb_model, xgb_scaler = train_nba_xgboost(X_xgb, y_xgb)
+            xgb_model, xgb_scaler = train_nba_xgboost(X, y)
         except Exception as e:
             log.error(f"NBA XGBoost training failed: {e}")
 
@@ -1356,7 +1426,8 @@ def run():
     log.info("Computing NBA Bayesian ratings...")
     recent_games = [g for g in historical_games if
                     g.get("season", 0) >= season_year - 1]
-    bayesian_ratings = update_ratings(recent_games, elo_dict, hfa=100.0)
+    bayesian_ratings = update_ratings(recent_games, elo_dict, hfa=100.0,
+                                       margin_multiplier=5.0, obs_noise=130.0)
     for team in NBA_TEAMS:
         if team not in bayesian_ratings:
             bayesian_ratings[team] = {"mu": elo_dict.get(team, 1500.0), "sigma": 75.0}
@@ -1404,8 +1475,8 @@ def run():
     weights_path = DATA_DIR / "ensemble_weights_nba.json"
     try:
         from model.ensemble_model import learn_ensemble_weights
-        completed_hist = [g for g in historical_games if g.get("home_score") is not None
-                          and g.get("away_score") is not None][-500:]  # last 500 games
+        completed_hist = [g for g in historical_games if g.get("score1") is not None
+                          and g.get("score2") is not None][-500:]  # last 500 games
         if len(completed_hist) >= 50:
             from model.nba_elo import nba_expected_score as _nes
             sub_probs_hist = []
@@ -1526,8 +1597,9 @@ def run():
             # Pythagorean prediction — direct ratio (Bradley-Terry), not ELO transform
             pyth_home = pyth_data.get(home, {}).get("pyth", 0.5)
             pyth_away = pyth_data.get(away, {}).get("pyth", 0.5)
-            # Scale home court advantage into pythagorean space (hfa=100 ELO ≈ +6.7% win prob)
-            pyth_home_adj = pyth_home * (1.0 + hfa / 1500.0)
+            # Scale home court advantage into pythagorean space.
+            # Divisor 213.0 calibrated so equal teams → ~59.5% home win (NBA historical HWR).
+            pyth_home_adj = pyth_home * (1.0 + hfa / 213.0)
             _pyth_denom = pyth_home_adj + pyth_away
             pyth_prob = pyth_home_adj / _pyth_denom if _pyth_denom > 0 else 0.5
             # ELO-equivalent pythagorean values for logistic feature vector
@@ -1718,7 +1790,7 @@ def run():
                 "away_score": game.get("away_score", 0),
                 "predictions": {
                     "ensemble_prob": round(ensemble_prob, 4),
-                    "logistic_prob": round(log_prob, 4),
+                    "logistic_prob": round(log_prob, 4) if log_prob is not None else None,
                     "elo_prob": round(elo_prob, 4),
                     "xgb_prob": round(xgb_prob, 4) if xgb_prob is not None else None,
                     "pyth_prob": round(pyth_prob, 4),
@@ -1784,6 +1856,12 @@ def run():
 
         except Exception as e:
             log.error(f"Error processing NBA game {game.get('game_id', '?')}: {e}")
+
+    # Sort predictions: live → upcoming → complete, then by game_time within each group
+    _STATUS_ORDER = {"STATUS_IN_PROGRESS": 0, "STATUS_SCHEDULED": 1, "STATUS_FINAL": 2}
+    predictions_list.sort(
+        key=lambda g: (_STATUS_ORDER.get(g.get("status", ""), 3), g.get("game_time", ""))
+    )
 
     # ── 10. Build NBA leaderboard ────────────────────────────────────────────
     log.info("Building NBA leaderboard...")

@@ -260,7 +260,7 @@ def compute_nba_pythagorean(efficiency_data: dict) -> dict:
     for team, eff in efficiency_data.items():
         pf = max(eff.get("ppg_for", 110.0), 1.0)
         pa = max(eff.get("ppg_against", 110.0), 1.0)
-        exp = 16.5
+        exp = 13.91  # NBA canonical Morey exponent (was 16.5, NFL-calibrated)
         pyth_data[team] = {"pyth": round((pf ** exp) / ((pf ** exp) + (pa ** exp)), 4)}
     return pyth_data
 
@@ -298,8 +298,9 @@ def build_nba_features(games, elo_dict, game_history, efficiency_data, pyth_data
             rest2 = nba_days_since_last_game(game_history, t2, game_date)
             rest_diff = float(rest1 - rest2)
             b2b1 = 1.0 if rest1 <= 1 else 0.0
+            b2b2 = 1.0 if rest2 <= 1 else 0.0
         except (ValueError, TypeError):
-            rest_diff, b2b1 = 0.0, 0.0
+            rest_diff, b2b1, b2b2 = 0.0, 0.0, 0.0
         features.append([
             (e1 + hfa) - e2, hfa, rest_diff,
             (1500 + (pyth1 - 0.5) * 400) - (1500 + (pyth2 - 0.5) * 400),
@@ -312,7 +313,7 @@ def build_nba_features(games, elo_dict, game_history, efficiency_data, pyth_data
             eff1.get("rebound_rate", 0.5) - eff2.get("rebound_rate", 0.5),
             eff1.get("free_throw_rate", 0.20) - eff2.get("free_throw_rate", 0.20),
             nba_recent_form(game_history, t1) - nba_recent_form(game_history, t2),
-            b2b1,
+            b2b1 - b2b2,  # difference, not home-only (matches inference)
         ])
         targets.append(1 if s1 > s2 else 0)
     return (np.array(features) if features else np.array([]).reshape(0, 14), np.array(targets))
@@ -339,15 +340,15 @@ def train_nba_logistic(X, y):
     return model, scaler, cal
 
 
-def predict_nba_logistic(home_feat, model, scaler, calibrator) -> float:
+def predict_nba_logistic(home_feat, model, scaler, calibrator):
     if model is None or scaler is None:
-        return 0.5
+        return None
     try:
         raw = model.predict_proba(scaler.transform([home_feat]))[0][1]
         return float(calibrator.transform([raw])[0]) if calibrator else raw
     except Exception as e:
         log.warning(f"NBA logistic prediction failed: {e}")
-        return 0.5
+        return None
 
 
 def train_nba_xgboost(X, y):
@@ -392,16 +393,23 @@ def nba_ensemble_predict(elo_prob, pyth_prob, eff_prob,
                           log_prob=None, xgb_prob=None, weights=None) -> float:
     if weights is None:
         weights = {"elo": 0.25, "pyth": 0.20, "eff": 0.15, "log": 0.25, "xgb": 0.15}
-    log_val = log_prob if log_prob is not None else elo_prob
-    if xgb_prob is None:
-        # Redistribute XGB weight to remaining models rather than double-counting logistic
+    # Handle None models by excluding their weights (avoids 50/50 contamination)
+    if xgb_prob is None and log_prob is None:
+        total_w = weights["elo"] + weights["pyth"] + weights["eff"]
+        val = (weights["elo"]*elo_prob + weights["pyth"]*pyth_prob +
+               weights["eff"]*eff_prob) / max(total_w, 1e-9)
+    elif xgb_prob is None:
         total_w = weights["elo"] + weights["pyth"] + weights["eff"] + weights["log"]
         val = (weights["elo"]*elo_prob + weights["pyth"]*pyth_prob +
-               weights["eff"]*eff_prob + weights["log"]*log_val) / max(total_w, 1e-9)
+               weights["eff"]*eff_prob + weights["log"]*log_prob) / max(total_w, 1e-9)
+    elif log_prob is None:
+        total_w = weights["elo"] + weights["pyth"] + weights["eff"] + weights["xgb"]
+        val = (weights["elo"]*elo_prob + weights["pyth"]*pyth_prob +
+               weights["eff"]*eff_prob + weights["xgb"]*xgb_prob) / max(total_w, 1e-9)
     else:
         total_w = sum(weights.values())
         val = (weights["elo"]*elo_prob + weights["pyth"]*pyth_prob + weights["eff"]*eff_prob
-               + weights["log"]*log_val + weights["xgb"]*xgb_prob) / max(total_w, 1e-9)
+               + weights["log"]*log_prob + weights["xgb"]*xgb_prob) / max(total_w, 1e-9)
     return float(max(0.01, min(0.99, val)))
 
 
