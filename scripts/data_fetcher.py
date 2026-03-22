@@ -7,6 +7,11 @@ NBA endpoints (all stable, no auth required):
   - ESPN scoreboard: site.api.espn.com (primary)
   - cdn.nba.com/stats/leaguedashplayerstats (replaces stats.nba.com)
   - cdn.nba.com/static/json/staticData/standings.json
+
+Fallback:
+  - balldontlie.io (All-Star tier) used only when primary sources
+    return None or raise errors. Endpoints used: /v1/games, /v1/players,
+    /v1/teams. Stats and injury endpoints are NOT used (blocked on this tier).
 """
 
 import logging
@@ -28,6 +33,32 @@ CDN_NBA_STATIC     = "https://cdn.nba.com/static/json"
 FTE_URL            = "https://raw.githubusercontent.com/fivethirtyeight/data/master/nfl-elo/nfl_elo.csv"
 ODDS_BASE_NFL      = "https://api.the-odds-api.com/v4/sports/americanfootball_nfl/odds/"
 ODDS_BASE_NBA      = "https://api.the-odds-api.com/v4/sports/basketball_nba/odds/"
+
+# ---- balldontlie.io (All-Star tier) ----
+# Used as fallback only when ESPN / cdn.nba.com primary sources fail.
+# Permitted endpoints: /v1/games, /v1/players, /v1/teams
+# Blocked (do not call): /v1/stats, /v1/injuries
+BDL_BASE    = "https://api.balldontlie.io/v1"
+BDL_API_KEY = "3f8c3073-796d-4226-a8dc-4784afb14287"
+_BDL_HEADERS = {"Authorization": BDL_API_KEY}
+
+# Mapping from balldontlie team abbreviation → internal abbreviation
+_BDL_NBA_ABBREV = {
+    "GS": "GSW", "NY": "NYK", "NO": "NOP", "SA": "SAS",
+    "OKC": "OKC", "BKN": "BKN", "WSH": "WAS", "CHA": "CHA",
+    "PHX": "PHX", "LAL": "LAL", "LAC": "LAC",
+}
+_BDL_NFL_ABBREV = {
+    "WSH": "WAS", "JAC": "JAX", "LV": "LV", "LA": "LAR",
+}
+
+def _bdl_nba_abbrev(a):
+    a = a.upper().strip()
+    return _BDL_NBA_ABBREV.get(a, a)
+
+def _bdl_nfl_abbrev(a):
+    a = a.upper().strip()
+    return _BDL_NFL_ABBREV.get(a, a)
 
 _CDN_HEADERS = {
     "Accept": "application/json, text/plain, */*",
@@ -64,6 +95,352 @@ def safe_get(url, params=None, timeout=30, headers=None):
     except Exception as e:
         log.warning(f"Failed to fetch {url}: {e}")
         return None
+
+
+# ---- balldontlie.io helpers ----
+
+def _bdl_get(path, params=None, timeout=20):
+    """GET wrapper for balldontlie API. Always injects the API key header."""
+    url = f"{BDL_BASE}{path}"
+    p = dict(params or {})
+    p.setdefault("per_page", 100)
+    return safe_get(url, params=p, timeout=timeout, headers=_BDL_HEADERS)
+
+
+def _bdl_get_all(path, params=None, timeout=20):
+    """
+    Paginate through all pages of a balldontlie endpoint.
+    Returns a flat list of items from the 'data' key across all pages.
+    """
+    p = dict(params or {})
+    p["per_page"] = 100
+    p["cursor"] = 0
+    all_items = []
+    while True:
+        resp = safe_get(f"{BDL_BASE}{path}", params=p, timeout=timeout, headers=_BDL_HEADERS)
+        if not resp:
+            break
+        all_items.extend(resp.get("data", []))
+        meta = resp.get("meta", {})
+        next_cursor = meta.get("next_cursor")
+        if not next_cursor:
+            break
+        p["cursor"] = next_cursor
+    return all_items
+
+
+# ---- NBA balldontlie fallbacks ----
+
+def _bdl_nba_games_to_scoreboard(games):
+    """
+    Convert balldontlie /v1/games records into the internal scoreboard schema
+    used by fetch_nba_scoreboard / fetch_nba_future_games / fetch_nba_season_games_espn.
+    """
+    result = []
+    for g in games:
+        try:
+            ht = g.get("home_team", {})
+            at = g.get("visitor_team", {})
+            ha = _bdl_nba_abbrev(ht.get("abbreviation", ""))
+            aa = _bdl_nba_abbrev(at.get("abbreviation", ""))
+            status_raw = g.get("status", "")
+            # Map BDL status strings to ESPN-style status names
+            if status_raw == "Final":
+                status = "STATUS_FINAL"
+            elif status_raw in ("1st Qtr", "2nd Qtr", "3rd Qtr", "4th Qtr", "Halftime", "OT"):
+                status = "STATUS_IN_PROGRESS"
+            else:
+                status = "STATUS_SCHEDULED"
+            result.append({
+                "game_id": str(g.get("id", "")),
+                "game_time": g.get("date", ""),
+                "status": status,
+                "period": g.get("period", 0),
+                "display_clock": "",
+                "status_detail": status_raw,
+                "home_team": ha,
+                "away_team": aa,
+                "home_name": ht.get("full_name", ha),
+                "away_name": at.get("full_name", aa),
+                "home_score": int(g.get("home_team_score", 0) or 0),
+                "away_score": int(g.get("visitor_team_score", 0) or 0),
+                "home_logo": f"https://a.espncdn.com/i/teamlogos/nba/500/{ht.get('abbreviation','').lower()}.png",
+                "away_logo": f"https://a.espncdn.com/i/teamlogos/nba/500/{at.get('abbreviation','').lower()}.png",
+                "neutral": 0,
+            })
+        except Exception as e:
+            log.debug(f"BDL NBA game parse error: {e}")
+    return result
+
+
+def _bdl_nba_scoreboard_fallback():
+    """Fetch NBA scoreboard from balldontlie (today + past 5 days)."""
+    log.info("BDL fallback: fetching NBA scoreboard...")
+    games = []; seen = set()
+    for delta in range(0, -6, -1):
+        d = (datetime.now(timezone.utc) + timedelta(days=delta)).strftime("%Y-%m-%d")
+        data = _bdl_get("/games", {"dates[]": d, "leagues": "NBA"})
+        if not data:
+            continue
+        for g in _bdl_nba_games_to_scoreboard(data.get("data", [])):
+            if g["game_id"] not in seen:
+                seen.add(g["game_id"]); games.append(g)
+    log.info(f"BDL NBA scoreboard fallback: {len(games)} games")
+    return games
+
+
+def _bdl_nba_future_games_fallback(days_ahead=14):
+    """Fetch future NBA games from balldontlie."""
+    log.info("BDL fallback: fetching future NBA games...")
+    future = []; seen = set()
+    for offset in range(0, days_ahead + 1):
+        d = (datetime.now(timezone.utc) + timedelta(days=offset)).strftime("%Y-%m-%d")
+        data = _bdl_get("/games", {"dates[]": d, "leagues": "NBA"})
+        if not data:
+            continue
+        for g in _bdl_nba_games_to_scoreboard(data.get("data", [])):
+            if g["game_id"] not in seen:
+                seen.add(g["game_id"]); g["is_future"] = True; future.append(g)
+    log.info(f"BDL NBA future games fallback: {len(future)} games")
+    return future
+
+
+def _bdl_nba_season_games_fallback(seasons):
+    """Fetch completed NBA season games from balldontlie."""
+    log.info(f"BDL fallback: fetching NBA historical games for {seasons}...")
+    all_games = []; seen = set()
+    for season_year in seasons:
+        items = _bdl_get_all("/games", {"seasons[]": season_year - 1, "leagues": "NBA"})
+        for g in _bdl_nba_games_to_scoreboard(items):
+            if g["game_id"] in seen:
+                continue
+            seen.add(g["game_id"])
+            if g["status"] != "STATUS_FINAL":
+                continue
+            hs = g["home_score"]; as_ = g["away_score"]
+            if hs == 0 and as_ == 0:
+                continue
+            all_games.append({
+                "date": g["game_time"][:10],
+                "season": season_year,
+                "team1": g["home_team"],
+                "team2": g["away_team"],
+                "score1": hs,
+                "score2": as_,
+                "neutral": 0,
+            })
+    log.info(f"BDL NBA historical games fallback: {len(all_games)} games")
+    return all_games
+
+
+def _bdl_nba_standings_fallback():
+    """
+    Build NBA standings from balldontlie /v1/teams + /v1/games.
+    Returns a dict matching the schema from fetch_nba_standings_espn.
+    NOTE: BDL All-Star tier does not expose a standings endpoint; we
+    approximate wins/losses by aggregating completed current-season games.
+    """
+    log.info("BDL fallback: building NBA standings from game results...")
+    cy = datetime.now(timezone.utc).year
+    cm = datetime.now(timezone.utc).month
+    season = cy if cm >= 10 else cy - 1
+    items = _bdl_get_all("/games", {"seasons[]": season, "leagues": "NBA"})
+    wins = {}; losses = {}
+    for g in items:
+        try:
+            if g.get("status") != "Final":
+                continue
+            ht = _bdl_nba_abbrev(g["home_team"]["abbreviation"])
+            at = _bdl_nba_abbrev(g["visitor_team"]["abbreviation"])
+            hs = int(g.get("home_team_score", 0) or 0)
+            as_ = int(g.get("visitor_team_score", 0) or 0)
+            if hs == 0 and as_ == 0:
+                continue
+            if hs > as_:
+                wins[ht] = wins.get(ht, 0) + 1
+                losses[at] = losses.get(at, 0) + 1
+            else:
+                wins[at] = wins.get(at, 0) + 1
+                losses[ht] = losses.get(ht, 0) + 1
+        except Exception as e:
+            log.debug(f"BDL standings accumulate error: {e}")
+    standings = {}
+    all_teams = set(list(wins.keys()) + list(losses.keys()))
+    for abbrev in all_teams:
+        w = wins.get(abbrev, 0); l = losses.get(abbrev, 0)
+        standings[abbrev] = {
+            "wins": w, "losses": l,
+            "win_pct": w / max(w + l, 1),
+            "points_for": 0.0, "points_against": 0.0,
+            "ppg_for": 0.0, "ppg_against": 0.0,
+            "games_played": w + l,
+            "offensive_rating": 110.0, "defensive_rating": 110.0,
+            "net_rating": 0.0, "pace": 100.0,
+            "assist_turnover_ratio": 1.8, "rebound_rate": 0.5,
+            "three_point_rate": 0.35, "free_throw_rate": 0.20, "streak": 0,
+        }
+    log.info(f"BDL NBA standings fallback: {len(standings)} teams")
+    return standings
+
+
+def _bdl_nba_players_fallback():
+    """
+    Fetch NBA player names from balldontlie /v1/players.
+    Returns dict {player_name: ppg} with ppg=0.0 (BDL All-Star does not
+    expose stats; this populates player names for depth-chart purposes only).
+    """
+    log.info("BDL fallback: fetching NBA player list...")
+    items = _bdl_get_all("/players", {"leagues": "NBA"})
+    players = {}
+    for p in items:
+        try:
+            name = f"{p.get('first_name', '')} {p.get('last_name', '')}".strip()
+            if name:
+                players[name] = 0.0
+        except Exception as e:
+            log.debug(f"BDL player parse error: {e}")
+    log.info(f"BDL NBA players fallback: {len(players)} players")
+    return players
+
+
+# ---- NFL balldontlie fallbacks ----
+
+def _bdl_nfl_games_to_internal(games, season_year):
+    """
+    Convert balldontlie /v1/games (NFL) records into the internal completed-games
+    schema used by fetch_nfl_completed_games.
+    """
+    result = []
+    for g in games:
+        try:
+            ht = g.get("home_team", {})
+            at = g.get("visitor_team", {})
+            ha = _bdl_nfl_abbrev(ht.get("abbreviation", ""))
+            aa = _bdl_nfl_abbrev(at.get("abbreviation", ""))
+            hs = int(g.get("home_team_score", 0) or 0)
+            as_ = int(g.get("visitor_team_score", 0) or 0)
+            if hs == 0 and as_ == 0:
+                continue
+            if g.get("status") != "Final":
+                continue
+            result.append({
+                "date": g.get("date", "")[:10],
+                "season": season_year,
+                "team1": ha,
+                "team2": aa,
+                "score1": hs,
+                "score2": as_,
+                "neutral": 0,
+            })
+        except Exception as e:
+            log.debug(f"BDL NFL game parse error: {e}")
+    return result
+
+
+def _bdl_nfl_scoreboard_fallback():
+    """
+    Fetch current NFL scoreboard from balldontlie.
+    Returns (games, week) matching the schema from fetch_nfl_scoreboard.
+    """
+    log.info("BDL fallback: fetching NFL scoreboard...")
+    cy = datetime.now(timezone.utc).year
+    cm = datetime.now(timezone.utc).month
+    season = cy if cm >= 8 else cy - 1
+    data = _bdl_get("/games", {"seasons[]": season, "leagues": "NFL", "per_page": 100})
+    if not data:
+        return [], 0
+    games_raw = data.get("data", [])
+    games = []
+    seen = set()
+    for g in games_raw:
+        try:
+            gid = str(g.get("id", ""))
+            if gid in seen:
+                continue
+            seen.add(gid)
+            ht = g.get("home_team", {}); at = g.get("visitor_team", {})
+            ha = _bdl_nfl_abbrev(ht.get("abbreviation", ""))
+            aa = _bdl_nfl_abbrev(at.get("abbreviation", ""))
+            status_raw = g.get("status", "")
+            status = "STATUS_FINAL" if status_raw == "Final" else (
+                "STATUS_IN_PROGRESS" if "Qtr" in status_raw or "Half" in status_raw else "STATUS_SCHEDULED"
+            )
+            week = int(g.get("week", 0) or 0)
+            games.append({
+                "game_id": gid,
+                "game_time": g.get("date", ""),
+                "status": status,
+                "week": week,
+                "season": season,
+                "home_team": ha, "away_team": aa,
+                "home_name": ht.get("full_name", ha),
+                "away_name": at.get("full_name", aa),
+                "home_score": int(g.get("home_team_score", 0) or 0),
+                "away_score": int(g.get("visitor_team_score", 0) or 0),
+                "home_logo": f"https://a.espncdn.com/i/teamlogos/nfl/500/{ht.get('abbreviation','').lower()}.png",
+                "away_logo": f"https://a.espncdn.com/i/teamlogos/nfl/500/{at.get('abbreviation','').lower()}.png",
+                "neutral": 0,
+            })
+        except Exception as e:
+            log.debug(f"BDL NFL scoreboard parse error: {e}")
+    week_now = max((g["week"] for g in games), default=0)
+    log.info(f"BDL NFL scoreboard fallback: {len(games)} games, week {week_now}")
+    return games, week_now
+
+
+def _bdl_nfl_completed_games_fallback(season_year):
+    """Fetch completed NFL games from balldontlie for a given season."""
+    log.info(f"BDL fallback: fetching completed NFL games for {season_year}...")
+    items = _bdl_get_all("/games", {"seasons[]": season_year, "leagues": "NFL"})
+    result = _bdl_nfl_games_to_internal(items, season_year)
+    log.info(f"BDL NFL completed games fallback: {len(result)} games")
+    return result
+
+
+def _bdl_nfl_standings_fallback(season_year=None):
+    """
+    Build NFL standings from balldontlie game results.
+    Returns dict matching the schema from fetch_nfl_standings.
+    """
+    if season_year is None:
+        cy = datetime.now(timezone.utc).year
+        cm = datetime.now(timezone.utc).month
+        season_year = cy if cm >= 8 else cy - 1
+    log.info(f"BDL fallback: building NFL standings for {season_year}...")
+    items = _bdl_get_all("/games", {"seasons[]": season_year, "leagues": "NFL"})
+    wins = {}; losses = {}; points_for = {}; points_against = {}
+    for g in items:
+        try:
+            if g.get("status") != "Final":
+                continue
+            ht = _bdl_nfl_abbrev(g["home_team"]["abbreviation"])
+            at = _bdl_nfl_abbrev(g["visitor_team"]["abbreviation"])
+            hs = int(g.get("home_team_score", 0) or 0)
+            as_ = int(g.get("visitor_team_score", 0) or 0)
+            if hs == 0 and as_ == 0:
+                continue
+            points_for[ht] = points_for.get(ht, 0) + hs
+            points_for[at] = points_for.get(at, 0) + as_
+            points_against[ht] = points_against.get(ht, 0) + as_
+            points_against[at] = points_against.get(at, 0) + hs
+            if hs > as_:
+                wins[ht] = wins.get(ht, 0) + 1; losses[at] = losses.get(at, 0) + 1
+            else:
+                wins[at] = wins.get(at, 0) + 1; losses[ht] = losses.get(ht, 0) + 1
+        except Exception as e:
+            log.debug(f"BDL NFL standings accumulate error: {e}")
+    standings = {}
+    for abbrev in set(list(wins.keys()) + list(losses.keys())):
+        w = wins.get(abbrev, 0); l = losses.get(abbrev, 0)
+        standings[abbrev] = {
+            "wins": w, "losses": l, "ties": 0,
+            "win_pct": w / max(w + l, 1),
+            "points_for": float(points_for.get(abbrev, 0)),
+            "points_against": float(points_against.get(abbrev, 0)),
+            "streak": 0, "games_played": w + l,
+        }
+    log.info(f"BDL NFL standings fallback: {len(standings)} teams")
+    return standings
 
 
 # ---- FTE ----
@@ -118,7 +495,8 @@ def fetch_nfl_scoreboard():
     log.info("Fetching NFL scoreboard...")
     data = safe_get(f"{ESPN_NFL_BASE}/scoreboard")
     if not data:
-        return [], 0
+        log.warning("ESPN NFL scoreboard unavailable — falling back to balldontlie")
+        return _bdl_nfl_scoreboard_fallback()
     games = _parse_nfl_events(data)
     week  = data.get("week", {}).get("number", 0)
     log.info(f"Found {len(games)} scoreboard games (week {week})")
@@ -179,6 +557,9 @@ def fetch_nfl_completed_games(season_year):
                 except (KeyError, IndexError, TypeError) as e:
                     log.debug(f"Error parsing NFL game: {e}")
     if fails: log.warning(f"NFL completed-games: skipped {fails} week(s)")
+    if not completed:
+        log.warning("ESPN returned no completed NFL games — falling back to balldontlie")
+        return _bdl_nfl_completed_games_fallback(season_year)
     log.info(f"Found {len(completed)} completed NFL games for {season_year}")
     return completed
 
@@ -186,7 +567,9 @@ def fetch_nfl_completed_games(season_year):
 def fetch_nfl_standings():
     log.info("Fetching NFL standings...")
     data = safe_get(ESPN_NFL_STANDINGS)
-    if not data: return {}
+    if not data:
+        log.warning("ESPN NFL standings unavailable — falling back to balldontlie")
+        return _bdl_nfl_standings_fallback()
     standings = {}
     try:
         for group in data.get("children", []):
@@ -207,6 +590,9 @@ def fetch_nfl_standings():
                 }
     except Exception as e:
         log.warning(f"Error parsing NFL standings: {e}")
+    if not standings:
+        log.warning("ESPN NFL standings parse yielded no data — falling back to balldontlie")
+        return _bdl_nfl_standings_fallback()
     log.info(f"NFL standings for {len(standings)} teams")
     return standings
 
@@ -350,6 +736,9 @@ def fetch_nba_scoreboard():
         for g in _parse_nba_events(data):
             if g["game_id"] not in seen:
                 seen.add(g["game_id"]); games.append(g)
+    if not games:
+        log.warning("ESPN NBA scoreboard returned no games — falling back to balldontlie")
+        return _bdl_nba_scoreboard_fallback()
     log.info(f"Found {len(games)} NBA scoreboard games"); return games
 
 
@@ -364,6 +753,9 @@ def fetch_nba_future_games(days_ahead=14):
         for g in _parse_nba_events(data):
             if g["game_id"] not in seen:
                 seen.add(g["game_id"]); g["is_future"] = True; future.append(g)
+    if not future:
+        log.warning("ESPN returned no future NBA games — falling back to balldontlie")
+        return _bdl_nba_future_games_fallback(days_ahead)
     log.info(f"Found {len(future)} future NBA games"); return future
 
 
@@ -376,6 +768,8 @@ def fetch_nba_season_games_espn(seasons=None):
     historical coverage for model training. Previously, older seasons
     used a 7-day stride which skipped ~85% of games, starving the model
     and causing it to fall back to 50% neutral defaults.
+
+    Falls back to balldontlie.io if ESPN returns no games.
     """
     from datetime import date as date_cls
     if seasons is None:
@@ -433,6 +827,9 @@ def fetch_nba_season_games_espn(seasons=None):
                 except (KeyError, IndexError, TypeError) as e:
                     log.debug(f"Error parsing NBA game: {e}")
     if fails: log.warning(f"NBA season fetch: skipped {fails} date(s)")
+    if not all_games:
+        log.warning("ESPN returned no NBA historical games — falling back to balldontlie")
+        return _bdl_nba_season_games_fallback(seasons)
     log.info(f"Fetched {len(all_games)} NBA historical games (ESPN)")
     return all_games
 
@@ -440,7 +837,9 @@ def fetch_nba_season_games_espn(seasons=None):
 def fetch_nba_standings_espn():
     log.info("Fetching NBA standings (ESPN)...")
     data = safe_get(ESPN_NBA_STANDINGS)
-    if not data: return {}
+    if not data:
+        log.warning("ESPN NBA standings unavailable — falling back to balldontlie")
+        return _bdl_nba_standings_fallback()
     standings = {}
     try:
         for group in data.get("children", []):
@@ -474,13 +873,16 @@ def fetch_nba_standings_espn():
                 }
     except Exception as e:
         log.warning(f"Error parsing NBA standings: {e}")
+    if not standings:
+        log.warning("ESPN NBA standings parse yielded no data — falling back to balldontlie")
+        return _bdl_nba_standings_fallback()
     log.info(f"NBA standings for {len(standings)} teams"); return standings
 
 
 def fetch_nba_standings_cdn():
     """
     Fetch NBA standings from cdn.nba.com/static/json/staticData/standings.json.
-    Falls back to ESPN fetch on failure.
+    Falls back to ESPN fetch on failure, then balldontlie if ESPN also fails.
     """
     log.info("Fetching NBA standings (cdn.nba.com)...")
     data = safe_get(f"{CDN_NBA_STATIC}/staticData/standings.json", headers=_CDN_HEADERS)
@@ -624,6 +1026,9 @@ def fetch_nba_player_ppg_espn():
                         player_ppg[name] = ppg
     except Exception as e:
         log.warning(f"Error fetching NBA player PPG: {e}")
+    if not player_ppg:
+        log.warning("ESPN NBA player PPG returned nothing — falling back to balldontlie player list")
+        return _bdl_nba_players_fallback()
     log.info(f"NBA PPG stats: {len(player_ppg)} entries")
     return player_ppg
 
@@ -631,7 +1036,8 @@ def fetch_nba_player_ppg_espn():
 def fetch_nba_player_stats_cdn(season_year):
     """
     Fetch per-player PPG from cdn.nba.com/stats/leaguedashplayerstats.
-    Replaces stats.nba.com endpoint. Falls back to ESPN on failure.
+    Replaces stats.nba.com endpoint. Falls back to ESPN on failure,
+    then balldontlie player list if ESPN also returns nothing.
     """
     log.info(f"Fetching NBA player stats (cdn.nba.com) for {season_year}...")
     season_str = f"{season_year - 1}-{str(season_year)[2:]}"
