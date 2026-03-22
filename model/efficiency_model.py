@@ -177,6 +177,14 @@ def efficiency_predict_game(team_a, team_b, efficiency_data, pythagorean_data,
     """
     Predict win probability from efficiency + pythagorean data.
     Returns {eff_prob, pyth_prob}
+
+    FIX (Issue 1): HFA for Pythagorean is now applied as an additive ELO-space
+    shift through the logistic function, matching how elo_prob and eff_prob
+    apply HFA. Previously it used a multiplicative factor pyth * (1 + hfa/1500)
+    which produced a non-uniform probability boost that grew with team strength.
+    The correct approach: convert pyth to ELO-equivalent, add HFA in ELO points,
+    then apply the logistic formula. This gives a consistent ~4.3% boost at 50%
+    regardless of team strength.
     """
     eff_a = efficiency_data.get(team_a, {}).get("elo_equiv", 1500.0)
     eff_b = efficiency_data.get(team_b, {}).get("elo_equiv", 1500.0)
@@ -188,10 +196,14 @@ def efficiency_predict_game(team_a, team_b, efficiency_data, pythagorean_data,
     eff_diff = (eff_a + hfa) - eff_b
     eff_prob = 1.0 / (1.0 + 10 ** (-eff_diff / 400.0))
 
-    # Direct ratio — correct Bradley-Terry formulation for pythagorean matchup
-    pyth_a_adj = pyth_a * (1.0 + hfa / 1500.0)
-    _denom = pyth_a_adj + pyth_b
-    pyth_prob = pyth_a_adj / _denom if _denom > 0 else 0.5
+    # Convert Pythagorean to ELO-equivalent space, apply HFA additively,
+    # then convert back via the logistic (ELO) formula.
+    # This ensures HFA is a uniform ~4.3% shift at 50%, not a multiplicative
+    # distortion that varies with team strength.
+    pyth_elo_a = 1500.0 + (pyth_a - 0.5) * 400.0
+    pyth_elo_b = 1500.0 + (pyth_b - 0.5) * 400.0
+    pyth_diff = (pyth_elo_a + hfa) - pyth_elo_b
+    pyth_prob = 1.0 / (1.0 + 10 ** (-pyth_diff / 400.0))
 
     return {
         "eff_prob": round(float(eff_prob), 4),
