@@ -36,7 +36,7 @@ def initialize_ratings(elo_dict, initial_sigma=75.0):
     return ratings
 
 
-def update_ratings(games, elo_dict, initial_sigma=75.0, obs_noise=100.0, regress_pct=0.33):
+def update_ratings(games, elo_dict, initial_sigma=75.0, obs_noise=100.0, regress_pct=0.33, hfa=65.0):
     """
     Process games chronologically, updating Bayesian ratings after each game.
     games: list of {team1, team2, score1, score2, date, neutral}
@@ -79,9 +79,9 @@ def update_ratings(games, elo_dict, initial_sigma=75.0, obs_noise=100.0, regress
         score1 = float(row.get("score1", 0))
         score2 = float(row.get("score2", 0))
         neutral = int(row.get("neutral", 0))
-        hfa = 65.0 if not neutral else 0.0
+        hfa_adj = 0.0 if neutral else hfa
 
-        mu1 = ratings[team1]["mu"] + hfa
+        mu1 = ratings[team1]["mu"] + hfa_adj
         mu2 = ratings[team2]["mu"]
 
         # Performance signal: ELO-equivalent of margin

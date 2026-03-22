@@ -334,9 +334,9 @@ def abbrev_norm(abbrev):
     return ESPN_NBA_TO_ABBREV.get(a, a)
 
 
-def safe_get(url, params=None, timeout=30):
+def safe_get(url, params=None, timeout=30, headers=None):
     try:
-        r = requests.get(url, params=params, timeout=timeout)
+        r = requests.get(url, params=params, timeout=timeout, headers=headers or {})
         r.raise_for_status()
         return r.json()
     except Exception as e:
@@ -458,8 +458,58 @@ def fetch_nba_future_games(days_ahead=7):
 
 
 def fetch_nba_standings():
-    log.info("Fetching NBA standings...")
-    # site.web.api.espn.com returns conference-level entries with wins/losses/avg ratings
+    """Fetch NBA standings. Tries cdn.nba.com first (real ORTG/DRTG), falls back to ESPN."""
+    CDN_URL = "https://cdn.nba.com/static/json/staticData/standings.json"
+    CDN_HEADERS = {
+        "Accept": "application/json, text/plain, */*",
+        "Accept-Language": "en-US,en;q=0.9",
+        "Origin": "https://www.nba.com",
+        "Referer": "https://www.nba.com/",
+        "User-Agent": "Mozilla/5.0 (compatible; Sport3Bot/2.0)",
+    }
+
+    # ── Primary: cdn.nba.com (provides real pace-adjusted ORTG/DRTG) ────────
+    log.info("Fetching NBA standings (cdn.nba.com)...")
+    cdn_data = safe_get(CDN_URL, headers=CDN_HEADERS)
+    if cdn_data:
+        standings = {}
+        try:
+            rows = cdn_data.get("standings", [])
+            if rows and isinstance(rows[0], dict):
+                for row in rows:
+                    team_abbrev = abbrev_norm(row.get("teamAbbreviation", ""))
+                    if not team_abbrev:
+                        continue
+                    wins = int(row.get("wins", 0))
+                    losses = int(row.get("losses", 0))
+                    off_rtg = float(row.get("offensiveRating", row.get("OffRating", 110.0)))
+                    def_rtg = float(row.get("defensiveRating", row.get("DefRating", 110.0)))
+                    standings[team_abbrev] = {
+                        "wins": wins,
+                        "losses": losses,
+                        "win_pct": wins / max(wins + losses, 1),
+                        "points_for": 0.0,   # CDN static doesn't include totals;
+                        "points_against": 0.0,  # PPG overridden from game history later
+                        "games_played": wins + losses,
+                        "offensive_rating": off_rtg,
+                        "defensive_rating": def_rtg,
+                        "net_rating": off_rtg - def_rtg,
+                        "pace": float(row.get("pace", 100.0)),
+                        "assist_turnover_ratio": 1.8,
+                        "rebound_rate": 0.5,
+                        "three_point_rate": 0.35,
+                        "free_throw_rate": 0.20,
+                        "streak": 0,
+                    }
+            if standings:
+                log.info(f"NBA standings (cdn) for {len(standings)} teams")
+                return standings
+            raise ValueError("Empty standings from CDN")
+        except Exception as e:
+            log.warning(f"cdn.nba.com standings parse error: {e} — falling back to ESPN")
+
+    # ── Fallback: ESPN web API ────────────────────────────────────────────────
+    log.info("Fetching NBA standings (ESPN fallback)...")
     data = safe_get(ESPN_NBA_STANDINGS_URL)
     if not data:
         return {}
@@ -467,9 +517,7 @@ def fetch_nba_standings():
     standings = {}
     try:
         for group in data.get("children", []):
-            # Entries are directly on the conference object (no division sub-children)
             entries = group.get("standings", {}).get("entries", [])
-            # Fallback: check division children if conference-level entries are missing
             if not entries:
                 for div in group.get("children", []):
                     entries = entries + div.get("standings", {}).get("entries", [])
@@ -485,8 +533,7 @@ def fetch_nba_standings():
                 losses = int(stats.get("losses", 0))
                 points_for = float(stats.get("pointsFor", 0))
                 points_against = float(stats.get("pointsAgainst", 0))
-
-                # Use per-game averages as offensive/defensive rating proxies
+                # avgPointsFor/avgPointsAgainst ≈ PPG scored/allowed ≈ ORTG/DRTG numerically
                 off_rating = float(stats.get("avgPointsFor", 110.0))
                 def_rating = float(stats.get("avgPointsAgainst", 110.0))
                 net_rating = off_rating - def_rating
@@ -501,7 +548,7 @@ def fetch_nba_standings():
                     "offensive_rating": off_rating,
                     "defensive_rating": def_rating,
                     "net_rating": net_rating,
-                    "pace": 100.0,  # not available in standings endpoint
+                    "pace": 100.0,
                     "assist_turnover_ratio": 1.8,
                     "rebound_rate": 0.5,
                     "three_point_rate": 0.35,
@@ -509,9 +556,9 @@ def fetch_nba_standings():
                     "streak": stats.get("streak", 0),
                 }
     except Exception as e:
-        log.warning(f"Error parsing NBA standings: {e}")
+        log.warning(f"Error parsing NBA standings (ESPN): {e}")
 
-    log.info(f"NBA standings for {len(standings)} teams")
+    log.info(f"NBA standings (ESPN) for {len(standings)} teams")
     return standings
 
 
@@ -608,9 +655,10 @@ def fetch_nba_season_games(seasons=None):
         if season_start > today:
             continue
 
-        # Use weekly strides for older seasons (>1 year ago), daily for recent
-        is_current = (season_year == seasons[-1])
-        stride_days = 1 if is_current else 7
+        # Always use 1-day stride for all seasons to ensure full game coverage.
+        # A 7-day stride skips ~85% of games, starving ELO/logistic training
+        # and causing all sub-models to fall back to 50% neutral defaults.
+        stride_days = 1
 
         # Build list of all dates to fetch for this season
         date_list = []
@@ -1157,7 +1205,25 @@ def run():
     future_games = [g for g in future_games if g["game_id"] not in existing_ids]
     all_games_for_prediction = scoreboard_games + future_games
 
-    # ── Guard: if both fetches returned 0 games, exit without overwriting output ──
+    # ── Guard: if both fetches returned 0 games, try a direct today-fallback
+    # before deciding whether to abort. This breaks the self-perpetuating
+    # games:[] state caused by the guard seeing no existing data to preserve.
+    if len(scoreboard_games) == 0 and len(future_games) == 0:
+        log.warning("Both scoreboard and future fetches returned 0 games — trying direct today/tomorrow fallback...")
+        for _delta in range(0, 3):
+            _ds = (datetime.now(timezone.utc) + timedelta(days=_delta)).strftime('%Y%m%d')
+            _d = safe_get(f"{ESPN_NBA_WEB_BASE}/scoreboard?dates={_ds}&limit=20&seasontype=2")
+            if not _d or not _d.get("events"):
+                _d = safe_get(f"{ESPN_NBA_BASE}/scoreboard?dates={_ds}&limit=20&seasontype=2")
+            if _d:
+                for _g in parse_nba_events(_d):
+                    if _g["game_id"] not in existing_ids:
+                        existing_ids.add(_g["game_id"])
+                        if _delta > 0:
+                            _g["is_future"] = True
+                        future_games.append(_g)
+        all_games_for_prediction = scoreboard_games + future_games
+
     if len(scoreboard_games) == 0 and len(future_games) == 0:
         # Only abort if the existing file already contains game data worth preserving
         existing_predictions_path = DATA_DIR / "nba_predictions.json"
@@ -1169,7 +1235,7 @@ def run():
             except Exception:
                 has_existing_data = False
         if has_existing_data:
-            log.error("Both scoreboard and future game fetches returned 0 games — aborting to preserve existing nbapredictions.json")
+            log.error("Both scoreboard and future game fetches returned 0 games — aborting to preserve existing nba_predictions.json")
             return
         log.warning("Both fetches returned 0 games and no existing data found — proceeding with empty games list")
 
@@ -1204,6 +1270,17 @@ def run():
     historical_games = fetch_nba_season_games(
         seasons=[season_year - 4, season_year - 3, season_year - 2, season_year - 1, season_year]
     )
+
+    # Guard: if the historical fetch returned too few games, all sub-models
+    # will fall back to 50% neutral defaults (ELO=1500 everywhere) and
+    # overwrite any good predictions that already exist. Abort instead.
+    if len(historical_games) < 200:
+        log.critical(
+            f"NBA historical fetch returned only {len(historical_games)} games "
+            f"(need >= 200) — aborting to preserve existing nba_predictions.json. "
+            f"Check ESPN scoreboard API availability."
+        )
+        return
 
     # ── 3. Compute NBA ELO ──────────────────────────────────────────────────
     log.info("Computing NBA ELO ratings...")
@@ -1279,7 +1356,7 @@ def run():
     log.info("Computing NBA Bayesian ratings...")
     recent_games = [g for g in historical_games if
                     g.get("season", 0) >= season_year - 1]
-    bayesian_ratings = update_ratings(recent_games, elo_dict)
+    bayesian_ratings = update_ratings(recent_games, elo_dict, hfa=100.0)
     for team in NBA_TEAMS:
         if team not in bayesian_ratings:
             bayesian_ratings[team] = {"mu": elo_dict.get(team, 1500.0), "sigma": 75.0}
@@ -1443,7 +1520,7 @@ def run():
 
             # Bayesian prediction
             bayes_result = bayes_predict(home, away, bayesian_ratings,
-                                          is_home_a=True, neutral=neutral)
+                                          is_home_a=True, neutral=neutral, hfa=100.0)
             bayesian_prob = bayes_result.get("bayesian_prob", 0.5)
 
             # Pythagorean prediction — direct ratio (Bradley-Terry), not ELO transform
