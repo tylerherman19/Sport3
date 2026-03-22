@@ -12,7 +12,7 @@
 </head>
 <body data-league="nfl">
 
-<!-- ═══════════════════════════ HEADER ═══════════════════════════ -->
+<!-- ═══════════════════════════════ HEADER ═══════════════════════════════ -->
 <header>
   <div class="container header-inner">
     <div class="logo">
@@ -37,7 +37,7 @@
   </div>
 </header>
 
-<!-- ════════════════════════════ NAV ═════════════════════════════ -->
+<!-- ════════════════════════════════ NAV ═════════════════════════════════ -->
 <nav>
   <div class="container">
     <div class="nav-tabs">
@@ -47,7 +47,9 @@
       <button class="nav-tab" data-tab="leaderboard" id="tab-btn-leaderboard">ELO Leaderboard</button>
       <button class="nav-tab" data-tab="performance" id="tab-btn-performance">Model Performance</button>
       <button class="nav-tab" data-tab="accuracy" id="tab-btn-accuracy">Prediction Log</button>
+      <!-- SANDBOXED: Kalshi tab disabled — see sandbox/kalshi/
       <button class="nav-tab" data-tab="kalshi" id="tab-btn-kalshi">Kalshi Odds</button>
+      -->
     </div>
   </div>
 </nav>
@@ -362,7 +364,8 @@
       <div class="loading"><div class="spinner"></div><span>Loading prediction log...</span></div>
     </section>
 
-    <!-- ── Section 7: Kalshi Odds ── -->
+    <!-- SANDBOXED: Kalshi section disabled — see sandbox/kalshi/
+    [Section 7: Kalshi Odds]
     <section id="tab-kalshi" class="section">
       <div class="section-header">
         <div class="section-title">
@@ -379,6 +382,7 @@
         <div class="loading"><div class="spinner"></div><span>Loading Kalshi markets...</span></div>
       </div>
     </section>
+    -->
 
   </div><!-- /container -->
 </main>
