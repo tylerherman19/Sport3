@@ -113,7 +113,7 @@ def simulate_season(teams, schedule, ratings, n_sims=10000, random_state=42):
         mu_b = ratings.get(tb, {}).get("mu", 1500.0)
         sigma_a = ratings.get(ta, {}).get("sigma", 75.0)
         sigma_b = ratings.get(tb, {}).get("sigma", 75.0)
-        hfa = 65.0 if (game.get("is_home_a", True) and not game.get("neutral", False)) else 0.0
+        hfa = 100.0 if (game.get("is_home_a", True) and not game.get("neutral", False)) else 0.0
 
         # Expected difference for probability
         diff = (mu_a + hfa) - mu_b

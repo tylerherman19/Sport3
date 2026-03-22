@@ -454,16 +454,20 @@ def fetch_nba_standings_espn():
                 if tid: ESPN_NBA_ID_TO_ABBREV[tid] = abbrev
                 stats   = {s["name"]: s.get("value", 0) for s in entry.get("stats", [])}
                 wins    = int(stats.get("wins", 0)); losses = int(stats.get("losses", 0))
-                off_rtg = float(stats.get("avgPointsFor", 110.0))
-                def_rtg = float(stats.get("avgPointsAgainst", 110.0))
+                # avgPointsFor/avgPointsAgainst are raw PPG, NOT pace-adjusted ORTG/DRTG.
+                # Store as ppg_for/ppg_against; use 110.0 defaults for ORTG/DRTG since
+                # ESPN standings fallback does not provide real pace-adjusted efficiency ratings.
                 standings[abbrev] = {
                     "wins": wins, "losses": losses,
                     "win_pct": float(stats.get("winPercent", 0)),
                     "points_for": float(stats.get("pointsFor", 0)),
                     "points_against": float(stats.get("pointsAgainst", 0)),
+                    "ppg_for": float(stats.get("avgPointsFor", 0.0)),
+                    "ppg_against": float(stats.get("avgPointsAgainst", 0.0)),
                     "games_played": wins + losses,
-                    "offensive_rating": off_rtg, "defensive_rating": def_rtg,
-                    "net_rating": off_rtg - def_rtg,
+                    "offensive_rating": 110.0,  # ESPN does not provide real ORTG; use league default
+                    "defensive_rating": 110.0,  # ESPN does not provide real DRTG; use league default
+                    "net_rating": 0.0,
                     "pace": 100.0, "assist_turnover_ratio": 1.8,
                     "rebound_rate": 0.5, "three_point_rate": 0.35, "free_throw_rate": 0.20,
                     "streak": stats.get("streak", 0),
@@ -485,25 +489,44 @@ def fetch_nba_standings_cdn():
         return fetch_nba_standings_espn()
     standings = {}
     try:
-        rows = data.get("standings", [])
-        if rows and isinstance(rows[0], dict):
-            for row in rows:
-                abbrev  = nba_abbrev_norm(row.get("teamAbbreviation", ""))
-                if not abbrev: continue
-                wins    = int(row.get("wins", 0)); losses = int(row.get("losses", 0))
-                off_rtg = float(row.get("offensiveRating", row.get("OffRating", 110.0)))
-                def_rtg = float(row.get("defensiveRating", row.get("DefRating", 110.0)))
-                standings[abbrev] = {
-                    "wins": wins, "losses": losses,
-                    "win_pct": wins / max(wins + losses, 1),
-                    "points_for": 0.0, "points_against": 0.0,
-                    "games_played": wins + losses,
-                    "offensive_rating": off_rtg, "defensive_rating": def_rtg,
-                    "net_rating": off_rtg - def_rtg,
-                    "pace": float(row.get("pace", 100.0)),
-                    "assist_turnover_ratio": 1.8, "rebound_rate": 0.5,
-                    "three_point_rate": 0.35, "free_throw_rate": 0.20, "streak": 0,
-                }
+        # CDN schema may be nested {"standings": {"teams": [...]}} or flat {"standings": [...]}
+        raw = data.get("standings", {})
+        if isinstance(raw, dict):
+            rows = raw.get("teams", raw.get("rows", raw.get("TeamStandings", [])))
+        elif isinstance(raw, list):
+            rows = raw
+        else:
+            rows = []
+        for row in rows:
+            if not isinstance(row, dict):
+                continue
+            abbrev = nba_abbrev_norm(row.get("teamAbbreviation", row.get("TeamAbbreviation", "")))
+            if not abbrev:
+                continue
+            wins   = int(row.get("wins", row.get("WINS", 0)))
+            losses = int(row.get("losses", row.get("LOSSES", 0)))
+            # Try multiple key name conventions for ORTG/DRTG
+            off_rtg = float(row.get("offensiveRating",
+                            row.get("OffRating",
+                            row.get("offRating",
+                            row.get("ortg",
+                            row.get("OffensiveRating", 110.0))))))
+            def_rtg = float(row.get("defensiveRating",
+                            row.get("DefRating",
+                            row.get("defRating",
+                            row.get("drtg",
+                            row.get("DefensiveRating", 110.0))))))
+            standings[abbrev] = {
+                "wins": wins, "losses": losses,
+                "win_pct": wins / max(wins + losses, 1),
+                "points_for": 0.0, "points_against": 0.0,
+                "games_played": wins + losses,
+                "offensive_rating": off_rtg, "defensive_rating": def_rtg,
+                "net_rating": off_rtg - def_rtg,
+                "pace": float(row.get("pace", row.get("Pace", 100.0))),
+                "assist_turnover_ratio": 1.8, "rebound_rate": 0.5,
+                "three_point_rate": 0.35, "free_throw_rate": 0.20, "streak": 0,
+            }
         if not standings:
             raise ValueError("No usable standings in cdn response")
     except Exception as e:

@@ -544,6 +544,9 @@ def run_nba():
 
     logistic_model = logistic_scaler = logistic_calibrator = None
     model_metrics  = {"log_loss":None,"brier_score":None,"auc":None}
+    xgb_model = xgb_scaler = None
+    import numpy as _np
+    X, y = _np.array([]).reshape(0, 14), _np.array([])
     if historical_games and len(historical_games) > 100:
         try:
             X, y = build_nba_features(historical_games,elo_dict,game_history,efficiency_data,pyth_data)
@@ -557,7 +560,7 @@ def run_nba():
                     "elo_diff_with_hfa", "hfa", "rest_diff", "pyth_elo_diff",
                     "net_rating_diff", "off_rating_diff", "def_rating_diff",
                     "pace_diff", "turnover_rate_diff", "three_point_rate_diff",
-                    "rebound_rate_diff", "free_throw_rate_diff", "recent_form_diff", "b2b",
+                    "rebound_rate_diff", "free_throw_rate_diff", "recent_form_diff", "b2b_diff",
                 ]
                 write_nba_features(
                     feature_vectors=[{"name": feature_names[i] if i < len(feature_names) else f"feature_{i}"}
@@ -569,16 +572,16 @@ def run_nba():
         except Exception as e:
             log.error(f"NBA logistic training failed: {e}")
 
-    xgb_model = xgb_scaler = None
-    if historical_games and len(historical_games) > 100:
+    # XGBoost reuses same X, y — no redundant build_nba_features call
+    if len(X) > 50:
         try:
-            X_x,y_x = build_nba_features(historical_games,elo_dict,game_history,efficiency_data,pyth_data)
-            if len(X_x) > 50: xgb_model,xgb_scaler = train_nba_xgboost(X_x, y_x)
+            xgb_model, xgb_scaler = train_nba_xgboost(X, y)
         except Exception as e:
             log.error(f"NBA XGBoost training failed: {e}")
 
     rec_games = [g for g in historical_games if g.get("season",0)>=season_year-1]
-    bayesian_ratings = update_ratings(rec_games, elo_dict, hfa=100.0)
+    bayesian_ratings = update_ratings(rec_games, elo_dict, hfa=100.0,
+                                       margin_multiplier=5.0, obs_noise=130.0)
     for t in NBA_TEAMS: bayesian_ratings.setdefault(t,{"mu":elo_dict.get(t,1500.0),"sigma":75.0})
 
     remaining = [{"team_a":g["home_team"],"team_b":g["away_team"],"is_home_a":True,"neutral":bool(g.get("neutral",False))}
@@ -655,7 +658,7 @@ def run_nba():
             br  = bayes_predict(home,away,bayesian_ratings,is_home_a=True,neutral=neutral,hfa=100.0)
             bpr = br.get("bayesian_prob",0.5)
             phome = pyth_data.get(home,{}).get("pyth",0.5); paway = pyth_data.get(away,{}).get("pyth",0.5)
-            phj  = phome*(1.0+hfa/1500.0); _pd = phj+paway
+            phj  = phome*(1.0+hfa/213.0); _pd = phj+paway
             pytp = phj/_pd if _pd>0 else 0.5
             heff = efficiency_data.get(home,{}); aeff = efficiency_data.get(away,{})
             effp = nba_expected_score(1500+heff.get("net_rating",0.0)*10+hfa, 1500+aeff.get("net_rating",0.0)*10)
@@ -711,7 +714,7 @@ def run_nba():
                 "home_name":game.get("home_name",home),"away_name":game.get("away_name",away),
                 "home_logo":game.get("home_logo",""),"away_logo":game.get("away_logo",""),
                 "neutral":neutral,"home_score":game.get("home_score",0),"away_score":game.get("away_score",0),
-                "predictions":{"ensemble_prob":round(ensp,4),"logistic_prob":round(lp,4),"elo_prob":round(ep2,4),
+                "predictions":{"ensemble_prob":round(ensp,4),"logistic_prob":round(lp,4) if lp is not None else None,"elo_prob":round(ep2,4),
                                "xgb_prob":round(xp,4) if xp is not None else None,
                                "pyth_prob":round(pytp,4),"eff_prob":round(effp,4),"bayesian_prob":round(bpr,4)},
                 "market":{"home_prob":mhp,"edge":me2,"kelly_pct":kp2,
@@ -743,6 +746,12 @@ def run_nba():
             })
         except Exception as e:
             log.error(f"Error processing NBA game {game.get('game_id','?')}: {e}")
+
+    # Sort predictions: live → upcoming → complete, then by game_time within each group
+    _STATUS_ORDER = {"STATUS_IN_PROGRESS": 0, "STATUS_SCHEDULED": 1, "STATUS_FINAL": 2}
+    predictions_list.sort(
+        key=lambda g: (_STATUS_ORDER.get(g.get("status", ""), 3), g.get("game_time", ""))
+    )
 
     leaderboard = []
     for t in NBA_TEAMS:
