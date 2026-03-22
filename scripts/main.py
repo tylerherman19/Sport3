@@ -56,7 +56,7 @@ from scripts.output_writer import (
     write_nfl_model_metrics, write_nfl_injuries,
     write_nba_predictions, write_nba_leaderboard, write_nba_model_metrics,
     write_nba_injuries, write_nba_ensemble_weights, load_nba_ensemble_weights,
-    guard_nba_empty_output, DATA_DIR,
+    guard_nba_empty_output, write_nba_features, write_nba_results, DATA_DIR,
 )
 
 # ---- Model sub-modules ----
@@ -441,6 +441,26 @@ def run_nba():
     for t in NBA_TEAMS:
         elo_dict.setdefault(t,1500.0); game_history.setdefault(t,[])
 
+    # Abort guard: if historical fetch is too small the model falls back to
+    # 50% neutral defaults and overwrites good predictions. Preserve existing output.
+    if len(historical_games) < 200:
+        log.critical(
+            f"NBA historical fetch returned only {len(historical_games)} games "
+            f"(need >= 200) — aborting NBA pipeline to prevent overwriting "
+            f"predictions with 50% defaults. Check ESPN scoreboard API availability."
+        )
+        return
+
+    # Write game results immediately so dashboard has fresh history.
+    results_for_output = [
+        {"date": g["date"], "season": g.get("season", season_year),
+         "home_team": g["team1"], "away_team": g["team2"],
+         "home_score": g["score1"], "away_score": g["score2"],
+         "winner": g["team1"] if g["score1"] > g["score2"] else g["team2"]}
+        for g in historical_games if g.get("score1") and g.get("score2")
+    ]
+    write_nba_results(results_for_output[-2000:], len(results_for_output), now_utc)
+
     if HAS_NBA_ELO_MODEL and save_nba_elo_ratings:
         try: save_nba_elo_ratings(elo_dict, game_history, season_year)
         except Exception as e: log.warning(f"save_nba_elo_ratings failed: {e}")
@@ -457,6 +477,21 @@ def run_nba():
                 logistic_model, logistic_scaler, logistic_calibrator = train_nba_logistic(X, y)
                 if logistic_model:
                     model_metrics.update(evaluate_nba_model(logistic_model,logistic_scaler,logistic_calibrator,X,y))
+                # Write feature metadata — confirms model trained on real data, not empty arrays.
+                seasons_used = sorted(set(g.get("season", season_year) for g in historical_games))
+                feature_names = [
+                    "elo_diff_with_hfa", "hfa", "rest_diff", "pyth_elo_diff",
+                    "net_rating_diff", "off_rating_diff", "def_rating_diff",
+                    "pace_diff", "turnover_rate_diff", "three_point_rate_diff",
+                    "rebound_rate_diff", "free_throw_rate_diff", "recent_form_diff", "b2b",
+                ]
+                write_nba_features(
+                    feature_vectors=[{"name": feature_names[i] if i < len(feature_names) else f"feature_{i}"}
+                                     for i in range(X.shape[1])],
+                    count=int(len(X)),
+                    seasons=seasons_used,
+                    now_utc=now_utc,
+                )
         except Exception as e:
             log.error(f"NBA logistic training failed: {e}")
 
