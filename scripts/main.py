@@ -466,6 +466,17 @@ def run_nba():
         except Exception as e: log.warning(f"save_nba_elo_ratings failed: {e}")
 
     efficiency_data = build_nba_efficiency_data(standings)
+    # CDN standings returns points_for=0/points_against=0, so override PPG from game scores
+    from collections import defaultdict as _dd
+    _ppg = _dd(lambda: {"pf": 0.0, "pa": 0.0, "gp": 0})
+    for _g in historical_games:
+        if _g.get("season", 0) >= season_year - 1 and _g.get("score1") and _g.get("score2"):
+            _ppg[_g["team1"]]["pf"] += _g["score1"]; _ppg[_g["team1"]]["pa"] += _g["score2"]; _ppg[_g["team1"]]["gp"] += 1
+            _ppg[_g["team2"]]["pf"] += _g["score2"]; _ppg[_g["team2"]]["pa"] += _g["score1"]; _ppg[_g["team2"]]["gp"] += 1
+    for _t in efficiency_data:
+        if _ppg[_t]["gp"] > 0:
+            efficiency_data[_t]["ppg_for"]     = _ppg[_t]["pf"] / _ppg[_t]["gp"]
+            efficiency_data[_t]["ppg_against"] = _ppg[_t]["pa"] / _ppg[_t]["gp"]
     pyth_data       = compute_nba_pythagorean(efficiency_data)
 
     logistic_model = logistic_scaler = logistic_calibrator = None

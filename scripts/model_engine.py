@@ -392,11 +392,16 @@ def nba_ensemble_predict(elo_prob, pyth_prob, eff_prob,
                           log_prob=None, xgb_prob=None, weights=None) -> float:
     if weights is None:
         weights = {"elo": 0.25, "pyth": 0.20, "eff": 0.15, "log": 0.25, "xgb": 0.15}
-    xgb_val = xgb_prob if xgb_prob is not None else (log_prob if log_prob is not None else elo_prob)
     log_val = log_prob if log_prob is not None else elo_prob
-    total_w = sum(weights.values())
-    val = (weights["elo"]*elo_prob + weights["pyth"]*pyth_prob + weights["eff"]*eff_prob
-           + weights["log"]*log_val + weights["xgb"]*xgb_val) / total_w
+    if xgb_prob is None:
+        # Redistribute XGB weight to remaining models rather than double-counting logistic
+        total_w = weights["elo"] + weights["pyth"] + weights["eff"] + weights["log"]
+        val = (weights["elo"]*elo_prob + weights["pyth"]*pyth_prob +
+               weights["eff"]*eff_prob + weights["log"]*log_val) / max(total_w, 1e-9)
+    else:
+        total_w = sum(weights.values())
+        val = (weights["elo"]*elo_prob + weights["pyth"]*pyth_prob + weights["eff"]*eff_prob
+               + weights["log"]*log_val + weights["xgb"]*xgb_prob) / max(total_w, 1e-9)
     return float(max(0.01, min(0.99, val)))
 
 

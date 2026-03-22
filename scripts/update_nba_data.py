@@ -1160,7 +1160,7 @@ def run():
     # ── Guard: if both fetches returned 0 games, exit without overwriting output ──
     if len(scoreboard_games) == 0 and len(future_games) == 0:
         # Only abort if the existing file already contains game data worth preserving
-        existing_predictions_path = DATA_DIR / "nbapredictions.json"
+        existing_predictions_path = DATA_DIR / "nba_predictions.json"
         has_existing_data = False
         if existing_predictions_path.exists():
             try:
@@ -1231,6 +1231,17 @@ def run():
     # ── 4. Efficiency and Pythagorean ───────────────────────────────────────
     log.info("Computing NBA efficiency and Pythagorean ratings...")
     efficiency_data = build_nba_efficiency_data(standings)
+    # CDN standings returns points_for=0/points_against=0, so override PPG from game scores
+    from collections import defaultdict as _dd
+    _ppg = _dd(lambda: {"pf": 0.0, "pa": 0.0, "gp": 0})
+    for _g in historical_games:
+        if _g.get("season", 0) >= season_year - 1 and _g.get("score1") and _g.get("score2"):
+            _ppg[_g["team1"]]["pf"] += _g["score1"]; _ppg[_g["team1"]]["pa"] += _g["score2"]; _ppg[_g["team1"]]["gp"] += 1
+            _ppg[_g["team2"]]["pf"] += _g["score2"]; _ppg[_g["team2"]]["pa"] += _g["score1"]; _ppg[_g["team2"]]["gp"] += 1
+    for _t in efficiency_data:
+        if _ppg[_t]["gp"] > 0:
+            efficiency_data[_t]["ppg_for"]     = _ppg[_t]["pf"] / _ppg[_t]["gp"]
+            efficiency_data[_t]["ppg_against"] = _ppg[_t]["pa"] / _ppg[_t]["gp"]
     pyth_data = compute_nba_pythagorean(efficiency_data)
 
     # ── 5. Train NBA logistic model ─────────────────────────────────────────
@@ -1442,6 +1453,9 @@ def run():
             pyth_home_adj = pyth_home * (1.0 + hfa / 1500.0)
             _pyth_denom = pyth_home_adj + pyth_away
             pyth_prob = pyth_home_adj / _pyth_denom if _pyth_denom > 0 else 0.5
+            # ELO-equivalent pythagorean values for logistic feature vector
+            pyth_elo_home = 1500.0 + (pyth_home - 0.5) * 400.0
+            pyth_elo_away = 1500.0 + (pyth_away - 0.5) * 400.0
 
             # Efficiency prediction
             eff_home = efficiency_data.get(home, {}).get("net_rating", 0.0)

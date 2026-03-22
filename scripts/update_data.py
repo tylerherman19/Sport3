@@ -1011,8 +1011,8 @@ def run():
             eff_result = efficiency_predict_game(home, away, efficiency_data,
                                                   pythagorean_data, not neutral, neutral)
 
-            # Logistic prediction
-            log_prob = 0.5
+            # Logistic prediction — fall back to ELO when model not trained
+            log_prob = elo_result["prob"]
             if logistic_model and logistic_scaler and logistic_calibrator:
                 log_preds = predict_matchups(
                     matchup_data, logistic_model, logistic_scaler, logistic_calibrator,
