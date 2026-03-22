@@ -1,6 +1,13 @@
 """
 Logistic Regression Model — System 1
 Trains on FiveThirtyEight historical data with isotonic calibration.
+
+FIX (Issue 2): Multicollinearity between ELO and Pythagorean addressed by:
+  1. Removing "pythagorean_diff" from FEATURE_COLS — ELO already encodes the
+     same points-differential signal. Pythagorean is kept as a standalone
+     ensemble model input but should not be double-counted inside logistic.
+  2. Reducing regularization strength from C=1.0 to C=0.1 (stronger L2 penalty)
+     to shrink any remaining correlated coefficient inflation.
 """
 
 import numpy as np
@@ -12,11 +19,13 @@ from sklearn.metrics import log_loss, brier_score_loss, roc_auc_score
 from sklearn.preprocessing import StandardScaler
 
 
+# pythagorean_diff removed — it is highly correlated with elo_diff (both
+# derived from score differentials) and caused coefficient inflation.
+# It remains a standalone ensemble component in ensemble_model.py.
 FEATURE_COLS = [
     "elo_diff",
     "home_field_advantage",
     "rest_days_diff",
-    "pythagorean_diff",
     "turnover_diff_adjusted",
     "travel_distance_diff",
     "last5_win_rate_diff",
@@ -46,10 +55,6 @@ def build_features(df, elo_dict, game_history, efficiency_data, pythagorean_data
         elo2 = float(row.get("elo2_pre", 1500))
         elo_diff = elo1 - elo2 + (65 if not neutral else 0)
 
-        pyth1 = pythagorean_data.get(team1, {}).get("pyth", 0.5)
-        pyth2 = pythagorean_data.get(team2, {}).get("pyth", 0.5)
-        pyth_diff = pyth1 - pyth2
-
         eff1 = efficiency_data.get(team1, {}).get("net_eff", 0.0)
         eff2 = efficiency_data.get(team2, {}).get("net_eff", 0.0)
 
@@ -67,11 +72,11 @@ def build_features(df, elo_dict, game_history, efficiency_data, pythagorean_data
         lr2 = recent_form(game_history, team2)
         last5_diff = lr1 - lr2
 
+        # pythagorean_diff intentionally omitted — see module docstring
         feature = [
             elo_diff,
             1.0 if not neutral else 0.0,
             rest_diff,
-            pyth_diff,
             turnover_diff,
             travel_diff,
             last5_diff,
@@ -92,12 +97,16 @@ def build_features(df, elo_dict, game_history, efficiency_data, pythagorean_data
 
 
 def train_logistic(X, y):
-    """Train logistic regression with isotonic calibration."""
+    """Train logistic regression with isotonic calibration.
+
+    C=0.1 (stronger L2 regularization vs previous C=1.0) to mitigate
+    coefficient inflation from any residual correlation among features.
+    """
     scaler = StandardScaler()
     X_scaled = scaler.fit_transform(X)
 
     model = LogisticRegression(
-        C=1.0,
+        C=0.1,          # stronger regularization (was C=1.0)
         max_iter=1000,
         solver="lbfgs",
         random_state=42
@@ -107,7 +116,7 @@ def train_logistic(X, y):
     tscv = TimeSeriesSplit(n_splits=5)
     oof_probs = np.zeros(len(y))
     for train_idx, val_idx in tscv.split(X_scaled):
-        m = LogisticRegression(C=1.0, max_iter=1000, solver="lbfgs", random_state=42)
+        m = LogisticRegression(C=0.1, max_iter=1000, solver="lbfgs", random_state=42)
         m.fit(X_scaled[train_idx], y[train_idx])
         oof_probs[val_idx] = m.predict_proba(X_scaled[val_idx])[:, 1]
 
@@ -177,9 +186,6 @@ def predict_matchups(matchups, model, scaler, calibrator,
         elo_b = elo_dict.get(team_b, 1500.0)
         elo_diff = elo_a - elo_b + (65 if is_home and not neutral else 0)
 
-        pyth_a = pythagorean_data.get(team_a, {}).get("pyth", 0.5)
-        pyth_b = pythagorean_data.get(team_b, {}).get("pyth", 0.5)
-
         off_a = efficiency_data.get(team_a, {}).get("off_eff", 1.0)
         off_b = efficiency_data.get(team_b, {}).get("off_eff", 1.0)
         def_a = efficiency_data.get(team_a, {}).get("def_eff", 1.0)
@@ -188,11 +194,11 @@ def predict_matchups(matchups, model, scaler, calibrator,
         lr_a = recent_form(game_history, team_a)
         lr_b = recent_form(game_history, team_b)
 
+        # pythagorean_diff intentionally omitted — see module docstring
         feature = np.array([[
             elo_diff,
             1.0 if is_home and not neutral else 0.0,
             float(m.get("rest_diff", 0)),
-            pyth_a - pyth_b,
             float(m.get("turnover_diff", 0)),
             float(m.get("travel_diff", 0)),
             lr_a - lr_b,
@@ -214,11 +220,7 @@ def predict_matchups(matchups, model, scaler, calibrator,
 
 def historical_accuracy_by_year(df, model, scaler, calibrator,
                                 elo_dict, game_history, efficiency_data, pythagorean_data):
-    """Returns per-year accuracy for model performance section.
-
-    elo_dict is passed through to build_features so ELO-based features are
-    populated correctly. Previously called with {} which zeroed all ELO lookups.
-    """
+    """Returns per-year accuracy for model performance section."""
     results = []
     years = sorted(df["season"].unique())[-10:]
 
