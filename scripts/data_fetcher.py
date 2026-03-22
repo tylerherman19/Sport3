@@ -371,6 +371,11 @@ def fetch_nba_season_games_espn(seasons=None):
     """
     Fetch completed NBA games day-by-day via ESPN scoreboard.
     Replaces nba_api LeagueGameLog (stats.nba.com) with ESPN endpoints.
+
+    FIX: stride_days is now always 1 for ALL seasons to ensure full
+    historical coverage for model training. Previously, older seasons
+    used a 7-day stride which skipped ~85% of games, starving the model
+    and causing it to fall back to 50% neutral defaults.
     """
     from datetime import date as date_cls
     if seasons is None:
@@ -388,7 +393,9 @@ def fetch_nba_season_games_espn(seasons=None):
         season_start = date_cls(season_year - 1, 10, 1)
         season_end   = min(today, date_cls(season_year, 6, 30))
         if season_start > today: continue
-        stride_days  = 1 if season_year == seasons[-1] else 7
+        # stride_days is always 1 for all seasons — ensures full game coverage
+        # for model training. Do not revert to a 7-day stride.
+        stride_days  = 1
         date_list    = []
         current      = season_start
         while current <= season_end:
