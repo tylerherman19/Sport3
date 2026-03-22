@@ -726,22 +726,18 @@ function renderGames() {
   const nowMs = Date.now();
   const todayDateStr = new Date().toISOString().slice(0, 10);
   let filteredGames = pred.games;
-  if (state.gameFilter === 'today') {
-    // Today/Live: games that are live, finished, or scheduled for today's date
-    filteredGames = pred.games.filter(g => {
-      if (g.status === 'STATUS_IN_PROGRESS' || g.status === 'STATUS_HALFTIME') return true;
-      if (g.status === 'STATUS_FINAL') return true;
-      if (g.status === 'STATUS_SCHEDULED' && g.game_time && g.game_time.slice(0, 10) === todayDateStr) return true;
-      if (!g.is_future && g.game_time && g.game_time.slice(0, 10) === todayDateStr) return true;
-      return false;
-    });
-  } else if (state.gameFilter === 'future') {
-    // Upcoming: explicitly flagged as future, or status scheduled, or game time >30min away
+  if (state.gameFilter === 'live') {
+    filteredGames = pred.games.filter(g =>
+      g.status === 'STATUS_IN_PROGRESS' || g.status === 'STATUS_HALFTIME'
+    );
+  } else if (state.gameFilter === 'upcoming') {
     filteredGames = pred.games.filter(g =>
       g.is_future ||
       g.status === 'STATUS_SCHEDULED' ||
       (g.game_time && new Date(g.game_time).getTime() > nowMs + 1800000)
     );
+  } else if (state.gameFilter === 'completed') {
+    filteredGames = pred.games.filter(g => g.status === 'STATUS_FINAL');
   }
 
   // Update filter pill active state
