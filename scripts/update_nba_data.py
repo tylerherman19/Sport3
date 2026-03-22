@@ -311,8 +311,9 @@ def build_nba_player_values(season_year=None):
 
     for name, ppg in player_ppg.items():
         ppg_val = _ppg_to_value_mult(ppg)
-        # Always apply PPG value when available — it reflects current production
-        values[name] = ppg_val
+        # Use max so static tiers act as a floor — known stars are never downgraded
+        # due to low current-season PPG from injury absences, trades, or API gaps
+        values[name] = max(values.get(name, 0.0), ppg_val)
 
     ppg_count = len(player_ppg)
     if ppg_count > 0:
