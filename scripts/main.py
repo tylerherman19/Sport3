@@ -106,6 +106,19 @@ def _nfl_value_tier_label(mult):
     return "rotation"
 
 
+def _is_likely_nba_offseason(today=None):
+    """
+    Calendar guard for the NBA.
+    July–September is treated as the normal offseason window.
+    During October–June, a 0-game fetch is assumed to be a data failure unless
+    proven otherwise, so we should preserve existing predictions instead of
+    overwriting them with empty/placeholder output.
+    """
+    if today is None:
+        today = datetime.now(timezone.utc).date()
+    return today.month in (7, 8, 9)
+
+
 # ============================================================
 # NFL pipeline
 # ============================================================
@@ -402,15 +415,22 @@ def run_nba():
     standings        = fetch_nba_standings_cdn()
     injuries         = fetch_nba_injuries_espn()
     odds_map         = fetch_nba_odds_api(odds_api_key)
-    is_offseason     = len(scoreboard_games) == 0
+    calendar_offseason = _is_likely_nba_offseason()
 
     future_games = fetch_nba_future_games(days_ahead=14)
     existing_ids = {g["game_id"] for g in scoreboard_games}
     future_games = [g for g in future_games if g["game_id"] not in existing_ids]
     all_games    = scoreboard_games + future_games
+    is_offseason = calendar_offseason and len(all_games) == 0
 
     if not scoreboard_games and not future_games:
         existing_path = DATA_DIR / "nba_predictions.json"
+        if not calendar_offseason and guard_nba_empty_output(existing_path):
+            log.error(
+                "NBA current/future schedule fetch returned 0 games during the regular season "
+                "window — aborting to preserve existing nba_predictions.json"
+            )
+            return
         if guard_nba_empty_output(existing_path):
             log.error("Both fetches 0 — aborting to preserve existing nba_predictions.json")
             return

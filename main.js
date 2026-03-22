@@ -185,6 +185,24 @@ function ensembleFromProbs(probs, weights) {
   return clamp(val, 0.01, 0.99);
 }
 
+function isoDateKey(iso) {
+  if (!iso) return '';
+  try {
+    return new Date(iso).toISOString().slice(0, 10);
+  } catch {
+    return String(iso).slice(0, 10);
+  }
+}
+
+function findMatchingNbaGame(existingGames, liveGame) {
+  if (!existingGames?.length || !liveGame) return null;
+  return existingGames.find(g =>
+    g.home_team === liveGame.home_team &&
+    g.away_team === liveGame.away_team &&
+    isoDateKey(g.game_time) === isoDateKey(liveGame.game_time)
+  ) || null;
+}
+
 /* ── League switching ─────────────────────────────────────────── */
 document.querySelectorAll('.league-btn').forEach(btn => {
   btn.addEventListener('click', () => {
@@ -439,17 +457,19 @@ async function fetchLiveNBAData() {
   }
 
   const existingMap = new Map(state.nba.predictions.games.map(g => [g.game_id, g]));
+  const existingGames = state.nba.predictions.games;
 
   for (const [id, live] of liveMap) {
-    if (existingMap.has(id)) {
+    const matched = existingMap.get(id) || findMatchingNbaGame(existingGames, live);
+    if (matched) {
       // Update mutable fields on the existing enriched game object
-      const g = existingMap.get(id);
+      const g = matched;
       g.status = live.status;
       g.home_score = live.home_score;
       g.away_score = live.away_score;
       g.is_future = live.is_future;
     } else {
-      // New game not in static JSON — add with live data + default predictions
+      // Truly new game not present in static JSON — add live placeholder row
       state.nba.predictions.games.push(live);
     }
   }
@@ -519,7 +539,9 @@ async function fetchLiveNBAStandings() {
       });
     }
 
-    if (state.league === 'nba') sortAndRenderLeaderboard();
+    if (state.league === 'nba') {
+      sortAndRenderLeaderboard();
+    }
   } catch { /* network failure — keep static JSON data */ }
 }
 
