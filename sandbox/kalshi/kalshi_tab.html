@@ -1,0 +1,22 @@
+<!-- Kalshi Odds Comparison — sandboxed from index.html -->
+<!-- Nav tab button (goes in <nav> .nav-tabs): -->
+      <button class="nav-tab" data-tab="kalshi" id="tab-btn-kalshi">Kalshi Odds</button>
+
+<!-- Section (goes in <main> .container, after Section 6): -->
+    <!-- ── Section 7: Kalshi Odds ── -->
+    <section id="tab-kalshi" class="section">
+      <div class="section-header">
+        <div class="section-title">
+          <h2>Kalshi Odds Comparison</h2>
+          <span class="section-badge" id="kalshi-badge">Model vs Market</span>
+        </div>
+        <div style="font-size:0.75rem;color:var(--text-muted);">Ranked by prediction mismatch</div>
+      </div>
+      <div class="game-filter-pills" id="kalshi-league-pills">
+        <button class="filter-pill active" data-kleague="nfl" onclick="setKalshiLeague('nfl')">🏈 NFL</button>
+        <button class="filter-pill" data-kleague="nba" onclick="setKalshiLeague('nba')">🏀 NBA</button>
+      </div>
+      <div id="kalshi-content">
+        <div class="loading"><div class="spinner"></div><span>Loading Kalshi markets...</span></div>
+      </div>
+    </section>
