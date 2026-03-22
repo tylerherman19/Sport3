@@ -1,6 +1,12 @@
 """
 ELO Model — System 2
 Computes ELO ratings from historical data and predicts game outcomes.
+
+FIX (Issue 4): NFL K-factor now decays from k_base (20) to k_base/2 (10)
+over the course of each regular season (17 games), mirroring the dynamic
+K-factor already used in model/nba_elo.py. Early-season games (high
+uncertainty) get full K; late-season games (stable ratings) get reduced K.
+K reverts to k_base at the start of each new season.
 """
 
 import numpy as np
@@ -33,6 +39,9 @@ def compute_elo(historical_df, k_base=20.0, hfa=65.0, initial_elo=1500.0, regres
 
     seasons = sorted(df["season"].unique())
 
+    # NFL regular season games per team — used for K-factor decay
+    NFL_SEASON_GAMES = 17
+
     for season in seasons:
         season_df = df[df["season"] == season]
 
@@ -40,6 +49,9 @@ def compute_elo(historical_df, k_base=20.0, hfa=65.0, initial_elo=1500.0, regres
         for team in list(elo_dict.keys()):
             elo_dict[team] = elo_dict[team] * (1 - regress_pct) + initial_elo * regress_pct
             game_history[team] = []
+
+        # Per-team game count within this season — drives K-factor decay
+        team_game_counts = {}
 
         for _, row in season_df.iterrows():
             team1 = row["team1"]
@@ -76,9 +88,18 @@ def compute_elo(historical_df, k_base=20.0, hfa=65.0, initial_elo=1500.0, regres
             else:
                 mov = 1.0
 
-            k = k_base
+            # Dynamic K-factor: decays from k_base to k_base/2 over NFL_SEASON_GAMES.
+            # Uses team1's game count as the progress signal; both teams receive the
+            # same K for a given game, which is consistent with FiveThirtyEight's
+            # season-progress approach. K resets to k_base each new season.
+            progress = min(1.0, team_game_counts.get(team1, 0) / NFL_SEASON_GAMES)
+            k = k_base * (1.0 - 0.5 * progress)
+
             elo_dict[team1] = e1 + k * mov * (actual1 - exp1)
             elo_dict[team2] = e2 + k * mov * (actual2 - exp2)
+
+            team_game_counts[team1] = team_game_counts.get(team1, 0) + 1
+            team_game_counts[team2] = team_game_counts.get(team2, 0) + 1
 
             game_history[team1].append({
                 "result": actual1,
