@@ -1,0 +1,118 @@
+name: Apply Script Patches (one-shot)
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: claude/nfl-prediction-dashboard-x4JPv
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Apply patches to update_data.py and update_nba_data.py
+        run: |
+          python3 << 'PYEOF'
+          import re
+
+          # PATCH scripts/update_data.py (Issues 5+6)
+          with open("scripts/update_data.py") as f:
+              src = f.read()
+
+          old = "from model.ensemble_model import (build_xgb_features, train_xgboost, predict_xgboost,\n                                   ensemble_predict, kelly_criterion,\n                                   american_to_prob, remove_vig)"
+          new = "from model.ensemble_model import (build_xgb_features, train_xgboost, predict_xgboost,\n                                   ensemble_predict, kelly_criterion,\n                                   american_to_prob, remove_vig, DEFAULT_WEIGHTS)\nfrom model.nfl_ensemble_weights import learn_nfl_weights"
+          src = src.replace(old, new)
+
+          marker = "    # \u2500\u2500 8. Generate per-game predictions \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500"
+          weight_block = "\n    # \u2500\u2500 7b. Learn ensemble weights (Issue 5) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n    log.info(\"Learning NFL ensemble weights...\")\n    nfl_weights = learn_nfl_weights(fte_df, pythagorean_data, efficiency_data, DEFAULT_WEIGHTS)\n\n"
+          src = src.replace(marker, weight_block + marker)
+
+          old_ep = '            ensemble_prob = ensemble_predict(\n                logistic_prob=log_prob,\n                xgb_prob=xgb_prob,\n                elo_prob=elo_result["prob"],\n                pyth_prob=eff_result["pyth_prob"],\n                eff_prob=eff_result["eff_prob"]\n            )'
+          new_ep = '            ensemble_prob = ensemble_predict(\n                logistic_prob=log_prob,\n                xgb_prob=xgb_prob,\n                elo_prob=elo_result["prob"],\n                pyth_prob=eff_result["pyth_prob"],\n                eff_prob=eff_result["eff_prob"],\n                weights=nfl_weights,\n            )'
+          src = src.replace(old_ep, new_ep)
+
+          with open("scripts/update_data.py", "w") as f:
+              f.write(src)
+          checks = ["DEFAULT_WEIGHTS" in src, "learn_nfl_weights" in src, "weights=nfl_weights" in src]
+          print(f"update_data.py: {all(checks)} {checks}")
+          assert all(checks), "update_data.py patch failed"
+
+          # PATCH scripts/update_nba_data.py (Issues 1/7/8/9)
+          with open("scripts/update_nba_data.py") as f:
+              src = f.read()
+
+          # Issue 9: sims
+          src = src.replace(
+              "season_sim = simulate_season(\n            NBA_TEAMS, remaining_schedule, bayesian_ratings, n_sims=3000\n        )",
+              "season_sim = simulate_season(\n            NBA_TEAMS, remaining_schedule, bayesian_ratings,\n            # Issue 9: raised 3000->5000 to match NFL\n            n_sims=5000\n        )"
+          )
+
+          # Issue 7: XGBoost early stopping
+          old_xgb = '        model = xgb.XGBClassifier(\n                n_estimators=300, max_depth=4, learning_rate=0.05,\n                subsample=0.8, colsample_bytree=0.8,\n                reg_alpha=0.1, reg_lambda=1.0,\n                eval_metric="logloss", random_state=42,\n            )\n            model.fit(X_scaled, y)'
+          new_xgb = '        # Issue 7: early stopping 80/20 split\n            split = max(1, int(len(X_scaled) * 0.8))\n            X_train, X_val = X_scaled[:split], X_scaled[split:]\n            y_train, y_val = y[:split], y[split:]\n            model = xgb.XGBClassifier(\n                n_estimators=500, max_depth=4, learning_rate=0.05,\n                subsample=0.8, colsample_bytree=0.8,\n                min_child_weight=10, reg_alpha=0.1, reg_lambda=1.0,\n                eval_metric="logloss", early_stopping_rounds=20,\n                random_state=42, n_jobs=-1, verbosity=0,\n            )\n            model.fit(X_train, y_train, eval_set=[(X_val, y_val)], verbose=False)'
+          src = src.replace(old_xgb, new_xgb)
+
+          # Issue 1: Pythagorean HFA
+          old_pyth = '            # Pythagorean prediction \u2014 direct ratio (Bradley-Terry), not ELO transform\n            pyth_home = pyth_data.get(home, {}).get("pyth", 0.5)\n            pyth_away = pyth_data.get(away, {}).get("pyth", 0.5)\n            # Scale home court advantage into pythagorean space (hfa=100 ELO \u2248 +6.7% win prob)\n            pyth_home_adj = pyth_home * (1.0 + hfa / 1500.0)\n            _pyth_denom = pyth_home_adj + pyth_away\n            pyth_prob = pyth_home_adj / _pyth_denom if _pyth_denom > 0 else 0.5'
+          new_pyth = '            # Pythagorean prediction \u2014 Issue 1: additive ELO-space logistic HFA\n            pyth_home = pyth_data.get(home, {}).get("pyth", 0.5)\n            pyth_away = pyth_data.get(away, {}).get("pyth", 0.5)\n            _pyth_elo_home = 1500.0 + (pyth_home - 0.5) * 400.0\n            _pyth_elo_away = 1500.0 + (pyth_away - 0.5) * 400.0\n            _pyth_diff = (_pyth_elo_home + hfa) - _pyth_elo_away\n            pyth_prob = 1.0 / (1.0 + 10 ** (-_pyth_diff / 400.0))'
+          src = src.replace(old_pyth, new_pyth)
+
+          # Issue 8: shared inference feature builder
+          helper = '''
+
+def _nba_inference_features(home, away, elo_dict, game_history, efficiency_data,
+                             pyth_data, neutral, hfa, rest_diff, b2b_home, b2b_away):
+    """Issue 8: shared 14-col feature builder for train+inference parity."""
+    e1, e2 = elo_dict.get(home, 1500.0), elo_dict.get(away, 1500.0)
+    elo_diff = (e1 + hfa) - e2
+    eff1, eff2 = efficiency_data.get(home, {}), efficiency_data.get(away, {})
+    pyth1, pyth2 = pyth_data.get(home, {}).get("pyth", 0.5), pyth_data.get(away, {}).get("pyth", 0.5)
+    return [
+        elo_diff, hfa, rest_diff,
+        (pyth1 - pyth2) * 400.0,
+        eff1.get("net_rating", 0.0) - eff2.get("net_rating", 0.0),
+        eff1.get("offensive_rating", 110.0) - eff2.get("offensive_rating", 110.0),
+        eff2.get("defensive_rating", 110.0) - eff1.get("defensive_rating", 110.0),
+        eff1.get("pace", 100.0) - eff2.get("pace", 100.0),
+        eff2.get("turnover_rate", 0.5) - eff1.get("turnover_rate", 0.5),
+        eff1.get("three_point_rate", 0.35) - eff2.get("three_point_rate", 0.35),
+        eff1.get("rebound_rate", 0.5) - eff2.get("rebound_rate", 0.5),
+        eff1.get("free_throw_rate", 0.20) - eff2.get("free_throw_rate", 0.20),
+        nba_recent_form(game_history, home) - nba_recent_form(game_history, away),
+        float(b2b_home) - float(b2b_away),
+    ]
+
+'''
+          src = src.replace("def build_nba_features(", helper + "def build_nba_features(")
+
+          old_feat = '            home_eff = efficiency_data.get(home, {})\n            away_eff = efficiency_data.get(away, {})\n            feat = [\n                (home_elo + hfa) - away_elo,\n                hfa,\n                rest_diff,\n                pyth_elo_home - pyth_elo_away,\n                home_eff.get("net_rating", 0) - away_eff.get("net_rating", 0),\n                home_eff.get("offensive_rating", 110) - away_eff.get("offensive_rating", 110),\n                away_eff.get("defensive_rating", 110) - home_eff.get("defensive_rating", 110),\n                home_eff.get("pace", 100) - away_eff.get("pace", 100),\n                away_eff.get("turnover_rate", 0.5) - home_eff.get("turnover_rate", 0.5),\n                home_eff.get("three_point_rate", 0.35) - away_eff.get("three_point_rate", 0.35),\n                home_eff.get("rebound_rate", 0.5) - away_eff.get("rebound_rate", 0.5),\n                home_eff.get("free_throw_rate", 0.20) - away_eff.get("free_throw_rate", 0.20),\n                nba_recent_form(game_history, home) - nba_recent_form(game_history, away),\n                float(b2b_home) - float(b2b_away),\n            ]'
+          new_feat = '            # Issue 8: shared feature builder\n            feat = _nba_inference_features(\n                home, away, elo_dict, game_history, efficiency_data, pyth_data,\n                neutral=neutral, hfa=hfa, rest_diff=rest_diff,\n                b2b_home=b2b_home, b2b_away=b2b_away,\n            )'
+          src = src.replace(old_feat, new_feat)
+
+          with open("scripts/update_nba_data.py", "w") as f:
+              f.write(src)
+          checks = ["n_sims=5000" in src, "early_stopping_rounds=20" in src, "_pyth_elo_home" in src, "_nba_inference_features" in src]
+          print(f"update_nba_data.py: {all(checks)} {checks}")
+          assert all(checks), "update_nba_data.py patch failed"
+          print("All patches applied.")
+          PYEOF
+
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add scripts/update_data.py scripts/update_nba_data.py
+          git diff --cached --stat
+          git commit -m "fix(scripts): Issues 1/5/7/8/9 - patch update_data + update_nba_data"
+          git push
+
+      - name: Self-cleanup
+        run: |
+          git rm .github/workflows/apply_script_patches.yml
+          git commit -m "chore: remove one-shot patch workflow [skip ci]"
+          git push
