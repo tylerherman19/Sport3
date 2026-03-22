@@ -277,7 +277,7 @@ def run_nfl():
                                    rest_adj_a=raj+ijah,rest_adj_b=-raj+taj+ijaa)
             br  = bayes_predict(home,away,bayesian_ratings,is_home_a=True,neutral=neutral)
             effr = efficiency_predict_game(home,away,efficiency_data,pythagorean_data,not neutral,neutral)
-            lp = 0.5
+            lp = None
             if logistic_model and logistic_scaler and logistic_calibrator:
                 lps = predict_matchups(md,logistic_model,logistic_scaler,logistic_calibrator,
                                        elo_dict,game_history,efficiency_data,pythagorean_data)
@@ -316,7 +316,7 @@ def run_nfl():
                 "home_name":game.get("home_name",home),"away_name":game.get("away_name",away),
                 "home_logo":game.get("home_logo",""),"away_logo":game.get("away_logo",""),
                 "neutral":neutral,"home_score":game.get("home_score",0),"away_score":game.get("away_score",0),
-                "predictions":{"ensemble_prob":ep,"logistic_prob":round(lp,4),"elo_prob":round(er["prob"],4),
+                "predictions":{"ensemble_prob":ep,"logistic_prob":round(lp,4) if lp is not None else None,"elo_prob":round(er["prob"],4),
                                "xgb_prob":xp,"pyth_prob":effr["pyth_prob"],"eff_prob":effr["eff_prob"],
                                "bayesian_prob":br["bayesian_prob"]},
                 "market":{"home_prob":mhp,"edge":me,"kelly_pct":kp,
@@ -533,7 +533,8 @@ def run_nba():
     from collections import defaultdict as _dd
     _ppg = _dd(lambda: {"pf": 0.0, "pa": 0.0, "gp": 0})
     for _g in historical_games:
-        if _g.get("season", 0) >= season_year - 1 and _g.get("score1") and _g.get("score2"):
+        _g_season = _g.get("season") or season_year  # treat missing season as current
+        if _g_season >= season_year - 1 and _g.get("score1") and _g.get("score2"):
             _ppg[_g["team1"]]["pf"] += _g["score1"]; _ppg[_g["team1"]]["pa"] += _g["score2"]; _ppg[_g["team1"]]["gp"] += 1
             _ppg[_g["team2"]]["pf"] += _g["score2"]; _ppg[_g["team2"]]["pa"] += _g["score1"]; _ppg[_g["team2"]]["gp"] += 1
     for _t in efficiency_data:
@@ -579,7 +580,7 @@ def run_nba():
         except Exception as e:
             log.error(f"NBA XGBoost training failed: {e}")
 
-    rec_games = [g for g in historical_games if g.get("season",0)>=season_year-1]
+    rec_games = [g for g in historical_games if (g.get("season") or season_year) >= season_year - 1]
     bayesian_ratings = update_ratings(rec_games, elo_dict, hfa=100.0,
                                        margin_multiplier=5.0, obs_noise=130.0)
     for t in NBA_TEAMS: bayesian_ratings.setdefault(t,{"mu":elo_dict.get(t,1500.0),"sigma":75.0})
@@ -683,7 +684,7 @@ def run_nba():
                                          log_prob=lp,xgb_prob=xp,weights=nba_weights)
             muh = bayesian_ratings.get(home,{}).get("mu",helo); mua = bayesian_ratings.get(away,{}).get("mu",aelo)
             sh  = bayesian_ratings.get(home,{}).get("sigma",75.0); sa2 = bayesian_ratings.get(away,{}).get("sigma",75.0)
-            mc  = simulate_game(muh,mua,sh,sa2,is_home_a=True,neutral=neutral,n=10000)
+            mc  = simulate_game(muh,mua,sh,sa2,is_home_a=True,neutral=neutral,hfa=100.0,n=10000)
             mo  = None
             for _,odds in odds_map.items():
                 hm=odds.get("home_team_name",""); am=odds.get("away_team_name","")
