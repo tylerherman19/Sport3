@@ -2,7 +2,7 @@
 NBA ELO Model — mirrors structure of model/elo_model.py for NFL.
 Implements Dynamic ELO for all 30 NBA teams with:
   - FiveThirtyEight historical initialization (1946–present)
-  - K = 20 (NBA standard per spec)
+  - K = 25 (matches nba_elo.py)
   - HFA = 100 ELO points (home court advantage, probability calc only)
   - MOV multiplier: ln(|margin|+1) * (1.5 / (0.001 * elo_diff + 1.5))
     FIX (Issue 3): constant changed from 2.2 (NFL-derived) to 1.5 (NBA-calibrated).
@@ -34,7 +34,7 @@ DATA_DIR = Path(__file__).parent.parent / "data"
 DATA_DIR.mkdir(exist_ok=True)
 
 # ─── Parameters ────────────────────────────────────────────────────────────────────────────────
-K_BASE          = 20.0     # K-factor base (NBA standard)
+K_BASE          = 25.0     # K-factor base (matches nba_elo.py)
 HFA             = 100.0    # Home court advantage (added to home ELO for prob calc only)
 INITIAL_ELO     = 1500.0   # Starting ELO for every team
 REGRESS_PCT     = 0.25     # Season regression toward mean (25%)
