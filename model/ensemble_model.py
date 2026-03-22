@@ -1,6 +1,14 @@
 """
 Ensemble Model — Systems 9, 11, 12
 XGBoost classifier, Hierarchical team model, weighted ensemble.
+
+FIX (Issue 6): DEFAULT_WEIGHTS updated to reduce combined ELO+Pythagorean
+weight from 0.35 to 0.25. Both models are derived from score differentials
+and are correlated; giving them 35% combined weight double-counted that
+signal on top of logistic/XGBoost which already use both as features.
+New defaults: logistic=0.35, xgboost=0.25, elo=0.15, pythagorean=0.10,
+efficiency=0.15. These defaults are used as fallback only — learn_ensemble_weights()
+(called in update_data.py) will override them with empirically optimized values.
 """
 
 import numpy as np
@@ -35,12 +43,17 @@ XGB_FEATURE_COLS = [
     "time_of_possession_diff",
 ]
 
+# Reduced combined ELO+Pythagorean weight from 0.35 -> 0.25 to avoid
+# double-counting score-differential signal already captured by logistic/XGBoost.
+# logistic weight raised from 0.30 -> 0.35 and efficiency from 0.10 -> 0.15
+# to compensate. These are fallback defaults; learn_ensemble_weights() produces
+# empirically optimized values that override these at runtime.
 DEFAULT_WEIGHTS = {
-    "logistic": 0.30,
+    "logistic": 0.35,
     "xgboost": 0.25,
-    "elo": 0.20,
-    "pythagorean": 0.15,
-    "efficiency": 0.10,
+    "elo": 0.15,
+    "pythagorean": 0.10,
+    "efficiency": 0.15,
 }
 
 
@@ -225,11 +238,11 @@ def ensemble_predict(logistic_prob, xgb_prob, elo_prob, pyth_prob, eff_prob, wei
     if weights is None:
         weights = DEFAULT_WEIGHTS
 
-    w_log = weights.get("logistic", 0.30)
+    w_log = weights.get("logistic", 0.35)
     w_xgb = weights.get("xgboost", 0.25)
-    w_elo = weights.get("elo", 0.20)
-    w_pyth = weights.get("pythagorean", 0.15)
-    w_eff = weights.get("efficiency", 0.10)
+    w_elo = weights.get("elo", 0.15)
+    w_pyth = weights.get("pythagorean", 0.10)
+    w_eff = weights.get("efficiency", 0.15)
 
     # Handle None XGBoost (redistribute weight)
     if xgb_prob is None:
@@ -257,7 +270,7 @@ def learn_ensemble_weights(sub_probs, actuals, weight_keys=None):
     Parameters
     ----------
     sub_probs : list[dict]
-        Each dict maps model name → probability for the home team.
+        Each dict maps model name -> probability for the home team.
         Keys should be a subset of: 'elo', 'pyth', 'eff', 'log', 'xgb'.
     actuals : list[int]
         1 if home team won, 0 otherwise.
@@ -266,7 +279,7 @@ def learn_ensemble_weights(sub_probs, actuals, weight_keys=None):
 
     Returns
     -------
-    dict[str, float]  — normalised weights summing to 1.0
+    dict[str, float]  -- normalised weights summing to 1.0
     """
     from scipy.optimize import minimize
 
