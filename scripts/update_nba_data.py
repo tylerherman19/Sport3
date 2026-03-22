@@ -190,24 +190,129 @@ def _nba_depth_to_value(depth_pos: int) -> float:
     return _NBA_DEPTH_VALUE_MAP.get(depth_pos, 0.4)
 
 
+def fetch_nba_player_ppg():
+    """
+    Fetch per-player season PPG (points per game) from ESPN for all NBA teams.
+    Uses the ESPN athletes/statistics endpoint available in the existing fetch loops.
+    Returns {player_display_name: ppg_float}.
+
+    PPG is the most directly available per-player value signal in the ESPN API
+    and avoids the need for a hardcoded tier list.
+    """
+    log.info("Fetching NBA player PPG stats for usage-based value scoring...")
+    player_ppg = {}
+    try:
+        teams_data = safe_get(f"{ESPN_NBA_BASE}/teams")
+        if not teams_data:
+            log.warning("Could not fetch ESPN NBA teams list for PPG stats")
+            return {}
+        teams_list = (
+            teams_data.get("sports", [{}])[0]
+            .get("leagues", [{}])[0]
+            .get("teams", [])
+        )
+        for team_entry in teams_list:
+            team_id = team_entry.get("team", {}).get("id", "")
+            if not team_id:
+                continue
+            # ESPN athletes endpoint with season statistics
+            roster_data = safe_get(
+                f"{ESPN_NBA_BASE}/teams/{team_id}/athletes",
+                params={"enable": "stats"}
+            )
+            if not roster_data:
+                continue
+            for athlete in roster_data.get("athletes", []):
+                name = athlete.get("displayName", "")
+                if not name:
+                    continue
+                # Prefer season stats if embedded
+                stats_list = athlete.get("statistics", {}).get("splits", {})
+                if not stats_list:
+                    stats_list = athlete.get("stats", [])
+                # Look for points-per-game in any available stats block
+                ppg = None
+                if isinstance(stats_list, list):
+                    for stat in stats_list:
+                        label = str(stat.get("name", "") or stat.get("shortDisplayName", "")).lower()
+                        if label in ("pts", "ppg", "points", "avg points"):
+                            try:
+                                ppg = float(stat.get("displayValue") or stat.get("value") or 0)
+                            except (TypeError, ValueError):
+                                pass
+                            break
+                if ppg is not None and ppg > 0:
+                    if name not in player_ppg or ppg > player_ppg[name]:
+                        player_ppg[name] = ppg
+    except Exception as e:
+        log.warning(f"Error fetching NBA player PPG stats: {e}")
+    log.info(f"NBA PPG stats loaded: {len(player_ppg)} player entries")
+    return player_ppg
+
+
+# League-average PPG threshold for value normalisation
+_NBA_PPG_STAR_THRESHOLD = 24.0    # PPG above which a player is considered superstar-tier
+_NBA_PPG_ALLSTAR_THRESHOLD = 18.0  # all-star tier
+_NBA_PPG_STARTER_THRESHOLD = 10.0  # starter tier
+_NBA_PPG_ROTATION_THRESHOLD = 5.0  # rotation tier
+_NBA_PPG_LEAGUE_AVG = 11.0         # approximate NBA per-player scoring average
+
+
+def _ppg_to_value_mult(ppg: float) -> float:
+    """
+    Convert a player's PPG into a continuous value multiplier.
+    Normalised so that league-average PPG ≈ 1.0 and a top scorer ≈ 2.2.
+    The formula: value = (ppg / league_avg) * 1.0, capped at 2.5.
+    This keeps the multiplier on the same scale as the static tier system
+    (superstar=2.0, all-star=1.5, starter=1.0, rotation=0.5).
+    """
+    if ppg <= 0:
+        return 0.3  # DNP / zero minutes
+    raw = ppg / _NBA_PPG_LEAGUE_AVG
+    return min(raw, 2.5)
+
+
 def build_nba_player_values():
     """
-    Build NBA player value multipliers.
-    Tries live ESPN depth charts first; falls back to static NBA_PLAYER_TIERS.
+    Build NBA player value multipliers using a priority stack:
+      1. PPG-based continuous value (if available from ESPN stats fetch)
+      2. Live ESPN depth chart position
+      3. Static NBA_PLAYER_TIERS curated list (fallback)
+
     Returns {player_name: value_multiplier}.
     """
-    # Start with static curated tiers as baseline
+    # ── Tier 3 (lowest priority): static curated tiers as baseline ──────────
     values = {
         name: _NBA_TIER_VALUE.get(tier, 1.0)
         for name, tier in NBA_PLAYER_TIERS.items()
     }
-    # Override / supplement with live depth chart positions
+
+    # ── Tier 2: live depth chart positions ───────────────────────────────────
     live_depth = fetch_nba_depth_charts()
     for name, depth_pos in live_depth.items():
         live_val = _nba_depth_to_value(depth_pos)
-        # Only override if live depth indicates confirmed starter or not in static list
+        # Override static tier if confirmed starter, or if player not in static list
         if name not in values or depth_pos == 1:
             values[name] = live_val
+
+    # ── Tier 1 (highest priority): PPG-based continuous value ────────────────
+    player_ppg = fetch_nba_player_ppg()
+    for name, ppg in player_ppg.items():
+        ppg_val = _ppg_to_value_mult(ppg)
+        # Always apply PPG value when available — it reflects current production
+        values[name] = ppg_val
+
+    ppg_count = len(player_ppg)
+    if ppg_count > 0:
+        log.info(
+            f"NBA player values: {ppg_count} players valued by PPG, "
+            f"{len(live_depth)} by depth chart, {len(NBA_PLAYER_TIERS)} by static tier"
+        )
+    else:
+        log.warning(
+            "NBA PPG fetch returned 0 players — falling back to depth chart + static tiers"
+        )
+
     return values
 
 
@@ -1037,7 +1142,7 @@ def run():
     else:
         season_year = current_year
 
-    # ── 1. Download data ────────────────────────────────────────────────────
+    # ── 1. Download data ───────────────────────────────────��────────────────
     scoreboard_games = fetch_nba_scoreboard()
     standings = fetch_nba_standings()
     injuries = fetch_nba_injuries()
@@ -1159,7 +1264,7 @@ def run():
         except Exception as e:
             log.error(f"NBA XGBoost training failed: {e}")
 
-    # ── 7. Bayesian ratings ─────────────────────────────────────────────────
+    # ── 7. Bayesian ratings ──────────────────���──────────────────────────────
     log.info("Computing NBA Bayesian ratings...")
     recent_games = [g for g in historical_games if
                     g.get("season", 0) >= season_year - 1]

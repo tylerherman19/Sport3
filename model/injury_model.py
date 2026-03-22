@@ -52,6 +52,12 @@ MAX_INJURY_ELO_PENALTY = 110.0
 # Cap per-player contribution — scales with player value for elite players
 MAX_PLAYER_CONTRIBUTION = 30.0
 
+# Continuous star-stack multiplier: applied as 1 + scale * sum_of_elite_elo_contributions
+# where sum_of_elite_elo_contributions is summed over players with value_mult >= 1.3 (all-star+).
+# This parameter controls how steeply stacked elite absences compound impact.
+STAR_STACK_SCALE = 0.004   # 1 + 0.004 * sum_elite_elo => e.g. sum=50 => 1.20x, sum=75 => 1.30x
+STAR_STACK_MAX_MULT = 1.60  # hard ceiling on the continuous multiplier
+
 
 def _status_multiplier(status_str: str) -> float:
     """Return a [0, 1] severity multiplier for a given injury status string."""
@@ -81,6 +87,17 @@ def value_to_tier_label(value_mult: float) -> str:
     return "rotation"
 
 
+def _continuous_star_stack_mult(elite_elo_sum: float) -> float:
+    """
+    Compute a continuous star-stack multiplier based on the sum of ELO contributions
+    from elite (all-star or superstar) missing players.
+
+    Returns a value in [1.0, STAR_STACK_MAX_MULT].
+    """
+    mult = 1.0 + STAR_STACK_SCALE * elite_elo_sum
+    return min(mult, STAR_STACK_MAX_MULT)
+
+
 def compute_injury_impact(team_injuries: list, player_values: dict = None) -> dict:
     """
     Compute an injury impact score for a single team.
@@ -99,7 +116,7 @@ def compute_injury_impact(team_injuries: list, player_values: dict = None) -> di
     dict with:
         'elo_penalty'     : float — ELO points subtracted from team strength
         'impact_score'    : float — normalised 0–1 severity index
-        'key_players_out' : list  — players with Out/Doubtful status
+        'key_players_out' : list  — all injured players weighted by status
         'total_players'   : int   — number of injured players considered
     """
     if player_values is None:
@@ -107,6 +124,7 @@ def compute_injury_impact(team_injuries: list, player_values: dict = None) -> di
 
     total_elo_penalty = 0.0
     key_players_out = []
+    elite_elo_sum = 0.0  # sum of ELO contributions from all-star+ absences
 
     for player in team_injuries:
         pos = player.get("position", "")
@@ -116,6 +134,9 @@ def compute_injury_impact(team_injuries: list, player_values: dict = None) -> di
         pos_weight = _position_weight(pos)
         status_mult = _status_multiplier(status)
 
+        if status_mult == 0.0:
+            continue  # unknown status — skip entirely
+
         # Player value multiplier: 1.0 = average starter, scales up for elites
         value_mult = player_values.get(name, 1.0)
 
@@ -124,32 +145,34 @@ def compute_injury_impact(team_injuries: list, player_values: dict = None) -> di
         contribution = min(pos_weight * status_mult * value_mult, per_player_cap)
         total_elo_penalty += contribution
 
-        if status_mult >= 0.75:  # Out or Doubtful
-            tier = value_to_tier_label(value_mult)
-            key_players_out.append({
-                "player": name,
-                "position": pos,
-                "status": status,
-                "elo_impact": round(contribution, 1),
-                "value_tier": tier,
-            })
+        tier = value_to_tier_label(value_mult)
 
-    # Star stack multiplier: multiple elite absences compound the impact
-    star_count = sum(
-        1 for p in key_players_out
-        if p["value_tier"] in ("superstar", "all-star")
-    )
-    if star_count >= 3:
-        stack_mult = 1.30
-    elif star_count == 2:
-        stack_mult = 1.15
-    else:
-        stack_mult = 1.0
+        # All injured players (with any nonzero status) are included
+        key_players_out.append({
+            "player": name,
+            "position": pos,
+            "status": status,
+            "elo_impact": round(contribution, 1),
+            "value_tier": tier,
+        })
+
+        # Accumulate elite ELO sum for continuous star-stack multiplier
+        if tier in ("superstar", "all-star"):
+            elite_elo_sum += contribution
+
+    # Continuous star-stack multiplier based on sum of elite player ELO contributions
+    stack_mult = _continuous_star_stack_mult(elite_elo_sum)
     stacked_penalty = total_elo_penalty * stack_mult
 
     capped_penalty = min(stacked_penalty, MAX_INJURY_ELO_PENALTY)
     # Normalised impact score: 0 = no injuries, 1 = max possible penalty
     impact_score = round(capped_penalty / MAX_INJURY_ELO_PENALTY, 4)
+
+    # Retain star_count for backward-compatible output (used in prediction drivers)
+    star_count = sum(
+        1 for p in key_players_out
+        if p["value_tier"] in ("superstar", "all-star")
+    )
 
     return {
         "elo_penalty": round(capped_penalty, 2),
@@ -157,7 +180,8 @@ def compute_injury_impact(team_injuries: list, player_values: dict = None) -> di
         "key_players_out": key_players_out,
         "total_players": len(team_injuries),
         "star_count": star_count,
-        "star_stack_multiplier": stack_mult,
+        "star_stack_multiplier": round(stack_mult, 4),
+        "elite_elo_sum": round(elite_elo_sum, 2),
     }
 
 
@@ -233,6 +257,10 @@ NBA_MAX_PLAYER_CONTRIBUTION = 50.0
 # Back-to-back rest risk penalty
 NBA_BACK_TO_BACK_PENALTY = 5.0
 
+# Continuous star-stack multiplier parameters for NBA
+NBA_STAR_STACK_SCALE = 0.005   # steeper for NBA since elite players matter more
+NBA_STAR_STACK_MAX_MULT = 1.75  # hard ceiling
+
 
 def _nba_status_multiplier(status_str: str) -> float:
     s = status_str.lower().strip()
@@ -260,6 +288,15 @@ def nba_value_to_tier_label(value_mult: float) -> str:
     return "rotation"
 
 
+def _nba_continuous_star_stack_mult(elite_elo_sum: float) -> float:
+    """
+    Compute a continuous NBA star-stack multiplier from the sum of ELO contributions
+    of elite (all-star or superstar) missing players.
+    """
+    mult = 1.0 + NBA_STAR_STACK_SCALE * elite_elo_sum
+    return min(mult, NBA_STAR_STACK_MAX_MULT)
+
+
 def compute_nba_injury_impact(team_injuries: list, player_values: dict = None) -> dict:
     """
     Compute NBA injury impact for a single team.
@@ -281,12 +318,18 @@ def compute_nba_injury_impact(team_injuries: list, player_values: dict = None) -
 
     total_elo_penalty = 0.0
     key_players_out = []
+    elite_elo_sum = 0.0  # sum of ELO contributions from all-star+ absences
 
     for player in team_injuries:
         pos = player.get("position", "")
         status = player.get("status", "")
         name = player.get("player", "Unknown")
         tier = player.get("tier", "").lower()
+
+        status_mult = _nba_status_multiplier(status)
+
+        if status_mult == 0.0:
+            continue  # unknown status — skip entirely
 
         # Determine base weight: stats-based value multiplier takes priority
         if name in player_values:
@@ -301,35 +344,36 @@ def compute_nba_injury_impact(team_injuries: list, player_values: dict = None) -
             base_weight = _nba_position_weight(pos)
             value_mult = 1.0
 
-        status_mult = _nba_status_multiplier(status)
         contribution = min(base_weight * status_mult, NBA_MAX_PLAYER_CONTRIBUTION)
         total_elo_penalty += contribution
 
-        if status_mult >= 0.75:
-            tier_label = nba_value_to_tier_label(value_mult)
-            key_players_out.append({
-                "player": name,
-                "position": pos,
-                "status": status,
-                "elo_impact": round(contribution, 1),
-                "value_tier": tier_label,
-            })
+        tier_label = nba_value_to_tier_label(value_mult)
 
-    # Star stack multiplier: multiple elite absences compound the impact
-    star_count = sum(
-        1 for p in key_players_out
-        if p["value_tier"] in ("superstar", "all-star")
-    )
-    if star_count >= 3:
-        stack_mult = 1.30
-    elif star_count == 2:
-        stack_mult = 1.15
-    else:
-        stack_mult = 1.0
+        # All injured players (with any nonzero status) are included
+        key_players_out.append({
+            "player": name,
+            "position": pos,
+            "status": status,
+            "elo_impact": round(contribution, 1),
+            "value_tier": tier_label,
+        })
+
+        # Accumulate elite ELO sum for continuous star-stack multiplier
+        if tier_label in ("superstar", "all-star"):
+            elite_elo_sum += contribution
+
+    # Continuous star-stack multiplier based on sum of elite player ELO contributions
+    stack_mult = _nba_continuous_star_stack_mult(elite_elo_sum)
     stacked_penalty = total_elo_penalty * stack_mult
 
     capped_penalty = min(stacked_penalty, NBA_MAX_INJURY_ELO_PENALTY)
     impact_score = round(capped_penalty / NBA_MAX_INJURY_ELO_PENALTY, 4)
+
+    # Retain star_count for backward-compatible output (used in prediction drivers)
+    star_count = sum(
+        1 for p in key_players_out
+        if p["value_tier"] in ("superstar", "all-star")
+    )
 
     return {
         "elo_penalty": round(capped_penalty, 2),
@@ -337,7 +381,8 @@ def compute_nba_injury_impact(team_injuries: list, player_values: dict = None) -
         "key_players_out": key_players_out,
         "total_players": len(team_injuries),
         "star_count": star_count,
-        "star_stack_multiplier": stack_mult,
+        "star_stack_multiplier": round(stack_mult, 4),
+        "elite_elo_sum": round(elite_elo_sum, 2),
     }
 
 
