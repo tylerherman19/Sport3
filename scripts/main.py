@@ -451,6 +451,15 @@ def run_nba():
         )
         return
 
+    # Secondary guard: ESPN API is reachable (historical OK) but no current/future
+    # games found during the NBA season — abort to preserve existing predictions.
+    if len(all_games) == 0 and len(historical_games) >= 200 and not is_offseason:
+        log.error(
+            "Historical fetch OK but 0 current/future games found during NBA season "
+            "— aborting to preserve existing nba_predictions.json"
+        )
+        return
+
     # Write game results immediately so dashboard has fresh history.
     results_for_output = [
         {"date": g["date"], "season": g.get("season", season_year),
