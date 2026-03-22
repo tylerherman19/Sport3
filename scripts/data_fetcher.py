@@ -355,7 +355,7 @@ def fetch_nba_scoreboard():
 
 def fetch_nba_future_games(days_ahead=14):
     future = []; seen = set()
-    for offset in range(1, days_ahead + 1):
+    for offset in range(0, days_ahead + 1):
         ds = (datetime.now(timezone.utc) + timedelta(days=offset)).strftime("%Y%m%d")
         data = safe_get(f"{ESPN_NBA_WEB_BASE}/scoreboard?dates={ds}&limit=20&seasontype=2")
         if not data or not data.get("events"):
