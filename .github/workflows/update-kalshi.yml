@@ -1,3 +1,5 @@
+# SANDBOXED: This workflow is disabled. Original preserved in sandbox/kalshi/update-kalshi.yml
+# To re-enable: remove the 'if: false' line from the update job below.
 name: Update Kalshi Markets
 
 on:
@@ -10,6 +12,7 @@ permissions:
 
 jobs:
   update:
+    if: false  # SANDBOXED — Kalshi tab disabled from main flow
     runs-on: ubuntu-latest
     timeout-minutes: 10
 
