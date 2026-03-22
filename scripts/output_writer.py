@@ -113,3 +113,31 @@ def guard_nba_empty_output(existing_path: Path) -> bool:
         except Exception:
             pass
     return False
+
+
+def write_nba_features(feature_vectors: list, count: int, seasons: list, now_utc: str):
+    """
+    Write nba_features.json — stores training feature metadata so the dashboard
+    and debugging tools can confirm the model was actually trained on real data
+    (not empty arrays). 'features' is a list of per-game feature dicts.
+    Called after build_nba_features() succeeds with count > 0.
+    """
+    _write(DATA_DIR / "nba_features.json", {
+        "updated": now_utc,
+        "seasons": seasons,
+        "count": count,
+        "features": feature_vectors,
+    })
+
+
+def write_nba_results(results_list: list, count: int, now_utc: str):
+    """
+    Write nba_results.json — stores the historical completed game results
+    used for model training and accuracy tracking. Called after
+    fetch_nba_season_games_espn() returns a non-empty list.
+    """
+    _write(DATA_DIR / "nba_results.json", {
+        "updated": now_utc,
+        "count": count,
+        "results": results_list,
+    })
