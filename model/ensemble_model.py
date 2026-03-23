@@ -58,8 +58,26 @@ DEFAULT_WEIGHTS = {
 
 
 def build_xgb_features(df, elo_dict, game_history, efficiency_data, pythagorean_data, advanced_stats=None):
-    """Build extended feature matrix for XGBoost."""
+    """Build extended feature matrix for XGBoost.
+
+    FIX: rest_days_diff and travel_diff are now computed from actual game dates
+    and team coordinates rather than hardcoded 0.0.
+    """
     from model.elo_model import recent_form
+    from math import sin, cos, sqrt, atan2, radians
+
+    def _haversine(c1, c2):
+        R = 3958.8
+        lat1, lon1 = radians(c1[0]), radians(c1[1])
+        lat2, lon2 = radians(c2[0]), radians(c2[1])
+        dlat, dlon = lat2 - lat1, lon2 - lon1
+        a = sin(dlat/2)**2 + cos(lat1)*cos(lat2)*sin(dlon/2)**2
+        return R * 2 * atan2(sqrt(a), sqrt(1 - a))
+
+    try:
+        from model.efficiency_model import TEAM_COORDS
+    except ImportError:
+        TEAM_COORDS = {}
 
     rows = []
     labels = []
@@ -69,10 +87,14 @@ def build_xgb_features(df, elo_dict, game_history, efficiency_data, pythagorean_
     if advanced_stats is None:
         advanced_stats = {}
 
+    # Track last game date per team for rest calculation
+    team_last_date: dict = {}
+
     for _, row in df.iterrows():
         team1 = str(row["team1"])
         team2 = str(row["team2"])
         neutral = int(row.get("neutral", 0))
+        game_date_str = str(row.get("date", ""))
 
         elo1 = float(row.get("elo1_pre", 1500))
         elo2 = float(row.get("elo2_pre", 1500))
@@ -96,13 +118,38 @@ def build_xgb_features(df, elo_dict, game_history, efficiency_data, pythagorean_
         adv1 = advanced_stats.get(team1, {})
         adv2 = advanced_stats.get(team2, {})
 
+        # Compute actual rest days from game dates
+        try:
+            from datetime import datetime as _dt
+            gd = _dt.strptime(game_date_str[:10], "%Y-%m-%d").date()
+            last1 = team_last_date.get(team1)
+            last2 = team_last_date.get(team2)
+            rest1 = (gd - last1).days if last1 else 7
+            rest2 = (gd - last2).days if last2 else 7
+            rest_days_diff = float(rest1 - rest2)
+            team_last_date[team1] = gd
+            team_last_date[team2] = gd
+        except (ValueError, TypeError):
+            rest_days_diff = 0.0
+
+        # Compute travel distance: away team (team2) from home city to team1's city
+        coord1 = TEAM_COORDS.get(team1)
+        coord2 = TEAM_COORDS.get(team2)
+        if coord1 and coord2 and not neutral:
+            travel_diff = _haversine(coord2, coord1)
+        else:
+            travel_diff = 0.0
+
+        # FTE data does not include turnover columns; leave as 0.0
+        turnover_diff = 0.0
+
         feature = [
             elo_diff,
             float(not neutral),
-            0.0,  # rest_days_diff
+            rest_days_diff,   # computed from actual game dates
             pyth1 - pyth2,
-            0.0,  # turnover_diff
-            0.0,  # travel_diff
+            turnover_diff,    # FTE lacks turnover data
+            travel_diff,      # computed from team coordinates
             lr1 - lr2,
             off1 - off2,
             def1 - def2,

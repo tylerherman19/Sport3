@@ -355,7 +355,19 @@ def main():
                     for g in recent_only if g.get("home_score") and g.get("away_score")
                 ]
                 if recent_games:
-                    elo_dict, game_history = compute_nba_elo(recent_games)
+                    # FIX: merge FTE history + recent results so we preserve 75 years of ELO state.
+                    # Recomputing only from recent_games would reset all teams to 1500.
+                    all_games = fte_games + recent_games
+                    seen_keys: set = set()
+                    unique_games = []
+                    for g in sorted(all_games, key=lambda x: x.get("date", "")):
+                        key = (g.get("date"), g.get("team1"), g.get("team2"))
+                        if key not in seen_keys:
+                            seen_keys.add(key)
+                            unique_games.append(g)
+                    elo_dict, game_history = compute_nba_elo(unique_games)
+                    log.info(f"NBA ELO extended with {len(recent_games)} recent games "
+                             f"(total {len(unique_games)} games processed)")
     except Exception as e:
         log.warning(f"Could not extend ELO with recent results: {e}")
     save_ratings(elo_dict, game_history, season_year)

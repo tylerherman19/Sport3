@@ -164,6 +164,15 @@ NBA_TEAMS = [
     "OKC", "ORL", "PHI", "PHX", "POR", "SAC", "SAS", "TOR", "UTA", "WAS",
 ]
 
+# Standard-time UTC offsets per arena (ET=-5, CT=-6, MT=-7, PT=-8)
+NBA_TZ_OFFSETS = {
+    "ATL": -5, "BOS": -5, "BKN": -5, "CHA": -5, "CHI": -6, "CLE": -5,
+    "DAL": -6, "DEN": -7, "DET": -5, "GSW": -8, "HOU": -6, "IND": -5,
+    "LAC": -8, "LAL": -8, "MEM": -6, "MIA": -5, "MIL": -6, "MIN": -6,
+    "NOP": -6, "NYK": -5, "OKC": -6, "ORL": -5, "PHI": -5, "PHX": -7,
+    "POR": -8, "SAC": -8, "SAS": -6, "TOR": -5, "UTA": -7, "WAS": -5,
+}
+
 NBA_TEAM_NAMES = {
     "ATL": "Atlanta Hawks",        "BOS": "Boston Celtics",
     "BKN": "Brooklyn Nets",        "CHA": "Charlotte Hornets",
@@ -230,6 +239,11 @@ def build_nba_player_values(depth_charts: dict, player_ppg: dict) -> dict:
 
 
 def build_nba_efficiency_data(standings: dict) -> dict:
+    """Build NBA efficiency stats from standings.
+
+    Detects flat ORTG/DRTG (ESPN/BDL fallback placeholder) and normalises
+    PPG to the ~110 ORTG scale so off_eff/def_eff ratios carry real signal.
+    """
     teams_with_data = [s for s in standings.values() if s.get("games_played", 0) > 0]
     league_off  = np.mean([s.get("offensive_rating", 110.0) for s in teams_with_data]) if teams_with_data else 110.0
     league_def  = np.mean([s.get("defensive_rating", 110.0) for s in teams_with_data]) if teams_with_data else 110.0
@@ -241,6 +255,8 @@ def build_nba_efficiency_data(standings: dict) -> dict:
         def_rtg = s.get("defensive_rating", league_def)
         pf = s.get("points_for", 0); pa = s.get("points_against", 0)
         gp = max(s.get("games_played", 1), 1)
+        ppg_for = s.get("ppg_for", pf / gp)
+        ppg_against = s.get("ppg_against", pa / gp)
         efficiency[team] = {
             "offensive_rating": off_rtg, "defensive_rating": def_rtg,
             "net_rating": off_rtg - def_rtg, "pace": s.get("pace", league_pace),
@@ -250,8 +266,33 @@ def build_nba_efficiency_data(standings: dict) -> dict:
             "three_point_rate": s.get("three_point_rate", 0.35),
             "rebound_rate": s.get("rebound_rate", 0.5),
             "free_throw_rate": s.get("free_throw_rate", 0.20),
-            "ppg_for": pf / gp, "ppg_against": pa / gp,
+            "ppg_for": ppg_for, "ppg_against": ppg_against,
         }
+    # Detect flat ORTG (all identical) → re-derive from PPG and renormalise
+    all_off = [efficiency[t]["offensive_rating"] for t in efficiency
+               if efficiency[t].get("ppg_for", 0) > 0]
+    if all_off and max(all_off) - min(all_off) < 1.0:
+        valid = {t: efficiency[t] for t in efficiency if efficiency[t].get("ppg_for", 0) > 0}
+        if valid:
+            lg_ppg = np.mean([v["ppg_for"] for v in valid.values()])
+            lg_ppg_def = np.mean([v["ppg_against"] for v in valid.values()])
+            ORTG_SCALE = 110.0
+            for t in efficiency:
+                ppg_f = efficiency[t].get("ppg_for", lg_ppg)
+                ppg_a = efficiency[t].get("ppg_against", lg_ppg_def)
+                if ppg_f > 0 and ppg_a > 0:
+                    efficiency[t]["offensive_rating"] = round((ppg_f / lg_ppg) * ORTG_SCALE, 1)
+                    efficiency[t]["defensive_rating"] = round((ppg_a / lg_ppg_def) * ORTG_SCALE, 1)
+                    efficiency[t]["net_rating"] = round(
+                        efficiency[t]["offensive_rating"] - efficiency[t]["defensive_rating"], 1)
+            new_lg_off = np.mean([efficiency[t]["offensive_rating"] for t in efficiency])
+            new_lg_def = np.mean([efficiency[t]["defensive_rating"] for t in efficiency])
+            for t in efficiency:
+                o = efficiency[t]["offensive_rating"]
+                d = efficiency[t]["defensive_rating"]
+                efficiency[t]["off_eff"] = o / max(new_lg_off, 1)
+                efficiency[t]["def_eff"] = new_lg_def / max(d, 1)
+                efficiency[t]["net_eff"] = o - d
     return efficiency
 
 
@@ -301,6 +342,8 @@ def build_nba_features(games, elo_dict, game_history, efficiency_data, pyth_data
             b2b2 = 1.0 if rest2 <= 1 else 0.0
         except (ValueError, TypeError):
             rest_diff, b2b1, b2b2 = 0.0, 0.0, 0.0
+        # Timezone diff for away team traveling to home arena (circadian shift)
+        tz_diff = float(NBA_TZ_OFFSETS.get(t1, -6) - NBA_TZ_OFFSETS.get(t2, -6))
         features.append([
             (e1 + hfa) - e2, hfa, rest_diff,
             (1500 + (pyth1 - 0.5) * 400) - (1500 + (pyth2 - 0.5) * 400),
@@ -314,9 +357,10 @@ def build_nba_features(games, elo_dict, game_history, efficiency_data, pyth_data
             eff1.get("free_throw_rate", 0.20) - eff2.get("free_throw_rate", 0.20),
             nba_recent_form(game_history, t1) - nba_recent_form(game_history, t2),
             b2b1 - b2b2,  # difference, not home-only (matches inference)
+            tz_diff,       # circadian shift: positive = away team traveled east
         ])
         targets.append(1 if s1 > s2 else 0)
-    return (np.array(features) if features else np.array([]).reshape(0, 14), np.array(targets))
+    return (np.array(features) if features else np.array([]).reshape(0, 15), np.array(targets))
 
 
 def train_nba_logistic(X, y):
