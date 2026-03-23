@@ -727,17 +727,23 @@ function renderGames() {
   const todayDateStr = new Date().toISOString().slice(0, 10);
   let filteredGames = pred.games;
   if (state.gameFilter === 'live') {
-    filteredGames = pred.games.filter(g =>
-      g.status === 'STATUS_IN_PROGRESS' || g.status === 'STATUS_HALFTIME'
-    );
+    filteredGames = pred.games.filter(g => {
+      const effectiveStatus = liveScoreCache[g.game_id]?.status || g.status;
+      return effectiveStatus === 'STATUS_IN_PROGRESS' || effectiveStatus === 'STATUS_HALFTIME';
+    });
   } else if (state.gameFilter === 'upcoming') {
-    filteredGames = pred.games.filter(g =>
-      g.is_future ||
-      g.status === 'STATUS_SCHEDULED' ||
-      (g.game_time && new Date(g.game_time).getTime() > nowMs + 1800000)
-    );
+    filteredGames = pred.games.filter(g => {
+      const effectiveStatus = liveScoreCache[g.game_id]?.status || g.status;
+      if (effectiveStatus === 'STATUS_IN_PROGRESS' || effectiveStatus === 'STATUS_HALFTIME' || effectiveStatus === 'STATUS_FINAL') return false;
+      return g.is_future ||
+        g.status === 'STATUS_SCHEDULED' ||
+        (g.game_time && new Date(g.game_time).getTime() > nowMs + 1800000);
+    });
   } else if (state.gameFilter === 'completed') {
-    filteredGames = pred.games.filter(g => g.status === 'STATUS_FINAL');
+    filteredGames = pred.games.filter(g => {
+      const effectiveStatus = liveScoreCache[g.game_id]?.status || g.status;
+      return effectiveStatus === 'STATUS_FINAL';
+    });
   }
 
   // Update filter pill active state
