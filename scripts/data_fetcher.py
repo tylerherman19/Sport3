@@ -857,6 +857,9 @@ def fetch_nba_standings_espn():
                 if tid: ESPN_NBA_ID_TO_ABBREV[tid] = abbrev
                 stats   = {s["name"]: s.get("value", 0) for s in entry.get("stats", [])}
                 wins    = int(stats.get("wins", 0)); losses = int(stats.get("losses", 0))
+                # avgPointsFor/avgPointsAgainst are raw PPG, NOT pace-adjusted ORTG/DRTG.
+                # Store as ppg_for/ppg_against; use 110.0 defaults for ORTG/DRTG since
+                # ESPN standings fallback does not provide real pace-adjusted efficiency ratings.
                 standings[abbrev] = {
                     "wins": wins, "losses": losses,
                     "win_pct": float(stats.get("winPercent", 0)),
@@ -865,8 +868,8 @@ def fetch_nba_standings_espn():
                     "ppg_for": float(stats.get("avgPointsFor", 0.0)),
                     "ppg_against": float(stats.get("avgPointsAgainst", 0.0)),
                     "games_played": wins + losses,
-                    "offensive_rating": 110.0,
-                    "defensive_rating": 110.0,
+                    "offensive_rating": 110.0,  # ESPN does not provide real ORTG; use league default
+                    "defensive_rating": 110.0,  # ESPN does not provide real DRTG; use league default
                     "net_rating": 0.0,
                     "pace": 100.0, "assist_turnover_ratio": 1.8,
                     "rebound_rate": 0.5, "three_point_rate": 0.35, "free_throw_rate": 0.20,
@@ -886,12 +889,13 @@ def fetch_nba_standings_cdn():
     Falls back to ESPN fetch on failure, then balldontlie if ESPN also fails.
     """
     log.info("Fetching NBA standings (cdn.nba.com)...")
-    data = safe_get(f"{CDN_NBA_STATIC}/staticData/standings.json", headers=_CDN_HEADERS, timeout=10)
+    data = safe_get(f"{CDN_NBA_STATIC}/staticData/standings.json", headers=_CDN_HEADERS)
     if not data:
         log.warning("cdn.nba.com standings unavailable — falling back to ESPN")
         return fetch_nba_standings_espn()
     standings = {}
     try:
+        # CDN schema may be nested {"standings": {"teams": [...]}} or flat {"standings": [...]}
         raw = data.get("standings", {})
         if isinstance(raw, dict):
             rows = raw.get("teams", raw.get("rows", raw.get("TeamStandings", [])))
@@ -907,6 +911,7 @@ def fetch_nba_standings_cdn():
                 continue
             wins   = int(row.get("wins", row.get("WINS", 0)))
             losses = int(row.get("losses", row.get("LOSSES", 0)))
+            # Try multiple key name conventions for ORTG/DRTG
             off_rtg = float(row.get("offensiveRating",
                             row.get("OffRating",
                             row.get("offRating",
@@ -992,7 +997,7 @@ def fetch_nba_depth_charts_espn(event_ids=None):
     log.info("Fetching NBA starters from ESPN game summary (boxscore) endpoint...")
     player_depth = {}
 
-    # ── Collect event IDs ──────────────────────────────────────────────────
+    # ── Collect event IDs ───────────────────────────────────────────────────
     if not event_ids:
         event_ids = []
         for delta in range(0, -4, -1):
@@ -1089,7 +1094,7 @@ def fetch_nba_player_stats_cdn(season_year):
         "MeasureType": "Base", "PerMode": "PerGame",
         "Season": season_str, "SeasonType": "Regular Season", "LeagueID": "00",
     }
-    data = safe_get(url, params=params, headers=_CDN_HEADERS, timeout=10)
+    data = safe_get(url, params=params, headers=_CDN_HEADERS, timeout=20)
     if not data:
         log.warning("cdn.nba.com player stats unavailable — falling back to ESPN")
         return fetch_nba_player_ppg_espn()
