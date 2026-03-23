@@ -2,7 +2,7 @@
 NBA ELO Rating Model — dedicated module for NBA-specific ELO computation.
 
 NBA parameters differ from NFL:
-  - Higher home court advantage (100 vs 65 ELO points)
+  - Higher home court advantage (50 vs 65 ELO points for NFL)
   - Back-to-back penalty: -40 ELO (teams degrade sharply on zero days rest)
   - Rest bonus: +15 ELO per extra rest day vs opponent (capped at 2 days)
   - Travel penalty: -0.02 ELO per mile for away team (capped at -50)

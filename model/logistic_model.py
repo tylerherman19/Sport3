@@ -81,6 +81,9 @@ def build_features(df, elo_dict, game_history, efficiency_data, pythagorean_data
 
         elo1 = float(row.get("elo1_pre", 1500))
         elo2 = float(row.get("elo2_pre", 1500))
+        # HFA (+65) is embedded directly in elo_diff, AND home_field_advantage
+        # is a separate binary feature below. This partial redundancy is intentional:
+        # the binary captures non-linearity; regularization (C=0.1) prevents inflation.
         elo_diff = elo1 - elo2 + (65 if not neutral else 0)
 
         eff1 = efficiency_data.get(team1, {}).get("net_eff", 0.0)
