@@ -886,7 +886,7 @@ def fetch_nba_standings_cdn():
     Falls back to ESPN fetch on failure, then balldontlie if ESPN also fails.
     """
     log.info("Fetching NBA standings (cdn.nba.com)...")
-    data = safe_get(f"{CDN_NBA_STATIC}/staticData/standings.json", headers=_CDN_HEADERS)
+    data = safe_get(f"{CDN_NBA_STATIC}/staticData/standings.json", headers=_CDN_HEADERS, timeout=10)
     if not data:
         log.warning("cdn.nba.com standings unavailable — falling back to ESPN")
         return fetch_nba_standings_espn()
@@ -1089,7 +1089,7 @@ def fetch_nba_player_stats_cdn(season_year):
         "MeasureType": "Base", "PerMode": "PerGame",
         "Season": season_str, "SeasonType": "Regular Season", "LeagueID": "00",
     }
-    data = safe_get(url, params=params, headers=_CDN_HEADERS, timeout=20)
+    data = safe_get(url, params=params, headers=_CDN_HEADERS, timeout=10)
     if not data:
         log.warning("cdn.nba.com player stats unavailable — falling back to ESPN")
         return fetch_nba_player_ppg_espn()

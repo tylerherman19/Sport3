@@ -82,77 +82,6 @@ with open("scripts/update_data.py", "w") as f:
 assert "learn_nfl_weights" in src, "NFL import patch FAILED"
 assert "weights=nfl_weights" in src, "NFL call patch FAILED"
 print("update_data.py OK")
-
-# ── update_nba_data.py (NBA) ────────────────────────────────────────────────
-with open("scripts/update_nba_data.py") as f:
-    src = f.read()
-
-# NBA patch 1: n_sims 3000 -> 5000
-src = src.replace(
-    "season_sim = simulate_season(\n            NBA_TEAMS, remaining_schedule, bayesian_ratings, n_sims=3000\n        )",
-    "season_sim = simulate_season(\n            NBA_TEAMS, remaining_schedule, bayesian_ratings, n_sims=5000  # Issue 9\n        )"
-)
-
-# NBA patch 2: XGBoost early stopping.
-# Targets the 12-space param indent used in train_nba_xgboost().
-src = src.replace(
-    '        model = xgb.XGBClassifier(\n'
-    '            n_estimators=300, max_depth=4, learning_rate=0.05,\n'
-    '            subsample=0.8, colsample_bytree=0.8,\n'
-    '            reg_alpha=0.1, reg_lambda=1.0,\n'
-    '            eval_metric="logloss", random_state=42,\n'
-    '        )\n'
-    '        model.fit(X_scaled, y)',
-    '        split = max(1, int(len(X_scaled)*0.8))\n'
-    '        X_train, X_val = X_scaled[:split], X_scaled[split:]\n'
-    '        y_train, y_val = y[:split], y[split:]\n'
-    '        model = xgb.XGBClassifier(\n'
-    '            n_estimators=500, max_depth=4, learning_rate=0.05,\n'
-    '            subsample=0.8, colsample_bytree=0.8, min_child_weight=10,\n'
-    '            reg_alpha=0.1, reg_lambda=1.0, eval_metric="logloss",\n'
-    '            early_stopping_rounds=20, random_state=42, n_jobs=-1, verbosity=0,\n'
-    '        )\n'
-    '        model.fit(X_train, y_train, eval_set=[(X_val, y_val)], verbose=False)'
-)
-
-# NBA patch 3: Pythagorean HFA via additive ELO-space logistic (Issue 1).
-# Targets the 213.0-divisor form already in the file (not the old 1500.0 form).
-src = src.replace(
-    '            # Pythagorean prediction \u2014 direct ratio (Bradley-Terry), not ELO transform\n'
-    '            pyth_home = pyth_data.get(home, {}).get("pyth", 0.5)\n'
-    '            pyth_away = pyth_data.get(away, {}).get("pyth", 0.5)\n'
-    '            # Scale home court advantage into pythagorean space.\n'
-    '            # Divisor 213.0 calibrated so equal teams \u2192 ~59.5% home win (NBA historical HWR).\n'
-    '            pyth_home_adj = pyth_home * (1.0 + hfa / 213.0)\n'
-    '            _pyth_denom = pyth_home_adj + pyth_away\n'
-    '            pyth_prob = pyth_home_adj / _pyth_denom if _pyth_denom > 0 else 0.5\n'
-    '            # ELO-equivalent pythagorean values for logistic feature vector\n'
-    '            pyth_elo_home = 1500.0 + (pyth_home - 0.5) * 400.0\n'
-    '            pyth_elo_away = 1500.0 + (pyth_away - 0.5) * 400.0',
-    '            # Issue 1: Pythagorean HFA via additive ELO-space logistic\n'
-    '            pyth_home = pyth_data.get(home, {}).get("pyth", 0.5)\n'
-    '            pyth_away = pyth_data.get(away, {}).get("pyth", 0.5)\n'
-    '            _pyth_elo_home = 1500.0 + (pyth_home - 0.5) * 400.0\n'
-    '            _pyth_elo_away = 1500.0 + (pyth_away - 0.5) * 400.0\n'
-    '            pyth_prob = 1.0 / (1.0 + 10 ** (-((_pyth_elo_home + hfa) - _pyth_elo_away) / 400.0))\n'
-    '            pyth_elo_home = _pyth_elo_home\n'
-    '            pyth_elo_away = _pyth_elo_away'
-)
-
-# NBA patch 4: Wire boxscore starter detection into build_nba_player_values.
-# 4-space indent — the line lives directly inside the function body, not a nested block.
-src = src.replace(
-    "    live_depth = fetch_nba_depth_charts()",
-    "    from scripts.data_fetcher import fetch_nba_depth_charts_espn as _fetch_depth_boxscore\n    live_depth = _fetch_depth_boxscore()"
-)
-
-with open("scripts/update_nba_data.py", "w") as f:
-    f.write(src)
-assert "n_sims=5000" in src, "nba n_sims patch FAILED"
-assert "early_stopping_rounds=20" in src, "nba xgboost patch FAILED"
-assert "_pyth_elo_home" in src, "nba pythagorean patch FAILED"
-assert "fetch_nba_depth_charts_espn" in src, "nba depth chart patch FAILED"
-print("update_nba_data.py OK")
 PYEOF
 
       - name: Commit patches
@@ -160,9 +89,9 @@ PYEOF
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add scripts/update_data.py scripts/update_nba_data.py
+          git add scripts/update_data.py
           git diff --cached --stat
-          git commit -m "fix(scripts): Issues 1/5/9 - NFL+NBA pipeline patches [skip ci]"
+          git commit -m "fix(scripts): Issue 5 - NFL ensemble weight learning [skip ci]"
           git push
 
       - name: Self-cleanup
