@@ -33,7 +33,7 @@ jobs:
           python3 - << 'PYEOF'
 import sys
 
-# ── update_data.py (NFL) ─────────────────────────────────────────────────────
+# ── update_data.py (NFL) ─────────────────────────────────────────────────
 with open("scripts/update_data.py") as f:
     src = f.read()
 
@@ -51,8 +51,8 @@ new_import = (
 )
 src = src.replace(old_import, new_import)
 
-# NFL patch 2: inject learn_nfl_weights call adjacent to the unique ensemble_predict()
-# call to avoid duplicate injection if the workflow is re-triggered.
+# NFL patch 2: inject learn_nfl_weights call + weights= parameter.
+# Anchored on the unique ensemble_predict() call.
 old_call = (
     '            ensemble_prob = ensemble_predict(\n'
     '                logistic_prob=log_prob,\n'
@@ -83,7 +83,7 @@ assert "learn_nfl_weights" in src, "NFL import patch FAILED"
 assert "weights=nfl_weights" in src, "NFL call patch FAILED"
 print("update_data.py OK")
 
-# ── update_nba_data.py (NBA) ─────────────────────────────────────────────────
+# ── update_nba_data.py (NBA) ────────────────────────────────────────────────
 with open("scripts/update_nba_data.py") as f:
     src = f.read()
 
@@ -94,7 +94,7 @@ src = src.replace(
 )
 
 # NBA patch 2: XGBoost early stopping.
-# Corrected indent: current file uses 12-space indent for classifier params (not 16-space).
+# Targets the 12-space param indent used in train_nba_xgboost().
 src = src.replace(
     '        model = xgb.XGBClassifier(\n'
     '            n_estimators=300, max_depth=4, learning_rate=0.05,\n'
@@ -116,10 +116,7 @@ src = src.replace(
 )
 
 # NBA patch 3: Pythagorean HFA via additive ELO-space logistic (Issue 1).
-# The previous patch searched for 'hfa / 1500.0' but that was already updated
-# to 'hfa / 213.0' in a prior commit. This patch targets the 213.0 form and
-# upgrades to the ELO-space logistic approach for consistency with the feature
-# builder (both training and inference now use the same ELO-space pyth transform).
+# Targets the 213.0-divisor form already in the file (not the old 1500.0 form).
 src = src.replace(
     '            # Pythagorean prediction \u2014 direct ratio (Bradley-Terry), not ELO transform\n'
     '            pyth_home = pyth_data.get(home, {}).get("pyth", 0.5)\n'
@@ -143,13 +140,10 @@ src = src.replace(
 )
 
 # NBA patch 4: Wire boxscore starter detection into build_nba_player_values.
-# The old fetch_nba_depth_charts() used /depthcharts endpoint which listed all
-# roster players at depth_pos ~1, not distinguishing starters from bench.
-# fetch_nba_depth_charts_espn() in data_fetcher.py uses the ESPN boxscore
-# summary endpoint and checks the per-player starter boolean directly.
+# 4-space indent — the line lives directly inside the function body, not a nested block.
 src = src.replace(
-    "        live_depth = fetch_nba_depth_charts()",
-    "        from scripts.data_fetcher import fetch_nba_depth_charts_espn as _fetch_depth_boxscore\n        live_depth = _fetch_depth_boxscore()"
+    "    live_depth = fetch_nba_depth_charts()",
+    "    from scripts.data_fetcher import fetch_nba_depth_charts_espn as _fetch_depth_boxscore\n    live_depth = _fetch_depth_boxscore()"
 )
 
 with open("scripts/update_nba_data.py", "w") as f:
