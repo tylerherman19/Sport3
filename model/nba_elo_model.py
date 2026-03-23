@@ -35,7 +35,7 @@ DATA_DIR.mkdir(exist_ok=True)
 
 # ─── Parameters ────────────────────────────────────────────────────────────────────────────────
 K_BASE          = 25.0     # K-factor base (matches nba_elo.py)
-HFA             = 100.0    # Home court advantage (added to home ELO for prob calc only)
+HFA             = 50.0     # Home court advantage (added to home ELO for prob calc only)
 INITIAL_ELO     = 1500.0   # Starting ELO for every team
 REGRESS_PCT     = 0.25     # Season regression toward mean (25%)
 REST_ELO_BONUS  = 15.0     # ELO bonus for rested team when |rest_diff| >= 2
@@ -178,16 +178,26 @@ def compute_nba_elo(
     return elo_dict, game_history
 
 
-def recent_form(game_history: dict, team: str, n: int = 5) -> float:
-    """Win rate over last n games."""
+def recent_form(game_history: dict, team: str, n: int = 10) -> float:
+    """Quality-weighted form over last n games (default 10).
+
+    Weights each game by opponent difficulty: beating a strong team counts more
+    than beating a weak team; losing to a weak team hurts more than to a strong one.
+    Neutral form = 0.5.
+    """
     hist = game_history.get(team, [])
     if not hist:
         return 0.5
     recent = hist[-n:]
-    return sum(g["result"] for g in recent) / len(recent)
+    weights = []
+    for g in recent:
+        elo_diff = g.get("elo_diff", 0.0)
+        p_exp = 1.0 / (1.0 + 10.0 ** (-elo_diff / 400.0))
+        weights.append((1.0 - p_exp) if g["result"] >= 0.5 else p_exp)
+    return sum(weights) / len(weights)
 
 
-def get_trend(game_history: dict, team: str, window: int = 5) -> str:
+def get_trend(game_history: dict, team: str, window: int = 10) -> str:
     """Return 'up', 'down', or 'neutral'."""
     hist = game_history.get(team, [])
     if len(hist) < window * 2:
@@ -203,7 +213,7 @@ def get_trend(game_history: dict, team: str, window: int = 5) -> str:
 
 def predict_game(
     home_team: str, away_team: str, elo_dict: dict, game_history: dict,
-    neutral: bool = False, rest_diff: int = 0, hfa: float = HFA, form_blend: float = 0.2,
+    neutral: bool = False, rest_diff: int = 0, hfa: float = HFA, form_blend: float = 0.8,
 ) -> dict:
     """
     Predict win probability for home_team vs away_team.

@@ -14,7 +14,7 @@ import math
 # ── Default parameters ────────────────────────────────────────────────────────
 
 K_BASE = 25.0   # higher base; decays dynamically toward 12.5 by end of season
-HFA = 100.0           # home court advantage in ELO points
+HFA = 50.0           # home court advantage in ELO points
 INITIAL_ELO = 1500.0
 REGRESS_PCT = 0.25    # 25% end-of-season reversion toward mean
 
@@ -161,16 +161,27 @@ def compute_nba_elo(games, k_base=K_BASE, hfa=HFA,
 
 # ── Trend / form helpers ──────────────────────────────────────────────────────
 
-def nba_recent_form(game_history, team, n=5):
-    """Win rate for a team over their last N games (default 5)."""
+def nba_recent_form(game_history, team, n=10):
+    """Quality-weighted form over last N games (default 10).
+
+    Each game is weighted by opponent difficulty using ELO-expected probability:
+    - Win vs strong opponent (elo_diff < 0): weight near 1.0
+    - Win vs weak opponent (elo_diff > 0): weight near 0.0
+    - Neutral form = 0.5
+    """
     hist = game_history.get(team, [])
     if not hist:
         return 0.5
     recent = hist[-n:]
-    return sum(g["result"] for g in recent) / len(recent)
+    weights = []
+    for g in recent:
+        elo_diff = g.get("elo_diff", 0.0)
+        p_exp = 1.0 / (1.0 + 10.0 ** (-elo_diff / 400.0))
+        weights.append((1.0 - p_exp) if g["result"] >= 0.5 else p_exp)
+    return sum(weights) / len(weights)
 
 
-def nba_get_trend(game_history, team, window=5):
+def nba_get_trend(game_history, team, window=10):
     """
     Return 'up', 'down', or 'neutral' based on recent vs older win rate.
     Threshold: >0.15 difference = directional trend.

@@ -1392,6 +1392,17 @@ def run():
         if _ppg[_t]["gp"] > 0:
             efficiency_data[_t]["ppg_for"]     = _ppg[_t]["pf"] / _ppg[_t]["gp"]
             efficiency_data[_t]["ppg_against"] = _ppg[_t]["pa"] / _ppg[_t]["gp"]
+    # When CDN standings didn't provide real ORTG/DRTG (all teams show same default 110.0),
+    # override from PPG computed above so each team has unique efficiency values.
+    _all_off = [efficiency_data[t]["offensive_rating"] for t in efficiency_data]
+    if len(set(_all_off)) <= 2:  # all identical → CDN key-name mismatch, use PPG fallback
+        for _t in efficiency_data:
+            ppg_f = efficiency_data[_t].get("ppg_for", 0)
+            ppg_a = efficiency_data[_t].get("ppg_against", 0)
+            if ppg_f > 0:
+                efficiency_data[_t]["offensive_rating"] = round(ppg_f, 1)
+                efficiency_data[_t]["defensive_rating"] = round(ppg_a, 1)
+                efficiency_data[_t]["net_rating"] = round(ppg_f - ppg_a, 1)
     pyth_data = compute_nba_pythagorean(efficiency_data)
 
     # ── 5 & 6. Build features once, train logistic and XGBoost on same X, y ──
