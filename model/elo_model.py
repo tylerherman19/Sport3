@@ -104,12 +104,14 @@ def compute_elo(historical_df, k_base=20.0, hfa=65.0, initial_elo=1500.0, regres
             game_history[team1].append({
                 "result": actual1,
                 "elo_diff": adj_e1 - e2,
-                "date": row["date"].isoformat()
+                "date": row["date"].isoformat(),
+                "opponent": team2,
             })
             game_history[team2].append({
                 "result": actual2,
                 "elo_diff": e2 - adj_e1,
-                "date": row["date"].isoformat()
+                "date": row["date"].isoformat(),
+                "opponent": team1,
             })
 
     return elo_dict, game_history
@@ -152,8 +154,11 @@ def predict_game(team_a, team_b, elo_dict, game_history,
     form_adj_a = (form_a - 0.5) * form_blend * 100.0
     form_adj_b = (form_b - 0.5) * form_blend * 100.0
 
-    adj_elo_a = base_elo_a + form_adj_a + rest_adj_a + injury_adj_a
-    adj_elo_b = base_elo_b + form_adj_b + rest_adj_b + injury_adj_b
+    h2h_a = head_to_head_modifier(game_history, team_a, team_b)
+    h2h_b = head_to_head_modifier(game_history, team_b, team_a)
+
+    adj_elo_a = base_elo_a + form_adj_a + rest_adj_a + injury_adj_a + h2h_a
+    adj_elo_b = base_elo_b + form_adj_b + rest_adj_b + injury_adj_b + h2h_b
 
     if not neutral and is_home_a:
         adj_elo_a += hfa
@@ -170,7 +175,9 @@ def predict_game(team_a, team_b, elo_dict, game_history,
         "adj_elo_b": float(adj_elo_b),
         "form_a": float(form_a),
         "form_b": float(form_b),
-        "elo_diff": float(adj_elo_a - adj_elo_b)
+        "elo_diff": float(adj_elo_a - adj_elo_b),
+        "h2h_adj_a": float(h2h_a),
+        "h2h_adj_b": float(h2h_b),
     }
 
 
