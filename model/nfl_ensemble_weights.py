@@ -60,6 +60,47 @@ def learn_nfl_weights(fte_df, pythagorean_data, efficiency_data, default_weights
             log.warning("Not enough completed games for NFL weight learning — using defaults")
             return nfl_weights
 
+        # Build per-season running totals over full FTE history to avoid future
+        # information leakage: each historical game is evaluated with pythagorean
+        # and efficiency ratings computed only from games played *before* it.
+        _all_done = fte_df.dropna(subset=["score1", "score2"]).sort_values(["season", "date"])
+        _running = {}   # {(season, team): {pf, pa, gp}}
+        _snap = {}      # {(date, team1, team2): {team: {pf, pa, gp}}}
+        for _, _r in _all_done.iterrows():
+            _s = _r.get("season", 0)
+            _rh, _ra = str(_r["team1"]), str(_r["team2"])
+            _rk = (str(_r["date"]), _rh, _ra)
+            _snap[_rk] = {
+                _rh: dict(_running.get((_s, _rh), {"pf": 0.0, "pa": 0.0, "gp": 0})),
+                _ra: dict(_running.get((_s, _ra), {"pf": 0.0, "pa": 0.0, "gp": 0})),
+            }
+            for _tm, _pfc, _pac in [(_rh, "score1", "score2"), (_ra, "score2", "score1")]:
+                _tk = (_s, _tm)
+                if _tk not in _running:
+                    _running[_tk] = {"pf": 0.0, "pa": 0.0, "gp": 0}
+                _running[_tk]["pf"] += float(_r[_pfc])
+                _running[_tk]["pa"] += float(_r[_pac])
+                _running[_tk]["gp"] += 1
+
+        def _pyth_from_snap(ts):
+            """Pythagorean win % from pre-game running season totals."""
+            if ts.get("gp", 0) == 0:
+                return 0.5
+            pf = max(ts.get("pf", 1.0), 1.0)
+            pa = max(ts.get("pa", 1.0), 1.0)
+            return (pf ** 2.37) / (pf ** 2.37 + pa ** 2.37)
+
+        def _eff_elo_from_snap(ts, _lgppg=22.0):
+            """Efficiency ELO equivalent from pre-game running season totals."""
+            gp = ts.get("gp", 0)
+            if gp == 0:
+                return 1500.0
+            ppg_off = ts.get("pf", 0.0) / gp
+            ppg_def = ts.get("pa", 0.0) / gp
+            off_eff = ppg_off / _lgppg
+            def_eff = _lgppg / max(ppg_def, 0.1)
+            return 1500.0 + (off_eff - def_eff) * 200.0
+
         sub_probs_hist = []
         actuals_hist = []
 
@@ -73,14 +114,17 @@ def learn_nfl_weights(fte_df, pythagorean_data, efficiency_data, default_weights
 
             _home = str(_row["team1"])
             _away = str(_row["team2"])
-            _pyth_h = pythagorean_data.get(_home, {}).get("pyth", 0.5)
-            _pyth_a = pythagorean_data.get(_away, {}).get("pyth", 0.5)
+
+            # Look up the pre-game running totals for this specific historical matchup
+            _row_snap = _snap.get((str(_row.get("date", "")), _home, _away), {})
+            _pyth_h = _pyth_from_snap(_row_snap.get(_home, {}))
+            _pyth_a = _pyth_from_snap(_row_snap.get(_away, {}))
             _pyth_elo_h = 1500.0 + (_pyth_h - 0.5) * 400.0
             _pyth_elo_a = 1500.0 + (_pyth_a - 0.5) * 400.0
             _pyth_prob = _elo_es(_pyth_elo_h + _hfa, _pyth_elo_a)
 
-            _eff_h = efficiency_data.get(_home, {}).get("elo_equiv", 1500.0)
-            _eff_a = efficiency_data.get(_away, {}).get("elo_equiv", 1500.0)
+            _eff_h = _eff_elo_from_snap(_row_snap.get(_home, {}))
+            _eff_a = _eff_elo_from_snap(_row_snap.get(_away, {}))
             _eff_prob = _elo_es(_eff_h + _hfa, _eff_a)
 
             sub_probs_hist.append({
