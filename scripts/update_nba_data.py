@@ -947,6 +947,20 @@ def compute_nba_pythagorean(efficiency_data):
 
 # ─── NBA Logistic Model ──────────────────────────────────��────────────────────
 
+def nba_h2h_win_pct(game_history, t1, t2, n=10):
+    """
+    Home team's (t1) win advantage in last n head-to-head games vs away team (t2).
+    Returns a value centred on 0: positive means t1 dominates the H2H matchup.
+    Returns 0.0 when fewer than 3 H2H games are available (insufficient history).
+    Requires compute_nba_elo to store the 'opponent' key in each history entry.
+    """
+    h2h = [g for g in game_history.get(t1, []) if g.get("opponent") == t2]
+    if len(h2h) < 3:
+        return 0.0
+    recent = h2h[-n:]
+    return sum(g["result"] for g in recent) / len(recent) - 0.5
+
+
 def build_nba_features(games, elo_dict, game_history, efficiency_data, pyth_data):
     """Build feature matrix for NBA logistic/XGBoost training."""
     from sklearn.preprocessing import StandardScaler
@@ -1005,6 +1019,9 @@ def build_nba_features(games, elo_dict, game_history, efficiency_data, pyth_data
         # Travel miles and timezone diff (away team traveling to home arena)
         travel_miles, tz_diff = nba_travel_distance(t1, t2)  # t1=home, t2=away
 
+        h2h_diff = nba_h2h_win_pct(game_history, t1, t2)
+        form_l10_diff = nba_recent_form(game_history, t1, n=10) - nba_recent_form(game_history, t2, n=10)
+
         feat = [
             elo_diff, hfa, rest_diff,
             pyth_diff, net_diff,
@@ -1013,11 +1030,13 @@ def build_nba_features(games, elo_dict, game_history, efficiency_data, pyth_data
             form_diff, b2b1 - b2b2,  # difference, not home-only (matches inference)
             float(tz_diff),           # circadian shift: positive = away traveled east
             travel_miles / 1000.0,    # normalised travel distance (~0–3 range)
+            h2h_diff,                 # H2H win-rate advantage (centred on 0)
+            form_l10_diff,            # broader 10-game rolling form differential
         ]
         features.append(feat)
         targets.append(1 if s1 > s2 else 0)
 
-    return np.array(features) if features else np.array([]).reshape(0, 16), np.array(targets)
+    return np.array(features) if features else np.array([]).reshape(0, 18), np.array(targets)
 
 
 def train_nba_logistic(X, y):
@@ -1114,7 +1133,8 @@ def evaluate_nba_model(model, scaler, calibrator, X, y):
 # ─── Prediction Drivers ───────────────────────────────────────────────────────
 
 def generate_nba_prediction_drivers(game_info, home, away, elo_dict,
-                                      efficiency_data, injury_impacts, adj):
+                                      efficiency_data, injury_impacts, adj,
+                                      game_history=None):
     drivers = []
 
     home_elo = elo_dict.get(home, 1500.0)
@@ -1180,6 +1200,44 @@ def generate_nba_prediction_drivers(game_info, home, away, elo_dict,
 
     if not game_info.get("neutral", False):
         drivers.append(f"Home court: {home} +100 ELO advantage")
+
+    # Hot/cold streak and recent form — these factors feed into the logistic & XGBoost models
+    if game_history is not None:
+        home_form_l10 = nba_recent_form(game_history, home, n=10)
+        away_form_l10 = nba_recent_form(game_history, away, n=10)
+        home_trend = nba_get_trend(game_history, home)
+        away_trend = nba_get_trend(game_history, away)
+
+        for team, form_l10, trend in [(home, home_form_l10, home_trend),
+                                       (away, away_form_l10, away_trend)]:
+            wins_l10 = round(form_l10 * 10)
+            losses_l10 = 10 - wins_l10
+            if trend == "up":
+                drivers.append(
+                    f"Hot streak: {team} {wins_l10}-{losses_l10} in last 10 games (trending \u2191)"
+                )
+            elif trend == "down":
+                drivers.append(
+                    f"Cold streak: {team} {wins_l10}-{losses_l10} in last 10 games (trending \u2193)"
+                )
+
+        # Show form edge only when meaningful (affects logistic & XGBoost model weights)
+        form_diff_l5 = nba_recent_form(game_history, home, n=5) - nba_recent_form(game_history, away, n=5)
+        if abs(form_diff_l5) >= 0.20:
+            leader = home if form_diff_l5 > 0 else away
+            drivers.append(
+                f"Recent form edge: {leader} {abs(form_diff_l5)*100:.0f}% better win rate "
+                f"(last 5 games) \u2014 weighted in logistic & XGBoost models"
+            )
+
+        # H2H matchup history
+        h2h_adv = nba_h2h_win_pct(game_history, home, away)
+        if abs(h2h_adv) >= 0.15:
+            dominant = home if h2h_adv > 0 else away
+            drivers.append(
+                f"H2H history: {dominant} dominates this matchup "
+                f"({abs(h2h_adv)*100:.0f}% above 50% win rate in last 10 meetings)"
+            )
 
     return drivers
 
@@ -1524,7 +1582,7 @@ def run():
     logistic_model, logistic_scaler, logistic_calibrator = None, None, None
     model_metrics = {"log_loss": None, "brier_score": None, "auc": None}
     xgb_model, xgb_scaler = None, None
-    X, y = np.array([]).reshape(0, 15), np.array([])
+    X, y = np.array([]).reshape(0, 18), np.array([])
 
     if historical_games and len(historical_games) > 100:
         try:
@@ -1759,6 +1817,8 @@ def run():
                 float(b2b_home) - float(b2b_away),
                 float(tz_diff),   # circadian shift: positive = away team traveled east
                 dist / 1000.0,    # normalised travel distance (matches training feature 16)
+                nba_h2h_win_pct(game_history, home, away),          # H2H win-rate advantage
+                nba_recent_form(game_history, home, n=10) - nba_recent_form(game_history, away, n=10),  # 10-game form diff
             ]
             log_prob = predict_nba_logistic(feat, logistic_model, logistic_scaler,
                                              logistic_calibrator)
@@ -1815,7 +1875,8 @@ def run():
             }
 
             pred_drivers = generate_nba_prediction_drivers(
-                game, home, away, elo_dict, efficiency_data, injury_impacts, adj_dict
+                game, home, away, elo_dict, efficiency_data, injury_impacts, adj_dict,
+                game_history=game_history,
             )
 
             # Plain-English explanation

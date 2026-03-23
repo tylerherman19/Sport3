@@ -149,11 +149,13 @@ def compute_nba_elo(games, k_base=K_BASE, hfa=HFA,
                 "result": actual1,
                 "elo_diff": adj_e1 - e2,
                 "date": date_str,
+                "opponent": team2,
             })
             game_history.setdefault(team2, []).append({
                 "result": actual2,
                 "elo_diff": e2 - adj_e1,
                 "date": date_str,
+                "opponent": team1,
             })
 
     return elo_dict, game_history

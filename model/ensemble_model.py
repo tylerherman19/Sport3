@@ -143,6 +143,15 @@ def build_xgb_features(df, elo_dict, game_history, efficiency_data, pythagorean_
         # FTE data does not include turnover columns; leave as 0.0
         turnover_diff = 0.0
 
+        pass1 = efficiency_data.get(team1, {}).get("passing_eff", 1.0)
+        pass2 = efficiency_data.get(team2, {}).get("passing_eff", 1.0)
+        rush1 = efficiency_data.get(team1, {}).get("rushing_eff", 1.0)
+        rush2 = efficiency_data.get(team2, {}).get("rushing_eff", 1.0)
+        pdef1 = efficiency_data.get(team1, {}).get("pass_def_eff", 1.0)
+        pdef2 = efficiency_data.get(team2, {}).get("pass_def_eff", 1.0)
+        rdef1 = efficiency_data.get(team1, {}).get("rush_def_eff", 1.0)
+        rdef2 = efficiency_data.get(team2, {}).get("rush_def_eff", 1.0)
+
         feature = [
             elo_diff,
             float(not neutral),
@@ -159,6 +168,10 @@ def build_xgb_features(df, elo_dict, game_history, efficiency_data, pythagorean_
             float(adv1.get("red_zone_pct", 0)) - float(adv2.get("red_zone_pct", 0)),
             float(adv1.get("penalty_yards", 0)) - float(adv2.get("penalty_yards", 0)),
             float(adv1.get("time_of_possession", 0)) - float(adv2.get("time_of_possession", 0)),
+            pass1 - pass2,
+            rush1 - rush2,
+            pdef1 - pdef2,
+            rdef1 - rdef2,
         ]
 
         score1 = float(row["score1"])
@@ -248,6 +261,15 @@ def predict_xgboost(matchups, model, scaler, elo_dict, game_history,
         adv_a = advanced_stats.get(team_a, {})
         adv_b = advanced_stats.get(team_b, {})
 
+        pass_a = efficiency_data.get(team_a, {}).get("passing_eff", 1.0)
+        pass_b = efficiency_data.get(team_b, {}).get("passing_eff", 1.0)
+        rush_a = efficiency_data.get(team_a, {}).get("rushing_eff", 1.0)
+        rush_b = efficiency_data.get(team_b, {}).get("rushing_eff", 1.0)
+        pdef_a = efficiency_data.get(team_a, {}).get("pass_def_eff", 1.0)
+        pdef_b = efficiency_data.get(team_b, {}).get("pass_def_eff", 1.0)
+        rdef_a = efficiency_data.get(team_a, {}).get("rush_def_eff", 1.0)
+        rdef_b = efficiency_data.get(team_b, {}).get("rush_def_eff", 1.0)
+
         feature = np.array([[
             elo_diff,
             float(is_home and not neutral),
@@ -264,6 +286,10 @@ def predict_xgboost(matchups, model, scaler, elo_dict, game_history,
             float(adv_a.get("red_zone_pct", 0)) - float(adv_b.get("red_zone_pct", 0)),
             float(adv_a.get("penalty_yards", 0)) - float(adv_b.get("penalty_yards", 0)),
             float(adv_a.get("time_of_possession", 0)) - float(adv_b.get("time_of_possession", 0)),
+            pass_a - pass_b,
+            rush_a - rush_b,
+            pdef_a - pdef_b,
+            rdef_a - rdef_b,
         ]], dtype=np.float32)
 
         X_scaled = scaler.transform(feature)
