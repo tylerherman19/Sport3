@@ -1,5 +1,5 @@
 """
-data_fetcher.py — All external data fetching for Sport3.
+data_fetcher.py -- All external data fetching for Sport3.
 Covers NFL (ESPN) and NBA (ESPN + cdn.nba.com) endpoints.
 No math/model logic; only HTTP requests and raw parsing.
 
@@ -46,7 +46,7 @@ BDL_BASE    = "https://api.balldontlie.io/v1"
 BDL_API_KEY = "3f8c3073-796d-4226-a8dc-4784afb14287"
 _BDL_HEADERS = {"Authorization": BDL_API_KEY}
 
-# Mapping from balldontlie team abbreviation → internal abbreviation
+# Mapping from balldontlie team abbreviation -> internal abbreviation
 _BDL_NBA_ABBREV = {
     "GS": "GSW", "NY": "NYK", "NO": "NOP", "SA": "SAS",
     "OKC": "OKC", "BKN": "BKN", "WSH": "WAS", "CHA": "CHA",
@@ -454,7 +454,7 @@ def fetch_fte_data():
     log.info("Downloading FiveThirtyEight NFL ELO data...")
     try:
         df = pd.read_csv(FTE_URL)
-        log.info(f"FTE data: {len(df)} rows, seasons {df['season'].min()}–{df['season'].max()}")
+        log.info(f"FTE data: {len(df)} rows, seasons {df['season'].min()}-{df['season'].max()}")
         return df
     except Exception as e:
         log.error(f"Failed to download FTE data: {e}")
@@ -499,7 +499,7 @@ def fetch_nfl_scoreboard():
     log.info("Fetching NFL scoreboard...")
     data = safe_get(f"{ESPN_NFL_BASE}/scoreboard")
     if not data:
-        log.warning("ESPN NFL scoreboard unavailable — falling back to balldontlie")
+        log.warning("ESPN NFL scoreboard unavailable -- falling back to balldontlie")
         return _bdl_nfl_scoreboard_fallback()
     games = _parse_nfl_events(data)
     week  = data.get("week", {}).get("number", 0)
@@ -562,7 +562,7 @@ def fetch_nfl_completed_games(season_year):
                     log.debug(f"Error parsing NFL game: {e}")
     if fails: log.warning(f"NFL completed-games: skipped {fails} week(s)")
     if not completed:
-        log.warning("ESPN returned no completed NFL games — falling back to balldontlie")
+        log.warning("ESPN returned no completed NFL games -- falling back to balldontlie")
         return _bdl_nfl_completed_games_fallback(season_year)
     log.info(f"Found {len(completed)} completed NFL games for {season_year}")
     return completed
@@ -572,7 +572,7 @@ def fetch_nfl_standings():
     log.info("Fetching NFL standings...")
     data = safe_get(ESPN_NFL_STANDINGS)
     if not data:
-        log.warning("ESPN NFL standings unavailable — falling back to balldontlie")
+        log.warning("ESPN NFL standings unavailable -- falling back to balldontlie")
         return _bdl_nfl_standings_fallback()
     standings = {}
     try:
@@ -595,7 +595,7 @@ def fetch_nfl_standings():
     except Exception as e:
         log.warning(f"Error parsing NFL standings: {e}")
     if not standings:
-        log.warning("ESPN NFL standings parse yielded no data — falling back to balldontlie")
+        log.warning("ESPN NFL standings parse yielded no data -- falling back to balldontlie")
         return _bdl_nfl_standings_fallback()
     log.info(f"NFL standings for {len(standings)} teams")
     return standings
@@ -741,7 +741,7 @@ def fetch_nba_scoreboard():
             if g["game_id"] not in seen:
                 seen.add(g["game_id"]); games.append(g)
     if not games:
-        log.warning("ESPN NBA scoreboard returned no games — falling back to balldontlie")
+        log.warning("ESPN NBA scoreboard returned no games -- falling back to balldontlie")
         return _bdl_nba_scoreboard_fallback()
     log.info(f"Found {len(games)} NBA scoreboard games"); return games
 
@@ -758,7 +758,7 @@ def fetch_nba_future_games(days_ahead=14):
             if g["game_id"] not in seen:
                 seen.add(g["game_id"]); g["is_future"] = True; future.append(g)
     if not future:
-        log.warning("ESPN returned no future NBA games — falling back to balldontlie")
+        log.warning("ESPN returned no future NBA games -- falling back to balldontlie")
         return _bdl_nba_future_games_fallback(days_ahead)
     log.info(f"Found {len(future)} future NBA games"); return future
 
@@ -791,7 +791,7 @@ def fetch_nba_season_games_espn(seasons=None):
         season_start = date_cls(season_year - 1, 10, 1)
         season_end   = min(today, date_cls(season_year, 6, 30))
         if season_start > today: continue
-        # stride_days is always 1 for all seasons — ensures full game coverage
+        # stride_days is always 1 for all seasons -- ensures full game coverage
         # for model training. Do not revert to a 7-day stride.
         stride_days  = 1
         date_list    = []
@@ -832,7 +832,7 @@ def fetch_nba_season_games_espn(seasons=None):
                     log.debug(f"Error parsing NBA game: {e}")
     if fails: log.warning(f"NBA season fetch: skipped {fails} date(s)")
     if not all_games:
-        log.warning("ESPN returned no NBA historical games — falling back to balldontlie")
+        log.warning("ESPN returned no NBA historical games -- falling back to balldontlie")
         return _bdl_nba_season_games_fallback(seasons)
     log.info(f"Fetched {len(all_games)} NBA historical games (ESPN)")
     return all_games
@@ -842,7 +842,7 @@ def fetch_nba_standings_espn():
     log.info("Fetching NBA standings (ESPN)...")
     data = safe_get(ESPN_NBA_STANDINGS)
     if not data:
-        log.warning("ESPN NBA standings unavailable — falling back to balldontlie")
+        log.warning("ESPN NBA standings unavailable -- falling back to balldontlie")
         return _bdl_nba_standings_fallback()
     standings = {}
     try:
@@ -878,7 +878,7 @@ def fetch_nba_standings_espn():
     except Exception as e:
         log.warning(f"Error parsing NBA standings: {e}")
     if not standings:
-        log.warning("ESPN NBA standings parse yielded no data — falling back to balldontlie")
+        log.warning("ESPN NBA standings parse yielded no data -- falling back to balldontlie")
         return _bdl_nba_standings_fallback()
     log.info(f"NBA standings for {len(standings)} teams"); return standings
 
@@ -891,7 +891,7 @@ def fetch_nba_standings_cdn():
     log.info("Fetching NBA standings (cdn.nba.com)...")
     data = safe_get(f"{CDN_NBA_STATIC}/staticData/standings.json", headers=_CDN_HEADERS)
     if not data:
-        log.warning("cdn.nba.com standings unavailable — falling back to ESPN")
+        log.warning("cdn.nba.com standings unavailable -- falling back to ESPN")
         return fetch_nba_standings_espn()
     standings = {}
     try:
@@ -936,7 +936,7 @@ def fetch_nba_standings_cdn():
         if not standings:
             raise ValueError("No usable standings in cdn response")
     except Exception as e:
-        log.warning(f"cdn.nba.com standings parse error: {e} — falling back to ESPN")
+        log.warning(f"cdn.nba.com standings parse error: {e} -- falling back to ESPN")
         return fetch_nba_standings_espn()
     log.info(f"NBA standings (cdn) for {len(standings)} teams"); return standings
 
@@ -997,7 +997,7 @@ def fetch_nba_depth_charts_espn(event_ids=None):
     log.info("Fetching NBA starters from ESPN game summary (boxscore) endpoint...")
     player_depth = {}
 
-    # ── Collect event IDs ───────────────────────────────────────────────────
+    # -- Collect event IDs ---------------------------------------------------
     if not event_ids:
         event_ids = []
         for delta in range(0, -4, -1):
@@ -1016,7 +1016,7 @@ def fetch_nba_depth_charts_espn(event_ids=None):
         log.warning("fetch_nba_depth_charts_espn: no event IDs found; returning empty depth map")
         return player_depth
 
-    # ── Fetch each game summary and extract starter flags ───────────────────
+    # -- Fetch each game summary and extract starter flags -------------------
     ESPN_NBA_SUMMARY = "http://site.api.espn.com/apis/site/v2/sports/basketball/nba/summary"
     for event_id in event_ids:
         summary = safe_get(ESPN_NBA_SUMMARY, params={"event": event_id})
@@ -1075,7 +1075,7 @@ def fetch_nba_player_ppg_espn():
     except Exception as e:
         log.warning(f"Error fetching NBA player PPG: {e}")
     if not player_ppg:
-        log.warning("ESPN NBA player PPG returned nothing — falling back to balldontlie player list")
+        log.warning("ESPN NBA player PPG returned nothing -- falling back to balldontlie player list")
         return _bdl_nba_players_fallback()
     log.info(f"NBA PPG stats: {len(player_ppg)} entries")
     return player_ppg
@@ -1096,7 +1096,7 @@ def fetch_nba_player_stats_cdn(season_year):
     }
     data = safe_get(url, params=params, headers=_CDN_HEADERS, timeout=20)
     if not data:
-        log.warning("cdn.nba.com player stats unavailable — falling back to ESPN")
+        log.warning("cdn.nba.com player stats unavailable -- falling back to ESPN")
         return fetch_nba_player_ppg_espn()
     player_ppg = {}
     try:
