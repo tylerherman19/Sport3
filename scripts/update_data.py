@@ -31,7 +31,8 @@ from model.efficiency_model import (compute_pythagorean, compute_efficiency,
 from model.monte_carlo import simulate_game, simulate_season
 from model.ensemble_model import (build_xgb_features, train_xgboost, predict_xgboost,
                                    ensemble_predict, kelly_criterion,
-                                   american_to_prob, remove_vig)
+                                   american_to_prob, remove_vig, DEFAULT_WEIGHTS)
+from model.nfl_ensemble_weights import learn_nfl_weights
 from model.injury_model import compute_all_team_impacts, injury_elo_adjustment
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
@@ -1032,12 +1033,16 @@ def run():
                     xgb_prob = xgb_preds[0]["xgb_prob"]
 
             # Ensemble
+            # Issue 5: Learn + apply NFL ensemble weights
+            if "nfl_weights" not in dir():
+                nfl_weights = learn_nfl_weights(fte_df, pythagorean_data, efficiency_data, DEFAULT_WEIGHTS)
             ensemble_prob = ensemble_predict(
                 logistic_prob=log_prob,
                 xgb_prob=xgb_prob,
                 elo_prob=elo_result["prob"],
                 pyth_prob=eff_result["pyth_prob"],
-                eff_prob=eff_result["eff_prob"]
+                eff_prob=eff_result["eff_prob"],
+                weights=nfl_weights,
             )
 
             # Monte Carlo
