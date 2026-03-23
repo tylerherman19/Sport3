@@ -1012,11 +1012,12 @@ def build_nba_features(games, elo_dict, game_history, efficiency_data, pyth_data
             to_diff, three_diff, reb_diff, ft_diff,
             form_diff, b2b1 - b2b2,  # difference, not home-only (matches inference)
             float(tz_diff),           # circadian shift: positive = away traveled east
+            travel_miles / 1000.0,    # normalised travel distance (~0–3 range)
         ]
         features.append(feat)
         targets.append(1 if s1 > s2 else 0)
 
-    return np.array(features) if features else np.array([]).reshape(0, 15), np.array(targets)
+    return np.array(features) if features else np.array([]).reshape(0, 16), np.array(targets)
 
 
 def train_nba_logistic(X, y):
@@ -1756,7 +1757,8 @@ def run():
                 home_eff.get("free_throw_rate", 0.20) - away_eff.get("free_throw_rate", 0.20),
                 nba_recent_form(game_history, home) - nba_recent_form(game_history, away),
                 float(b2b_home) - float(b2b_away),
-                float(tz_diff),  # circadian shift: positive = away team traveled east
+                float(tz_diff),   # circadian shift: positive = away team traveled east
+                dist / 1000.0,    # normalised travel distance (matches training feature 16)
             ]
             log_prob = predict_nba_logistic(feat, logistic_model, logistic_scaler,
                                              logistic_calibrator)

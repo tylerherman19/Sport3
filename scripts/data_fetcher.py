@@ -884,27 +884,44 @@ def fetch_nba_standings_espn():
                 stats   = {s["name"]: s.get("value", 0) for s in entry.get("stats", [])}
                 wins    = int(stats.get("wins", 0)); losses = int(stats.get("losses", 0))
                 # avgPointsFor/avgPointsAgainst are raw PPG, NOT pace-adjusted ORTG/DRTG.
-                # Store as ppg_for/ppg_against; use 110.0 defaults for ORTG/DRTG since
-                # ESPN standings fallback does not provide real pace-adjusted efficiency ratings.
+                # Store PPG as the offensive_rating/defensive_rating proxy so that
+                # build_nba_efficiency_data() in model_engine.py can normalize them to the
+                # ~110 ORTG scale via its flat-detection logic.  Hardcoding 110.0 for all
+                # teams produces a flat distribution with zero signal.
+                ppg_for     = float(stats.get("avgPointsFor",     0.0))
+                ppg_against = float(stats.get("avgPointsAgainst", 0.0))
                 standings[abbrev] = {
                     "wins": wins, "losses": losses,
                     "win_pct": float(stats.get("winPercent", 0)),
                     "points_for": float(stats.get("pointsFor", 0)),
                     "points_against": float(stats.get("pointsAgainst", 0)),
-                    "ppg_for": float(stats.get("avgPointsFor", 0.0)),
-                    "ppg_against": float(stats.get("avgPointsAgainst", 0.0)),
+                    "ppg_for":     ppg_for,
+                    "ppg_against": ppg_against,
                     "games_played": wins + losses,
-                    "offensive_rating": 110.0,  # ESPN does not provide real ORTG; use league default
-                    "defensive_rating": 110.0,  # ESPN does not provide real DRTG; use league default
-                    "net_rating": 0.0,
+                    # Use PPG as ORTG/DRTG proxy; build_nba_efficiency_data() will normalise
+                    # to the 110-point scale once it detects the values are PPG-based.
+                    "offensive_rating": ppg_for     if ppg_for     > 0 else 110.0,
+                    "defensive_rating": ppg_against if ppg_against > 0 else 110.0,
+                    "net_rating": round(ppg_for - ppg_against, 1) if ppg_for > 0 else 0.0,
                     "pace": 100.0, "assist_turnover_ratio": 1.8,
                     "rebound_rate": 0.5, "three_point_rate": 0.35, "free_throw_rate": 0.20,
                     "streak": stats.get("streak", 0),
+                    "ortg_estimated": True,  # flag: value is PPG-based, not pace-adjusted
                 }
     except Exception as e:
         log.warning(f"Error parsing NBA standings: {e}")
     if not standings:
         log.warning("ESPN NBA standings parse yielded no data — falling back to balldontlie")
+        return _bdl_nba_standings_fallback()
+    # Guard: if every team has the same ORTG within 0.5 pts the data is still flat placeholders.
+    # This can happen when ESPN returns entries but avgPointsFor is missing/zero for all teams.
+    all_ortg = [v.get("offensive_rating", 110.0) for v in standings.values()]
+    if len(all_ortg) >= 28 and (max(all_ortg) - min(all_ortg)) < 0.5:
+        log.error(
+            "NBA ESPN standings: all %d teams have identical ORTG (%.1f). "
+            "avgPointsFor data appears missing — falling back to balldontlie for real PPG.",
+            len(all_ortg), all_ortg[0],
+        )
         return _bdl_nba_standings_fallback()
     log.info(f"NBA standings for {len(standings)} teams"); return standings
 
@@ -961,6 +978,15 @@ def fetch_nba_standings_cdn():
             }
         if not standings:
             raise ValueError("No usable standings in cdn response")
+        # Guard: if every team has the same ORTG within 0.5 pts the field was absent/zero.
+        cdn_ortg = [v.get("offensive_rating", 110.0) for v in standings.values()]
+        if len(cdn_ortg) >= 28 and (max(cdn_ortg) - min(cdn_ortg)) < 0.5:
+            log.warning(
+                "NBA CDN standings: all %d teams have identical ORTG (%.1f) — "
+                "offensiveRating field absent; falling back to ESPN for PPG-based ratings.",
+                len(cdn_ortg), cdn_ortg[0],
+            )
+            return fetch_nba_standings_espn()
     except Exception as e:
         log.warning(f"cdn.nba.com standings parse error: {e} — falling back to ESPN")
         return fetch_nba_standings_espn()

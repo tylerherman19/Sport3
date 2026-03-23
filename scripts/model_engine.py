@@ -342,8 +342,13 @@ def build_nba_features(games, elo_dict, game_history, efficiency_data, pyth_data
             b2b2 = 1.0 if rest2 <= 1 else 0.0
         except (ValueError, TypeError):
             rest_diff, b2b1, b2b2 = 0.0, 0.0, 0.0
-        # Timezone diff for away team traveling to home arena (circadian shift)
+        # Timezone diff and travel miles for away team traveling to home arena
         tz_diff = float(NBA_TZ_OFFSETS.get(t1, -6) - NBA_TZ_OFFSETS.get(t2, -6))
+        try:
+            from scripts.update_nba_data import nba_travel_distance as _nba_travel
+            travel_miles, _ = _nba_travel(t1, t2)
+        except Exception:
+            travel_miles = 0.0
         features.append([
             (e1 + hfa) - e2, hfa, rest_diff,
             (1500 + (pyth1 - 0.5) * 400) - (1500 + (pyth2 - 0.5) * 400),
@@ -356,11 +361,12 @@ def build_nba_features(games, elo_dict, game_history, efficiency_data, pyth_data
             eff1.get("rebound_rate", 0.5) - eff2.get("rebound_rate", 0.5),
             eff1.get("free_throw_rate", 0.20) - eff2.get("free_throw_rate", 0.20),
             nba_recent_form(game_history, t1) - nba_recent_form(game_history, t2),
-            b2b1 - b2b2,  # difference, not home-only (matches inference)
-            tz_diff,       # circadian shift: positive = away team traveled east
+            b2b1 - b2b2,       # difference, not home-only (matches inference)
+            tz_diff,            # circadian shift: positive = away team traveled east
+            travel_miles / 1000.0,  # normalised travel distance (~0–3 range)
         ])
         targets.append(1 if s1 > s2 else 0)
-    return (np.array(features) if features else np.array([]).reshape(0, 15), np.array(targets))
+    return (np.array(features) if features else np.array([]).reshape(0, 16), np.array(targets))
 
 
 def train_nba_logistic(X, y):

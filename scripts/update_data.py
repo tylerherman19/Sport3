@@ -912,29 +912,37 @@ def run():
         log.warning("FTE data unavailable — building training set from ESPN completed games")
         espn_rows = []
         for g in espn_completed:
-            if g.get("status") != "STATUS_FINAL":
-                continue
-            ht = g.get("home_team", "")
-            at = g.get("away_team", "")
-            hs = g.get("home_score", 0) or 0
-            as_ = g.get("away_score", 0) or 0
+            # fetch_espn_completed_games already filters for STATUS_FINAL and uses
+            # "team1"/"team2"/"score1"/"score2"/"date" keys — use them directly.
+            ht  = g.get("team1", "")
+            at  = g.get("team2", "")
+            hs  = g.get("score1", 0) or 0
+            as_ = g.get("score2", 0) or 0
             if not ht or not at or (hs == 0 and as_ == 0):
                 continue
-            gtime = g.get("game_time", "")[:10]
+            gdate = g.get("date", "")[:10]
             espn_rows.append({
-                "date": gtime,
-                "season": g.get("season", season_year),
-                "team1": ht,
-                "team2": at,
-                "score1": float(hs),
-                "score2": float(as_),
-                "neutral": 0,
+                "date":     gdate,
+                "season":   g.get("season", season_year),
+                "team1":    ht,
+                "team2":    at,
+                "score1":   float(hs),
+                "score2":   float(as_),
+                "neutral":  g.get("neutral", 0),
                 "elo1_pre": elo_dict.get(ht, 1500.0),
                 "elo2_pre": elo_dict.get(at, 1500.0),
             })
         if espn_rows:
             training_df = pd.DataFrame(espn_rows)
             log.info(f"ESPN fallback training set: {len(training_df)} games")
+        else:
+            log.warning("ESPN fallback: espn_completed contained no usable rows")
+    if training_df.empty:
+        log.error(
+            "training_df is empty after both FTE download and ESPN fallback. "
+            "NFL logistic/XGBoost models will be skipped. "
+            "Check FTE_URL accessibility and ESPN completed-games endpoint."
+        )
 
     # ── 4. Train logistic model ─────────────────────────────────────────────
     log.info("Training logistic regression model...")
