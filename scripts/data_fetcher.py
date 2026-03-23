@@ -243,6 +243,7 @@ def _bdl_nba_standings_fallback():
     Returns a dict matching the schema from fetch_nba_standings_espn.
     NOTE: BDL All-Star tier does not expose a standings endpoint; we
     approximate wins/losses by aggregating completed current-season games.
+    ORTG/DRTG are derived from actual game scores rather than hardcoded 110.0.
     """
     log.info("BDL fallback: building NBA standings from game results...")
     cy = datetime.now(timezone.utc).year
@@ -250,6 +251,7 @@ def _bdl_nba_standings_fallback():
     season = cy if cm >= 10 else cy - 1
     items = _bdl_get_all("/games", {"seasons[]": season, "leagues": "NBA"})
     wins = {}; losses = {}
+    pts_for = {}; pts_against = {}  # accumulate season point totals per team
     for g in items:
         try:
             if g.get("status") != "Final":
@@ -260,6 +262,11 @@ def _bdl_nba_standings_fallback():
             as_ = int(g.get("visitor_team_score", 0) or 0)
             if hs == 0 and as_ == 0:
                 continue
+            # Accumulate points for PPG calculation
+            pts_for[ht] = pts_for.get(ht, 0) + hs
+            pts_for[at] = pts_for.get(at, 0) + as_
+            pts_against[ht] = pts_against.get(ht, 0) + as_
+            pts_against[at] = pts_against.get(at, 0) + hs
             if hs > as_:
                 wins[ht] = wins.get(ht, 0) + 1
                 losses[at] = losses.get(at, 0) + 1
@@ -270,20 +277,39 @@ def _bdl_nba_standings_fallback():
             log.debug(f"BDL standings accumulate error: {e}")
     standings = {}
     all_teams = set(list(wins.keys()) + list(losses.keys()))
+    # Compute league-average PPG to normalize to ORTG scale (~110 pts/100 poss)
+    all_ppg = []
+    for abbrev in all_teams:
+        gp = max(wins.get(abbrev, 0) + losses.get(abbrev, 0), 1)
+        pf = pts_for.get(abbrev, 0)
+        if pf > 0:
+            all_ppg.append(pf / gp)
+    league_ppg = sum(all_ppg) / len(all_ppg) if all_ppg else 114.0
+    ORTG_SCALE = 110.0
     for abbrev in all_teams:
         w = wins.get(abbrev, 0); l = losses.get(abbrev, 0)
+        gp = max(w + l, 1)
+        pf = pts_for.get(abbrev, 0)
+        pa = pts_against.get(abbrev, 0)
+        ppg_f = pf / gp
+        ppg_a = pa / gp
+        # Normalize PPG to ORTG scale: league average PPG → ORTG_SCALE
+        off_rtg = round((ppg_f / league_ppg) * ORTG_SCALE, 1) if ppg_f > 0 else ORTG_SCALE
+        def_rtg = round((ppg_a / league_ppg) * ORTG_SCALE, 1) if ppg_a > 0 else ORTG_SCALE
         standings[abbrev] = {
             "wins": w, "losses": l,
             "win_pct": w / max(w + l, 1),
-            "points_for": 0.0, "points_against": 0.0,
-            "ppg_for": 0.0, "ppg_against": 0.0,
+            "points_for": float(pf), "points_against": float(pa),
+            "ppg_for": round(ppg_f, 1), "ppg_against": round(ppg_a, 1),
             "games_played": w + l,
-            "offensive_rating": 110.0, "defensive_rating": 110.0,
-            "net_rating": 0.0, "pace": 100.0,
+            "offensive_rating": off_rtg, "defensive_rating": def_rtg,
+            "net_rating": round(off_rtg - def_rtg, 1), "pace": 100.0,
             "assist_turnover_ratio": 1.8, "rebound_rate": 0.5,
             "three_point_rate": 0.35, "free_throw_rate": 0.20, "streak": 0,
         }
-    log.info(f"BDL NBA standings fallback: {len(standings)} teams")
+    log.info(f"BDL NBA standings fallback: {len(standings)} teams (ORTG range: "
+             f"{min((v['offensive_rating'] for v in standings.values()), default=110):.1f}–"
+             f"{max((v['offensive_rating'] for v in standings.values()), default=110):.1f})")
     return standings
 
 

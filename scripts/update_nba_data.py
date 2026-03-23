@@ -75,18 +75,25 @@ ESPN_NBA_TO_ABBREV = {
 # ESPN team ID → abbrev mapping (populated dynamically)
 ESPN_ID_TO_ABBREV = {}
 
-# Home city coordinates for travel distance
+# Home city coordinates (lat, lon) and standard-time UTC offset for travel/timezone features.
+# UTC offsets: ET=-5, CT=-6, MT=-7, PT=-8; Toronto uses ET (-5).
 NBA_COORDS = {
-    "ATL": [33.7490, -84.3880], "BOS": [42.3601, -71.0589], "BKN": [40.6826, -73.9754],
-    "CHA": [35.2271, -80.8431], "CHI": [41.8781, -87.6298], "CLE": [41.4993, -81.6944],
-    "DAL": [32.7767, -96.7970], "DEN": [39.7392, -104.9903], "DET": [42.3314, -83.0458],
-    "GSW": [37.7680, -122.3877], "HOU": [29.7604, -95.3698], "IND": [39.7684, -86.1581],
-    "LAC": [34.0430, -118.2673], "LAL": [34.0430, -118.2673], "MEM": [35.1495, -90.0490],
-    "MIA": [25.7617, -80.1918], "MIL": [43.0436, -87.9166], "MIN": [44.9778, -93.2650],
-    "NOP": [29.9511, -90.0715], "NYK": [40.7505, -73.9934], "OKC": [35.4634, -97.5151],
-    "ORL": [28.5383, -81.3792], "PHI": [39.9012, -75.1720], "PHX": [33.4484, -112.0740],
-    "POR": [45.5231, -122.6765], "SAC": [38.5816, -121.4944], "SAS": [29.4241, -98.4936],
-    "TOR": [43.6532, -79.3832], "UTA": [40.7608, -111.8910], "WAS": [38.9072, -77.0369],
+    # (lat, lon, utc_offset_standard_time)
+    "ATL": (33.7490, -84.3880, -5), "BOS": (42.3601, -71.0589, -5),
+    "BKN": (40.6826, -73.9754, -5), "CHA": (35.2271, -80.8431, -5),
+    "CHI": (41.8781, -87.6298, -6), "CLE": (41.4993, -81.6944, -5),
+    "DAL": (32.7767, -96.7970, -6), "DEN": (39.7392, -104.9903, -7),
+    "DET": (42.3314, -83.0458, -5), "GSW": (37.7680, -122.3877, -8),
+    "HOU": (29.7604, -95.3698, -6), "IND": (39.7684, -86.1581, -5),
+    "LAC": (34.0430, -118.2673, -8), "LAL": (34.0430, -118.2673, -8),
+    "MEM": (35.1495, -90.0490, -6), "MIA": (25.7617, -80.1918, -5),
+    "MIL": (43.0436, -87.9166, -6), "MIN": (44.9778, -93.2650, -6),
+    "NOP": (29.9511, -90.0715, -6), "NYK": (40.7505, -73.9934, -5),
+    "OKC": (35.4634, -97.5151, -6), "ORL": (28.5383, -81.3792, -5),
+    "PHI": (39.9012, -75.1720, -5), "PHX": (33.4484, -112.0740, -7),
+    "POR": (45.5231, -122.6765, -8), "SAC": (38.5816, -121.4944, -8),
+    "SAS": (29.4241, -98.4936, -6), "TOR": (43.6532, -79.3832, -5),
+    "UTA": (40.7608, -111.8910, -7), "WAS": (38.9072, -77.0369, -5),
 }
 
 
@@ -368,11 +375,19 @@ def haversine(a, b):
 
 
 def nba_travel_distance(home, away):
+    """Return (travel_miles, timezone_diff) for the away team traveling to the home arena.
+
+    timezone_diff = home_tz_offset - away_tz_offset (positive means away team
+    travels east and loses hours, negative means they travel west and gain hours).
+    A larger absolute value indicates greater circadian disruption.
+    """
     ch = NBA_COORDS.get(home)
     ca = NBA_COORDS.get(away)
     if ch and ca:
-        return haversine(ca, ch)
-    return 0.0
+        miles = haversine((ca[0], ca[1]), (ch[0], ch[1]))
+        tz_diff = ch[2] - ca[2]  # home_tz - away_tz
+        return miles, tz_diff
+    return 0.0, 0
 
 
 # ELO functions are provided by model/nba_elo.py (imported above)
@@ -563,8 +578,11 @@ def fetch_nba_standings():
                 losses = int(stats.get("losses", 0))
                 points_for = float(stats.get("pointsFor", 0))
                 points_against = float(stats.get("pointsAgainst", 0))
-                # avgPointsFor/avgPointsAgainst are raw PPG, NOT pace-adjusted ORTG/DRTG.
-                # Store as ppg_for/ppg_against; use 110.0 defaults for ORTG/DRTG.
+                # ESPN provides avgPointsFor/avgPointsAgainst (raw PPG).
+                # Use these as offensive_rating/defensive_rating proxies;
+                # build_nba_efficiency_data() will normalise them to the ORTG scale.
+                ppg_for = float(stats.get("avgPointsFor", 0.0))
+                ppg_against = float(stats.get("avgPointsAgainst", 0.0))
 
                 standings[team_abbrev] = {
                     "wins": wins,
@@ -572,18 +590,20 @@ def fetch_nba_standings():
                     "win_pct": float(stats.get("winPercent", 0)),
                     "points_for": points_for,
                     "points_against": points_against,
-                    "ppg_for": float(stats.get("avgPointsFor", 0.0)),
-                    "ppg_against": float(stats.get("avgPointsAgainst", 0.0)),
+                    "ppg_for": ppg_for,
+                    "ppg_against": ppg_against,
                     "games_played": wins + losses,
-                    "offensive_rating": 110.0,  # ESPN does not provide real ORTG
-                    "defensive_rating": 110.0,  # ESPN does not provide real DRTG
-                    "net_rating": 0.0,
+                    # Use PPG as ORTG/DRTG proxy (normalised to league average in build_nba_efficiency_data)
+                    "offensive_rating": ppg_for if ppg_for > 0 else 110.0,
+                    "defensive_rating": ppg_against if ppg_against > 0 else 110.0,
+                    "net_rating": round(ppg_for - ppg_against, 1) if ppg_for > 0 else 0.0,
                     "pace": 100.0,
                     "assist_turnover_ratio": 1.8,
                     "rebound_rate": 0.5,
                     "three_point_rate": 0.35,
                     "free_throw_rate": 0.20,
                     "streak": stats.get("streak", 0),
+                    "ortg_estimated": True,  # flag that ORTG is PPG-based, not pace-adjusted
                 }
     except Exception as e:
         log.warning(f"Error parsing NBA standings (ESPN): {e}")
@@ -829,9 +849,16 @@ def match_nba_odds(game, odds_map):
 # ─── NBA Efficiency Data ──────────────────────────────────────────────────────
 
 def build_nba_efficiency_data(standings):
-    """Build NBA efficiency stats from standings."""
+    """Build NBA efficiency stats from standings.
+
+    Handles three data-source scenarios:
+      1. CDN standings with real pace-adjusted ORTG/DRTG → use directly.
+      2. ESPN/BDL fallback where offensive_rating = raw PPG proxy → normalise
+         all values to the ~110 ORTG scale so off_eff ratios are meaningful.
+      3. All values flat (CDN key-name mismatch) → same PPG normalisation.
+    """
     efficiency = {}
-    # Compute league averages
+    # Compute league averages from teams with actual game data
     teams_with_data = [s for s in standings.values() if s.get("games_played", 0) > 0]
     if teams_with_data:
         league_off = np.mean([s.get("offensive_rating", 110.0) for s in teams_with_data])
@@ -852,8 +879,8 @@ def build_nba_efficiency_data(standings):
         pa = s.get("points_against", 0)
         gp = max(s.get("games_played", 1), 1)
 
-        ppg_for = pf / gp
-        ppg_against = pa / gp
+        ppg_for = s.get("ppg_for", pf / gp)
+        ppg_against = s.get("ppg_against", pa / gp)
 
         efficiency[team] = {
             "offensive_rating": off_rtg,
@@ -870,6 +897,38 @@ def build_nba_efficiency_data(standings):
             "ppg_for": ppg_for,
             "ppg_against": ppg_against,
         }
+
+    # ── Detect flat ORTG (all identical → placeholder/fallback data) ──────────
+    # This happens when CDN key-names don't match or ESPN/BDL fallback is active.
+    # Normalise PPG to the ORTG scale so off_eff/def_eff produce real signal.
+    all_off = [efficiency[t]["offensive_rating"] for t in efficiency
+               if efficiency[t].get("ppg_for", 0) > 0]
+    if all_off and max(all_off) - min(all_off) < 1.0:
+        valid = {t: efficiency[t] for t in efficiency if efficiency[t].get("ppg_for", 0) > 0}
+        if valid:
+            lg_ppg = np.mean([v["ppg_for"] for v in valid.values()])
+            lg_ppg_def = np.mean([v["ppg_against"] for v in valid.values()])
+            ORTG_SCALE = 110.0
+            for t in efficiency:
+                ppg_f = efficiency[t].get("ppg_for", lg_ppg)
+                ppg_a = efficiency[t].get("ppg_against", lg_ppg_def)
+                if ppg_f > 0 and ppg_a > 0:
+                    efficiency[t]["offensive_rating"] = round((ppg_f / lg_ppg) * ORTG_SCALE, 1)
+                    efficiency[t]["defensive_rating"] = round((ppg_a / lg_ppg_def) * ORTG_SCALE, 1)
+                    efficiency[t]["net_rating"] = round(
+                        efficiency[t]["offensive_rating"] - efficiency[t]["defensive_rating"], 1)
+            # Recompute league averages and derived ratios with updated values
+            new_lg_off = np.mean([efficiency[t]["offensive_rating"] for t in efficiency])
+            new_lg_def = np.mean([efficiency[t]["defensive_rating"] for t in efficiency])
+            for t in efficiency:
+                o = efficiency[t]["offensive_rating"]
+                d = efficiency[t]["defensive_rating"]
+                efficiency[t]["off_eff"] = o / max(new_lg_off, 1)
+                efficiency[t]["def_eff"] = new_lg_def / max(d, 1)
+                efficiency[t]["net_eff"] = o - d
+            log.warning("ORTG/DRTG were flat (ESPN/BDL fallback); re-derived from PPG. "
+                        f"New ORTG range: {min(efficiency[t]['offensive_rating'] for t in efficiency):.1f}–"
+                        f"{max(efficiency[t]['offensive_rating'] for t in efficiency):.1f}")
 
     return efficiency
 
@@ -943,17 +1002,21 @@ def build_nba_features(games, elo_dict, game_history, efficiency_data, pyth_data
             b2b1 = 0.0
             b2b2 = 0.0
 
+        # Travel miles and timezone diff (away team traveling to home arena)
+        travel_miles, tz_diff = nba_travel_distance(t1, t2)  # t1=home, t2=away
+
         feat = [
             elo_diff, hfa, rest_diff,
             pyth_diff, net_diff,
             off_diff, def_diff, pace_diff,
             to_diff, three_diff, reb_diff, ft_diff,
             form_diff, b2b1 - b2b2,  # difference, not home-only (matches inference)
+            float(tz_diff),           # circadian shift: positive = away traveled east
         ]
         features.append(feat)
         targets.append(1 if s1 > s2 else 0)
 
-    return np.array(features) if features else np.array([]).reshape(0, 14), np.array(targets)
+    return np.array(features) if features else np.array([]).reshape(0, 15), np.array(targets)
 
 
 def train_nba_logistic(X, y):
@@ -1229,11 +1292,28 @@ def run():
     else:
         season_year = current_year
 
-    # ── 1. Download data ───────────────────────────────────��────────────────
+    # ── 1. Download data ───────────────────────────────────────────────────
     scoreboard_games = fetch_nba_scoreboard()
     standings = fetch_nba_standings()
     injuries = fetch_nba_injuries()
     odds_map = fetch_nba_odds(odds_api_key)
+
+    # ── Issue 7: Validate standings before proceeding ─────────────────────
+    if not standings or len(standings) < 15:
+        msg = (f"NBA standings fetch returned only {len(standings)} teams "
+               f"(need >= 15) — aborting to prevent overwriting predictions with bad data.")
+        log.error(msg)
+        write_nba_abort_log(reason=msg, now_utc=now_utc,
+                            counts={"standings_teams": len(standings)})
+        return
+    _active = [v for v in standings.values() if v.get("games_played", 0) > 0]
+    if _active:
+        _ortg_vals = [v.get("offensive_rating", 110.0) for v in _active]
+        if max(_ortg_vals) - min(_ortg_vals) < 0.5:
+            log.warning(
+                f"All {len(_active)} active teams have identical ORTG ({_ortg_vals[0]:.1f}) — "
+                "ESPN/BDL fallback active. ORTG will be re-derived from PPG in build_nba_efficiency_data()."
+            )
 
     is_offseason = len(scoreboard_games) == 0
 
@@ -1396,13 +1476,46 @@ def run():
     # override from PPG computed above so each team has unique efficiency values.
     _all_off = [efficiency_data[t]["offensive_rating"] for t in efficiency_data]
     if len(set(_all_off)) <= 2:  # all identical → CDN key-name mismatch, use PPG fallback
+        _valid_ppg = [efficiency_data[t]["ppg_for"] for t in efficiency_data
+                      if efficiency_data[t].get("ppg_for", 0) > 0]
+        _lg_ppg = sum(_valid_ppg) / len(_valid_ppg) if _valid_ppg else 114.0
+        _valid_ppg_def = [efficiency_data[t]["ppg_against"] for t in efficiency_data
+                          if efficiency_data[t].get("ppg_against", 0) > 0]
+        _lg_ppg_def = sum(_valid_ppg_def) / len(_valid_ppg_def) if _valid_ppg_def else 114.0
+        ORTG_SCALE = 110.0
         for _t in efficiency_data:
             ppg_f = efficiency_data[_t].get("ppg_for", 0)
             ppg_a = efficiency_data[_t].get("ppg_against", 0)
             if ppg_f > 0:
-                efficiency_data[_t]["offensive_rating"] = round(ppg_f, 1)
-                efficiency_data[_t]["defensive_rating"] = round(ppg_a, 1)
-                efficiency_data[_t]["net_rating"] = round(ppg_f - ppg_a, 1)
+                # Normalise PPG to ORTG scale rather than storing raw PPG
+                efficiency_data[_t]["offensive_rating"] = round((ppg_f / _lg_ppg) * ORTG_SCALE, 1)
+                efficiency_data[_t]["defensive_rating"] = round((ppg_a / _lg_ppg_def) * ORTG_SCALE, 1)
+                efficiency_data[_t]["net_rating"] = round(
+                    efficiency_data[_t]["offensive_rating"] - efficiency_data[_t]["defensive_rating"], 1)
+    # Always recompute off_eff/def_eff/net_eff with the current ORTG/DRTG values
+    # (in case they were updated by either the flat-override or PPG override above)
+    _lg_off_final = np.mean([efficiency_data[t]["offensive_rating"] for t in efficiency_data
+                              if efficiency_data[t]["offensive_rating"] > 0])
+    _lg_def_final = np.mean([efficiency_data[t]["defensive_rating"] for t in efficiency_data
+                              if efficiency_data[t]["defensive_rating"] > 0])
+    for _t in efficiency_data:
+        _o = efficiency_data[_t]["offensive_rating"]
+        _d = efficiency_data[_t]["defensive_rating"]
+        efficiency_data[_t]["off_eff"] = _o / max(_lg_off_final, 1)
+        efficiency_data[_t]["def_eff"] = _lg_def_final / max(_d, 1)
+        efficiency_data[_t]["net_eff"] = _o - _d
+    _off_vals = [efficiency_data[t]["offensive_rating"] for t in efficiency_data]
+    log.info(f"NBA efficiency ORTG range: {min(_off_vals):.1f}–{max(_off_vals):.1f} "
+             f"(spread: {max(_off_vals)-min(_off_vals):.1f})")
+    # Issue 7: Abort if efficiency data is still flat after all normalization attempts
+    if max(_off_vals) - min(_off_vals) < 0.5:
+        msg = ("build_nba_efficiency_data: all ORTG values are identical after PPG normalisation "
+               f"(value={_off_vals[0]:.1f}) — data source corrupted or all teams have zero games. "
+               "Aborting to prevent writing 50/50 flat predictions.")
+        log.error(msg)
+        write_nba_abort_log(reason=msg, now_utc=now_utc,
+                            counts={"efficiency_spread": 0, "standings_teams": len(standings)})
+        return
     pyth_data = compute_nba_pythagorean(efficiency_data)
 
     # ── 5 & 6. Build features once, train logistic and XGBoost on same X, y ──
@@ -1410,7 +1523,7 @@ def run():
     logistic_model, logistic_scaler, logistic_calibrator = None, None, None
     model_metrics = {"log_loss": None, "brier_score": None, "auc": None}
     xgb_model, xgb_scaler = None, None
-    X, y = np.array([]).reshape(0, 14), np.array([])
+    X, y = np.array([]).reshape(0, 15), np.array([])
 
     if historical_games and len(historical_games) > 100:
         try:
@@ -1562,7 +1675,7 @@ def run():
             day_before_game = game_date - timedelta(days=1)
             rest_home = days_since_last_game(game_history, home, game_date)
             rest_away = days_since_last_game(game_history, away, game_date)
-            dist = nba_travel_distance(home, away)
+            dist, tz_diff = nba_travel_distance(home, away)
 
             # Back-to-back detection: played the day before this game
             b2b_home = any(
@@ -1591,7 +1704,7 @@ def run():
             elo_result = predict_nba_game(
                 home, away, elo_dict,
                 home_b2b=b2b_home, away_b2b=b2b_away,
-                rest_diff=rest_diff, travel_miles=dist,
+                rest_diff=rest_diff, travel_miles=dist,  # dist is miles only
                 neutral=neutral,
             )
             elo_prob = elo_result["prob"]
@@ -1643,6 +1756,7 @@ def run():
                 home_eff.get("free_throw_rate", 0.20) - away_eff.get("free_throw_rate", 0.20),
                 nba_recent_form(game_history, home) - nba_recent_form(game_history, away),
                 float(b2b_home) - float(b2b_away),
+                float(tz_diff),  # circadian shift: positive = away team traveled east
             ]
             log_prob = predict_nba_logistic(feat, logistic_model, logistic_scaler,
                                              logistic_calibrator)
@@ -1924,6 +2038,20 @@ def run():
         })
 
     leaderboard_list.sort(key=lambda x: x["elo"], reverse=True)
+
+    # ── Issue 7: Validate predictions before writing ──────────────────────
+    if predictions_list:
+        _eff_probs = [g.get("efficiency_prob") for g in predictions_list
+                      if g.get("efficiency_prob") is not None]
+        if _eff_probs and max(_eff_probs) - min(_eff_probs) < 0.01:
+            msg = (f"All {len(_eff_probs)} efficiency_prob values are flat ({_eff_probs[0]:.4f}) "
+                   "— efficiency sub-model is still outputting 50/50. "
+                   "Refusing to overwrite nba_predictions.json with bad data.")
+            log.error(msg)
+            write_nba_abort_log(reason=msg, now_utc=now_utc,
+                                counts={"flat_eff_probs": len(_eff_probs),
+                                        "n_predictions": len(predictions_list)})
+            return
 
     # ── 11. Write output files ───────────────────────────────────────────────
     log.info("Writing NBA JSON output files...")

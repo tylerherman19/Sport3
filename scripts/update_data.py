@@ -44,7 +44,11 @@ DATA_DIR.mkdir(exist_ok=True)
 ESPN_BASE = "https://site.api.espn.com/apis/site/v2/sports/football/nfl"
 ESPN_NFL_STANDINGS_URL = "https://site.web.api.espn.com/apis/v2/sports/football/nfl/standings"
 FTE_URL = "https://raw.githubusercontent.com/fivethirtyeight/data/master/nfl-elo/nfl_elo.csv"
+FTE_CACHE_PATH = DATA_DIR / "fte_nfl_elo.csv"
 ODDS_BASE = "https://api.the-odds-api.com/v4/sports/americanfootball_nfl/odds/"
+
+# Required columns in the FTE dataset
+FTE_REQUIRED_COLS = ["date", "season", "team1", "team2", "score1", "score2", "elo1_pre", "elo2_pre"]
 
 NFL_TEAMS = [
     "ARI", "ATL", "BAL", "BUF", "CAR", "CHI", "CIN", "CLE",
@@ -105,14 +109,56 @@ def safe_get(url, params=None, timeout=30):
 
 
 def download_fte_data():
+    """Download FiveThirtyEight NFL ELO CSV with local caching and column validation.
+
+    Download order:
+      1. Attempt fresh download from GitHub; on success, save to cache.
+      2. On download failure, read from local cache file.
+      3. If cache also missing, return empty DataFrame with a clear error log.
+    After loading, validate required columns so downstream failures are diagnosed early.
+    """
     log.info("Downloading FiveThirtyEight NFL ELO data...")
+    df = pd.DataFrame()
+    download_ok = False
     try:
-        df = pd.read_csv(FTE_URL)
+        df = pd.read_csv(FTE_URL, timeout=30)
         log.info(f"FTE data: {len(df)} rows, seasons {df['season'].min()}–{df['season'].max()}")
-        return df
+        # Save to cache for future runs
+        try:
+            df.to_csv(FTE_CACHE_PATH, index=False)
+            log.info(f"FTE data cached to {FTE_CACHE_PATH}")
+        except Exception as ce:
+            log.warning(f"Could not save FTE cache: {ce}")
+        download_ok = True
     except Exception as e:
-        log.error(f"Failed to download FTE data: {e}")
+        log.warning(f"FTE download failed: {e} — trying local cache")
+
+    if not download_ok:
+        if FTE_CACHE_PATH.exists():
+            try:
+                df = pd.read_csv(FTE_CACHE_PATH, low_memory=False)
+                log.info(f"Loaded FTE data from cache: {len(df)} rows")
+            except Exception as ce:
+                log.error(f"FTE cache read failed: {ce}")
+                return pd.DataFrame()
+        else:
+            log.error(
+                f"FTE download failed and no cache at {FTE_CACHE_PATH}. "
+                "NFL model training will be skipped — run once with network access to seed the cache."
+            )
+            return pd.DataFrame()
+
+    # Validate required columns
+    missing = [c for c in FTE_REQUIRED_COLS if c not in df.columns]
+    if missing:
+        log.error(
+            f"FTE data is missing required columns: {missing}. "
+            f"Available columns: {list(df.columns)}. "
+            "NFL model training will be skipped."
+        )
         return pd.DataFrame()
+
+    return df
 
 
 def parse_espn_events(data, default_week=0):
@@ -858,6 +904,38 @@ def run():
     }
     pythagorean_data = compute_pythagorean(teams_pts_data)
 
+    # ── 3b. ESPN fallback training dataset ─────────────────────────────────
+    # When FTE download fails, build a minimal training DataFrame from current-season
+    # ESPN completed games so logistic + XGBoost can still train.
+    training_df = fte_df if not fte_df.empty else pd.DataFrame()
+    if training_df.empty and espn_completed:
+        log.warning("FTE data unavailable — building training set from ESPN completed games")
+        espn_rows = []
+        for g in espn_completed:
+            if g.get("status") != "STATUS_FINAL":
+                continue
+            ht = g.get("home_team", "")
+            at = g.get("away_team", "")
+            hs = g.get("home_score", 0) or 0
+            as_ = g.get("away_score", 0) or 0
+            if not ht or not at or (hs == 0 and as_ == 0):
+                continue
+            gtime = g.get("game_time", "")[:10]
+            espn_rows.append({
+                "date": gtime,
+                "season": g.get("season", season_year),
+                "team1": ht,
+                "team2": at,
+                "score1": float(hs),
+                "score2": float(as_),
+                "neutral": 0,
+                "elo1_pre": elo_dict.get(ht, 1500.0),
+                "elo2_pre": elo_dict.get(at, 1500.0),
+            })
+        if espn_rows:
+            training_df = pd.DataFrame(espn_rows)
+            log.info(f"ESPN fallback training set: {len(training_df)} games")
+
     # ── 4. Train logistic model ─────────────────────────────────────────────
     log.info("Training logistic regression model...")
     logistic_model, logistic_scaler, logistic_calibrator = None, None, None
@@ -866,9 +944,9 @@ def run():
         "calibration_buckets": [], "historical_accuracy": []
     }
 
-    if not fte_df.empty and len(fte_df) > 100:
+    if not training_df.empty and len(training_df) > 100:
         try:
-            X, y = build_features(fte_df, elo_dict, game_history,
+            X, y = build_features(training_df, elo_dict, game_history,
                                    efficiency_data, pythagorean_data)
             if len(X) > 50:
                 logistic_model, logistic_scaler, logistic_calibrator = train_logistic(X, y)
@@ -878,20 +956,22 @@ def run():
                 model_metrics["calibration_buckets"] = calibration_buckets(
                     logistic_model, logistic_scaler, logistic_calibrator, X, y
                 )
-                model_metrics["historical_accuracy"] = historical_accuracy_by_year(
-                    fte_df, logistic_model, logistic_scaler, logistic_calibrator,
-                    elo_dict, game_history, efficiency_data, pythagorean_data
-                )
-                log.info(f"Logistic model trained. Log loss: {metrics['log_loss']:.4f}")
+                # historical_accuracy_by_year needs FTE-format data; only run if FTE is available
+                if not fte_df.empty:
+                    model_metrics["historical_accuracy"] = historical_accuracy_by_year(
+                        fte_df, logistic_model, logistic_scaler, logistic_calibrator,
+                        elo_dict, game_history, efficiency_data, pythagorean_data
+                    )
+                log.info(f"Logistic model trained on {len(X)} games. Log loss: {metrics['log_loss']:.4f}")
         except Exception as e:
             log.error(f"Logistic model training failed: {e}")
 
     # ── 5. Train XGBoost model ──────────────────────────────────────────────
     log.info("Training XGBoost model...")
     xgb_model, xgb_scaler = None, None
-    if not fte_df.empty and len(fte_df) > 100:
+    if not training_df.empty and len(training_df) > 100:
         try:
-            X_xgb, y_xgb = build_xgb_features(fte_df, elo_dict, game_history,
+            X_xgb, y_xgb = build_xgb_features(training_df, elo_dict, game_history,
                                                 efficiency_data, pythagorean_data)
             if len(X_xgb) > 50:
                 xgb_model, xgb_scaler = train_xgboost(X_xgb, y_xgb)
@@ -905,8 +985,8 @@ def run():
     # ── 6. Bayesian ratings ─────────────────────────────────────────────────
     log.info("Computing Bayesian ratings...")
     games_list = []
-    if not fte_df.empty:
-        recent_fte = fte_df[fte_df["season"] >= season_year - 3].copy()
+    if not training_df.empty:
+        recent_fte = training_df[training_df["season"] >= season_year - 3].copy()
         recent_fte = recent_fte.dropna(subset=["score1", "score2"])
         games_list = recent_fte[["team1", "team2", "score1", "score2", "date", "neutral", "season"]].to_dict("records")
 
@@ -1254,7 +1334,7 @@ def run():
         "auc": model_metrics.get("auc"),
         "calibration_buckets": model_metrics.get("calibration_buckets", []),
         "historical_accuracy": model_metrics.get("historical_accuracy", []),
-        "n_training_games": len(fte_df) if not fte_df.empty else 0,
+        "n_training_games": len(training_df) if not training_df.empty else 0,
         "xgboost_available": xgb_model is not None,
     }
 

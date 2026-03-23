@@ -39,17 +39,41 @@ def build_features(df, elo_dict, game_history, efficiency_data, pythagorean_data
     Build feature matrix from historical data.
     df: FiveThirtyEight game-level dataframe
     Returns X (features), y (outcomes)
+
+    FIX: rest_diff and travel_diff are now calculated from actual game dates/coordinates
+    rather than hardcoded 0.0, so the model can learn their weights from history.
     """
+    from model.elo_model import recent_form
+    from math import sin, cos, sqrt, atan2, radians
+
+    def _haversine(c1, c2):
+        """Distance in miles between two (lat, lon) tuples."""
+        R = 3958.8
+        lat1, lon1 = radians(c1[0]), radians(c1[1])
+        lat2, lon2 = radians(c2[0]), radians(c2[1])
+        dlat, dlon = lat2 - lat1, lon2 - lon1
+        a = sin(dlat/2)**2 + cos(lat1)*cos(lat2)*sin(dlon/2)**2
+        return R * 2 * atan2(sqrt(a), sqrt(1 - a))
+
+    try:
+        from model.efficiency_model import TEAM_COORDS
+    except ImportError:
+        TEAM_COORDS = {}
+
     rows = []
     labels = []
 
     df = df.dropna(subset=["score1", "score2", "elo1_pre", "elo2_pre"])
     df = df.sort_values("date").reset_index(drop=True)
 
+    # Track the last game date per team for rest calculation
+    team_last_date: dict = {}
+
     for _, row in df.iterrows():
         team1 = row["team1"]
         team2 = row["team2"]
         neutral = int(row.get("neutral", 0))
+        game_date_str = str(row.get("date", ""))
 
         elo1 = float(row.get("elo1_pre", 1500))
         elo2 = float(row.get("elo2_pre", 1500))
@@ -63,11 +87,31 @@ def build_features(df, elo_dict, game_history, efficiency_data, pythagorean_data
         def1 = efficiency_data.get(team1, {}).get("def_eff", 1.0)
         def2 = efficiency_data.get(team2, {}).get("def_eff", 1.0)
 
-        rest_diff = 0.0
-        travel_diff = 0.0
+        # Compute actual rest days from game dates
+        try:
+            from datetime import datetime as _dt
+            gd = _dt.strptime(game_date_str[:10], "%Y-%m-%d").date()
+            last1 = team_last_date.get(team1)
+            last2 = team_last_date.get(team2)
+            rest1 = (gd - last1).days if last1 else 7
+            rest2 = (gd - last2).days if last2 else 7
+            rest_diff = float(rest1 - rest2)
+            team_last_date[team1] = gd
+            team_last_date[team2] = gd
+        except (ValueError, TypeError):
+            rest_diff = 0.0
+
+        # Compute travel distance: away team (team2) travels from home city to team1's city
+        coord1 = TEAM_COORDS.get(team1)
+        coord2 = TEAM_COORDS.get(team2)
+        if coord1 and coord2 and not neutral:
+            travel_diff = _haversine(coord2, coord1)  # miles team2 traveled
+        else:
+            travel_diff = 0.0
+
+        # FTE data does not include turnover columns; leave as 0.0
         turnover_diff = 0.0
 
-        from model.elo_model import recent_form
         lr1 = recent_form(game_history, team1)
         lr2 = recent_form(game_history, team2)
         last5_diff = lr1 - lr2
