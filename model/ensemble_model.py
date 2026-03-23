@@ -41,6 +41,10 @@ XGB_FEATURE_COLS = [
     "red_zone_eff_diff",
     "penalty_yards_diff",
     "time_of_possession_diff",
+    "passing_eff_diff",
+    "rushing_eff_diff",
+    "pass_def_eff_diff",
+    "rush_def_eff_diff",
 ]
 
 # Reduced combined ELO+Pythagorean weight from 0.35 -> 0.25 to avoid

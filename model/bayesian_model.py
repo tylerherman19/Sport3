@@ -5,7 +5,7 @@ Updates team ratings using Bayesian inference (Normal-Normal conjugate update).
 
 import numpy as np
 import pandas as pd
-from scipy.special import expit
+from scipy.stats import norm
 
 
 def normal_update(prior_mu, prior_sigma, observation, obs_sigma=100.0):
@@ -36,7 +36,7 @@ def initialize_ratings(elo_dict, initial_sigma=75.0):
     return ratings
 
 
-def update_ratings(games, elo_dict, initial_sigma=75.0, obs_noise=100.0, regress_pct=0.33, hfa=100.0, margin_multiplier=25.0):
+def update_ratings(games, elo_dict, initial_sigma=75.0, obs_noise=100.0, regress_pct=0.33, hfa=65.0, margin_multiplier=25.0):
     """
     Process games chronologically, updating Bayesian ratings after each game.
     games: list of {team1, team2, score1, score2, date, neutral}
@@ -128,8 +128,9 @@ def predict_game(team_a, team_b, ratings, is_home_a=True, neutral=False, hfa=65.
     diff_mu = (mu_a + hfa_val) - mu_b
     diff_sigma = np.sqrt(sigma_a ** 2 + sigma_b ** 2)
 
-    # Convert ELO diff to probability
-    prob = float(expit(diff_mu / (diff_sigma * 0.4)))
+    # P(A > B) = P(diff > 0) where diff ~ N(diff_mu, diff_sigma^2)
+    # = Normal CDF at diff_mu / diff_sigma
+    prob = float(norm.cdf(diff_mu / diff_sigma))
 
     return {
         "bayesian_prob": round(prob, 4),
