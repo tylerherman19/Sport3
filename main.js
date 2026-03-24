@@ -7,7 +7,7 @@
 
 /* ── State ────────────────────────────────────────────────────── */
 const state = {
-  league: 'nfl',
+  league: 'nba',
   // NFL data
   predictions: null,
   eloRatings: null,
@@ -36,7 +36,7 @@ const state = {
     rows: [],
     sortCol: 'mismatch',
     sortDir: 'desc',
-    league: 'nfl', // which league to display in the tab
+    league: 'nba', // which league to display in the tab
   },
 };
 
@@ -794,7 +794,7 @@ function buildScoreHtml(game) {
       } else if (status === 'STATUS_HALFTIME') {
         clockLabel = 'HT';
       }
-      liveSepContent = `<span class="live-dot"></span>LIVE${clockLabel ? ` <span class="live-clock">${clockLabel}</span>` : ''}`;
+      liveSepContent = `<span class="live-dot"></span>LIVE`;
     } else {
       liveSepContent = 'FINAL';
     }
