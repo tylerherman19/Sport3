@@ -869,7 +869,7 @@ function computeLeagueRanks(lbData) {
   return ranks;
 }
 
-function buildRichExplanationHtml(game, homeData, awayData, lbData, isNba, ensProb) {
+function buildRichExplanationHtml(game, homeData, awayData, lbData, isNba, ensProb, liveGame, pregameProb) {
   const eff = game.efficiency;
 
   // Rebuild the narrative from current frontend ensProb so it always matches the probability bar.
@@ -920,6 +920,53 @@ function buildRichExplanationHtml(game, homeData, awayData, lbData, isNba, ensPr
     // Travel
     if (adj.travel_dist != null && adj.travel_dist > 1000) {
       narrative += ` Away team travels ~<strong>${Math.round(adj.travel_dist)} miles</strong>.`;
+    }
+
+    // Live score: deficit / lead analysis with model context
+    if (liveGame && liveGame.period && liveGame.home_score != null && liveGame.away_score != null) {
+      const LS_STD    = 11.5;
+      const LS_TOTAL  = 2880;
+      const homePts   = liveGame.home_score;
+      const awayPts   = liveGame.away_score;
+      const scoreDiff = homePts - awayPts;
+      const period    = liveGame.period;
+      const isHT      = liveGame.status === 'STATUS_HALFTIME';
+      const clockStr  = liveGame.display_clock || '0:00';
+      const cParts    = clockStr.split(':');
+      const clockSecs = (parseInt(cParts[0]) || 0) * 60 + (parseInt(cParts[1]) || 0);
+      const isOT      = period > 4;
+      const secRem    = isOT ? clockSecs : Math.max(0, 4 - period) * 720 + clockSecs;
+      const frac      = isOT ? clockSecs / LS_TOTAL : secRem / LS_TOTAL;
+      const liveStd   = LS_STD * Math.sqrt(Math.max(frac, 0.001));
+      const baseProb  = pregameProb != null ? pregameProb : Math.max(0.01, Math.min(0.99, ensProb));
+      const pgSpread  = normalInv(Math.max(0.01, Math.min(0.99, baseProb))) * LS_STD;
+      const blended   = scoreDiff + pgSpread * frac;
+
+      const periodLbl = isHT ? 'halftime' : (isOT ? `OT${period - 4}` : `Q${period}`);
+      const tn        = isNba ? NBA_TEAM_NAMES : TEAM_NAMES;
+      const homeName  = tn[game.home_team] || game.home_team;
+      const awayName  = tn[game.away_team] || game.away_team;
+      const favIsHome = ensProb >= 0.5;
+      const favName   = favIsHome ? homeName : awayName;
+      const stdRnd    = liveStd.toFixed(1);
+
+      let liveNote = '';
+      if (Math.abs(scoreDiff) < 1) {
+        liveNote = ` Tied in <strong>${periodLbl}</strong>; with ~<strong>±${stdRnd} pts</strong> of expected variance remaining, the model still edges <strong>${favName}</strong>.`;
+      } else {
+        const leaderName  = scoreDiff > 0 ? homeName : awayName;
+        const trailerName = scoreDiff > 0 ? awayName : homeName;
+        const gap         = Math.abs(scoreDiff);
+        const leaderIsFav = (scoreDiff > 0) === favIsHome;
+        const effMargin   = Math.abs(blended).toFixed(1);
+
+        if (leaderIsFav) {
+          liveNote = ` <strong>${leaderName}</strong> leads by <strong>${gap}</strong> in <strong>${periodLbl}</strong>. With ~<strong>±${stdRnd} pts</strong> of variance left, the model's effective advantage is <strong>${effMargin} pts</strong> — ${trailerName} would need to erase that entire margin to reach even odds.`;
+        } else {
+          liveNote = ` <strong>${leaderName}</strong> leads by <strong>${gap}</strong> in <strong>${periodLbl}</strong>, but the model still favors <strong>${favName}</strong>. With ~<strong>±${stdRnd} pts</strong> of variance remaining, the effective deficit for the favorite is <strong>${effMargin} pts</strong> — within range given the time left.`;
+        }
+      }
+      narrative += liveNote;
     }
 
     narrativeHtml = `<p class="explanation-narrative">${narrative}</p>`;
@@ -997,10 +1044,11 @@ function buildGameCard(game, isNba) {
   let p = game.predictions || {};
   const g = mergeLiveGame(game);
   const isLiveGame = isNba && (g.status === 'STATUS_IN_PROGRESS' || g.status === 'STATUS_HALFTIME');
-  let ensProb = ensembleFromProbs(p, state.weights);
+  const pregameEnsProb = ensembleFromProbs(p, state.weights);
+  let ensProb = pregameEnsProb;
   let liveP = p;
   if (isLiveGame && g.period) {
-    ensProb = calcLiveWinProb(ensProb, g.home_score, g.away_score, g.period, g.display_clock);
+    ensProb = calcLiveWinProb(pregameEnsProb, g.home_score, g.away_score, g.period, g.display_clock);
     liveP = { ...p };
     for (const key of ['elo_prob','pyth_prob','eff_prob','bayesian_prob','logistic_prob','xgb_prob']) {
       if (liveP[key] != null) {
@@ -1136,7 +1184,7 @@ function buildGameCard(game, isNba) {
     </div>` : '';
 
   // Rich explanation with efficiency breakdown + league ranks
-  const explanationHtml = buildRichExplanationHtml(game, homeData, awayData, lbData, isNba, ensProb);
+  const explanationHtml = buildRichExplanationHtml(game, homeData, awayData, lbData, isNba, ensProb, isLiveGame ? g : null, isLiveGame ? pregameEnsProb : null);
 
   // Efficiency stats (original display)
   const effHtml = isNba && game.efficiency ? `
