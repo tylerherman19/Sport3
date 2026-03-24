@@ -9,7 +9,7 @@ from scipy.special import expit
 
 def simulate_game(mu_a, mu_b, sigma_a=75.0, sigma_b=75.0,
                   is_home_a=True, neutral=False, hfa=65.0,
-                  n=10000, random_state=None):
+                  n=10000, random_state=None, game_noise_std=14.0):
     """
     Simulate a single game N times by drawing team strengths from
     their Bayesian distributions.
@@ -37,8 +37,8 @@ def simulate_game(mu_a, mu_b, sigma_a=75.0, sigma_b=75.0,
     # Convert ELO diff to expected margin (roughly 25 ELO pts ≈ 1 point)
     expected_margin = diff / 25.0
 
-    # Add game-level noise (NFL game std dev ~14 points)
-    game_noise = rng.normal(0, 14.0, n)
+    # Add game-level noise (NFL default ~14 pts, NBA ~11.5 pts — pass game_noise_std to override)
+    game_noise = rng.normal(0, game_noise_std, n)
     simulated_margins = expected_margin + game_noise
 
     wins_a = simulated_margins > 0

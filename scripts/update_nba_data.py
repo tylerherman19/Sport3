@@ -1850,7 +1850,8 @@ def run():
 
             mc_result = simulate_game(
                 mu_home, mu_away, sig_home, sig_away,
-                is_home_a=True, neutral=neutral, n=10000
+                is_home_a=True, neutral=neutral, n=10000,
+                game_noise_std=11.5  # NBA game std dev ~11.5 pts (Issue 2 fix)
             )
 
             # Market odds

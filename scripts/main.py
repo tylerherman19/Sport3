@@ -690,7 +690,7 @@ def run_nba():
                                          log_prob=lp,xgb_prob=xp,weights=nba_weights)
             muh = bayesian_ratings.get(home,{}).get("mu",helo); mua = bayesian_ratings.get(away,{}).get("mu",aelo)
             sh  = bayesian_ratings.get(home,{}).get("sigma",75.0); sa2 = bayesian_ratings.get(away,{}).get("sigma",75.0)
-            mc  = simulate_game(muh,mua,sh,sa2,is_home_a=True,neutral=neutral,hfa=100.0,n=10000)
+            mc  = simulate_game(muh,mua,sh,sa2,is_home_a=True,neutral=neutral,hfa=100.0,n=10000,game_noise_std=11.5)
             mo  = None
             for _,odds in odds_map.items():
                 hm=odds.get("home_team_name",""); am=odds.get("away_team_name","")
