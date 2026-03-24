@@ -927,6 +927,18 @@ function buildRichExplanationHtml(game, homeData, awayData, lbData, isNba) {
   return `<div class="explanation-box">${narrativeHtml}${effPanelHtml}</div>`;
 }
 
+function isEarlySeason(game, isNba) {
+  if (isNba) {
+    const gameDate = new Date(game.game_time);
+    const month = gameDate.getMonth(); // 0-indexed
+    const day = gameDate.getDate();
+    // NBA season starts early October; first ~45 days are high-uncertainty
+    return (month === 9) || (month === 10 && day <= 15);
+  } else {
+    return game.week && game.week <= 3;
+  }
+}
+
 function buildGameCard(game, isNba) {
   let p = game.predictions || {};
   const g = mergeLiveGame(game);
@@ -981,6 +993,11 @@ function buildGameCard(game, isNba) {
         ${market.kelly_pct != null ? ` · Kelly ${(market.kelly_pct*100).toFixed(1)}%` : ''}
       </span>`
     : `<span class="edge-badge neutral">No odds available</span>`;
+
+  // Issue 8: early-season warning badge — ratings stabilize after ~4 weeks
+  const earlySeasonHtml = isEarlySeason(game, isNba)
+    ? `<span class="edge-badge neutral" title="Early-season predictions carry higher uncertainty — ratings stabilize after ~4 weeks">⚠ Early Season</span>`
+    : '';
 
   const lbData = (isNba ? state.nba.leaderboard : state.leaderboard)?.teams || [];
   const homeData = lbData.find(t => t.team === game.home_team) || {};
@@ -1092,6 +1109,7 @@ function buildGameCard(game, isNba) {
     <div class="game-header-right">
       <span class="adj-badge" style="display:none">Adjusted</span>
       ${edgeBadge}
+      ${earlySeasonHtml}
       <button class="adj-toggle-btn" data-adj-toggle="${game.game_id}" title="Adjust factors">⚙ Adjust</button>
     </div>
   </div>
