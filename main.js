@@ -2491,10 +2491,10 @@ function adjustWeightsFromLog(league) {
   try { entries = JSON.parse(localStorage.getItem(key) || '[]'); } catch { return; }
 
   const resolved = entries.filter(e => e.actual_winner != null);
-  if (resolved.length < 10) return; // need enough data before nudging
+  if (resolved.length < 50) return; // need enough data before nudging (Issue 6 fix: 10 → 50)
 
-  // Use the most recent 20 resolved games
-  const recent = resolved.slice(-20);
+  // Use the most recent 50 resolved games (Issue 6 fix: 20 → 50 for statistical stability)
+  const recent = resolved.slice(-50);
 
   // Map log pick fields to ensemble weight keys.
   // bayes_pick removed — the Bayesian model is not part of the ensemble
@@ -2518,8 +2518,9 @@ function adjustWeightsFromLog(league) {
   const avgAcc = accuracies.reduce((s, m) => s + m.acc, 0) / accuracies.length;
 
   // Nudge weights: better-than-average models gain, worse ones lose
+  // Issue 6 fix: reduced delta cap ±0.02→±0.01 and sensitivity 0.1→0.05 to avoid overcorrecting
   accuracies.forEach(({ weightKey, acc }) => {
-    const delta = Math.max(-0.02, Math.min(0.02, (acc - avgAcc) * 0.1));
+    const delta = Math.max(-0.01, Math.min(0.01, (acc - avgAcc) * 0.05));
     state.weights[weightKey] = Math.max(0.01, state.weights[weightKey] + delta);
   });
 
