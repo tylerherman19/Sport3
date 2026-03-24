@@ -9,6 +9,7 @@ to data/ensemble_weights_nfl.json and reloaded on subsequent runs.
 
 import json
 import logging
+from datetime import datetime
 from pathlib import Path
 
 import numpy as np
@@ -39,13 +40,25 @@ def learn_nfl_weights(fte_df, pythagorean_data, efficiency_data, default_weights
     """
     weights_path = DATA_DIR / "ensemble_weights_nfl.json"
 
-    # Load previously saved weights if available (avoids full recompute each run)
+    # Load previously saved weights if cache is fresh (< 30 days old); relearn otherwise
     nfl_weights = dict(default_weights)
     if weights_path.exists():
         try:
-            nfl_weights = json.loads(weights_path.read_text())
-            log.info(f"Loaded persisted NFL ensemble weights: {nfl_weights}")
-            return nfl_weights
+            file_age_days = (
+                datetime.now() -
+                datetime.fromtimestamp(weights_path.stat().st_mtime)
+            ).days
+            if file_age_days < 30:
+                nfl_weights = json.loads(weights_path.read_text())
+                log.info(
+                    f"Loaded cached NFL weights ({file_age_days}d old): "
+                    f"{nfl_weights}"
+                )
+                return nfl_weights
+            else:
+                log.info(
+                    f"NFL weights cache is {file_age_days}d old — relearning"
+                )
         except Exception:
             pass
 

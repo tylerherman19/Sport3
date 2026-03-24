@@ -1671,17 +1671,19 @@ def run():
                 _ea = elo_dict.get(_away, 1500.0)
                 _ph = pyth_data.get(_home, {}).get("pyth", 0.5)
                 _pa = pyth_data.get(_away, {}).get("pyth", 0.5)
-                _ph_adj = _ph * (1.0 + (100.0 if not _g.get("neutral") else 0.0) / 1500.0)
-                _pd = _ph_adj + _pa
+                # ELO-space pyth with additive HFA (Issue 1 fix)
+                _hfa_wl = 100.0 if not _g.get("neutral") else 0.0
+                _pyth_elo_h = 1500.0 + (_ph - 0.5) * 400.0
+                _pyth_elo_a = 1500.0 + (_pa - 0.5) * 400.0
+                _pyth_diff = (_pyth_elo_h + _hfa_wl) - _pyth_elo_a
+                _pyth_prob = 1.0 / (1.0 + 10 ** (-_pyth_diff / 400.0))
                 _ep = elo_dict.get(_home, {}) and efficiency_data.get(_home, {}).get("net_rating", 0.0)
                 _ea2 = efficiency_data.get(_away, {}).get("net_rating", 0.0)
                 sub_probs_hist.append({
                     "elo": _nes(_eh, _ea),
-                    "pyth": _ph_adj / _pd if _pd > 0 else 0.5,
-                    "eff": _nes(1500 + float(_ep or 0) * 10 + (100.0 if not _g.get("neutral") else 0.0),
+                    "pyth": _pyth_prob,
+                    "eff": _nes(1500 + float(_ep or 0) * 10 + _hfa_wl,
                                 1500 + _ea2 * 10),
-                    "log": 0.5,  # logistic not available per-historical game
-                    "xgb": 0.5,
                 })
                 actuals_hist.append(1 if _g.get("score1", 0) > _g.get("score2", 0) else 0)
             learned = learn_ensemble_weights(
@@ -1778,17 +1780,15 @@ def run():
                                           is_home_a=True, neutral=neutral, hfa=100.0)
             bayesian_prob = bayes_result.get("bayesian_prob", 0.5)
 
-            # Pythagorean prediction — direct ratio (Bradley-Terry), not ELO transform
+            # Pythagorean prediction — ELO-space conversion with additive HFA (Issue 1 fix)
             pyth_home = pyth_data.get(home, {}).get("pyth", 0.5)
             pyth_away = pyth_data.get(away, {}).get("pyth", 0.5)
-            # Scale home court advantage into pythagorean space.
-            # Divisor 213.0 calibrated so equal teams → ~59.5% home win (NBA historical HWR).
-            pyth_home_adj = pyth_home * (1.0 + hfa / 213.0)
-            _pyth_denom = pyth_home_adj + pyth_away
-            pyth_prob = pyth_home_adj / _pyth_denom if _pyth_denom > 0 else 0.5
-            # ELO-equivalent pythagorean values for logistic feature vector
+            # Convert Pythagorean win% to ELO-space, apply HFA there, then convert back.
+            # This gives a uniform additive HFA regardless of team strength.
             pyth_elo_home = 1500.0 + (pyth_home - 0.5) * 400.0
             pyth_elo_away = 1500.0 + (pyth_away - 0.5) * 400.0
+            pyth_diff = (pyth_elo_home + hfa) - pyth_elo_away
+            pyth_prob = 1.0 / (1.0 + 10 ** (-pyth_diff / 400.0))
 
             # Efficiency prediction
             eff_home = efficiency_data.get(home, {}).get("net_rating", 0.0)
@@ -1850,7 +1850,8 @@ def run():
 
             mc_result = simulate_game(
                 mu_home, mu_away, sig_home, sig_away,
-                is_home_a=True, neutral=neutral, n=10000
+                is_home_a=True, neutral=neutral, n=10000,
+                game_noise_std=11.5  # NBA game std dev ~11.5 pts (Issue 2 fix)
             )
 
             # Market odds

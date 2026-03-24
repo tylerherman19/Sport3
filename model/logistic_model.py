@@ -26,7 +26,6 @@ FEATURE_COLS = [
     "elo_diff",
     "home_field_advantage",
     "rest_days_diff",
-    "turnover_diff_adjusted",
     "travel_distance_diff",
     "last5_win_rate_diff",
     "offensive_rating_diff",
@@ -81,10 +80,10 @@ def build_features(df, elo_dict, game_history, efficiency_data, pythagorean_data
 
         elo1 = float(row.get("elo1_pre", 1500))
         elo2 = float(row.get("elo2_pre", 1500))
-        # HFA (+65) is embedded directly in elo_diff, AND home_field_advantage
-        # is a separate binary feature below. This partial redundancy is intentional:
-        # the binary captures non-linearity; regularization (C=0.1) prevents inflation.
-        elo_diff = elo1 - elo2 + (65 if not neutral else 0)
+        # Pure rating gap — no HFA embedded here (Issue 5 fix).
+        # The separate home_field_advantage binary feature below lets the model
+        # learn the correct HFA coefficient without double-counting.
+        elo_diff = elo1 - elo2
 
         eff1 = efficiency_data.get(team1, {}).get("net_eff", 0.0)
         eff2 = efficiency_data.get(team2, {}).get("net_eff", 0.0)
@@ -116,9 +115,6 @@ def build_features(df, elo_dict, game_history, efficiency_data, pythagorean_data
         else:
             travel_diff = 0.0
 
-        # FTE data does not include turnover columns; leave as 0.0
-        turnover_diff = 0.0
-
         lr1 = recent_form(game_history, team1)
         lr2 = recent_form(game_history, team2)
         last5_diff = lr1 - lr2
@@ -133,11 +129,11 @@ def build_features(df, elo_dict, game_history, efficiency_data, pythagorean_data
         rdef2 = efficiency_data.get(team2, {}).get("rush_def_eff", 1.0)
 
         # pythagorean_diff intentionally omitted — see module docstring
+        # turnover_diff_adjusted removed — always 0.0 (FTE lacks turnover data, Issue 3 fix)
         feature = [
             elo_diff,
             1.0 if not neutral else 0.0,
             rest_diff,
-            turnover_diff,
             travel_diff,
             last5_diff,
             off1 - off2,
@@ -147,6 +143,8 @@ def build_features(df, elo_dict, game_history, efficiency_data, pythagorean_data
             pdef1 - pdef2,
             rdef1 - rdef2,
         ]
+        assert len(feature) == len(FEATURE_COLS), \
+            f"build_features: Feature length mismatch: {len(feature)} vs {len(FEATURE_COLS)}"
 
         score1 = row["score1"]
         score2 = row["score2"]
@@ -248,7 +246,7 @@ def predict_matchups(matchups, model, scaler, calibrator,
 
         elo_a = elo_dict.get(team_a, 1500.0)
         elo_b = elo_dict.get(team_b, 1500.0)
-        elo_diff = elo_a - elo_b + (65 if is_home and not neutral else 0)
+        elo_diff = elo_a - elo_b  # pure rating gap; HFA handled by home_field_advantage feature (Issue 5 fix)
 
         off_a = efficiency_data.get(team_a, {}).get("off_eff", 1.0)
         off_b = efficiency_data.get(team_b, {}).get("off_eff", 1.0)
@@ -268,11 +266,11 @@ def predict_matchups(matchups, model, scaler, calibrator,
         rdef_b = efficiency_data.get(team_b, {}).get("rush_def_eff", 1.0)
 
         # pythagorean_diff intentionally omitted — see module docstring
+        # turnover_diff removed — always 0.0 (Issue 3 fix)
         feature = np.array([[
             elo_diff,
             1.0 if is_home and not neutral else 0.0,
             float(m.get("rest_diff", 0)),
-            float(m.get("turnover_diff", 0)),
             float(m.get("travel_diff", 0)),
             lr_a - lr_b,
             off_a - off_b,
@@ -282,6 +280,8 @@ def predict_matchups(matchups, model, scaler, calibrator,
             pdef_a - pdef_b,
             rdef_a - rdef_b,
         ]], dtype=np.float32)
+        assert feature.shape[1] == len(FEATURE_COLS), \
+            f"predict_matchups: Feature length mismatch: {feature.shape[1]} vs {len(FEATURE_COLS)}"
 
         X_scaled = scaler.transform(feature)
         raw_prob = model.predict_proba(X_scaled)[0, 1]

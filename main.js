@@ -927,6 +927,18 @@ function buildRichExplanationHtml(game, homeData, awayData, lbData, isNba) {
   return `<div class="explanation-box">${narrativeHtml}${effPanelHtml}</div>`;
 }
 
+function isEarlySeason(game, isNba) {
+  if (isNba) {
+    const gameDate = new Date(game.game_time);
+    const month = gameDate.getMonth(); // 0-indexed
+    const day = gameDate.getDate();
+    // NBA season starts early October; first ~45 days are high-uncertainty
+    return (month === 9) || (month === 10 && day <= 15);
+  } else {
+    return game.week && game.week <= 3;
+  }
+}
+
 function buildGameCard(game, isNba) {
   let p = game.predictions || {};
   const g = mergeLiveGame(game);
@@ -981,6 +993,11 @@ function buildGameCard(game, isNba) {
         ${market.kelly_pct != null ? ` · Kelly ${(market.kelly_pct*100).toFixed(1)}%` : ''}
       </span>`
     : `<span class="edge-badge neutral">No odds available</span>`;
+
+  // Issue 8: early-season warning badge — ratings stabilize after ~4 weeks
+  const earlySeasonHtml = isEarlySeason(game, isNba)
+    ? `<span class="edge-badge neutral" title="Early-season predictions carry higher uncertainty — ratings stabilize after ~4 weeks">⚠ Early Season</span>`
+    : '';
 
   const lbData = (isNba ? state.nba.leaderboard : state.leaderboard)?.teams || [];
   const homeData = lbData.find(t => t.team === game.home_team) || {};
@@ -1092,6 +1109,7 @@ function buildGameCard(game, isNba) {
     <div class="game-header-right">
       <span class="adj-badge" style="display:none">Adjusted</span>
       ${edgeBadge}
+      ${earlySeasonHtml}
       <button class="adj-toggle-btn" data-adj-toggle="${game.game_id}" title="Adjust factors">⚙ Adjust</button>
     </div>
   </div>
@@ -2491,10 +2509,10 @@ function adjustWeightsFromLog(league) {
   try { entries = JSON.parse(localStorage.getItem(key) || '[]'); } catch { return; }
 
   const resolved = entries.filter(e => e.actual_winner != null);
-  if (resolved.length < 10) return; // need enough data before nudging
+  if (resolved.length < 50) return; // need enough data before nudging (Issue 6 fix: 10 → 50)
 
-  // Use the most recent 20 resolved games
-  const recent = resolved.slice(-20);
+  // Use the most recent 50 resolved games (Issue 6 fix: 20 → 50 for statistical stability)
+  const recent = resolved.slice(-50);
 
   // Map log pick fields to ensemble weight keys.
   // bayes_pick removed — the Bayesian model is not part of the ensemble
@@ -2518,8 +2536,9 @@ function adjustWeightsFromLog(league) {
   const avgAcc = accuracies.reduce((s, m) => s + m.acc, 0) / accuracies.length;
 
   // Nudge weights: better-than-average models gain, worse ones lose
+  // Issue 6 fix: reduced delta cap ±0.02→±0.01 and sensitivity 0.1→0.05 to avoid overcorrecting
   accuracies.forEach(({ weightKey, acc }) => {
-    const delta = Math.max(-0.02, Math.min(0.02, (acc - avgAcc) * 0.1));
+    const delta = Math.max(-0.01, Math.min(0.01, (acc - avgAcc) * 0.05));
     state.weights[weightKey] = Math.max(0.01, state.weights[weightKey] + delta);
   });
 

@@ -607,13 +607,16 @@ def run_nba():
                 _eh = elo_dict.get(_h,1500.0)+(100.0 if not _g.get("neutral") else 0.0)
                 _ea = elo_dict.get(_a,1500.0)
                 _ph = pyth_data.get(_h,{}).get("pyth",0.5); _pa = pyth_data.get(_a,{}).get("pyth",0.5)
-                _phj = _ph*(1.0+(100.0 if not _g.get("neutral") else 0.0)/1500.0); _pd = _phj+_pa
+                # ELO-space pyth with additive HFA (Issue 1 fix)
+                _hfa_wl = 100.0 if not _g.get("neutral") else 0.0
+                _pyth_elo_h = 1500.0 + (_ph - 0.5) * 400.0
+                _pyth_elo_a = 1500.0 + (_pa - 0.5) * 400.0
+                _pyth_prob = 1.0 / (1.0 + 10 ** (-((_pyth_elo_h + _hfa_wl) - _pyth_elo_a) / 400.0))
                 _ep = efficiency_data.get(_h,{}).get("net_rating",0.0)
                 _ea2= efficiency_data.get(_a,{}).get("net_rating",0.0)
                 sp.append({"elo":nba_expected_score(_eh,_ea),
-                           "pyth":_phj/_pd if _pd>0 else 0.5,
-                           "eff":nba_expected_score(1500+float(_ep or 0)*10+(100.0 if not _g.get("neutral") else 0.0),1500+_ea2*10),
-                           "log":0.5,"xgb":0.5})
+                           "pyth":_pyth_prob,
+                           "eff":nba_expected_score(1500+float(_ep or 0)*10+_hfa_wl,1500+_ea2*10)})
                 ac.append(1 if _g.get("score1",0)>_g.get("score2",0) else 0)
             learned = learn_ensemble_weights(sp, ac, weight_keys=["elo","pyth","eff"])
             if learned:
@@ -660,8 +663,10 @@ def run_nba():
             br  = bayes_predict(home,away,bayesian_ratings,is_home_a=True,neutral=neutral,hfa=100.0)
             bpr = br.get("bayesian_prob",0.5)
             phome = pyth_data.get(home,{}).get("pyth",0.5); paway = pyth_data.get(away,{}).get("pyth",0.5)
-            phj  = phome*(1.0+hfa/213.0); _pd = phj+paway
-            pytp = phj/_pd if _pd>0 else 0.5
+            # ELO-space pyth with additive HFA (Issue 1 fix — uniform boost regardless of team strength)
+            pyth_elo_h = 1500.0 + (phome - 0.5) * 400.0
+            pyth_elo_a = 1500.0 + (paway - 0.5) * 400.0
+            pytp = 1.0 / (1.0 + 10 ** (-((pyth_elo_h + hfa) - pyth_elo_a) / 400.0))
             heff = efficiency_data.get(home,{}); aeff = efficiency_data.get(away,{})
             effp = nba_expected_score(1500+heff.get("net_rating",0.0)*10+hfa, 1500+aeff.get("net_rating",0.0)*10)
             pehome = 1500+(phome-0.5)*400; peaway = 1500+(paway-0.5)*400
@@ -685,7 +690,7 @@ def run_nba():
                                          log_prob=lp,xgb_prob=xp,weights=nba_weights)
             muh = bayesian_ratings.get(home,{}).get("mu",helo); mua = bayesian_ratings.get(away,{}).get("mu",aelo)
             sh  = bayesian_ratings.get(home,{}).get("sigma",75.0); sa2 = bayesian_ratings.get(away,{}).get("sigma",75.0)
-            mc  = simulate_game(muh,mua,sh,sa2,is_home_a=True,neutral=neutral,hfa=100.0,n=10000)
+            mc  = simulate_game(muh,mua,sh,sa2,is_home_a=True,neutral=neutral,hfa=100.0,n=10000,game_noise_std=11.5)
             mo  = None
             for _,odds in odds_map.items():
                 hm=odds.get("home_team_name",""); am=odds.get("away_team_name","")
