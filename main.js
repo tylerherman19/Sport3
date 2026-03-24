@@ -794,7 +794,7 @@ function buildScoreHtml(game) {
       } else if (status === 'STATUS_HALFTIME') {
         clockLabel = 'HT';
       }
-      liveSepContent = `<span class="live-dot"></span>LIVE`;
+      liveSepContent = `<span class="live-dot"></span>LIVE${clockLabel ? ` ${clockLabel}` : ''}`;
     } else {
       liveSepContent = 'FINAL';
     }
@@ -944,8 +944,15 @@ function buildGameCard(game, isNba) {
   const g = mergeLiveGame(game);
   const isLiveGame = isNba && (g.status === 'STATUS_IN_PROGRESS' || g.status === 'STATUS_HALFTIME');
   let ensProb = ensembleFromProbs(p, state.weights);
+  let liveP = p;
   if (isLiveGame && g.period) {
     ensProb = calcLiveWinProb(ensProb, g.home_score, g.away_score, g.period, g.display_clock);
+    liveP = { ...p };
+    for (const key of ['elo_prob','pyth_prob','eff_prob','bayesian_prob','logistic_prob','xgb_prob']) {
+      if (liveP[key] != null) {
+        liveP[key] = calcLiveWinProb(liveP[key], g.home_score, g.away_score, g.period, g.display_clock);
+      }
+    }
   }
   // For completed games, restore the pre-game prediction from the log
   // (backend regenerates predictions daily with current stats, overwriting pre-game values)
@@ -1178,12 +1185,12 @@ function buildGameCard(game, isNba) {
       return `<div class="model-prob-pill ${cls}" title="${fullName}"><span class="model-prob-label">${label}</span><span class="model-prob-team">${pick}</span><span class="model-prob-val">${pct(conf)}</span></div>`;
     }
     const pills = [
-      modelPill(p.logistic_prob, 'Logistic',     'Logistic Regression'),
-      modelPill(p.xgb_prob,      'XGBoost',      'XGBoost'),
-      modelPill(p.elo_prob,      'ELO',          'ELO Rating'),
-      modelPill(p.pyth_prob,     'Pythagorean',  'Pythagorean Expectation'),
-      modelPill(p.eff_prob,      'Efficiency',   'Efficiency Model'),
-      modelPill(p.bayesian_prob, 'Bayesian',     'Bayesian Model'),
+      modelPill(liveP.logistic_prob, 'Logistic',     'Logistic Regression'),
+      modelPill(liveP.xgb_prob,      'XGBoost',      'XGBoost'),
+      modelPill(liveP.elo_prob,      'ELO',          'ELO Rating'),
+      modelPill(liveP.pyth_prob,     'Pythagorean',  'Pythagorean Expectation'),
+      modelPill(liveP.eff_prob,      'Efficiency',   'Efficiency Model'),
+      modelPill(liveP.bayesian_prob, 'Bayesian',     'Bayesian Model'),
     ].filter(Boolean).join('');
     return pills ? `<div class="model-probs-header">Sub-models</div><div class="model-probs">${pills}</div>` : '';
   })()}
