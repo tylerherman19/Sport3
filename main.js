@@ -462,7 +462,7 @@ async function fetchLiveNBAData() {
   const ESPN = 'https://site.api.espn.com/apis/site/v2/sports/basketball/nba';
   const liveMap = new Map();
 
-  for (let delta = 0; delta <= 7; delta++) {
+  for (let delta = -1; delta <= 7; delta++) {
     const d = new Date();
     d.setDate(d.getDate() + delta);
     const dateStr = d.toISOString().slice(0, 10).replace(/-/g, '');
@@ -727,9 +727,10 @@ function renderGames() {
   const todayDateStr = new Date().toISOString().slice(0, 10);
   let filteredGames = pred.games;
   if (state.gameFilter === 'live') {
-    filteredGames = pred.games.filter(g =>
-      g.status === 'STATUS_IN_PROGRESS' || g.status === 'STATUS_HALFTIME'
-    );
+    filteredGames = pred.games.filter(g => {
+      const s = (liveScoreCache[g.game_id]?.status) || g.status;
+      return s === 'STATUS_IN_PROGRESS' || s === 'STATUS_HALFTIME';
+    });
   } else if (state.gameFilter === 'upcoming') {
     filteredGames = pred.games.filter(g =>
       g.is_future ||
