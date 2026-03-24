@@ -80,10 +80,10 @@ def build_features(df, elo_dict, game_history, efficiency_data, pythagorean_data
 
         elo1 = float(row.get("elo1_pre", 1500))
         elo2 = float(row.get("elo2_pre", 1500))
-        # HFA (+65) is embedded directly in elo_diff, AND home_field_advantage
-        # is a separate binary feature below. This partial redundancy is intentional:
-        # the binary captures non-linearity; regularization (C=0.1) prevents inflation.
-        elo_diff = elo1 - elo2 + (65 if not neutral else 0)
+        # Pure rating gap — no HFA embedded here (Issue 5 fix).
+        # The separate home_field_advantage binary feature below lets the model
+        # learn the correct HFA coefficient without double-counting.
+        elo_diff = elo1 - elo2
 
         eff1 = efficiency_data.get(team1, {}).get("net_eff", 0.0)
         eff2 = efficiency_data.get(team2, {}).get("net_eff", 0.0)
@@ -246,7 +246,7 @@ def predict_matchups(matchups, model, scaler, calibrator,
 
         elo_a = elo_dict.get(team_a, 1500.0)
         elo_b = elo_dict.get(team_b, 1500.0)
-        elo_diff = elo_a - elo_b + (65 if is_home and not neutral else 0)
+        elo_diff = elo_a - elo_b  # pure rating gap; HFA handled by home_field_advantage feature (Issue 5 fix)
 
         off_a = efficiency_data.get(team_a, {}).get("off_eff", 1.0)
         off_b = efficiency_data.get(team_b, {}).get("off_eff", 1.0)
