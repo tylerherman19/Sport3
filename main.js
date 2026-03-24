@@ -918,8 +918,8 @@ function buildRichExplanationHtml(game, homeData, awayData, lbData, isNba, ensPr
     }
 
     // Travel
-    if (adj.travel_dist != null && adj.travel_dist > 1000) {
-      narrative += ` Away team travels ~<strong>${Math.round(adj.travel_dist)} miles</strong>.`;
+    if (adj.travel_dist_miles != null && adj.travel_dist_miles > 1000) {
+      narrative += ` Away team travels ~<strong>${Math.round(adj.travel_dist_miles)} miles</strong>.`;
     }
 
     // Live score: deficit / lead analysis with model context
@@ -1787,6 +1787,7 @@ bindSlider('sl-w-eff',  'val-w-eff',  'eff',       state.weights, onWeightChange
 function updateWeightTotal() {
   const total = Object.values(state.weights).reduce((a, b) => a + b, 0);
   const el = $('weight-total-val');
+  if (!el) return;
   el.textContent = total.toFixed(2);
   el.className = 'weight-total-val ' + (Math.abs(total - 1) < 0.01 ? 'ok' : 'warn');
 }
@@ -1938,9 +1939,9 @@ function populatePredictor() {
 $('btn-predict')?.addEventListener('click', runPredictor);
 
 function runPredictor() {
-  const home = $('pred-home').value;
-  const away = $('pred-away').value;
-  const neutral = parseInt($('pred-neutral').value || '0') === 1;
+  const home = $('pred-home')?.value;
+  const away = $('pred-away')?.value;
+  const neutral = parseInt($('pred-neutral')?.value || '0') === 1;
 
   if (!home || !away) { alert('Please select both teams.'); return; }
   if (home === away) { alert('Please select two different teams.'); return; }
