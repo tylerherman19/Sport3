@@ -87,11 +87,11 @@ def update_ratings(games, elo_dict, initial_sigma=75.0, obs_noise=100.0, regress
         # Performance signal: ELO-equivalent of margin
         margin = score1 - score2
         perf_signal_1 = mu2 + margin * margin_multiplier
-        perf_signal_2 = mu1 - margin * margin_multiplier
+        perf_signal_2 = ratings[team1]["mu"] - margin * margin_multiplier
 
-        # Clamp signals to within two sigma of mean ELO (Issue 9 fix: 800-2200 → 1200-1800)
-        perf_signal_1 = np.clip(perf_signal_1, 1200, 1800)
-        perf_signal_2 = np.clip(perf_signal_2, 1200, 1800)
+        # Clamp signals to prevent runaway updates from extreme blowouts (800-2200 = ±700 pts)
+        perf_signal_1 = np.clip(perf_signal_1, 800, 2200)
+        perf_signal_2 = np.clip(perf_signal_2, 800, 2200)
 
         new_mu1, new_sig1 = normal_update(
             ratings[team1]["mu"], ratings[team1]["sigma"],
@@ -102,9 +102,9 @@ def update_ratings(games, elo_dict, initial_sigma=75.0, obs_noise=100.0, regress
             perf_signal_2, obs_noise
         )
 
-        # Floor sigma at 20
-        ratings[team1] = {"mu": new_mu1, "sigma": max(20.0, new_sig1)}
-        ratings[team2] = {"mu": new_mu2, "sigma": max(20.0, new_sig2)}
+        # Floor sigma at 40 — keeps diff_sigma ≥ 56.6 so even a 50-pt gap stays below 82%
+        ratings[team1] = {"mu": new_mu1, "sigma": max(40.0, new_sig1)}
+        ratings[team2] = {"mu": new_mu2, "sigma": max(40.0, new_sig2)}
 
     return ratings
 
