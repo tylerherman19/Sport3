@@ -30,13 +30,11 @@ XGB_FEATURE_COLS = [
     "home_field",
     "rest_days_diff",
     "pythagorean_diff",
-    "turnover_diff",
     "travel_diff",
     "last5_win_rate_diff",
     "offensive_rating_diff",
     "defensive_rating_diff",
     "pace_diff",
-    "turnover_rate_diff",
     "third_down_conv_diff",
     "red_zone_eff_diff",
     "penalty_yards_diff",
@@ -144,9 +142,6 @@ def build_xgb_features(df, elo_dict, game_history, efficiency_data, pythagorean_
         else:
             travel_diff = 0.0
 
-        # FTE data does not include turnover columns; leave as 0.0
-        turnover_diff = 0.0
-
         pass1 = efficiency_data.get(team1, {}).get("passing_eff", 1.0)
         pass2 = efficiency_data.get(team2, {}).get("passing_eff", 1.0)
         rush1 = efficiency_data.get(team1, {}).get("rushing_eff", 1.0)
@@ -156,18 +151,17 @@ def build_xgb_features(df, elo_dict, game_history, efficiency_data, pythagorean_
         rdef1 = efficiency_data.get(team1, {}).get("rush_def_eff", 1.0)
         rdef2 = efficiency_data.get(team2, {}).get("rush_def_eff", 1.0)
 
+        # turnover_diff and turnover_rate_diff removed — always 0.0 (Issue 3 fix)
         feature = [
             elo_diff,
             float(not neutral),
             rest_days_diff,   # computed from actual game dates
             pyth1 - pyth2,
-            turnover_diff,    # FTE lacks turnover data
             travel_diff,      # computed from team coordinates
             lr1 - lr2,
             off1 - off2,
             def1 - def2,
             float(adv1.get("pace", 0)) - float(adv2.get("pace", 0)),
-            float(adv1.get("turnover_rate", 0)) - float(adv2.get("turnover_rate", 0)),
             float(adv1.get("third_down_pct", 0)) - float(adv2.get("third_down_pct", 0)),
             float(adv1.get("red_zone_pct", 0)) - float(adv2.get("red_zone_pct", 0)),
             float(adv1.get("penalty_yards", 0)) - float(adv2.get("penalty_yards", 0)),
@@ -177,6 +171,8 @@ def build_xgb_features(df, elo_dict, game_history, efficiency_data, pythagorean_
             pdef1 - pdef2,
             rdef1 - rdef2,
         ]
+        assert len(feature) == len(XGB_FEATURE_COLS), \
+            f"build_xgb_features: Feature length mismatch: {len(feature)} vs {len(XGB_FEATURE_COLS)}"
 
         score1 = float(row["score1"])
         score2 = float(row["score2"])
@@ -274,18 +270,17 @@ def predict_xgboost(matchups, model, scaler, elo_dict, game_history,
         rdef_a = efficiency_data.get(team_a, {}).get("rush_def_eff", 1.0)
         rdef_b = efficiency_data.get(team_b, {}).get("rush_def_eff", 1.0)
 
+        # turnover_diff and turnover_rate_diff removed — always 0.0 (Issue 3 fix)
         feature = np.array([[
             elo_diff,
             float(is_home and not neutral),
             float(m.get("rest_diff", 0)),
             pyth_a - pyth_b,
-            float(m.get("turnover_diff", 0)),
             float(m.get("travel_diff", 0)),
             lr_a - lr_b,
             off_a - off_b,
             def_a - def_b,
             float(adv_a.get("pace", 0)) - float(adv_b.get("pace", 0)),
-            float(adv_a.get("turnover_rate", 0)) - float(adv_b.get("turnover_rate", 0)),
             float(adv_a.get("third_down_pct", 0)) - float(adv_b.get("third_down_pct", 0)),
             float(adv_a.get("red_zone_pct", 0)) - float(adv_b.get("red_zone_pct", 0)),
             float(adv_a.get("penalty_yards", 0)) - float(adv_b.get("penalty_yards", 0)),
@@ -295,6 +290,8 @@ def predict_xgboost(matchups, model, scaler, elo_dict, game_history,
             pdef_a - pdef_b,
             rdef_a - rdef_b,
         ]], dtype=np.float32)
+        assert feature.shape[1] == len(XGB_FEATURE_COLS), \
+            f"predict_xgboost: Feature length mismatch: {feature.shape[1]} vs {len(XGB_FEATURE_COLS)}"
 
         X_scaled = scaler.transform(feature)
         prob = float(model.predict_proba(X_scaled)[0, 1])
