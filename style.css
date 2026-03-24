@@ -494,6 +494,36 @@ input[type=range]::-moz-range-thumb {
 .weight-total-val.ok   { color: var(--green-light); }
 .weight-total-val.warn { color: var(--yellow); }
 
+.slider-desc {
+  font-size: 0.72rem;
+  color: var(--text-muted, #7a8a9a);
+  line-height: 1.4;
+  margin-bottom: 0.1rem;
+}
+
+.weight-auto-note {
+  font-size: 0.73rem;
+  color: var(--text-muted, #7a8a9a);
+  margin-top: 0.6rem;
+  line-height: 1.4;
+}
+
+.btn-reset-weights {
+  margin-top: 0.5rem;
+  width: 100%;
+  padding: 0.45rem 0.75rem;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--blue-light);
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+.btn-reset-weights:hover { background: var(--surface3, #2a3040); border-color: var(--blue); }
+.btn-reset-weights:disabled { opacity: 0.55; cursor: default; }
+
 /* ── Section 3: Matchup Predictor ───────────────────────────── */
 .predictor-layout {
   display: grid;

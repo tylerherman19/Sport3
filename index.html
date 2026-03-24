@@ -174,6 +174,7 @@
                 <span class="slider-label">Logistic Regression</span>
                 <span class="slider-value" id="val-w-log">0.30</span>
               </div>
+              <div class="slider-desc">Linear model trained on historical win/loss matchup data. Good baseline; fast to update.</div>
               <input type="range" id="sl-w-log" min="0" max="1" step="0.05" value="0.30" data-weight="logistic" />
             </div>
             <div class="slider-item">
@@ -181,6 +182,7 @@
                 <span class="slider-label">XGBoost</span>
                 <span class="slider-value" id="val-w-xgb">0.25</span>
               </div>
+              <div class="slider-desc">Gradient-boosted decision trees trained on 17 features (ELO, efficiency, rest days, travel distance, pace, passing/rushing splits, etc.). Learns non-linear interactions that a logistic model misses — e.g. a rested team with a big ELO edge matters more than either factor alone.</div>
               <input type="range" id="sl-w-xgb" min="0" max="1" step="0.05" value="0.25" data-weight="xgboost" />
             </div>
             <div class="slider-item">
@@ -188,6 +190,7 @@
                 <span class="slider-label">ELO Model</span>
                 <span class="slider-value" id="val-w-elo">0.20</span>
               </div>
+              <div class="slider-desc">Points-based rating updated after every result. Simple, proven, and self-correcting — a team on a hot streak earns a higher rating quickly.</div>
               <input type="range" id="sl-w-elo" min="0" max="1" step="0.05" value="0.20" data-weight="elo" />
             </div>
             <div class="slider-item">
@@ -195,6 +198,7 @@
                 <span class="slider-label">Pythagorean</span>
                 <span class="slider-value" id="val-w-pyth">0.15</span>
               </div>
+              <div class="slider-desc">Expected win rate from points scored vs. allowed (Bill James formula). Captures scoring dominance independent of actual W/L record — teams that outshoot opponents tend to be better than their record shows.</div>
               <input type="range" id="sl-w-pyth" min="0" max="1" step="0.05" value="0.15" data-weight="pyth" />
             </div>
             <div class="slider-item">
@@ -202,6 +206,7 @@
                 <span class="slider-label">Efficiency</span>
                 <span class="slider-value" id="val-w-eff">0.10</span>
               </div>
+              <div class="slider-desc">Offensive and defensive efficiency margins per 100 possessions. Pace-adjusted, so fast-paced teams aren't over-rated just for scoring volume.</div>
               <input type="range" id="sl-w-eff" min="0" max="1" step="0.05" value="0.10" data-weight="eff" />
             </div>
           </div>
@@ -209,6 +214,8 @@
             <span>Total weight</span>
             <span id="weight-total-val" class="weight-total-val ok">1.00</span>
           </div>
+          <div class="weight-auto-note">Weights auto-nudge after 50+ resolved games toward whichever models have been most accurate recently. Use the button below to apply that auto-learned adjustment now.</div>
+          <button class="btn-reset-weights" id="btn-reset-weights" title="Re-run the accuracy-based weight optimiser on your prediction log">Apply auto-learned weights</button>
         </div>
 
       </div>

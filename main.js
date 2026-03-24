@@ -737,7 +737,9 @@ function renderGames() {
       (g.game_time && new Date(g.game_time).getTime() > nowMs + 1800000)
     );
   } else if (state.gameFilter === 'completed') {
-    filteredGames = pred.games.filter(g => g.status === 'STATUS_FINAL');
+    filteredGames = pred.games
+      .filter(g => g.status === 'STATUS_FINAL')
+      .sort((a, b) => new Date(b.game_time) - new Date(a.game_time));
   }
 
   // Update filter pill active state
@@ -866,12 +868,63 @@ function computeLeagueRanks(lbData) {
   return ranks;
 }
 
-function buildRichExplanationHtml(game, homeData, awayData, lbData, isNba) {
-  const explanation = game.explanation || '';
+function buildRichExplanationHtml(game, homeData, awayData, lbData, isNba, ensProb) {
   const eff = game.efficiency;
-  if (!explanation && (!isNba || !eff)) return '';
 
-  const narrativeHtml = explanation ? `<p class="explanation-narrative">${explanation}</p>` : '';
+  // Rebuild the narrative from current frontend ensProb so it always matches the probability bar.
+  // The backend-baked game.explanation may use different (default) weights.
+  let narrativeHtml = '';
+  if (ensProb != null) {
+    const winner     = ensProb >= 0.5 ? game.home_team : game.away_team;
+    const loser      = ensProb >= 0.5 ? game.away_team : game.home_team;
+    const winProb    = ensProb >= 0.5 ? ensProb : 1 - ensProb;
+    const winnerName = (isNba ? NBA_TEAM_NAMES : TEAM_NAMES)[winner] || winner;
+    const loserName  = (isNba ? NBA_TEAM_NAMES : TEAM_NAMES)[loser]  || loser;
+    const conf       = winProb > 0.70 ? 'strong' : winProb > 0.60 ? 'moderate' : 'slight';
+    const elo        = game.elo || {};
+    const adj        = game.adjustments || {};
+
+    let narrative = `The model gives <strong>${winnerName}</strong> a <strong>${pct(winProb)}</strong> win probability — a <strong>${conf} favorite</strong> over ${loserName}.`;
+
+    // ELO gap
+    if (elo.home != null && elo.away != null) {
+      const eloDiff = Math.abs(elo.home - elo.away);
+      if (eloDiff >= 20) {
+        narrative += ` ELO gap: <strong>${Math.round(eloDiff)} pts</strong> in favour of ${(isNba ? NBA_TEAM_NAMES : TEAM_NAMES)[elo.home > elo.away ? game.home_team : game.away_team] || (elo.home > elo.away ? game.home_team : game.away_team)}.`;
+      }
+    }
+
+    // Home-field note
+    if (!game.neutral) {
+      const hfa = isNba ? 100 : (state.params?.hfa ?? 65);
+      const homeName = (isNba ? NBA_TEAM_NAMES : TEAM_NAMES)[game.home_team] || game.home_team;
+      narrative += ` Home court/field: <strong>+${hfa} ELO</strong> for ${homeName}.`;
+    }
+
+    // Net rating (NBA only)
+    if (isNba && eff) {
+      const hNet = eff.home_net_rating;
+      const aNet = eff.away_net_rating;
+      if (hNet != null) narrative += ` ${game.home_team} net rating: <strong>${hNet >= 0 ? '+' : ''}${hNet.toFixed(1)}</strong>.`;
+      if (aNet != null) narrative += ` ${game.away_team} net rating: <strong>${aNet >= 0 ? '+' : ''}${aNet.toFixed(1)}</strong>.`;
+    }
+
+    // Rest edge
+    const restDiff = adj.rest_diff ?? 0;
+    if (Math.abs(restDiff) >= 3) {
+      const restEdge = restDiff > 0 ? game.home_team : game.away_team;
+      narrative += ` Rest edge: <strong>${restEdge}</strong> has ${Math.abs(restDiff)} more days rest.`;
+    }
+
+    // Travel
+    if (adj.travel_dist != null && adj.travel_dist > 1000) {
+      narrative += ` Away team travels ~<strong>${Math.round(adj.travel_dist)} miles</strong>.`;
+    }
+
+    narrativeHtml = `<p class="explanation-narrative">${narrative}</p>`;
+  } else if (game.explanation) {
+    narrativeHtml = `<p class="explanation-narrative">${game.explanation}</p>`;
+  }
 
   let effPanelHtml = '';
   if (isNba && eff) {
@@ -1082,7 +1135,7 @@ function buildGameCard(game, isNba) {
     </div>` : '';
 
   // Rich explanation with efficiency breakdown + league ranks
-  const explanationHtml = buildRichExplanationHtml(game, homeData, awayData, lbData, isNba);
+  const explanationHtml = buildRichExplanationHtml(game, homeData, awayData, lbData, isNba, ensProb);
 
   // Efficiency stats (original display)
   const effHtml = isNba && game.efficiency ? `
@@ -1702,6 +1755,28 @@ function syncWeightSliders() {
 
 // Sync sliders to any restored weight values from localStorage
 syncWeightSliders();
+
+// Wire up "Apply auto-learned weights" button
+(function() {
+  const btn = $('btn-reset-weights');
+  if (!btn) return;
+  btn.addEventListener('click', () => {
+    const league = state.league || 'nfl';
+    const key = `sport3_log_${league}`;
+    let entries = [];
+    try { entries = JSON.parse(localStorage.getItem(key) || '[]'); } catch {}
+    const resolved = entries.filter(e => e.actual_winner != null);
+    if (resolved.length < 50) {
+      btn.textContent = `Need 50+ resolved games (have ${resolved.length}) — check back later`;
+      btn.disabled = true;
+      setTimeout(() => { btn.textContent = 'Apply auto-learned weights'; btn.disabled = false; }, 3500);
+      return;
+    }
+    adjustWeightsFromLog(league);
+    btn.textContent = 'Weights updated!';
+    setTimeout(() => { btn.textContent = 'Apply auto-learned weights'; }, 2000);
+  });
+})();
 
 /* ══════════════════════════════════════════════════════════════
    SECTION 3 — MATCHUP PREDICTOR
@@ -2770,39 +2845,43 @@ function generatePostMortemExplanation(e) {
   let margin = null;
   if (e.home_score != null && e.away_score != null) {
     margin = Math.abs(e.home_score - e.away_score);
-    const winScore = winnerWasHome ? e.home_score : e.away_score;
+    const winScore  = winnerWasHome ? e.home_score : e.away_score;
     const lossScore = winnerWasHome ? e.away_score : e.home_score;
     scoreHeaderHtml = `<div class="pm-score-header">
       Final: <strong>${winnerName} ${winScore} – ${lossScore} ${loserName}</strong>
       <span class="pm-margin">(${margin}-pt margin)</span>
     </div>`;
 
-    // Sentence 1 — margin context
+    // Sentence 1 — margin context with model confidence framing
     if (margin <= 5) {
       if (modelWasCorrect) {
-        narrativeLines.push(`The model correctly backed ${predictedName} at ${probPct}% — a well-called coin-flip game.`);
+        narrativeLines.push(`${winnerName} edged it by ${margin} — the model had them right at ${probPct}%, a well-called coin-flip. Games decided by a possession or two are largely noise; getting the direction right matters more than the margin.`);
       } else {
-        narrativeLines.push(`The model picked ${predictedName} at ${probPct}% — a reasonable call in a coin-flip game.`);
+        narrativeLines.push(`${winnerName} won by just ${margin} — these coin-flip outcomes go against any model's pick roughly half the time. The model gave ${predictedName} ${probPct}%, which was a reasonable assessment; the actual result was within the normal error band.`);
       }
     } else if (margin <= 12) {
       if (modelWasCorrect) {
-        narrativeLines.push(`${winnerName} won by ${margin} pts — the model's ${probPct}% on ${predictedName} proved correct.`);
+        narrativeLines.push(`${winnerName} won by ${margin} — a comfortable margin that vindicated the model's ${probPct}% call on ${predictedName}.`);
       } else {
-        narrativeLines.push(`${winnerName} won by ${margin} pts. The model favoured ${predictedName} at ${probPct}%.`);
+        narrativeLines.push(`${winnerName} won by ${margin} despite the model backing ${predictedName} at ${probPct}%. A ${margin}-point loss is not a fluke — something the model underweighted drove this outcome.`);
       }
     } else {
       if (modelWasCorrect) {
-        narrativeLines.push(`${winnerName} dominated, winning by ${margin} pts — the model's confidence in ${predictedName} was well placed.`);
+        narrativeLines.push(`${winnerName} dominated, winning by ${margin} — exactly the kind of result the model's ${probPct}% confidence anticipated.`);
       } else {
-        narrativeLines.push(`${winnerName} dominated, winning by ${margin} pts despite the model giving ${predictedName} a ${probPct}% chance.`);
+        narrativeLines.push(`${winnerName} dominated by ${margin}, completely invalidating the model's ${probPct}% conviction in ${predictedName}. A blowout for the "wrong" team is the model's worst outcome — it signals a systematic miss, not random noise.`);
       }
     }
 
-    // Sentence 2 — home/away context
-    if (winnerWasHome) {
-      narrativeLines.push(`${winnerName} took full advantage of home court/field, turning home-team status into a genuine performance edge.`);
+    // Sentence 2 — home/away context, conditional on model correctness
+    if (winnerWasHome && modelWasCorrect) {
+      narrativeLines.push(`${winnerName} won at home as expected — home-court advantage (+100 ELO for NBA / +65 NFL) was factored in and held up.`);
+    } else if (winnerWasHome && !modelWasCorrect) {
+      narrativeLines.push(`${winnerName} won at home even though the model favoured the visitor — home-court advantage may have been the deciding factor the model underweighted here.`);
+    } else if (!winnerWasHome && modelWasCorrect) {
+      narrativeLines.push(`${winnerName} won on the road — the model correctly identified them as strong enough to overcome the home-court penalty.`);
     } else {
-      narrativeLines.push(`${winnerName} pulled this off on the road — away wins are harder to predict and often reflect a team peaking at the right time.`);
+      narrativeLines.push(`${winnerName} pulled off a road win — away victories against a predicted favourite are among the hardest outcomes to model, often reflecting a mismatch in momentum or a bad night for the home squad.`);
     }
   } else {
     if (modelWasCorrect) {
@@ -2842,19 +2921,37 @@ function generatePostMortemExplanation(e) {
       </div>
     </div>`;
 
-    // Sentence 3 — efficiency insight
+    // Efficiency insight — be specific about direction and magnitude
     if (wNet != null && lNet != null) {
-      const gap = lNet - wNet;
-      if (gap > 3) {
-        narrativeLines.push(`${winnerName} overcame a ${gap.toFixed(1)}-pt pre-game net rating disadvantage — the stats favoured ${loserName} on paper.`);
-      } else if (gap < -3 && !modelWasCorrect) {
-        // Only note model failure when model was actually wrong (gap<-3 means
-        // winner had the stronger net rating, which alone does not imply a model error).
-        narrativeLines.push(`${winnerName} had the stronger net rating (+${Math.abs(gap).toFixed(1)} advantage) yet the model still went wrong — efficiency didn't tell the whole story.`);
+      const gap = lNet - wNet; // positive = loser had better net rating
+      if (gap > 5) {
+        narrativeLines.push(`The efficiency numbers heavily favoured ${loserName} (net rating ${lNet >= 0 ? '+' : ''}${lNet.toFixed(1)} vs ${winnerName}'s ${wNet >= 0 ? '+' : ''}${wNet.toFixed(1)}, a ${gap.toFixed(1)}-pt gap). ${winnerName} winning despite that is a genuine upset — short-run game execution trumped season-long efficiency.`);
+      } else if (gap > 2) {
+        narrativeLines.push(`${loserName} had a ${gap.toFixed(1)}-pt pre-game net rating edge (${lNet >= 0 ? '+' : ''}${lNet.toFixed(1)} vs ${wNet >= 0 ? '+' : ''}${wNet.toFixed(1)}), so ${winnerName}'s win overcame the stats-on-paper advantage.`);
+      } else if (gap < -5 && !modelWasCorrect) {
+        narrativeLines.push(`${winnerName} held a ${Math.abs(gap).toFixed(1)}-pt net rating advantage (${wNet >= 0 ? '+' : ''}${wNet.toFixed(1)} vs ${lNet >= 0 ? '+' : ''}${lNet.toFixed(1)}) yet the model still missed — efficiency was pointing the right way, but the ensemble weighting didn't reflect it strongly enough.`);
       } else if (lOff != null && wOff != null && lOff - wOff > 3) {
-        narrativeLines.push(`${loserName}'s offense (${lOff.toFixed(1)}) looked superior on paper but couldn't convert that into points on the night.`);
+        narrativeLines.push(`${loserName}'s offense (${lOff.toFixed(1)}) was the stronger unit on paper but couldn't convert that advantage into points on the night.`);
       }
     }
+  }
+
+  // ── Injury context ────────────────────────────────────────────
+  const injuryImpact = e.injury_impact || {};
+  const winnerImpact = winnerWasHome ? injuryImpact.home_elo_penalty : injuryImpact.away_elo_penalty;
+  const loserImpact  = winnerWasHome ? injuryImpact.away_elo_penalty : injuryImpact.home_elo_penalty;
+  const winnerKeyOut = winnerWasHome ? (injuryImpact.home_key_players_out || []) : (injuryImpact.away_key_players_out || []);
+  const loserKeyOut  = winnerWasHome ? (injuryImpact.away_key_players_out || []) : (injuryImpact.home_key_players_out || []);
+
+  if (!modelWasCorrect) {
+    // Loser had key players out — model may have accounted for it but it affected more than expected
+    if (loserKeyOut.length > 0 && loserImpact != null && loserImpact > 10) {
+      narrativeLines.push(`Injury note: ${loserName} had ${loserKeyOut.slice(0,2).join(', ')} listed as out (−${Math.round(loserImpact)} ELO penalty). The model factored that in but ${winnerName} may have benefited even more from those absences than the penalty implied.`);
+    } else if (winnerKeyOut.length > 0 && winnerImpact != null && winnerImpact > 10) {
+      narrativeLines.push(`Injury note: ${winnerName} had ${winnerKeyOut.slice(0,2).join(', ')} out (−${Math.round(winnerImpact)} ELO penalty applied) yet still won — the model's injury penalty may have over-discounted their remaining depth.`);
+    }
+  } else if (loserKeyOut.length > 0 && loserImpact != null && loserImpact > 15) {
+    narrativeLines.push(`Injury note: ${loserName} was missing ${loserKeyOut.slice(0,2).join(', ')} (−${Math.round(loserImpact)} ELO), which likely contributed to their loss and to the model's correct read.`);
   }
 
   // ── Model vote breakdown ──────────────────────────────────────
@@ -2873,54 +2970,99 @@ function generatePostMortemExplanation(e) {
     const wrongModels   = modelDefs.filter(m => m.pick !== winnerTeam);
     const correctCount  = correctModels.length;
 
+    // Find most-overconfident wrong model (highest confidence in the loser)
+    const mostWrongModel = wrongModels.reduce((best, m) => {
+      if (m.prob == null) return best;
+      const confInLoser = m.pick === e.home_team ? m.prob : 1 - m.prob;
+      const bestConf = best ? (best.pick === e.home_team ? best.prob : 1 - best.prob) : 0;
+      return confInLoser > bestConf ? m : best;
+    }, null);
+
+    // Find most-confident correct model
+    const mostRightModel = correctModels.reduce((best, m) => {
+      if (m.prob == null) return best;
+      const confInWinner = m.pick === e.home_team ? m.prob : 1 - m.prob;
+      const bestConf = best ? (best.pick === e.home_team ? best.prob : 1 - best.prob) : 0;
+      return confInWinner > bestConf ? m : best;
+    }, null);
+
     const votePills = modelDefs.map(m => {
       const correct = m.pick === winnerTeam;
-      // Show probability if stored, oriented toward the pick
       let probLabel = '';
       if (m.prob != null) {
         const pickIsHome = m.pick === e.home_team;
-        const pct = Math.round((pickIsHome ? m.prob : 1 - m.prob) * 100);
-        probLabel = ` (${pct}%)`;
+        const confVal = Math.round((pickIsHome ? m.prob : 1 - m.prob) * 100);
+        probLabel = ` (${confVal}%)`;
       }
       return `<span class="pm-vote ${correct ? 'pm-vote-correct' : 'pm-vote-wrong'}">${m.label} → ${m.pick}${probLabel}</span>`;
     }).join('');
 
-    // Named consensus text
+    // Named consensus text — specific about which models drove the error
     let consensusText = '';
     if (correctCount === 0) {
-      // All visible sub-models wrong
-      consensusText = `All ${modelDefs.length} sub-models were unanimous on ${loserTeam} — a genuine statistical upset.`;
-    } else if (correctCount === modelDefs.length) {
-      // All visible sub-models correct
-      if (modelWasCorrect) {
-        consensusText = `All ${modelDefs.length} sub-models unanimously called ${winnerTeam} — the ensemble agreed.`;
+      if (mostWrongModel && mostWrongModel.prob != null) {
+        const confInLoser = Math.round((mostWrongModel.pick === e.home_team ? mostWrongModel.prob : 1 - mostWrongModel.prob) * 100);
+        consensusText = `Every sub-model picked ${loserTeam} — ${mostWrongModel.label} was the most convinced at ${confInLoser}%. Unanimous high-confidence misses like this are genuine upsets that no model-type handles well.`;
       } else {
-        // Hidden XGBoost component overrode unanimous sub-model vote
-        consensusText = `All ${modelDefs.length} visible sub-models called ${winnerTeam}, but the ensemble still favoured ${loserTeam} — likely driven by the XGBoost component.`;
+        consensusText = `All ${modelDefs.length} sub-models were unanimous on ${loserTeam} — a genuine statistical upset.`;
+      }
+    } else if (correctCount === modelDefs.length) {
+      if (modelWasCorrect) {
+        if (mostRightModel && mostRightModel.prob != null) {
+          const confInWinner = Math.round((mostRightModel.pick === e.home_team ? mostRightModel.prob : 1 - mostRightModel.prob) * 100);
+          consensusText = `All ${modelDefs.length} sub-models correctly called ${winnerTeam} — ${mostRightModel.label} led the conviction at ${confInWinner}%. Clean sweep.`;
+        } else {
+          consensusText = `All ${modelDefs.length} sub-models unanimously called ${winnerTeam} — the ensemble agreed and was right.`;
+        }
+      } else {
+        consensusText = `All ${modelDefs.length} visible sub-models correctly called ${winnerTeam}, but the ensemble still favoured ${loserTeam} — likely the XGBoost component (which captures non-linear feature interactions) outweighed the others.`;
       }
     } else if (correctCount >= Math.ceil(modelDefs.length / 2)) {
       const rightNames = correctModels.map(m => m.label).join(', ');
       const wrongNames = wrongModels.map(m => m.label).join(', ');
       if (modelWasCorrect) {
-        consensusText = `${rightNames} correctly called ${winnerTeam}; ${wrongNames} backed ${loserTeam} but the ensemble sided with the majority.`;
+        if (mostWrongModel && mostWrongModel.prob != null) {
+          const confInLoser = Math.round((mostWrongModel.pick === e.home_team ? mostWrongModel.prob : 1 - mostWrongModel.prob) * 100);
+          consensusText = `${rightNames} correctly called ${winnerTeam}; ${wrongNames} dissented (${mostWrongModel.label} was most bearish at ${confInLoser}% on ${loserTeam}), but the majority view prevailed.`;
+        } else {
+          consensusText = `${rightNames} correctly called ${winnerTeam}; ${wrongNames} backed ${loserTeam} but the ensemble sided with the majority.`;
+        }
       } else {
-        consensusText = `${rightNames} correctly called ${winnerTeam}, but ${wrongNames} backed ${loserTeam} and pulled the ensemble vote with them.`;
+        if (mostWrongModel && mostWrongModel.prob != null) {
+          const confInLoser = Math.round((mostWrongModel.pick === e.home_team ? mostWrongModel.prob : 1 - mostWrongModel.prob) * 100);
+          consensusText = `${rightNames} saw ${winnerTeam} winning, but ${wrongNames} disagreed — ${mostWrongModel.label} was most bullish on ${loserTeam} at ${confInLoser}%, and its weight dragged the ensemble to the wrong side.`;
+        } else {
+          consensusText = `${rightNames} correctly called ${winnerTeam}, but ${wrongNames} backed ${loserTeam} and pulled the ensemble vote with them.`;
+        }
       }
     } else {
       const rightNames = correctModels.map(m => m.label).join(', ');
       const wrongNames = wrongModels.map(m => m.label).join(', ');
-      consensusText = `Models were split — ${rightNames} called ${winnerTeam}; ${wrongNames} backed ${loserTeam}. The ensemble sided with the majority.`;
+      if (mostWrongModel && mostWrongModel.prob != null) {
+        const confInLoser = Math.round((mostWrongModel.pick === e.home_team ? mostWrongModel.prob : 1 - mostWrongModel.prob) * 100);
+        consensusText = `Models were split — ${rightNames} called ${winnerTeam}; ${wrongNames} backed ${loserTeam}. ${mostWrongModel.label} was the most overconfident in the losing pick (${confInLoser}%), and its weight pushed the ensemble the wrong way.`;
+      } else {
+        consensusText = `Models were split — ${rightNames} called ${winnerTeam}; ${wrongNames} backed ${loserTeam}. The ensemble sided with the majority, which was wrong.`;
+      }
     }
 
-    // Closing insight
-    if (correctCount === 0 && probPct >= 75) {
-      insightText = `High-confidence unanimous misses are the model's blind spot for genuine upsets — worth watching if this team keeps defying expectations.`;
-    } else if (correctCount > 0 && correctCount < modelDefs.length && correctCount < Math.ceil(modelDefs.length / 2)) {
-      insightText = `When sub-models disagree this strongly, treat the ensemble confidence with extra scepticism.`;
-    } else if (margin != null && margin <= 5 && !modelWasCorrect) {
-      insightText = `Coin-flip games like this are inherently hard to predict — a miss in a 5-pt game is expected noise, not a model failure.`;
-    } else if (correctCount === 0 && probPct < 65) {
-      insightText = `The model wasn't hugely confident here — this kind of miss is within normal variance.`;
+    // Closing insight — specific about the type of failure
+    if (!modelWasCorrect) {
+      if (correctCount === 0 && probPct >= 75) {
+        insightText = `A high-confidence unanimous miss is the model's toughest scenario. It means every signal agreed on the wrong team — likely something game-specific (matchup style, coaching adjustment, hot/cold shooting) that statistical history can't capture. Track whether ${winnerName} keeps beating the model.`;
+      } else if (correctCount === 0 && probPct >= 60) {
+        insightText = `All models missed but confidence was moderate (${probPct}%), so this is on the edge of normal variance. Still worth noting if ${winnerName} builds a pattern of outperforming their ratings.`;
+      } else if (correctCount > 0 && correctCount < modelDefs.length && mostWrongModel) {
+        insightText = `The split among models tells a story: ${mostWrongModel.label} disagreed with the rest and carried enough weight to flip the ensemble. If ${mostWrongModel.label} has been consistently wrong on games like this, consider reducing its weight in the controls.`;
+      } else if (margin != null && margin <= 5) {
+        insightText = `A ${margin}-pt miss is expected noise — no model can reliably separate teams within a possession. This one doesn't signal anything wrong with the approach.`;
+      } else if (margin != null && margin > 12) {
+        insightText = `A ${margin}-pt blowout for the "wrong" team is the model's most painful outcome — it suggests the pre-game ratings had the teams' strengths materially backwards for this specific matchup.`;
+      } else {
+        insightText = `The model wasn't highly confident here (${probPct}%) — this kind of miss is within expected variance.`;
+      }
+    } else if (correctCount === modelDefs.length && margin != null && margin > 15) {
+      insightText = `A dominant win backed by every model — the most reliable outcome type. These high-consensus, high-margin calls are where the ensemble performs best.`;
     }
 
     votesHtml = `
