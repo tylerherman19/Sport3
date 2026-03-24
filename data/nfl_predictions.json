@@ -1,5 +1,5 @@
 {
-  "updated": "2026-03-23T08:44:32.977422+00:00",
+  "updated": "2026-03-24T00:48:00.375421+00:00",
   "season": 2025,
   "week": 5,
   "is_offseason": true,
@@ -20,13 +20,13 @@
       "home_score": 13,
       "away_score": 29,
       "predictions": {
-        "ensemble_prob": 0.4645,
-        "logistic_prob": 0.439,
-        "elo_prob": 0.439,
-        "xgb_prob": null,
+        "ensemble_prob": 0.4675,
+        "logistic_prob": 0.4516,
+        "elo_prob": 0.4476,
+        "xgb_prob": 0.4535,
         "pyth_prob": 0.4803,
         "eff_prob": 0.5391,
-        "bayesian_prob": 0.1075
+        "bayesian_prob": 0.0089
       },
       "market": {
         "home_prob": null,
@@ -36,19 +36,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.4075,
-        "exp_margin": -3.47,
-        "prob_7plus": 0.2383,
-        "prob_14plus": 0.1167,
-        "prob_21plus": 0.0461,
+        "win_prob": 0.3565,
+        "exp_margin": -5.37,
+        "prob_7plus": 0.191,
+        "prob_14plus": 0.0902,
+        "prob_21plus": 0.0326,
         "margin_percentiles": [
-          -27.7,
-          -22.3,
-          -13.4,
-          -3.4,
-          6.5,
-          15.2,
-          20.4
+          -28.9,
+          -23.8,
+          -14.9,
+          -5.3,
+          4.4,
+          13.1,
+          18.3
         ]
       },
       "adjustments": {
@@ -62,24 +62,45 @@
       "elo": {
         "home": 1671.9,
         "away": 1761.7,
-        "diff": -42.6
+        "diff": -36.6
       },
       "bayesian": {
-        "home_mu": 1671.9,
-        "home_sigma": 75.0,
-        "away_mu": 1761.7,
-        "away_sigma": 75.0,
+        "home_mu": 1641.2,
+        "home_sigma": 40.0,
+        "away_mu": 1775.2,
+        "away_sigma": 40.0,
         "home_band": [
-          1596.9,
-          1746.9
+          1601.2,
+          1681.2
         ],
         "away_band": [
-          1686.7,
-          1836.7
+          1735.2,
+          1815.2
         ]
       },
       "injuries": {
         "home": [
+          {
+            "player": "James Hudson III",
+            "status": "Active",
+            "position": "OT",
+            "injury_description": "Hudson was released by the Giants earlier this month and won't have to travel far to join his new team. The 26-year-old appeared in 11 regular-season games last season, making two starts, but has been a liability when pressed into starter snaps. Hudson will go into New England as a backup this offseason.",
+            "value_tier": "starter"
+          },
+          {
+            "player": "Tommy DeVito",
+            "status": "Active",
+            "position": "QB",
+            "injury_description": "DeVito, who worked as New England's No. 3 signal-caller last season behind Dobbs and starter Drake Maye, signed a two-year deal to remain with the team earlier this month. Per Reiss, the base value of DeVito's new contract is $4.4 million and includes incentives that could increase its value to $7.4 million. Though the 27-year-old didn't see any regular-season action in 2025, he did log a total of eight starts during his two seasons (2023 and 2024) with the Giants. With Dobbs no longer in the mix, look for the Patriots to add QB depth as the offseason progresses, possibly via next month's draft.",
+            "value_tier": "starter"
+          },
+          {
+            "player": "Kindle Vildor",
+            "status": "Active",
+            "position": "CB",
+            "injury_description": "Vildor, who entered the NFL as a fifth-round pick by the Bears, recorded 16 tackles and a pick in 12 regular-season games with the Buccaneers in 2025. In joining the Patriots, the 28-year-old will reunite with head coach Mike Vrabel, who Vildor worked with in 2023 while both were with the Titans. In his latest locale, the 5-foot-11, 189-pounder will offer cornerback depth and special teams experience.",
+            "value_tier": "starter"
+          },
           {
             "player": "Alijah Vera-Tucker",
             "status": "Questionable",
@@ -93,49 +114,28 @@
             "position": "S",
             "injury_description": "Brown appeared in nine regular-season games for the Titans in 2025 and had two stints on injured reserve due to knee and ankle injuries. He served almost exclusively on special teams and logged three solo tackles for Tennessee last year. Brown's addition gives the Patriots added depth in the secondary and another contributor on special teams.",
             "value_tier": "starter"
-          },
-          {
-            "player": "Julian Hill",
-            "status": "Active",
-            "position": "TE",
-            "injury_description": "Hill fits with New England as a depth option and blocker behind starting tight end Hunter Henry, a role opened up by the departure of Austin Hooper to Atlanta. Regardless of the change of scenery, Hill's realistic realm of outcomes for 2026 likely doesn't include attaining fantasy relevance, as across 14 regular-season appearances with the Dolphins in 2025 he managed only 150 receiving yards (a career high). That said, at 6-foot-4, 251 pounds, Hill could emerge as an option for quarterback Drake Maye in the red zone.",
-            "value_tier": "starter"
-          },
-          {
-            "player": "K.J. Britt",
-            "status": "Active",
-            "position": "LB",
-            "injury_description": "Britt heads to a division rival after his one-year stint with the Dolphins. He handled a depth role across 17 regular-season appearances in 2025, totaling 35 tackles (12 solo). He projects to handle a similar rotational role in New England, while also potentially acting as a significant contributor on special teams.",
-            "value_tier": "starter"
-          },
-          {
-            "player": "Romeo Doubs",
-            "status": "Active",
-            "position": "WR",
-            "injury_description": "The initial report has it as a four-year deal for \"roughly\" $70 million. In fantasy terms, this is about as good as it gets, with Doubs joining a receiver-needy offense that already has a franchise QB in place in Drake Maye. Doubs averaged 50.5 catches for 606 yards and 5.3 TDs on 80.0 targets in four seasons with Green Bay. The contract and situation in New England hint at some degree of upside for additional target volume, but it's also possible he doesn't have much more to offer. If nothing else, he's a competent starter at a clear position of need, entering what should be his prime -- Doubs will turn 26 in April.",
-            "value_tier": "starter"
           }
         ],
         "away": [
           {
-            "player": "Devon Witherspoon",
+            "player": "Jake Bobo",
             "status": "Active",
-            "position": "CB",
-            "injury_description": "The No. 5 overall pick in the 2023 Draft, Witherspoon has been named to the Pro Bowl all three seasons in the NFL and was a second-team All-Pro selection last season. Witherspoon started all 12 games in which he appeared in 2025, producing 72 tackles (48 solo), including 0.5 sacks, seven pass breakups, including one interception, and one fumble recovery. With the option exercised, Witherspoon is set to earn $21.1 million in 2027.",
+            "position": "WR",
+            "injury_description": "Per Tom Pelissero of NFL Network, Bobo now is in line to remain with Seattle on a two-year, $5.5 million deal that includes $4.5 million guaranteed. Bobo caught just two passes in 11 regular-season games with the Seahawks in 2025, and he's on track to remain in a depth role this coming season while working in a WR corps that also includes Jaxon Smith-Njigba, Cooper Kupp and Rashid Shaheed.",
             "value_tier": "starter"
           },
           {
             "player": "Jaxon Smith-Njigba",
             "status": "Active",
             "position": "WR",
-            "injury_description": "An obvious no-brainer for Seattle after Smith-Njigba was named Offensive Player of the Year in 2025 after securing 119 of 163 targets for an NFL-high 1,793 yards and 10 touchdowns across 17 regular-season appearances. JSN then added another 17 catches for 199 yards and two touchdowns on 26 targets across three playoff contests. Through three seasons, Smith-Njigba is a two-time Pro Bowl selection and was a first-team All-Pro last season. With the optioned picked up, Smith-Njigba is set to earn $23.8 million in 2027.",
+            "injury_description": "The reigning NFL Offensive Player of the Year, Smith-Njigba had his fifth-year option picked up by Seattle in March, but the intent had always been to negotiate a long-term deal for the two-time Pro Bowler. Now, he becomes the highest-paid wideout in league history at an average of $42.15 million annually, including $120 million guaranteed.  Smith-Njigba is coming off a career-best 2025 campaign in which he secured 119 of 163 targets for a league-leading 1,793 yards and 10 touchdowns across 17 regular-season appearances, plus 17 catches (on 26 targets) for 199 yards and two touchdowns across three playoff contests, including a Super Bowl LX win over New England. The chemistry Smith-Njigba has demonstrated with quarterback Sam Darnold makes him a safe bet to return on expectations as one of the top wide receivers taken in 2026 fantasy drafts, especially in PPR formats.",
             "value_tier": "starter"
           },
           {
-            "player": "Jake Bobo",
+            "player": "Devon Witherspoon",
             "status": "Active",
-            "position": "WR",
-            "injury_description": "The terms of the offer sheet aren't yet known, but the Seahawks will have five days to match the offer or let Bobo walk as a restricted free agent. The 27-year-old Bobo has logged just 740 offensive snaps across 45 regular-season appearances over the last three seasons but has produced a 34-323-3 receiving line on 44 career targets. He also caught a 17-yard touchdown in the NFC Championship Game against the Rams in January. Bobo would seem to be no higher than the WR4 or WR5 in Jacksonville behind Brian Thomas, Jakobi Meyers, Parker Washington and perhaps Travis Hunter, who is expected to play more cornerback in 2026. Thomas has also been the subject of heavy trade speculation this offseason, though there's been no indication the Jaguars are serious about trading the third-year receiver.",
+            "position": "CB",
+            "injury_description": "The No. 5 overall pick in the 2023 Draft, Witherspoon has been named to the Pro Bowl all three seasons in the NFL and was a second-team All-Pro selection last season. Witherspoon started all 12 games in which he appeared in 2025, producing 72 tackles (48 solo), including 0.5 sacks, seven pass breakups, including one interception, and one fumble recovery. With the option exercised, Witherspoon is set to earn $21.1 million in 2027.",
             "value_tier": "starter"
           },
           {
@@ -155,9 +155,9 @@
         ]
       },
       "injury_impact": {
-        "home_elo_penalty": 22.4,
+        "home_elo_penalty": 16.4,
         "away_elo_penalty": 15.6,
-        "home_impact_score": 0.2036,
+        "home_impact_score": 0.1491,
         "away_impact_score": 0.1418,
         "home_key_players_out": [
           {
@@ -205,20 +205,6 @@
           {
             "player": "Joshua Farmer",
             "position": "DT",
-            "status": "Questionable",
-            "elo_impact": 2.4,
-            "value_tier": "starter"
-          },
-          {
-            "player": "Yasir Durant",
-            "position": "OT",
-            "status": "Questionable",
-            "elo_impact": 3.6,
-            "value_tier": "starter"
-          },
-          {
-            "player": "Marcellas Dial Jr.",
-            "position": "CB",
             "status": "Questionable",
             "elo_impact": 2.4,
             "value_tier": "starter"
@@ -284,7 +270,7 @@
         "Efficiency gap: NE net +0.019 vs SEA net -0.116",
         "Travel penalty: away team travels 2491 miles"
       ],
-      "explanation": "The model gives Seattle Seahawks a 53.5% win probability \u2014 a slight favorite over New England Patriots. The ELO gap is 90 points at a neutral site. Travel distance 2491 miles factors into the away team rating."
+      "explanation": "The model gives Seattle Seahawks a 53.2% win probability \u2014 a slight favorite over New England Patriots. The ELO gap is 90 points at a neutral site. Travel distance 2491 miles factors into the away team rating."
     },
     {
       "game_id": "401772940",
@@ -302,13 +288,13 @@
       "home_score": 34,
       "away_score": 17,
       "predictions": {
-        "ensemble_prob": 0.4594,
-        "logistic_prob": 0.3871,
+        "ensemble_prob": 0.3954,
+        "logistic_prob": 0.3596,
         "elo_prob": 0.3871,
-        "xgb_prob": null,
+        "xgb_prob": 0.2422,
         "pyth_prob": 0.4938,
         "eff_prob": 0.6773,
-        "bayesian_prob": 0.2277
+        "bayesian_prob": 0.6004
       },
       "market": {
         "home_prob": null,
@@ -318,19 +304,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.4341,
-        "exp_margin": -2.36,
-        "prob_7plus": 0.2604,
-        "prob_14plus": 0.1313,
-        "prob_21plus": 0.0581,
+        "win_prob": 0.5134,
+        "exp_margin": 0.42,
+        "prob_7plus": 0.3243,
+        "prob_14plus": 0.1705,
+        "prob_21plus": 0.0708,
         "margin_percentiles": [
-          -26.4,
-          -21.0,
-          -12.4,
-          -2.3,
-          7.4,
-          16.4,
-          21.9
+          -22.9,
+          -17.9,
+          -9.0,
+          0.6,
+          10.1,
+          18.2,
+          23.4
         ]
       },
       "adjustments": {
@@ -347,17 +333,17 @@
         "diff": -79.8
       },
       "bayesian": {
-        "home_mu": 1408.9,
-        "home_sigma": 75.0,
-        "away_mu": 1525.8,
-        "away_sigma": 75.0,
+        "home_mu": 1471.1,
+        "home_sigma": 40.0,
+        "away_mu": 1521.7,
+        "away_sigma": 40.0,
         "home_band": [
-          1333.9,
-          1483.9
+          1431.1,
+          1511.1
         ],
         "away_band": [
-          1450.8,
-          1600.8
+          1481.7,
+          1561.7
         ]
       },
       "injuries": {
@@ -494,7 +480,7 @@
         "Efficiency gap: NYG net +0.075 vs PHI net -0.244",
         "Home field: NYG +65 ELO home advantage"
       ],
-      "explanation": "The model gives Philadelphia Eagles a 54.1% win probability \u2014 a slight favorite over New York Giants. The ELO gap is 117 points with home field adding approximately 65 ELO points."
+      "explanation": "The model gives Philadelphia Eagles a 60.5% win probability \u2014 a moderate favorite over New York Giants. The ELO gap is 117 points with home field adding approximately 65 ELO points."
     },
     {
       "game_id": "401772634",
@@ -512,13 +498,13 @@
       "home_score": 11,
       "away_score": 13,
       "predictions": {
-        "ensemble_prob": 0.2426,
-        "logistic_prob": 0.1394,
+        "ensemble_prob": 0.3102,
+        "logistic_prob": 0.3596,
         "elo_prob": 0.1394,
-        "xgb_prob": null,
+        "xgb_prob": 0.2047,
         "pyth_prob": 0.2759,
         "eff_prob": 0.5645,
-        "bayesian_prob": 0.0006
+        "bayesian_prob": 0.0
       },
       "market": {
         "home_prob": null,
@@ -528,19 +514,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.1943,
-        "exp_margin": -12.67,
-        "prob_7plus": 0.0908,
-        "prob_14plus": 0.0351,
-        "prob_21plus": 0.0113,
+        "win_prob": 0.1728,
+        "exp_margin": -13.53,
+        "prob_7plus": 0.0744,
+        "prob_14plus": 0.0251,
+        "prob_21plus": 0.0067,
         "margin_percentiles": [
-          -37.1,
-          -31.7,
-          -22.4,
-          -12.7,
-          -2.8,
-          6.2,
-          11.4
+          -36.5,
+          -31.5,
+          -23.0,
+          -13.7,
+          -4.1,
+          4.7,
+          9.9
         ]
       },
       "adjustments": {
@@ -557,17 +543,17 @@
         "diff": -316.2
       },
       "bayesian": {
-        "home_mu": 1316.0,
-        "home_sigma": 75.0,
-        "away_mu": 1633.9,
-        "away_sigma": 75.0,
+        "home_mu": 1253.7,
+        "home_sigma": 40.0,
+        "away_mu": 1597.9,
+        "away_sigma": 40.0,
         "home_band": [
-          1241.0,
-          1391.0
+          1213.7,
+          1293.7
         ],
         "away_band": [
-          1558.9,
-          1708.9
+          1557.9,
+          1637.9
         ]
       },
       "injuries": {
@@ -755,7 +741,7 @@
         "Efficiency gap: NYJ net -0.018 vs DEN net -0.243",
         "Travel penalty: away team travels 1628 miles"
       ],
-      "explanation": "The model gives Denver Broncos a 75.7% win probability \u2014 a strong favorite over New York Jets. The ELO gap is 318 points at a neutral site. Travel distance 1628 miles factors into the away team rating."
+      "explanation": "The model gives Denver Broncos a 69.0% win probability \u2014 a moderate favorite over New York Jets. The ELO gap is 318 points at a neutral site. Travel distance 1628 miles factors into the away team rating."
     },
     {
       "game_id": "401772856",
@@ -773,13 +759,13 @@
       "home_score": 31,
       "away_score": 27,
       "predictions": {
-        "ensemble_prob": 0.7089,
-        "logistic_prob": 0.7301,
+        "ensemble_prob": 0.8384,
+        "logistic_prob": 1.0,
         "elo_prob": 0.7301,
-        "xgb_prob": null,
+        "xgb_prob": 0.8492,
         "pyth_prob": 0.7223,
         "eff_prob": 0.6291,
-        "bayesian_prob": 0.9887
+        "bayesian_prob": 1.0
       },
       "market": {
         "home_prob": null,
@@ -789,19 +775,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.7037,
-        "exp_margin": 7.86,
-        "prob_7plus": 0.5237,
-        "prob_14plus": 0.3395,
-        "prob_21plus": 0.1876,
+        "win_prob": 0.7359,
+        "exp_margin": 9.05,
+        "prob_7plus": 0.5556,
+        "prob_14plus": 0.363,
+        "prob_21plus": 0.2003,
         "margin_percentiles": [
-          -16.4,
-          -10.9,
-          -2.1,
-          7.8,
-          17.8,
-          26.9,
-          31.7
+          -14.1,
+          -9.0,
+          -0.7,
+          9.0,
+          18.7,
+          27.3,
+          32.4
         ]
       },
       "adjustments": {
@@ -818,17 +804,17 @@
         "diff": 172.9
       },
       "bayesian": {
-        "home_mu": 1478.9,
-        "home_sigma": 75.0,
-        "away_mu": 1354.2,
-        "away_sigma": 75.0,
+        "home_mu": 1526.9,
+        "home_sigma": 40.0,
+        "away_mu": 1368.8,
+        "away_sigma": 40.0,
         "home_band": [
-          1403.9,
-          1553.9
+          1486.9,
+          1566.9
         ],
         "away_band": [
-          1279.2,
-          1429.2
+          1328.8,
+          1408.8
         ]
       },
       "injuries": {
@@ -1038,7 +1024,7 @@
         "Travel penalty: away team travels 1506 miles",
         "Home field: IND +65 ELO home advantage"
       ],
-      "explanation": "The model gives Indianapolis Colts a 70.9% win probability \u2014 a strong favorite over Arizona Cardinals. The ELO gap is 125 points with home field adding approximately 65 ELO points. Travel distance 1506 miles factors into the away team rating."
+      "explanation": "The model gives Indianapolis Colts a 83.8% win probability \u2014 a strong favorite over Arizona Cardinals. The ELO gap is 125 points with home field adding approximately 65 ELO points. Travel distance 1506 miles factors into the away team rating."
     },
     {
       "game_id": "401772750",
@@ -1056,13 +1042,13 @@
       "home_score": 27,
       "away_score": 29,
       "predictions": {
-        "ensemble_prob": 0.513,
-        "logistic_prob": 0.4776,
+        "ensemble_prob": 0.4,
+        "logistic_prob": 0.3596,
         "elo_prob": 0.4776,
-        "xgb_prob": null,
+        "xgb_prob": 0.2261,
         "pyth_prob": 0.4995,
         "eff_prob": 0.6402,
-        "bayesian_prob": 0.318
+        "bayesian_prob": 0.144
       },
       "market": {
         "home_prob": null,
@@ -1072,19 +1058,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.4678,
-        "exp_margin": -1.07,
-        "prob_7plus": 0.2864,
-        "prob_14plus": 0.1516,
-        "prob_21plus": 0.0656,
+        "win_prob": 0.4293,
+        "exp_margin": -2.53,
+        "prob_7plus": 0.2531,
+        "prob_14plus": 0.1197,
+        "prob_21plus": 0.0501,
         "margin_percentiles": [
-          -25.1,
-          -19.9,
-          -10.7,
-          -1.1,
-          8.6,
-          17.7,
-          22.7
+          -26.0,
+          -20.7,
+          -12.1,
+          -2.4,
+          7.1,
+          15.5,
+          21.0
         ]
       },
       "adjustments": {
@@ -1101,17 +1087,17 @@
         "diff": -15.6
       },
       "bayesian": {
-        "home_mu": 1438.2,
-        "home_sigma": 75.0,
-        "away_mu": 1535.6,
-        "away_sigma": 75.0,
+        "home_mu": 1381.2,
+        "home_sigma": 40.0,
+        "away_mu": 1506.3,
+        "away_sigma": 40.0,
         "home_band": [
-          1363.2,
-          1513.2
+          1341.2,
+          1421.2
         ],
         "away_band": [
-          1460.6,
-          1610.6
+          1466.3,
+          1546.3
         ]
       },
       "injuries": {
@@ -1233,7 +1219,7 @@
         "Travel penalty: away team travels 2332 miles",
         "Home field: MIA +65 ELO home advantage"
       ],
-      "explanation": "The model gives Miami Dolphins a 51.3% win probability \u2014 a slight favorite over Los Angeles Chargers. The ELO gap is 97 points with home field adding approximately 65 ELO points. Travel distance 2332 miles factors into the away team rating."
+      "explanation": "The model gives Los Angeles Chargers a 60.0% win probability \u2014 a slight favorite over Miami Dolphins. The ELO gap is 97 points with home field adding approximately 65 ELO points. Travel distance 2332 miles factors into the away team rating."
     },
     {
       "game_id": "401772751",
@@ -1251,13 +1237,13 @@
       "home_score": 19,
       "away_score": 25,
       "predictions": {
-        "ensemble_prob": 0.3417,
-        "logistic_prob": 0.2801,
-        "elo_prob": 0.2801,
-        "xgb_prob": null,
+        "ensemble_prob": 0.3334,
+        "logistic_prob": 0.3596,
+        "elo_prob": 0.2732,
+        "xgb_prob": 0.2016,
         "pyth_prob": 0.3866,
         "eff_prob": 0.5168,
-        "bayesian_prob": 0.0197
+        "bayesian_prob": 0.0235
       },
       "market": {
         "home_prob": null,
@@ -1267,19 +1253,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.3271,
-        "exp_margin": -6.58,
-        "prob_7plus": 0.1772,
-        "prob_14plus": 0.0815,
-        "prob_21plus": 0.0312,
+        "win_prob": 0.3742,
+        "exp_margin": -4.44,
+        "prob_7plus": 0.206,
+        "prob_14plus": 0.0964,
+        "prob_21plus": 0.0358,
         "margin_percentiles": [
-          -31.0,
-          -25.5,
-          -16.5,
-          -6.5,
-          3.3,
-          12.2,
-          17.6
+          -27.5,
+          -22.6,
+          -13.9,
+          -4.4,
+          4.9,
+          13.6,
+          18.9
         ]
       },
       "adjustments": {
@@ -1293,20 +1279,20 @@
       "elo": {
         "home": 1441.2,
         "away": 1671.9,
-        "diff": -164.0
+        "diff": -170.0
       },
       "bayesian": {
-        "home_mu": 1441.2,
-        "home_sigma": 75.0,
-        "away_mu": 1671.9,
-        "away_sigma": 75.0,
+        "home_mu": 1463.8,
+        "home_sigma": 40.0,
+        "away_mu": 1641.2,
+        "away_sigma": 40.0,
         "home_band": [
-          1366.2,
-          1516.2
+          1423.8,
+          1503.8
         ],
         "away_band": [
-          1596.9,
-          1746.9
+          1601.2,
+          1681.2
         ]
       },
       "injuries": {
@@ -1349,6 +1335,27 @@
         ],
         "away": [
           {
+            "player": "James Hudson III",
+            "status": "Active",
+            "position": "OT",
+            "injury_description": "Hudson was released by the Giants earlier this month and won't have to travel far to join his new team. The 26-year-old appeared in 11 regular-season games last season, making two starts, but has been a liability when pressed into starter snaps. Hudson will go into New England as a backup this offseason.",
+            "value_tier": "starter"
+          },
+          {
+            "player": "Tommy DeVito",
+            "status": "Active",
+            "position": "QB",
+            "injury_description": "DeVito, who worked as New England's No. 3 signal-caller last season behind Dobbs and starter Drake Maye, signed a two-year deal to remain with the team earlier this month. Per Reiss, the base value of DeVito's new contract is $4.4 million and includes incentives that could increase its value to $7.4 million. Though the 27-year-old didn't see any regular-season action in 2025, he did log a total of eight starts during his two seasons (2023 and 2024) with the Giants. With Dobbs no longer in the mix, look for the Patriots to add QB depth as the offseason progresses, possibly via next month's draft.",
+            "value_tier": "starter"
+          },
+          {
+            "player": "Kindle Vildor",
+            "status": "Active",
+            "position": "CB",
+            "injury_description": "Vildor, who entered the NFL as a fifth-round pick by the Bears, recorded 16 tackles and a pick in 12 regular-season games with the Buccaneers in 2025. In joining the Patriots, the 28-year-old will reunite with head coach Mike Vrabel, who Vildor worked with in 2023 while both were with the Titans. In his latest locale, the 5-foot-11, 189-pounder will offer cornerback depth and special teams experience.",
+            "value_tier": "starter"
+          },
+          {
             "player": "Alijah Vera-Tucker",
             "status": "Questionable",
             "position": "G",
@@ -1361,35 +1368,14 @@
             "position": "S",
             "injury_description": "Brown appeared in nine regular-season games for the Titans in 2025 and had two stints on injured reserve due to knee and ankle injuries. He served almost exclusively on special teams and logged three solo tackles for Tennessee last year. Brown's addition gives the Patriots added depth in the secondary and another contributor on special teams.",
             "value_tier": "starter"
-          },
-          {
-            "player": "Julian Hill",
-            "status": "Active",
-            "position": "TE",
-            "injury_description": "Hill fits with New England as a depth option and blocker behind starting tight end Hunter Henry, a role opened up by the departure of Austin Hooper to Atlanta. Regardless of the change of scenery, Hill's realistic realm of outcomes for 2026 likely doesn't include attaining fantasy relevance, as across 14 regular-season appearances with the Dolphins in 2025 he managed only 150 receiving yards (a career high). That said, at 6-foot-4, 251 pounds, Hill could emerge as an option for quarterback Drake Maye in the red zone.",
-            "value_tier": "starter"
-          },
-          {
-            "player": "K.J. Britt",
-            "status": "Active",
-            "position": "LB",
-            "injury_description": "Britt heads to a division rival after his one-year stint with the Dolphins. He handled a depth role across 17 regular-season appearances in 2025, totaling 35 tackles (12 solo). He projects to handle a similar rotational role in New England, while also potentially acting as a significant contributor on special teams.",
-            "value_tier": "starter"
-          },
-          {
-            "player": "Romeo Doubs",
-            "status": "Active",
-            "position": "WR",
-            "injury_description": "The initial report has it as a four-year deal for \"roughly\" $70 million. In fantasy terms, this is about as good as it gets, with Doubs joining a receiver-needy offense that already has a franchise QB in place in Drake Maye. Doubs averaged 50.5 catches for 606 yards and 5.3 TDs on 80.0 targets in four seasons with Green Bay. The contract and situation in New England hint at some degree of upside for additional target volume, but it's also possible he doesn't have much more to offer. If nothing else, he's a competent starter at a clear position of need, entering what should be his prime -- Doubs will turn 26 in April.",
-            "value_tier": "starter"
           }
         ]
       },
       "injury_impact": {
         "home_elo_penalty": 28.6,
-        "away_elo_penalty": 22.4,
+        "away_elo_penalty": 16.4,
         "home_impact_score": 0.26,
-        "away_impact_score": 0.2036,
+        "away_impact_score": 0.1491,
         "home_key_players_out": [
           {
             "player": "Alvin Kamara",
@@ -1504,20 +1490,6 @@
             "status": "Questionable",
             "elo_impact": 2.4,
             "value_tier": "starter"
-          },
-          {
-            "player": "Yasir Durant",
-            "position": "OT",
-            "status": "Questionable",
-            "elo_impact": 3.6,
-            "value_tier": "starter"
-          },
-          {
-            "player": "Marcellas Dial Jr.",
-            "position": "CB",
-            "status": "Questionable",
-            "elo_impact": 2.4,
-            "value_tier": "starter"
           }
         ],
         "home_star_count": 0,
@@ -1536,7 +1508,7 @@
         "Efficiency gap: NO net -0.247 vs NE net +0.019",
         "Home field: NO +65 ELO home advantage"
       ],
-      "explanation": "The model gives New England Patriots a 65.8% win probability \u2014 a moderate favorite over New Orleans Saints. The ELO gap is 231 points with home field adding approximately 65 ELO points. Travel distance 1341 miles factors into the away team rating."
+      "explanation": "The model gives New England Patriots a 66.7% win probability \u2014 a moderate favorite over New Orleans Saints. The ELO gap is 231 points with home field adding approximately 65 ELO points. Travel distance 1341 miles factors into the away team rating."
     },
     {
       "game_id": "401772748",
@@ -1554,13 +1526,13 @@
       "home_score": 23,
       "away_score": 9,
       "predictions": {
-        "ensemble_prob": 0.7481,
-        "logistic_prob": 0.7804,
-        "elo_prob": 0.7804,
-        "xgb_prob": null,
+        "ensemble_prob": 0.6953,
+        "logistic_prob": 0.661,
+        "elo_prob": 0.7785,
+        "xgb_prob": 0.7053,
         "pyth_prob": 0.692,
         "eff_prob": 0.6779,
-        "bayesian_prob": 0.9707
+        "bayesian_prob": 0.9657
       },
       "market": {
         "home_prob": null,
@@ -1570,19 +1542,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6525,
-        "exp_margin": 5.77,
-        "prob_7plus": 0.4658,
-        "prob_14plus": 0.2888,
-        "prob_21plus": 0.1493,
+        "win_prob": 0.6141,
+        "exp_margin": 4.28,
+        "prob_7plus": 0.4266,
+        "prob_14plus": 0.2455,
+        "prob_21plus": 0.1185,
         "margin_percentiles": [
-          -18.6,
-          -13.2,
-          -4.1,
-          5.8,
-          15.7,
-          24.5,
-          30.2
+          -19.0,
+          -13.8,
+          -5.3,
+          4.3,
+          13.8,
+          22.4,
+          27.5
         ]
       },
       "adjustments": {
@@ -1596,20 +1568,20 @@
       "elo": {
         "home": 1495.9,
         "away": 1412.4,
-        "diff": 220.3
+        "diff": 218.3
       },
       "bayesian": {
-        "home_mu": 1495.9,
-        "home_sigma": 75.0,
-        "away_mu": 1412.4,
-        "away_sigma": 75.0,
+        "home_mu": 1470.8,
+        "home_sigma": 40.0,
+        "away_mu": 1432.7,
+        "away_sigma": 40.0,
         "home_band": [
-          1420.9,
-          1570.9
+          1430.8,
+          1510.8
         ],
         "away_band": [
-          1337.4,
-          1487.4
+          1392.7,
+          1472.7
         ]
       },
       "injuries": {
@@ -1652,6 +1624,13 @@
         ],
         "away": [
           {
+            "player": "Blake Whiteheart",
+            "status": "Active",
+            "position": "TE",
+            "injury_description": "Whiteheart wasn't tendered by Cleveland by the early March deadline, but he's now re-upped with the team. While suiting up for all 17 regular-season contests with the team in 2025, Whiteheart contributed on special teams and as a blocker on offense. He stands to reprise a similar depth role during the 2026 campaign.",
+            "value_tier": "starter"
+          },
+          {
             "player": "Daniel Thomas",
             "status": "Active",
             "position": "S",
@@ -1678,21 +1657,14 @@
             "position": "CB",
             "injury_description": "Ross opened the 2025 season on the Texans' practice squad and appeared in three games before being signed to the Browns' active roster in mid-November. He appeared in seven regular-season games for Cleveland and logged nine tackles (five solo) and two pass defenses while mostly serving on special teams. Ross will likely see most of his playing time on special teams in 2026, but his presence gives the Browns depth in the secondary.",
             "value_tier": "starter"
-          },
-          {
-            "player": "Elgton Jenkins",
-            "status": "Questionable",
-            "position": "C",
-            "injury_description": "Jenkins spent the first seven years of his NFL career in Green Bay, where he was named to the NFC Pro Bowl roster in 2020 and 2022. He started in each of the Packers' first nine games of the 2025 regular season before fracturing his leg against the Eagles in Week 10. Jenkins relayed Friday that he is on pace with his recovery and hopes to be fully healthy for the start of the 2026 season.",
-            "value_tier": "starter"
           }
         ]
       },
       "injury_impact": {
         "home_elo_penalty": 16.4,
-        "away_elo_penalty": 11.2,
+        "away_elo_penalty": 9.2,
         "home_impact_score": 0.1491,
-        "away_impact_score": 0.1018,
+        "away_impact_score": 0.0836,
         "home_key_players_out": [
           {
             "player": "DeShon Elliott",
@@ -1779,13 +1751,6 @@
             "status": "Questionable",
             "elo_impact": 2.0,
             "value_tier": "starter"
-          },
-          {
-            "player": "Carson Schwesinger",
-            "position": "LB",
-            "status": "Questionable",
-            "elo_impact": 2.0,
-            "value_tier": "starter"
           }
         ],
         "home_star_count": 0,
@@ -1805,7 +1770,7 @@
         "Rest advantage: PIT has 7 extra days rest",
         "Home field: PIT +65 ELO home advantage"
       ],
-      "explanation": "The model gives Pittsburgh Steelers a 74.8% win probability \u2014 a strong favorite over Cleveland Browns. The ELO gap is 84 points with home field adding approximately 65 ELO points. Rest advantage favors PIT."
+      "explanation": "The model gives Pittsburgh Steelers a 69.5% win probability \u2014 a moderate favorite over Cleveland Browns. The ELO gap is 84 points with home field adding approximately 65 ELO points. Rest advantage favors PIT."
     },
     {
       "game_id": "401772858",
@@ -1823,13 +1788,13 @@
       "home_score": 30,
       "away_score": 27,
       "predictions": {
-        "ensemble_prob": 0.5586,
-        "logistic_prob": 0.6165,
-        "elo_prob": 0.6165,
-        "xgb_prob": null,
+        "ensemble_prob": 0.5028,
+        "logistic_prob": 0.4516,
+        "elo_prob": 0.6181,
+        "xgb_prob": 0.5653,
         "pyth_prob": 0.554,
         "eff_prob": 0.3686,
-        "bayesian_prob": 0.8098
+        "bayesian_prob": 0.9811
       },
       "market": {
         "home_prob": null,
@@ -1839,19 +1804,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.5649,
-        "exp_margin": 2.35,
-        "prob_7plus": 0.3733,
-        "prob_14plus": 0.2158,
-        "prob_21plus": 0.101,
+        "win_prob": 0.6279,
+        "exp_margin": 4.69,
+        "prob_7plus": 0.4326,
+        "prob_14plus": 0.2572,
+        "prob_21plus": 0.1269,
         "margin_percentiles": [
-          -21.5,
-          -16.3,
-          -7.7,
-          2.4,
-          12.5,
-          21.1,
-          26.5
+          -18.7,
+          -13.5,
+          -5.0,
+          4.5,
+          14.3,
+          22.9,
+          28.2
         ]
       },
       "adjustments": {
@@ -1865,24 +1830,31 @@
       "elo": {
         "home": 1438.1,
         "away": 1441.6,
-        "diff": 82.5
+        "diff": 83.7
       },
       "bayesian": {
-        "home_mu": 1438.1,
-        "home_sigma": 75.0,
-        "away_mu": 1441.6,
-        "away_sigma": 75.0,
+        "home_mu": 1465.6,
+        "home_sigma": 40.0,
+        "away_mu": 1413.1,
+        "away_sigma": 40.0,
         "home_band": [
-          1363.1,
-          1513.1
+          1425.6,
+          1505.6
         ],
         "away_band": [
-          1366.6,
-          1516.6
+          1373.1,
+          1453.1
         ]
       },
       "injuries": {
         "home": [
+          {
+            "player": "Feleipe Franks",
+            "status": "Active",
+            "position": "TE",
+            "injury_description": "It's a homecoming for Franks after he spent the 2024 season with Carolina before spending the 2025 campaign with the Falcons. A special-teams stalwart, Franks appeared in all 17 regular-season contests last season, recording 11 tackles (eight solo) on 299 snaps in kick coverage.",
+            "value_tier": "starter"
+          },
           {
             "player": "Sam Martin",
             "status": "Active",
@@ -1910,16 +1882,16 @@
             "position": "OT",
             "injury_description": "Walker has started 48 games across the last three regular seasons and operated as the Packers' left tackle during the 2025 campaign, playing all 1,057 of his offensive snaps at the position. He gives the Panthers a capable option should Ikem Ekwonu (knee) not be recovered from a torn patellar tendon that he suffered in Carolina's wild-card loss to the Rams in January.",
             "value_tier": "starter"
-          },
-          {
-            "player": "Claudin Cherelus",
-            "status": "Active",
-            "position": "LB",
-            "injury_description": "The 27-year-old has appeared in 27 regular-season games (six starts) for the Panthers over the last two seasons, recording 60 total tackles and one pass defensed. Following his new deal with Carolina, Cherelus is expected to operate as one of the team's top reserve inside linebackers during the 2026 season.",
-            "value_tier": "starter"
           }
         ],
         "away": [
+          {
+            "player": "Corey Ballentine",
+            "status": "Active",
+            "position": "CB",
+            "injury_description": "Ballentine spent last summer with the Packers but was cut ahead of Week 1 and signed with New England, spending most of September with the team. He then signed with Dallas, where he spent much of the 2025 campaign on the practice squad. Ballentine will compete for a job this offseason.",
+            "value_tier": "starter"
+          },
           {
             "player": "T.J. Bass",
             "status": "Active",
@@ -1947,21 +1919,14 @@
             "position": "CB",
             "injury_description": "Durant appeared in all 17 regular-season games for the Rams last season, making 15 starts, and finished with 40 tackles (30 solo) and seven pass breakups, including three interceptions, one of which was returned for a touchdown. Durant will compete for cornerback snaps alongside Shavon Revel (concussion), Caelen Carson and Trikweze Bridges opposite DaRon Bland (foot).",
             "value_tier": "starter"
-          },
-          {
-            "player": "Matt Hennessy",
-            "status": "Active",
-            "position": "C",
-            "injury_description": "Hennessy appeared in all 17 regular-season games for the 49ers last season, making a pair of starts. The veteran interior offensive lineman has made 64 career regular-season appearances, including 24 starts, and will likely fill a similar role in Dallas.",
-            "value_tier": "starter"
           }
         ]
       },
       "injury_impact": {
-        "home_elo_penalty": 8.4,
-        "away_elo_penalty": 24.4,
-        "home_impact_score": 0.0764,
-        "away_impact_score": 0.2218,
+        "home_elo_penalty": 6.0,
+        "away_elo_penalty": 23.2,
+        "home_impact_score": 0.0545,
+        "away_impact_score": 0.2109,
         "home_key_players_out": [
           {
             "player": "Jonathon Brooks",
@@ -1982,13 +1947,6 @@
             "position": "LB",
             "status": "Questionable",
             "elo_impact": 2.0,
-            "value_tier": "starter"
-          },
-          {
-            "player": "Corey Thornton",
-            "position": "CB",
-            "status": "Questionable",
-            "elo_impact": 2.4,
             "value_tier": "starter"
           }
         ],
@@ -2023,13 +1981,6 @@
           },
           {
             "player": "Trevor Keegan",
-            "position": "G",
-            "status": "Questionable",
-            "elo_impact": 1.2,
-            "value_tier": "starter"
-          },
-          {
-            "player": "Rob Jones",
             "position": "G",
             "status": "Questionable",
             "elo_impact": 1.2,
@@ -2079,7 +2030,7 @@
         "Efficiency gap: CAR net -0.242 vs DAL net +0.550",
         "Home field: CAR +65 ELO home advantage"
       ],
-      "explanation": "The model gives Carolina Panthers a 55.9% win probability \u2014 a slight favorite over Dallas Cowboys. The ELO gap is 4 points with home field adding approximately 65 ELO points."
+      "explanation": "The model gives Carolina Panthers a 50.3% win probability \u2014 a slight favorite over Dallas Cowboys. The ELO gap is 4 points with home field adding approximately 65 ELO points."
     },
     {
       "game_id": "401772857",
@@ -2097,13 +2048,13 @@
       "home_score": 12,
       "away_score": 20,
       "predictions": {
-        "ensemble_prob": 0.4369,
-        "logistic_prob": 0.3549,
+        "ensemble_prob": 0.4056,
+        "logistic_prob": 0.3596,
         "elo_prob": 0.3549,
-        "xgb_prob": null,
+        "xgb_prob": 0.305,
         "pyth_prob": 0.5508,
         "eff_prob": 0.6343,
-        "bayesian_prob": 0.167
+        "bayesian_prob": 0.2532
       },
       "market": {
         "home_prob": null,
@@ -2113,19 +2064,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.4239,
-        "exp_margin": -2.75,
-        "prob_7plus": 0.249,
-        "prob_14plus": 0.1216,
-        "prob_21plus": 0.0486,
+        "win_prob": 0.4484,
+        "exp_margin": -1.74,
+        "prob_7plus": 0.2738,
+        "prob_14plus": 0.1323,
+        "prob_21plus": 0.0514,
         "margin_percentiles": [
-          -26.3,
-          -21.1,
-          -12.4,
-          -2.8,
-          6.9,
-          15.7,
-          20.9
+          -24.8,
+          -19.7,
+          -11.3,
+          -1.9,
+          7.9,
+          16.3,
+          21.1
         ]
       },
       "adjustments": {
@@ -2142,17 +2093,17 @@
         "diff": -103.8
       },
       "bayesian": {
-        "home_mu": 1628.5,
-        "home_sigma": 75.0,
-        "away_mu": 1761.7,
-        "away_sigma": 75.0,
+        "home_mu": 1672.7,
+        "home_sigma": 40.0,
+        "away_mu": 1775.2,
+        "away_sigma": 40.0,
         "home_band": [
-          1553.5,
-          1703.5
+          1632.7,
+          1712.7
         ],
         "away_band": [
-          1686.7,
-          1836.7
+          1735.2,
+          1815.2
         ]
       },
       "injuries": {
@@ -2195,24 +2146,24 @@
         ],
         "away": [
           {
-            "player": "Devon Witherspoon",
+            "player": "Jake Bobo",
             "status": "Active",
-            "position": "CB",
-            "injury_description": "The No. 5 overall pick in the 2023 Draft, Witherspoon has been named to the Pro Bowl all three seasons in the NFL and was a second-team All-Pro selection last season. Witherspoon started all 12 games in which he appeared in 2025, producing 72 tackles (48 solo), including 0.5 sacks, seven pass breakups, including one interception, and one fumble recovery. With the option exercised, Witherspoon is set to earn $21.1 million in 2027.",
+            "position": "WR",
+            "injury_description": "Per Tom Pelissero of NFL Network, Bobo now is in line to remain with Seattle on a two-year, $5.5 million deal that includes $4.5 million guaranteed. Bobo caught just two passes in 11 regular-season games with the Seahawks in 2025, and he's on track to remain in a depth role this coming season while working in a WR corps that also includes Jaxon Smith-Njigba, Cooper Kupp and Rashid Shaheed.",
             "value_tier": "starter"
           },
           {
             "player": "Jaxon Smith-Njigba",
             "status": "Active",
             "position": "WR",
-            "injury_description": "An obvious no-brainer for Seattle after Smith-Njigba was named Offensive Player of the Year in 2025 after securing 119 of 163 targets for an NFL-high 1,793 yards and 10 touchdowns across 17 regular-season appearances. JSN then added another 17 catches for 199 yards and two touchdowns on 26 targets across three playoff contests. Through three seasons, Smith-Njigba is a two-time Pro Bowl selection and was a first-team All-Pro last season. With the optioned picked up, Smith-Njigba is set to earn $23.8 million in 2027.",
+            "injury_description": "The reigning NFL Offensive Player of the Year, Smith-Njigba had his fifth-year option picked up by Seattle in March, but the intent had always been to negotiate a long-term deal for the two-time Pro Bowler. Now, he becomes the highest-paid wideout in league history at an average of $42.15 million annually, including $120 million guaranteed.  Smith-Njigba is coming off a career-best 2025 campaign in which he secured 119 of 163 targets for a league-leading 1,793 yards and 10 touchdowns across 17 regular-season appearances, plus 17 catches (on 26 targets) for 199 yards and two touchdowns across three playoff contests, including a Super Bowl LX win over New England. The chemistry Smith-Njigba has demonstrated with quarterback Sam Darnold makes him a safe bet to return on expectations as one of the top wide receivers taken in 2026 fantasy drafts, especially in PPR formats.",
             "value_tier": "starter"
           },
           {
-            "player": "Jake Bobo",
+            "player": "Devon Witherspoon",
             "status": "Active",
-            "position": "WR",
-            "injury_description": "The terms of the offer sheet aren't yet known, but the Seahawks will have five days to match the offer or let Bobo walk as a restricted free agent. The 27-year-old Bobo has logged just 740 offensive snaps across 45 regular-season appearances over the last three seasons but has produced a 34-323-3 receiving line on 44 career targets. He also caught a 17-yard touchdown in the NFC Championship Game against the Rams in January. Bobo would seem to be no higher than the WR4 or WR5 in Jacksonville behind Brian Thomas, Jakobi Meyers, Parker Washington and perhaps Travis Hunter, who is expected to play more cornerback in 2026. Thomas has also been the subject of heavy trade speculation this offseason, though there's been no indication the Jaguars are serious about trading the third-year receiver.",
+            "position": "CB",
+            "injury_description": "The No. 5 overall pick in the 2023 Draft, Witherspoon has been named to the Pro Bowl all three seasons in the NFL and was a second-team All-Pro selection last season. Witherspoon started all 12 games in which he appeared in 2025, producing 72 tackles (48 solo), including 0.5 sacks, seven pass breakups, including one interception, and one fumble recovery. With the option exercised, Witherspoon is set to earn $21.1 million in 2027.",
             "value_tier": "starter"
           },
           {
@@ -2348,7 +2299,7 @@
         "Travel penalty: away team travels 2456 miles",
         "Home field: JAX +65 ELO home advantage"
       ],
-      "explanation": "The model gives Seattle Seahawks a 56.3% win probability \u2014 a slight favorite over Jacksonville Jaguars. The ELO gap is 133 points with home field adding approximately 65 ELO points. Travel distance 2456 miles factors into the away team rating."
+      "explanation": "The model gives Seattle Seahawks a 59.4% win probability \u2014 a slight favorite over Jacksonville Jaguars. The ELO gap is 133 points with home field adding approximately 65 ELO points. Travel distance 2456 miles factors into the away team rating."
     },
     {
       "game_id": "401772855",
@@ -2366,13 +2317,13 @@
       "home_score": 3,
       "away_score": 17,
       "predictions": {
-        "ensemble_prob": 0.4253,
-        "logistic_prob": 0.3704,
+        "ensemble_prob": 0.3663,
+        "logistic_prob": 0.3596,
         "elo_prob": 0.3704,
-        "xgb_prob": null,
+        "xgb_prob": 0.2047,
         "pyth_prob": 0.4871,
         "eff_prob": 0.5669,
-        "bayesian_prob": 0.152
+        "bayesian_prob": 0.2771
       },
       "market": {
         "home_prob": null,
@@ -2382,19 +2333,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.4263,
-        "exp_margin": -2.83,
-        "prob_7plus": 0.254,
-        "prob_14plus": 0.1257,
-        "prob_21plus": 0.0554,
+        "win_prob": 0.4702,
+        "exp_margin": -1.11,
+        "prob_7plus": 0.2849,
+        "prob_14plus": 0.1413,
+        "prob_21plus": 0.0579,
         "margin_percentiles": [
-          -27.2,
-          -21.7,
-          -12.7,
-          -2.9,
-          7.2,
-          16.1,
-          21.7
+          -24.5,
+          -19.1,
+          -10.6,
+          -1.0,
+          8.6,
+          16.8,
+          21.9
         ]
       },
       "adjustments": {
@@ -2411,17 +2362,17 @@
         "diff": -92.1
       },
       "bayesian": {
-        "home_mu": 1517.6,
-        "home_sigma": 75.0,
-        "away_mu": 1655.5,
-        "away_sigma": 75.0,
+        "home_mu": 1535.5,
+        "home_sigma": 40.0,
+        "away_mu": 1634.0,
+        "away_sigma": 40.0,
         "home_band": [
-          1442.6,
-          1592.6
+          1495.5,
+          1575.5
         ],
         "away_band": [
-          1580.5,
-          1730.5
+          1594.0,
+          1674.0
         ]
       },
       "injuries": {
@@ -2464,6 +2415,13 @@
         ],
         "away": [
           {
+            "player": "Larrell Murchison",
+            "status": "Active",
+            "position": "DE",
+            "injury_description": "Murchison was cut by the Rams ahead of Week 18 back in January after he appeared in 16 regular-season games. The 28-year-old will provide depth on the defensive line after recording eight tackles (two solo), including 2.0 sacks, during the 2025 campaign.",
+            "value_tier": "starter"
+          },
+          {
             "player": "Grant Stuard",
             "status": "Active",
             "position": "LB",
@@ -2489,13 +2447,6 @@
             "status": "Active",
             "position": "CB",
             "injury_description": "McDuffie was sent to Los Angeles in a blockbuster trade that will become official this week, and the 25-year-old cornerback is due for a new deal as he heads into the final year of his rookie contract. He figures to command around $30 million per year on his new pact.",
-            "value_tier": "starter"
-          },
-          {
-            "player": "Kam Curl",
-            "status": "Active",
-            "position": "S",
-            "injury_description": "After beginning his career in Washington, Curl has spent each of the last two seasons with the Rams and proved to be an integral part of the team's secondary. Across 33 regular-season appearances in that span, the Arkansas product tallied 201 total tackles (most on the team), including 3.0 sacks, 14 passes defensed, including two interceptions, and three forced fumbles. Following his new deal, Curl is expected to continue making plays in a Rams secondary that just added All-Pro Trent McDuffie via trade on Mar. 4.",
             "value_tier": "starter"
           }
         ]
@@ -2616,7 +2567,7 @@
         "Travel penalty: away team travels 2327 miles",
         "Home field: BAL +65 ELO home advantage"
       ],
-      "explanation": "The model gives Los Angeles Rams a 57.5% win probability \u2014 a slight favorite over Baltimore Ravens. The ELO gap is 138 points with home field adding approximately 65 ELO points. Travel distance 2327 miles factors into the away team rating."
+      "explanation": "The model gives Los Angeles Rams a 63.4% win probability \u2014 a moderate favorite over Baltimore Ravens. The ELO gap is 138 points with home field adding approximately 65 ELO points. Travel distance 2327 miles factors into the away team rating."
     },
     {
       "game_id": "401772859",
@@ -2634,13 +2585,13 @@
       "home_score": 20,
       "away_score": 10,
       "predictions": {
-        "ensemble_prob": 0.5579,
-        "logistic_prob": 0.5601,
+        "ensemble_prob": 0.5319,
+        "logistic_prob": 0.4516,
         "elo_prob": 0.5601,
-        "xgb_prob": null,
+        "xgb_prob": 0.6058,
         "pyth_prob": 0.5785,
         "eff_prob": 0.5368,
-        "bayesian_prob": 0.7364
+        "bayesian_prob": 0.5336
       },
       "market": {
         "home_prob": null,
@@ -2650,19 +2601,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.5561,
-        "exp_margin": 1.88,
-        "prob_7plus": 0.3603,
-        "prob_14plus": 0.1974,
-        "prob_21plus": 0.0931,
+        "win_prob": 0.5129,
+        "exp_margin": 0.15,
+        "prob_7plus": 0.3168,
+        "prob_14plus": 0.1643,
+        "prob_21plus": 0.069,
         "margin_percentiles": [
-          -22.1,
-          -16.7,
-          -7.8,
-          1.9,
-          11.5,
-          20.4,
-          26.0
+          -23.7,
+          -18.1,
+          -9.3,
+          0.4,
+          9.9,
+          18.2,
+          23.2
         ]
       },
       "adjustments": {
@@ -2679,17 +2630,17 @@
         "diff": 42.0
       },
       "bayesian": {
-        "home_mu": 1308.5,
-        "home_sigma": 75.0,
-        "away_mu": 1329.9,
-        "away_sigma": 75.0,
+        "home_mu": 1333.6,
+        "home_sigma": 40.0,
+        "away_mu": 1393.8,
+        "away_sigma": 40.0,
         "home_band": [
-          1233.5,
-          1383.5
+          1293.6,
+          1373.6
         ],
         "away_band": [
-          1254.9,
-          1404.9
+          1353.8,
+          1433.8
         ]
       },
       "injuries": {
@@ -2826,7 +2777,7 @@
         "Travel penalty: away team travels 1583 miles",
         "Home field: LV +65 ELO home advantage"
       ],
-      "explanation": "The model gives Las Vegas Raiders a 55.8% win probability \u2014 a slight favorite over Tennessee Titans. The ELO gap is 21 points with home field adding approximately 65 ELO points. Travel distance 1583 miles factors into the away team rating."
+      "explanation": "The model gives Las Vegas Raiders a 53.2% win probability \u2014 a slight favorite over Tennessee Titans. The ELO gap is 21 points with home field adding approximately 65 ELO points. Travel distance 1583 miles factors into the away team rating."
     },
     {
       "game_id": "401772752",
@@ -2844,13 +2795,13 @@
       "home_score": 27,
       "away_score": 18,
       "predictions": {
-        "ensemble_prob": 0.6801,
-        "logistic_prob": 0.727,
+        "ensemble_prob": 0.6535,
+        "logistic_prob": 0.661,
         "elo_prob": 0.727,
-        "xgb_prob": null,
+        "xgb_prob": 0.666,
         "pyth_prob": 0.6724,
         "eff_prob": 0.5288,
-        "bayesian_prob": 0.9621
+        "bayesian_prob": 0.852
       },
       "market": {
         "home_prob": null,
@@ -2860,19 +2811,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6411,
-        "exp_margin": 5.4,
-        "prob_7plus": 0.4574,
-        "prob_14plus": 0.2767,
-        "prob_21plus": 0.1427,
+        "win_prob": 0.5676,
+        "exp_margin": 2.29,
+        "prob_7plus": 0.3678,
+        "prob_14plus": 0.2034,
+        "prob_21plus": 0.092,
         "margin_percentiles": [
-          -18.9,
-          -13.2,
-          -4.5,
-          5.4,
-          15.2,
-          24.1,
-          29.4
+          -21.0,
+          -15.9,
+          -7.2,
+          2.4,
+          11.8,
+          20.2,
+          25.5
         ]
       },
       "adjustments": {
@@ -2889,17 +2840,17 @@
         "diff": 170.2
       },
       "bayesian": {
-        "home_mu": 1506.8,
-        "home_sigma": 75.0,
-        "away_mu": 1434.6,
-        "away_sigma": 75.0,
+        "home_mu": 1474.0,
+        "home_sigma": 40.0,
+        "away_mu": 1479.9,
+        "away_sigma": 40.0,
         "home_band": [
-          1431.8,
-          1581.8
+          1434.0,
+          1514.0
         ],
         "away_band": [
-          1359.6,
-          1509.6
+          1439.9,
+          1519.9
         ]
       },
       "injuries": {
@@ -3123,7 +3074,7 @@
         "Rest advantage: GB has 6 extra days rest",
         "Home field: GB +65 ELO home advantage"
       ],
-      "explanation": "The model gives Green Bay Packers a 68.0% win probability \u2014 a moderate favorite over Cincinnati Bengals. The ELO gap is 72 points with home field adding approximately 65 ELO points. Rest advantage favors GB."
+      "explanation": "The model gives Green Bay Packers a 65.3% win probability \u2014 a moderate favorite over Cincinnati Bengals. The ELO gap is 72 points with home field adding approximately 65 ELO points. Rest advantage favors GB."
     },
     {
       "game_id": "401772749",
@@ -3141,13 +3092,13 @@
       "home_score": 30,
       "away_score": 19,
       "predictions": {
-        "ensemble_prob": 0.44,
-        "logistic_prob": 0.3835,
+        "ensemble_prob": 0.3737,
+        "logistic_prob": 0.3596,
         "elo_prob": 0.3835,
-        "xgb_prob": null,
+        "xgb_prob": 0.2083,
         "pyth_prob": 0.5117,
         "eff_prob": 0.5807,
-        "bayesian_prob": 0.137
+        "bayesian_prob": 0.2195
       },
       "market": {
         "home_prob": null,
@@ -3157,19 +3108,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.4136,
-        "exp_margin": -3.14,
-        "prob_7plus": 0.2386,
-        "prob_14plus": 0.1165,
-        "prob_21plus": 0.0498,
+        "win_prob": 0.4418,
+        "exp_margin": -1.93,
+        "prob_7plus": 0.2623,
+        "prob_14plus": 0.1312,
+        "prob_21plus": 0.0516,
         "margin_percentiles": [
-          -26.9,
-          -21.8,
-          -13.0,
-          -3.1,
-          6.6,
-          15.3,
-          21.0
+          -25.1,
+          -20.1,
+          -11.2,
+          -2.1,
+          7.5,
+          16.4,
+          21.2
         ]
       },
       "adjustments": {
@@ -3186,17 +3137,17 @@
         "diff": -82.5
       },
       "bayesian": {
-        "home_mu": 1458.9,
-        "home_sigma": 75.0,
-        "away_mu": 1602.0,
-        "away_sigma": 75.0,
+        "home_mu": 1441.0,
+        "home_sigma": 40.0,
+        "away_mu": 1549.8,
+        "away_sigma": 40.0,
         "home_band": [
-          1383.9,
-          1533.9
+          1401.0,
+          1481.0
         ],
         "away_band": [
-          1527.0,
-          1677.0
+          1509.8,
+          1589.8
         ]
       },
       "injuries": {
@@ -3412,7 +3363,7 @@
         "Travel penalty: away team travels 2371 miles",
         "Home field: TB +65 ELO home advantage"
       ],
-      "explanation": "The model gives San Francisco 49ers a 56.0% win probability \u2014 a slight favorite over Tampa Bay Buccaneers. The ELO gap is 143 points with home field adding approximately 65 ELO points. Travel distance 2371 miles factors into the away team rating."
+      "explanation": "The model gives San Francisco 49ers a 62.6% win probability \u2014 a moderate favorite over Tampa Bay Buccaneers. The ELO gap is 143 points with home field adding approximately 65 ELO points. Travel distance 2371 miles factors into the away team rating."
     },
     {
       "game_id": "401772923",
@@ -3430,13 +3381,13 @@
       "home_score": 30,
       "away_score": 17,
       "predictions": {
-        "ensemble_prob": 0.4256,
-        "logistic_prob": 0.3927,
+        "ensemble_prob": 0.4437,
+        "logistic_prob": 0.3596,
         "elo_prob": 0.3927,
-        "xgb_prob": null,
+        "xgb_prob": 0.5443,
         "pyth_prob": 0.5751,
         "eff_prob": 0.4357,
-        "bayesian_prob": 0.3802
+        "bayesian_prob": 0.4266
       },
       "market": {
         "home_prob": null,
@@ -3446,19 +3397,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.4784,
-        "exp_margin": -0.89,
-        "prob_7plus": 0.2984,
-        "prob_14plus": 0.1506,
-        "prob_21plus": 0.0683,
+        "win_prob": 0.4867,
+        "exp_margin": -0.45,
+        "prob_7plus": 0.3008,
+        "prob_14plus": 0.1552,
+        "prob_21plus": 0.0647,
         "margin_percentiles": [
-          -25.2,
-          -19.8,
-          -10.9,
-          -0.8,
+          -23.7,
+          -18.6,
+          -10.0,
+          -0.4,
           9.1,
-          17.7,
-          23.3
+          17.8,
+          22.9
         ]
       },
       "adjustments": {
@@ -3475,21 +3426,28 @@
         "diff": -75.7
       },
       "bayesian": {
-        "home_mu": 1441.3,
-        "home_sigma": 75.0,
-        "away_mu": 1527.0,
-        "away_sigma": 75.0,
+        "home_mu": 1460.3,
+        "home_sigma": 40.0,
+        "away_mu": 1535.8,
+        "away_sigma": 40.0,
         "home_band": [
-          1366.3,
-          1516.3
+          1420.3,
+          1500.3
         ],
         "away_band": [
-          1452.0,
-          1602.0
+          1495.8,
+          1575.8
         ]
       },
       "injuries": {
         "home": [
+          {
+            "player": "Travis Kelce",
+            "status": "Active",
+            "position": "TE",
+            "injury_description": "Kelce agreed to terms on a new contract with the Chiefs in early March and now officially re-ups with Kansas City, where he has spent his entire career since being selected by the team in the third round of the 2013 NFL Draft. The 36-year-old tight end has seen his production dip in recent years but nonetheless remains productive, having surpassed 800 receiving yards in both 2024 and 2025. His contract had previously been reported by Adam Schefter of ESPN as a one-year, $12 million deal worth up to $15 million, but Kelce and the Chiefs have instead negotiated a multi-year pact. As such, as long as Kelce opts to continue his playing career, he will be positioned to operate as a key cog on offense for QB Patrick Mahomes (knee).",
+            "value_tier": "starter"
+          },
           {
             "player": "Jack Cochrane",
             "status": "Active",
@@ -3516,13 +3474,6 @@
             "status": "Active",
             "position": "RB",
             "injury_description": "The Chiefs have parted ways with Isiah Pacheco and look unlikely to bring back Kareem Hunt, but Walker's expected to handle the bulk of the rushing workload after signing a three-year contract with the team, leaving Smith and the newly signed Demercado to compete for change-of-pace duties. Smith had 44 carries for 151 yards while adding 25 catches for 172 yards and a touchdown on 35 targets in 2025, showing some promising pass catching skills as a rookie seventh-round pick.",
-            "value_tier": "starter"
-          },
-          {
-            "player": "Drue Tranquill",
-            "status": "Active",
-            "position": "LB",
-            "injury_description": "The move helps Kansas City save $2.5 million in cap space, per Garafolo, who also said Tranquill could have been a cap casualty if not for this renegotiation. Tranquill finished with 103 tackles (55 solo), including 2.0 sacks, a pass breakup, a forced fumble and a fumble recovery in 2025.",
             "value_tier": "starter"
           }
         ],
@@ -3729,7 +3680,7 @@
         "Efficiency gap: KC net -0.277 vs DET net +0.273",
         "Home field: KC +65 ELO home advantage"
       ],
-      "explanation": "The model gives Detroit Lions a 57.4% win probability \u2014 a slight favorite over Kansas City Chiefs. The ELO gap is 86 points with home field adding approximately 65 ELO points."
+      "explanation": "The model gives Detroit Lions a 55.6% win probability \u2014 a slight favorite over Kansas City Chiefs. The ELO gap is 86 points with home field adding approximately 65 ELO points."
     },
     {
       "game_id": "401772815",
@@ -3747,13 +3698,13 @@
       "home_score": 24,
       "away_score": 14,
       "predictions": {
-        "ensemble_prob": 0.5191,
-        "logistic_prob": 0.5284,
+        "ensemble_prob": 0.3801,
+        "logistic_prob": 0.3596,
         "elo_prob": 0.5284,
-        "xgb_prob": null,
+        "xgb_prob": 0.1996,
         "pyth_prob": 0.4596,
         "eff_prob": 0.5276,
-        "bayesian_prob": 0.156
+        "bayesian_prob": 0.2356
       },
       "market": {
         "home_prob": null,
@@ -3763,19 +3714,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.4215,
-        "exp_margin": -2.8,
-        "prob_7plus": 0.2517,
-        "prob_14plus": 0.1243,
-        "prob_21plus": 0.0519,
+        "win_prob": 0.4515,
+        "exp_margin": -1.6,
+        "prob_7plus": 0.2692,
+        "prob_14plus": 0.1357,
+        "prob_21plus": 0.0546,
         "margin_percentiles": [
-          -26.8,
-          -21.5,
-          -12.6,
-          -2.9,
-          7.1,
-          15.9,
-          21.2
+          -25.0,
+          -19.7,
+          -10.9,
+          -1.7,
+          7.9,
+          16.4,
+          21.7
         ]
       },
       "adjustments": {
@@ -3792,17 +3743,17 @@
         "diff": 19.8
       },
       "bayesian": {
-        "home_mu": 1483.8,
-        "home_sigma": 75.0,
-        "away_mu": 1620.4,
-        "away_sigma": 75.0,
+        "home_mu": 1483.7,
+        "home_sigma": 40.0,
+        "away_mu": 1589.4,
+        "away_sigma": 40.0,
         "home_band": [
-          1408.8,
-          1558.8
+          1443.7,
+          1523.7
         ],
         "away_band": [
-          1545.4,
-          1695.4
+          1549.4,
+          1629.4
         ]
       },
       "injuries": {
@@ -3930,13 +3881,6 @@
             "value_tier": "starter"
           },
           {
-            "player": "Sam Roberts",
-            "position": "DT",
-            "status": "Questionable",
-            "elo_impact": 2.4,
-            "value_tier": "starter"
-          },
-          {
             "player": "Clark Phillips III",
             "position": "CB",
             "status": "Questionable",
@@ -3958,8 +3902,15 @@
             "value_tier": "starter"
           },
           {
-            "player": "DeAngelo Malone",
-            "position": "LB",
+            "player": "Mike Hughes",
+            "position": "CB",
+            "status": "Questionable",
+            "elo_impact": 2.4,
+            "value_tier": "starter"
+          },
+          {
+            "player": "DeMarcco Hellams",
+            "position": "S",
             "status": "Questionable",
             "elo_impact": 2.0,
             "value_tier": "starter"
@@ -4075,7 +4026,7 @@
         "Rest advantage: ATL has 8 extra days rest",
         "Home field: ATL +65 ELO home advantage"
       ],
-      "explanation": "The model gives Atlanta Falcons a 51.9% win probability \u2014 a slight favorite over Buffalo Bills. The ELO gap is 137 points with home field adding approximately 65 ELO points. Rest advantage favors ATL."
+      "explanation": "The model gives Buffalo Bills a 62.0% win probability \u2014 a moderate favorite over Atlanta Falcons. The ELO gap is 137 points with home field adding approximately 65 ELO points. Rest advantage favors ATL."
     },
     {
       "game_id": "401772717",
@@ -4093,13 +4044,13 @@
       "home_score": 24,
       "away_score": 25,
       "predictions": {
-        "ensemble_prob": 0.4303,
-        "logistic_prob": 0.3808,
+        "ensemble_prob": 0.3652,
+        "logistic_prob": 0.3596,
         "elo_prob": 0.3808,
-        "xgb_prob": null,
+        "xgb_prob": 0.1996,
         "pyth_prob": 0.4942,
         "eff_prob": 0.5529,
-        "bayesian_prob": 0.1187
+        "bayesian_prob": 0.1182
       },
       "market": {
         "home_prob": null,
@@ -4109,19 +4060,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.4109,
-        "exp_margin": -3.36,
-        "prob_7plus": 0.2377,
-        "prob_14plus": 0.1154,
-        "prob_21plus": 0.0468,
+        "win_prob": 0.434,
+        "exp_margin": -2.42,
+        "prob_7plus": 0.2551,
+        "prob_14plus": 0.1217,
+        "prob_21plus": 0.0491,
         "margin_percentiles": [
-          -27.9,
-          -22.5,
-          -13.0,
-          -3.1,
-          6.5,
-          15.2,
-          20.5
+          -25.9,
+          -20.7,
+          -11.9,
+          -2.3,
+          7.2,
+          15.8,
+          20.9
         ]
       },
       "adjustments": {
@@ -4138,17 +4089,17 @@
         "diff": -84.5
       },
       "bayesian": {
-        "home_mu": 1399.1,
-        "home_sigma": 75.0,
-        "away_mu": 1549.2,
-        "away_sigma": 75.0,
+        "home_mu": 1416.6,
+        "home_sigma": 40.0,
+        "away_mu": 1548.6,
+        "away_sigma": 40.0,
         "home_band": [
-          1324.1,
-          1474.1
+          1376.6,
+          1456.6
         ],
         "away_band": [
-          1474.2,
-          1624.2
+          1508.6,
+          1588.6
         ]
       },
       "injuries": {
@@ -4337,7 +4288,7 @@
         "Rest advantage: CHI has 7 extra days rest",
         "Home field: WAS +65 ELO home advantage"
       ],
-      "explanation": "The model gives Chicago Bears a 57.0% win probability \u2014 a slight favorite over Washington Commanders. The ELO gap is 150 points with home field adding approximately 65 ELO points. Rest advantage favors CHI."
+      "explanation": "The model gives Chicago Bears a 63.5% win probability \u2014 a moderate favorite over Washington Commanders. The ELO gap is 150 points with home field adding approximately 65 ELO points. Rest advantage favors CHI."
     },
     {
       "game_id": "401772941",
@@ -4355,13 +4306,13 @@
       "home_score": 33,
       "away_score": 31,
       "predictions": {
-        "ensemble_prob": 0.5126,
-        "logistic_prob": 0.4649,
+        "ensemble_prob": 0.4427,
+        "logistic_prob": 0.3596,
         "elo_prob": 0.4649,
-        "xgb_prob": null,
+        "xgb_prob": 0.3802,
         "pyth_prob": 0.5267,
         "eff_prob": 0.6623,
-        "bayesian_prob": 0.5222
+        "bayesian_prob": 0.905
       },
       "market": {
         "home_prob": null,
@@ -4371,19 +4322,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.4997,
-        "exp_margin": 0.14,
-        "prob_7plus": 0.3228,
-        "prob_14plus": 0.1768,
-        "prob_21plus": 0.0792,
+        "win_prob": 0.5841,
+        "exp_margin": 2.94,
+        "prob_7plus": 0.3856,
+        "prob_14plus": 0.2165,
+        "prob_21plus": 0.1022,
         "margin_percentiles": [
-          -23.9,
-          -18.7,
-          -9.9,
-          -0.0,
-          10.2,
-          19.0,
-          24.3
+          -20.6,
+          -15.1,
+          -6.6,
+          3.0,
+          12.6,
+          21.1,
+          26.4
         ]
       },
       "adjustments": {
@@ -4400,17 +4351,17 @@
         "diff": -24.4
       },
       "bayesian": {
-        "home_mu": 1434.6,
-        "home_sigma": 75.0,
-        "away_mu": 1495.9,
-        "away_sigma": 75.0,
+        "home_mu": 1479.9,
+        "home_sigma": 40.0,
+        "away_mu": 1470.8,
+        "away_sigma": 40.0,
         "home_band": [
-          1359.6,
-          1509.6
+          1439.9,
+          1519.9
         ],
         "away_band": [
-          1420.9,
-          1570.9
+          1430.8,
+          1510.8
         ]
       },
       "injuries": {
@@ -4591,7 +4542,7 @@
         "Efficiency gap: CIN net +0.255 vs PIT net -0.005",
         "Home field: CIN +65 ELO home advantage"
       ],
-      "explanation": "The model gives Cincinnati Bengals a 51.3% win probability \u2014 a slight favorite over Pittsburgh Steelers. The ELO gap is 61 points with home field adding approximately 65 ELO points."
+      "explanation": "The model gives Pittsburgh Steelers a 55.7% win probability \u2014 a slight favorite over Cincinnati Bengals. The ELO gap is 61 points with home field adding approximately 65 ELO points."
     },
     {
       "game_id": "401772635",
@@ -4609,13 +4560,13 @@
       "home_score": 7,
       "away_score": 35,
       "predictions": {
-        "ensemble_prob": 0.4674,
-        "logistic_prob": 0.4669,
+        "ensemble_prob": 0.4511,
+        "logistic_prob": 0.4516,
         "elo_prob": 0.4669,
-        "xgb_prob": null,
+        "xgb_prob": 0.424,
         "pyth_prob": 0.4833,
         "eff_prob": 0.4581,
-        "bayesian_prob": 0.346
+        "bayesian_prob": 0.753
       },
       "market": {
         "home_prob": null,
@@ -4625,19 +4576,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.4669,
-        "exp_margin": -1.25,
-        "prob_7plus": 0.2878,
-        "prob_14plus": 0.1493,
-        "prob_21plus": 0.0636,
+        "win_prob": 0.5504,
+        "exp_margin": 1.85,
+        "prob_7plus": 0.3598,
+        "prob_14plus": 0.1979,
+        "prob_21plus": 0.0872,
         "margin_percentiles": [
-          -25.5,
-          -20.0,
-          -11.2,
-          -1.2,
-          8.7,
-          17.6,
-          22.6
+          -21.6,
+          -16.3,
+          -7.7,
+          1.8,
+          11.5,
+          20.0,
+          24.9
         ]
       },
       "adjustments": {
@@ -4654,17 +4605,17 @@
         "diff": -23.0
       },
       "bayesian": {
-        "home_mu": 1628.5,
-        "home_sigma": 75.0,
-        "away_mu": 1655.5,
-        "away_sigma": 75.0,
+        "home_mu": 1672.7,
+        "home_sigma": 40.0,
+        "away_mu": 1634.0,
+        "away_sigma": 40.0,
         "home_band": [
-          1553.5,
-          1703.5
+          1632.7,
+          1712.7
         ],
         "away_band": [
-          1580.5,
-          1730.5
+          1594.0,
+          1674.0
         ]
       },
       "injuries": {
@@ -4707,6 +4658,13 @@
         ],
         "away": [
           {
+            "player": "Larrell Murchison",
+            "status": "Active",
+            "position": "DE",
+            "injury_description": "Murchison was cut by the Rams ahead of Week 18 back in January after he appeared in 16 regular-season games. The 28-year-old will provide depth on the defensive line after recording eight tackles (two solo), including 2.0 sacks, during the 2025 campaign.",
+            "value_tier": "starter"
+          },
+          {
             "player": "Grant Stuard",
             "status": "Active",
             "position": "LB",
@@ -4732,13 +4690,6 @@
             "status": "Active",
             "position": "CB",
             "injury_description": "McDuffie was sent to Los Angeles in a blockbuster trade that will become official this week, and the 25-year-old cornerback is due for a new deal as he heads into the final year of his rookie contract. He figures to command around $30 million per year on his new pact.",
-            "value_tier": "starter"
-          },
-          {
-            "player": "Kam Curl",
-            "status": "Active",
-            "position": "S",
-            "injury_description": "After beginning his career in Washington, Curl has spent each of the last two seasons with the Rams and proved to be an integral part of the team's secondary. Across 33 regular-season appearances in that span, the Arkansas product tallied 201 total tackles (most on the team), including 3.0 sacks, 14 passes defensed, including two interceptions, and three forced fumbles. Following his new deal, Curl is expected to continue making plays in a Rams secondary that just added All-Pro Trent McDuffie via trade on Mar. 4.",
             "value_tier": "starter"
           }
         ]
@@ -4837,7 +4788,7 @@
         "Efficiency gap: JAX net +0.037 vs LAR net +0.183",
         "Travel penalty: away team travels 2155 miles"
       ],
-      "explanation": "The model gives Los Angeles Rams a 53.3% win probability \u2014 a slight favorite over Jacksonville Jaguars. The ELO gap is 27 points at a neutral site. Travel distance 2155 miles factors into the away team rating."
+      "explanation": "The model gives Los Angeles Rams a 54.9% win probability \u2014 a slight favorite over Jacksonville Jaguars. The ELO gap is 27 points at a neutral site. Travel distance 2155 miles factors into the away team rating."
     },
     {
       "game_id": "401772861",
@@ -4855,13 +4806,13 @@
       "home_score": 26,
       "away_score": 14,
       "predictions": {
-        "ensemble_prob": 0.6871,
-        "logistic_prob": 0.6836,
+        "ensemble_prob": 0.7054,
+        "logistic_prob": 0.661,
         "elo_prob": 0.6836,
-        "xgb_prob": null,
+        "xgb_prob": 0.792,
         "pyth_prob": 0.6805,
         "eff_prob": 0.7028,
-        "bayesian_prob": 0.9834
+        "bayesian_prob": 0.9959
       },
       "market": {
         "home_prob": null,
@@ -4871,19 +4822,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6888,
-        "exp_margin": 7.13,
-        "prob_7plus": 0.5056,
-        "prob_14plus": 0.3226,
-        "prob_21plus": 0.1719,
+        "win_prob": 0.6625,
+        "exp_margin": 5.93,
+        "prob_7plus": 0.4718,
+        "prob_14plus": 0.2864,
+        "prob_21plus": 0.1415,
         "margin_percentiles": [
-          -17.0,
-          -11.8,
-          -2.7,
-          7.2,
-          17.1,
-          25.7,
-          31.1
+          -17.5,
+          -12.3,
+          -3.5,
+          6.0,
+          15.5,
+          24.2,
+          29.2
         ]
       },
       "adjustments": {
@@ -4900,17 +4851,17 @@
         "diff": 133.9
       },
       "bayesian": {
-        "home_mu": 1549.2,
-        "home_sigma": 75.0,
-        "away_mu": 1441.2,
-        "away_sigma": 75.0,
+        "home_mu": 1548.6,
+        "home_sigma": 40.0,
+        "away_mu": 1463.8,
+        "away_sigma": 40.0,
         "home_band": [
-          1474.2,
-          1624.2
+          1508.6,
+          1588.6
         ],
         "away_band": [
-          1366.2,
-          1516.2
+          1423.8,
+          1503.8
         ]
       },
       "injuries": {
@@ -5140,7 +5091,7 @@
         "Efficiency gap: CHI net +0.176 vs NO net -0.247",
         "Home field: CHI +65 ELO home advantage"
       ],
-      "explanation": "The model gives Chicago Bears a 68.7% win probability \u2014 a moderate favorite over New Orleans Saints. The ELO gap is 108 points with home field adding approximately 65 ELO points."
+      "explanation": "The model gives Chicago Bears a 70.5% win probability \u2014 a strong favorite over New Orleans Saints. The ELO gap is 108 points with home field adding approximately 65 ELO points."
     },
     {
       "game_id": "401772754",
@@ -5158,13 +5109,13 @@
       "home_score": 31,
       "away_score": 6,
       "predictions": {
-        "ensemble_prob": 0.542,
-        "logistic_prob": 0.5472,
-        "elo_prob": 0.5472,
-        "xgb_prob": null,
+        "ensemble_prob": 0.5182,
+        "logistic_prob": 0.4516,
+        "elo_prob": 0.5501,
+        "xgb_prob": 0.5791,
         "pyth_prob": 0.5603,
         "eff_prob": 0.5121,
-        "bayesian_prob": 0.7155
+        "bayesian_prob": 0.9803
       },
       "market": {
         "home_prob": null,
@@ -5174,19 +5125,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.5458,
-        "exp_margin": 1.67,
-        "prob_7plus": 0.3579,
-        "prob_14plus": 0.2072,
-        "prob_21plus": 0.0966,
+        "win_prob": 0.6243,
+        "exp_margin": 4.48,
+        "prob_7plus": 0.428,
+        "prob_14plus": 0.2534,
+        "prob_21plus": 0.1272,
         "margin_percentiles": [
-          -22.7,
-          -17.4,
-          -8.5,
-          1.7,
-          11.8,
-          20.7,
-          25.8
+          -19.1,
+          -13.9,
+          -5.0,
+          4.5,
+          14.2,
+          23.0,
+          27.9
         ]
       },
       "adjustments": {
@@ -5200,24 +5151,31 @@
       "elo": {
         "home": 1412.4,
         "away": 1438.2,
-        "diff": 32.9
+        "diff": 34.9
       },
       "bayesian": {
-        "home_mu": 1412.4,
-        "home_sigma": 75.0,
-        "away_mu": 1438.2,
-        "away_sigma": 75.0,
+        "home_mu": 1432.7,
+        "home_sigma": 40.0,
+        "away_mu": 1381.2,
+        "away_sigma": 40.0,
         "home_band": [
-          1337.4,
-          1487.4
+          1392.7,
+          1472.7
         ],
         "away_band": [
-          1363.2,
-          1513.2
+          1341.2,
+          1421.2
         ]
       },
       "injuries": {
         "home": [
+          {
+            "player": "Blake Whiteheart",
+            "status": "Active",
+            "position": "TE",
+            "injury_description": "Whiteheart wasn't tendered by Cleveland by the early March deadline, but he's now re-upped with the team. While suiting up for all 17 regular-season contests with the team in 2025, Whiteheart contributed on special teams and as a blocker on offense. He stands to reprise a similar depth role during the 2026 campaign.",
+            "value_tier": "starter"
+          },
           {
             "player": "Daniel Thomas",
             "status": "Active",
@@ -5244,13 +5202,6 @@
             "status": "Active",
             "position": "CB",
             "injury_description": "Ross opened the 2025 season on the Texans' practice squad and appeared in three games before being signed to the Browns' active roster in mid-November. He appeared in seven regular-season games for Cleveland and logged nine tackles (five solo) and two pass defenses while mostly serving on special teams. Ross will likely see most of his playing time on special teams in 2026, but his presence gives the Browns depth in the secondary.",
-            "value_tier": "starter"
-          },
-          {
-            "player": "Elgton Jenkins",
-            "status": "Questionable",
-            "position": "C",
-            "injury_description": "Jenkins spent the first seven years of his NFL career in Green Bay, where he was named to the NFC Pro Bowl roster in 2020 and 2022. He started in each of the Packers' first nine games of the 2025 regular season before fracturing his leg against the Eagles in Week 10. Jenkins relayed Friday that he is on pace with his recovery and hopes to be fully healthy for the start of the 2026 season.",
             "value_tier": "starter"
           }
         ],
@@ -5293,9 +5244,9 @@
         ]
       },
       "injury_impact": {
-        "home_elo_penalty": 11.2,
+        "home_elo_penalty": 9.2,
         "away_elo_penalty": 0.0,
-        "home_impact_score": 0.1018,
+        "home_impact_score": 0.0836,
         "away_impact_score": 0.0,
         "home_key_players_out": [
           {
@@ -5332,13 +5283,6 @@
             "status": "Questionable",
             "elo_impact": 2.0,
             "value_tier": "starter"
-          },
-          {
-            "player": "Carson Schwesinger",
-            "position": "LB",
-            "status": "Questionable",
-            "elo_impact": 2.0,
-            "value_tier": "starter"
           }
         ],
         "away_key_players_out": [],
@@ -5354,7 +5298,7 @@
         "Efficiency gap: CLE net -0.327 vs MIA net -0.043",
         "Home field: CLE +65 ELO home advantage"
       ],
-      "explanation": "The model gives Cleveland Browns a 54.2% win probability \u2014 a slight favorite over Miami Dolphins. The ELO gap is 26 points with home field adding approximately 65 ELO points. Travel distance 1075 miles factors into the away team rating."
+      "explanation": "The model gives Cleveland Browns a 51.8% win probability \u2014 a slight favorite over Miami Dolphins. The ELO gap is 26 points with home field adding approximately 65 ELO points. Travel distance 1075 miles factors into the away team rating."
     },
     {
       "game_id": "401772755",
@@ -5372,13 +5316,13 @@
       "home_score": 13,
       "away_score": 31,
       "predictions": {
-        "ensemble_prob": 0.2726,
-        "logistic_prob": 0.1788,
-        "elo_prob": 0.1788,
-        "xgb_prob": null,
+        "ensemble_prob": 0.3176,
+        "logistic_prob": 0.3596,
+        "elo_prob": 0.1738,
+        "xgb_prob": 0.2027,
         "pyth_prob": 0.3112,
         "eff_prob": 0.5592,
-        "bayesian_prob": 0.0015
+        "bayesian_prob": 0.0006
       },
       "market": {
         "home_prob": null,
@@ -5388,19 +5332,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.2298,
-        "exp_margin": -11.07,
-        "prob_7plus": 0.1105,
-        "prob_14plus": 0.0434,
-        "prob_21plus": 0.0129,
+        "win_prob": 0.3007,
+        "exp_margin": -7.11,
+        "prob_7plus": 0.1602,
+        "prob_14plus": 0.0698,
+        "prob_21plus": 0.0245,
         "margin_percentiles": [
-          -35.6,
-          -29.7,
-          -20.8,
-          -11.1,
-          -1.1,
-          7.7,
-          13.1
+          -30.4,
+          -25.3,
+          -16.6,
+          -7.2,
+          2.2,
+          11.3,
+          16.2
         ]
       },
       "adjustments": {
@@ -5414,20 +5358,20 @@
       "elo": {
         "home": 1329.9,
         "away": 1671.9,
-        "diff": -264.8
+        "diff": -270.8
       },
       "bayesian": {
-        "home_mu": 1329.9,
-        "home_sigma": 75.0,
-        "away_mu": 1671.9,
-        "away_sigma": 75.0,
+        "home_mu": 1393.8,
+        "home_sigma": 40.0,
+        "away_mu": 1641.2,
+        "away_sigma": 40.0,
         "home_band": [
-          1254.9,
-          1404.9
+          1353.8,
+          1433.8
         ],
         "away_band": [
-          1596.9,
-          1746.9
+          1601.2,
+          1681.2
         ]
       },
       "injuries": {
@@ -5470,6 +5414,27 @@
         ],
         "away": [
           {
+            "player": "James Hudson III",
+            "status": "Active",
+            "position": "OT",
+            "injury_description": "Hudson was released by the Giants earlier this month and won't have to travel far to join his new team. The 26-year-old appeared in 11 regular-season games last season, making two starts, but has been a liability when pressed into starter snaps. Hudson will go into New England as a backup this offseason.",
+            "value_tier": "starter"
+          },
+          {
+            "player": "Tommy DeVito",
+            "status": "Active",
+            "position": "QB",
+            "injury_description": "DeVito, who worked as New England's No. 3 signal-caller last season behind Dobbs and starter Drake Maye, signed a two-year deal to remain with the team earlier this month. Per Reiss, the base value of DeVito's new contract is $4.4 million and includes incentives that could increase its value to $7.4 million. Though the 27-year-old didn't see any regular-season action in 2025, he did log a total of eight starts during his two seasons (2023 and 2024) with the Giants. With Dobbs no longer in the mix, look for the Patriots to add QB depth as the offseason progresses, possibly via next month's draft.",
+            "value_tier": "starter"
+          },
+          {
+            "player": "Kindle Vildor",
+            "status": "Active",
+            "position": "CB",
+            "injury_description": "Vildor, who entered the NFL as a fifth-round pick by the Bears, recorded 16 tackles and a pick in 12 regular-season games with the Buccaneers in 2025. In joining the Patriots, the 28-year-old will reunite with head coach Mike Vrabel, who Vildor worked with in 2023 while both were with the Titans. In his latest locale, the 5-foot-11, 189-pounder will offer cornerback depth and special teams experience.",
+            "value_tier": "starter"
+          },
+          {
             "player": "Alijah Vera-Tucker",
             "status": "Questionable",
             "position": "G",
@@ -5482,35 +5447,14 @@
             "position": "S",
             "injury_description": "Brown appeared in nine regular-season games for the Titans in 2025 and had two stints on injured reserve due to knee and ankle injuries. He served almost exclusively on special teams and logged three solo tackles for Tennessee last year. Brown's addition gives the Patriots added depth in the secondary and another contributor on special teams.",
             "value_tier": "starter"
-          },
-          {
-            "player": "Julian Hill",
-            "status": "Active",
-            "position": "TE",
-            "injury_description": "Hill fits with New England as a depth option and blocker behind starting tight end Hunter Henry, a role opened up by the departure of Austin Hooper to Atlanta. Regardless of the change of scenery, Hill's realistic realm of outcomes for 2026 likely doesn't include attaining fantasy relevance, as across 14 regular-season appearances with the Dolphins in 2025 he managed only 150 receiving yards (a career high). That said, at 6-foot-4, 251 pounds, Hill could emerge as an option for quarterback Drake Maye in the red zone.",
-            "value_tier": "starter"
-          },
-          {
-            "player": "K.J. Britt",
-            "status": "Active",
-            "position": "LB",
-            "injury_description": "Britt heads to a division rival after his one-year stint with the Dolphins. He handled a depth role across 17 regular-season appearances in 2025, totaling 35 tackles (12 solo). He projects to handle a similar rotational role in New England, while also potentially acting as a significant contributor on special teams.",
-            "value_tier": "starter"
-          },
-          {
-            "player": "Romeo Doubs",
-            "status": "Active",
-            "position": "WR",
-            "injury_description": "The initial report has it as a four-year deal for \"roughly\" $70 million. In fantasy terms, this is about as good as it gets, with Doubs joining a receiver-needy offense that already has a franchise QB in place in Drake Maye. Doubs averaged 50.5 catches for 606 yards and 5.3 TDs on 80.0 targets in four seasons with Green Bay. The contract and situation in New England hint at some degree of upside for additional target volume, but it's also possible he doesn't have much more to offer. If nothing else, he's a competent starter at a clear position of need, entering what should be his prime -- Doubs will turn 26 in April.",
-            "value_tier": "starter"
           }
         ]
       },
       "injury_impact": {
         "home_elo_penalty": 3.2,
-        "away_elo_penalty": 22.4,
+        "away_elo_penalty": 16.4,
         "home_impact_score": 0.0291,
-        "away_impact_score": 0.2036,
+        "away_impact_score": 0.1491,
         "home_key_players_out": [
           {
             "player": "Calvin Ridley",
@@ -5569,20 +5513,6 @@
             "status": "Questionable",
             "elo_impact": 2.4,
             "value_tier": "starter"
-          },
-          {
-            "player": "Yasir Durant",
-            "position": "OT",
-            "status": "Questionable",
-            "elo_impact": 3.6,
-            "value_tier": "starter"
-          },
-          {
-            "player": "Marcellas Dial Jr.",
-            "position": "CB",
-            "status": "Questionable",
-            "elo_impact": 2.4,
-            "value_tier": "starter"
           }
         ],
         "home_star_count": 0,
@@ -5599,7 +5529,7 @@
         "Efficiency gap: TEN net -0.099 vs NE net +0.019",
         "Home field: TEN +65 ELO home advantage"
       ],
-      "explanation": "The model gives New England Patriots a 72.7% win probability \u2014 a strong favorite over Tennessee Titans. The ELO gap is 342 points with home field adding approximately 65 ELO points."
+      "explanation": "The model gives New England Patriots a 68.2% win probability \u2014 a moderate favorite over Tennessee Titans. The ELO gap is 342 points with home field adding approximately 65 ELO points."
     },
     {
       "game_id": "401772753",
@@ -5617,13 +5547,13 @@
       "home_score": 31,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.686,
-        "logistic_prob": 0.6961,
+        "ensemble_prob": 0.8332,
+        "logistic_prob": 1.0,
         "elo_prob": 0.6961,
-        "xgb_prob": null,
+        "xgb_prob": 0.8492,
         "pyth_prob": 0.7681,
         "eff_prob": 0.5979,
-        "bayesian_prob": 0.9906
+        "bayesian_prob": 0.9996
       },
       "market": {
         "home_prob": null,
@@ -5633,19 +5563,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.7054,
-        "exp_margin": 7.75,
-        "prob_7plus": 0.5181,
-        "prob_14plus": 0.3317,
-        "prob_21plus": 0.1842,
+        "win_prob": 0.6968,
+        "exp_margin": 7.74,
+        "prob_7plus": 0.5138,
+        "prob_14plus": 0.3352,
+        "prob_21plus": 0.1803,
         "margin_percentiles": [
-          -16.1,
-          -11.0,
-          -1.9,
-          7.7,
-          17.4,
+          -15.3,
+          -10.4,
+          -2.2,
+          7.6,
+          17.5,
           26.5,
-          31.8
+          31.3
         ]
       },
       "adjustments": {
@@ -5662,21 +5592,28 @@
         "diff": 144.0
       },
       "bayesian": {
-        "home_mu": 1441.3,
-        "home_sigma": 75.0,
-        "away_mu": 1308.5,
-        "away_sigma": 75.0,
+        "home_mu": 1460.3,
+        "home_sigma": 40.0,
+        "away_mu": 1333.6,
+        "away_sigma": 40.0,
         "home_band": [
-          1366.3,
-          1516.3
+          1420.3,
+          1500.3
         ],
         "away_band": [
-          1233.5,
-          1383.5
+          1293.6,
+          1373.6
         ]
       },
       "injuries": {
         "home": [
+          {
+            "player": "Travis Kelce",
+            "status": "Active",
+            "position": "TE",
+            "injury_description": "Kelce agreed to terms on a new contract with the Chiefs in early March and now officially re-ups with Kansas City, where he has spent his entire career since being selected by the team in the third round of the 2013 NFL Draft. The 36-year-old tight end has seen his production dip in recent years but nonetheless remains productive, having surpassed 800 receiving yards in both 2024 and 2025. His contract had previously been reported by Adam Schefter of ESPN as a one-year, $12 million deal worth up to $15 million, but Kelce and the Chiefs have instead negotiated a multi-year pact. As such, as long as Kelce opts to continue his playing career, he will be positioned to operate as a key cog on offense for QB Patrick Mahomes (knee).",
+            "value_tier": "starter"
+          },
           {
             "player": "Jack Cochrane",
             "status": "Active",
@@ -5703,13 +5640,6 @@
             "status": "Active",
             "position": "RB",
             "injury_description": "The Chiefs have parted ways with Isiah Pacheco and look unlikely to bring back Kareem Hunt, but Walker's expected to handle the bulk of the rushing workload after signing a three-year contract with the team, leaving Smith and the newly signed Demercado to compete for change-of-pace duties. Smith had 44 carries for 151 yards while adding 25 catches for 172 yards and a touchdown on 35 targets in 2025, showing some promising pass catching skills as a rookie seventh-round pick.",
-            "value_tier": "starter"
-          },
-          {
-            "player": "Drue Tranquill",
-            "status": "Active",
-            "position": "LB",
-            "injury_description": "The move helps Kansas City save $2.5 million in cap space, per Garafolo, who also said Tranquill could have been a cap casualty if not for this renegotiation. Tranquill finished with 103 tackles (55 solo), including 2.0 sacks, a pass breakup, a forced fumble and a fumble recovery in 2025.",
             "value_tier": "starter"
           }
         ],
@@ -5901,7 +5831,7 @@
         "Jordan Meredith (LV) [Starter] QUESTIONABLE \u2014 \u22121 ELO",
         "Home field: KC +65 ELO home advantage"
       ],
-      "explanation": "The model gives Kansas City Chiefs a 68.6% win probability \u2014 a moderate favorite over Las Vegas Raiders. The ELO gap is 133 points with home field adding approximately 65 ELO points. Travel distance 1152 miles factors into the away team rating."
+      "explanation": "The model gives Kansas City Chiefs a 83.3% win probability \u2014 a strong favorite over Las Vegas Raiders. The ELO gap is 133 points with home field adding approximately 65 ELO points. Travel distance 1152 miles factors into the away team rating."
     },
     {
       "game_id": "401772862",
@@ -5919,13 +5849,13 @@
       "home_score": 22,
       "away_score": 28,
       "predictions": {
-        "ensemble_prob": 0.6472,
-        "logistic_prob": 0.6876,
+        "ensemble_prob": 0.4949,
+        "logistic_prob": 0.4516,
         "elo_prob": 0.6876,
-        "xgb_prob": null,
+        "xgb_prob": 0.3682,
         "pyth_prob": 0.5525,
         "eff_prob": 0.5757,
-        "bayesian_prob": 0.8538
+        "bayesian_prob": 0.9488
       },
       "market": {
         "home_prob": null,
@@ -5935,19 +5865,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.581,
-        "exp_margin": 2.95,
-        "prob_7plus": 0.3896,
-        "prob_14plus": 0.2217,
-        "prob_21plus": 0.1069,
+        "win_prob": 0.6032,
+        "exp_margin": 3.79,
+        "prob_7plus": 0.4106,
+        "prob_14plus": 0.2361,
+        "prob_21plus": 0.1133,
         "margin_percentiles": [
-          -20.7,
-          -15.3,
-          -7.0,
-          3.1,
-          12.6,
-          21.6,
-          26.8
+          -19.5,
+          -14.5,
+          -5.7,
+          3.7,
+          13.3,
+          22.0,
+          26.9
         ]
       },
       "adjustments": {
@@ -5964,17 +5894,17 @@
         "diff": 137.1
       },
       "bayesian": {
-        "home_mu": 1535.6,
-        "home_sigma": 75.0,
-        "away_mu": 1525.8,
-        "away_sigma": 75.0,
+        "home_mu": 1549.1,
+        "home_sigma": 40.0,
+        "away_mu": 1521.7,
+        "away_sigma": 40.0,
         "home_band": [
-          1460.6,
-          1610.6
+          1509.1,
+          1589.1
         ],
         "away_band": [
-          1450.8,
-          1600.8
+          1481.7,
+          1561.7
         ]
       },
       "injuries": {
@@ -6161,7 +6091,7 @@
         "Rest advantage: MIN has 5 extra days rest",
         "Home field: MIN +65 ELO home advantage"
       ],
-      "explanation": "The model gives Minnesota Vikings a 64.7% win probability \u2014 a moderate favorite over Philadelphia Eagles. The ELO gap is 10 points with home field adding approximately 65 ELO points. Rest advantage favors MIN."
+      "explanation": "The model gives Philadelphia Eagles a 50.5% win probability \u2014 a slight favorite over Minnesota Vikings. The ELO gap is 10 points with home field adding approximately 65 ELO points. Rest advantage favors MIN."
     },
     {
       "game_id": "401772860",
@@ -6179,13 +6109,13 @@
       "home_score": 6,
       "away_score": 13,
       "predictions": {
-        "ensemble_prob": 0.47,
-        "logistic_prob": 0.4083,
-        "elo_prob": 0.4083,
-        "xgb_prob": null,
+        "ensemble_prob": 0.3882,
+        "logistic_prob": 0.3596,
+        "elo_prob": 0.405,
+        "xgb_prob": 0.2132,
         "pyth_prob": 0.5035,
         "eff_prob": 0.6532,
-        "bayesian_prob": 0.2068
+        "bayesian_prob": 0.0047
       },
       "market": {
         "home_prob": null,
@@ -6195,19 +6125,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.4381,
-        "exp_margin": -2.25,
-        "prob_7plus": 0.2628,
-        "prob_14plus": 0.1318,
-        "prob_21plus": 0.0547,
+        "win_prob": 0.3383,
+        "exp_margin": -5.85,
+        "prob_7plus": 0.1755,
+        "prob_14plus": 0.0771,
+        "prob_21plus": 0.0256,
         "margin_percentiles": [
-          -26.0,
-          -20.7,
-          -12.0,
-          -2.4,
-          7.6,
-          16.5,
-          21.6
+          -28.8,
+          -23.6,
+          -15.3,
+          -5.8,
+          3.5,
+          11.8,
+          17.1
         ]
       },
       "adjustments": {
@@ -6221,20 +6151,20 @@
       "elo": {
         "home": 1316.0,
         "away": 1438.1,
-        "diff": -64.4
+        "diff": -66.8
       },
       "bayesian": {
-        "home_mu": 1316.0,
-        "home_sigma": 75.0,
-        "away_mu": 1438.1,
-        "away_sigma": 75.0,
+        "home_mu": 1253.7,
+        "home_sigma": 40.0,
+        "away_mu": 1465.6,
+        "away_sigma": 40.0,
         "home_band": [
-          1241.0,
-          1391.0
+          1213.7,
+          1293.7
         ],
         "away_band": [
-          1363.1,
-          1513.1
+          1425.6,
+          1505.6
         ]
       },
       "injuries": {
@@ -6277,6 +6207,13 @@
         ],
         "away": [
           {
+            "player": "Feleipe Franks",
+            "status": "Active",
+            "position": "TE",
+            "injury_description": "It's a homecoming for Franks after he spent the 2024 season with Carolina before spending the 2025 campaign with the Falcons. A special-teams stalwart, Franks appeared in all 17 regular-season contests last season, recording 11 tackles (eight solo) on 299 snaps in kick coverage.",
+            "value_tier": "starter"
+          },
+          {
             "player": "Sam Martin",
             "status": "Active",
             "position": "P",
@@ -6303,21 +6240,14 @@
             "position": "OT",
             "injury_description": "Walker has started 48 games across the last three regular seasons and operated as the Packers' left tackle during the 2025 campaign, playing all 1,057 of his offensive snaps at the position. He gives the Panthers a capable option should Ikem Ekwonu (knee) not be recovered from a torn patellar tendon that he suffered in Carolina's wild-card loss to the Rams in January.",
             "value_tier": "starter"
-          },
-          {
-            "player": "Claudin Cherelus",
-            "status": "Active",
-            "position": "LB",
-            "injury_description": "The 27-year-old has appeared in 27 regular-season games (six starts) for the Panthers over the last two seasons, recording 60 total tackles and one pass defensed. Following his new deal with Carolina, Cherelus is expected to operate as one of the team's top reserve inside linebackers during the 2026 season.",
-            "value_tier": "starter"
           }
         ]
       },
       "injury_impact": {
         "home_elo_penalty": 14.8,
-        "away_elo_penalty": 8.4,
+        "away_elo_penalty": 6.0,
         "home_impact_score": 0.1345,
-        "away_impact_score": 0.0764,
+        "away_impact_score": 0.0545,
         "home_key_players_out": [
           {
             "player": "Andre Cisco",
@@ -6383,13 +6313,6 @@
             "status": "Questionable",
             "elo_impact": 2.0,
             "value_tier": "starter"
-          },
-          {
-            "player": "Corey Thornton",
-            "position": "CB",
-            "status": "Questionable",
-            "elo_impact": 2.4,
-            "value_tier": "starter"
           }
         ],
         "home_star_count": 0,
@@ -6408,7 +6331,7 @@
         "Efficiency gap: NYJ net -0.018 vs CAR net -0.242",
         "Home field: NYJ +65 ELO home advantage"
       ],
-      "explanation": "The model gives Carolina Panthers a 53.0% win probability \u2014 a slight favorite over New York Jets. The ELO gap is 122 points with home field adding approximately 65 ELO points."
+      "explanation": "The model gives Carolina Panthers a 61.2% win probability \u2014 a moderate favorite over New York Jets. The ELO gap is 122 points with home field adding approximately 65 ELO points."
     },
     {
       "game_id": "401772757",
@@ -6426,13 +6349,13 @@
       "home_score": 33,
       "away_score": 32,
       "predictions": {
-        "ensemble_prob": 0.7506,
-        "logistic_prob": 0.833,
+        "ensemble_prob": 0.8298,
+        "logistic_prob": 1.0,
         "elo_prob": 0.833,
-        "xgb_prob": null,
+        "xgb_prob": 0.8337,
         "pyth_prob": 0.7114,
         "eff_prob": 0.5022,
-        "bayesian_prob": 0.9989
+        "bayesian_prob": 0.9997
       },
       "market": {
         "home_prob": null,
@@ -6442,19 +6365,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.7885,
-        "exp_margin": 11.66,
-        "prob_7plus": 0.6248,
-        "prob_14plus": 0.4387,
-        "prob_21plus": 0.2594,
+        "win_prob": 0.7014,
+        "exp_margin": 7.51,
+        "prob_7plus": 0.5163,
+        "prob_14plus": 0.3247,
+        "prob_21plus": 0.17,
         "margin_percentiles": [
-          -12.5,
-          -7.1,
-          1.9,
-          11.6,
-          21.4,
-          30.5,
-          36.0
+          -15.4,
+          -10.5,
+          -2.3,
+          7.6,
+          17.0,
+          25.6,
+          30.3
         ]
       },
       "adjustments": {
@@ -6471,17 +6394,17 @@
         "diff": 279.1
       },
       "bayesian": {
-        "home_mu": 1633.9,
-        "home_sigma": 75.0,
-        "away_mu": 1408.9,
-        "away_sigma": 75.0,
+        "home_mu": 1597.9,
+        "home_sigma": 40.0,
+        "away_mu": 1471.1,
+        "away_sigma": 40.0,
         "home_band": [
-          1558.9,
-          1708.9
+          1557.9,
+          1637.9
         ],
         "away_band": [
-          1333.9,
-          1483.9
+          1431.1,
+          1511.1
         ]
       },
       "injuries": {
@@ -6633,7 +6556,7 @@
         "Travel penalty: away team travels 1628 miles",
         "Home field: DEN +65 ELO home advantage"
       ],
-      "explanation": "The model gives Denver Broncos a 75.1% win probability \u2014 a strong favorite over New York Giants. The ELO gap is 225 points with home field adding approximately 65 ELO points. Travel distance 1628 miles factors into the away team rating."
+      "explanation": "The model gives Denver Broncos a 83.0% win probability \u2014 a strong favorite over New York Giants. The ELO gap is 225 points with home field adding approximately 65 ELO points. Travel distance 1628 miles factors into the away team rating."
     },
     {
       "game_id": "401772756",
@@ -6651,13 +6574,13 @@
       "home_score": 24,
       "away_score": 38,
       "predictions": {
-        "ensemble_prob": 0.6593,
-        "logistic_prob": 0.7342,
+        "ensemble_prob": 0.6195,
+        "logistic_prob": 0.661,
         "elo_prob": 0.7342,
-        "xgb_prob": null,
+        "xgb_prob": 0.6028,
         "pyth_prob": 0.5781,
         "eff_prob": 0.4637,
-        "bayesian_prob": 0.9462
+        "bayesian_prob": 0.7842
       },
       "market": {
         "home_prob": null,
@@ -6667,19 +6590,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.637,
-        "exp_margin": 5.16,
-        "prob_7plus": 0.4534,
-        "prob_14plus": 0.2751,
-        "prob_21plus": 0.1392,
+        "win_prob": 0.5473,
+        "exp_margin": 1.87,
+        "prob_7plus": 0.3566,
+        "prob_14plus": 0.1927,
+        "prob_21plus": 0.0865,
         "margin_percentiles": [
-          -19.0,
-          -13.6,
-          -4.9,
-          5.3,
-          15.1,
-          24.0,
-          29.3
+          -21.4,
+          -16.3,
+          -7.7,
+          1.8,
+          11.4,
+          19.9,
+          25.0
         ]
       },
       "adjustments": {
@@ -6696,17 +6619,17 @@
         "diff": 176.5
       },
       "bayesian": {
-        "home_mu": 1535.6,
-        "home_sigma": 75.0,
-        "away_mu": 1478.9,
-        "away_sigma": 75.0,
+        "home_mu": 1506.3,
+        "home_sigma": 40.0,
+        "away_mu": 1526.9,
+        "away_sigma": 40.0,
         "home_band": [
-          1460.6,
-          1610.6
+          1466.3,
+          1546.3
         ],
         "away_band": [
-          1403.9,
-          1553.9
+          1486.9,
+          1566.9
         ]
       },
       "injuries": {
@@ -6895,7 +6818,7 @@
         "Travel penalty: away team travels 1815 miles",
         "Home field: LAC +65 ELO home advantage"
       ],
-      "explanation": "The model gives Los Angeles Chargers a 65.9% win probability \u2014 a moderate favorite over Indianapolis Colts. The ELO gap is 57 points with home field adding approximately 65 ELO points. Travel distance 1815 miles factors into the away team rating."
+      "explanation": "The model gives Los Angeles Chargers a 62.0% win probability \u2014 a moderate favorite over Indianapolis Colts. The ELO gap is 57 points with home field adding approximately 65 ELO points. Travel distance 1815 miles factors into the away team rating."
     },
     {
       "game_id": "401772864",
@@ -6913,13 +6836,13 @@
       "home_score": 44,
       "away_score": 22,
       "predictions": {
-        "ensemble_prob": 0.6537,
-        "logistic_prob": 0.6351,
-        "elo_prob": 0.6351,
-        "xgb_prob": null,
+        "ensemble_prob": 0.6646,
+        "logistic_prob": 0.661,
+        "elo_prob": 0.6367,
+        "xgb_prob": 0.66,
         "pyth_prob": 0.6406,
         "eff_prob": 0.7245,
-        "bayesian_prob": 0.9264
+        "bayesian_prob": 0.8616
       },
       "market": {
         "home_prob": null,
@@ -6929,19 +6852,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6178,
-        "exp_margin": 4.36,
-        "prob_7plus": 0.4281,
-        "prob_14plus": 0.2539,
-        "prob_21plus": 0.1288,
+        "win_prob": 0.5655,
+        "exp_margin": 2.57,
+        "prob_7plus": 0.3737,
+        "prob_14plus": 0.212,
+        "prob_21plus": 0.0983,
         "margin_percentiles": [
-          -20.0,
-          -14.4,
-          -5.4,
-          4.4,
-          14.2,
-          23.2,
-          28.2
+          -20.9,
+          -15.6,
+          -7.2,
+          2.4,
+          12.1,
+          20.9,
+          26.2
         ]
       },
       "adjustments": {
@@ -6955,24 +6878,31 @@
       "elo": {
         "home": 1441.6,
         "away": 1399.1,
-        "diff": 96.2
+        "diff": 97.4
       },
       "bayesian": {
-        "home_mu": 1441.6,
-        "home_sigma": 75.0,
-        "away_mu": 1399.1,
-        "away_sigma": 75.0,
+        "home_mu": 1413.1,
+        "home_sigma": 40.0,
+        "away_mu": 1416.6,
+        "away_sigma": 40.0,
         "home_band": [
-          1366.6,
-          1516.6
+          1373.1,
+          1453.1
         ],
         "away_band": [
-          1324.1,
-          1474.1
+          1376.6,
+          1456.6
         ]
       },
       "injuries": {
         "home": [
+          {
+            "player": "Corey Ballentine",
+            "status": "Active",
+            "position": "CB",
+            "injury_description": "Ballentine spent last summer with the Packers but was cut ahead of Week 1 and signed with New England, spending most of September with the team. He then signed with Dallas, where he spent much of the 2025 campaign on the practice squad. Ballentine will compete for a job this offseason.",
+            "value_tier": "starter"
+          },
           {
             "player": "T.J. Bass",
             "status": "Active",
@@ -6999,13 +6929,6 @@
             "status": "Active",
             "position": "CB",
             "injury_description": "Durant appeared in all 17 regular-season games for the Rams last season, making 15 starts, and finished with 40 tackles (30 solo) and seven pass breakups, including three interceptions, one of which was returned for a touchdown. Durant will compete for cornerback snaps alongside Shavon Revel (concussion), Caelen Carson and Trikweze Bridges opposite DaRon Bland (foot).",
-            "value_tier": "starter"
-          },
-          {
-            "player": "Matt Hennessy",
-            "status": "Active",
-            "position": "C",
-            "injury_description": "Hennessy appeared in all 17 regular-season games for the 49ers last season, making a pair of starts. The veteran interior offensive lineman has made 64 career regular-season appearances, including 24 starts, and will likely fill a similar role in Dallas.",
             "value_tier": "starter"
           }
         ],
@@ -7048,9 +6971,9 @@
         ]
       },
       "injury_impact": {
-        "home_elo_penalty": 24.4,
+        "home_elo_penalty": 23.2,
         "away_elo_penalty": 8.2,
-        "home_impact_score": 0.2218,
+        "home_impact_score": 0.2109,
         "away_impact_score": 0.0745,
         "home_key_players_out": [
           {
@@ -7083,13 +7006,6 @@
           },
           {
             "player": "Trevor Keegan",
-            "position": "G",
-            "status": "Questionable",
-            "elo_impact": 1.2,
-            "value_tier": "starter"
-          },
-          {
-            "player": "Rob Jones",
             "position": "G",
             "status": "Questionable",
             "elo_impact": 1.2,
@@ -7162,7 +7078,7 @@
         "Efficiency gap: DAL net +0.550 vs WAS net +0.035",
         "Home field: DAL +65 ELO home advantage"
       ],
-      "explanation": "The model gives Dallas Cowboys a 65.4% win probability \u2014 a moderate favorite over Washington Commanders. The ELO gap is 42 points with home field adding approximately 65 ELO points. Travel distance 1209 miles factors into the away team rating."
+      "explanation": "The model gives Dallas Cowboys a 66.5% win probability \u2014 a moderate favorite over Washington Commanders. The ELO gap is 42 points with home field adding approximately 65 ELO points. Travel distance 1209 miles factors into the away team rating."
     },
     {
       "game_id": "401772863",
@@ -7180,13 +7096,13 @@
       "home_score": 23,
       "away_score": 27,
       "predictions": {
-        "ensemble_prob": 0.4567,
-        "logistic_prob": 0.4092,
+        "ensemble_prob": 0.3755,
+        "logistic_prob": 0.3596,
         "elo_prob": 0.4092,
-        "xgb_prob": null,
+        "xgb_prob": 0.2016,
         "pyth_prob": 0.4619,
         "eff_prob": 0.6114,
-        "bayesian_prob": 0.1126
+        "bayesian_prob": 0.2387
       },
       "market": {
         "home_prob": null,
@@ -7196,19 +7112,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.4039,
-        "exp_margin": -3.34,
-        "prob_7plus": 0.2389,
-        "prob_14plus": 0.1146,
-        "prob_21plus": 0.0469,
+        "win_prob": 0.4608,
+        "exp_margin": -1.55,
+        "prob_7plus": 0.2772,
+        "prob_14plus": 0.1383,
+        "prob_21plus": 0.0552,
         "margin_percentiles": [
-          -27.3,
-          -21.7,
-          -12.9,
-          -3.5,
-          6.4,
-          15.3,
-          20.5
+          -25.2,
+          -19.9,
+          -11.3,
+          -1.4,
+          8.1,
+          16.7,
+          21.7
         ]
       },
       "adjustments": {
@@ -7225,17 +7141,17 @@
         "diff": -63.8
       },
       "bayesian": {
-        "home_mu": 1354.2,
-        "home_sigma": 75.0,
-        "away_mu": 1506.8,
-        "away_sigma": 75.0,
+        "home_mu": 1368.8,
+        "home_sigma": 40.0,
+        "away_mu": 1474.0,
+        "away_sigma": 40.0,
         "home_band": [
-          1279.2,
-          1429.2
+          1328.8,
+          1408.8
         ],
         "away_band": [
-          1431.8,
-          1581.8
+          1434.0,
+          1514.0
         ]
       },
       "injuries": {
@@ -7471,7 +7387,7 @@
         "Savion Williams (GB) [Starter] QUESTIONABLE \u2014 \u22123 ELO",
         "Home field: ARI +65 ELO home advantage"
       ],
-      "explanation": "The model gives Green Bay Packers a 54.3% win probability \u2014 a slight favorite over Arizona Cardinals. The ELO gap is 153 points with home field adding approximately 65 ELO points. Travel distance 1498 miles factors into the away team rating."
+      "explanation": "The model gives Green Bay Packers a 62.5% win probability \u2014 a moderate favorite over Arizona Cardinals. The ELO gap is 153 points with home field adding approximately 65 ELO points. Travel distance 1498 miles factors into the away team rating."
     },
     {
       "game_id": "401772924",
@@ -7489,13 +7405,13 @@
       "home_score": 20,
       "away_score": 10,
       "predictions": {
-        "ensemble_prob": 0.7265,
-        "logistic_prob": 0.7644,
+        "ensemble_prob": 0.7733,
+        "logistic_prob": 0.8125,
         "elo_prob": 0.7644,
-        "xgb_prob": null,
+        "xgb_prob": 0.8462,
         "pyth_prob": 0.683,
         "eff_prob": 0.6293,
-        "bayesian_prob": 0.9869
+        "bayesian_prob": 0.9898
       },
       "market": {
         "home_prob": null,
@@ -7505,19 +7421,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6855,
-        "exp_margin": 7.23,
-        "prob_7plus": 0.5097,
-        "prob_14plus": 0.3219,
-        "prob_21plus": 0.1744,
+        "win_prob": 0.6546,
+        "exp_margin": 5.58,
+        "prob_7plus": 0.4591,
+        "prob_14plus": 0.2774,
+        "prob_21plus": 0.1394,
         "margin_percentiles": [
-          -17.0,
-          -11.5,
-          -2.7,
-          7.3,
-          17.2,
-          26.2,
-          31.6
+          -17.6,
+          -12.4,
+          -3.9,
+          5.6,
+          15.2,
+          23.7,
+          28.7
         ]
       },
       "adjustments": {
@@ -7534,17 +7450,17 @@
         "diff": 204.5
       },
       "bayesian": {
-        "home_mu": 1602.0,
-        "home_sigma": 75.0,
-        "away_mu": 1483.8,
-        "away_sigma": 75.0,
+        "home_mu": 1549.8,
+        "home_sigma": 40.0,
+        "away_mu": 1483.7,
+        "away_sigma": 40.0,
         "home_band": [
-          1527.0,
-          1677.0
+          1509.8,
+          1589.8
         ],
         "away_band": [
-          1408.8,
-          1558.8
+          1443.7,
+          1523.7
         ]
       },
       "injuries": {
@@ -7723,13 +7639,6 @@
             "value_tier": "starter"
           },
           {
-            "player": "Sam Roberts",
-            "position": "DT",
-            "status": "Questionable",
-            "elo_impact": 2.4,
-            "value_tier": "starter"
-          },
-          {
             "player": "Clark Phillips III",
             "position": "CB",
             "status": "Questionable",
@@ -7751,8 +7660,15 @@
             "value_tier": "starter"
           },
           {
-            "player": "DeAngelo Malone",
-            "position": "LB",
+            "player": "Mike Hughes",
+            "position": "CB",
+            "status": "Questionable",
+            "elo_impact": 2.4,
+            "value_tier": "starter"
+          },
+          {
+            "player": "DeMarcco Hellams",
+            "position": "S",
             "status": "Questionable",
             "elo_impact": 2.0,
             "value_tier": "starter"
@@ -7775,7 +7691,7 @@
         "Travel penalty: away team travels 2117 miles",
         "Home field: SF +65 ELO home advantage"
       ],
-      "explanation": "The model gives San Francisco 49ers a 72.7% win probability \u2014 a strong favorite over Atlanta Falcons. The ELO gap is 118 points with home field adding approximately 65 ELO points. Travel distance 2117 miles factors into the away team rating."
+      "explanation": "The model gives San Francisco 49ers a 77.3% win probability \u2014 a strong favorite over Atlanta Falcons. The ELO gap is 118 points with home field adding approximately 65 ELO points. Travel distance 2117 miles factors into the away team rating."
     },
     {
       "game_id": "401772816",
@@ -7793,13 +7709,13 @@
       "home_score": 24,
       "away_score": 9,
       "predictions": {
-        "ensemble_prob": 0.6849,
-        "logistic_prob": 0.6955,
+        "ensemble_prob": 0.6762,
+        "logistic_prob": 0.661,
         "elo_prob": 0.6955,
-        "xgb_prob": null,
+        "xgb_prob": 0.6985,
         "pyth_prob": 0.6652,
         "eff_prob": 0.6628,
-        "bayesian_prob": 0.9584
+        "bayesian_prob": 0.9976
       },
       "market": {
         "home_prob": null,
@@ -7809,19 +7725,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6414,
-        "exp_margin": 5.37,
-        "prob_7plus": 0.452,
-        "prob_14plus": 0.2782,
-        "prob_21plus": 0.1413,
+        "win_prob": 0.6693,
+        "exp_margin": 6.24,
+        "prob_7plus": 0.4839,
+        "prob_14plus": 0.2926,
+        "prob_21plus": 0.1467,
         "margin_percentiles": [
-          -18.3,
-          -13.0,
-          -4.6,
-          5.3,
-          15.1,
-          24.4,
-          29.3
+          -17.5,
+          -12.2,
+          -3.3,
+          6.5,
+          15.9,
+          24.5,
+          29.5
         ]
       },
       "adjustments": {
@@ -7838,17 +7754,17 @@
         "diff": 143.5
       },
       "bayesian": {
-        "home_mu": 1527.0,
-        "home_sigma": 75.0,
-        "away_mu": 1458.9,
-        "away_sigma": 75.0,
+        "home_mu": 1535.8,
+        "home_sigma": 40.0,
+        "away_mu": 1441.0,
+        "away_sigma": 40.0,
         "home_band": [
-          1452.0,
-          1602.0
+          1495.8,
+          1575.8
         ],
         "away_band": [
-          1383.9,
-          1533.9
+          1401.0,
+          1481.0
         ]
       },
       "injuries": {
@@ -8057,7 +7973,7 @@
         "Efficiency gap: DET net +0.273 vs TB net +0.011",
         "Home field: DET +65 ELO home advantage"
       ],
-      "explanation": "The model gives Detroit Lions a 68.5% win probability \u2014 a moderate favorite over Tampa Bay Buccaneers. The ELO gap is 68 points with home field adding approximately 65 ELO points."
+      "explanation": "The model gives Detroit Lions a 67.6% win probability \u2014 a moderate favorite over Tampa Bay Buccaneers. The ELO gap is 68 points with home field adding approximately 65 ELO points."
     },
     {
       "game_id": "401772826",
@@ -8075,13 +7991,13 @@
       "home_score": 27,
       "away_score": 19,
       "predictions": {
-        "ensemble_prob": 0.6996,
-        "logistic_prob": 0.7282,
+        "ensemble_prob": 0.7041,
+        "logistic_prob": 0.661,
         "elo_prob": 0.7282,
-        "xgb_prob": null,
+        "xgb_prob": 0.8118,
         "pyth_prob": 0.6409,
         "eff_prob": 0.6432,
-        "bayesian_prob": 0.9858
+        "bayesian_prob": 1.0
       },
       "market": {
         "home_prob": null,
@@ -8091,19 +8007,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6869,
-        "exp_margin": 7.07,
-        "prob_7plus": 0.5007,
-        "prob_14plus": 0.3159,
-        "prob_21plus": 0.1687,
+        "win_prob": 0.7414,
+        "exp_margin": 8.98,
+        "prob_7plus": 0.5558,
+        "prob_14plus": 0.3595,
+        "prob_21plus": 0.1965,
         "margin_percentiles": [
-          -16.7,
-          -11.5,
-          -2.8,
-          7.0,
-          16.8,
-          25.8,
-          31.1
+          -14.3,
+          -8.9,
+          -0.4,
+          9.0,
+          18.4,
+          27.0,
+          32.2
         ]
       },
       "adjustments": {
@@ -8120,40 +8036,40 @@
         "diff": 171.2
       },
       "bayesian": {
-        "home_mu": 1761.7,
-        "home_sigma": 75.0,
-        "away_mu": 1646.9,
-        "away_sigma": 75.0,
+        "home_mu": 1775.2,
+        "home_sigma": 40.0,
+        "away_mu": 1616.7,
+        "away_sigma": 40.0,
         "home_band": [
-          1686.7,
-          1836.7
+          1735.2,
+          1815.2
         ],
         "away_band": [
-          1571.9,
-          1721.9
+          1576.7,
+          1656.7
         ]
       },
       "injuries": {
         "home": [
           {
-            "player": "Devon Witherspoon",
+            "player": "Jake Bobo",
             "status": "Active",
-            "position": "CB",
-            "injury_description": "The No. 5 overall pick in the 2023 Draft, Witherspoon has been named to the Pro Bowl all three seasons in the NFL and was a second-team All-Pro selection last season. Witherspoon started all 12 games in which he appeared in 2025, producing 72 tackles (48 solo), including 0.5 sacks, seven pass breakups, including one interception, and one fumble recovery. With the option exercised, Witherspoon is set to earn $21.1 million in 2027.",
+            "position": "WR",
+            "injury_description": "Per Tom Pelissero of NFL Network, Bobo now is in line to remain with Seattle on a two-year, $5.5 million deal that includes $4.5 million guaranteed. Bobo caught just two passes in 11 regular-season games with the Seahawks in 2025, and he's on track to remain in a depth role this coming season while working in a WR corps that also includes Jaxon Smith-Njigba, Cooper Kupp and Rashid Shaheed.",
             "value_tier": "starter"
           },
           {
             "player": "Jaxon Smith-Njigba",
             "status": "Active",
             "position": "WR",
-            "injury_description": "An obvious no-brainer for Seattle after Smith-Njigba was named Offensive Player of the Year in 2025 after securing 119 of 163 targets for an NFL-high 1,793 yards and 10 touchdowns across 17 regular-season appearances. JSN then added another 17 catches for 199 yards and two touchdowns on 26 targets across three playoff contests. Through three seasons, Smith-Njigba is a two-time Pro Bowl selection and was a first-team All-Pro last season. With the optioned picked up, Smith-Njigba is set to earn $23.8 million in 2027.",
+            "injury_description": "The reigning NFL Offensive Player of the Year, Smith-Njigba had his fifth-year option picked up by Seattle in March, but the intent had always been to negotiate a long-term deal for the two-time Pro Bowler. Now, he becomes the highest-paid wideout in league history at an average of $42.15 million annually, including $120 million guaranteed.  Smith-Njigba is coming off a career-best 2025 campaign in which he secured 119 of 163 targets for a league-leading 1,793 yards and 10 touchdowns across 17 regular-season appearances, plus 17 catches (on 26 targets) for 199 yards and two touchdowns across three playoff contests, including a Super Bowl LX win over New England. The chemistry Smith-Njigba has demonstrated with quarterback Sam Darnold makes him a safe bet to return on expectations as one of the top wide receivers taken in 2026 fantasy drafts, especially in PPR formats.",
             "value_tier": "starter"
           },
           {
-            "player": "Jake Bobo",
+            "player": "Devon Witherspoon",
             "status": "Active",
-            "position": "WR",
-            "injury_description": "The terms of the offer sheet aren't yet known, but the Seahawks will have five days to match the offer or let Bobo walk as a restricted free agent. The 27-year-old Bobo has logged just 740 offensive snaps across 45 regular-season appearances over the last three seasons but has produced a 34-323-3 receiving line on 44 career targets. He also caught a 17-yard touchdown in the NFC Championship Game against the Rams in January. Bobo would seem to be no higher than the WR4 or WR5 in Jacksonville behind Brian Thomas, Jakobi Meyers, Parker Washington and perhaps Travis Hunter, who is expected to play more cornerback in 2026. Thomas has also been the subject of heavy trade speculation this offseason, though there's been no indication the Jaguars are serious about trading the third-year receiver.",
+            "position": "CB",
+            "injury_description": "The No. 5 overall pick in the 2023 Draft, Witherspoon has been named to the Pro Bowl all three seasons in the NFL and was a second-team All-Pro selection last season. Witherspoon started all 12 games in which he appeared in 2025, producing 72 tackles (48 solo), including 0.5 sacks, seven pass breakups, including one interception, and one fumble recovery. With the option exercised, Witherspoon is set to earn $21.1 million in 2027.",
             "value_tier": "starter"
           },
           {
@@ -8306,7 +8222,7 @@
         "Travel penalty: away team travels 1892 miles",
         "Home field: SEA +65 ELO home advantage"
       ],
-      "explanation": "The model gives Seattle Seahawks a 70.0% win probability \u2014 a moderate favorite over Houston Texans. The ELO gap is 115 points with home field adding approximately 65 ELO points. Rest advantage favors HOU. Travel distance 1892 miles factors into the away team rating."
+      "explanation": "The model gives Seattle Seahawks a 70.4% win probability \u2014 a strong favorite over Houston Texans. The ELO gap is 115 points with home field adding approximately 65 ELO points. Rest advantage favors HOU. Travel distance 1892 miles factors into the away team rating."
     },
     {
       "game_id": "401772942",
@@ -8324,13 +8240,13 @@
       "home_score": 37,
       "away_score": 10,
       "predictions": {
-        "ensemble_prob": 0.5867,
-        "logistic_prob": 0.5737,
+        "ensemble_prob": 0.5404,
+        "logistic_prob": 0.4516,
         "elo_prob": 0.5737,
-        "xgb_prob": null,
+        "xgb_prob": 0.5723,
         "pyth_prob": 0.6077,
         "eff_prob": 0.616,
-        "bayesian_prob": 0.8222
+        "bayesian_prob": 0.6531
       },
       "market": {
         "home_prob": null,
@@ -8340,19 +8256,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.5585,
-        "exp_margin": 2.29,
-        "prob_7plus": 0.3703,
-        "prob_14plus": 0.2127,
-        "prob_21plus": 0.1019,
+        "win_prob": 0.5217,
+        "exp_margin": 0.86,
+        "prob_7plus": 0.3321,
+        "prob_14plus": 0.1775,
+        "prob_21plus": 0.0758,
         "margin_percentiles": [
-          -21.5,
-          -16.4,
-          -7.6,
-          2.2,
-          12.1,
-          21.3,
-          26.6
+          -22.3,
+          -17.2,
+          -8.7,
+          0.7,
+          10.3,
+          19.0,
+          24.2
         ]
       },
       "adjustments": {
@@ -8369,17 +8285,17 @@
         "diff": 51.6
       },
       "bayesian": {
-        "home_mu": 1535.6,
-        "home_sigma": 75.0,
-        "away_mu": 1535.6,
-        "away_sigma": 75.0,
+        "home_mu": 1506.3,
+        "home_sigma": 40.0,
+        "away_mu": 1549.1,
+        "away_sigma": 40.0,
         "home_band": [
-          1460.6,
-          1610.6
+          1466.3,
+          1546.3
         ],
         "away_band": [
-          1460.6,
-          1610.6
+          1509.1,
+          1589.1
         ]
       },
       "injuries": {
@@ -8559,7 +8475,7 @@
         "Travel penalty: away team travels 1533 miles",
         "Home field: LAC +65 ELO home advantage"
       ],
-      "explanation": "The model gives Los Angeles Chargers a 58.7% win probability \u2014 a slight favorite over Minnesota Vikings. The ELO gap is 0 points with home field adding approximately 65 ELO points. Travel distance 1533 miles factors into the away team rating."
+      "explanation": "The model gives Los Angeles Chargers a 54.0% win probability \u2014 a slight favorite over Minnesota Vikings. The ELO gap is 0 points with home field adding approximately 65 ELO points. Travel distance 1533 miles factors into the away team rating."
     },
     {
       "game_id": "401772760",
@@ -8577,13 +8493,13 @@
       "home_score": 10,
       "away_score": 34,
       "predictions": {
-        "ensemble_prob": 0.6142,
-        "logistic_prob": 0.6236,
+        "ensemble_prob": 0.6185,
+        "logistic_prob": 0.661,
         "elo_prob": 0.6236,
-        "xgb_prob": null,
+        "xgb_prob": 0.5792,
         "pyth_prob": 0.6154,
         "eff_prob": 0.5819,
-        "bayesian_prob": 0.9312
+        "bayesian_prob": 0.9985
       },
       "market": {
         "home_prob": null,
@@ -8593,19 +8509,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6189,
-        "exp_margin": 4.54,
-        "prob_7plus": 0.4308,
-        "prob_14plus": 0.2586,
-        "prob_21plus": 0.133,
+        "win_prob": 0.6826,
+        "exp_margin": 6.66,
+        "prob_7plus": 0.4966,
+        "prob_14plus": 0.3054,
+        "prob_21plus": 0.1551,
         "margin_percentiles": [
-          -19.7,
-          -14.1,
-          -5.3,
-          4.4,
-          14.4,
-          23.5,
-          28.9
+          -16.8,
+          -11.6,
+          -2.7,
+          6.9,
+          16.3,
+          24.7,
+          29.8
         ]
       },
       "adjustments": {
@@ -8622,17 +8538,17 @@
         "diff": 87.7
       },
       "bayesian": {
-        "home_mu": 1483.8,
-        "home_sigma": 75.0,
-        "away_mu": 1438.2,
-        "away_sigma": 75.0,
+        "home_mu": 1483.7,
+        "home_sigma": 40.0,
+        "away_mu": 1381.2,
+        "away_sigma": 40.0,
         "home_band": [
-          1408.8,
-          1558.8
+          1443.7,
+          1523.7
         ],
         "away_band": [
-          1363.2,
-          1513.2
+          1341.2,
+          1421.2
         ]
       },
       "injuries": {
@@ -8760,13 +8676,6 @@
             "value_tier": "starter"
           },
           {
-            "player": "Sam Roberts",
-            "position": "DT",
-            "status": "Questionable",
-            "elo_impact": 2.4,
-            "value_tier": "starter"
-          },
-          {
             "player": "Clark Phillips III",
             "position": "CB",
             "status": "Questionable",
@@ -8788,8 +8697,15 @@
             "value_tier": "starter"
           },
           {
-            "player": "DeAngelo Malone",
-            "position": "LB",
+            "player": "Mike Hughes",
+            "position": "CB",
+            "status": "Questionable",
+            "elo_impact": 2.4,
+            "value_tier": "starter"
+          },
+          {
+            "player": "DeMarcco Hellams",
+            "position": "S",
             "status": "Questionable",
             "elo_impact": 2.0,
             "value_tier": "starter"
@@ -8807,7 +8723,7 @@
         "Corey Levin (ATL) [Starter] QUESTIONABLE \u2014 \u22121 ELO",
         "Home field: ATL +65 ELO home advantage"
       ],
-      "explanation": "The model gives Atlanta Falcons a 61.4% win probability \u2014 a moderate favorite over Miami Dolphins. The ELO gap is 46 points with home field adding approximately 65 ELO points."
+      "explanation": "The model gives Atlanta Falcons a 61.9% win probability \u2014 a moderate favorite over Miami Dolphins. The ELO gap is 46 points with home field adding approximately 65 ELO points."
     },
     {
       "game_id": "401772758",
@@ -8825,13 +8741,13 @@
       "home_score": 38,
       "away_score": 39,
       "predictions": {
-        "ensemble_prob": 0.7395,
-        "logistic_prob": 0.773,
+        "ensemble_prob": 0.7658,
+        "logistic_prob": 0.8125,
         "elo_prob": 0.773,
-        "xgb_prob": null,
+        "xgb_prob": 0.789,
         "pyth_prob": 0.6836,
         "eff_prob": 0.6655,
-        "bayesian_prob": 0.987
+        "bayesian_prob": 1.0
       },
       "market": {
         "home_prob": null,
@@ -8841,19 +8757,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.686,
-        "exp_margin": 7.21,
-        "prob_7plus": 0.5053,
-        "prob_14plus": 0.3184,
-        "prob_21plus": 0.174,
+        "win_prob": 0.7852,
+        "exp_margin": 11.34,
+        "prob_7plus": 0.6131,
+        "prob_14plus": 0.4323,
+        "prob_21plus": 0.2542,
         "margin_percentiles": [
-          -17.0,
-          -11.4,
-          -2.7,
-          7.2,
-          16.9,
-          26.2,
-          31.3
+          -12.1,
+          -6.9,
+          1.6,
+          11.5,
+          21.2,
+          29.8,
+          34.7
         ]
       },
       "adjustments": {
@@ -8870,17 +8786,17 @@
         "diff": 212.8
       },
       "bayesian": {
-        "home_mu": 1434.6,
-        "home_sigma": 75.0,
-        "away_mu": 1316.0,
-        "away_sigma": 75.0,
+        "home_mu": 1479.9,
+        "home_sigma": 40.0,
+        "away_mu": 1253.7,
+        "away_sigma": 40.0,
         "home_band": [
-          1359.6,
-          1509.6
+          1439.9,
+          1519.9
         ],
         "away_band": [
-          1241.0,
-          1391.0
+          1213.7,
+          1293.7
         ]
       },
       "injuries": {
@@ -9054,7 +8970,7 @@
         "Efficiency gap: CIN net +0.255 vs NYJ net -0.018",
         "Home field: CIN +65 ELO home advantage"
       ],
-      "explanation": "The model gives Cincinnati Bengals a 74.0% win probability \u2014 a strong favorite over New York Jets. The ELO gap is 119 points with home field adding approximately 65 ELO points."
+      "explanation": "The model gives Cincinnati Bengals a 76.6% win probability \u2014 a strong favorite over New York Jets. The ELO gap is 119 points with home field adding approximately 65 ELO points."
     },
     {
       "game_id": "401772868",
@@ -9072,13 +8988,13 @@
       "home_score": 32,
       "away_score": 13,
       "predictions": {
-        "ensemble_prob": 0.8219,
-        "logistic_prob": 0.8701,
-        "elo_prob": 0.8701,
-        "xgb_prob": null,
+        "ensemble_prob": 0.8667,
+        "logistic_prob": 1.0,
+        "elo_prob": 0.8727,
+        "xgb_prob": 0.8178,
         "pyth_prob": 0.7877,
         "eff_prob": 0.6841,
-        "bayesian_prob": 0.9995
+        "bayesian_prob": 1.0
       },
       "market": {
         "home_prob": null,
@@ -9088,19 +9004,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.8141,
-        "exp_margin": 13.04,
-        "prob_7plus": 0.6657,
-        "prob_14plus": 0.4707,
-        "prob_21plus": 0.2904,
+        "win_prob": 0.7767,
+        "exp_margin": 10.83,
+        "prob_7plus": 0.603,
+        "prob_14plus": 0.4106,
+        "prob_21plus": 0.2372,
         "margin_percentiles": [
-          -10.8,
-          -5.7,
-          3.4,
-          12.9,
-          22.9,
-          31.8,
-          37.0
+          -12.6,
+          -7.5,
+          1.2,
+          11.0,
+          20.4,
+          29.0,
+          34.0
         ]
       },
       "adjustments": {
@@ -9114,24 +9030,45 @@
       "elo": {
         "home": 1671.9,
         "away": 1412.4,
-        "diff": 330.3
+        "diff": 334.3
       },
       "bayesian": {
-        "home_mu": 1671.9,
-        "home_sigma": 75.0,
-        "away_mu": 1412.4,
-        "away_sigma": 75.0,
+        "home_mu": 1641.2,
+        "home_sigma": 40.0,
+        "away_mu": 1432.7,
+        "away_sigma": 40.0,
         "home_band": [
-          1596.9,
-          1746.9
+          1601.2,
+          1681.2
         ],
         "away_band": [
-          1337.4,
-          1487.4
+          1392.7,
+          1472.7
         ]
       },
       "injuries": {
         "home": [
+          {
+            "player": "James Hudson III",
+            "status": "Active",
+            "position": "OT",
+            "injury_description": "Hudson was released by the Giants earlier this month and won't have to travel far to join his new team. The 26-year-old appeared in 11 regular-season games last season, making two starts, but has been a liability when pressed into starter snaps. Hudson will go into New England as a backup this offseason.",
+            "value_tier": "starter"
+          },
+          {
+            "player": "Tommy DeVito",
+            "status": "Active",
+            "position": "QB",
+            "injury_description": "DeVito, who worked as New England's No. 3 signal-caller last season behind Dobbs and starter Drake Maye, signed a two-year deal to remain with the team earlier this month. Per Reiss, the base value of DeVito's new contract is $4.4 million and includes incentives that could increase its value to $7.4 million. Though the 27-year-old didn't see any regular-season action in 2025, he did log a total of eight starts during his two seasons (2023 and 2024) with the Giants. With Dobbs no longer in the mix, look for the Patriots to add QB depth as the offseason progresses, possibly via next month's draft.",
+            "value_tier": "starter"
+          },
+          {
+            "player": "Kindle Vildor",
+            "status": "Active",
+            "position": "CB",
+            "injury_description": "Vildor, who entered the NFL as a fifth-round pick by the Bears, recorded 16 tackles and a pick in 12 regular-season games with the Buccaneers in 2025. In joining the Patriots, the 28-year-old will reunite with head coach Mike Vrabel, who Vildor worked with in 2023 while both were with the Titans. In his latest locale, the 5-foot-11, 189-pounder will offer cornerback depth and special teams experience.",
+            "value_tier": "starter"
+          },
           {
             "player": "Alijah Vera-Tucker",
             "status": "Questionable",
@@ -9145,30 +9082,16 @@
             "position": "S",
             "injury_description": "Brown appeared in nine regular-season games for the Titans in 2025 and had two stints on injured reserve due to knee and ankle injuries. He served almost exclusively on special teams and logged three solo tackles for Tennessee last year. Brown's addition gives the Patriots added depth in the secondary and another contributor on special teams.",
             "value_tier": "starter"
-          },
-          {
-            "player": "Julian Hill",
-            "status": "Active",
-            "position": "TE",
-            "injury_description": "Hill fits with New England as a depth option and blocker behind starting tight end Hunter Henry, a role opened up by the departure of Austin Hooper to Atlanta. Regardless of the change of scenery, Hill's realistic realm of outcomes for 2026 likely doesn't include attaining fantasy relevance, as across 14 regular-season appearances with the Dolphins in 2025 he managed only 150 receiving yards (a career high). That said, at 6-foot-4, 251 pounds, Hill could emerge as an option for quarterback Drake Maye in the red zone.",
-            "value_tier": "starter"
-          },
-          {
-            "player": "K.J. Britt",
-            "status": "Active",
-            "position": "LB",
-            "injury_description": "Britt heads to a division rival after his one-year stint with the Dolphins. He handled a depth role across 17 regular-season appearances in 2025, totaling 35 tackles (12 solo). He projects to handle a similar rotational role in New England, while also potentially acting as a significant contributor on special teams.",
-            "value_tier": "starter"
-          },
-          {
-            "player": "Romeo Doubs",
-            "status": "Active",
-            "position": "WR",
-            "injury_description": "The initial report has it as a four-year deal for \"roughly\" $70 million. In fantasy terms, this is about as good as it gets, with Doubs joining a receiver-needy offense that already has a franchise QB in place in Drake Maye. Doubs averaged 50.5 catches for 606 yards and 5.3 TDs on 80.0 targets in four seasons with Green Bay. The contract and situation in New England hint at some degree of upside for additional target volume, but it's also possible he doesn't have much more to offer. If nothing else, he's a competent starter at a clear position of need, entering what should be his prime -- Doubs will turn 26 in April.",
-            "value_tier": "starter"
           }
         ],
         "away": [
+          {
+            "player": "Blake Whiteheart",
+            "status": "Active",
+            "position": "TE",
+            "injury_description": "Whiteheart wasn't tendered by Cleveland by the early March deadline, but he's now re-upped with the team. While suiting up for all 17 regular-season contests with the team in 2025, Whiteheart contributed on special teams and as a blocker on offense. He stands to reprise a similar depth role during the 2026 campaign.",
+            "value_tier": "starter"
+          },
           {
             "player": "Daniel Thomas",
             "status": "Active",
@@ -9196,21 +9119,14 @@
             "position": "CB",
             "injury_description": "Ross opened the 2025 season on the Texans' practice squad and appeared in three games before being signed to the Browns' active roster in mid-November. He appeared in seven regular-season games for Cleveland and logged nine tackles (five solo) and two pass defenses while mostly serving on special teams. Ross will likely see most of his playing time on special teams in 2026, but his presence gives the Browns depth in the secondary.",
             "value_tier": "starter"
-          },
-          {
-            "player": "Elgton Jenkins",
-            "status": "Questionable",
-            "position": "C",
-            "injury_description": "Jenkins spent the first seven years of his NFL career in Green Bay, where he was named to the NFC Pro Bowl roster in 2020 and 2022. He started in each of the Packers' first nine games of the 2025 regular season before fracturing his leg against the Eagles in Week 10. Jenkins relayed Friday that he is on pace with his recovery and hopes to be fully healthy for the start of the 2026 season.",
-            "value_tier": "starter"
           }
         ]
       },
       "injury_impact": {
-        "home_elo_penalty": 22.4,
-        "away_elo_penalty": 11.2,
-        "home_impact_score": 0.2036,
-        "away_impact_score": 0.1018,
+        "home_elo_penalty": 16.4,
+        "away_elo_penalty": 9.2,
+        "home_impact_score": 0.1491,
+        "away_impact_score": 0.0836,
         "home_key_players_out": [
           {
             "player": "Alijah Vera-Tucker",
@@ -9260,20 +9176,6 @@
             "status": "Questionable",
             "elo_impact": 2.4,
             "value_tier": "starter"
-          },
-          {
-            "player": "Yasir Durant",
-            "position": "OT",
-            "status": "Questionable",
-            "elo_impact": 3.6,
-            "value_tier": "starter"
-          },
-          {
-            "player": "Marcellas Dial Jr.",
-            "position": "CB",
-            "status": "Questionable",
-            "elo_impact": 2.4,
-            "value_tier": "starter"
           }
         ],
         "away_key_players_out": [
@@ -9311,13 +9213,6 @@
             "status": "Questionable",
             "elo_impact": 2.0,
             "value_tier": "starter"
-          },
-          {
-            "player": "Carson Schwesinger",
-            "position": "LB",
-            "status": "Questionable",
-            "elo_impact": 2.0,
-            "value_tier": "starter"
           }
         ],
         "home_star_count": 0,
@@ -9336,7 +9231,7 @@
         "Efficiency gap: NE net +0.019 vs CLE net -0.327",
         "Home field: NE +65 ELO home advantage"
       ],
-      "explanation": "The model gives New England Patriots a 82.2% win probability \u2014 a strong favorite over Cleveland Browns. The ELO gap is 260 points with home field adding approximately 65 ELO points."
+      "explanation": "The model gives New England Patriots a 86.7% win probability \u2014 a strong favorite over Cleveland Browns. The ELO gap is 260 points with home field adding approximately 65 ELO points."
     },
     {
       "game_id": "401772867",
@@ -9354,13 +9249,13 @@
       "home_score": 38,
       "away_score": 20,
       "predictions": {
-        "ensemble_prob": 0.6835,
-        "logistic_prob": 0.7379,
+        "ensemble_prob": 0.7375,
+        "logistic_prob": 0.8125,
         "elo_prob": 0.7379,
-        "xgb_prob": null,
+        "xgb_prob": 0.7949,
         "pyth_prob": 0.6842,
         "eff_prob": 0.5017,
-        "bayesian_prob": 0.9864
+        "bayesian_prob": 0.9795
       },
       "market": {
         "home_prob": null,
@@ -9370,19 +9265,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6861,
-        "exp_margin": 7.12,
-        "prob_7plus": 0.5019,
-        "prob_14plus": 0.3199,
-        "prob_21plus": 0.1774,
+        "win_prob": 0.6287,
+        "exp_margin": 4.53,
+        "prob_7plus": 0.435,
+        "prob_14plus": 0.2499,
+        "prob_21plus": 0.1215,
         "margin_percentiles": [
-          -16.8,
-          -11.8,
-          -2.9,
-          7.1,
-          17.2,
-          26.1,
-          31.1
+          -19.0,
+          -13.7,
+          -5.0,
+          4.6,
+          14.0,
+          22.4,
+          27.9
         ]
       },
       "adjustments": {
@@ -9399,17 +9294,17 @@
         "diff": 179.8
       },
       "bayesian": {
-        "home_mu": 1525.8,
-        "home_sigma": 75.0,
-        "away_mu": 1408.9,
-        "away_sigma": 75.0,
+        "home_mu": 1521.7,
+        "home_sigma": 40.0,
+        "away_mu": 1471.1,
+        "away_sigma": 40.0,
         "home_band": [
-          1450.8,
-          1600.8
+          1481.7,
+          1561.7
         ],
         "away_band": [
-          1333.9,
-          1483.9
+          1431.1,
+          1511.1
         ]
       },
       "injuries": {
@@ -9546,7 +9441,7 @@
         "Efficiency gap: PHI net -0.244 vs NYG net +0.075",
         "Home field: PHI +65 ELO home advantage"
       ],
-      "explanation": "The model gives Philadelphia Eagles a 68.3% win probability \u2014 a moderate favorite over New York Giants. The ELO gap is 117 points with home field adding approximately 65 ELO points."
+      "explanation": "The model gives Philadelphia Eagles a 73.8% win probability \u2014 a strong favorite over New York Giants. The ELO gap is 117 points with home field adding approximately 65 ELO points."
     },
     {
       "game_id": "401772865",
@@ -9564,13 +9459,13 @@
       "home_score": 9,
       "away_score": 40,
       "predictions": {
-        "ensemble_prob": 0.3877,
-        "logistic_prob": 0.35,
-        "elo_prob": 0.35,
-        "xgb_prob": null,
+        "ensemble_prob": 0.3441,
+        "logistic_prob": 0.3596,
+        "elo_prob": 0.3531,
+        "xgb_prob": 0.1981,
         "pyth_prob": 0.4359,
         "eff_prob": 0.4813,
-        "bayesian_prob": 0.0592
+        "bayesian_prob": 0.149
       },
       "market": {
         "home_prob": null,
@@ -9580,19 +9475,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.3786,
-        "exp_margin": -4.58,
-        "prob_7plus": 0.2139,
-        "prob_14plus": 0.1041,
-        "prob_21plus": 0.0379,
+        "win_prob": 0.4349,
+        "exp_margin": -2.26,
+        "prob_7plus": 0.2556,
+        "prob_14plus": 0.1251,
+        "prob_21plus": 0.0513,
         "margin_percentiles": [
-          -28.9,
-          -23.5,
-          -14.4,
-          -4.5,
-          5.3,
-          14.3,
-          19.3
+          -25.4,
+          -20.4,
+          -11.7,
+          -2.3,
+          7.2,
+          16.0,
+          21.2
         ]
       },
       "adjustments": {
@@ -9606,24 +9501,31 @@
       "elo": {
         "home": 1438.1,
         "away": 1620.4,
-        "diff": -107.6
+        "diff": -105.2
       },
       "bayesian": {
-        "home_mu": 1438.1,
-        "home_sigma": 75.0,
-        "away_mu": 1620.4,
-        "away_sigma": 75.0,
+        "home_mu": 1465.6,
+        "home_sigma": 40.0,
+        "away_mu": 1589.4,
+        "away_sigma": 40.0,
         "home_band": [
-          1363.1,
-          1513.1
+          1425.6,
+          1505.6
         ],
         "away_band": [
-          1545.4,
-          1695.4
+          1549.4,
+          1629.4
         ]
       },
       "injuries": {
         "home": [
+          {
+            "player": "Feleipe Franks",
+            "status": "Active",
+            "position": "TE",
+            "injury_description": "It's a homecoming for Franks after he spent the 2024 season with Carolina before spending the 2025 campaign with the Falcons. A special-teams stalwart, Franks appeared in all 17 regular-season contests last season, recording 11 tackles (eight solo) on 299 snaps in kick coverage.",
+            "value_tier": "starter"
+          },
           {
             "player": "Sam Martin",
             "status": "Active",
@@ -9650,13 +9552,6 @@
             "status": "Active",
             "position": "OT",
             "injury_description": "Walker has started 48 games across the last three regular seasons and operated as the Packers' left tackle during the 2025 campaign, playing all 1,057 of his offensive snaps at the position. He gives the Panthers a capable option should Ikem Ekwonu (knee) not be recovered from a torn patellar tendon that he suffered in Carolina's wild-card loss to the Rams in January.",
-            "value_tier": "starter"
-          },
-          {
-            "player": "Claudin Cherelus",
-            "status": "Active",
-            "position": "LB",
-            "injury_description": "The 27-year-old has appeared in 27 regular-season games (six starts) for the Panthers over the last two seasons, recording 60 total tackles and one pass defensed. Following his new deal with Carolina, Cherelus is expected to operate as one of the team's top reserve inside linebackers during the 2026 season.",
             "value_tier": "starter"
           }
         ],
@@ -9699,9 +9594,9 @@
         ]
       },
       "injury_impact": {
-        "home_elo_penalty": 8.4,
+        "home_elo_penalty": 6.0,
         "away_elo_penalty": 43.2,
-        "home_impact_score": 0.0764,
+        "home_impact_score": 0.0545,
         "away_impact_score": 0.3927,
         "home_key_players_out": [
           {
@@ -9723,13 +9618,6 @@
             "position": "LB",
             "status": "Questionable",
             "elo_impact": 2.0,
-            "value_tier": "starter"
-          },
-          {
-            "player": "Corey Thornton",
-            "position": "CB",
-            "status": "Questionable",
-            "elo_impact": 2.4,
             "value_tier": "starter"
           }
         ],
@@ -9843,7 +9731,7 @@
         "Rest advantage: BUF has 6 extra days rest",
         "Home field: CAR +65 ELO home advantage"
       ],
-      "explanation": "The model gives Buffalo Bills a 61.2% win probability \u2014 a moderate favorite over Carolina Panthers. The ELO gap is 182 points with home field adding approximately 65 ELO points. Rest advantage favors BUF."
+      "explanation": "The model gives Buffalo Bills a 65.6% win probability \u2014 a moderate favorite over Carolina Panthers. The ELO gap is 182 points with home field adding approximately 65 ELO points. Rest advantage favors BUF."
     },
     {
       "game_id": "401772759",
@@ -9861,13 +9749,13 @@
       "home_score": 30,
       "away_score": 16,
       "predictions": {
-        "ensemble_prob": 0.6282,
-        "logistic_prob": 0.6529,
+        "ensemble_prob": 0.5357,
+        "logistic_prob": 0.4516,
         "elo_prob": 0.6529,
-        "xgb_prob": null,
+        "xgb_prob": 0.5399,
         "pyth_prob": 0.5933,
         "eff_prob": 0.5691,
-        "bayesian_prob": 0.6871
+        "bayesian_prob": 0.8208
       },
       "market": {
         "home_prob": null,
@@ -9877,19 +9765,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.537,
-        "exp_margin": 1.34,
-        "prob_7plus": 0.3453,
-        "prob_14plus": 0.1917,
-        "prob_21plus": 0.0903,
+        "win_prob": 0.5601,
+        "exp_margin": 2.13,
+        "prob_7plus": 0.3644,
+        "prob_14plus": 0.2005,
+        "prob_21plus": 0.0894,
         "margin_percentiles": [
-          -22.1,
-          -17.4,
-          -8.6,
-          1.3,
-          11.1,
-          20.2,
-          25.6
+          -21.2,
+          -16.0,
+          -7.6,
+          2.2,
+          11.6,
+          20.3,
+          25.3
         ]
       },
       "adjustments": {
@@ -9906,17 +9794,17 @@
         "diff": 109.8
       },
       "bayesian": {
-        "home_mu": 1517.6,
-        "home_sigma": 75.0,
-        "away_mu": 1549.2,
-        "away_sigma": 75.0,
+        "home_mu": 1535.5,
+        "home_sigma": 40.0,
+        "away_mu": 1548.6,
+        "away_sigma": 40.0,
         "home_band": [
-          1442.6,
-          1592.6
+          1495.5,
+          1575.5
         ],
         "away_band": [
-          1474.2,
-          1624.2
+          1508.6,
+          1588.6
         ]
       },
       "injuries": {
@@ -10152,7 +10040,7 @@
         "Rest advantage: BAL has 7 extra days rest",
         "Home field: BAL +65 ELO home advantage"
       ],
-      "explanation": "The model gives Baltimore Ravens a 62.8% win probability \u2014 a moderate favorite over Chicago Bears. The ELO gap is 32 points with home field adding approximately 65 ELO points. Rest advantage favors BAL."
+      "explanation": "The model gives Baltimore Ravens a 53.6% win probability \u2014 a slight favorite over Chicago Bears. The ELO gap is 32 points with home field adding approximately 65 ELO points. Rest advantage favors BAL."
     },
     {
       "game_id": "401772866",
@@ -10170,13 +10058,13 @@
       "home_score": 26,
       "away_score": 15,
       "predictions": {
-        "ensemble_prob": 0.6129,
-        "logistic_prob": 0.6446,
+        "ensemble_prob": 0.6358,
+        "logistic_prob": 0.661,
         "elo_prob": 0.6446,
-        "xgb_prob": null,
+        "xgb_prob": 0.6815,
         "pyth_prob": 0.6373,
         "eff_prob": 0.4909,
-        "bayesian_prob": 0.9302
+        "bayesian_prob": 0.9901
       },
       "market": {
         "home_prob": null,
@@ -10186,19 +10074,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6143,
-        "exp_margin": 4.11,
-        "prob_7plus": 0.4222,
-        "prob_14plus": 0.2424,
-        "prob_21plus": 0.1211,
+        "win_prob": 0.6369,
+        "exp_margin": 5.09,
+        "prob_7plus": 0.4508,
+        "prob_14plus": 0.2681,
+        "prob_21plus": 0.1312,
         "margin_percentiles": [
-          -19.8,
-          -14.5,
-          -5.7,
-          4.1,
-          13.7,
-          22.6,
-          27.9
+          -18.4,
+          -13.4,
+          -4.6,
+          5.2,
+          14.8,
+          23.2,
+          28.5
         ]
       },
       "adjustments": {
@@ -10215,17 +10103,17 @@
         "diff": 103.4
       },
       "bayesian": {
-        "home_mu": 1646.9,
-        "home_sigma": 75.0,
-        "away_mu": 1602.0,
-        "away_sigma": 75.0,
+        "home_mu": 1616.7,
+        "home_sigma": 40.0,
+        "away_mu": 1549.8,
+        "away_sigma": 40.0,
         "home_band": [
-          1571.9,
-          1721.9
+          1576.7,
+          1656.7
         ],
         "away_band": [
-          1527.0,
-          1677.0
+          1509.8,
+          1589.8
         ]
       },
       "injuries": {
@@ -10406,7 +10294,7 @@
         "Travel penalty: away team travels 1616 miles",
         "Home field: HOU +65 ELO home advantage"
       ],
-      "explanation": "The model gives Houston Texans a 61.3% win probability \u2014 a moderate favorite over San Francisco 49ers. The ELO gap is 45 points with home field adding approximately 65 ELO points. Travel distance 1616 miles factors into the away team rating."
+      "explanation": "The model gives Houston Texans a 63.6% win probability \u2014 a moderate favorite over San Francisco 49ers. The ELO gap is 45 points with home field adding approximately 65 ELO points. Travel distance 1616 miles factors into the away team rating."
     },
     {
       "game_id": "401772869",
@@ -10424,13 +10312,13 @@
       "home_score": 3,
       "away_score": 23,
       "predictions": {
-        "ensemble_prob": 0.5656,
-        "logistic_prob": 0.5836,
+        "ensemble_prob": 0.485,
+        "logistic_prob": 0.4516,
         "elo_prob": 0.5836,
-        "xgb_prob": null,
+        "xgb_prob": 0.428,
         "pyth_prob": 0.5453,
         "eff_prob": 0.5193,
-        "bayesian_prob": 0.7526
+        "bayesian_prob": 0.9396
       },
       "market": {
         "home_prob": null,
@@ -10440,19 +10328,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.5561,
-        "exp_margin": 2.01,
-        "prob_7plus": 0.3699,
-        "prob_14plus": 0.2077,
-        "prob_21plus": 0.0994,
+        "win_prob": 0.5931,
+        "exp_margin": 3.37,
+        "prob_7plus": 0.3962,
+        "prob_14plus": 0.2272,
+        "prob_21plus": 0.1015,
         "margin_percentiles": [
-          -22.4,
-          -17.0,
-          -8.1,
-          2.0,
-          12.0,
-          20.9,
-          26.4
+          -20.0,
+          -14.6,
+          -5.9,
+          3.4,
+          12.9,
+          21.2,
+          26.3
         ]
       },
       "adjustments": {
@@ -10469,17 +10357,17 @@
         "diff": 58.6
       },
       "bayesian": {
-        "home_mu": 1441.2,
-        "home_sigma": 75.0,
-        "away_mu": 1458.9,
-        "away_sigma": 75.0,
+        "home_mu": 1463.8,
+        "home_sigma": 40.0,
+        "away_mu": 1441.0,
+        "away_sigma": 40.0,
         "home_band": [
-          1366.2,
-          1516.2
+          1423.8,
+          1503.8
         ],
         "away_band": [
-          1383.9,
-          1533.9
+          1401.0,
+          1481.0
         ]
       },
       "injuries": {
@@ -10708,7 +10596,7 @@
         "Efficiency gap: NO net -0.247 vs TB net +0.011",
         "Home field: NO +65 ELO home advantage"
       ],
-      "explanation": "The model gives New Orleans Saints a 56.6% win probability \u2014 a slight favorite over Tampa Bay Buccaneers. The ELO gap is 18 points with home field adding approximately 65 ELO points."
+      "explanation": "The model gives Tampa Bay Buccaneers a 51.5% win probability \u2014 a slight favorite over New Orleans Saints. The ELO gap is 18 points with home field adding approximately 65 ELO points."
     },
     {
       "game_id": "401772762",
@@ -10726,13 +10614,13 @@
       "home_score": 44,
       "away_score": 24,
       "predictions": {
-        "ensemble_prob": 0.719,
-        "logistic_prob": 0.829,
-        "elo_prob": 0.829,
-        "xgb_prob": null,
+        "ensemble_prob": 0.7977,
+        "logistic_prob": 1.0,
+        "elo_prob": 0.828,
+        "xgb_prob": 0.7949,
         "pyth_prob": 0.6946,
         "eff_prob": 0.3685,
-        "bayesian_prob": 0.9977
+        "bayesian_prob": 1.0
       },
       "market": {
         "home_prob": null,
@@ -10742,19 +10630,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.7592,
-        "exp_margin": 10.33,
-        "prob_7plus": 0.5925,
-        "prob_14plus": 0.4047,
-        "prob_21plus": 0.2372,
+        "win_prob": 0.7529,
+        "exp_margin": 9.89,
+        "prob_7plus": 0.5771,
+        "prob_14plus": 0.3869,
+        "prob_21plus": 0.2183,
         "margin_percentiles": [
-          -13.7,
-          -8.4,
-          0.5,
-          10.4,
-          20.3,
-          28.9,
-          33.9
+          -13.4,
+          -8.0,
+          0.1,
+          9.7,
+          19.5,
+          28.1,
+          33.3
         ]
       },
       "adjustments": {
@@ -10768,20 +10656,20 @@
       "elo": {
         "home": 1633.9,
         "away": 1441.6,
-        "diff": 274.3
+        "diff": 273.1
       },
       "bayesian": {
-        "home_mu": 1633.9,
-        "home_sigma": 75.0,
-        "away_mu": 1441.6,
-        "away_sigma": 75.0,
+        "home_mu": 1597.9,
+        "home_sigma": 40.0,
+        "away_mu": 1413.1,
+        "away_sigma": 40.0,
         "home_band": [
-          1558.9,
-          1708.9
+          1557.9,
+          1637.9
         ],
         "away_band": [
-          1366.6,
-          1516.6
+          1373.1,
+          1453.1
         ]
       },
       "injuries": {
@@ -10824,6 +10712,13 @@
         ],
         "away": [
           {
+            "player": "Corey Ballentine",
+            "status": "Active",
+            "position": "CB",
+            "injury_description": "Ballentine spent last summer with the Packers but was cut ahead of Week 1 and signed with New England, spending most of September with the team. He then signed with Dallas, where he spent much of the 2025 campaign on the practice squad. Ballentine will compete for a job this offseason.",
+            "value_tier": "starter"
+          },
+          {
             "player": "T.J. Bass",
             "status": "Active",
             "position": "G",
@@ -10850,21 +10745,14 @@
             "position": "CB",
             "injury_description": "Durant appeared in all 17 regular-season games for the Rams last season, making 15 starts, and finished with 40 tackles (30 solo) and seven pass breakups, including three interceptions, one of which was returned for a touchdown. Durant will compete for cornerback snaps alongside Shavon Revel (concussion), Caelen Carson and Trikweze Bridges opposite DaRon Bland (foot).",
             "value_tier": "starter"
-          },
-          {
-            "player": "Matt Hennessy",
-            "status": "Active",
-            "position": "C",
-            "injury_description": "Hennessy appeared in all 17 regular-season games for the 49ers last season, making a pair of starts. The veteran interior offensive lineman has made 64 career regular-season appearances, including 24 starts, and will likely fill a similar role in Dallas.",
-            "value_tier": "starter"
           }
         ]
       },
       "injury_impact": {
         "home_elo_penalty": 24.4,
-        "away_elo_penalty": 24.4,
+        "away_elo_penalty": 23.2,
         "home_impact_score": 0.2218,
-        "away_impact_score": 0.2218,
+        "away_impact_score": 0.2109,
         "home_key_players_out": [
           {
             "player": "Matt Henningsen",
@@ -10946,13 +10834,6 @@
             "value_tier": "starter"
           },
           {
-            "player": "Rob Jones",
-            "position": "G",
-            "status": "Questionable",
-            "elo_impact": 1.2,
-            "value_tier": "starter"
-          },
-          {
             "player": "Tyler Guyton",
             "position": "OT",
             "status": "Questionable",
@@ -10997,7 +10878,7 @@
         "Efficiency gap: DEN net -0.243 vs DAL net +0.550",
         "Home field: DEN +65 ELO home advantage"
       ],
-      "explanation": "The model gives Denver Broncos a 71.9% win probability \u2014 a strong favorite over Dallas Cowboys. The ELO gap is 192 points with home field adding approximately 65 ELO points."
+      "explanation": "The model gives Denver Broncos a 79.8% win probability \u2014 a strong favorite over Dallas Cowboys. The ELO gap is 192 points with home field adding approximately 65 ELO points."
     },
     {
       "game_id": "401772761",
@@ -11015,13 +10896,13 @@
       "home_score": 38,
       "away_score": 14,
       "predictions": {
-        "ensemble_prob": 0.7191,
-        "logistic_prob": 0.7218,
+        "ensemble_prob": 0.8411,
+        "logistic_prob": 1.0,
         "elo_prob": 0.7218,
-        "xgb_prob": null,
+        "xgb_prob": 0.8178,
         "pyth_prob": 0.7637,
         "eff_prob": 0.6804,
-        "bayesian_prob": 0.9936
+        "bayesian_prob": 0.9998
       },
       "market": {
         "home_prob": null,
@@ -11031,19 +10912,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.723,
-        "exp_margin": 8.63,
-        "prob_7plus": 0.5519,
-        "prob_14plus": 0.3583,
-        "prob_21plus": 0.1965,
+        "win_prob": 0.7127,
+        "exp_margin": 8.01,
+        "prob_7plus": 0.528,
+        "prob_14plus": 0.3353,
+        "prob_21plus": 0.1794,
         "margin_percentiles": [
-          -15.5,
-          -10.1,
-          -1.3,
-          8.8,
-          18.5,
-          27.1,
-          32.5
+          -15.4,
+          -9.9,
+          -1.6,
+          8.0,
+          17.6,
+          26.4,
+          31.7
         ]
       },
       "adjustments": {
@@ -11060,17 +10941,17 @@
         "diff": 165.6
       },
       "bayesian": {
-        "home_mu": 1478.9,
-        "home_sigma": 75.0,
-        "away_mu": 1329.9,
-        "away_sigma": 75.0,
+        "home_mu": 1526.9,
+        "home_sigma": 40.0,
+        "away_mu": 1393.8,
+        "away_sigma": 40.0,
         "home_band": [
-          1403.9,
-          1553.9
+          1486.9,
+          1566.9
         ],
         "away_band": [
-          1254.9,
-          1404.9
+          1353.8,
+          1433.8
         ]
       },
       "injuries": {
@@ -11242,7 +11123,7 @@
         "Efficiency gap: IND net +0.232 vs TEN net -0.099",
         "Home field: IND +65 ELO home advantage"
       ],
-      "explanation": "The model gives Indianapolis Colts a 71.9% win probability \u2014 a strong favorite over Tennessee Titans. The ELO gap is 149 points with home field adding approximately 65 ELO points."
+      "explanation": "The model gives Indianapolis Colts a 84.1% win probability \u2014 a strong favorite over Tennessee Titans. The ELO gap is 149 points with home field adding approximately 65 ELO points."
     },
     {
       "game_id": "401772925",
@@ -11260,13 +11141,13 @@
       "home_score": 25,
       "away_score": 35,
       "predictions": {
-        "ensemble_prob": 0.6137,
-        "logistic_prob": 0.6311,
+        "ensemble_prob": 0.4943,
+        "logistic_prob": 0.4516,
         "elo_prob": 0.6311,
-        "xgb_prob": null,
+        "xgb_prob": 0.3874,
         "pyth_prob": 0.5736,
         "eff_prob": 0.5827,
-        "bayesian_prob": 0.7815
+        "bayesian_prob": 0.8625
       },
       "market": {
         "home_prob": null,
@@ -11276,19 +11157,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.56,
-        "exp_margin": 2.14,
-        "prob_7plus": 0.3692,
-        "prob_14plus": 0.2041,
-        "prob_21plus": 0.0963,
+        "win_prob": 0.5661,
+        "exp_margin": 2.21,
+        "prob_7plus": 0.366,
+        "prob_14plus": 0.2045,
+        "prob_21plus": 0.0928,
         "margin_percentiles": [
-          -21.6,
-          -16.4,
-          -7.7,
-          2.2,
-          11.7,
-          20.7,
-          26.2
+          -21.2,
+          -15.9,
+          -7.3,
+          2.3,
+          11.6,
+          20.6,
+          25.6
         ]
       },
       "adjustments": {
@@ -11305,17 +11186,17 @@
         "diff": 93.3
       },
       "bayesian": {
-        "home_mu": 1495.9,
-        "home_sigma": 75.0,
-        "away_mu": 1506.8,
-        "away_sigma": 75.0,
+        "home_mu": 1470.8,
+        "home_sigma": 40.0,
+        "away_mu": 1474.0,
+        "away_sigma": 40.0,
         "home_band": [
-          1420.9,
-          1570.9
+          1430.8,
+          1510.8
         ],
         "away_band": [
-          1431.8,
-          1581.8
+          1434.0,
+          1514.0
         ]
       },
       "injuries": {
@@ -11557,7 +11438,7 @@
         "Savion Williams (GB) [Starter] QUESTIONABLE \u2014 \u22123 ELO",
         "Home field: PIT +65 ELO home advantage"
       ],
-      "explanation": "The model gives Pittsburgh Steelers a 61.4% win probability \u2014 a moderate favorite over Green Bay Packers. The ELO gap is 11 points with home field adding approximately 65 ELO points."
+      "explanation": "The model gives Green Bay Packers a 50.6% win probability \u2014 a slight favorite over Pittsburgh Steelers. The ELO gap is 11 points with home field adding approximately 65 ELO points."
     },
     {
       "game_id": "401772817",
@@ -11575,13 +11456,13 @@
       "home_score": 28,
       "away_score": 7,
       "predictions": {
-        "ensemble_prob": 0.5741,
-        "logistic_prob": 0.5711,
+        "ensemble_prob": 0.6349,
+        "logistic_prob": 0.661,
         "elo_prob": 0.5711,
-        "xgb_prob": null,
+        "xgb_prob": 0.6914,
         "pyth_prob": 0.6948,
         "eff_prob": 0.5039,
-        "bayesian_prob": 0.9259
+        "bayesian_prob": 0.9727
       },
       "market": {
         "home_prob": null,
@@ -11591,19 +11472,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6213,
-        "exp_margin": 4.42,
-        "prob_7plus": 0.43,
-        "prob_14plus": 0.2521,
-        "prob_21plus": 0.1288,
+        "win_prob": 0.6226,
+        "exp_margin": 4.31,
+        "prob_7plus": 0.4259,
+        "prob_14plus": 0.2509,
+        "prob_21plus": 0.1184,
         "margin_percentiles": [
-          -19.8,
-          -14.3,
-          -5.4,
-          4.6,
-          14.1,
-          23.3,
-          28.3
+          -18.9,
+          -14.2,
+          -5.3,
+          4.4,
+          14.0,
+          22.3,
+          27.5
         ]
       },
       "adjustments": {
@@ -11620,21 +11501,28 @@
         "diff": 49.7
       },
       "bayesian": {
-        "home_mu": 1441.3,
-        "home_sigma": 75.0,
-        "away_mu": 1399.1,
-        "away_sigma": 75.0,
+        "home_mu": 1460.3,
+        "home_sigma": 40.0,
+        "away_mu": 1416.6,
+        "away_sigma": 40.0,
         "home_band": [
-          1366.3,
-          1516.3
+          1420.3,
+          1500.3
         ],
         "away_band": [
-          1324.1,
-          1474.1
+          1376.6,
+          1456.6
         ]
       },
       "injuries": {
         "home": [
+          {
+            "player": "Travis Kelce",
+            "status": "Active",
+            "position": "TE",
+            "injury_description": "Kelce agreed to terms on a new contract with the Chiefs in early March and now officially re-ups with Kansas City, where he has spent his entire career since being selected by the team in the third round of the 2013 NFL Draft. The 36-year-old tight end has seen his production dip in recent years but nonetheless remains productive, having surpassed 800 receiving yards in both 2024 and 2025. His contract had previously been reported by Adam Schefter of ESPN as a one-year, $12 million deal worth up to $15 million, but Kelce and the Chiefs have instead negotiated a multi-year pact. As such, as long as Kelce opts to continue his playing career, he will be positioned to operate as a key cog on offense for QB Patrick Mahomes (knee).",
+            "value_tier": "starter"
+          },
           {
             "player": "Jack Cochrane",
             "status": "Active",
@@ -11661,13 +11549,6 @@
             "status": "Active",
             "position": "RB",
             "injury_description": "The Chiefs have parted ways with Isiah Pacheco and look unlikely to bring back Kareem Hunt, but Walker's expected to handle the bulk of the rushing workload after signing a three-year contract with the team, leaving Smith and the newly signed Demercado to compete for change-of-pace duties. Smith had 44 carries for 151 yards while adding 25 catches for 172 yards and a touchdown on 35 targets in 2025, showing some promising pass catching skills as a rookie seventh-round pick.",
-            "value_tier": "starter"
-          },
-          {
-            "player": "Drue Tranquill",
-            "status": "Active",
-            "position": "LB",
-            "injury_description": "The move helps Kansas City save $2.5 million in cap space, per Garafolo, who also said Tranquill could have been a cap casualty if not for this renegotiation. Tranquill finished with 103 tackles (55 solo), including 2.0 sacks, a pass breakup, a forced fumble and a fumble recovery in 2025.",
             "value_tier": "starter"
           }
         ],
@@ -11852,7 +11733,7 @@
         "Efficiency gap: KC net -0.277 vs WAS net +0.035",
         "Home field: KC +65 ELO home advantage"
       ],
-      "explanation": "The model gives Kansas City Chiefs a 57.4% win probability \u2014 a slight favorite over Washington Commanders. The ELO gap is 42 points with home field adding approximately 65 ELO points."
+      "explanation": "The model gives Kansas City Chiefs a 63.5% win probability \u2014 a moderate favorite over Washington Commanders. The ELO gap is 42 points with home field adding approximately 65 ELO points."
     }
   ]
 }

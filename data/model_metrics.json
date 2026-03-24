@@ -1,10 +1,71 @@
 {
-  "updated": "2026-03-23T08:44:32.977422+00:00",
-  "log_loss": null,
-  "brier_score": null,
-  "auc": null,
-  "calibration_buckets": [],
+  "updated": "2026-03-24T00:48:00.375421+00:00",
+  "log_loss": 1.135644835627878,
+  "brier_score": 0.19188011430290128,
+  "auc": 0.7891545561665357,
+  "calibration_buckets": [
+    {
+      "bucket": "0-10%",
+      "predicted": 0.05,
+      "actual": 0.05,
+      "count": 0
+    },
+    {
+      "bucket": "10-20%",
+      "predicted": 0.15,
+      "actual": 0.15,
+      "count": 0
+    },
+    {
+      "bucket": "20-30%",
+      "predicted": 0.25,
+      "actual": 0.25,
+      "count": 0
+    },
+    {
+      "bucket": "30-40%",
+      "predicted": 0.36,
+      "actual": 0.224,
+      "count": 107
+    },
+    {
+      "bucket": "40-50%",
+      "predicted": 0.452,
+      "actual": 0.569,
+      "count": 51
+    },
+    {
+      "bucket": "50-60%",
+      "predicted": 0.553,
+      "actual": 0.667,
+      "count": 6
+    },
+    {
+      "bucket": "60-70%",
+      "predicted": 0.661,
+      "actual": 0.635,
+      "count": 52
+    },
+    {
+      "bucket": "70-80%",
+      "predicted": 0.75,
+      "actual": 0.75,
+      "count": 0
+    },
+    {
+      "bucket": "80-90%",
+      "predicted": 0.812,
+      "actual": 0.85,
+      "count": 20
+    },
+    {
+      "bucket": "90-100%",
+      "predicted": 0.95,
+      "actual": 0.95,
+      "count": 0
+    }
+  ],
   "historical_accuracy": [],
-  "n_training_games": 0,
-  "xgboost_available": false
+  "n_training_games": 286,
+  "xgboost_available": true
 }
