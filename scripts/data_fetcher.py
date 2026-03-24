@@ -516,7 +516,7 @@ def _parse_nfl_events(data, default_week=0):
                 "away_logo": f"https://a.espncdn.com/i/teamlogos/nfl/500/{away['team']['abbreviation'].lower()}.png",
                 "neutral": int(comp.get("neutralSite", False)),
             })
-        except (KeyError, IndexError) as e:
+        except (KeyError, IndexError, ValueError) as e:
             log.debug(f"Error parsing NFL game: {e}")
     return games
 

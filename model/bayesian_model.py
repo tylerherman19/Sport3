@@ -89,9 +89,9 @@ def update_ratings(games, elo_dict, initial_sigma=75.0, obs_noise=100.0, regress
         perf_signal_1 = mu2 + margin * margin_multiplier
         perf_signal_2 = ratings[team1]["mu"] - margin * margin_multiplier
 
-        # Clamp signals to prevent runaway updates from extreme blowouts (800-2200 = ±700 pts)
-        perf_signal_1 = np.clip(perf_signal_1, 800, 2200)
-        perf_signal_2 = np.clip(perf_signal_2, 800, 2200)
+        # Clamp signals to prevent runaway updates from extreme blowouts (1200-1800 = ±300 pts)
+        perf_signal_1 = np.clip(perf_signal_1, 1200, 1800)
+        perf_signal_2 = np.clip(perf_signal_2, 1200, 1800)
 
         new_mu1, new_sig1 = normal_update(
             ratings[team1]["mu"], ratings[team1]["sigma"],
