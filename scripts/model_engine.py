@@ -234,7 +234,10 @@ def build_nba_player_values(depth_charts: dict, player_ppg: dict) -> dict:
         if name not in values or depth_pos == 1:
             values[name] = _nba_depth_to_value(depth_pos)
     for name, ppg in player_ppg.items():
-        values[name] = _ppg_to_value_mult(ppg)
+        # Keep curated/depth priors as a floor so stars with temporarily low
+        # season PPG (injury return, minutes limits, small sample) are not
+        # incorrectly downgraded by noisy early-season stats.
+        values[name] = max(values.get(name, 0.0), _ppg_to_value_mult(ppg))
     return values
 
 

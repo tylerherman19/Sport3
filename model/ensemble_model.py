@@ -190,14 +190,21 @@ def train_xgboost(X, y):
     """Train XGBoost classifier with early stopping on a held-out validation set."""
     if not HAS_XGB:
         return None, None
+    if len(X) < 20 or len(np.unique(y)) < 2:
+        # Not enough samples/classes for a stable boosted model.
+        return None, None
 
     scaler = StandardScaler()
     X_scaled = scaler.fit_transform(X)
 
     # Reserve last 20% of (time-ordered) data for early-stopping validation
     split = max(1, int(len(X_scaled) * 0.8))
+    if split >= len(X_scaled):
+        return None, None
     X_train, X_val = X_scaled[:split], X_scaled[split:]
     y_train, y_val = y[:split], y[split:]
+    if len(y_val) == 0 or len(np.unique(y_train)) < 2 or len(np.unique(y_val)) < 2:
+        return None, None
 
     model = xgb.XGBClassifier(
         n_estimators=500,
