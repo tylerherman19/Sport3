@@ -91,6 +91,8 @@ def build_xgb_features(df, elo_dict, game_history, efficiency_data, pythagorean_
 
     # Track last game date per team for rest calculation
     team_last_date: dict = {}
+    # Prevent look-ahead leakage in form features.
+    rolling_history = {}
 
     for _, row in df.iterrows():
         team1 = str(row["team1"])
@@ -114,8 +116,8 @@ def build_xgb_features(df, elo_dict, game_history, efficiency_data, pythagorean_
         def1 = efficiency_data.get(team1, {}).get("def_eff", 1.0)
         def2 = efficiency_data.get(team2, {}).get("def_eff", 1.0)
 
-        lr1 = recent_form(game_history, team1)
-        lr2 = recent_form(game_history, team2)
+        lr1 = recent_form(rolling_history, team1)
+        lr2 = recent_form(rolling_history, team2)
 
         adv1 = advanced_stats.get(team1, {})
         adv2 = advanced_stats.get(team2, {})
@@ -180,6 +182,8 @@ def build_xgb_features(df, elo_dict, game_history, efficiency_data, pythagorean_
 
         rows.append(feature)
         labels.append(outcome)
+        rolling_history.setdefault(team1, []).append({"result": outcome})
+        rolling_history.setdefault(team2, []).append({"result": 1 - outcome})
 
     X = np.array(rows, dtype=np.float32)
     y = np.array(labels, dtype=np.int32)
@@ -190,14 +194,21 @@ def train_xgboost(X, y):
     """Train XGBoost classifier with early stopping on a held-out validation set."""
     if not HAS_XGB:
         return None, None
-
-    scaler = StandardScaler()
-    X_scaled = scaler.fit_transform(X)
+    if len(X) < 20 or len(np.unique(y)) < 2:
+        # Not enough samples/classes for a stable boosted model.
+        return None, None
 
     # Reserve last 20% of (time-ordered) data for early-stopping validation
-    split = max(1, int(len(X_scaled) * 0.8))
-    X_train, X_val = X_scaled[:split], X_scaled[split:]
+    split = max(1, int(len(X) * 0.8))
+    if split >= len(X):
+        return None, None
+    X_train_raw, X_val_raw = X[:split], X[split:]
     y_train, y_val = y[:split], y[split:]
+    if len(y_val) == 0 or len(np.unique(y_train)) < 2 or len(np.unique(y_val)) < 2:
+        return None, None
+    scaler = StandardScaler()
+    X_train = scaler.fit_transform(X_train_raw)
+    X_val = scaler.transform(X_val_raw)
 
     model = xgb.XGBClassifier(
         n_estimators=500,
