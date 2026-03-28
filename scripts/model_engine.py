@@ -234,7 +234,10 @@ def build_nba_player_values(depth_charts: dict, player_ppg: dict) -> dict:
         if name not in values or depth_pos == 1:
             values[name] = _nba_depth_to_value(depth_pos)
     for name, ppg in player_ppg.items():
-        values[name] = _ppg_to_value_mult(ppg)
+        # Keep curated/depth priors as a floor so stars with temporarily low
+        # season PPG (injury return, minutes limits, small sample) are not
+        # incorrectly downgraded by noisy early-season stats.
+        values[name] = max(values.get(name, 0.0), _ppg_to_value_mult(ppg))
     return values
 
 
@@ -321,6 +324,7 @@ def nba_days_since_last_game(game_history: dict, team: str, today) -> int:
 def build_nba_features(games, elo_dict, game_history, efficiency_data, pyth_data):
     from model.nba_elo import nba_recent_form
     features, targets = [], []
+    rolling_history = {}
     for game in games:
         t1, t2 = game.get("team1", ""), game.get("team2", "")
         s1, s2 = game.get("score1", 0), game.get("score2", 0)
@@ -335,8 +339,18 @@ def build_nba_features(games, elo_dict, game_history, efficiency_data, pyth_data
         game_date_str = game.get("date", "")
         try:
             game_date = datetime.strptime(game_date_str, "%Y-%m-%d").date()
-            rest1 = nba_days_since_last_game(game_history, t1, game_date)
-            rest2 = nba_days_since_last_game(game_history, t2, game_date)
+            hist1 = rolling_history.get(t1, [])
+            hist2 = rolling_history.get(t2, [])
+            if hist1:
+                last1 = datetime.strptime(max(h.get("date", "") for h in hist1 if h.get("date")), "%Y-%m-%d").date()
+                rest1 = max(0, (game_date - last1).days)
+            else:
+                rest1 = 7
+            if hist2:
+                last2 = datetime.strptime(max(h.get("date", "") for h in hist2 if h.get("date")), "%Y-%m-%d").date()
+                rest2 = max(0, (game_date - last2).days)
+            else:
+                rest2 = 7
             rest_diff = float(rest1 - rest2)
             b2b1 = 1.0 if rest1 <= 1 else 0.0
             b2b2 = 1.0 if rest2 <= 1 else 0.0
@@ -360,13 +374,51 @@ def build_nba_features(games, elo_dict, game_history, efficiency_data, pyth_data
             eff1.get("three_point_rate", 0.35) - eff2.get("three_point_rate", 0.35),
             eff1.get("rebound_rate", 0.5) - eff2.get("rebound_rate", 0.5),
             eff1.get("free_throw_rate", 0.20) - eff2.get("free_throw_rate", 0.20),
-            nba_recent_form(game_history, t1) - nba_recent_form(game_history, t2),
+            nba_recent_form(rolling_history, t1) - nba_recent_form(rolling_history, t2),
             b2b1 - b2b2,       # difference, not home-only (matches inference)
             tz_diff,            # circadian shift: positive = away team traveled east
             travel_miles / 1000.0,  # normalised travel distance (~0–3 range)
         ])
-        targets.append(1 if s1 > s2 else 0)
+        outcome = 1 if s1 > s2 else 0
+        targets.append(outcome)
+        rolling_history.setdefault(t1, []).append(
+            {"result": outcome, "elo_diff": (e1 + hfa) - e2, "date": game_date_str}
+        )
+        rolling_history.setdefault(t2, []).append(
+            {"result": 1 - outcome, "elo_diff": e2 - (e1 + hfa), "date": game_date_str}
+        )
     return (np.array(features) if features else np.array([]).reshape(0, 16), np.array(targets))
+
+
+def build_nba_inference_feature(home, away, neutral, rest_diff, home_b2b, away_b2b,
+                                elo_dict, game_history, efficiency_data, pyth_data,
+                                travel_miles=0.0):
+    """Build one NBA inference feature vector matching build_nba_features schema."""
+    from model.nba_elo import nba_recent_form
+    helo = elo_dict.get(home, 1500.0)
+    aelo = elo_dict.get(away, 1500.0)
+    hfa = 0.0 if neutral else 100.0
+    heff = efficiency_data.get(home, {})
+    aeff = efficiency_data.get(away, {})
+    phome = pyth_data.get(home, {}).get("pyth", 0.5)
+    paway = pyth_data.get(away, {}).get("pyth", 0.5)
+    tz_diff = float(NBA_TZ_OFFSETS.get(home, -6) - NBA_TZ_OFFSETS.get(away, -6))
+    return [
+        (helo + hfa) - aelo, hfa, float(rest_diff),
+        (1500 + (phome - 0.5) * 400) - (1500 + (paway - 0.5) * 400),
+        heff.get("net_rating", 0.0) - aeff.get("net_rating", 0.0),
+        heff.get("offensive_rating", 110.0) - aeff.get("offensive_rating", 110.0),
+        aeff.get("defensive_rating", 110.0) - heff.get("defensive_rating", 110.0),
+        heff.get("pace", 100.0) - aeff.get("pace", 100.0),
+        aeff.get("turnover_rate", 0.5) - heff.get("turnover_rate", 0.5),
+        heff.get("three_point_rate", 0.35) - aeff.get("three_point_rate", 0.35),
+        heff.get("rebound_rate", 0.5) - aeff.get("rebound_rate", 0.5),
+        heff.get("free_throw_rate", 0.20) - aeff.get("free_throw_rate", 0.20),
+        nba_recent_form(game_history, home) - nba_recent_form(game_history, away),
+        float(home_b2b) - float(away_b2b),
+        tz_diff,
+        float(travel_miles) / 1000.0,
+    ]
 
 
 def train_nba_logistic(X, y):
@@ -377,16 +429,20 @@ def train_nba_logistic(X, y):
     if len(X) < 50:
         return None, None, None
     scaler = StandardScaler()
-    X_s    = scaler.fit_transform(X)
+    X_s = scaler.fit_transform(X)
     model  = LogisticRegression(C=1.0, max_iter=1000, solver="lbfgs")
     model.fit(X_s, y)
-    probs = np.zeros(len(y))
-    for tr, va in TimeSeriesSplit(n_splits=5).split(X_s):
+    probs = np.full(len(y), np.nan, dtype=np.float64)
+    for tr, va in TimeSeriesSplit(n_splits=5).split(X):
+        fold_scaler = StandardScaler()
+        X_tr = fold_scaler.fit_transform(X[tr])
+        X_va = fold_scaler.transform(X[va])
         m = LogisticRegression(C=1.0, max_iter=1000, solver="lbfgs")
-        m.fit(X_s[tr], y[tr])
-        probs[va] = m.predict_proba(X_s[va])[:, 1]
+        m.fit(X_tr, y[tr])
+        probs[va] = m.predict_proba(X_va)[:, 1]
     cal = IsotonicRegression(out_of_bounds="clip")
-    cal.fit(probs, y)
+    valid = ~np.isnan(probs)
+    cal.fit(probs[valid], y[valid])
     return model, scaler, cal
 
 
@@ -407,14 +463,23 @@ def train_nba_xgboost(X, y):
         from sklearn.preprocessing import StandardScaler
         if len(X) < 50:
             return None, None
+        split = max(1, int(len(X) * 0.8))
+        if split >= len(X):
+            return None, None
+        X_train_raw, X_val_raw = X[:split], X[split:]
+        y_train, y_val = y[:split], y[split:]
+        if len(y_val) == 0 or len(np.unique(y_train)) < 2 or len(np.unique(y_val)) < 2:
+            return None, None
         scaler = StandardScaler()
-        X_s    = scaler.fit_transform(X)
+        X_train = scaler.fit_transform(X_train_raw)
+        X_val = scaler.transform(X_val_raw)
         model  = xgb.XGBClassifier(
             n_estimators=300, max_depth=4, learning_rate=0.05,
             subsample=0.8, colsample_bytree=0.8,
-            reg_alpha=0.1, reg_lambda=1.0, eval_metric="logloss", random_state=42,
+            reg_alpha=0.1, reg_lambda=1.0, eval_metric="logloss",
+            early_stopping_rounds=20, random_state=42,
         )
-        model.fit(X_s, y)
+        model.fit(X_train, y_train, eval_set=[(X_val, y_val)], verbose=False)
         return model, scaler
     except ImportError:
         return None, None

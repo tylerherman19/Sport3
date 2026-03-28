@@ -63,7 +63,7 @@ def simulate_game(mu_a, mu_b, sigma_a=75.0, sigma_b=75.0,
     }
 
 
-def simulate_season(teams, schedule, ratings, n_sims=10000, random_state=42):
+def simulate_season(teams, schedule, ratings, n_sims=10000, random_state=42, hfa=65.0):
     """
     Simulate full season N times to compute playoff probabilities.
 
@@ -113,10 +113,10 @@ def simulate_season(teams, schedule, ratings, n_sims=10000, random_state=42):
         mu_b = ratings.get(tb, {}).get("mu", 1500.0)
         sigma_a = ratings.get(ta, {}).get("sigma", 75.0)
         sigma_b = ratings.get(tb, {}).get("sigma", 75.0)
-        hfa = 100.0 if (game.get("is_home_a", True) and not game.get("neutral", False)) else 0.0
+        game_hfa = hfa if (game.get("is_home_a", True) and not game.get("neutral", False)) else 0.0
 
         # Expected difference for probability
-        diff = (mu_a + hfa) - mu_b
+        diff = (mu_a + game_hfa) - mu_b
         base_prob = 1.0 / (1.0 + 10 ** (-diff / 400.0))
 
         game_probs.append({
@@ -124,7 +124,7 @@ def simulate_season(teams, schedule, ratings, n_sims=10000, random_state=42):
             "idx_b": team_idx.get(tb, -1),
             "mu_a": mu_a, "mu_b": mu_b,
             "sigma_a": sigma_a, "sigma_b": sigma_b,
-            "hfa": hfa, "base_prob": base_prob
+            "hfa": game_hfa, "base_prob": base_prob
         })
 
     # Simulate all games across all sims
@@ -158,8 +158,10 @@ def simulate_season(teams, schedule, ratings, n_sims=10000, random_state=42):
         for i in range(n_teams):
             if sim_wins[i] >= playoff_threshold:
                 playoff_counts[i] += 1
-            if i < 8:  # Simplification: treat as division winners
-                pass
+        # Division winners proxy (without real division metadata):
+        # treat top 8 teams by wins as division winners in each simulation.
+        top8_idx = np.argsort(sim_wins)[-8:]
+        div_win_counts[top8_idx] += 1
 
         # Super Bowl winner — highest win total
         sb_winner = np.argmax(sim_wins)
@@ -173,7 +175,7 @@ def simulate_season(teams, schedule, ratings, n_sims=10000, random_state=42):
             continue
         result[t] = {
             "playoff_prob": round(float(playoff_counts[i] / n_sims), 4),
-            "division_win_prob": round(float(playoff_counts[i] / n_sims * 0.4), 4),
+            "division_win_prob": round(float(div_win_counts[i] / n_sims), 4),
             "sb_prob": round(float(sb_counts[i] / n_sims), 4),
             "wins_avg": round(float(win_totals[:, i].mean()), 2)
         }
