@@ -46,6 +46,7 @@ from scripts.model_engine import (
     NBA_TEAMS, NBA_TEAM_NAMES,
     build_nba_player_values, build_nba_efficiency_data, compute_nba_pythagorean,
     build_nba_features, train_nba_logistic, train_nba_xgboost, evaluate_nba_model,
+    build_nba_inference_feature,
     predict_nba_logistic, nba_ensemble_predict, compute_nba_h2h, compute_nba_streak,
     nba_days_since_last_game, generate_nba_prediction_drivers, nba_value_tier_label,
 )
@@ -669,18 +670,13 @@ def run_nba():
             pytp = 1.0 / (1.0 + 10 ** (-((pyth_elo_h + hfa) - pyth_elo_a) / 400.0))
             heff = efficiency_data.get(home,{}); aeff = efficiency_data.get(away,{})
             effp = nba_expected_score(1500+heff.get("net_rating",0.0)*10+hfa, 1500+aeff.get("net_rating",0.0)*10)
-            pehome = 1500+(phome-0.5)*400; peaway = 1500+(paway-0.5)*400
-            feat = [(helo+hfa)-aelo,hfa,rd,pehome-peaway,
-                    heff.get("net_rating",0)-aeff.get("net_rating",0),
-                    heff.get("offensive_rating",110)-aeff.get("offensive_rating",110),
-                    aeff.get("defensive_rating",110)-heff.get("defensive_rating",110),
-                    heff.get("pace",100)-aeff.get("pace",100),
-                    aeff.get("turnover_rate",0.5)-heff.get("turnover_rate",0.5),
-                    heff.get("three_point_rate",0.35)-aeff.get("three_point_rate",0.35),
-                    heff.get("rebound_rate",0.5)-aeff.get("rebound_rate",0.5),
-                    heff.get("free_throw_rate",0.20)-aeff.get("free_throw_rate",0.20),
-                    nba_recent_form(game_history,home)-nba_recent_form(game_history,away),
-                    float(b2bh)-float(b2ba)]
+            feat = build_nba_inference_feature(
+                home=home, away=away, neutral=neutral, rest_diff=rd,
+                home_b2b=b2bh, away_b2b=b2ba,
+                elo_dict=elo_dict, game_history=game_history,
+                efficiency_data=efficiency_data, pyth_data=pyth_data,
+                travel_miles=dist,
+            )
             lp  = predict_nba_logistic(feat,logistic_model,logistic_scaler,logistic_calibrator)
             xp  = None
             if xgb_model and xgb_scaler:

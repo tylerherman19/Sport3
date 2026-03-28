@@ -71,6 +71,8 @@ def build_features(df, elo_dict, game_history, efficiency_data, pythagorean_data
 
     # Track the last game date per team for rest calculation
     team_last_date: dict = {}
+    # Build features with rolling history only (pre-game information) to prevent leakage.
+    rolling_history = {}
 
     for _, row in df.iterrows():
         team1 = row["team1"]
@@ -115,8 +117,8 @@ def build_features(df, elo_dict, game_history, efficiency_data, pythagorean_data
         else:
             travel_diff = 0.0
 
-        lr1 = recent_form(game_history, team1)
-        lr2 = recent_form(game_history, team2)
+        lr1 = recent_form(rolling_history, team1)
+        lr2 = recent_form(rolling_history, team2)
         last5_diff = lr1 - lr2
 
         pass1 = efficiency_data.get(team1, {}).get("passing_eff", 1.0)
@@ -152,6 +154,8 @@ def build_features(df, elo_dict, game_history, efficiency_data, pythagorean_data
 
         rows.append(feature)
         labels.append(outcome)
+        rolling_history.setdefault(team1, []).append({"result": outcome})
+        rolling_history.setdefault(team2, []).append({"result": 1 - outcome})
 
     X = np.array(rows, dtype=np.float32)
     y = np.array(labels, dtype=np.int32)
@@ -164,26 +168,29 @@ def train_logistic(X, y):
     C=0.1 (stronger L2 regularization vs previous C=1.0) to mitigate
     coefficient inflation from any residual correlation among features.
     """
-    scaler = StandardScaler()
-    X_scaled = scaler.fit_transform(X)
-
     model = LogisticRegression(
         C=0.1,          # stronger regularization (was C=1.0)
         max_iter=1000,
         solver="lbfgs",
         random_state=42
     )
+    scaler = StandardScaler()
+    X_scaled = scaler.fit_transform(X)
     model.fit(X_scaled, y)
 
     tscv = TimeSeriesSplit(n_splits=5)
-    oof_probs = np.zeros(len(y))
-    for train_idx, val_idx in tscv.split(X_scaled):
+    oof_probs = np.full(len(y), np.nan, dtype=np.float64)
+    for train_idx, val_idx in tscv.split(X):
+        fold_scaler = StandardScaler()
+        X_train = fold_scaler.fit_transform(X[train_idx])
+        X_val = fold_scaler.transform(X[val_idx])
         m = LogisticRegression(C=0.1, max_iter=1000, solver="lbfgs", random_state=42)
-        m.fit(X_scaled[train_idx], y[train_idx])
-        oof_probs[val_idx] = m.predict_proba(X_scaled[val_idx])[:, 1]
+        m.fit(X_train, y[train_idx])
+        oof_probs[val_idx] = m.predict_proba(X_val)[:, 1]
 
     calibrator = IsotonicRegression(out_of_bounds="clip")
-    calibrator.fit(oof_probs, y)
+    valid = ~np.isnan(oof_probs)
+    calibrator.fit(oof_probs[valid], y[valid])
 
     return model, scaler, calibrator
 

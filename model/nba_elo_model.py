@@ -28,7 +28,7 @@ import numpy as np
 import pandas as pd
 import requests
 
-log = logging.getLogger(__name__)
+logger = logging.getLogger(__name__)
 
 DATA_DIR = Path(__file__).parent.parent / "data"
 DATA_DIR.mkdir(exist_ok=True)
@@ -263,7 +263,7 @@ def load_fte_data(force_download: bool = False) -> pd.DataFrame:
         FTE_CACHE_PATH.write_bytes(resp.content)
         return pd.read_csv(FTE_CACHE_PATH, low_memory=False)
     except Exception as e:
-        log.error(f"Failed to download FTE NBA ELO: {e}")
+        logger.error(f"Failed to download FTE NBA ELO: {e}")
         return pd.DataFrame()
 
 
@@ -327,7 +327,7 @@ def main():
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
     now = dt.now()
     season_year = now.year + (1 if now.month >= 10 else 0)
-    log.info("=== NBA ELO Model (nba_elo_model.py) starting ===")
+    logger.info("=== NBA ELO Model (nba_elo_model.py) starting ===")
     fte_df = load_fte_data()
     if not fte_df.empty:
         fte_games = fte_to_game_list(fte_df)
@@ -366,15 +366,15 @@ def main():
                             seen_keys.add(key)
                             unique_games.append(g)
                     elo_dict, game_history = compute_nba_elo(unique_games)
-                    log.info(f"NBA ELO extended with {len(recent_games)} recent games "
+                    logger.info(f"NBA ELO extended with {len(recent_games)} recent games "
                              f"(total {len(unique_games)} games processed)")
     except Exception as e:
-        log.warning(f"Could not extend ELO with recent results: {e}")
+        logger.warning(f"Could not extend ELO with recent results: {e}")
     save_ratings(elo_dict, game_history, season_year)
     if elo_dict:
         elos = list(elo_dict.values())
-        log.info(f"ELO range: {min(elos):.0f} – {max(elos):.0f}, mean: {sum(elos)/len(elos):.0f}")
-    log.info("=== NBA ELO Model complete ===")
+        logger.info(f"ELO range: {min(elos):.0f} – {max(elos):.0f}, mean: {sum(elos)/len(elos):.0f}")
+    logger.info("=== NBA ELO Model complete ===")
 
 
 if __name__ == "__main__":
