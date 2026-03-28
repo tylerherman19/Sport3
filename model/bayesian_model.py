@@ -76,8 +76,12 @@ def update_ratings(games, elo_dict, initial_sigma=75.0, obs_noise=100.0, regress
         if team2 not in ratings:
             ratings[team2] = {"mu": initial_elo, "sigma": initial_sigma}
 
-        score1 = float(row.get("score1", 0))
-        score2 = float(row.get("score2", 0))
+        score1 = row.get("score1")
+        score2 = row.get("score2")
+        if pd.isna(score1) or pd.isna(score2):
+            continue
+        score1 = float(score1)
+        score2 = float(score2)
         neutral = int(row.get("neutral", 0))
         hfa_adj = 0.0 if neutral else hfa
 
@@ -86,8 +90,8 @@ def update_ratings(games, elo_dict, initial_sigma=75.0, obs_noise=100.0, regress
 
         # Performance signal: ELO-equivalent of margin
         margin = score1 - score2
-        perf_signal_1 = mu2 + margin * margin_multiplier
-        perf_signal_2 = ratings[team1]["mu"] - margin * margin_multiplier
+        perf_signal_1 = mu2 + hfa_adj + margin * margin_multiplier
+        perf_signal_2 = ratings[team1]["mu"] + hfa_adj - margin * margin_multiplier
 
         # Clamp signals to prevent runaway updates from extreme blowouts (1200-1800 = ±300 pts)
         perf_signal_1 = np.clip(perf_signal_1, 1200, 1800)

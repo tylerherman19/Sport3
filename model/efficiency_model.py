@@ -191,9 +191,15 @@ def efficiency_predict_game(team_a, team_b, efficiency_data, pythagorean_data,
     pyth_a = pythagorean_data.get(team_a, {}).get("pyth", 0.5)
     pyth_b = pythagorean_data.get(team_b, {}).get("pyth", 0.5)
 
-    hfa = 65.0 if (is_home_a and not neutral) else 0.0
+    hfa_a = 0.0
+    hfa_b = 0.0
+    if not neutral:
+        if is_home_a:
+            hfa_a = 65.0
+        else:
+            hfa_b = 65.0
 
-    eff_diff = (eff_a + hfa) - eff_b
+    eff_diff = (eff_a + hfa_a) - (eff_b + hfa_b)
     eff_prob = 1.0 / (1.0 + 10 ** (-eff_diff / 400.0))
 
     # Convert Pythagorean to ELO-equivalent space, apply HFA additively,
@@ -202,7 +208,7 @@ def efficiency_predict_game(team_a, team_b, efficiency_data, pythagorean_data,
     # distortion that varies with team strength.
     pyth_elo_a = 1500.0 + (pyth_a - 0.5) * 400.0
     pyth_elo_b = 1500.0 + (pyth_b - 0.5) * 400.0
-    pyth_diff = (pyth_elo_a + hfa) - pyth_elo_b
+    pyth_diff = (pyth_elo_a + hfa_a) - (pyth_elo_b + hfa_b)
     pyth_prob = 1.0 / (1.0 + 10 ** (-pyth_diff / 400.0))
 
     return {
