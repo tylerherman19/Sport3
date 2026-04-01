@@ -1,5 +1,5 @@
 {
-  "updated": "2026-03-31T08:46:40.214670+00:00",
+  "updated": "2026-04-01T08:54:58.037455+00:00",
   "season": 2025,
   "week": 5,
   "is_offseason": true,
@@ -36,19 +36,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.4357,
-        "exp_margin": -2.34,
-        "prob_7plus": 0.2619,
-        "prob_14plus": 0.1245,
-        "prob_21plus": 0.0488,
+        "win_prob": 0.4334,
+        "exp_margin": -2.47,
+        "prob_7plus": 0.2541,
+        "prob_14plus": 0.1242,
+        "prob_21plus": 0.0518,
         "margin_percentiles": [
-          -26.1,
-          -20.6,
+          -25.9,
+          -20.8,
           -12.1,
-          -2.4,
-          7.5,
+          -2.5,
+          7.2,
           15.7,
-          20.8
+          21.2
         ]
       },
       "adjustments": {
@@ -288,9 +288,9 @@
       "home_score": 34,
       "away_score": 17,
       "predictions": {
-        "ensemble_prob": 0.3233,
+        "ensemble_prob": 0.3237,
         "logistic_prob": 0.1786,
-        "elo_prob": 0.3682,
+        "elo_prob": 0.3708,
         "xgb_prob": 0.2185,
         "pyth_prob": 0.4938,
         "eff_prob": 0.6773,
@@ -304,19 +304,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.4975,
-        "exp_margin": -0.13,
-        "prob_7plus": 0.3049,
-        "prob_14plus": 0.1608,
-        "prob_21plus": 0.0679,
+        "win_prob": 0.5047,
+        "exp_margin": 0.09,
+        "prob_7plus": 0.3098,
+        "prob_14plus": 0.1619,
+        "prob_21plus": 0.0752,
         "margin_percentiles": [
-          -23.6,
-          -18.2,
-          -9.7,
-          -0.1,
-          9.4,
-          18.1,
-          23.1
+          -23.7,
+          -18.3,
+          -9.5,
+          0.2,
+          9.5,
+          18.4,
+          24.2
         ]
       },
       "adjustments": {
@@ -330,7 +330,7 @@
       "elo": {
         "home": 1408.9,
         "away": 1525.8,
-        "diff": -93.8
+        "diff": -91.8
       },
       "bayesian": {
         "home_mu": 1592.2,
@@ -386,6 +386,13 @@
         ],
         "away": [
           {
+            "player": "Chandler Martin",
+            "status": "Questionable",
+            "position": "LB",
+            "injury_description": "As an undrafted rookie last season, Martin played three regular-season games with Baltimore, with all 34 of his snaps coming on special teams. He tore his ACL in late November and ended the campaign on IR. It's unclear how far along Martin is in his recovery, and there's certainly a chance he won't be ready for the start of the 2026 campaign.",
+            "value_tier": "starter"
+          },
+          {
             "player": "Joe Tryon-Shoyinka",
             "status": "Active",
             "position": "DE",
@@ -412,21 +419,14 @@
             "position": "S",
             "injury_description": "Gray spent his first seven seasons with the Saints and was selected to the Pro Bowl and named a first-team All-Pro as a special-teams ace in 2021. He was a second-team All-Pro twice. Gray was released ahead of Week 1 last summer and spent the 2025 campaign bouncing around the league with the Ravens, Broncos and Bucs, appearing in just five regular-season contests.",
             "value_tier": "starter"
-          },
-          {
-            "player": "Marcus Epps",
-            "status": "Active",
-            "position": "S",
-            "injury_description": "After the Eagles traded away safety Sydney Brown on Friday, the team signed both Epps and J.T. Gray to replenish the depth chart. Epps appeared in 12 regular-season games last season, making four starts, and logged 21 tackles (18 solo) across 250 defensive snaps and another 199 on special teams.",
-            "value_tier": "starter"
           }
         ]
       },
       "injury_impact": {
         "home_elo_penalty": 9.6,
-        "away_elo_penalty": 3.6,
+        "away_elo_penalty": 5.6,
         "home_impact_score": 0.0873,
-        "away_impact_score": 0.0327,
+        "away_impact_score": 0.0509,
         "home_key_players_out": [
           {
             "player": "Cam Skattebo",
@@ -452,6 +452,13 @@
         ],
         "away_key_players_out": [
           {
+            "player": "Chandler Martin",
+            "position": "LB",
+            "status": "Questionable",
+            "elo_impact": 2.0,
+            "value_tier": "starter"
+          },
+          {
             "player": "Lane Johnson",
             "position": "OT",
             "status": "Questionable",
@@ -469,11 +476,12 @@
         "Cam Skattebo (NYG) [Starter] QUESTIONABLE \u2014 \u22123 ELO",
         "Malik Nabers (NYG) [Starter] QUESTIONABLE \u2014 \u22123 ELO",
         "Evan Neal (NYG) [Starter] QUESTIONABLE \u2014 \u22124 ELO",
+        "Chandler Martin (PHI) [Starter] QUESTIONABLE \u2014 \u22122 ELO",
         "Lane Johnson (PHI) [Starter] QUESTIONABLE \u2014 \u22124 ELO",
         "Efficiency gap: NYG net +0.075 vs PHI net -0.244",
         "Home field: NYG +65 ELO home advantage"
       ],
-      "explanation": "The model gives Philadelphia Eagles a 67.7% win probability \u2014 a moderate favorite over New York Giants. The ELO gap is 117 points with home field adding approximately 65 ELO points."
+      "explanation": "The model gives Philadelphia Eagles a 67.6% win probability \u2014 a moderate favorite over New York Giants. The ELO gap is 117 points with home field adding approximately 65 ELO points."
     },
     {
       "game_id": "401772634",
@@ -491,9 +499,9 @@
       "home_score": 11,
       "away_score": 13,
       "predictions": {
-        "ensemble_prob": 0.1742,
+        "ensemble_prob": 0.1745,
         "logistic_prob": 0.0,
-        "elo_prob": 0.1371,
+        "elo_prob": 0.1391,
         "xgb_prob": 0.1655,
         "pyth_prob": 0.2759,
         "eff_prob": 0.5645,
@@ -507,19 +515,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.1893,
-        "exp_margin": -12.49,
-        "prob_7plus": 0.0845,
-        "prob_14plus": 0.0308,
-        "prob_21plus": 0.0091,
+        "win_prob": 0.1847,
+        "exp_margin": -12.55,
+        "prob_7plus": 0.0836,
+        "prob_14plus": 0.0303,
+        "prob_21plus": 0.0108,
         "margin_percentiles": [
-          -36.2,
-          -30.7,
-          -21.8,
+          -36.1,
+          -30.6,
+          -22.0,
           -12.5,
-          -3.1,
-          5.6,
-          10.9
+          -3.2,
+          5.5,
+          11.0
         ]
       },
       "adjustments": {
@@ -533,7 +541,7 @@
       "elo": {
         "home": 1316.0,
         "away": 1633.9,
-        "diff": -319.6
+        "diff": -316.6
       },
       "bayesian": {
         "home_mu": 1399.2,
@@ -551,6 +559,13 @@
       },
       "injuries": {
         "home": [
+          {
+            "player": "Mason Taylor",
+            "status": "Active",
+            "position": "TE",
+            "injury_description": "Taylor missed the final four games of last season due to a neck injury, but there have been no indications that he will be hampered in OTAs. Across 13 regular-season appearances during his rookie campaign, Taylor secured 44 of 65 targets for 369 yards and one touchdown, solid totals considering the struggles of New York's aerial attack, which averaged a league-worst 140.3 passing yards per game. The arrival of Geno Smith should provide stability on that front, and Taylor is currently positioned as one of the new QB's top targets along with Breece Hall (knee), Garrett Wilson (knee) and Adonai Mitchell.",
+            "value_tier": "starter"
+          },
           {
             "player": "Will McDonald IV",
             "status": "Questionable",
@@ -577,13 +592,6 @@
             "status": "Active",
             "position": "RB",
             "injury_description": "Nwangwu had a small role in New York's offense as a depth RB last year, recording 49 yards on 13 carries in 12 games. However, he was a key player on special teams, logging 604  yards and one touchdown on 18 kickoff returns. Nwangwu has recorded five TDs as a kick returner through his first five campaigns in the league, and that should again be his primary role in 2026.",
-            "value_tier": "starter"
-          },
-          {
-            "player": "Andre Cisco",
-            "status": "Questionable",
-            "position": "S",
-            "injury_description": "Cisco started at safety in each of the Jets' first eight games of the regular season but spent the rest of 2025 on IR after tearing his pectoral muscle in Week 8 against the Bengals. He should be ready for the start of offseason programming, and Cisco projects to start at safety alongside Minkah Fitzpatrick in 2026.",
             "value_tier": "starter"
           }
         ],
@@ -626,9 +634,9 @@
         ]
       },
       "injury_impact": {
-        "home_elo_penalty": 18.2,
+        "home_elo_penalty": 15.2,
         "away_elo_penalty": 24.4,
-        "home_impact_score": 0.1655,
+        "home_impact_score": 0.1382,
         "away_impact_score": 0.2218,
         "home_key_players_out": [
           {
@@ -671,13 +679,6 @@
             "position": "WR",
             "status": "Questionable",
             "elo_impact": 3.2,
-            "value_tier": "starter"
-          },
-          {
-            "player": "Mason Taylor",
-            "position": "TE",
-            "status": "Questionable",
-            "elo_impact": 3.0,
             "value_tier": "starter"
           }
         ],
@@ -741,7 +742,7 @@
         "Efficiency gap: NYJ net -0.018 vs DEN net -0.243",
         "Travel penalty: away team travels 1628 miles"
       ],
-      "explanation": "The model gives Denver Broncos a 82.6% win probability \u2014 a strong favorite over New York Jets. The ELO gap is 318 points at a neutral site. Travel distance 1628 miles factors into the away team rating."
+      "explanation": "The model gives Denver Broncos a 82.5% win probability \u2014 a strong favorite over New York Jets. The ELO gap is 318 points at a neutral site. Travel distance 1628 miles factors into the away team rating."
     },
     {
       "game_id": "401772856",
@@ -775,19 +776,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.714,
-        "exp_margin": 8.13,
-        "prob_7plus": 0.5304,
-        "prob_14plus": 0.338,
-        "prob_21plus": 0.1816,
+        "win_prob": 0.7187,
+        "exp_margin": 8.27,
+        "prob_7plus": 0.5377,
+        "prob_14plus": 0.343,
+        "prob_21plus": 0.1862,
         "margin_percentiles": [
-          -14.7,
+          -15.3,
           -9.9,
           -1.4,
-          8.1,
-          17.6,
-          26.1,
-          31.4
+          8.3,
+          17.8,
+          26.5,
+          31.5
         ]
       },
       "adjustments": {
@@ -820,6 +821,13 @@
       "injuries": {
         "home": [
           {
+            "player": "Anthony Richardson Sr.",
+            "status": "Questionable",
+            "position": "QB",
+            "injury_description": "Richardson requested and received permission to seek a trade in late February, and Indianapolis has since re-signed Daniel Jones (Achilles) to a two-year extension that solidifies him as the team's starter. Meanwhile, 2025 sixth-round pick Riley Leonard looked capable of locking down the No. 2 job during the lone start of his rookie campaign, leaving Richardson's status unclear. Ballard also said he remains open to adding another QB due to Jones' uncertainty for Week 1, which could indicate that the team is still looking to move on from Richardson. Richardson ended last season on IR after fracturing the orbital bone of his right eye in October.",
+            "value_tier": "starter"
+          },
+          {
             "player": "Cameron Mitchell",
             "status": "Active",
             "position": "CB",
@@ -845,13 +853,6 @@
             "status": "Active",
             "position": "CB",
             "injury_description": "Taylor-Britt spent his first four seasons with Cincinnati and started 40 of his 47 regular-season games during that span. However, he started just two of his eight appearances last year and missed the rest of the campaign due to a foot injury he suffered in mid-November. Taylor-Britt is presumably back to full health and will look to carve out a role in the Colts' secondary, which is led by cornerbacks Sauce Gardner (calf) and Charvarius Ward (concussion), though the latter is said to be considering retirement.",
-            "value_tier": "starter"
-          },
-          {
-            "player": "Jerry Tillery",
-            "status": "Active",
-            "position": "DT",
-            "injury_description": "The veteran defensive tackle is headed to Indianapolis following a one-year stint with Kansas City. Across 17 contests in 2025, Tillery logged 374 defensive snaps and tallied 20 total tackles, including 1.5 sacks. He's expected to compete for a reserve role on the defensive line.",
             "value_tier": "starter"
           }
         ],
@@ -900,14 +901,14 @@
         "away_impact_score": 0.1164,
         "home_key_players_out": [
           {
-            "player": "Daniel Jones",
+            "player": "Anthony Richardson Sr.",
             "position": "QB",
             "status": "Questionable",
             "elo_impact": 12.0,
             "value_tier": "starter"
           },
           {
-            "player": "Anthony Richardson Sr.",
+            "player": "Daniel Jones",
             "position": "QB",
             "status": "Questionable",
             "elo_impact": 12.0,
@@ -1014,8 +1015,8 @@
       },
       "prediction_drivers": [
         "ELO advantage: IND +125 rating points",
-        "Daniel Jones (IND) [Starter] QUESTIONABLE \u2014 \u221212 ELO",
         "Anthony Richardson Sr. (IND) [Starter] QUESTIONABLE \u2014 \u221212 ELO",
+        "Daniel Jones (IND) [Starter] QUESTIONABLE \u2014 \u221212 ELO",
         "Hunter Wohler (IND) [Starter] QUESTIONABLE \u2014 \u22122 ELO",
         "Trey Benson (ARI) [Starter] QUESTIONABLE \u2014 \u22123 ELO",
         "Blake Gillikin (ARI) [Starter] QUESTIONABLE \u2014 \u22120 ELO",
@@ -1058,19 +1059,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.4396,
-        "exp_margin": -2.12,
-        "prob_7plus": 0.2636,
-        "prob_14plus": 0.1277,
-        "prob_21plus": 0.0537,
+        "win_prob": 0.4301,
+        "exp_margin": -2.57,
+        "prob_7plus": 0.2497,
+        "prob_14plus": 0.1186,
+        "prob_21plus": 0.0516,
         "margin_percentiles": [
-          -25.7,
+          -26.1,
           -20.6,
-          -11.9,
-          -2.1,
-          7.5,
-          16.0,
-          21.5
+          -12.1,
+          -2.5,
+          7.0,
+          15.5,
+          21.2
         ]
       },
       "adjustments": {
@@ -1245,19 +1246,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.4572,
-        "exp_margin": -1.77,
-        "prob_7plus": 0.2688,
-        "prob_14plus": 0.1357,
-        "prob_21plus": 0.0522,
+        "win_prob": 0.444,
+        "exp_margin": -1.94,
+        "prob_7plus": 0.2633,
+        "prob_14plus": 0.1322,
+        "prob_21plus": 0.051,
         "margin_percentiles": [
-          -25.0,
-          -20.1,
-          -11.4,
-          -1.6,
-          7.8,
-          16.5,
-          21.3
+          -25.6,
+          -19.9,
+          -11.5,
+          -2.0,
+          7.5,
+          16.4,
+          21.1
         ]
       },
       "adjustments": {
@@ -1527,19 +1528,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6149,
-        "exp_margin": 4.12,
-        "prob_7plus": 0.4237,
-        "prob_14plus": 0.2402,
-        "prob_21plus": 0.1178,
+        "win_prob": 0.6072,
+        "exp_margin": 3.79,
+        "prob_7plus": 0.4032,
+        "prob_14plus": 0.2376,
+        "prob_21plus": 0.1131,
         "margin_percentiles": [
-          -19.1,
-          -14.2,
-          -5.3,
-          4.1,
-          13.6,
-          22.4,
-          27.5
+          -19.8,
+          -14.6,
+          -5.6,
+          3.7,
+          13.4,
+          22.1,
+          27.1
         ]
       },
       "adjustments": {
@@ -1609,6 +1610,13 @@
         ],
         "away": [
           {
+            "player": "Deshaun Watson",
+            "status": "Active",
+            "position": "QB",
+            "injury_description": "Haslam called this offseason a \"fresh start\" for Watson, who last saw NFL action October 2024 before suffering a torn Achilles tendon. The 30-year-old re-ruptured the same tendon in January 2025 and missed all of last season. Watson is heading into the final year of the five-year, $230 million deal he inked in 2022, and in early March he agreed to restructure his contract to clear roughly $35 million in cap space. Barring any additions to the QB room, Watson's main competition will be Shedeur Sanders, with Dillon Gabriel also on the depth chart. Watson is presumably now healthy, as the Browns opened his 21-day practice window in December and allowed him to practice in a limited capacity. Per Daniel Oyefusi of ESPN, Haslam said Watson will be present for the start of voluntary workouts April 7.",
+            "value_tier": "starter"
+          },
+          {
             "player": "Quinshon Judkins",
             "status": "Questionable",
             "position": "RB",
@@ -1634,13 +1642,6 @@
             "status": "Active",
             "position": "S",
             "injury_description": "The 27-year-old safety has appeared in 83 career regular-season games, including six starts, but has mainly worked on special teams. Thomas logged 23 tackles (10 solo) and one pass breakup across 12 appearances with the Lions last season.",
-            "value_tier": "starter"
-          },
-          {
-            "player": "Sam Kamara",
-            "status": "Active",
-            "position": "DT",
-            "injury_description": "The 28-year-old from Stony Brook is now in line to remain in Cleveland after spending his last four seasons with the team. Kamara has played in just 15 regular-season games over the last two seasons, recording 21 total tackles across 358 defensive snaps. He's expected to remain a depth piece on the Browns' defensive line during the 2026 season.",
             "value_tier": "starter"
           }
         ]
@@ -1768,19 +1769,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6217,
-        "exp_margin": 4.45,
-        "prob_7plus": 0.4258,
-        "prob_14plus": 0.2506,
-        "prob_21plus": 0.1211,
+        "win_prob": 0.6293,
+        "exp_margin": 4.66,
+        "prob_7plus": 0.4387,
+        "prob_14plus": 0.2573,
+        "prob_21plus": 0.1203,
         "margin_percentiles": [
-          -18.8,
-          -13.6,
-          -5.1,
-          4.4,
-          14.0,
+          -18.7,
+          -13.5,
+          -4.9,
+          4.8,
+          14.3,
           22.5,
-          27.7
+          28.0
         ]
       },
       "adjustments": {
@@ -2005,19 +2006,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.5115,
-        "exp_margin": 0.54,
-        "prob_7plus": 0.329,
-        "prob_14plus": 0.1735,
-        "prob_21plus": 0.0733,
+        "win_prob": 0.5087,
+        "exp_margin": 0.45,
+        "prob_7plus": 0.3247,
+        "prob_14plus": 0.1706,
+        "prob_21plus": 0.0763,
         "margin_percentiles": [
-          -22.7,
+          -23.2,
           -17.6,
-          -9.1,
+          -9.2,
           0.4,
-          10.3,
-          18.8,
-          23.9
+          10.2,
+          18.7,
+          23.8
         ]
       },
       "adjustments": {
@@ -2274,19 +2275,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.4642,
-        "exp_margin": -1.14,
-        "prob_7plus": 0.2821,
-        "prob_14plus": 0.1455,
-        "prob_21plus": 0.0619,
+        "win_prob": 0.4703,
+        "exp_margin": -1.16,
+        "prob_7plus": 0.2849,
+        "prob_14plus": 0.1393,
+        "prob_21plus": 0.058,
         "margin_percentiles": [
-          -24.4,
-          -19.4,
+          -24.7,
+          -19.6,
           -10.6,
-          -1.2,
-          8.5,
-          17.2,
-          22.5
+          -1.1,
+          8.6,
+          16.7,
+          22.0
         ]
       },
       "adjustments": {
@@ -2527,19 +2528,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.5483,
-        "exp_margin": 1.63,
-        "prob_7plus": 0.3567,
-        "prob_14plus": 0.1954,
-        "prob_21plus": 0.087,
+        "win_prob": 0.5459,
+        "exp_margin": 1.5,
+        "prob_7plus": 0.3449,
+        "prob_14plus": 0.1845,
+        "prob_21plus": 0.081,
         "margin_percentiles": [
-          -21.7,
-          -16.7,
-          -8.2,
-          1.7,
-          11.5,
-          19.9,
-          24.9
+          -21.5,
+          -16.3,
+          -8.1,
+          1.6,
+          11.0,
+          19.3,
+          24.3
         ]
       },
       "adjustments": {
@@ -2744,19 +2745,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6143,
-        "exp_margin": 4.2,
-        "prob_7plus": 0.4235,
-        "prob_14plus": 0.251,
-        "prob_21plus": 0.119,
+        "win_prob": 0.6063,
+        "exp_margin": 3.85,
+        "prob_7plus": 0.4086,
+        "prob_14plus": 0.2358,
+        "prob_21plus": 0.1122,
         "margin_percentiles": [
-          -19.5,
-          -14.2,
-          -5.5,
-          4.1,
-          14.0,
-          22.3,
-          28.0
+          -19.2,
+          -14.3,
+          -5.7,
+          3.7,
+          13.4,
+          22.0,
+          27.1
         ]
       },
       "adjustments": {
@@ -3027,19 +3028,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.4802,
-        "exp_margin": -0.87,
-        "prob_7plus": 0.297,
-        "prob_14plus": 0.1461,
-        "prob_21plus": 0.0586,
+        "win_prob": 0.4873,
+        "exp_margin": -0.34,
+        "prob_7plus": 0.3071,
+        "prob_14plus": 0.1588,
+        "prob_21plus": 0.0672,
         "margin_percentiles": [
-          -24.4,
-          -19.2,
-          -10.3,
-          -0.7,
-          8.8,
-          17.2,
-          22.0
+          -24.0,
+          -18.4,
+          -10.0,
+          -0.5,
+          9.4,
+          18.1,
+          23.2
         ]
       },
       "adjustments": {
@@ -3293,9 +3294,9 @@
       "home_score": 30,
       "away_score": 17,
       "predictions": {
-        "ensemble_prob": 0.4211,
+        "ensemble_prob": 0.4206,
         "logistic_prob": 0.2667,
-        "elo_prob": 0.3977,
+        "elo_prob": 0.3944,
         "xgb_prob": 0.5809,
         "pyth_prob": 0.5751,
         "eff_prob": 0.4357,
@@ -3309,19 +3310,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.5011,
-        "exp_margin": -0.0,
-        "prob_7plus": 0.309,
-        "prob_14plus": 0.1625,
-        "prob_21plus": 0.0675,
+        "win_prob": 0.5046,
+        "exp_margin": -0.08,
+        "prob_7plus": 0.3042,
+        "prob_14plus": 0.1551,
+        "prob_21plus": 0.0652,
         "margin_percentiles": [
-          -23.5,
-          -18.5,
-          -9.5,
-          0.0,
+          -23.7,
+          -18.3,
+          -9.4,
+          0.2,
           9.4,
-          17.9,
-          23.3
+          17.6,
+          23.0
         ]
       },
       "adjustments": {
@@ -3335,7 +3336,7 @@
       "elo": {
         "home": 1441.3,
         "away": 1527.0,
-        "diff": -72.1
+        "diff": -74.5
       },
       "bayesian": {
         "home_mu": 1589.5,
@@ -3391,6 +3392,13 @@
         ],
         "away": [
           {
+            "player": "Chuck Clark",
+            "status": "Active",
+            "position": "S",
+            "injury_description": "Clark spent last year with the Steelers, where he totaled 51 tackles (31 solo), three pass defenses and one forced fumble across 15 regular-season appearances. That marked the veteran safety's lowest tackle total since 2018, and he also took a step backward in terms of pass coverage. He now stands to handle a rotational role in with the Lions, behind starting safeties Brian Branch (Achilles) and Kerby Joseph (knee).",
+            "value_tier": "starter"
+          },
+          {
             "player": "Penei Sewell",
             "status": "Questionable",
             "position": "OT",
@@ -3417,21 +3425,14 @@
             "position": "DE",
             "injury_description": "Turner was the 28th overall pick in the 2021 Draft by the Saints but recorded just 5.0 sacks across 31 regular-season games with New Orleans. He spent the 2025 campaign with Dallas but missed the entire season on injured reserve with a ribs injury. Turner will compete for a job in Detroit.",
             "value_tier": "starter"
-          },
-          {
-            "player": "Myles Adams",
-            "status": "Active",
-            "position": "DE",
-            "injury_description": "Adams spent the entire 2025 season on Detroit's practice squad after he failed to make the 53-man roster out of training camp. The 28-year-old has appeared in 30 career regular-season contests, notching 34 tackles (12 solo), including 2.0 sacks, and one pass breakup.",
-            "value_tier": "starter"
           }
         ]
       },
       "injury_impact": {
         "home_elo_penalty": 53.8,
-        "away_elo_penalty": 15.4,
+        "away_elo_penalty": 13.0,
         "home_impact_score": 0.4891,
-        "away_impact_score": 0.14,
+        "away_impact_score": 0.1182,
         "home_key_players_out": [
           {
             "player": "Justin Fields",
@@ -3546,13 +3547,6 @@
             "status": "Questionable",
             "elo_impact": 2.8,
             "value_tier": "starter"
-          },
-          {
-            "player": "Ennis Rakestraw Jr.",
-            "position": "CB",
-            "status": "Questionable",
-            "elo_impact": 2.4,
-            "value_tier": "starter"
           }
         ],
         "home_star_count": 0,
@@ -3605,19 +3599,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.4829,
-        "exp_margin": -0.71,
-        "prob_7plus": 0.2969,
-        "prob_14plus": 0.1509,
-        "prob_21plus": 0.0643,
+        "win_prob": 0.4805,
+        "exp_margin": -0.68,
+        "prob_7plus": 0.2954,
+        "prob_14plus": 0.1533,
+        "prob_21plus": 0.0621,
         "margin_percentiles": [
-          -24.2,
-          -19.1,
-          -10.3,
-          -0.7,
-          8.9,
-          17.6,
-          22.7
+          -23.8,
+          -19.0,
+          -10.4,
+          -0.6,
+          9.0,
+          17.4,
+          22.5
         ]
       },
       "adjustments": {
@@ -3916,19 +3910,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.4191,
-        "exp_margin": -2.94,
-        "prob_7plus": 0.2403,
-        "prob_14plus": 0.1154,
-        "prob_21plus": 0.0449,
+        "win_prob": 0.4223,
+        "exp_margin": -2.67,
+        "prob_7plus": 0.2509,
+        "prob_14plus": 0.12,
+        "prob_21plus": 0.0479,
         "margin_percentiles": [
           -26.1,
-          -21.1,
-          -12.4,
-          -2.9,
-          6.6,
-          15.1,
-          20.1
+          -20.9,
+          -12.3,
+          -2.7,
+          7.0,
+          15.5,
+          20.5
         ]
       },
       "adjustments": {
@@ -3961,6 +3955,13 @@
       "injuries": {
         "home": [
           {
+            "player": "D.J. Davidson",
+            "status": "Active",
+            "position": "DT",
+            "injury_description": "Davidson handled a depth role along the interior of the Giants' defensive line across 15 regular-season appearances in 2025, totaling nine tackles (six solo) and one pass defensed. He appears to have recovered from the neck injury that caused him to miss Week 17 and Week 18.",
+            "value_tier": "starter"
+          },
+          {
             "player": "Ahkello Witherspoon",
             "status": "Active",
             "position": "CB",
@@ -3986,13 +3987,6 @@
             "status": "Active",
             "position": "G",
             "injury_description": "Paul was selected by the Commanders in the seventh round of the 2022 NFL Draft. He started in eight games over the first three years of his NFL career but started at left guard in 15 of 17 regular-season games in 2025. Paul appears likely to retain his starting spot for the 2026 campaign.",
-            "value_tier": "starter"
-          },
-          {
-            "player": "Van Jefferson",
-            "status": "Active",
-            "position": "WR",
-            "injury_description": "Jefferson finished the 2025 regular season with the Titans on injured reserve due to a forearm injury, but he looks to have recovered. Prior to that injury, the six-year NFL veteran recorded 350 receiving yards in 16 games. Jefferson had 802 regular-season receiving yards back in 2021 with the Rams but hasn't topped 369 in any of his other five campaigns, which suggests he's likely ticketed for a depth role in Washington.",
             "value_tier": "starter"
           }
         ],
@@ -4170,19 +4164,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.5437,
-        "exp_margin": 1.72,
-        "prob_7plus": 0.3474,
-        "prob_14plus": 0.1922,
-        "prob_21plus": 0.0865,
+        "win_prob": 0.5538,
+        "exp_margin": 1.83,
+        "prob_7plus": 0.3602,
+        "prob_14plus": 0.1917,
+        "prob_21plus": 0.0884,
         "margin_percentiles": [
-          -21.4,
-          -16.3,
-          -7.6,
-          1.6,
-          11.1,
-          19.8,
-          25.2
+          -21.7,
+          -16.1,
+          -7.7,
+          2.0,
+          11.3,
+          20.0,
+          25.1
         ]
       },
       "adjustments": {
@@ -4403,19 +4397,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.4818,
-        "exp_margin": -0.62,
-        "prob_7plus": 0.2985,
-        "prob_14plus": 0.1519,
-        "prob_21plus": 0.0632,
+        "win_prob": 0.491,
+        "exp_margin": -0.67,
+        "prob_7plus": 0.2959,
+        "prob_14plus": 0.149,
+        "prob_21plus": 0.0613,
         "margin_percentiles": [
-          -23.5,
-          -18.7,
-          -10.2,
-          -0.7,
-          9.0,
-          17.5,
-          22.9
+          -24.5,
+          -19.2,
+          -10.1,
+          -0.4,
+          8.9,
+          17.3,
+          22.7
         ]
       },
       "adjustments": {
@@ -4641,19 +4635,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6704,
-        "exp_margin": 6.0,
-        "prob_7plus": 0.472,
-        "prob_14plus": 0.2888,
-        "prob_21plus": 0.1431,
+        "win_prob": 0.6581,
+        "exp_margin": 5.68,
+        "prob_7plus": 0.4664,
+        "prob_14plus": 0.2758,
+        "prob_21plus": 0.1367,
         "margin_percentiles": [
           -17.6,
-          -12.5,
-          -3.4,
-          6.0,
-          15.7,
-          23.9,
-          29.2
+          -12.6,
+          -3.5,
+          5.7,
+          15.1,
+          23.6,
+          28.5
         ]
       },
       "adjustments": {
@@ -4937,19 +4931,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6458,
-        "exp_margin": 5.36,
-        "prob_7plus": 0.4538,
-        "prob_14plus": 0.2705,
-        "prob_21plus": 0.1337,
+        "win_prob": 0.65,
+        "exp_margin": 5.43,
+        "prob_7plus": 0.4591,
+        "prob_14plus": 0.275,
+        "prob_21plus": 0.1351,
         "margin_percentiles": [
-          -17.5,
+          -18.1,
           -12.8,
-          -4.2,
-          5.3,
-          14.9,
-          23.3,
-          28.8
+          -4.3,
+          5.5,
+          15.1,
+          23.4,
+          28.5
         ]
       },
       "adjustments": {
@@ -4982,6 +4976,13 @@
       "injuries": {
         "home": [
           {
+            "player": "Deshaun Watson",
+            "status": "Active",
+            "position": "QB",
+            "injury_description": "Haslam called this offseason a \"fresh start\" for Watson, who last saw NFL action October 2024 before suffering a torn Achilles tendon. The 30-year-old re-ruptured the same tendon in January 2025 and missed all of last season. Watson is heading into the final year of the five-year, $230 million deal he inked in 2022, and in early March he agreed to restructure his contract to clear roughly $35 million in cap space. Barring any additions to the QB room, Watson's main competition will be Shedeur Sanders, with Dillon Gabriel also on the depth chart. Watson is presumably now healthy, as the Browns opened his 21-day practice window in December and allowed him to practice in a limited capacity. Per Daniel Oyefusi of ESPN, Haslam said Watson will be present for the start of voluntary workouts April 7.",
+            "value_tier": "starter"
+          },
+          {
             "player": "Quinshon Judkins",
             "status": "Questionable",
             "position": "RB",
@@ -5007,13 +5008,6 @@
             "status": "Active",
             "position": "S",
             "injury_description": "The 27-year-old safety has appeared in 83 career regular-season games, including six starts, but has mainly worked on special teams. Thomas logged 23 tackles (10 solo) and one pass breakup across 12 appearances with the Lions last season.",
-            "value_tier": "starter"
-          },
-          {
-            "player": "Sam Kamara",
-            "status": "Active",
-            "position": "DT",
-            "injury_description": "The 28-year-old from Stony Brook is now in line to remain in Cleveland after spending his last four seasons with the team. Kamara has played in just 15 regular-season games over the last two seasons, recording 21 total tackles across 358 defensive snaps. He's expected to remain a depth piece on the Browns' defensive line during the 2026 season.",
             "value_tier": "starter"
           }
         ],
@@ -5137,19 +5131,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.3463,
-        "exp_margin": -5.63,
-        "prob_7plus": 0.1829,
-        "prob_14plus": 0.0825,
-        "prob_21plus": 0.0313,
+        "win_prob": 0.3507,
+        "exp_margin": -5.59,
+        "prob_7plus": 0.1903,
+        "prob_14plus": 0.086,
+        "prob_21plus": 0.0299,
         "margin_percentiles": [
-          -28.9,
+          -29.2,
           -23.9,
-          -15.1,
+          -15.3,
           -5.6,
-          3.8,
-          12.4,
-          17.8
+          4.1,
+          13.0,
+          17.7
         ]
       },
       "adjustments": {
@@ -5368,19 +5362,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6846,
-        "exp_margin": 6.91,
-        "prob_7plus": 0.4959,
-        "prob_14plus": 0.3041,
-        "prob_21plus": 0.1568,
+        "win_prob": 0.6967,
+        "exp_margin": 7.2,
+        "prob_7plus": 0.5101,
+        "prob_14plus": 0.313,
+        "prob_21plus": 0.1599,
         "margin_percentiles": [
-          -16.5,
-          -11.2,
-          -2.6,
-          6.8,
-          16.2,
+          -16.2,
+          -10.8,
+          -2.1,
+          7.4,
+          16.6,
           25.1,
-          30.8
+          30.3
         ]
       },
       "adjustments": {
@@ -5647,9 +5641,9 @@
       "home_score": 22,
       "away_score": 28,
       "predictions": {
-        "ensemble_prob": 0.5098,
+        "ensemble_prob": 0.5101,
         "logistic_prob": 0.5062,
-        "elo_prob": 0.6851,
+        "elo_prob": 0.6876,
         "xgb_prob": 0.3529,
         "pyth_prob": 0.5525,
         "eff_prob": 0.5757,
@@ -5663,19 +5657,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.5595,
-        "exp_margin": 2.18,
-        "prob_7plus": 0.3671,
-        "prob_14plus": 0.1992,
-        "prob_21plus": 0.0922,
+        "win_prob": 0.5553,
+        "exp_margin": 1.94,
+        "prob_7plus": 0.3615,
+        "prob_14plus": 0.1965,
+        "prob_21plus": 0.0901,
         "margin_percentiles": [
-          -21.1,
-          -15.8,
-          -7.3,
+          -21.4,
+          -16.3,
+          -7.6,
           2.1,
-          11.8,
-          20.3,
-          25.8
+          11.4,
+          20.2,
+          25.1
         ]
       },
       "adjustments": {
@@ -5689,7 +5683,7 @@
       "elo": {
         "home": 1535.6,
         "away": 1525.8,
-        "diff": 135.1
+        "diff": 137.1
       },
       "bayesian": {
         "home_mu": 1641.2,
@@ -5745,6 +5739,13 @@
         ],
         "away": [
           {
+            "player": "Chandler Martin",
+            "status": "Questionable",
+            "position": "LB",
+            "injury_description": "As an undrafted rookie last season, Martin played three regular-season games with Baltimore, with all 34 of his snaps coming on special teams. He tore his ACL in late November and ended the campaign on IR. It's unclear how far along Martin is in his recovery, and there's certainly a chance he won't be ready for the start of the 2026 campaign.",
+            "value_tier": "starter"
+          },
+          {
             "player": "Joe Tryon-Shoyinka",
             "status": "Active",
             "position": "DE",
@@ -5771,21 +5772,14 @@
             "position": "S",
             "injury_description": "Gray spent his first seven seasons with the Saints and was selected to the Pro Bowl and named a first-team All-Pro as a special-teams ace in 2021. He was a second-team All-Pro twice. Gray was released ahead of Week 1 last summer and spent the 2025 campaign bouncing around the league with the Ravens, Broncos and Bucs, appearing in just five regular-season contests.",
             "value_tier": "starter"
-          },
-          {
-            "player": "Marcus Epps",
-            "status": "Active",
-            "position": "S",
-            "injury_description": "After the Eagles traded away safety Sydney Brown on Friday, the team signed both Epps and J.T. Gray to replenish the depth chart. Epps appeared in 12 regular-season games last season, making four starts, and logged 21 tackles (18 solo) across 250 defensive snaps and another 199 on special teams.",
-            "value_tier": "starter"
           }
         ]
       },
       "injury_impact": {
         "home_elo_penalty": 25.4,
-        "away_elo_penalty": 3.6,
+        "away_elo_penalty": 5.6,
         "home_impact_score": 0.2309,
-        "away_impact_score": 0.0327,
+        "away_impact_score": 0.0509,
         "home_key_players_out": [
           {
             "player": "J.J. McCarthy",
@@ -5832,6 +5826,13 @@
         ],
         "away_key_players_out": [
           {
+            "player": "Chandler Martin",
+            "position": "LB",
+            "status": "Questionable",
+            "elo_impact": 2.0,
+            "value_tier": "starter"
+          },
+          {
             "player": "Lane Johnson",
             "position": "OT",
             "status": "Questionable",
@@ -5848,6 +5849,7 @@
         "J.J. McCarthy (MIN) [Starter] QUESTIONABLE \u2014 \u221212 ELO",
         "Jonathan Greenard (MIN) [Starter] QUESTIONABLE \u2014 \u22122 ELO",
         "Elijah Williams (MIN) [Starter] QUESTIONABLE \u2014 \u22123 ELO",
+        "Chandler Martin (PHI) [Starter] QUESTIONABLE \u2014 \u22122 ELO",
         "Lane Johnson (PHI) [Starter] QUESTIONABLE \u2014 \u22124 ELO",
         "Rest advantage: MIN has 5 extra days rest",
         "Home field: MIN +65 ELO home advantage"
@@ -5870,9 +5872,9 @@
       "home_score": 6,
       "away_score": 13,
       "predictions": {
-        "ensemble_prob": 0.3141,
+        "ensemble_prob": 0.3147,
         "logistic_prob": 0.1786,
-        "elo_prob": 0.3959,
+        "elo_prob": 0.4,
         "xgb_prob": 0.1756,
         "pyth_prob": 0.5035,
         "eff_prob": 0.6532,
@@ -5886,19 +5888,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.3487,
-        "exp_margin": -5.55,
-        "prob_7plus": 0.1875,
-        "prob_14plus": 0.0788,
-        "prob_21plus": 0.0277,
+        "win_prob": 0.3547,
+        "exp_margin": -5.43,
+        "prob_7plus": 0.197,
+        "prob_14plus": 0.0888,
+        "prob_21plus": 0.0296,
         "margin_percentiles": [
-          -28.5,
-          -23.4,
-          -14.9,
-          -5.7,
-          4.1,
-          12.1,
-          17.3
+          -28.7,
+          -23.7,
+          -15.1,
+          -5.5,
+          4.2,
+          12.9,
+          17.8
         ]
       },
       "adjustments": {
@@ -5912,7 +5914,7 @@
       "elo": {
         "home": 1316.0,
         "away": 1438.1,
-        "diff": -73.4
+        "diff": -70.4
       },
       "bayesian": {
         "home_mu": 1399.2,
@@ -5930,6 +5932,13 @@
       },
       "injuries": {
         "home": [
+          {
+            "player": "Mason Taylor",
+            "status": "Active",
+            "position": "TE",
+            "injury_description": "Taylor missed the final four games of last season due to a neck injury, but there have been no indications that he will be hampered in OTAs. Across 13 regular-season appearances during his rookie campaign, Taylor secured 44 of 65 targets for 369 yards and one touchdown, solid totals considering the struggles of New York's aerial attack, which averaged a league-worst 140.3 passing yards per game. The arrival of Geno Smith should provide stability on that front, and Taylor is currently positioned as one of the new QB's top targets along with Breece Hall (knee), Garrett Wilson (knee) and Adonai Mitchell.",
+            "value_tier": "starter"
+          },
           {
             "player": "Will McDonald IV",
             "status": "Questionable",
@@ -5956,13 +5965,6 @@
             "status": "Active",
             "position": "RB",
             "injury_description": "Nwangwu had a small role in New York's offense as a depth RB last year, recording 49 yards on 13 carries in 12 games. However, he was a key player on special teams, logging 604  yards and one touchdown on 18 kickoff returns. Nwangwu has recorded five TDs as a kick returner through his first five campaigns in the league, and that should again be his primary role in 2026.",
-            "value_tier": "starter"
-          },
-          {
-            "player": "Andre Cisco",
-            "status": "Questionable",
-            "position": "S",
-            "injury_description": "Cisco started at safety in each of the Jets' first eight games of the regular season but spent the rest of 2025 on IR after tearing his pectoral muscle in Week 8 against the Bengals. He should be ready for the start of offseason programming, and Cisco projects to start at safety alongside Minkah Fitzpatrick in 2026.",
             "value_tier": "starter"
           }
         ],
@@ -6005,9 +6007,9 @@
         ]
       },
       "injury_impact": {
-        "home_elo_penalty": 18.2,
+        "home_elo_penalty": 15.2,
         "away_elo_penalty": 2.8,
-        "home_impact_score": 0.1655,
+        "home_impact_score": 0.1382,
         "away_impact_score": 0.0255,
         "home_key_players_out": [
           {
@@ -6051,13 +6053,6 @@
             "status": "Questionable",
             "elo_impact": 3.2,
             "value_tier": "starter"
-          },
-          {
-            "player": "Mason Taylor",
-            "position": "TE",
-            "status": "Questionable",
-            "elo_impact": 3.0,
-            "value_tier": "starter"
           }
         ],
         "away_key_players_out": [
@@ -6083,7 +6078,7 @@
         "Efficiency gap: NYJ net -0.018 vs CAR net -0.242",
         "Home field: NYJ +65 ELO home advantage"
       ],
-      "explanation": "The model gives Carolina Panthers a 68.6% win probability \u2014 a moderate favorite over New York Jets. The ELO gap is 122 points with home field adding approximately 65 ELO points."
+      "explanation": "The model gives Carolina Panthers a 68.5% win probability \u2014 a moderate favorite over New York Jets. The ELO gap is 122 points with home field adding approximately 65 ELO points."
     },
     {
       "game_id": "401772757",
@@ -6117,19 +6112,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6999,
-        "exp_margin": 7.12,
-        "prob_7plus": 0.5044,
-        "prob_14plus": 0.3118,
-        "prob_21plus": 0.1593,
+        "win_prob": 0.7065,
+        "exp_margin": 7.55,
+        "prob_7plus": 0.5191,
+        "prob_14plus": 0.3211,
+        "prob_21plus": 0.1706,
         "margin_percentiles": [
-          -16.4,
-          -10.8,
-          -2.2,
-          7.1,
-          16.6,
-          25.1,
-          30.0
+          -15.6,
+          -10.4,
+          -1.9,
+          7.6,
+          17.1,
+          25.5,
+          30.8
         ]
       },
       "adjustments": {
@@ -6358,19 +6353,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.5636,
-        "exp_margin": 2.14,
-        "prob_7plus": 0.3655,
-        "prob_14plus": 0.1985,
-        "prob_21plus": 0.0919,
+        "win_prob": 0.5651,
+        "exp_margin": 2.39,
+        "prob_7plus": 0.3722,
+        "prob_14plus": 0.2115,
+        "prob_21plus": 0.0969,
         "margin_percentiles": [
-          -21.0,
-          -15.9,
-          -7.5,
+          -21.2,
+          -15.7,
+          -7.4,
           2.3,
-          11.6,
-          20.3,
-          25.7
+          12.0,
+          20.8,
+          26.1
         ]
       },
       "adjustments": {
@@ -6440,6 +6435,13 @@
         ],
         "away": [
           {
+            "player": "Anthony Richardson Sr.",
+            "status": "Questionable",
+            "position": "QB",
+            "injury_description": "Richardson requested and received permission to seek a trade in late February, and Indianapolis has since re-signed Daniel Jones (Achilles) to a two-year extension that solidifies him as the team's starter. Meanwhile, 2025 sixth-round pick Riley Leonard looked capable of locking down the No. 2 job during the lone start of his rookie campaign, leaving Richardson's status unclear. Ballard also said he remains open to adding another QB due to Jones' uncertainty for Week 1, which could indicate that the team is still looking to move on from Richardson. Richardson ended last season on IR after fracturing the orbital bone of his right eye in October.",
+            "value_tier": "starter"
+          },
+          {
             "player": "Cameron Mitchell",
             "status": "Active",
             "position": "CB",
@@ -6465,13 +6467,6 @@
             "status": "Active",
             "position": "CB",
             "injury_description": "Taylor-Britt spent his first four seasons with Cincinnati and started 40 of his 47 regular-season games during that span. However, he started just two of his eight appearances last year and missed the rest of the campaign due to a foot injury he suffered in mid-November. Taylor-Britt is presumably back to full health and will look to carve out a role in the Colts' secondary, which is led by cornerbacks Sauce Gardner (calf) and Charvarius Ward (concussion), though the latter is said to be considering retirement.",
-            "value_tier": "starter"
-          },
-          {
-            "player": "Jerry Tillery",
-            "status": "Active",
-            "position": "DT",
-            "injury_description": "The veteran defensive tackle is headed to Indianapolis following a one-year stint with Kansas City. Across 17 contests in 2025, Tillery logged 374 defensive snaps and tallied 20 total tackles, including 1.5 sacks. He's expected to compete for a reserve role on the defensive line.",
             "value_tier": "starter"
           }
         ]
@@ -6499,14 +6494,14 @@
         ],
         "away_key_players_out": [
           {
-            "player": "Daniel Jones",
+            "player": "Anthony Richardson Sr.",
             "position": "QB",
             "status": "Questionable",
             "elo_impact": 12.0,
             "value_tier": "starter"
           },
           {
-            "player": "Anthony Richardson Sr.",
+            "player": "Daniel Jones",
             "position": "QB",
             "status": "Questionable",
             "elo_impact": 12.0,
@@ -6571,8 +6566,8 @@
         "ELO advantage: LAC +57 rating points",
         "Kendall Williamson (LAC) [Starter] QUESTIONABLE \u2014 \u22122 ELO",
         "Bud Dupree (LAC) [Starter] QUESTIONABLE \u2014 \u22122 ELO",
-        "Daniel Jones (IND) [Starter] QUESTIONABLE \u2014 \u221212 ELO",
         "Anthony Richardson Sr. (IND) [Starter] QUESTIONABLE \u2014 \u221212 ELO",
+        "Daniel Jones (IND) [Starter] QUESTIONABLE \u2014 \u221212 ELO",
         "Hunter Wohler (IND) [Starter] QUESTIONABLE \u2014 \u22122 ELO",
         "Efficiency gap: LAC net -0.219 vs IND net +0.232",
         "Travel penalty: away team travels 1815 miles",
@@ -6612,19 +6607,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.5716,
+        "win_prob": 0.5743,
         "exp_margin": 2.53,
-        "prob_7plus": 0.3795,
-        "prob_14plus": 0.2104,
-        "prob_21plus": 0.0933,
+        "prob_7plus": 0.3743,
+        "prob_14plus": 0.2088,
+        "prob_21plus": 0.0955,
         "margin_percentiles": [
-          -20.6,
-          -15.6,
-          -7.2,
+          -20.8,
+          -15.8,
+          -7.1,
           2.6,
-          12.2,
-          20.5,
-          26.0
+          12.1,
+          20.6,
+          25.5
         ]
       },
       "adjustments": {
@@ -6694,6 +6689,13 @@
         ],
         "away": [
           {
+            "player": "D.J. Davidson",
+            "status": "Active",
+            "position": "DT",
+            "injury_description": "Davidson handled a depth role along the interior of the Giants' defensive line across 15 regular-season appearances in 2025, totaling nine tackles (six solo) and one pass defensed. He appears to have recovered from the neck injury that caused him to miss Week 17 and Week 18.",
+            "value_tier": "starter"
+          },
+          {
             "player": "Ahkello Witherspoon",
             "status": "Active",
             "position": "CB",
@@ -6719,13 +6721,6 @@
             "status": "Active",
             "position": "G",
             "injury_description": "Paul was selected by the Commanders in the seventh round of the 2022 NFL Draft. He started in eight games over the first three years of his NFL career but started at left guard in 15 of 17 regular-season games in 2025. Paul appears likely to retain his starting spot for the 2026 campaign.",
-            "value_tier": "starter"
-          },
-          {
-            "player": "Van Jefferson",
-            "status": "Active",
-            "position": "WR",
-            "injury_description": "Jefferson finished the 2025 regular season with the Titans on injured reserve due to a forearm injury, but he looks to have recovered. Prior to that injury, the six-year NFL veteran recorded 350 receiving yards in 16 games. Jefferson had 802 regular-season receiving yards back in 2021 with the Rams but hasn't topped 369 in any of his other five campaigns, which suggests he's likely ticketed for a depth role in Washington.",
             "value_tier": "starter"
           }
         ]
@@ -6857,19 +6852,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.4393,
-        "exp_margin": -2.27,
-        "prob_7plus": 0.2562,
-        "prob_14plus": 0.1257,
-        "prob_21plus": 0.0506,
+        "win_prob": 0.4394,
+        "exp_margin": -2.2,
+        "prob_7plus": 0.2542,
+        "prob_14plus": 0.1252,
+        "prob_21plus": 0.0501,
         "margin_percentiles": [
-          -25.8,
-          -20.6,
-          -11.8,
-          -2.1,
-          7.3,
+          -25.7,
+          -20.3,
+          -11.4,
+          -2.2,
+          7.2,
           15.8,
-          21.1
+          21.0
         ]
       },
       "adjustments": {
@@ -7159,19 +7154,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6207,
-        "exp_margin": 4.42,
-        "prob_7plus": 0.423,
-        "prob_14plus": 0.2497,
-        "prob_21plus": 0.1223,
+        "win_prob": 0.6192,
+        "exp_margin": 4.19,
+        "prob_7plus": 0.4223,
+        "prob_14plus": 0.2404,
+        "prob_21plus": 0.1182,
         "margin_percentiles": [
-          -18.7,
+          -19.1,
           -13.6,
-          -5.1,
-          4.3,
-          14.0,
-          22.6,
-          27.8
+          -5.3,
+          4.2,
+          13.6,
+          22.2,
+          27.5
         ]
       },
       "adjustments": {
@@ -7426,9 +7421,9 @@
       "home_score": 24,
       "away_score": 9,
       "predictions": {
-        "ensemble_prob": 0.6882,
+        "ensemble_prob": 0.6886,
         "logistic_prob": 0.6957,
-        "elo_prob": 0.6945,
+        "elo_prob": 0.6974,
         "xgb_prob": 0.6983,
         "pyth_prob": 0.6652,
         "eff_prob": 0.6628,
@@ -7442,19 +7437,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6515,
-        "exp_margin": 5.43,
-        "prob_7plus": 0.4599,
-        "prob_14plus": 0.274,
-        "prob_21plus": 0.1343,
+        "win_prob": 0.6373,
+        "exp_margin": 5.17,
+        "prob_7plus": 0.4521,
+        "prob_14plus": 0.2657,
+        "prob_21plus": 0.1317,
         "margin_percentiles": [
-          -17.9,
-          -12.5,
-          -4.2,
-          5.6,
-          15.0,
-          23.4,
-          28.5
+          -18.1,
+          -13.1,
+          -4.5,
+          5.2,
+          14.7,
+          23.7,
+          29.0
         ]
       },
       "adjustments": {
@@ -7468,7 +7463,7 @@
       "elo": {
         "home": 1527.0,
         "away": 1458.9,
-        "diff": 142.7
+        "diff": 145.1
       },
       "bayesian": {
         "home_mu": 1653.6,
@@ -7486,6 +7481,13 @@
       },
       "injuries": {
         "home": [
+          {
+            "player": "Chuck Clark",
+            "status": "Active",
+            "position": "S",
+            "injury_description": "Clark spent last year with the Steelers, where he totaled 51 tackles (31 solo), three pass defenses and one forced fumble across 15 regular-season appearances. That marked the veteran safety's lowest tackle total since 2018, and he also took a step backward in terms of pass coverage. He now stands to handle a rotational role in with the Lions, behind starting safeties Brian Branch (Achilles) and Kerby Joseph (knee).",
+            "value_tier": "starter"
+          },
           {
             "player": "Penei Sewell",
             "status": "Questionable",
@@ -7512,13 +7514,6 @@
             "status": "Active",
             "position": "DE",
             "injury_description": "Turner was the 28th overall pick in the 2021 Draft by the Saints but recorded just 5.0 sacks across 31 regular-season games with New Orleans. He spent the 2025 campaign with Dallas but missed the entire season on injured reserve with a ribs injury. Turner will compete for a job in Detroit.",
-            "value_tier": "starter"
-          },
-          {
-            "player": "Myles Adams",
-            "status": "Active",
-            "position": "DE",
-            "injury_description": "Adams spent the entire 2025 season on Detroit's practice squad after he failed to make the 53-man roster out of training camp. The 28-year-old has appeared in 30 career regular-season contests, notching 34 tackles (12 solo), including 2.0 sacks, and one pass breakup.",
             "value_tier": "starter"
           }
         ],
@@ -7561,9 +7556,9 @@
         ]
       },
       "injury_impact": {
-        "home_elo_penalty": 15.4,
+        "home_elo_penalty": 13.0,
         "away_elo_penalty": 17.0,
-        "home_impact_score": 0.14,
+        "home_impact_score": 0.1182,
         "away_impact_score": 0.1545,
         "home_key_players_out": [
           {
@@ -7592,13 +7587,6 @@
             "position": "RB",
             "status": "Questionable",
             "elo_impact": 2.8,
-            "value_tier": "starter"
-          },
-          {
-            "player": "Ennis Rakestraw Jr.",
-            "position": "CB",
-            "status": "Questionable",
-            "elo_impact": 2.4,
             "value_tier": "starter"
           }
         ],
@@ -7676,7 +7664,7 @@
         "Efficiency gap: DET net +0.273 vs TB net +0.011",
         "Home field: DET +65 ELO home advantage"
       ],
-      "explanation": "The model gives Detroit Lions a 68.8% win probability \u2014 a moderate favorite over Tampa Bay Buccaneers. The ELO gap is 68 points with home field adding approximately 65 ELO points."
+      "explanation": "The model gives Detroit Lions a 68.9% win probability \u2014 a moderate favorite over Tampa Bay Buccaneers. The ELO gap is 68 points with home field adding approximately 65 ELO points."
     },
     {
       "game_id": "401772826",
@@ -7710,19 +7698,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6441,
-        "exp_margin": 5.08,
-        "prob_7plus": 0.4487,
-        "prob_14plus": 0.2617,
-        "prob_21plus": 0.1289,
+        "win_prob": 0.6389,
+        "exp_margin": 5.13,
+        "prob_7plus": 0.4497,
+        "prob_14plus": 0.2661,
+        "prob_21plus": 0.1341,
         "margin_percentiles": [
-          -18.2,
-          -13.3,
-          -4.5,
-          5.3,
-          14.5,
-          23.0,
-          28.4
+          -18.3,
+          -13.2,
+          -4.6,
+          5.1,
+          14.6,
+          23.6,
+          28.8
         ]
       },
       "adjustments": {
@@ -7959,19 +7947,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.5619,
-        "exp_margin": 2.24,
-        "prob_7plus": 0.3704,
-        "prob_14plus": 0.2068,
-        "prob_21plus": 0.0944,
+        "win_prob": 0.5499,
+        "exp_margin": 1.77,
+        "prob_7plus": 0.3589,
+        "prob_14plus": 0.1919,
+        "prob_21plus": 0.0838,
         "margin_percentiles": [
-          -21.5,
-          -16.4,
-          -7.3,
-          2.1,
-          11.9,
-          20.5,
-          25.8
+          -21.8,
+          -16.5,
+          -7.7,
+          1.9,
+          11.4,
+          19.8,
+          24.8
         ]
       },
       "adjustments": {
@@ -8190,19 +8178,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.695,
-        "exp_margin": 7.31,
-        "prob_7plus": 0.506,
-        "prob_14plus": 0.3206,
-        "prob_21plus": 0.1646,
+        "win_prob": 0.6814,
+        "exp_margin": 7.07,
+        "prob_7plus": 0.5041,
+        "prob_14plus": 0.3224,
+        "prob_21plus": 0.1658,
         "margin_percentiles": [
-          -15.4,
-          -10.6,
-          -2.2,
-          7.2,
-          16.8,
-          25.4,
-          30.7
+          -16.4,
+          -11.4,
+          -2.7,
+          7.1,
+          17.0,
+          25.3,
+          30.4
         ]
       },
       "adjustments": {
@@ -8401,9 +8389,9 @@
       "home_score": 38,
       "away_score": 39,
       "predictions": {
-        "ensemble_prob": 0.7652,
+        "ensemble_prob": 0.7648,
         "logistic_prob": 0.8095,
-        "elo_prob": 0.7784,
+        "elo_prob": 0.7754,
         "xgb_prob": 0.7878,
         "pyth_prob": 0.6836,
         "eff_prob": 0.6655,
@@ -8417,19 +8405,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.7664,
-        "exp_margin": 10.21,
-        "prob_7plus": 0.5887,
-        "prob_14plus": 0.3929,
-        "prob_21plus": 0.2254,
+        "win_prob": 0.7637,
+        "exp_margin": 10.14,
+        "prob_7plus": 0.5883,
+        "prob_14plus": 0.3897,
+        "prob_21plus": 0.2235,
         "margin_percentiles": [
-          -13.0,
-          -8.0,
+          -13.1,
+          -7.9,
           0.7,
           10.1,
-          19.7,
-          28.7,
-          33.2
+          19.8,
+          28.2,
+          33.1
         ]
       },
       "adjustments": {
@@ -8443,7 +8431,7 @@
       "elo": {
         "home": 1434.6,
         "away": 1316.0,
-        "diff": 218.2
+        "diff": 215.2
       },
       "bayesian": {
         "home_mu": 1588.6,
@@ -8499,6 +8487,13 @@
         ],
         "away": [
           {
+            "player": "Mason Taylor",
+            "status": "Active",
+            "position": "TE",
+            "injury_description": "Taylor missed the final four games of last season due to a neck injury, but there have been no indications that he will be hampered in OTAs. Across 13 regular-season appearances during his rookie campaign, Taylor secured 44 of 65 targets for 369 yards and one touchdown, solid totals considering the struggles of New York's aerial attack, which averaged a league-worst 140.3 passing yards per game. The arrival of Geno Smith should provide stability on that front, and Taylor is currently positioned as one of the new QB's top targets along with Breece Hall (knee), Garrett Wilson (knee) and Adonai Mitchell.",
+            "value_tier": "starter"
+          },
+          {
             "player": "Will McDonald IV",
             "status": "Questionable",
             "position": "DE",
@@ -8525,21 +8520,14 @@
             "position": "RB",
             "injury_description": "Nwangwu had a small role in New York's offense as a depth RB last year, recording 49 yards on 13 carries in 12 games. However, he was a key player on special teams, logging 604  yards and one touchdown on 18 kickoff returns. Nwangwu has recorded five TDs as a kick returner through his first five campaigns in the league, and that should again be his primary role in 2026.",
             "value_tier": "starter"
-          },
-          {
-            "player": "Andre Cisco",
-            "status": "Questionable",
-            "position": "S",
-            "injury_description": "Cisco started at safety in each of the Jets' first eight games of the regular season but spent the rest of 2025 on IR after tearing his pectoral muscle in Week 8 against the Bengals. He should be ready for the start of offseason programming, and Cisco projects to start at safety alongside Minkah Fitzpatrick in 2026.",
-            "value_tier": "starter"
           }
         ]
       },
       "injury_impact": {
         "home_elo_penalty": 6.6,
-        "away_elo_penalty": 18.2,
+        "away_elo_penalty": 15.2,
         "home_impact_score": 0.06,
-        "away_impact_score": 0.1655,
+        "away_impact_score": 0.1382,
         "home_key_players_out": [
           {
             "player": "Matt Lee",
@@ -8605,13 +8593,6 @@
             "status": "Questionable",
             "elo_impact": 3.2,
             "value_tier": "starter"
-          },
-          {
-            "player": "Mason Taylor",
-            "position": "TE",
-            "status": "Questionable",
-            "elo_impact": 3.0,
-            "value_tier": "starter"
           }
         ],
         "home_star_count": 0,
@@ -8664,19 +8645,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.7255,
-        "exp_margin": 8.44,
-        "prob_7plus": 0.5385,
-        "prob_14plus": 0.3458,
-        "prob_21plus": 0.1926,
+        "win_prob": 0.7314,
+        "exp_margin": 8.63,
+        "prob_7plus": 0.5469,
+        "prob_14plus": 0.3495,
+        "prob_21plus": 0.1893,
         "margin_percentiles": [
-          -14.7,
-          -9.8,
-          -1.1,
-          8.4,
-          18.2,
-          26.6,
-          31.8
+          -14.5,
+          -9.2,
+          -0.7,
+          8.6,
+          18.0,
+          26.4,
+          31.6
         ]
       },
       "adjustments": {
@@ -8746,6 +8727,13 @@
         ],
         "away": [
           {
+            "player": "Deshaun Watson",
+            "status": "Active",
+            "position": "QB",
+            "injury_description": "Haslam called this offseason a \"fresh start\" for Watson, who last saw NFL action October 2024 before suffering a torn Achilles tendon. The 30-year-old re-ruptured the same tendon in January 2025 and missed all of last season. Watson is heading into the final year of the five-year, $230 million deal he inked in 2022, and in early March he agreed to restructure his contract to clear roughly $35 million in cap space. Barring any additions to the QB room, Watson's main competition will be Shedeur Sanders, with Dillon Gabriel also on the depth chart. Watson is presumably now healthy, as the Browns opened his 21-day practice window in December and allowed him to practice in a limited capacity. Per Daniel Oyefusi of ESPN, Haslam said Watson will be present for the start of voluntary workouts April 7.",
+            "value_tier": "starter"
+          },
+          {
             "player": "Quinshon Judkins",
             "status": "Questionable",
             "position": "RB",
@@ -8771,13 +8759,6 @@
             "status": "Active",
             "position": "S",
             "injury_description": "The 27-year-old safety has appeared in 83 career regular-season games, including six starts, but has mainly worked on special teams. Thomas logged 23 tackles (10 solo) and one pass breakup across 12 appearances with the Lions last season.",
-            "value_tier": "starter"
-          },
-          {
-            "player": "Sam Kamara",
-            "status": "Active",
-            "position": "DT",
-            "injury_description": "The 28-year-old from Stony Brook is now in line to remain in Cleveland after spending his last four seasons with the team. Kamara has played in just 15 regular-season games over the last two seasons, recording 21 total tackles across 358 defensive snaps. He's expected to remain a depth piece on the Browns' defensive line during the 2026 season.",
             "value_tier": "starter"
           }
         ]
@@ -8902,9 +8883,9 @@
       "home_score": 38,
       "away_score": 20,
       "predictions": {
-        "ensemble_prob": 0.7425,
+        "ensemble_prob": 0.7422,
         "logistic_prob": 0.8095,
-        "elo_prob": 0.7532,
+        "elo_prob": 0.7511,
         "xgb_prob": 0.8102,
         "pyth_prob": 0.6842,
         "eff_prob": 0.5017,
@@ -8918,19 +8899,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6385,
-        "exp_margin": 5.06,
-        "prob_7plus": 0.4436,
-        "prob_14plus": 0.2662,
-        "prob_21plus": 0.1311,
+        "win_prob": 0.6427,
+        "exp_margin": 5.27,
+        "prob_7plus": 0.4478,
+        "prob_14plus": 0.2698,
+        "prob_21plus": 0.1357,
         "margin_percentiles": [
-          -18.2,
-          -13.4,
-          -4.6,
-          5.0,
-          14.7,
-          23.3,
-          28.4
+          -18.1,
+          -12.9,
+          -4.3,
+          5.1,
+          15.0,
+          23.6,
+          29.2
         ]
       },
       "adjustments": {
@@ -8944,7 +8925,7 @@
       "elo": {
         "home": 1525.8,
         "away": 1408.9,
-        "diff": 193.8
+        "diff": 191.8
       },
       "bayesian": {
         "home_mu": 1656.3,
@@ -8962,6 +8943,13 @@
       },
       "injuries": {
         "home": [
+          {
+            "player": "Chandler Martin",
+            "status": "Questionable",
+            "position": "LB",
+            "injury_description": "As an undrafted rookie last season, Martin played three regular-season games with Baltimore, with all 34 of his snaps coming on special teams. He tore his ACL in late November and ended the campaign on IR. It's unclear how far along Martin is in his recovery, and there's certainly a chance he won't be ready for the start of the 2026 campaign.",
+            "value_tier": "starter"
+          },
           {
             "player": "Joe Tryon-Shoyinka",
             "status": "Active",
@@ -8988,13 +8976,6 @@
             "status": "Active",
             "position": "S",
             "injury_description": "Gray spent his first seven seasons with the Saints and was selected to the Pro Bowl and named a first-team All-Pro as a special-teams ace in 2021. He was a second-team All-Pro twice. Gray was released ahead of Week 1 last summer and spent the 2025 campaign bouncing around the league with the Ravens, Broncos and Bucs, appearing in just five regular-season contests.",
-            "value_tier": "starter"
-          },
-          {
-            "player": "Marcus Epps",
-            "status": "Active",
-            "position": "S",
-            "injury_description": "After the Eagles traded away safety Sydney Brown on Friday, the team signed both Epps and J.T. Gray to replenish the depth chart. Epps appeared in 12 regular-season games last season, making four starts, and logged 21 tackles (18 solo) across 250 defensive snaps and another 199 on special teams.",
             "value_tier": "starter"
           }
         ],
@@ -9037,11 +9018,18 @@
         ]
       },
       "injury_impact": {
-        "home_elo_penalty": 3.6,
+        "home_elo_penalty": 5.6,
         "away_elo_penalty": 9.6,
-        "home_impact_score": 0.0327,
+        "home_impact_score": 0.0509,
         "away_impact_score": 0.0873,
         "home_key_players_out": [
+          {
+            "player": "Chandler Martin",
+            "position": "LB",
+            "status": "Questionable",
+            "elo_impact": 2.0,
+            "value_tier": "starter"
+          },
           {
             "player": "Lane Johnson",
             "position": "OT",
@@ -9080,6 +9068,7 @@
       },
       "prediction_drivers": [
         "ELO advantage: PHI +117 rating points",
+        "Chandler Martin (PHI) [Starter] QUESTIONABLE \u2014 \u22122 ELO",
         "Lane Johnson (PHI) [Starter] QUESTIONABLE \u2014 \u22124 ELO",
         "Cam Skattebo (NYG) [Starter] QUESTIONABLE \u2014 \u22123 ELO",
         "Malik Nabers (NYG) [Starter] QUESTIONABLE \u2014 \u22123 ELO",
@@ -9121,19 +9110,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.4549,
-        "exp_margin": -1.58,
-        "prob_7plus": 0.2734,
-        "prob_14plus": 0.1386,
-        "prob_21plus": 0.0554,
+        "win_prob": 0.4604,
+        "exp_margin": -1.42,
+        "prob_7plus": 0.2737,
+        "prob_14plus": 0.1373,
+        "prob_21plus": 0.0601,
         "margin_percentiles": [
-          -25.0,
-          -19.9,
-          -11.3,
-          -1.6,
-          8.0,
-          16.8,
-          21.7
+          -24.8,
+          -19.4,
+          -11.1,
+          -1.5,
+          8.1,
+          17.0,
+          22.1
         ]
       },
       "adjustments": {
@@ -9381,19 +9370,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.5243,
-        "exp_margin": 0.91,
-        "prob_7plus": 0.3377,
-        "prob_14plus": 0.1814,
-        "prob_21plus": 0.0791,
+        "win_prob": 0.5204,
+        "exp_margin": 0.63,
+        "prob_7plus": 0.3284,
+        "prob_14plus": 0.1745,
+        "prob_21plus": 0.0795,
         "margin_percentiles": [
-          -22.6,
-          -17.3,
-          -8.9,
-          0.9,
-          10.6,
-          19.2,
-          24.1
+          -22.9,
+          -17.6,
+          -9.1,
+          0.7,
+          10.2,
+          19.0,
+          24.2
         ]
       },
       "adjustments": {
@@ -9683,19 +9672,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6317,
-        "exp_margin": 4.8,
-        "prob_7plus": 0.4406,
-        "prob_14plus": 0.2548,
-        "prob_21plus": 0.1271,
+        "win_prob": 0.6386,
+        "exp_margin": 4.82,
+        "prob_7plus": 0.4414,
+        "prob_14plus": 0.2556,
+        "prob_21plus": 0.1238,
         "margin_percentiles": [
-          -18.3,
-          -13.5,
+          -17.9,
+          -13.3,
           -4.8,
-          4.8,
-          14.2,
-          23.1,
-          28.6
+          5.0,
+          14.3,
+          22.6,
+          27.7
         ]
       },
       "adjustments": {
@@ -9937,19 +9926,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.5897,
-        "exp_margin": 3.31,
-        "prob_7plus": 0.4013,
-        "prob_14plus": 0.2294,
-        "prob_21plus": 0.1039,
+        "win_prob": 0.5958,
+        "exp_margin": 3.59,
+        "prob_7plus": 0.4008,
+        "prob_14plus": 0.2263,
+        "prob_21plus": 0.1137,
         "margin_percentiles": [
-          -20.1,
-          -14.9,
-          -6.5,
+          -19.9,
+          -14.6,
+          -5.9,
           3.4,
-          12.9,
-          21.3,
-          26.6
+          13.0,
+          22.0,
+          27.6
         ]
       },
       "adjustments": {
@@ -10225,19 +10214,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.7303,
-        "exp_margin": 8.71,
-        "prob_7plus": 0.5456,
-        "prob_14plus": 0.354,
-        "prob_21plus": 0.1999,
+        "win_prob": 0.7426,
+        "exp_margin": 9.03,
+        "prob_7plus": 0.5577,
+        "prob_14plus": 0.3625,
+        "prob_21plus": 0.1975,
         "margin_percentiles": [
-          -14.6,
-          -9.8,
-          -0.9,
-          8.6,
+          -14.0,
+          -9.1,
+          -0.4,
+          9.2,
           18.4,
-          27.1,
-          32.2
+          26.9,
+          32.0
         ]
       },
       "adjustments": {
@@ -10500,19 +10489,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.7153,
-        "exp_margin": 7.93,
-        "prob_7plus": 0.5261,
-        "prob_14plus": 0.3331,
-        "prob_21plus": 0.1807,
+        "win_prob": 0.7106,
+        "exp_margin": 7.92,
+        "prob_7plus": 0.531,
+        "prob_14plus": 0.3344,
+        "prob_21plus": 0.1762,
         "margin_percentiles": [
-          -15.6,
-          -10.3,
-          -1.5,
-          7.9,
-          17.4,
-          25.9,
-          31.2
+          -15.4,
+          -10.2,
+          -1.8,
+          8.1,
+          17.3,
+          26.1,
+          31.3
         ]
       },
       "adjustments": {
@@ -10545,6 +10534,13 @@
       "injuries": {
         "home": [
           {
+            "player": "Anthony Richardson Sr.",
+            "status": "Questionable",
+            "position": "QB",
+            "injury_description": "Richardson requested and received permission to seek a trade in late February, and Indianapolis has since re-signed Daniel Jones (Achilles) to a two-year extension that solidifies him as the team's starter. Meanwhile, 2025 sixth-round pick Riley Leonard looked capable of locking down the No. 2 job during the lone start of his rookie campaign, leaving Richardson's status unclear. Ballard also said he remains open to adding another QB due to Jones' uncertainty for Week 1, which could indicate that the team is still looking to move on from Richardson. Richardson ended last season on IR after fracturing the orbital bone of his right eye in October.",
+            "value_tier": "starter"
+          },
+          {
             "player": "Cameron Mitchell",
             "status": "Active",
             "position": "CB",
@@ -10570,13 +10566,6 @@
             "status": "Active",
             "position": "CB",
             "injury_description": "Taylor-Britt spent his first four seasons with Cincinnati and started 40 of his 47 regular-season games during that span. However, he started just two of his eight appearances last year and missed the rest of the campaign due to a foot injury he suffered in mid-November. Taylor-Britt is presumably back to full health and will look to carve out a role in the Colts' secondary, which is led by cornerbacks Sauce Gardner (calf) and Charvarius Ward (concussion), though the latter is said to be considering retirement.",
-            "value_tier": "starter"
-          },
-          {
-            "player": "Jerry Tillery",
-            "status": "Active",
-            "position": "DT",
-            "injury_description": "The veteran defensive tackle is headed to Indianapolis following a one-year stint with Kansas City. Across 17 contests in 2025, Tillery logged 374 defensive snaps and tallied 20 total tackles, including 1.5 sacks. He's expected to compete for a reserve role on the defensive line.",
             "value_tier": "starter"
           }
         ],
@@ -10625,14 +10614,14 @@
         "away_impact_score": 0.0291,
         "home_key_players_out": [
           {
-            "player": "Daniel Jones",
+            "player": "Anthony Richardson Sr.",
             "position": "QB",
             "status": "Questionable",
             "elo_impact": 12.0,
             "value_tier": "starter"
           },
           {
-            "player": "Anthony Richardson Sr.",
+            "player": "Daniel Jones",
             "position": "QB",
             "status": "Questionable",
             "elo_impact": 12.0,
@@ -10704,8 +10693,8 @@
       },
       "prediction_drivers": [
         "ELO advantage: IND +149 rating points",
-        "Daniel Jones (IND) [Starter] QUESTIONABLE \u2014 \u221212 ELO",
         "Anthony Richardson Sr. (IND) [Starter] QUESTIONABLE \u2014 \u221212 ELO",
+        "Daniel Jones (IND) [Starter] QUESTIONABLE \u2014 \u221212 ELO",
         "Hunter Wohler (IND) [Starter] QUESTIONABLE \u2014 \u22122 ELO",
         "Calvin Ridley (TEN) [Starter] QUESTIONABLE \u2014 \u22123 ELO",
         "Efficiency gap: IND net +0.232 vs TEN net -0.099",
@@ -10745,18 +10734,18 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.5546,
-        "exp_margin": 1.89,
-        "prob_7plus": 0.3605,
-        "prob_14plus": 0.1949,
-        "prob_21plus": 0.0881,
+        "win_prob": 0.5569,
+        "exp_margin": 2.02,
+        "prob_7plus": 0.3644,
+        "prob_14plus": 0.1982,
+        "prob_21plus": 0.0876,
         "margin_percentiles": [
-          -21.1,
-          -16.0,
-          -7.5,
-          1.8,
-          11.3,
-          19.9,
+          -21.3,
+          -16.2,
+          -7.6,
+          2.1,
+          11.7,
+          20.1,
           25.1
         ]
       },
@@ -11039,19 +11028,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6085,
-        "exp_margin": 3.9,
-        "prob_7plus": 0.416,
-        "prob_14plus": 0.2396,
-        "prob_21plus": 0.1136,
+        "win_prob": 0.605,
+        "exp_margin": 3.98,
+        "prob_7plus": 0.4123,
+        "prob_14plus": 0.237,
+        "prob_21plus": 0.1158,
         "margin_percentiles": [
-          -19.6,
-          -14.3,
+          -19.5,
+          -14.2,
           -5.6,
-          3.8,
-          13.6,
-          22.0,
-          27.0
+          3.7,
+          13.4,
+          22.2,
+          27.6
         ]
       },
       "adjustments": {
@@ -11121,6 +11110,13 @@
         ],
         "away": [
           {
+            "player": "D.J. Davidson",
+            "status": "Active",
+            "position": "DT",
+            "injury_description": "Davidson handled a depth role along the interior of the Giants' defensive line across 15 regular-season appearances in 2025, totaling nine tackles (six solo) and one pass defensed. He appears to have recovered from the neck injury that caused him to miss Week 17 and Week 18.",
+            "value_tier": "starter"
+          },
+          {
             "player": "Ahkello Witherspoon",
             "status": "Active",
             "position": "CB",
@@ -11146,13 +11142,6 @@
             "status": "Active",
             "position": "G",
             "injury_description": "Paul was selected by the Commanders in the seventh round of the 2022 NFL Draft. He started in eight games over the first three years of his NFL career but started at left guard in 15 of 17 regular-season games in 2025. Paul appears likely to retain his starting spot for the 2026 campaign.",
-            "value_tier": "starter"
-          },
-          {
-            "player": "Van Jefferson",
-            "status": "Active",
-            "position": "WR",
-            "injury_description": "Jefferson finished the 2025 regular season with the Titans on injured reserve due to a forearm injury, but he looks to have recovered. Prior to that injury, the six-year NFL veteran recorded 350 receiving yards in 16 games. Jefferson had 802 regular-season receiving yards back in 2021 with the Rams but hasn't topped 369 in any of his other five campaigns, which suggests he's likely ticketed for a depth role in Washington.",
             "value_tier": "starter"
           }
         ]
