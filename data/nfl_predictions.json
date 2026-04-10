@@ -1,5 +1,5 @@
 {
-  "updated": "2026-04-09T09:02:23.681046+00:00",
+  "updated": "2026-04-10T08:59:49.247093+00:00",
   "season": 2025,
   "week": 5,
   "is_offseason": true,
@@ -36,19 +36,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.4364,
-        "exp_margin": -2.13,
-        "prob_7plus": 0.2592,
-        "prob_14plus": 0.1324,
-        "prob_21plus": 0.0516,
+        "win_prob": 0.4355,
+        "exp_margin": -2.3,
+        "prob_7plus": 0.2507,
+        "prob_14plus": 0.1265,
+        "prob_21plus": 0.05,
         "margin_percentiles": [
-          -25.2,
-          -20.4,
-          -11.6,
-          -2.2,
-          7.4,
-          16.4,
-          21.2
+          -25.6,
+          -20.7,
+          -11.8,
+          -2.1,
+          7.0,
+          15.9,
+          21.0
         ]
       },
       "adjustments": {
@@ -304,19 +304,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.5018,
-        "exp_margin": 0.02,
-        "prob_7plus": 0.3139,
-        "prob_14plus": 0.1657,
-        "prob_21plus": 0.0705,
+        "win_prob": 0.503,
+        "exp_margin": 0.11,
+        "prob_7plus": 0.3149,
+        "prob_14plus": 0.1603,
+        "prob_21plus": 0.0683,
         "margin_percentiles": [
-          -23.1,
-          -18.3,
-          -9.9,
+          -22.8,
+          -18.0,
+          -9.4,
           0.1,
-          9.7,
-          18.4,
-          23.7
+          9.6,
+          17.8,
+          23.2
         ]
       },
       "adjustments": {
@@ -506,9 +506,9 @@
       "home_score": 11,
       "away_score": 13,
       "predictions": {
-        "ensemble_prob": 0.1745,
+        "ensemble_prob": 0.1747,
         "logistic_prob": 0.0,
-        "elo_prob": 0.1391,
+        "elo_prob": 0.1405,
         "xgb_prob": 0.1655,
         "pyth_prob": 0.2759,
         "eff_prob": 0.5645,
@@ -522,19 +522,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.1896,
-        "exp_margin": -12.29,
-        "prob_7plus": 0.0845,
-        "prob_14plus": 0.0308,
-        "prob_21plus": 0.0096,
+        "win_prob": 0.2048,
+        "exp_margin": -11.92,
+        "prob_7plus": 0.093,
+        "prob_14plus": 0.033,
+        "prob_21plus": 0.01,
         "margin_percentiles": [
-          -35.5,
+          -35.0,
           -30.2,
-          -21.6,
-          -12.3,
-          -2.9,
-          5.7,
-          10.7
+          -21.3,
+          -11.8,
+          -2.3,
+          6.5,
+          11.2
         ]
       },
       "adjustments": {
@@ -548,7 +548,7 @@
       "elo": {
         "home": 1316.0,
         "away": 1633.9,
-        "diff": -316.6
+        "diff": -314.6
       },
       "bayesian": {
         "home_mu": 1399.2,
@@ -566,6 +566,13 @@
       },
       "injuries": {
         "home": [
+          {
+            "player": "Marcelino McCrary-Ball",
+            "status": "Active",
+            "position": "LB",
+            "injury_description": "McCrary-Ball was tendered by New York as an exclusive right free agent in March, and the two sides officially put pen to paper Wednesday. The linebacker was dealing with a hamstring injury late in the 2025 campaign, but he now appears to be back to full health. The 27-year-old will provide the Jets with an additional depth option behind Francisco Mauigoa (neck) and Mykal Walker in 2026.",
+            "value_tier": "starter"
+          },
           {
             "player": "Mason Taylor",
             "status": "Active",
@@ -592,13 +599,6 @@
             "status": "Active",
             "position": "DT",
             "injury_description": "The Jets placed an exclusive rights tender on Briggs in early March, and the 2024 seventh-rounder will play on a league-minimum contract for the upcoming season. He saw his defensive snap count increase over the course of the 2025 regular season. Briggs played at least 65 percent of the Jets' defensive snaps in each of the final seven games of the regular season, and over that span he accumulated 25 tackles (11 solo), including 2.0 sacks. He'll likely work in a rotational role on the defensive line in 2026 behind T'Vondre Sweat and Harrison Phillips.",
-            "value_tier": "starter"
-          },
-          {
-            "player": "Kene Nwangwu",
-            "status": "Active",
-            "position": "RB",
-            "injury_description": "Nwangwu had a small role in New York's offense as a depth RB last year, recording 49 yards on 13 carries in 12 games. However, he was a key player on special teams, logging 604  yards and one touchdown on 18 kickoff returns. Nwangwu has recorded five TDs as a kick returner through his first five campaigns in the league, and that should again be his primary role in 2026.",
             "value_tier": "starter"
           }
         ],
@@ -641,9 +641,9 @@
         ]
       },
       "injury_impact": {
-        "home_elo_penalty": 15.2,
+        "home_elo_penalty": 13.2,
         "away_elo_penalty": 24.4,
-        "home_impact_score": 0.1382,
+        "home_impact_score": 0.12,
         "away_impact_score": 0.2218,
         "home_key_players_out": [
           {
@@ -656,13 +656,6 @@
           {
             "player": "Andre Cisco",
             "position": "S",
-            "status": "Questionable",
-            "elo_impact": 2.0,
-            "value_tier": "starter"
-          },
-          {
-            "player": "Marcelino McCrary-Ball",
-            "position": "LB",
             "status": "Questionable",
             "elo_impact": 2.0,
             "value_tier": "starter"
@@ -742,7 +735,7 @@
         "ELO advantage: DEN +318 rating points",
         "Will McDonald IV (NYJ) [Starter] QUESTIONABLE \u2014 \u22123 ELO",
         "Andre Cisco (NYJ) [Starter] QUESTIONABLE \u2014 \u22122 ELO",
-        "Marcelino McCrary-Ball (NYJ) [Starter] QUESTIONABLE \u2014 \u22122 ELO",
+        "Breece Hall (NYJ) [Starter] QUESTIONABLE \u2014 \u22123 ELO",
         "Bo Nix (DEN) [Starter] QUESTIONABLE \u2014 \u221212 ELO",
         "Matt Henningsen (DEN) [Starter] QUESTIONABLE \u2014 \u22123 ELO",
         "Brandon Jones (DEN) [Starter] QUESTIONABLE \u2014 \u22122 ELO",
@@ -783,19 +776,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.7213,
-        "exp_margin": 8.26,
-        "prob_7plus": 0.5362,
-        "prob_14plus": 0.3431,
-        "prob_21plus": 0.187,
+        "win_prob": 0.7088,
+        "exp_margin": 7.72,
+        "prob_7plus": 0.5198,
+        "prob_14plus": 0.3305,
+        "prob_21plus": 0.1774,
         "margin_percentiles": [
-          -14.8,
-          -10.1,
-          -1.3,
-          8.3,
-          17.9,
-          26.4,
-          31.3
+          -16.1,
+          -10.7,
+          -1.7,
+          7.6,
+          17.3,
+          26.0,
+          31.2
         ]
       },
       "adjustments": {
@@ -1045,19 +1038,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.4344,
-        "exp_margin": -2.55,
-        "prob_7plus": 0.2508,
-        "prob_14plus": 0.1204,
-        "prob_21plus": 0.0466,
+        "win_prob": 0.433,
+        "exp_margin": -2.35,
+        "prob_7plus": 0.2542,
+        "prob_14plus": 0.1265,
+        "prob_21plus": 0.0519,
         "margin_percentiles": [
-          -26.1,
-          -21.0,
-          -12.2,
+          -25.6,
+          -20.6,
+          -12.1,
           -2.4,
-          7.0,
-          15.4,
-          20.4
+          7.2,
+          16.0,
+          21.2
         ]
       },
       "adjustments": {
@@ -1232,19 +1225,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.446,
-        "exp_margin": -1.83,
-        "prob_7plus": 0.2664,
-        "prob_14plus": 0.1347,
-        "prob_21plus": 0.0524,
+        "win_prob": 0.4505,
+        "exp_margin": -1.86,
+        "prob_7plus": 0.2693,
+        "prob_14plus": 0.132,
+        "prob_21plus": 0.053,
         "margin_percentiles": [
-          -25.0,
-          -20.1,
-          -11.7,
+          -25.4,
+          -20.2,
+          -11.4,
           -1.8,
-          7.7,
-          16.5,
-          21.3
+          7.8,
+          16.4,
+          21.4
         ]
       },
       "adjustments": {
@@ -1507,19 +1500,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6145,
-        "exp_margin": 4.13,
-        "prob_7plus": 0.4189,
-        "prob_14plus": 0.247,
-        "prob_21plus": 0.1173,
+        "win_prob": 0.6151,
+        "exp_margin": 4.11,
+        "prob_7plus": 0.4183,
+        "prob_14plus": 0.2433,
+        "prob_21plus": 0.1185,
         "margin_percentiles": [
-          -19.0,
-          -14.2,
-          -5.5,
-          4.0,
-          13.9,
-          22.3,
-          27.5
+          -19.3,
+          -14.1,
+          -5.6,
+          4.2,
+          13.7,
+          22.2,
+          27.3
         ]
       },
       "adjustments": {
@@ -1748,19 +1741,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6312,
-        "exp_margin": 4.76,
-        "prob_7plus": 0.4368,
-        "prob_14plus": 0.2562,
-        "prob_21plus": 0.1318,
+        "win_prob": 0.6269,
+        "exp_margin": 4.66,
+        "prob_7plus": 0.4347,
+        "prob_14plus": 0.2584,
+        "prob_21plus": 0.1283,
         "margin_percentiles": [
-          -18.8,
-          -13.3,
-          -4.6,
-          4.7,
-          14.3,
+          -18.7,
+          -13.5,
+          -5.1,
+          4.6,
+          14.4,
           23.0,
-          28.1
+          27.9
         ]
       },
       "adjustments": {
@@ -1985,19 +1978,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.5216,
-        "exp_margin": 0.64,
-        "prob_7plus": 0.3288,
-        "prob_14plus": 0.1776,
-        "prob_21plus": 0.0746,
+        "win_prob": 0.5167,
+        "exp_margin": 0.54,
+        "prob_7plus": 0.3238,
+        "prob_14plus": 0.1729,
+        "prob_21plus": 0.0773,
         "margin_percentiles": [
-          -23.1,
-          -17.7,
-          -9.0,
-          0.8,
-          10.4,
+          -23.0,
+          -17.8,
+          -9.1,
+          0.6,
+          10.1,
           18.9,
-          23.6
+          24.2
         ]
       },
       "adjustments": {
@@ -2030,17 +2023,17 @@
       "injuries": {
         "home": [
           {
+            "player": "Travis Hunter",
+            "status": "Questionable",
+            "position": "WR",
+            "injury_description": "Coach Liam Coen indicated at the end of March that Hunter was \"very well ahead\" of schedule in his recovery from surgery (which took place last November) to address a torn LCL in his right knee, per Ryan O'Halloran of The Florida Times-Union. At the time, Coen added that he couldn't \"say for certain\" whether Hunter would take part in the Jaguars offseason program, but it appears as though the CB/WR will participate in some capacity as he works toward being at or near full-go for training camp. According to Michael DiRocco of ESPN,  once the No. 2 overall pick in the 2025 NFL Draft resumes practicing, he'll take reps on both sides of the ball. However, while Hunter's positional versatility is valuable to the Jaguars, it remains to be seen what level of playing time the Colorado product (who caught 28 passes in seven regular-season games as a rookie) will see on offense in 2026, while working in a wide receiver corps that also includes Brian Thomas, Jakobi Meyers and Parker Washington.",
+            "value_tier": "starter"
+          },
+          {
             "player": "Travon Walker",
             "status": "Active",
             "position": "DE",
             "injury_description": "Per Schefter, Walker's four-year, $100 million extension with Jacksonville includes $77 million guaranteed and $50 million fully guaranteed at signing. The No. 1 overall pick in the 2022 NFL draft is coming off a 2025 regular season in which he recorded 38 tackles, including 3.5 sacks, in 14 regular-season games, production that was down from his 2024 output of 61 tackles and 10.5 sacks in 17 regular-season contests. As long as the 25-year-old can avoid the injury bug, he's a candidate to bounce back in 2026, as he carries double-digit sack upside in his starting defensive end role.",
-            "value_tier": "starter"
-          },
-          {
-            "player": "Travis Hunter",
-            "status": "Questionable",
-            "position": "WR",
-            "injury_description": "Hunter sustained the injury during an Oct. 30 practice and spent the rest of his rookie campaign on injured reserve, undergoing the aforementioned procedure on Nov. 11. GM James Gladstone noted after the campaign that Hunter will remain a two-way player in 2026 but likely will focus more on cornerback instead of wide receiver. As a first-year pro, Hunter logged 67 percent of the team's snaps on offense versus just 36 percent on defense through Week 8, hauling in 28 of 45 targets for 298 yards and one touchdown to go with 15 tackles and three pass defenses in seven contests. The Jaguars boast more high-end WR talent (Brian Thomas, Jakobi Meyers and Parker Washington) than at CB, so having Hunter focus more on defense in his second season likely will pay dividends on the team's operation as a whole. Having said that, when Hunter will be back on the practice field remains to be seen.",
             "value_tier": "starter"
           },
           {
@@ -2254,19 +2247,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.4591,
-        "exp_margin": -1.39,
-        "prob_7plus": 0.2737,
-        "prob_14plus": 0.134,
-        "prob_21plus": 0.0564,
+        "win_prob": 0.4709,
+        "exp_margin": -1.27,
+        "prob_7plus": 0.2828,
+        "prob_14plus": 0.1395,
+        "prob_21plus": 0.0578,
         "margin_percentiles": [
-          -24.4,
-          -19.5,
-          -10.7,
-          -1.3,
-          8.0,
-          16.4,
-          22.1
+          -25.3,
+          -19.6,
+          -10.8,
+          -1.0,
+          8.3,
+          16.8,
+          21.8
         ]
       },
       "adjustments": {
@@ -2299,6 +2292,13 @@
       "injuries": {
         "home": [
           {
+            "player": "Mark Andrews",
+            "status": "Active",
+            "position": "TE",
+            "injury_description": "More help is probably on the way, but so far Baltimore has only signed blocking specialist Durham Smythe to help replace Likely (Giants) and Kolar (Chargers) at tight end. The Ravens also lost long-time fullback Patrick Ricard, who followed Likely and coach John Harbaugh to New York. Andrews, meanwhile, is entering the first season of the three-year extension he signed in December, with his 2026 compensation fully guaranteed and his 2027 salary partially guaranteed ($5 million out of $9 million). The Ravens clearly have him ticketed for a key role under new offensive coordinator Declan Doyle, but that doesn't mean Andrews will approach his peak volume (or production). He'll turn 31 in September, coming off back-to-back seasons with less than 4.5 targets and 40 yards per game. Even the TD production slipped in 2025, with Andrews posting a 48-422-5 receiving line (compared to 55-673-11 in 2024) while finishing with career-low marks for yards per catch (8.8) and yards per target (6.0).",
+            "value_tier": "starter"
+          },
+          {
             "player": "Danny Pinter",
             "status": "Active",
             "position": "C",
@@ -2324,13 +2324,6 @@
             "status": "Active",
             "position": "CB",
             "injury_description": "Awuzie is set to earn $5 million guaranteed for another one-year stint with the Ravens. The 30-year-old played 14 games in the 2025 regular season, starting in four. The team was clearly impressed with his production at outside cornerback, as his 2026 contract comes in $3.75 million higher than his 2025 deal.",
-            "value_tier": "starter"
-          },
-          {
-            "player": "Lamar Jackson",
-            "status": "Active",
-            "position": "QB",
-            "injury_description": "Some of that cap space will go to DE Trey Hendrickson, who agreed to a four-year contract with the Ravens shortly after they backed out of a trade for Raiders DE Maxx Crosby (knee). The series of events hasn't made Baltimore popular around the league, but it could work out well for Jackson if the Ravens now keep the 14th overall pick and use it on a blocker or pass catcher. Either way, a contract restructure gives the team more flexibility in the absence of an extension (which may still come later this offseason).",
             "value_tier": "starter"
           }
         ],
@@ -2507,19 +2500,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.5349,
-        "exp_margin": 1.29,
-        "prob_7plus": 0.3446,
-        "prob_14plus": 0.1867,
-        "prob_21plus": 0.0833,
+        "win_prob": 0.5327,
+        "exp_margin": 1.15,
+        "prob_7plus": 0.3406,
+        "prob_14plus": 0.1811,
+        "prob_21plus": 0.0828,
         "margin_percentiles": [
-          -22.1,
-          -16.7,
-          -8.3,
+          -22.4,
+          -16.9,
+          -8.4,
           1.2,
-          10.8,
+          10.7,
           19.5,
-          24.7
+          24.9
         ]
       },
       "adjustments": {
@@ -2702,19 +2695,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.609,
-        "exp_margin": 3.96,
-        "prob_7plus": 0.4119,
-        "prob_14plus": 0.2391,
-        "prob_21plus": 0.1154,
+        "win_prob": 0.6092,
+        "exp_margin": 3.86,
+        "prob_7plus": 0.413,
+        "prob_14plus": 0.2364,
+        "prob_21plus": 0.1146,
         "margin_percentiles": [
-          -19.7,
-          -14.0,
-          -5.5,
+          -19.6,
+          -14.4,
+          -5.7,
           3.9,
-          13.5,
-          22.1,
-          27.4
+          13.4,
+          22.3,
+          27.2
         ]
       },
       "adjustments": {
@@ -2977,19 +2970,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.4835,
-        "exp_margin": -0.67,
-        "prob_7plus": 0.2976,
-        "prob_14plus": 0.1522,
-        "prob_21plus": 0.0633,
+        "win_prob": 0.4859,
+        "exp_margin": -0.58,
+        "prob_7plus": 0.2931,
+        "prob_14plus": 0.1509,
+        "prob_21plus": 0.0651,
         "margin_percentiles": [
-          -24.0,
-          -18.9,
-          -10.4,
-          -0.7,
-          9.0,
+          -24.2,
+          -19.1,
+          -10.0,
+          -0.5,
+          8.8,
           17.5,
-          22.8
+          23.1
         ]
       },
       "adjustments": {
@@ -3252,19 +3245,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.5073,
-        "exp_margin": 0.46,
-        "prob_7plus": 0.3199,
-        "prob_14plus": 0.1744,
-        "prob_21plus": 0.0794,
+        "win_prob": 0.4989,
+        "exp_margin": 0.03,
+        "prob_7plus": 0.31,
+        "prob_14plus": 0.1647,
+        "prob_21plus": 0.0686,
         "margin_percentiles": [
-          -22.8,
-          -17.8,
-          -9.1,
-          0.3,
-          9.9,
-          19.0,
-          24.2
+          -23.1,
+          -18.2,
+          -9.5,
+          -0.0,
+          9.7,
+          18.2,
+          23.1
         ]
       },
       "adjustments": {
@@ -3527,19 +3520,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.4699,
-        "exp_margin": -0.91,
-        "prob_7plus": 0.2874,
-        "prob_14plus": 0.1475,
-        "prob_21plus": 0.0618,
+        "win_prob": 0.4746,
+        "exp_margin": -0.92,
+        "prob_7plus": 0.2846,
+        "prob_14plus": 0.1451,
+        "prob_21plus": 0.0608,
         "margin_percentiles": [
-          -24.3,
-          -19.1,
-          -10.4,
+          -24.2,
+          -19.2,
+          -10.5,
           -1.0,
-          8.7,
-          17.2,
-          22.7
+          8.6,
+          17.1,
+          22.3
         ]
       },
       "adjustments": {
@@ -3824,19 +3817,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.4224,
-        "exp_margin": -2.79,
-        "prob_7plus": 0.2433,
-        "prob_14plus": 0.1171,
-        "prob_21plus": 0.0423,
+        "win_prob": 0.4209,
+        "exp_margin": -2.8,
+        "prob_7plus": 0.2426,
+        "prob_14plus": 0.1197,
+        "prob_21plus": 0.0472,
         "margin_percentiles": [
-          -26.0,
-          -20.8,
-          -12.3,
-          -2.9,
-          6.7,
-          15.2,
-          20.0
+          -25.8,
+          -20.7,
+          -12.5,
+          -2.8,
+          6.6,
+          15.5,
+          20.6
         ]
       },
       "adjustments": {
@@ -4078,19 +4071,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.5551,
-        "exp_margin": 1.9,
-        "prob_7plus": 0.3596,
-        "prob_14plus": 0.1967,
-        "prob_21plus": 0.0906,
+        "win_prob": 0.5431,
+        "exp_margin": 1.53,
+        "prob_7plus": 0.3519,
+        "prob_14plus": 0.1935,
+        "prob_21plus": 0.0876,
         "margin_percentiles": [
-          -21.5,
-          -16.1,
-          -7.6,
-          1.9,
-          11.5,
-          20.1,
-          25.2
+          -22.3,
+          -16.8,
+          -8.0,
+          1.5,
+          11.0,
+          19.8,
+          24.8
         ]
       },
       "adjustments": {
@@ -4303,19 +4296,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.4875,
-        "exp_margin": -0.58,
-        "prob_7plus": 0.292,
-        "prob_14plus": 0.1482,
-        "prob_21plus": 0.0621,
+        "win_prob": 0.4816,
+        "exp_margin": -0.63,
+        "prob_7plus": 0.2918,
+        "prob_14plus": 0.149,
+        "prob_21plus": 0.0595,
         "margin_percentiles": [
           -23.7,
-          -18.5,
+          -18.4,
           -10.0,
-          -0.5,
-          8.7,
+          -0.6,
+          8.8,
           17.4,
-          22.4
+          22.3
         ]
       },
       "adjustments": {
@@ -4348,17 +4341,17 @@
       "injuries": {
         "home": [
           {
+            "player": "Travis Hunter",
+            "status": "Questionable",
+            "position": "WR",
+            "injury_description": "Coach Liam Coen indicated at the end of March that Hunter was \"very well ahead\" of schedule in his recovery from surgery (which took place last November) to address a torn LCL in his right knee, per Ryan O'Halloran of The Florida Times-Union. At the time, Coen added that he couldn't \"say for certain\" whether Hunter would take part in the Jaguars offseason program, but it appears as though the CB/WR will participate in some capacity as he works toward being at or near full-go for training camp. According to Michael DiRocco of ESPN,  once the No. 2 overall pick in the 2025 NFL Draft resumes practicing, he'll take reps on both sides of the ball. However, while Hunter's positional versatility is valuable to the Jaguars, it remains to be seen what level of playing time the Colorado product (who caught 28 passes in seven regular-season games as a rookie) will see on offense in 2026, while working in a wide receiver corps that also includes Brian Thomas, Jakobi Meyers and Parker Washington.",
+            "value_tier": "starter"
+          },
+          {
             "player": "Travon Walker",
             "status": "Active",
             "position": "DE",
             "injury_description": "Per Schefter, Walker's four-year, $100 million extension with Jacksonville includes $77 million guaranteed and $50 million fully guaranteed at signing. The No. 1 overall pick in the 2022 NFL draft is coming off a 2025 regular season in which he recorded 38 tackles, including 3.5 sacks, in 14 regular-season games, production that was down from his 2024 output of 61 tackles and 10.5 sacks in 17 regular-season contests. As long as the 25-year-old can avoid the injury bug, he's a candidate to bounce back in 2026, as he carries double-digit sack upside in his starting defensive end role.",
-            "value_tier": "starter"
-          },
-          {
-            "player": "Travis Hunter",
-            "status": "Questionable",
-            "position": "WR",
-            "injury_description": "Hunter sustained the injury during an Oct. 30 practice and spent the rest of his rookie campaign on injured reserve, undergoing the aforementioned procedure on Nov. 11. GM James Gladstone noted after the campaign that Hunter will remain a two-way player in 2026 but likely will focus more on cornerback instead of wide receiver. As a first-year pro, Hunter logged 67 percent of the team's snaps on offense versus just 36 percent on defense through Week 8, hauling in 28 of 45 targets for 298 yards and one touchdown to go with 15 tackles and three pass defenses in seven contests. The Jaguars boast more high-end WR talent (Brian Thomas, Jakobi Meyers and Parker Washington) than at CB, so having Hunter focus more on defense in his second season likely will pay dividends on the team's operation as a whole. Having said that, when Hunter will be back on the practice field remains to be seen.",
             "value_tier": "starter"
           },
           {
@@ -4541,19 +4534,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6672,
-        "exp_margin": 6.11,
-        "prob_7plus": 0.476,
-        "prob_14plus": 0.2812,
-        "prob_21plus": 0.1444,
+        "win_prob": 0.6602,
+        "exp_margin": 6.0,
+        "prob_7plus": 0.4721,
+        "prob_14plus": 0.2869,
+        "prob_21plus": 0.1456,
         "margin_percentiles": [
-          -17.0,
-          -11.6,
-          -3.4,
-          6.1,
-          15.4,
-          24.1,
-          29.4
+          -17.3,
+          -12.1,
+          -3.7,
+          6.0,
+          15.6,
+          24.3,
+          29.6
         ]
       },
       "adjustments": {
@@ -4830,19 +4823,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.643,
-        "exp_margin": 5.27,
-        "prob_7plus": 0.4495,
-        "prob_14plus": 0.2719,
-        "prob_21plus": 0.1362,
+        "win_prob": 0.6485,
+        "exp_margin": 5.46,
+        "prob_7plus": 0.4624,
+        "prob_14plus": 0.2716,
+        "prob_21plus": 0.1314,
         "margin_percentiles": [
-          -18.3,
-          -13.0,
-          -4.3,
-          5.1,
-          15.0,
-          23.7,
-          28.9
+          -17.4,
+          -12.4,
+          -4.2,
+          5.6,
+          14.9,
+          23.4,
+          28.4
         ]
       },
       "adjustments": {
@@ -5030,19 +5023,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.3412,
-        "exp_margin": -5.61,
-        "prob_7plus": 0.1841,
-        "prob_14plus": 0.083,
-        "prob_21plus": 0.0313,
+        "win_prob": 0.3459,
+        "exp_margin": -5.67,
+        "prob_7plus": 0.1879,
+        "prob_14plus": 0.0867,
+        "prob_21plus": 0.0319,
         "margin_percentiles": [
-          -28.9,
-          -23.4,
+          -29.4,
+          -23.8,
           -15.2,
-          -5.7,
-          3.7,
-          12.7,
-          17.7
+          -5.8,
+          4.0,
+          12.8,
+          17.9
         ]
       },
       "adjustments": {
@@ -5261,19 +5254,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6877,
-        "exp_margin": 6.97,
-        "prob_7plus": 0.5011,
-        "prob_14plus": 0.3094,
-        "prob_21plus": 0.1636,
+        "win_prob": 0.6952,
+        "exp_margin": 7.07,
+        "prob_7plus": 0.5006,
+        "prob_14plus": 0.3133,
+        "prob_21plus": 0.1634,
         "margin_percentiles": [
-          -16.2,
-          -11.4,
-          -2.6,
+          -16.8,
+          -11.3,
+          -2.4,
           7.0,
-          16.5,
-          25.2,
-          30.5
+          16.8,
+          25.0,
+          30.1
         ]
       },
       "adjustments": {
@@ -5527,19 +5520,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.5548,
-        "exp_margin": 2.03,
-        "prob_7plus": 0.3623,
-        "prob_14plus": 0.2026,
-        "prob_21plus": 0.0928,
+        "win_prob": 0.5533,
+        "exp_margin": 1.68,
+        "prob_7plus": 0.3565,
+        "prob_14plus": 0.1921,
+        "prob_21plus": 0.0848,
         "margin_percentiles": [
-          -21.1,
-          -16.2,
-          -7.6,
-          1.9,
-          11.7,
-          20.5,
-          25.7
+          -22.0,
+          -16.5,
+          -8.1,
+          2.0,
+          11.3,
+          19.6,
+          24.8
         ]
       },
       "adjustments": {
@@ -5742,9 +5735,9 @@
       "home_score": 6,
       "away_score": 13,
       "predictions": {
-        "ensemble_prob": 0.3147,
+        "ensemble_prob": 0.3152,
         "logistic_prob": 0.1786,
-        "elo_prob": 0.4,
+        "elo_prob": 0.4028,
         "xgb_prob": 0.1756,
         "pyth_prob": 0.5035,
         "eff_prob": 0.6532,
@@ -5758,19 +5751,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.3473,
-        "exp_margin": -5.65,
-        "prob_7plus": 0.1875,
-        "prob_14plus": 0.0846,
-        "prob_21plus": 0.0298,
+        "win_prob": 0.3546,
+        "exp_margin": -5.39,
+        "prob_7plus": 0.1982,
+        "prob_14plus": 0.0881,
+        "prob_21plus": 0.0293,
         "margin_percentiles": [
-          -29.1,
-          -24.0,
-          -15.4,
-          -5.7,
-          4.1,
-          12.7,
-          17.7
+          -28.9,
+          -23.7,
+          -15.0,
+          -5.5,
+          4.4,
+          12.9,
+          17.6
         ]
       },
       "adjustments": {
@@ -5784,7 +5777,7 @@
       "elo": {
         "home": 1316.0,
         "away": 1438.1,
-        "diff": -70.4
+        "diff": -68.4
       },
       "bayesian": {
         "home_mu": 1399.2,
@@ -5802,6 +5795,13 @@
       },
       "injuries": {
         "home": [
+          {
+            "player": "Marcelino McCrary-Ball",
+            "status": "Active",
+            "position": "LB",
+            "injury_description": "McCrary-Ball was tendered by New York as an exclusive right free agent in March, and the two sides officially put pen to paper Wednesday. The linebacker was dealing with a hamstring injury late in the 2025 campaign, but he now appears to be back to full health. The 27-year-old will provide the Jets with an additional depth option behind Francisco Mauigoa (neck) and Mykal Walker in 2026.",
+            "value_tier": "starter"
+          },
           {
             "player": "Mason Taylor",
             "status": "Active",
@@ -5828,13 +5828,6 @@
             "status": "Active",
             "position": "DT",
             "injury_description": "The Jets placed an exclusive rights tender on Briggs in early March, and the 2024 seventh-rounder will play on a league-minimum contract for the upcoming season. He saw his defensive snap count increase over the course of the 2025 regular season. Briggs played at least 65 percent of the Jets' defensive snaps in each of the final seven games of the regular season, and over that span he accumulated 25 tackles (11 solo), including 2.0 sacks. He'll likely work in a rotational role on the defensive line in 2026 behind T'Vondre Sweat and Harrison Phillips.",
-            "value_tier": "starter"
-          },
-          {
-            "player": "Kene Nwangwu",
-            "status": "Active",
-            "position": "RB",
-            "injury_description": "Nwangwu had a small role in New York's offense as a depth RB last year, recording 49 yards on 13 carries in 12 games. However, he was a key player on special teams, logging 604  yards and one touchdown on 18 kickoff returns. Nwangwu has recorded five TDs as a kick returner through his first five campaigns in the league, and that should again be his primary role in 2026.",
             "value_tier": "starter"
           }
         ],
@@ -5877,9 +5870,9 @@
         ]
       },
       "injury_impact": {
-        "home_elo_penalty": 15.2,
+        "home_elo_penalty": 13.2,
         "away_elo_penalty": 2.8,
-        "home_impact_score": 0.1382,
+        "home_impact_score": 0.12,
         "away_impact_score": 0.0255,
         "home_key_players_out": [
           {
@@ -5892,13 +5885,6 @@
           {
             "player": "Andre Cisco",
             "position": "S",
-            "status": "Questionable",
-            "elo_impact": 2.0,
-            "value_tier": "starter"
-          },
-          {
-            "player": "Marcelino McCrary-Ball",
-            "position": "LB",
             "status": "Questionable",
             "elo_impact": 2.0,
             "value_tier": "starter"
@@ -5943,7 +5929,7 @@
         "ELO advantage: CAR +122 rating points",
         "Will McDonald IV (NYJ) [Starter] QUESTIONABLE \u2014 \u22123 ELO",
         "Andre Cisco (NYJ) [Starter] QUESTIONABLE \u2014 \u22122 ELO",
-        "Marcelino McCrary-Ball (NYJ) [Starter] QUESTIONABLE \u2014 \u22122 ELO",
+        "Breece Hall (NYJ) [Starter] QUESTIONABLE \u2014 \u22123 ELO",
         "Jonathon Brooks (CAR) [Starter] QUESTIONABLE \u2014 \u22123 ELO",
         "Efficiency gap: NYJ net -0.018 vs CAR net -0.242",
         "Home field: NYJ +65 ELO home advantage"
@@ -5982,19 +5968,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6968,
-        "exp_margin": 7.48,
-        "prob_7plus": 0.5103,
-        "prob_14plus": 0.3241,
-        "prob_21plus": 0.1717,
+        "win_prob": 0.7029,
+        "exp_margin": 7.44,
+        "prob_7plus": 0.5131,
+        "prob_14plus": 0.3231,
+        "prob_21plus": 0.169,
         "margin_percentiles": [
-          -16.3,
-          -10.9,
-          -2.3,
-          7.4,
-          17.1,
-          26.2,
-          31.4
+          -16.1,
+          -11.2,
+          -2.1,
+          7.5,
+          16.9,
+          25.5,
+          30.8
         ]
       },
       "adjustments": {
@@ -6230,19 +6216,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.5486,
-        "exp_margin": 1.99,
-        "prob_7plus": 0.3574,
-        "prob_14plus": 0.2001,
-        "prob_21plus": 0.0912,
+        "win_prob": 0.5701,
+        "exp_margin": 2.5,
+        "prob_7plus": 0.3709,
+        "prob_14plus": 0.204,
+        "prob_21plus": 0.0963,
         "margin_percentiles": [
-          -20.7,
-          -15.8,
-          -7.6,
-          1.8,
-          11.5,
-          20.2,
-          25.3
+          -20.8,
+          -15.5,
+          -7.1,
+          2.4,
+          12.0,
+          20.6,
+          26.1
         ]
       },
       "adjustments": {
@@ -6484,19 +6470,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.5649,
-        "exp_margin": 2.43,
-        "prob_7plus": 0.3748,
-        "prob_14plus": 0.2133,
-        "prob_21plus": 0.0998,
+        "win_prob": 0.5673,
+        "exp_margin": 2.51,
+        "prob_7plus": 0.3765,
+        "prob_14plus": 0.2074,
+        "prob_21plus": 0.0959,
         "margin_percentiles": [
-          -20.9,
-          -15.9,
-          -7.3,
-          2.3,
+          -20.8,
+          -15.6,
+          -7.0,
+          2.4,
           12.1,
-          21.0,
-          26.2
+          20.7,
+          25.8
         ]
       },
       "adjustments": {
@@ -6729,19 +6715,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.4361,
-        "exp_margin": -2.16,
-        "prob_7plus": 0.2579,
-        "prob_14plus": 0.1263,
-        "prob_21plus": 0.0529,
+        "win_prob": 0.4394,
+        "exp_margin": -2.22,
+        "prob_7plus": 0.2588,
+        "prob_14plus": 0.1253,
+        "prob_21plus": 0.0509,
         "margin_percentiles": [
-          -25.3,
-          -20.2,
-          -11.8,
-          -2.3,
+          -25.5,
+          -20.7,
+          -11.7,
+          -2.1,
           7.4,
-          16.2,
-          21.5
+          15.7,
+          21.1
         ]
       },
       "adjustments": {
@@ -7010,19 +6996,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6154,
-        "exp_margin": 4.16,
-        "prob_7plus": 0.4221,
-        "prob_14plus": 0.2477,
-        "prob_21plus": 0.1155,
+        "win_prob": 0.6132,
+        "exp_margin": 3.93,
+        "prob_7plus": 0.4164,
+        "prob_14plus": 0.2361,
+        "prob_21plus": 0.1143,
         "margin_percentiles": [
-          -19.1,
-          -14.0,
-          -5.4,
-          4.2,
-          13.9,
+          -19.7,
+          -13.9,
+          -5.5,
+          4.0,
+          13.4,
           22.0,
-          27.3
+          26.9
         ]
       },
       "adjustments": {
@@ -7279,19 +7265,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6454,
-        "exp_margin": 5.26,
-        "prob_7plus": 0.4548,
-        "prob_14plus": 0.2677,
-        "prob_21plus": 0.1326,
+        "win_prob": 0.6506,
+        "exp_margin": 5.4,
+        "prob_7plus": 0.4563,
+        "prob_14plus": 0.2722,
+        "prob_21plus": 0.1336,
         "margin_percentiles": [
-          -18.1,
-          -12.8,
+          -18.2,
+          -13.2,
           -4.2,
-          5.3,
-          14.7,
-          23.5,
-          28.4
+          5.5,
+          15.0,
+          23.6,
+          29.0
         ]
       },
       "adjustments": {
@@ -7526,19 +7512,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6433,
-        "exp_margin": 5.23,
-        "prob_7plus": 0.4465,
-        "prob_14plus": 0.2738,
-        "prob_21plus": 0.1355,
+        "win_prob": 0.6389,
+        "exp_margin": 5.16,
+        "prob_7plus": 0.4516,
+        "prob_14plus": 0.2681,
+        "prob_21plus": 0.1338,
         "margin_percentiles": [
-          -18.4,
-          -13.0,
-          -4.4,
-          5.1,
-          15.0,
-          23.8,
-          28.7
+          -18.5,
+          -12.9,
+          -4.6,
+          5.2,
+          14.9,
+          23.4,
+          28.5
         ]
       },
       "adjustments": {
@@ -7768,19 +7754,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.5626,
-        "exp_margin": 2.21,
-        "prob_7plus": 0.3674,
-        "prob_14plus": 0.197,
-        "prob_21plus": 0.0918,
+        "win_prob": 0.5631,
+        "exp_margin": 2.25,
+        "prob_7plus": 0.3712,
+        "prob_14plus": 0.2035,
+        "prob_21plus": 0.0931,
         "margin_percentiles": [
-          -20.8,
-          -15.7,
-          -7.0,
+          -20.9,
+          -15.9,
+          -7.4,
           2.3,
-          11.5,
-          20.3,
-          25.3
+          11.7,
+          20.5,
+          25.2
         ]
       },
       "adjustments": {
@@ -7999,19 +7985,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6988,
-        "exp_margin": 7.29,
-        "prob_7plus": 0.5031,
-        "prob_14plus": 0.3169,
-        "prob_21plus": 0.1675,
+        "win_prob": 0.6895,
+        "exp_margin": 7.07,
+        "prob_7plus": 0.4964,
+        "prob_14plus": 0.3114,
+        "prob_21plus": 0.1708,
         "margin_percentiles": [
-          -16.1,
-          -10.6,
-          -2.1,
-          7.1,
-          16.9,
-          25.4,
-          30.8
+          -16.3,
+          -11.2,
+          -2.5,
+          6.9,
+          16.7,
+          25.7,
+          31.1
         ]
       },
       "adjustments": {
@@ -8196,9 +8182,9 @@
       "home_score": 38,
       "away_score": 39,
       "predictions": {
-        "ensemble_prob": 0.7649,
+        "ensemble_prob": 0.7646,
         "logistic_prob": 0.8095,
-        "elo_prob": 0.7766,
+        "elo_prob": 0.7746,
         "xgb_prob": 0.7878,
         "pyth_prob": 0.6836,
         "eff_prob": 0.6655,
@@ -8212,19 +8198,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.7662,
-        "exp_margin": 10.51,
-        "prob_7plus": 0.5977,
-        "prob_14plus": 0.406,
-        "prob_21plus": 0.235,
+        "win_prob": 0.7566,
+        "exp_margin": 10.21,
+        "prob_7plus": 0.5852,
+        "prob_14plus": 0.3974,
+        "prob_21plus": 0.2246,
         "margin_percentiles": [
-          -13.3,
-          -8.2,
-          0.7,
-          10.5,
-          20.3,
-          29.0,
-          33.9
+          -12.9,
+          -7.9,
+          0.3,
+          10.1,
+          19.9,
+          28.7,
+          33.4
         ]
       },
       "adjustments": {
@@ -8238,7 +8224,7 @@
       "elo": {
         "home": 1434.6,
         "away": 1316.0,
-        "diff": 216.4
+        "diff": 214.4
       },
       "bayesian": {
         "home_mu": 1588.6,
@@ -8294,6 +8280,13 @@
         ],
         "away": [
           {
+            "player": "Marcelino McCrary-Ball",
+            "status": "Active",
+            "position": "LB",
+            "injury_description": "McCrary-Ball was tendered by New York as an exclusive right free agent in March, and the two sides officially put pen to paper Wednesday. The linebacker was dealing with a hamstring injury late in the 2025 campaign, but he now appears to be back to full health. The 27-year-old will provide the Jets with an additional depth option behind Francisco Mauigoa (neck) and Mykal Walker in 2026.",
+            "value_tier": "starter"
+          },
+          {
             "player": "Mason Taylor",
             "status": "Active",
             "position": "TE",
@@ -8320,21 +8313,14 @@
             "position": "DT",
             "injury_description": "The Jets placed an exclusive rights tender on Briggs in early March, and the 2024 seventh-rounder will play on a league-minimum contract for the upcoming season. He saw his defensive snap count increase over the course of the 2025 regular season. Briggs played at least 65 percent of the Jets' defensive snaps in each of the final seven games of the regular season, and over that span he accumulated 25 tackles (11 solo), including 2.0 sacks. He'll likely work in a rotational role on the defensive line in 2026 behind T'Vondre Sweat and Harrison Phillips.",
             "value_tier": "starter"
-          },
-          {
-            "player": "Kene Nwangwu",
-            "status": "Active",
-            "position": "RB",
-            "injury_description": "Nwangwu had a small role in New York's offense as a depth RB last year, recording 49 yards on 13 carries in 12 games. However, he was a key player on special teams, logging 604  yards and one touchdown on 18 kickoff returns. Nwangwu has recorded five TDs as a kick returner through his first five campaigns in the league, and that should again be his primary role in 2026.",
-            "value_tier": "starter"
           }
         ]
       },
       "injury_impact": {
         "home_elo_penalty": 5.4,
-        "away_elo_penalty": 15.2,
+        "away_elo_penalty": 13.2,
         "home_impact_score": 0.0491,
-        "away_impact_score": 0.1382,
+        "away_impact_score": 0.12,
         "home_key_players_out": [
           {
             "player": "Kris Jenkins Jr.",
@@ -8362,13 +8348,6 @@
           {
             "player": "Andre Cisco",
             "position": "S",
-            "status": "Questionable",
-            "elo_impact": 2.0,
-            "value_tier": "starter"
-          },
-          {
-            "player": "Marcelino McCrary-Ball",
-            "position": "LB",
             "status": "Questionable",
             "elo_impact": 2.0,
             "value_tier": "starter"
@@ -8406,7 +8385,7 @@
         "Erick All Jr. (CIN) [Starter] QUESTIONABLE \u2014 \u22123 ELO",
         "Will McDonald IV (NYJ) [Starter] QUESTIONABLE \u2014 \u22123 ELO",
         "Andre Cisco (NYJ) [Starter] QUESTIONABLE \u2014 \u22122 ELO",
-        "Marcelino McCrary-Ball (NYJ) [Starter] QUESTIONABLE \u2014 \u22122 ELO",
+        "Breece Hall (NYJ) [Starter] QUESTIONABLE \u2014 \u22123 ELO",
         "Efficiency gap: CIN net +0.255 vs NYJ net -0.018",
         "Home field: CIN +65 ELO home advantage"
       ],
@@ -8444,19 +8423,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.7208,
-        "exp_margin": 8.18,
-        "prob_7plus": 0.5303,
-        "prob_14plus": 0.3433,
-        "prob_21plus": 0.1809,
+        "win_prob": 0.7196,
+        "exp_margin": 8.26,
+        "prob_7plus": 0.532,
+        "prob_14plus": 0.3426,
+        "prob_21plus": 0.1867,
         "margin_percentiles": [
-          -15.0,
+          -15.1,
           -9.7,
           -1.4,
-          8.1,
-          17.7,
+          8.2,
+          17.9,
           26.3,
-          31.9
+          31.5
         ]
       },
       "adjustments": {
@@ -8698,19 +8677,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6364,
-        "exp_margin": 5.04,
-        "prob_7plus": 0.4411,
-        "prob_14plus": 0.2623,
-        "prob_21plus": 0.1346,
+        "win_prob": 0.6456,
+        "exp_margin": 5.14,
+        "prob_7plus": 0.4491,
+        "prob_14plus": 0.2682,
+        "prob_21plus": 0.1327,
         "margin_percentiles": [
-          -18.5,
+          -18.7,
           -13.2,
-          -4.6,
-          4.9,
-          14.6,
-          23.4,
-          28.7
+          -4.2,
+          5.1,
+          14.9,
+          23.5,
+          28.5
         ]
       },
       "adjustments": {
@@ -8916,19 +8895,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.4531,
-        "exp_margin": -1.6,
-        "prob_7plus": 0.2764,
-        "prob_14plus": 0.1365,
-        "prob_21plus": 0.052,
+        "win_prob": 0.4588,
+        "exp_margin": -1.42,
+        "prob_7plus": 0.2766,
+        "prob_14plus": 0.1392,
+        "prob_21plus": 0.0541,
         "margin_percentiles": [
-          -25.1,
-          -19.8,
-          -11.1,
-          -1.7,
+          -24.6,
+          -19.5,
+          -10.9,
+          -1.6,
           8.1,
-          16.6,
-          21.3
+          16.7,
+          21.7
         ]
       },
       "adjustments": {
@@ -9176,19 +9155,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.5236,
+        "win_prob": 0.5216,
         "exp_margin": 0.77,
-        "prob_7plus": 0.3301,
-        "prob_14plus": 0.1783,
-        "prob_21plus": 0.0769,
+        "prob_7plus": 0.3273,
+        "prob_14plus": 0.1771,
+        "prob_21plus": 0.078,
         "margin_percentiles": [
-          -23.0,
-          -17.6,
-          -8.9,
-          0.9,
+          -22.4,
+          -17.2,
+          -8.8,
+          0.8,
           10.4,
-          18.9,
-          24.4
+          19.0,
+          24.0
         ]
       },
       "adjustments": {
@@ -9221,6 +9200,13 @@
       "injuries": {
         "home": [
           {
+            "player": "Mark Andrews",
+            "status": "Active",
+            "position": "TE",
+            "injury_description": "More help is probably on the way, but so far Baltimore has only signed blocking specialist Durham Smythe to help replace Likely (Giants) and Kolar (Chargers) at tight end. The Ravens also lost long-time fullback Patrick Ricard, who followed Likely and coach John Harbaugh to New York. Andrews, meanwhile, is entering the first season of the three-year extension he signed in December, with his 2026 compensation fully guaranteed and his 2027 salary partially guaranteed ($5 million out of $9 million). The Ravens clearly have him ticketed for a key role under new offensive coordinator Declan Doyle, but that doesn't mean Andrews will approach his peak volume (or production). He'll turn 31 in September, coming off back-to-back seasons with less than 4.5 targets and 40 yards per game. Even the TD production slipped in 2025, with Andrews posting a 48-422-5 receiving line (compared to 55-673-11 in 2024) while finishing with career-low marks for yards per catch (8.8) and yards per target (6.0).",
+            "value_tier": "starter"
+          },
+          {
             "player": "Danny Pinter",
             "status": "Active",
             "position": "C",
@@ -9246,13 +9232,6 @@
             "status": "Active",
             "position": "CB",
             "injury_description": "Awuzie is set to earn $5 million guaranteed for another one-year stint with the Ravens. The 30-year-old played 14 games in the 2025 regular season, starting in four. The team was clearly impressed with his production at outside cornerback, as his 2026 contract comes in $3.75 million higher than his 2025 deal.",
-            "value_tier": "starter"
-          },
-          {
-            "player": "Lamar Jackson",
-            "status": "Active",
-            "position": "QB",
-            "injury_description": "Some of that cap space will go to DE Trey Hendrickson, who agreed to a four-year contract with the Ravens shortly after they backed out of a trade for Raiders DE Maxx Crosby (knee). The series of events hasn't made Baltimore popular around the league, but it could work out well for Jackson if the Ravens now keep the 14th overall pick and use it on a blocker or pass catcher. Either way, a contract restructure gives the team more flexibility in the absence of an extension (which may still come later this offseason).",
             "value_tier": "starter"
           }
         ],
@@ -9478,19 +9457,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6197,
-        "exp_margin": 4.47,
-        "prob_7plus": 0.4279,
-        "prob_14plus": 0.2551,
-        "prob_21plus": 0.1216,
+        "win_prob": 0.6312,
+        "exp_margin": 4.67,
+        "prob_7plus": 0.4409,
+        "prob_14plus": 0.2592,
+        "prob_21plus": 0.125,
         "margin_percentiles": [
-          -18.8,
-          -13.7,
-          -5.0,
-          4.4,
-          14.2,
-          22.6,
-          27.7
+          -19.0,
+          -13.6,
+          -4.8,
+          4.7,
+          14.4,
+          23.0,
+          27.9
         ]
       },
       "adjustments": {
@@ -9725,19 +9704,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.5999,
-        "exp_margin": 3.6,
-        "prob_7plus": 0.4059,
-        "prob_14plus": 0.2332,
-        "prob_21plus": 0.1135,
+        "win_prob": 0.6018,
+        "exp_margin": 3.56,
+        "prob_7plus": 0.4057,
+        "prob_14plus": 0.2312,
+        "prob_21plus": 0.1067,
         "margin_percentiles": [
-          -20.5,
-          -14.9,
-          -6.1,
-          3.8,
-          13.3,
-          22.0,
-          27.2
+          -20.0,
+          -14.6,
+          -5.9,
+          3.6,
+          13.2,
+          21.7,
+          26.9
         ]
       },
       "adjustments": {
@@ -9999,19 +9978,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.7292,
-        "exp_margin": 8.74,
-        "prob_7plus": 0.5511,
-        "prob_14plus": 0.3582,
-        "prob_21plus": 0.1929,
+        "win_prob": 0.7399,
+        "exp_margin": 8.75,
+        "prob_7plus": 0.5517,
+        "prob_14plus": 0.3462,
+        "prob_21plus": 0.187,
         "margin_percentiles": [
-          -14.8,
-          -9.7,
-          -0.9,
-          8.9,
-          18.3,
-          26.9,
-          32.1
+          -14.0,
+          -8.9,
+          -0.5,
+          8.8,
+          18.0,
+          26.6,
+          32.0
         ]
       },
       "adjustments": {
@@ -10274,19 +10253,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.7069,
-        "exp_margin": 7.83,
-        "prob_7plus": 0.5248,
-        "prob_14plus": 0.3304,
-        "prob_21plus": 0.1757,
+        "win_prob": 0.7096,
+        "exp_margin": 7.87,
+        "prob_7plus": 0.5228,
+        "prob_14plus": 0.3284,
+        "prob_21plus": 0.1802,
         "margin_percentiles": [
-          -15.2,
-          -10.2,
-          -2.0,
-          7.9,
+          -15.0,
+          -10.1,
+          -1.8,
+          7.8,
           17.4,
           25.9,
-          31.1
+          31.4
         ]
       },
       "adjustments": {
@@ -10519,19 +10498,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.5539,
-        "exp_margin": 2.05,
-        "prob_7plus": 0.3626,
-        "prob_14plus": 0.2001,
-        "prob_21plus": 0.0918,
+        "win_prob": 0.562,
+        "exp_margin": 2.12,
+        "prob_7plus": 0.3659,
+        "prob_14plus": 0.1967,
+        "prob_21plus": 0.0888,
         "margin_percentiles": [
           -21.0,
-          -16.2,
-          -7.4,
-          1.8,
+          -15.7,
+          -7.3,
+          2.1,
           11.5,
-          20.3,
-          25.5
+          20.1,
+          25.0
         ]
       },
       "adjustments": {
@@ -10813,18 +10792,18 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.62,
-        "exp_margin": 4.25,
-        "prob_7plus": 0.4257,
-        "prob_14plus": 0.2478,
-        "prob_21plus": 0.1176,
+        "win_prob": 0.6084,
+        "exp_margin": 4.04,
+        "prob_7plus": 0.4118,
+        "prob_14plus": 0.2403,
+        "prob_21plus": 0.1169,
         "margin_percentiles": [
-          -19.3,
-          -14.0,
-          -5.4,
-          4.3,
-          13.9,
-          22.3,
+          -19.4,
+          -14.1,
+          -5.5,
+          4.0,
+          13.5,
+          22.2,
           27.8
         ]
       },
