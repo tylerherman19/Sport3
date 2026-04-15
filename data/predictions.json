@@ -1,5 +1,5 @@
 {
-  "updated": "2026-04-14T09:09:38.617080+00:00",
+  "updated": "2026-04-15T09:10:27.894142+00:00",
   "season": 2025,
   "week": 5,
   "is_offseason": true,
@@ -36,19 +36,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.4386,
-        "exp_margin": -2.3,
-        "prob_7plus": 0.2609,
-        "prob_14plus": 0.1271,
-        "prob_21plus": 0.05,
+        "win_prob": 0.4277,
+        "exp_margin": -2.41,
+        "prob_7plus": 0.2515,
+        "prob_14plus": 0.1253,
+        "prob_21plus": 0.0507,
         "margin_percentiles": [
-          -25.6,
-          -20.6,
+          -25.9,
+          -20.5,
           -11.9,
-          -2.2,
-          7.4,
-          15.8,
-          21.0
+          -2.4,
+          7.1,
+          16.0,
+          21.1
         ]
       },
       "adjustments": {
@@ -304,19 +304,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.4993,
-        "exp_margin": -0.04,
-        "prob_7plus": 0.311,
-        "prob_14plus": 0.1589,
-        "prob_21plus": 0.0643,
+        "win_prob": 0.502,
+        "exp_margin": 0.08,
+        "prob_7plus": 0.3095,
+        "prob_14plus": 0.1645,
+        "prob_21plus": 0.071,
         "margin_percentiles": [
           -23.1,
           -18.1,
           -9.3,
-          -0.0,
-          9.4,
-          17.8,
-          22.8
+          0.1,
+          9.6,
+          18.2,
+          23.7
         ]
       },
       "adjustments": {
@@ -522,19 +522,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.1869,
-        "exp_margin": -12.59,
-        "prob_7plus": 0.088,
-        "prob_14plus": 0.0289,
-        "prob_21plus": 0.0081,
+        "win_prob": 0.19,
+        "exp_margin": -12.33,
+        "prob_7plus": 0.0913,
+        "prob_14plus": 0.0323,
+        "prob_21plus": 0.01,
         "margin_percentiles": [
-          -35.9,
-          -30.9,
-          -22.2,
-          -12.6,
-          -2.8,
-          5.9,
-          10.7
+          -35.7,
+          -30.6,
+          -21.9,
+          -12.3,
+          -2.9,
+          6.2,
+          11.2
         ]
       },
       "adjustments": {
@@ -760,9 +760,9 @@
       "home_score": 31,
       "away_score": 27,
       "predictions": {
-        "ensemble_prob": 0.844,
+        "ensemble_prob": 0.8442,
         "logistic_prob": 1.0,
-        "elo_prob": 0.7242,
+        "elo_prob": 0.7256,
         "xgb_prob": 0.875,
         "pyth_prob": 0.7223,
         "eff_prob": 0.6291,
@@ -776,19 +776,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.7231,
-        "exp_margin": 8.29,
-        "prob_7plus": 0.5361,
-        "prob_14plus": 0.3474,
-        "prob_21plus": 0.186,
+        "win_prob": 0.714,
+        "exp_margin": 8.13,
+        "prob_7plus": 0.5336,
+        "prob_14plus": 0.3354,
+        "prob_21plus": 0.1831,
         "margin_percentiles": [
-          -15.5,
-          -10.4,
-          -1.3,
-          8.3,
-          18.0,
-          26.6,
-          31.6
+          -15.2,
+          -10.0,
+          -1.5,
+          8.2,
+          17.8,
+          26.2,
+          31.7
         ]
       },
       "adjustments": {
@@ -802,7 +802,7 @@
       "elo": {
         "home": 1478.9,
         "away": 1354.2,
-        "diff": 167.7
+        "diff": 168.9
       },
       "bayesian": {
         "home_mu": 1640.3,
@@ -820,6 +820,13 @@
       },
       "injuries": {
         "home": [
+          {
+            "player": "Nasir Adderley",
+            "status": "Active",
+            "position": "S",
+            "injury_description": "Adderley stepped away from the NFL in 2023 after playing four seasons with the Chargers, but three years later the safety will now return to the league and compete for a role in the Colts' secondary. The 28-year-old started three of his four seasons in Los Angeles, posting 232 tackles and 12 passes defensed, including three interceptions, during that span.",
+            "value_tier": "starter"
+          },
           {
             "player": "Kenny Moore II",
             "status": "Active",
@@ -846,13 +853,6 @@
             "status": "Active",
             "position": "LB",
             "injury_description": "Davis-Gaither spent the 2025 campaign in Arizona, where he recorded a career-high 117 tackles (51 solo) and an interception across 17 games. The 28-year-old should have a chance to serve as one of the Colts' starting linebackers during the upcoming season.",
-            "value_tier": "starter"
-          },
-          {
-            "player": "Nick Westbrook-Ikhine",
-            "status": "Active",
-            "position": "WR",
-            "injury_description": "Westbrook-Ikhine struggled to solidify himself as a consistent option for the Dolphins last year, when he totaled just 11 catches for 89 yards without a score (20 targets) across 15 regular-season appearances. Now heading into his age-29 season, Westbrook-Ikhine looks positioned to compete with Ashton Dulin, Anthony Gould (foot) and Laquon Treadwell for rotational snaps behind top wideouts Alec Pierce and Josh Downs. Westbrook-Ikhine impressed with a 32-497-9 line back in 2024 with the Titans.",
             "value_tier": "starter"
           }
         ],
@@ -895,9 +895,9 @@
         ]
       },
       "injury_impact": {
-        "home_elo_penalty": 37.6,
+        "home_elo_penalty": 36.4,
         "away_elo_penalty": 5.6,
-        "home_impact_score": 0.3418,
+        "home_impact_score": 0.3309,
         "away_impact_score": 0.0509,
         "home_key_players_out": [
           {
@@ -947,13 +947,6 @@
             "position": "S",
             "status": "Questionable",
             "elo_impact": 2.0,
-            "value_tier": "starter"
-          },
-          {
-            "player": "Spencer Shrader",
-            "position": "PK",
-            "status": "Questionable",
-            "elo_impact": 1.2,
             "value_tier": "starter"
           }
         ],
@@ -1031,19 +1024,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.4381,
-        "exp_margin": -2.4,
-        "prob_7plus": 0.2571,
-        "prob_14plus": 0.1265,
-        "prob_21plus": 0.0507,
+        "win_prob": 0.4335,
+        "exp_margin": -2.33,
+        "prob_7plus": 0.2567,
+        "prob_14plus": 0.1237,
+        "prob_21plus": 0.0503,
         "margin_percentiles": [
-          -26.0,
-          -20.8,
+          -25.7,
+          -20.5,
           -12.1,
-          -2.1,
-          7.3,
-          15.8,
-          21.1
+          -2.3,
+          7.2,
+          15.9,
+          21.0
         ]
       },
       "adjustments": {
@@ -1113,6 +1106,13 @@
         ],
         "away": [
           {
+            "player": "Kimani Vidal",
+            "status": "Active",
+            "position": "RB",
+            "injury_description": "Los Angeles tendered Vidal as an ERFA early March, and the 2024 sixth-round pick now makes his return for the 2026 season official. The Chargers' offseason has seen Najee Harris (Achilles) depart in free agency, though the addition of Keaton Mitchell from Baltimore represents a new change-of-pace option in the backfield, and potential competition for Vidal's grip on the No. 2 role behind Omarion Hampton. That said, Vidal has to be considered the favorite for the backup role after he broke out with a 155-643-3 rushing line across 13 regular-season appearances in 2025, even if Mitchell ultimately sees more pass-catching reps.",
+            "value_tier": "starter"
+          },
+          {
             "player": "Tony Jefferson",
             "status": "Active",
             "position": "S",
@@ -1138,13 +1138,6 @@
             "status": "Active",
             "position": "LB",
             "injury_description": "Perryman will return to the Chargers for a third consecutive season (and ninth campaign since being drafted by the team in the second round of the 2015 NFL Draft). He saw his production dip in 2025, finishing with 47 tackles (30 solo) and three pass defenses across 10 regular-season games. He missed seven games last season, five of which were due to an ankle injury and two more because of a suspension. Perryman's best days are behind him, but he'll fortify the Chargers' depth at inside linebacker behind projected starters Troy Dye and Daiyan Henley.",
-            "value_tier": "starter"
-          },
-          {
-            "player": "Keaton Mitchell",
-            "status": "Active",
-            "position": "RB",
-            "injury_description": "Mitchell brings his talents to a backfield already led by Omarion Hamption and No. 2 back Kimani Vidal. Across three seasons with Baltimore, the 24-year-old logged a total of 112 carries for 767 yards and three touchdowns, averaging an impressive 6.34 YPC. While the Hampton and Vidal represent difficult competition for Mitchell to earn depth opportunities, he seems a strong fit for new offensive coordinator Mike McDaniel's scheme and will be a sleeper candidate to impress with the Chargers.",
             "value_tier": "starter"
           }
         ]
@@ -1218,19 +1211,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.4533,
-        "exp_margin": -1.65,
-        "prob_7plus": 0.2723,
-        "prob_14plus": 0.1341,
-        "prob_21plus": 0.0549,
+        "win_prob": 0.4435,
+        "exp_margin": -1.98,
+        "prob_7plus": 0.2623,
+        "prob_14plus": 0.1307,
+        "prob_21plus": 0.0509,
         "margin_percentiles": [
-          -25.1,
-          -20.0,
-          -11.2,
-          -1.6,
-          7.9,
-          16.4,
-          21.7
+          -25.4,
+          -20.1,
+          -11.6,
+          -1.8,
+          7.6,
+          16.1,
+          21.2
         ]
       },
       "adjustments": {
@@ -1493,19 +1486,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6216,
-        "exp_margin": 4.25,
-        "prob_7plus": 0.4258,
-        "prob_14plus": 0.2428,
-        "prob_21plus": 0.1171,
+        "win_prob": 0.6127,
+        "exp_margin": 4.08,
+        "prob_7plus": 0.4198,
+        "prob_14plus": 0.2443,
+        "prob_21plus": 0.1209,
         "margin_percentiles": [
-          -18.8,
-          -13.8,
-          -5.3,
-          4.2,
+          -19.6,
+          -14.2,
+          -5.7,
+          4.0,
           13.7,
-          22.2,
-          27.5
+          22.6,
+          27.6
         ]
       },
       "adjustments": {
@@ -1718,9 +1711,9 @@
       "home_score": 30,
       "away_score": 27,
       "predictions": {
-        "ensemble_prob": 0.5339,
+        "ensemble_prob": 0.5333,
         "logistic_prob": 0.5062,
-        "elo_prob": 0.6214,
+        "elo_prob": 0.6173,
         "xgb_prob": 0.6112,
         "pyth_prob": 0.554,
         "eff_prob": 0.3686,
@@ -1734,19 +1727,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6234,
-        "exp_margin": 4.53,
-        "prob_7plus": 0.4238,
-        "prob_14plus": 0.2501,
-        "prob_21plus": 0.1204,
+        "win_prob": 0.6262,
+        "exp_margin": 4.57,
+        "prob_7plus": 0.4245,
+        "prob_14plus": 0.2507,
+        "prob_21plus": 0.1219,
         "margin_percentiles": [
-          -18.2,
-          -13.4,
-          -5.0,
-          4.4,
+          -18.3,
+          -13.3,
+          -4.9,
+          4.5,
           14.0,
-          22.7,
-          28.0
+          22.5,
+          27.7
         ]
       },
       "adjustments": {
@@ -1760,7 +1753,7 @@
       "elo": {
         "home": 1438.1,
         "away": 1441.6,
-        "diff": 86.1
+        "diff": 83.1
       },
       "bayesian": {
         "home_mu": 1602.1,
@@ -1778,6 +1771,13 @@
       },
       "injuries": {
         "home": [
+          {
+            "player": "Ja'Tavion Sanders",
+            "status": "Questionable",
+            "position": "TE",
+            "injury_description": "Sanders is recovering from surgery undergone to address a broken right fibula suffered late December. Across 13 regular-season appearances last year, the 2024 fourth-round pick secured 29 of 34 targets for 190 yards and one touchdown. Unless Carolina makes significant additions to the TE position in the 2026 NFL Draft or via free-agent signings, Sanders and Tommy Tremble will be positioned again operate as the team's top options at tight end.",
+            "value_tier": "starter"
+          },
           {
             "player": "Jonathon Brooks",
             "status": "Questionable",
@@ -1804,13 +1804,6 @@
             "status": "Active",
             "position": "RB",
             "injury_description": "Dillon spent last year handling a depth role for the Eagles, logging 12 carries for 60 yards and three catches for 21 yards across seven regular-season appearances. Now with Carolina, Dillon figures to compete for a reserve role and short-yardage work behind incumbent starter Chuba Hubbard, with Jonathon Brooks (knee) and Trevor Etienne already battling for touches. Dillon lacks a clear path to fantasy relevance for the 2026 campaign.",
-            "value_tier": "starter"
-          },
-          {
-            "player": "Sam Martin",
-            "status": "Active",
-            "position": "P",
-            "injury_description": "Martin appeared in all 17 regular-season games for the Panthers in 2025 and averaged 47.2 yards per punt. He landed 27 of his 56 punts inside the opponent's 20-yard line, which was ninth best in the NFL.",
             "value_tier": "starter"
           }
         ],
@@ -1853,11 +1846,18 @@
         ]
       },
       "injury_impact": {
-        "home_elo_penalty": 2.8,
+        "home_elo_penalty": 5.8,
         "away_elo_penalty": 22.4,
-        "home_impact_score": 0.0255,
+        "home_impact_score": 0.0527,
         "away_impact_score": 0.2036,
         "home_key_players_out": [
+          {
+            "player": "Ja'Tavion Sanders",
+            "position": "TE",
+            "status": "Questionable",
+            "elo_impact": 3.0,
+            "value_tier": "starter"
+          },
           {
             "player": "Jonathon Brooks",
             "position": "RB",
@@ -1937,6 +1937,7 @@
         "away_star_stack_multiplier": 1.0
       },
       "prediction_drivers": [
+        "Ja'Tavion Sanders (CAR) [Starter] QUESTIONABLE \u2014 \u22123 ELO",
         "Jonathon Brooks (CAR) [Starter] QUESTIONABLE \u2014 \u22123 ELO",
         "Markquese Bell (DAL) [Starter] QUESTIONABLE \u2014 \u22122 ELO",
         "Donovan Ezeiruaku (DAL) [Starter] QUESTIONABLE \u2014 \u22123 ELO",
@@ -1944,7 +1945,7 @@
         "Efficiency gap: CAR net -0.242 vs DAL net +0.550",
         "Home field: CAR +65 ELO home advantage"
       ],
-      "explanation": "The model gives Carolina Panthers a 53.4% win probability \u2014 a slight favorite over Dallas Cowboys. The ELO gap is 4 points with home field adding approximately 65 ELO points."
+      "explanation": "The model gives Carolina Panthers a 53.3% win probability \u2014 a slight favorite over Dallas Cowboys. The ELO gap is 4 points with home field adding approximately 65 ELO points."
     },
     {
       "game_id": "401772857",
@@ -1978,19 +1979,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.5244,
-        "exp_margin": 0.88,
-        "prob_7plus": 0.3303,
-        "prob_14plus": 0.1799,
-        "prob_21plus": 0.0768,
+        "win_prob": 0.5129,
+        "exp_margin": 0.52,
+        "prob_7plus": 0.3226,
+        "prob_14plus": 0.1727,
+        "prob_21plus": 0.0782,
         "margin_percentiles": [
-          -22.6,
-          -17.0,
-          -8.7,
-          0.9,
-          10.4,
+          -23.1,
+          -17.9,
+          -9.1,
+          0.5,
+          10.2,
           19.0,
-          24.1
+          24.4
         ]
       },
       "adjustments": {
@@ -2247,19 +2248,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.4721,
-        "exp_margin": -1.12,
-        "prob_7plus": 0.2819,
-        "prob_14plus": 0.139,
-        "prob_21plus": 0.0595,
+        "win_prob": 0.4653,
+        "exp_margin": -1.32,
+        "prob_7plus": 0.2803,
+        "prob_14plus": 0.1435,
+        "prob_21plus": 0.055,
         "margin_percentiles": [
-          -24.0,
-          -19.2,
-          -10.6,
-          -1.1,
-          8.2,
-          16.8,
-          22.2
+          -24.6,
+          -19.5,
+          -11.1,
+          -1.3,
+          8.3,
+          16.9,
+          21.7
         ]
       },
       "adjustments": {
@@ -2500,19 +2501,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.5399,
-        "exp_margin": 1.48,
-        "prob_7plus": 0.347,
-        "prob_14plus": 0.1896,
-        "prob_21plus": 0.0863,
+        "win_prob": 0.5437,
+        "exp_margin": 1.38,
+        "prob_7plus": 0.3458,
+        "prob_14plus": 0.1869,
+        "prob_21plus": 0.0834,
         "margin_percentiles": [
-          -22.1,
-          -16.8,
-          -8.0,
-          1.4,
-          11.0,
-          19.8,
-          25.0
+          -22.0,
+          -16.9,
+          -8.2,
+          1.6,
+          10.9,
+          19.5,
+          24.5
         ]
       },
       "adjustments": {
@@ -2695,19 +2696,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6107,
-        "exp_margin": 4.13,
-        "prob_7plus": 0.4113,
-        "prob_14plus": 0.2415,
-        "prob_21plus": 0.1199,
+        "win_prob": 0.6093,
+        "exp_margin": 3.85,
+        "prob_7plus": 0.4162,
+        "prob_14plus": 0.2356,
+        "prob_21plus": 0.1122,
         "margin_percentiles": [
-          -18.7,
-          -13.6,
-          -5.3,
+          -19.5,
+          -14.2,
+          -5.7,
           3.9,
-          13.6,
-          22.5,
-          27.3
+          13.3,
+          21.9,
+          27.0
         ]
       },
       "adjustments": {
@@ -2970,19 +2971,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.4865,
-        "exp_margin": -0.4,
-        "prob_7plus": 0.3008,
-        "prob_14plus": 0.1541,
-        "prob_21plus": 0.0657,
+        "win_prob": 0.4921,
+        "exp_margin": -0.35,
+        "prob_7plus": 0.304,
+        "prob_14plus": 0.1562,
+        "prob_21plus": 0.0675,
         "margin_percentiles": [
-          -23.4,
-          -18.0,
+          -23.8,
+          -18.6,
           -10.0,
-          -0.5,
-          9.2,
-          17.9,
-          22.7
+          -0.3,
+          9.3,
+          17.7,
+          22.9
         ]
       },
       "adjustments": {
@@ -3245,18 +3246,18 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.5049,
-        "exp_margin": -0.04,
-        "prob_7plus": 0.3126,
-        "prob_14plus": 0.1593,
-        "prob_21plus": 0.0694,
+        "win_prob": 0.4955,
+        "exp_margin": -0.12,
+        "prob_7plus": 0.3142,
+        "prob_14plus": 0.1606,
+        "prob_21plus": 0.0695,
         "margin_percentiles": [
-          -23.6,
-          -18.2,
-          -9.6,
-          0.2,
-          9.7,
-          18.1,
+          -23.3,
+          -18.4,
+          -9.7,
+          -0.2,
+          9.6,
+          18.2,
           23.2
         ]
       },
@@ -3520,19 +3521,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.4712,
-        "exp_margin": -1.07,
-        "prob_7plus": 0.2841,
-        "prob_14plus": 0.1486,
-        "prob_21plus": 0.0584,
+        "win_prob": 0.4881,
+        "exp_margin": -0.56,
+        "prob_7plus": 0.2976,
+        "prob_14plus": 0.1515,
+        "prob_21plus": 0.0645,
         "margin_percentiles": [
-          -24.7,
-          -19.2,
-          -10.5,
-          -1.0,
-          8.5,
-          17.4,
-          22.3
+          -23.8,
+          -18.7,
+          -10.0,
+          -0.4,
+          9.0,
+          17.5,
+          22.6
         ]
       },
       "adjustments": {
@@ -3803,18 +3804,18 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.4215,
+        "win_prob": 0.4216,
         "exp_margin": -2.82,
-        "prob_7plus": 0.2458,
-        "prob_14plus": 0.1165,
-        "prob_21plus": 0.0468,
+        "prob_7plus": 0.248,
+        "prob_14plus": 0.1192,
+        "prob_21plus": 0.0473,
         "margin_percentiles": [
-          -26.4,
-          -20.8,
-          -12.3,
-          -2.8,
-          6.7,
-          15.3,
+          -25.8,
+          -21.4,
+          -12.6,
+          -2.7,
+          6.9,
+          15.4,
           20.6
         ]
       },
@@ -4057,19 +4058,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.5446,
-        "exp_margin": 1.72,
-        "prob_7plus": 0.3563,
-        "prob_14plus": 0.1942,
-        "prob_21plus": 0.0916,
+        "win_prob": 0.5518,
+        "exp_margin": 1.76,
+        "prob_7plus": 0.3565,
+        "prob_14plus": 0.1965,
+        "prob_21plus": 0.0887,
         "margin_percentiles": [
-          -21.8,
-          -16.5,
-          -8.0,
-          1.6,
-          11.2,
-          20.2,
-          25.7
+          -21.9,
+          -16.6,
+          -7.7,
+          1.8,
+          11.4,
+          20.0,
+          24.5
         ]
       },
       "adjustments": {
@@ -4282,18 +4283,18 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.4817,
-        "exp_margin": -0.67,
-        "prob_7plus": 0.2966,
-        "prob_14plus": 0.1464,
-        "prob_21plus": 0.0633,
+        "win_prob": 0.486,
+        "exp_margin": -0.5,
+        "prob_7plus": 0.299,
+        "prob_14plus": 0.1499,
+        "prob_21plus": 0.0664,
         "margin_percentiles": [
-          -24.4,
-          -19.0,
-          -10.2,
-          -0.6,
-          9.0,
-          17.3,
+          -23.8,
+          -18.5,
+          -10.0,
+          -0.5,
+          9.1,
+          17.6,
           22.7
         ]
       },
@@ -4520,19 +4521,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6585,
-        "exp_margin": 5.81,
-        "prob_7plus": 0.4627,
-        "prob_14plus": 0.2847,
-        "prob_21plus": 0.1432,
+        "win_prob": 0.661,
+        "exp_margin": 5.98,
+        "prob_7plus": 0.4671,
+        "prob_14plus": 0.2877,
+        "prob_21plus": 0.1472,
         "margin_percentiles": [
           -17.6,
-          -12.7,
-          -3.8,
-          5.6,
-          15.5,
+          -12.3,
+          -3.5,
+          6.0,
+          15.4,
           24.3,
-          29.3
+          29.4
         ]
       },
       "adjustments": {
@@ -4809,19 +4810,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6425,
-        "exp_margin": 5.14,
-        "prob_7plus": 0.4456,
-        "prob_14plus": 0.2674,
-        "prob_21plus": 0.1317,
+        "win_prob": 0.6443,
+        "exp_margin": 5.35,
+        "prob_7plus": 0.4526,
+        "prob_14plus": 0.2679,
+        "prob_21plus": 0.1339,
         "margin_percentiles": [
-          -18.0,
-          -13.1,
-          -4.5,
-          5.1,
+          -17.5,
+          -12.5,
+          -4.2,
+          5.4,
           14.8,
-          23.4,
-          28.4
+          23.3,
+          28.0
         ]
       },
       "adjustments": {
@@ -5009,19 +5010,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.3463,
-        "exp_margin": -5.49,
-        "prob_7plus": 0.1874,
-        "prob_14plus": 0.0874,
-        "prob_21plus": 0.0313,
+        "win_prob": 0.3354,
+        "exp_margin": -5.92,
+        "prob_7plus": 0.181,
+        "prob_14plus": 0.0819,
+        "prob_21plus": 0.0282,
         "margin_percentiles": [
-          -29.1,
-          -23.5,
-          -14.9,
-          -5.6,
-          4.0,
-          12.8,
-          18.2
+          -29.2,
+          -24.2,
+          -15.5,
+          -5.9,
+          3.7,
+          12.4,
+          17.4
         ]
       },
       "adjustments": {
@@ -5240,19 +5241,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6936,
-        "exp_margin": 7.3,
-        "prob_7plus": 0.509,
-        "prob_14plus": 0.323,
-        "prob_21plus": 0.1692,
+        "win_prob": 0.6905,
+        "exp_margin": 7.12,
+        "prob_7plus": 0.5041,
+        "prob_14plus": 0.3139,
+        "prob_21plus": 0.1647,
         "margin_percentiles": [
-          -16.3,
-          -11.0,
-          -2.4,
-          7.3,
-          17.1,
+          -16.0,
+          -11.2,
+          -2.5,
+          7.1,
+          16.9,
           25.4,
-          30.6
+          30.2
         ]
       },
       "adjustments": {
@@ -5506,19 +5507,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.563,
-        "exp_margin": 2.13,
-        "prob_7plus": 0.3658,
-        "prob_14plus": 0.2037,
-        "prob_21plus": 0.0855,
+        "win_prob": 0.5578,
+        "exp_margin": 1.97,
+        "prob_7plus": 0.3618,
+        "prob_14plus": 0.1986,
+        "prob_21plus": 0.0878,
         "margin_percentiles": [
-          -21.4,
-          -16.2,
-          -7.4,
-          2.1,
-          11.8,
+          -21.2,
+          -16.1,
+          -7.5,
+          2.0,
+          11.6,
           19.9,
-          25.2
+          24.7
         ]
       },
       "adjustments": {
@@ -5551,6 +5552,13 @@
       "injuries": {
         "home": [
           {
+            "player": "Jalen Redmond",
+            "status": "Active",
+            "position": "DT",
+            "injury_description": "Redmond will officially remain with the Vikings on a one-year deal for the 2026 season after having logged a breakout campaign in 2025. Last year, Redmond totaled 62 tackles (33 solo), including 6.0 sacks, five pass breakups, two fumble recoveries and one forced fumble while suiting up for all 17 regular-season games (15 starts).",
+            "value_tier": "starter"
+          },
+          {
             "player": "Jordan Addison",
             "status": "Active",
             "position": "WR",
@@ -5576,13 +5584,6 @@
             "status": "Active",
             "position": "P",
             "injury_description": "Hekker is a four-time Pro Bowler, though he most recently earned that honor in 2017. He punted for Tennessee last season and averaged 46.8 yards per kick, which ranked 20th in the league among players with at least 25 punts. With Minnesota, he'll replace Ryan Wright, who signed with the Saints earlier in March.",
-            "value_tier": "starter"
-          },
-          {
-            "player": "J.J. McCarthy",
-            "status": "Questionable",
-            "position": "QB",
-            "injury_description": "For what it's worth, Vikings coach Kevin O'Connell declined to comment on expectations for a 2026 starter when reporters asked him Thursday. Reading between the lines, McCarthy's poor 2025 performance would make him a major underdog if a job battle were to take place, even against a post-prime version of Murray (who turns 29 in August). O'Connell is saying all of the things one might expect about continuing McCarthy's development, but odds are it'll be happening from the bench for at least the early part of the 2026 campaign.",
             "value_tier": "starter"
           }
         ],
@@ -5721,9 +5722,9 @@
       "home_score": 6,
       "away_score": 13,
       "predictions": {
-        "ensemble_prob": 0.3152,
+        "ensemble_prob": 0.3158,
         "logistic_prob": 0.1786,
-        "elo_prob": 0.4028,
+        "elo_prob": 0.4069,
         "xgb_prob": 0.1756,
         "pyth_prob": 0.5035,
         "eff_prob": 0.6532,
@@ -5737,19 +5738,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.3459,
-        "exp_margin": -5.58,
-        "prob_7plus": 0.1856,
-        "prob_14plus": 0.0838,
+        "win_prob": 0.3482,
+        "exp_margin": -5.49,
+        "prob_7plus": 0.1908,
+        "prob_14plus": 0.0874,
         "prob_21plus": 0.0302,
         "margin_percentiles": [
-          -28.9,
-          -23.8,
+          -28.6,
+          -23.9,
           -15.1,
-          -5.4,
-          3.8,
-          12.4,
-          17.9
+          -5.5,
+          4.2,
+          12.8,
+          17.6
         ]
       },
       "adjustments": {
@@ -5763,7 +5764,7 @@
       "elo": {
         "home": 1316.0,
         "away": 1438.1,
-        "diff": -68.4
+        "diff": -65.4
       },
       "bayesian": {
         "home_mu": 1399.2,
@@ -5819,6 +5820,13 @@
         ],
         "away": [
           {
+            "player": "Ja'Tavion Sanders",
+            "status": "Questionable",
+            "position": "TE",
+            "injury_description": "Sanders is recovering from surgery undergone to address a broken right fibula suffered late December. Across 13 regular-season appearances last year, the 2024 fourth-round pick secured 29 of 34 targets for 190 yards and one touchdown. Unless Carolina makes significant additions to the TE position in the 2026 NFL Draft or via free-agent signings, Sanders and Tommy Tremble will be positioned again operate as the team's top options at tight end.",
+            "value_tier": "starter"
+          },
+          {
             "player": "Jonathon Brooks",
             "status": "Questionable",
             "position": "RB",
@@ -5845,21 +5853,14 @@
             "position": "RB",
             "injury_description": "Dillon spent last year handling a depth role for the Eagles, logging 12 carries for 60 yards and three catches for 21 yards across seven regular-season appearances. Now with Carolina, Dillon figures to compete for a reserve role and short-yardage work behind incumbent starter Chuba Hubbard, with Jonathon Brooks (knee) and Trevor Etienne already battling for touches. Dillon lacks a clear path to fantasy relevance for the 2026 campaign.",
             "value_tier": "starter"
-          },
-          {
-            "player": "Sam Martin",
-            "status": "Active",
-            "position": "P",
-            "injury_description": "Martin appeared in all 17 regular-season games for the Panthers in 2025 and averaged 47.2 yards per punt. He landed 27 of his 56 punts inside the opponent's 20-yard line, which was ninth best in the NFL.",
-            "value_tier": "starter"
           }
         ]
       },
       "injury_impact": {
         "home_elo_penalty": 13.2,
-        "away_elo_penalty": 2.8,
+        "away_elo_penalty": 5.8,
         "home_impact_score": 0.12,
-        "away_impact_score": 0.0255,
+        "away_impact_score": 0.0527,
         "home_key_players_out": [
           {
             "player": "Will McDonald IV",
@@ -5899,6 +5900,13 @@
         ],
         "away_key_players_out": [
           {
+            "player": "Ja'Tavion Sanders",
+            "position": "TE",
+            "status": "Questionable",
+            "elo_impact": 3.0,
+            "value_tier": "starter"
+          },
+          {
             "player": "Jonathon Brooks",
             "position": "RB",
             "status": "Questionable",
@@ -5916,11 +5924,12 @@
         "Will McDonald IV (NYJ) [Starter] QUESTIONABLE \u2014 \u22123 ELO",
         "Andre Cisco (NYJ) [Starter] QUESTIONABLE \u2014 \u22122 ELO",
         "Breece Hall (NYJ) [Starter] QUESTIONABLE \u2014 \u22123 ELO",
+        "Ja'Tavion Sanders (CAR) [Starter] QUESTIONABLE \u2014 \u22123 ELO",
         "Jonathon Brooks (CAR) [Starter] QUESTIONABLE \u2014 \u22123 ELO",
         "Efficiency gap: NYJ net -0.018 vs CAR net -0.242",
         "Home field: NYJ +65 ELO home advantage"
       ],
-      "explanation": "The model gives Carolina Panthers a 68.5% win probability \u2014 a moderate favorite over New York Jets. The ELO gap is 122 points with home field adding approximately 65 ELO points."
+      "explanation": "The model gives Carolina Panthers a 68.4% win probability \u2014 a moderate favorite over New York Jets. The ELO gap is 122 points with home field adding approximately 65 ELO points."
     },
     {
       "game_id": "401772757",
@@ -5954,17 +5963,17 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6981,
-        "exp_margin": 7.38,
-        "prob_7plus": 0.5122,
-        "prob_14plus": 0.3169,
-        "prob_21plus": 0.1666,
+        "win_prob": 0.6978,
+        "exp_margin": 7.23,
+        "prob_7plus": 0.5075,
+        "prob_14plus": 0.3137,
+        "prob_21plus": 0.1612,
         "margin_percentiles": [
-          -15.8,
+          -16.1,
           -10.6,
-          -2.1,
-          7.4,
-          16.8,
+          -2.2,
+          7.3,
+          16.7,
           25.4,
           30.4
         ]
@@ -6186,9 +6195,9 @@
       "home_score": 24,
       "away_score": 38,
       "predictions": {
-        "ensemble_prob": 0.5795,
+        "ensemble_prob": 0.5793,
         "logistic_prob": 0.5062,
-        "elo_prob": 0.7351,
+        "elo_prob": 0.7337,
         "xgb_prob": 0.659,
         "pyth_prob": 0.5781,
         "eff_prob": 0.4637,
@@ -6202,19 +6211,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.5631,
-        "exp_margin": 2.12,
-        "prob_7plus": 0.3636,
-        "prob_14plus": 0.1947,
-        "prob_21plus": 0.0886,
+        "win_prob": 0.5614,
+        "exp_margin": 2.27,
+        "prob_7plus": 0.3745,
+        "prob_14plus": 0.2082,
+        "prob_21plus": 0.0947,
         "margin_percentiles": [
-          -21.1,
-          -15.8,
-          -7.1,
-          2.1,
-          11.6,
-          20.1,
-          25.5
+          -21.0,
+          -15.6,
+          -7.4,
+          2.3,
+          11.9,
+          20.5,
+          25.4
         ]
       },
       "adjustments": {
@@ -6228,7 +6237,7 @@
       "elo": {
         "home": 1535.6,
         "away": 1478.9,
-        "diff": 177.3
+        "diff": 176.1
       },
       "bayesian": {
         "home_mu": 1630.8,
@@ -6246,6 +6255,13 @@
       },
       "injuries": {
         "home": [
+          {
+            "player": "Kimani Vidal",
+            "status": "Active",
+            "position": "RB",
+            "injury_description": "Los Angeles tendered Vidal as an ERFA early March, and the 2024 sixth-round pick now makes his return for the 2026 season official. The Chargers' offseason has seen Najee Harris (Achilles) depart in free agency, though the addition of Keaton Mitchell from Baltimore represents a new change-of-pace option in the backfield, and potential competition for Vidal's grip on the No. 2 role behind Omarion Hampton. That said, Vidal has to be considered the favorite for the backup role after he broke out with a 155-643-3 rushing line across 13 regular-season appearances in 2025, even if Mitchell ultimately sees more pass-catching reps.",
+            "value_tier": "starter"
+          },
           {
             "player": "Tony Jefferson",
             "status": "Active",
@@ -6273,16 +6289,16 @@
             "position": "LB",
             "injury_description": "Perryman will return to the Chargers for a third consecutive season (and ninth campaign since being drafted by the team in the second round of the 2015 NFL Draft). He saw his production dip in 2025, finishing with 47 tackles (30 solo) and three pass defenses across 10 regular-season games. He missed seven games last season, five of which were due to an ankle injury and two more because of a suspension. Perryman's best days are behind him, but he'll fortify the Chargers' depth at inside linebacker behind projected starters Troy Dye and Daiyan Henley.",
             "value_tier": "starter"
-          },
-          {
-            "player": "Keaton Mitchell",
-            "status": "Active",
-            "position": "RB",
-            "injury_description": "Mitchell brings his talents to a backfield already led by Omarion Hamption and No. 2 back Kimani Vidal. Across three seasons with Baltimore, the 24-year-old logged a total of 112 carries for 767 yards and three touchdowns, averaging an impressive 6.34 YPC. While the Hampton and Vidal represent difficult competition for Mitchell to earn depth opportunities, he seems a strong fit for new offensive coordinator Mike McDaniel's scheme and will be a sleeper candidate to impress with the Chargers.",
-            "value_tier": "starter"
           }
         ],
         "away": [
+          {
+            "player": "Nasir Adderley",
+            "status": "Active",
+            "position": "S",
+            "injury_description": "Adderley stepped away from the NFL in 2023 after playing four seasons with the Chargers, but three years later the safety will now return to the league and compete for a role in the Colts' secondary. The 28-year-old started three of his four seasons in Los Angeles, posting 232 tackles and 12 passes defensed, including three interceptions, during that span.",
+            "value_tier": "starter"
+          },
           {
             "player": "Kenny Moore II",
             "status": "Active",
@@ -6310,21 +6326,14 @@
             "position": "LB",
             "injury_description": "Davis-Gaither spent the 2025 campaign in Arizona, where he recorded a career-high 117 tackles (51 solo) and an interception across 17 games. The 28-year-old should have a chance to serve as one of the Colts' starting linebackers during the upcoming season.",
             "value_tier": "starter"
-          },
-          {
-            "player": "Nick Westbrook-Ikhine",
-            "status": "Active",
-            "position": "WR",
-            "injury_description": "Westbrook-Ikhine struggled to solidify himself as a consistent option for the Dolphins last year, when he totaled just 11 catches for 89 yards without a score (20 targets) across 15 regular-season appearances. Now heading into his age-29 season, Westbrook-Ikhine looks positioned to compete with Ashton Dulin, Anthony Gould (foot) and Laquon Treadwell for rotational snaps behind top wideouts Alec Pierce and Josh Downs. Westbrook-Ikhine impressed with a 32-497-9 line back in 2024 with the Titans.",
-            "value_tier": "starter"
           }
         ]
       },
       "injury_impact": {
         "home_elo_penalty": 4.0,
-        "away_elo_penalty": 37.6,
+        "away_elo_penalty": 36.4,
         "home_impact_score": 0.0364,
-        "away_impact_score": 0.3418,
+        "away_impact_score": 0.3309,
         "home_key_players_out": [
           {
             "player": "Kendall Williamson",
@@ -6390,13 +6399,6 @@
             "status": "Questionable",
             "elo_impact": 2.0,
             "value_tier": "starter"
-          },
-          {
-            "player": "Spencer Shrader",
-            "position": "PK",
-            "status": "Questionable",
-            "elo_impact": 1.2,
-            "value_tier": "starter"
           }
         ],
         "home_star_count": 0,
@@ -6415,7 +6417,7 @@
         "Travel penalty: away team travels 1815 miles",
         "Home field: LAC +65 ELO home advantage"
       ],
-      "explanation": "The model gives Los Angeles Chargers a 58.0% win probability \u2014 a slight favorite over Indianapolis Colts. The ELO gap is 57 points with home field adding approximately 65 ELO points. Travel distance 1815 miles factors into the away team rating."
+      "explanation": "The model gives Los Angeles Chargers a 57.9% win probability \u2014 a slight favorite over Indianapolis Colts. The ELO gap is 57 points with home field adding approximately 65 ELO points. Travel distance 1815 miles factors into the away team rating."
     },
     {
       "game_id": "401772864",
@@ -6449,19 +6451,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.5716,
-        "exp_margin": 2.52,
-        "prob_7plus": 0.3759,
-        "prob_14plus": 0.2094,
-        "prob_21plus": 0.0937,
+        "win_prob": 0.5653,
+        "exp_margin": 2.41,
+        "prob_7plus": 0.3757,
+        "prob_14plus": 0.21,
+        "prob_21plus": 0.0957,
         "margin_percentiles": [
-          -20.7,
-          -15.4,
-          -7.0,
-          2.5,
-          12.0,
-          20.6,
-          25.6
+          -21.4,
+          -15.8,
+          -7.2,
+          2.4,
+          12.1,
+          20.7,
+          25.8
         ]
       },
       "adjustments": {
@@ -6701,19 +6703,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.4348,
-        "exp_margin": -2.27,
-        "prob_7plus": 0.2584,
-        "prob_14plus": 0.1275,
-        "prob_21plus": 0.0474,
+        "win_prob": 0.4344,
+        "exp_margin": -2.37,
+        "prob_7plus": 0.2514,
+        "prob_14plus": 0.1223,
+        "prob_21plus": 0.0517,
         "margin_percentiles": [
-          -25.8,
-          -20.3,
-          -11.9,
-          -2.3,
-          7.4,
-          15.9,
-          20.6
+          -25.6,
+          -20.6,
+          -11.8,
+          -2.4,
+          7.1,
+          15.6,
+          21.2
         ]
       },
       "adjustments": {
@@ -6982,18 +6984,18 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6219,
-        "exp_margin": 4.24,
-        "prob_7plus": 0.4228,
-        "prob_14plus": 0.2403,
-        "prob_21plus": 0.1173,
+        "win_prob": 0.6084,
+        "exp_margin": 4.05,
+        "prob_7plus": 0.419,
+        "prob_14plus": 0.2443,
+        "prob_21plus": 0.1126,
         "margin_percentiles": [
           -19.2,
-          -13.7,
-          -5.2,
-          4.3,
-          13.5,
-          22.3,
+          -14.1,
+          -5.7,
+          4.0,
+          13.8,
+          22.1,
           27.4
         ]
       },
@@ -7237,19 +7239,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6387,
-        "exp_margin": 5.21,
-        "prob_7plus": 0.4479,
-        "prob_14plus": 0.2636,
-        "prob_21plus": 0.1332,
+        "win_prob": 0.6429,
+        "exp_margin": 5.27,
+        "prob_7plus": 0.4502,
+        "prob_14plus": 0.2709,
+        "prob_21plus": 0.1344,
         "margin_percentiles": [
-          -17.9,
+          -17.7,
           -12.7,
-          -4.4,
-          5.1,
-          14.6,
+          -4.5,
+          5.2,
+          14.9,
           23.3,
-          28.5
+          28.6
         ]
       },
       "adjustments": {
@@ -7484,19 +7486,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.641,
-        "exp_margin": 5.1,
-        "prob_7plus": 0.4469,
-        "prob_14plus": 0.2633,
-        "prob_21plus": 0.1325,
+        "win_prob": 0.6481,
+        "exp_margin": 5.02,
+        "prob_7plus": 0.4408,
+        "prob_14plus": 0.2585,
+        "prob_21plus": 0.1254,
         "margin_percentiles": [
-          -18.4,
-          -13.3,
-          -4.5,
-          5.2,
-          14.6,
-          23.3,
-          28.7
+          -18.7,
+          -13.0,
+          -4.3,
+          5.0,
+          14.4,
+          23.0,
+          28.0
         ]
       },
       "adjustments": {
@@ -7726,19 +7728,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.5614,
-        "exp_margin": 2.21,
-        "prob_7plus": 0.3692,
-        "prob_14plus": 0.2058,
-        "prob_21plus": 0.094,
+        "win_prob": 0.5646,
+        "exp_margin": 2.17,
+        "prob_7plus": 0.3634,
+        "prob_14plus": 0.1999,
+        "prob_21plus": 0.0909,
         "margin_percentiles": [
-          -21.2,
-          -16.1,
-          -7.6,
-          2.3,
-          12.0,
-          20.5,
-          25.9
+          -21.4,
+          -16.0,
+          -7.2,
+          2.2,
+          11.7,
+          20.2,
+          25.5
         ]
       },
       "adjustments": {
@@ -7771,6 +7773,13 @@
       "injuries": {
         "home": [
           {
+            "player": "Kimani Vidal",
+            "status": "Active",
+            "position": "RB",
+            "injury_description": "Los Angeles tendered Vidal as an ERFA early March, and the 2024 sixth-round pick now makes his return for the 2026 season official. The Chargers' offseason has seen Najee Harris (Achilles) depart in free agency, though the addition of Keaton Mitchell from Baltimore represents a new change-of-pace option in the backfield, and potential competition for Vidal's grip on the No. 2 role behind Omarion Hampton. That said, Vidal has to be considered the favorite for the backup role after he broke out with a 155-643-3 rushing line across 13 regular-season appearances in 2025, even if Mitchell ultimately sees more pass-catching reps.",
+            "value_tier": "starter"
+          },
+          {
             "player": "Tony Jefferson",
             "status": "Active",
             "position": "S",
@@ -7797,16 +7806,16 @@
             "position": "LB",
             "injury_description": "Perryman will return to the Chargers for a third consecutive season (and ninth campaign since being drafted by the team in the second round of the 2015 NFL Draft). He saw his production dip in 2025, finishing with 47 tackles (30 solo) and three pass defenses across 10 regular-season games. He missed seven games last season, five of which were due to an ankle injury and two more because of a suspension. Perryman's best days are behind him, but he'll fortify the Chargers' depth at inside linebacker behind projected starters Troy Dye and Daiyan Henley.",
             "value_tier": "starter"
-          },
-          {
-            "player": "Keaton Mitchell",
-            "status": "Active",
-            "position": "RB",
-            "injury_description": "Mitchell brings his talents to a backfield already led by Omarion Hamption and No. 2 back Kimani Vidal. Across three seasons with Baltimore, the 24-year-old logged a total of 112 carries for 767 yards and three touchdowns, averaging an impressive 6.34 YPC. While the Hampton and Vidal represent difficult competition for Mitchell to earn depth opportunities, he seems a strong fit for new offensive coordinator Mike McDaniel's scheme and will be a sleeper candidate to impress with the Chargers.",
-            "value_tier": "starter"
           }
         ],
         "away": [
+          {
+            "player": "Jalen Redmond",
+            "status": "Active",
+            "position": "DT",
+            "injury_description": "Redmond will officially remain with the Vikings on a one-year deal for the 2026 season after having logged a breakout campaign in 2025. Last year, Redmond totaled 62 tackles (33 solo), including 6.0 sacks, five pass breakups, two fumble recoveries and one forced fumble while suiting up for all 17 regular-season games (15 starts).",
+            "value_tier": "starter"
+          },
           {
             "player": "Jordan Addison",
             "status": "Active",
@@ -7833,13 +7842,6 @@
             "status": "Active",
             "position": "P",
             "injury_description": "Hekker is a four-time Pro Bowler, though he most recently earned that honor in 2017. He punted for Tennessee last season and averaged 46.8 yards per kick, which ranked 20th in the league among players with at least 25 punts. With Minnesota, he'll replace Ryan Wright, who signed with the Saints earlier in March.",
-            "value_tier": "starter"
-          },
-          {
-            "player": "J.J. McCarthy",
-            "status": "Questionable",
-            "position": "QB",
-            "injury_description": "For what it's worth, Vikings coach Kevin O'Connell declined to comment on expectations for a 2026 starter when reporters asked him Thursday. Reading between the lines, McCarthy's poor 2025 performance would make him a major underdog if a job battle were to take place, even against a post-prime version of Murray (who turns 29 in August). O'Connell is saying all of the things one might expect about continuing McCarthy's development, but odds are it'll be happening from the bench for at least the early part of the 2026 campaign.",
             "value_tier": "starter"
           }
         ]
@@ -7957,19 +7959,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.682,
-        "exp_margin": 6.95,
-        "prob_7plus": 0.5013,
-        "prob_14plus": 0.3081,
-        "prob_21plus": 0.1614,
+        "win_prob": 0.6927,
+        "exp_margin": 7.04,
+        "prob_7plus": 0.5024,
+        "prob_14plus": 0.3166,
+        "prob_21plus": 0.1566,
         "margin_percentiles": [
-          -16.3,
-          -11.2,
-          -2.8,
-          7.0,
+          -16.9,
+          -11.0,
+          -2.4,
+          7.1,
           16.6,
-          25.2,
-          30.5
+          25.0,
+          30.1
         ]
       },
       "adjustments": {
@@ -8156,18 +8158,18 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.7658,
-        "exp_margin": 10.29,
-        "prob_7plus": 0.588,
-        "prob_14plus": 0.3939,
-        "prob_21plus": 0.2255,
+        "win_prob": 0.766,
+        "exp_margin": 10.19,
+        "prob_7plus": 0.5918,
+        "prob_14plus": 0.3913,
+        "prob_21plus": 0.2256,
         "margin_percentiles": [
-          -12.8,
-          -7.7,
-          0.7,
+          -13.1,
+          -7.9,
+          0.8,
           10.2,
-          19.9,
-          28.4,
+          19.8,
+          28.5,
           33.5
         ]
       },
@@ -8381,19 +8383,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.7339,
-        "exp_margin": 8.74,
-        "prob_7plus": 0.5533,
-        "prob_14plus": 0.3519,
-        "prob_21plus": 0.1915,
+        "win_prob": 0.7208,
+        "exp_margin": 8.49,
+        "prob_7plus": 0.535,
+        "prob_14plus": 0.3458,
+        "prob_21plus": 0.188,
         "margin_percentiles": [
-          -14.7,
-          -9.7,
-          -0.8,
-          8.8,
+          -14.8,
+          -9.5,
+          -1.2,
+          8.2,
           18.0,
-          27.0,
-          32.2
+          26.8,
+          32.3
         ]
       },
       "adjustments": {
@@ -8635,19 +8637,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6406,
-        "exp_margin": 4.98,
-        "prob_7plus": 0.443,
-        "prob_14plus": 0.2589,
-        "prob_21plus": 0.1274,
+        "win_prob": 0.6413,
+        "exp_margin": 5.14,
+        "prob_7plus": 0.4485,
+        "prob_14plus": 0.2669,
+        "prob_21plus": 0.1298,
         "margin_percentiles": [
-          -18.2,
-          -12.9,
-          -4.6,
-          5.0,
-          14.4,
-          23.0,
-          27.7
+          -18.0,
+          -13.1,
+          -4.4,
+          5.3,
+          14.7,
+          23.1,
+          28.7
         ]
       },
       "adjustments": {
@@ -8837,9 +8839,9 @@
       "home_score": 9,
       "away_score": 40,
       "predictions": {
-        "ensemble_prob": 0.2746,
+        "ensemble_prob": 0.274,
         "logistic_prob": 0.1786,
-        "elo_prob": 0.3513,
+        "elo_prob": 0.3474,
         "xgb_prob": 0.1745,
         "pyth_prob": 0.4359,
         "eff_prob": 0.4813,
@@ -8853,18 +8855,18 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.4495,
-        "exp_margin": -1.73,
-        "prob_7plus": 0.263,
-        "prob_14plus": 0.1318,
-        "prob_21plus": 0.0553,
+        "win_prob": 0.4521,
+        "exp_margin": -1.44,
+        "prob_7plus": 0.2738,
+        "prob_14plus": 0.1377,
+        "prob_21plus": 0.0548,
         "margin_percentiles": [
-          -25.0,
-          -19.8,
-          -11.2,
-          -1.8,
-          7.5,
-          16.4,
+          -24.4,
+          -19.3,
+          -10.9,
+          -1.6,
+          8.1,
+          16.7,
           21.7
         ]
       },
@@ -8879,7 +8881,7 @@
       "elo": {
         "home": 1438.1,
         "away": 1620.4,
-        "diff": -106.6
+        "diff": -109.6
       },
       "bayesian": {
         "home_mu": 1602.1,
@@ -8897,6 +8899,13 @@
       },
       "injuries": {
         "home": [
+          {
+            "player": "Ja'Tavion Sanders",
+            "status": "Questionable",
+            "position": "TE",
+            "injury_description": "Sanders is recovering from surgery undergone to address a broken right fibula suffered late December. Across 13 regular-season appearances last year, the 2024 fourth-round pick secured 29 of 34 targets for 190 yards and one touchdown. Unless Carolina makes significant additions to the TE position in the 2026 NFL Draft or via free-agent signings, Sanders and Tommy Tremble will be positioned again operate as the team's top options at tight end.",
+            "value_tier": "starter"
+          },
           {
             "player": "Jonathon Brooks",
             "status": "Questionable",
@@ -8923,13 +8932,6 @@
             "status": "Active",
             "position": "RB",
             "injury_description": "Dillon spent last year handling a depth role for the Eagles, logging 12 carries for 60 yards and three catches for 21 yards across seven regular-season appearances. Now with Carolina, Dillon figures to compete for a reserve role and short-yardage work behind incumbent starter Chuba Hubbard, with Jonathon Brooks (knee) and Trevor Etienne already battling for touches. Dillon lacks a clear path to fantasy relevance for the 2026 campaign.",
-            "value_tier": "starter"
-          },
-          {
-            "player": "Sam Martin",
-            "status": "Active",
-            "position": "P",
-            "injury_description": "Martin appeared in all 17 regular-season games for the Panthers in 2025 and averaged 47.2 yards per punt. He landed 27 of his 56 punts inside the opponent's 20-yard line, which was ninth best in the NFL.",
             "value_tier": "starter"
           }
         ],
@@ -8972,11 +8974,18 @@
         ]
       },
       "injury_impact": {
-        "home_elo_penalty": 2.8,
+        "home_elo_penalty": 5.8,
         "away_elo_penalty": 38.6,
-        "home_impact_score": 0.0255,
+        "home_impact_score": 0.0527,
         "away_impact_score": 0.3509,
         "home_key_players_out": [
+          {
+            "player": "Ja'Tavion Sanders",
+            "position": "TE",
+            "status": "Questionable",
+            "elo_impact": 3.0,
+            "value_tier": "starter"
+          },
           {
             "player": "Jonathon Brooks",
             "position": "RB",
@@ -9071,6 +9080,7 @@
       },
       "prediction_drivers": [
         "ELO advantage: BUF +182 rating points",
+        "Ja'Tavion Sanders (CAR) [Starter] QUESTIONABLE \u2014 \u22123 ELO",
         "Jonathon Brooks (CAR) [Starter] QUESTIONABLE \u2014 \u22123 ELO",
         "Dalton Kincaid (BUF) [Starter] QUESTIONABLE \u2014 \u22123 ELO",
         "Josh Allen (BUF) [Starter] QUESTIONABLE \u2014 \u221212 ELO",
@@ -9079,7 +9089,7 @@
         "Rest advantage: BUF has 6 extra days rest",
         "Home field: CAR +65 ELO home advantage"
       ],
-      "explanation": "The model gives Buffalo Bills a 72.5% win probability \u2014 a strong favorite over Carolina Panthers. The ELO gap is 182 points with home field adding approximately 65 ELO points. Rest advantage favors BUF."
+      "explanation": "The model gives Buffalo Bills a 72.6% win probability \u2014 a strong favorite over Carolina Panthers. The ELO gap is 182 points with home field adding approximately 65 ELO points. Rest advantage favors BUF."
     },
     {
       "game_id": "401772759",
@@ -9113,19 +9123,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.5164,
-        "exp_margin": 0.73,
-        "prob_7plus": 0.3258,
-        "prob_14plus": 0.1739,
-        "prob_21plus": 0.0772,
+        "win_prob": 0.5225,
+        "exp_margin": 0.88,
+        "prob_7plus": 0.333,
+        "prob_14plus": 0.1824,
+        "prob_21plus": 0.0797,
         "margin_percentiles": [
-          -22.6,
+          -22.3,
           -17.3,
-          -8.6,
-          0.6,
-          10.3,
-          19.1,
-          24.0
+          -8.9,
+          0.8,
+          10.4,
+          19.3,
+          24.6
         ]
       },
       "adjustments": {
@@ -9415,19 +9425,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6336,
-        "exp_margin": 4.75,
-        "prob_7plus": 0.4388,
-        "prob_14plus": 0.2545,
-        "prob_21plus": 0.1294,
+        "win_prob": 0.6267,
+        "exp_margin": 4.47,
+        "prob_7plus": 0.423,
+        "prob_14plus": 0.2509,
+        "prob_21plus": 0.1175,
         "margin_percentiles": [
-          -18.8,
-          -13.4,
-          -4.7,
-          4.8,
-          14.2,
-          23.1,
-          28.2
+          -18.4,
+          -13.6,
+          -5.0,
+          4.5,
+          14.0,
+          22.2,
+          27.5
         ]
       },
       "adjustments": {
@@ -9662,19 +9672,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.5933,
-        "exp_margin": 3.29,
-        "prob_7plus": 0.398,
-        "prob_14plus": 0.2234,
-        "prob_21plus": 0.1032,
+        "win_prob": 0.6001,
+        "exp_margin": 3.66,
+        "prob_7plus": 0.4057,
+        "prob_14plus": 0.2282,
+        "prob_21plus": 0.1091,
         "margin_percentiles": [
-          -20.1,
-          -15.0,
-          -6.4,
-          3.4,
-          12.8,
-          21.3,
-          26.8
+          -19.2,
+          -14.3,
+          -5.8,
+          3.7,
+          13.1,
+          21.7,
+          26.9
         ]
       },
       "adjustments": {
@@ -9936,19 +9946,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.7396,
-        "exp_margin": 9.08,
-        "prob_7plus": 0.5648,
-        "prob_14plus": 0.3675,
-        "prob_21plus": 0.1978,
+        "win_prob": 0.7316,
+        "exp_margin": 8.76,
+        "prob_7plus": 0.5494,
+        "prob_14plus": 0.3517,
+        "prob_21plus": 0.1955,
         "margin_percentiles": [
-          -14.1,
-          -9.1,
-          -0.4,
-          9.2,
-          18.5,
+          -14.9,
+          -9.4,
+          -0.8,
+          8.7,
+          18.4,
           27.0,
-          31.8
+          32.4
         ]
       },
       "adjustments": {
@@ -10202,9 +10212,9 @@
       "home_score": 38,
       "away_score": 14,
       "predictions": {
-        "ensemble_prob": 0.8488,
+        "ensemble_prob": 0.849,
         "logistic_prob": 1.0,
-        "elo_prob": 0.7241,
+        "elo_prob": 0.7255,
         "xgb_prob": 0.8471,
         "pyth_prob": 0.7637,
         "eff_prob": 0.6804,
@@ -10218,19 +10228,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.7131,
-        "exp_margin": 7.85,
-        "prob_7plus": 0.5229,
-        "prob_14plus": 0.3342,
-        "prob_21plus": 0.1766,
+        "win_prob": 0.7035,
+        "exp_margin": 7.74,
+        "prob_7plus": 0.5186,
+        "prob_14plus": 0.3279,
+        "prob_21plus": 0.1746,
         "margin_percentiles": [
-          -15.5,
-          -10.3,
-          -1.6,
-          7.8,
-          17.3,
-          26.3,
-          31.2
+          -14.9,
+          -10.2,
+          -1.9,
+          7.7,
+          17.2,
+          26.0,
+          31.3
         ]
       },
       "adjustments": {
@@ -10244,7 +10254,7 @@
       "elo": {
         "home": 1478.9,
         "away": 1329.9,
-        "diff": 167.6
+        "diff": 168.8
       },
       "bayesian": {
         "home_mu": 1640.3,
@@ -10262,6 +10272,13 @@
       },
       "injuries": {
         "home": [
+          {
+            "player": "Nasir Adderley",
+            "status": "Active",
+            "position": "S",
+            "injury_description": "Adderley stepped away from the NFL in 2023 after playing four seasons with the Chargers, but three years later the safety will now return to the league and compete for a role in the Colts' secondary. The 28-year-old started three of his four seasons in Los Angeles, posting 232 tackles and 12 passes defensed, including three interceptions, during that span.",
+            "value_tier": "starter"
+          },
           {
             "player": "Kenny Moore II",
             "status": "Active",
@@ -10288,13 +10305,6 @@
             "status": "Active",
             "position": "LB",
             "injury_description": "Davis-Gaither spent the 2025 campaign in Arizona, where he recorded a career-high 117 tackles (51 solo) and an interception across 17 games. The 28-year-old should have a chance to serve as one of the Colts' starting linebackers during the upcoming season.",
-            "value_tier": "starter"
-          },
-          {
-            "player": "Nick Westbrook-Ikhine",
-            "status": "Active",
-            "position": "WR",
-            "injury_description": "Westbrook-Ikhine struggled to solidify himself as a consistent option for the Dolphins last year, when he totaled just 11 catches for 89 yards without a score (20 targets) across 15 regular-season appearances. Now heading into his age-29 season, Westbrook-Ikhine looks positioned to compete with Ashton Dulin, Anthony Gould (foot) and Laquon Treadwell for rotational snaps behind top wideouts Alec Pierce and Josh Downs. Westbrook-Ikhine impressed with a 32-497-9 line back in 2024 with the Titans.",
             "value_tier": "starter"
           }
         ],
@@ -10337,9 +10347,9 @@
         ]
       },
       "injury_impact": {
-        "home_elo_penalty": 37.6,
+        "home_elo_penalty": 36.4,
         "away_elo_penalty": 3.2,
-        "home_impact_score": 0.3418,
+        "home_impact_score": 0.3309,
         "away_impact_score": 0.0291,
         "home_key_players_out": [
           {
@@ -10389,13 +10399,6 @@
             "position": "S",
             "status": "Questionable",
             "elo_impact": 2.0,
-            "value_tier": "starter"
-          },
-          {
-            "player": "Spencer Shrader",
-            "position": "PK",
-            "status": "Questionable",
-            "elo_impact": 1.2,
             "value_tier": "starter"
           }
         ],
@@ -10456,19 +10459,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.5556,
-        "exp_margin": 2.14,
-        "prob_7plus": 0.3608,
-        "prob_14plus": 0.2058,
-        "prob_21plus": 0.0973,
+        "win_prob": 0.5531,
+        "exp_margin": 1.99,
+        "prob_7plus": 0.3621,
+        "prob_14plus": 0.2,
+        "prob_21plus": 0.0899,
         "margin_percentiles": [
-          -21.1,
+          -21.2,
           -16.2,
-          -7.7,
+          -7.6,
           2.0,
-          11.8,
-          20.8,
-          25.9
+          11.4,
+          20.2,
+          25.3
         ]
       },
       "adjustments": {
@@ -10750,18 +10753,18 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6064,
-        "exp_margin": 3.91,
-        "prob_7plus": 0.4117,
-        "prob_14plus": 0.2435,
-        "prob_21plus": 0.1168,
+        "win_prob": 0.6122,
+        "exp_margin": 4.13,
+        "prob_7plus": 0.4162,
+        "prob_14plus": 0.2475,
+        "prob_21plus": 0.1161,
         "margin_percentiles": [
-          -19.8,
-          -14.6,
-          -5.7,
-          3.9,
-          13.7,
-          22.3,
+          -19.4,
+          -14.3,
+          -5.5,
+          4.1,
+          13.9,
+          22.2,
           27.5
         ]
       },
