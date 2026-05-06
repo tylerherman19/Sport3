@@ -1,404 +1,14 @@
 {
-  "updated": "2026-05-05T10:26:28.295352+00:00",
+  "updated": "2026-05-06T10:52:49.854046+00:00",
   "season": 2026,
   "league": "nba",
   "is_offseason": false,
   "games": [
     {
-      "game_id": "401871333",
-      "game_time": "2026-05-05T23:00Z",
-      "status": "STATUS_SCHEDULED",
-      "is_future": false,
-      "home_team": "DET",
-      "away_team": "CLE",
-      "home_name": "Detroit Pistons",
-      "away_name": "Cleveland Cavaliers",
-      "home_logo": "https://a.espncdn.com/i/teamlogos/nba/500/det.png",
-      "away_logo": "https://a.espncdn.com/i/teamlogos/nba/500/cle.png",
-      "neutral": false,
-      "home_score": 0,
-      "away_score": 0,
-      "predictions": {
-        "ensemble_prob": 0.6055,
-        "logistic_prob": 0.5257,
-        "elo_prob": 0.6624,
-        "xgb_prob": 0.5108,
-        "pyth_prob": 0.6222,
-        "eff_prob": 0.692,
-        "bayesian_prob": 0.9633
-      },
-      "market": {
-        "home_prob": null,
-        "edge": null,
-        "kelly_pct": null,
-        "home_american": null,
-        "away_american": null
-      },
-      "monte_carlo": {
-        "win_prob": 0.6378,
-        "exp_margin": 4.04,
-        "prob_7plus": 0.4036,
-        "prob_14plus": 0.1991,
-        "prob_21plus": 0.0774,
-        "margin_percentiles": [
-          -15.4,
-          -11.5,
-          -4.0,
-          4.2,
-          11.9,
-          19.4,
-          23.6
-        ]
-      },
-      "adjustments": {
-        "rest_home": 7,
-        "rest_away": 7,
-        "rest_diff": 0,
-        "travel_dist_miles": 90.0,
-        "b2b_home": false,
-        "b2b_away": false,
-        "home_elo_bonus": 100
-      },
-      "h2h": {
-        "home_wins": 6,
-        "away_wins": 16,
-        "total_meetings": 22,
-        "last_n": [
-          {
-            "date": "2024-10-16",
-            "winner": "DET",
-            "margin": 16
-          },
-          {
-            "date": "2024-10-25",
-            "winner": "CLE",
-            "margin": 12
-          },
-          {
-            "date": "2025-01-28",
-            "winner": "CLE",
-            "margin": 19
-          },
-          {
-            "date": "2025-02-06",
-            "winner": "CLE",
-            "margin": 3
-          },
-          {
-            "date": "2025-03-28",
-            "winner": "DET",
-            "margin": 11
-          },
-          {
-            "date": "2025-10-14",
-            "winner": "CLE",
-            "margin": 18
-          },
-          {
-            "date": "2025-10-27",
-            "winner": "CLE",
-            "margin": 21
-          },
-          {
-            "date": "2026-01-04",
-            "winner": "DET",
-            "margin": 4
-          },
-          {
-            "date": "2026-02-28",
-            "winner": "DET",
-            "margin": 3
-          },
-          {
-            "date": "2026-03-04",
-            "winner": "CLE",
-            "margin": 4
-          }
-        ]
-      },
-      "elo": {
-        "home": 1727.6,
-        "away": 1644.3,
-        "diff": 83.3
-      },
-      "bayesian": {
-        "home_mu": 1800.0,
-        "home_sigma": 40.0,
-        "away_mu": 1798.7,
-        "away_sigma": 40.0,
-        "home_band": [
-          1760.0,
-          1840.0
-        ],
-        "away_band": [
-          1758.7,
-          1838.7
-        ]
-      },
-      "efficiency": {
-        "home_off_rating": 117.768295,
-        "home_def_rating": 109.60976,
-        "home_net_rating": 8.158535,
-        "away_off_rating": 119.51219,
-        "away_def_rating": 115.414635,
-        "away_net_rating": 4.097555,
-        "home_pace": 100.0,
-        "away_pace": 100.0
-      },
-      "injuries": {
-        "home": [
-          {
-            "player": "Kevin Huerter",
-            "status": "Out",
-            "position": "G",
-            "injury_description": "Huerter is trying to end a three-game absence with a left adductor strain Tuesday. If the sharpshooter is unable to suit up in Game 1, Javonte Green could see an uptick in playing time off the bench for the Pistons.",
-            "value_tier": "starter"
-          }
-        ],
-        "away": []
-      },
-      "injury_impact": {
-        "home_elo_penalty": 18.0,
-        "away_elo_penalty": 0.0,
-        "home_key_players_out": [
-          {
-            "player": "Kevin Huerter",
-            "position": "G",
-            "status": "Out",
-            "elo_impact": 18.0,
-            "value_tier": "starter"
-          }
-        ],
-        "away_key_players_out": [],
-        "home_star_count": 0,
-        "away_star_count": 0,
-        "home_star_stack_multiplier": 1.0,
-        "away_star_stack_multiplier": 1.0
-      },
-      "prediction_drivers": [
-        "ELO advantage: DET +83 rating points",
-        "Kevin Huerter (DET) [Starter] OUT \u2014 \u221218 ELO",
-        "Net rating gap: DET +8.2 vs CLE +4.1",
-        "Home court: DET +100 ELO advantage"
-      ],
-      "explanation": "The model gives Detroit Pistons a 60.6% win probability \u2014 a moderate favorite over Cleveland Cavaliers. Detroit Pistons net rating: +8.2. Home court +100 ELO for Detroit Pistons."
-    },
-    {
-      "game_id": "401871326",
-      "game_time": "2026-05-06T00:30Z",
-      "status": "STATUS_SCHEDULED",
-      "is_future": false,
-      "home_team": "OKC",
-      "away_team": "LAL",
-      "home_name": "Oklahoma City Thunder",
-      "away_name": "Los Angeles Lakers",
-      "home_logo": "https://a.espncdn.com/i/teamlogos/nba/500/okc.png",
-      "away_logo": "https://a.espncdn.com/i/teamlogos/nba/500/lal.png",
-      "neutral": false,
-      "home_score": 0,
-      "away_score": 0,
-      "predictions": {
-        "ensemble_prob": 0.71,
-        "logistic_prob": 0.6591,
-        "elo_prob": 0.7647,
-        "xgb_prob": 0.5763,
-        "pyth_prob": 0.7742,
-        "eff_prob": 0.7532,
-        "bayesian_prob": 0.9657
-      },
-      "market": {
-        "home_prob": null,
-        "edge": null,
-        "kelly_pct": null,
-        "home_american": null,
-        "away_american": null
-      },
-      "monte_carlo": {
-        "win_prob": 0.6408,
-        "exp_margin": 4.12,
-        "prob_7plus": 0.3969,
-        "prob_14plus": 0.1963,
-        "prob_21plus": 0.0742,
-        "margin_percentiles": [
-          -15.1,
-          -10.8,
-          -3.7,
-          4.2,
-          11.9,
-          19.0,
-          23.4
-        ]
-      },
-      "adjustments": {
-        "rest_home": 7,
-        "rest_away": 7,
-        "rest_diff": 0,
-        "travel_dist_miles": 1180.0,
-        "b2b_home": false,
-        "b2b_away": false,
-        "home_elo_bonus": 100
-      },
-      "h2h": {
-        "home_wins": 10,
-        "away_wins": 8,
-        "total_meetings": 18,
-        "last_n": [
-          {
-            "date": "2023-12-24",
-            "winner": "LAL",
-            "margin": 9
-          },
-          {
-            "date": "2024-01-16",
-            "winner": "LAL",
-            "margin": 7
-          },
-          {
-            "date": "2024-03-05",
-            "winner": "LAL",
-            "margin": 12
-          },
-          {
-            "date": "2024-11-30",
-            "winner": "OKC",
-            "margin": 8
-          },
-          {
-            "date": "2025-04-06",
-            "winner": "LAL",
-            "margin": 27
-          },
-          {
-            "date": "2025-04-09",
-            "winner": "OKC",
-            "margin": 16
-          },
-          {
-            "date": "2025-11-13",
-            "winner": "OKC",
-            "margin": 29
-          },
-          {
-            "date": "2026-02-10",
-            "winner": "OKC",
-            "margin": 9
-          },
-          {
-            "date": "2026-04-03",
-            "winner": "OKC",
-            "margin": 43
-          },
-          {
-            "date": "2026-04-08",
-            "winner": "OKC",
-            "margin": 36
-          }
-        ]
-      },
-      "elo": {
-        "home": 1798.3,
-        "away": 1670.7,
-        "diff": 127.6
-      },
-      "bayesian": {
-        "home_mu": 1795.8,
-        "home_sigma": 40.0,
-        "away_mu": 1792.8,
-        "away_sigma": 40.0,
-        "home_band": [
-          1755.8,
-          1835.8
-        ],
-        "away_band": [
-          1752.8,
-          1832.8
-        ]
-      },
-      "efficiency": {
-        "home_off_rating": 119.02439,
-        "home_def_rating": 107.87805,
-        "home_net_rating": 11.146339999999995,
-        "away_off_rating": 116.34146,
-        "away_def_rating": 114.57317,
-        "away_net_rating": 1.7682899999999933,
-        "home_pace": 100.0,
-        "away_pace": 100.0
-      },
-      "injuries": {
-        "home": [
-          {
-            "player": "Jalen Williams",
-            "status": "Out",
-            "position": "G",
-            "injury_description": "Head coach Mark Daigneault said Monday that Williams is week-to-week after suffering a Grade 1 left hamstring strain in Oklahoma City's win over Phoenix on April 22. The star forward can be considered doubtful for future contests until the Thunder offer another update on his status. In the meantime, Ajay Mitchell and Cason Wallace will likely see increased minutes.",
-            "value_tier": "starter"
-          },
-          {
-            "player": "Thomas Sorber",
-            "status": "Out",
-            "position": "C",
-            "injury_description": "Sorber was selected No. 15 overall in the 2025 NBA Draft out of Georgetown by the reigning NBA champions. The rookie center was already dealing with a foot injury that cut his season with the Hoyas short and kept him out of the Summer League. Now he'll likely have to wait until the 2026-27 campaign to make his debut on the professional level.",
-            "value_tier": "starter"
-          }
-        ],
-        "away": [
-          {
-            "player": "Luka Doncic",
-            "status": "Out",
-            "position": "G",
-            "injury_description": "Doncic hasn't been doing \"full-fledged running\" or participating in full-contact sessions. While the Lakers apparently haven't ruled him out for the series altogether, Charania added that it is still a \"slow path\" regarding his recovery efforts from a Grade 2 hamstring strain. The multi-time All-Star hasn't played in over a month after suffering the injury in the 139-96 loss to the Thunder on April 2. However, even if Doncic is cleared to return during the postseason, it's logical to assume he will be limited for at least a few contests. In the meantime, Rui Hachimura is expected to remain in the starting lineup.",
-            "value_tier": "superstar"
-          }
-        ]
-      },
-      "injury_impact": {
-        "home_elo_penalty": 31.0,
-        "away_elo_penalty": 34.5,
-        "home_key_players_out": [
-          {
-            "player": "Jalen Williams",
-            "position": "G",
-            "status": "Out",
-            "elo_impact": 15.0,
-            "value_tier": "starter"
-          },
-          {
-            "player": "Thomas Sorber",
-            "position": "C",
-            "status": "Out",
-            "elo_impact": 16.0,
-            "value_tier": "starter"
-          }
-        ],
-        "away_key_players_out": [
-          {
-            "player": "Luka Doncic",
-            "position": "G",
-            "status": "Out",
-            "elo_impact": 30.0,
-            "value_tier": "superstar"
-          }
-        ],
-        "home_star_count": 0,
-        "away_star_count": 1,
-        "home_star_stack_multiplier": 1.0,
-        "away_star_stack_multiplier": 1.15
-      },
-      "prediction_drivers": [
-        "ELO advantage: OKC +128 rating points",
-        "Jalen Williams (OKC) [Starter] OUT \u2014 \u221215 ELO",
-        "Thomas Sorber (OKC) [Starter] OUT \u2014 \u221216 ELO",
-        "Luka Doncic (LAL) [Superstar] OUT \u2014 \u221230 ELO",
-        "Net rating gap: OKC +11.1 vs LAL +1.8",
-        "Home court: OKC +100 ELO advantage"
-      ],
-      "explanation": "The model gives Oklahoma City Thunder a 71.0% win probability \u2014 a strong favorite over Los Angeles Lakers. Oklahoma City Thunder net rating: +11.1. Home court +100 ELO for Oklahoma City Thunder."
-    },
-    {
       "game_id": "401871160",
       "game_time": "2026-05-06T23:00Z",
       "status": "STATUS_SCHEDULED",
-      "is_future": true,
+      "is_future": false,
       "home_team": "NYK",
       "away_team": "PHI",
       "home_name": "New York Knicks",
@@ -409,10 +19,10 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.6958,
-        "logistic_prob": 0.6591,
-        "elo_prob": 0.7377,
-        "xgb_prob": 0.5893,
+        "ensemble_prob": 0.7096,
+        "logistic_prob": 0.6572,
+        "elo_prob": 0.7563,
+        "xgb_prob": 0.6099,
         "pyth_prob": 0.7624,
         "eff_prob": 0.7212,
         "bayesian_prob": 0.9804
@@ -425,19 +35,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6557,
-        "exp_margin": 4.66,
-        "prob_7plus": 0.4182,
-        "prob_14plus": 0.2109,
-        "prob_21plus": 0.0812,
+        "win_prob": 0.652,
+        "exp_margin": 4.53,
+        "prob_7plus": 0.4163,
+        "prob_14plus": 0.2067,
+        "prob_21plus": 0.0789,
         "margin_percentiles": [
-          -14.3,
-          -10.4,
-          -3.2,
-          4.6,
-          12.4,
-          19.6,
-          23.8
+          -14.5,
+          -10.5,
+          -3.3,
+          4.5,
+          12.3,
+          19.5,
+          23.7
         ]
       },
       "adjustments": {
@@ -507,9 +117,9 @@
         ]
       },
       "elo": {
-        "home": 1727.2,
+        "home": 1727.1,
         "away": 1599.3,
-        "diff": 127.9
+        "diff": 127.8
       },
       "bayesian": {
         "home_mu": 1799.7,
@@ -537,32 +147,49 @@
       },
       "injuries": {
         "home": [],
-        "away": []
+        "away": [
+          {
+            "player": "Joel Embiid",
+            "status": "Day-To-Day",
+            "position": "C",
+            "injury_description": "Embiid is dealing with a right ankle sprain, though the issue isn't expected to be severe enough to stop him from playing Wednesday. Over five appearances during the 2026 postseason to this point, the star big man has averaged 25.2 points, 8.0 rebounds and 5.8 assists in 34.2 minutes per game.",
+            "value_tier": "superstar"
+          }
+        ]
       },
       "injury_impact": {
         "home_elo_penalty": 0.0,
-        "away_elo_penalty": 0.0,
+        "away_elo_penalty": 17.28,
         "home_key_players_out": [],
-        "away_key_players_out": [],
+        "away_key_players_out": [
+          {
+            "player": "Joel Embiid",
+            "position": "C",
+            "status": "Day-To-Day",
+            "elo_impact": 16.0,
+            "value_tier": "superstar"
+          }
+        ],
         "home_star_count": 0,
-        "away_star_count": 0,
+        "away_star_count": 1,
         "home_star_stack_multiplier": 1.0,
-        "away_star_stack_multiplier": 1.0
+        "away_star_stack_multiplier": 1.08
       },
       "prediction_drivers": [
         "ELO advantage: NYK +128 rating points",
+        "Joel Embiid (PHI) [Superstar] DAY-TO-DAY \u2014 \u221216 ELO",
         "Net rating gap: NYK +6.3 vs PHI -0.2",
         "Back-to-back: NYK on zero days rest",
         "Back-to-back: PHI on zero days rest",
         "Home court: NYK +100 ELO advantage"
       ],
-      "explanation": "The model gives New York Knicks a 69.6% win probability \u2014 a moderate favorite over Philadelphia 76ers. New York Knicks net rating: +6.3. New York Knicks on a back-to-back. Philadelphia 76ers on a back-to-back. Home court +100 ELO for New York Knicks."
+      "explanation": "The model gives New York Knicks a 71.0% win probability \u2014 a strong favorite over Philadelphia 76ers. New York Knicks net rating: +6.3. New York Knicks on a back-to-back. Philadelphia 76ers on a back-to-back. Home court +100 ELO for New York Knicks."
     },
     {
       "game_id": "401871153",
       "game_time": "2026-05-07T01:30Z",
       "status": "STATUS_SCHEDULED",
-      "is_future": true,
+      "is_future": false,
       "home_team": "SAS",
       "away_team": "MIN",
       "home_name": "San Antonio Spurs",
@@ -573,10 +200,10 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.6923,
-        "logistic_prob": 0.5257,
-        "elo_prob": 0.8019,
-        "xgb_prob": 0.5313,
+        "ensemble_prob": 0.7068,
+        "logistic_prob": 0.5462,
+        "elo_prob": 0.817,
+        "xgb_prob": 0.5334,
         "pyth_prob": 0.6248,
         "eff_prob": 0.7028,
         "bayesian_prob": 0.9629
@@ -589,19 +216,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6333,
-        "exp_margin": 3.94,
-        "prob_7plus": 0.4022,
-        "prob_14plus": 0.1938,
-        "prob_21plus": 0.0685,
+        "win_prob": 0.6392,
+        "exp_margin": 4.06,
+        "prob_7plus": 0.3988,
+        "prob_14plus": 0.1954,
+        "prob_21plus": 0.0678,
         "margin_percentiles": [
-          -15.0,
-          -10.8,
-          -3.9,
-          4.0,
-          11.8,
-          18.6,
-          23.1
+          -14.6,
+          -10.7,
+          -3.7,
+          4.1,
+          11.9,
+          18.7,
+          22.7
         ]
       },
       "adjustments": {
@@ -705,7 +332,7 @@
             "player": "Carter Bryant",
             "status": "Day-To-Day",
             "position": "F",
-            "injury_description": "Bryant didn't make much of an impact in the previous round against Portland, averaging 3.2 points, 2.2 rebounds and 1.4 assists in 9.2 minutes (five games). Keldon Johnson and Harrison Barnes could pick up a few extra minutes in Bryant's place Monday night.",
+            "injury_description": "Bryant missed Monday's Game 1 loss due to a right foot sprain he sustained in a recent practice, though head coach Mitch Johnson said he's optimistic it won't be a long-term issue. The rookie first-rounder averaged 3.2 points, 2.2 rebounds and 1.4 assists across 9.2 minutes per game in five first-round outings. If he remains out, Keldon Johnson could continue seeing a slight bump in minutes.",
             "value_tier": "starter"
           },
           {
@@ -718,10 +345,17 @@
         ],
         "away": [
           {
+            "player": "Anthony Edwards",
+            "status": "Day-To-Day",
+            "position": "G",
+            "injury_description": "Edwards played limited minutes off the bench in Monday's Game 1 win following a two-game absence due to a left knee bone bruise and hyperextension, posting 18 points (8-13 FG, 2-3 3Pt), three rebounds, three assists and one block in 25 minutes. If he's cleared to play ahead of Game 2, the superstar guard will likely remain on a minutes restriction.",
+            "value_tier": "superstar"
+          },
+          {
             "player": "Ayo Dosunmu",
             "status": "Day-To-Day",
             "position": "G",
-            "injury_description": "The swingman also missed Minnesota's Game 7 win over the Nuggets in Round 1 due to right calf soreness. The Timberwolves are planning to have Anthony Edwards (knee) back in the lineup Monday, which should lessen the blow of Dosunmu's absence dramatically. Dosunmu will hope to return for Game 2 on Wednesday in San Antonio.",
+            "injury_description": "Dosunmu has a chance to end a two-game absence with right calf soreness Wednesday. Terrence Shannon, who has logged 35 minutes in back-to-back contests for the Timberwolves, would likely be pushed into a lesser role if Dosunmu is available for Game 2.",
             "value_tier": "starter"
           },
           {
@@ -735,7 +369,7 @@
       },
       "injury_impact": {
         "home_elo_penalty": 21.0,
-        "away_elo_penalty": 12.0,
+        "away_elo_penalty": 29.02,
         "home_key_players_out": [
           {
             "player": "Carter Bryant",
@@ -754,6 +388,13 @@
         ],
         "away_key_players_out": [
           {
+            "player": "Anthony Edwards",
+            "position": "G",
+            "status": "Day-To-Day",
+            "elo_impact": 15.0,
+            "value_tier": "superstar"
+          },
+          {
             "player": "Ayo Dosunmu",
             "position": "G",
             "status": "Day-To-Day",
@@ -769,20 +410,21 @@
           }
         ],
         "home_star_count": 0,
-        "away_star_count": 0,
+        "away_star_count": 1,
         "home_star_stack_multiplier": 1.0,
-        "away_star_stack_multiplier": 1.0
+        "away_star_stack_multiplier": 1.075
       },
       "prediction_drivers": [
         "ELO advantage: SAS +180 rating points",
         "Carter Bryant (SAS) [Starter] DAY-TO-DAY \u2014 \u22127 ELO",
         "David Jones Garcia (SAS) [Starter] OUT \u2014 \u221214 ELO",
+        "Anthony Edwards (MIN) [Superstar] DAY-TO-DAY \u2014 \u221215 ELO",
         "Ayo Dosunmu (MIN) [Starter] DAY-TO-DAY \u2014 \u22128 ELO",
         "Donte DiVincenzo (MIN) [Rotation] OUT \u2014 \u22124 ELO",
         "Net rating gap: SAS +8.3 vs MIN +3.4",
         "Home court: SAS +100 ELO advantage"
       ],
-      "explanation": "The model gives San Antonio Spurs a 69.2% win probability \u2014 a moderate favorite over Minnesota Timberwolves. San Antonio Spurs net rating: +8.3. Home court +100 ELO for San Antonio Spurs."
+      "explanation": "The model gives San Antonio Spurs a 70.7% win probability \u2014 a strong favorite over Minnesota Timberwolves. San Antonio Spurs net rating: +8.3. Home court +100 ELO for San Antonio Spurs."
     },
     {
       "game_id": "401871334",
@@ -799,13 +441,13 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.6055,
-        "logistic_prob": 0.5257,
-        "elo_prob": 0.6624,
-        "xgb_prob": 0.5108,
-        "pyth_prob": 0.6222,
+        "ensemble_prob": 0.6262,
+        "logistic_prob": 0.5285,
+        "elo_prob": 0.6961,
+        "xgb_prob": 0.5095,
+        "pyth_prob": 0.6238,
         "eff_prob": 0.692,
-        "bayesian_prob": 0.9633
+        "bayesian_prob": 0.9631
       },
       "market": {
         "home_prob": null,
@@ -815,19 +457,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6366,
-        "exp_margin": 4.03,
-        "prob_7plus": 0.4071,
-        "prob_14plus": 0.2006,
-        "prob_21plus": 0.0704,
+        "win_prob": 0.635,
+        "exp_margin": 4.1,
+        "prob_7plus": 0.4018,
+        "prob_14plus": 0.2023,
+        "prob_21plus": 0.0761,
         "margin_percentiles": [
-          -15.6,
-          -11.3,
-          -4.0,
-          4.2,
-          12.2,
-          19.1,
-          22.8
+          -15.1,
+          -10.9,
+          -3.8,
+          4.0,
+          12.1,
+          19.2,
+          23.1
         ]
       },
       "adjustments": {
@@ -840,15 +482,10 @@
         "home_elo_bonus": 100
       },
       "h2h": {
-        "home_wins": 6,
+        "home_wins": 7,
         "away_wins": 16,
-        "total_meetings": 22,
+        "total_meetings": 23,
         "last_n": [
-          {
-            "date": "2024-10-16",
-            "winner": "DET",
-            "margin": 16
-          },
           {
             "date": "2024-10-25",
             "winner": "CLE",
@@ -893,26 +530,31 @@
             "date": "2026-03-04",
             "winner": "CLE",
             "margin": 4
+          },
+          {
+            "date": "2026-05-05",
+            "winner": "DET",
+            "margin": 10
           }
         ]
       },
       "elo": {
-        "home": 1727.6,
-        "away": 1644.3,
-        "diff": 83.3
+        "home": 1736.4,
+        "away": 1635.2,
+        "diff": 101.1
       },
       "bayesian": {
         "home_mu": 1800.0,
         "home_sigma": 40.0,
-        "away_mu": 1798.7,
+        "away_mu": 1798.8,
         "away_sigma": 40.0,
         "home_band": [
           1760.0,
           1840.0
         ],
         "away_band": [
-          1758.7,
-          1838.7
+          1758.8,
+          1838.8
         ]
       },
       "efficiency": {
@@ -931,15 +573,23 @@
             "player": "Kevin Huerter",
             "status": "Out",
             "position": "G",
-            "injury_description": "Huerter is trying to end a three-game absence with a left adductor strain Tuesday. If the sharpshooter is unable to suit up in Game 1, Javonte Green could see an uptick in playing time off the bench for the Pistons.",
+            "injury_description": "Huerter will miss a fourth consecutive contest due to a left adductor strain, and his next opportunity to play will come in Game 2 on Thursday. With the 27-year-old swingman sidelined, Daniss Jenkins and Javonte Green are candidates for increased minutes off the bench.",
             "value_tier": "starter"
           }
         ],
-        "away": []
+        "away": [
+          {
+            "player": "Sam Merrill",
+            "status": "Day-To-Day",
+            "position": "G",
+            "injury_description": "Merrill was able to finish the first quarter but never checked back in due to a left hamstring injury. The Cavaliers are expected to provide an update on his status by Wednesday night ahead of Game 2 on Thursday.",
+            "value_tier": "starter"
+          }
+        ]
       },
       "injury_impact": {
         "home_elo_penalty": 18.0,
-        "away_elo_penalty": 0.0,
+        "away_elo_penalty": 9.0,
         "home_key_players_out": [
           {
             "player": "Kevin Huerter",
@@ -949,19 +599,28 @@
             "value_tier": "starter"
           }
         ],
-        "away_key_players_out": [],
+        "away_key_players_out": [
+          {
+            "player": "Sam Merrill",
+            "position": "G",
+            "status": "Day-To-Day",
+            "elo_impact": 9.0,
+            "value_tier": "starter"
+          }
+        ],
         "home_star_count": 0,
         "away_star_count": 0,
         "home_star_stack_multiplier": 1.0,
         "away_star_stack_multiplier": 1.0
       },
       "prediction_drivers": [
-        "ELO advantage: DET +83 rating points",
+        "ELO advantage: DET +101 rating points",
         "Kevin Huerter (DET) [Starter] OUT \u2014 \u221218 ELO",
+        "Sam Merrill (CLE) [Starter] DAY-TO-DAY \u2014 \u22129 ELO",
         "Net rating gap: DET +8.2 vs CLE +4.1",
         "Home court: DET +100 ELO advantage"
       ],
-      "explanation": "The model gives Detroit Pistons a 60.6% win probability \u2014 a moderate favorite over Cleveland Cavaliers. Detroit Pistons net rating: +8.2. Home court +100 ELO for Detroit Pistons."
+      "explanation": "The model gives Detroit Pistons a 62.6% win probability \u2014 a moderate favorite over Cleveland Cavaliers. Detroit Pistons net rating: +8.2. Home court +100 ELO for Detroit Pistons."
     },
     {
       "game_id": "401871327",
@@ -978,13 +637,13 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.71,
-        "logistic_prob": 0.6591,
-        "elo_prob": 0.7647,
-        "xgb_prob": 0.5763,
-        "pyth_prob": 0.7742,
+        "ensemble_prob": 0.7214,
+        "logistic_prob": 0.6572,
+        "elo_prob": 0.7915,
+        "xgb_prob": 0.5479,
+        "pyth_prob": 0.7757,
         "eff_prob": 0.7532,
-        "bayesian_prob": 0.9657
+        "bayesian_prob": 0.9653
       },
       "market": {
         "home_prob": null,
@@ -994,19 +653,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.64,
-        "exp_margin": 4.23,
-        "prob_7plus": 0.4072,
-        "prob_14plus": 0.2018,
-        "prob_21plus": 0.0773,
+        "win_prob": 0.6393,
+        "exp_margin": 4.12,
+        "prob_7plus": 0.4046,
+        "prob_14plus": 0.2023,
+        "prob_21plus": 0.0756,
         "margin_percentiles": [
-          -15.0,
-          -10.8,
+          -15.4,
+          -10.9,
           -3.8,
           4.3,
-          12.2,
-          19.5,
-          23.5
+          12.1,
+          19.2,
+          23.4
         ]
       },
       "adjustments": {
@@ -1019,15 +678,10 @@
         "home_elo_bonus": 100
       },
       "h2h": {
-        "home_wins": 10,
+        "home_wins": 11,
         "away_wins": 8,
-        "total_meetings": 18,
+        "total_meetings": 19,
         "last_n": [
-          {
-            "date": "2023-12-24",
-            "winner": "LAL",
-            "margin": 9
-          },
           {
             "date": "2024-01-16",
             "winner": "LAL",
@@ -1072,26 +726,31 @@
             "date": "2026-04-08",
             "winner": "OKC",
             "margin": 36
+          },
+          {
+            "date": "2026-05-06",
+            "winner": "OKC",
+            "margin": 18
           }
         ]
       },
       "elo": {
-        "home": 1798.3,
-        "away": 1670.7,
-        "diff": 127.6
+        "home": 1807.0,
+        "away": 1662.0,
+        "diff": 145.0
       },
       "bayesian": {
-        "home_mu": 1795.8,
+        "home_mu": 1796.2,
         "home_sigma": 40.0,
-        "away_mu": 1792.8,
+        "away_mu": 1793.5,
         "away_sigma": 40.0,
         "home_band": [
-          1755.8,
-          1835.8
+          1756.2,
+          1836.2
         ],
         "away_band": [
-          1752.8,
-          1832.8
+          1753.5,
+          1833.5
         ]
       },
       "efficiency": {
@@ -1123,6 +782,13 @@
         ],
         "away": [
           {
+            "player": "Jarred Vanderbilt",
+            "status": "Day-To-Day",
+            "position": "F",
+            "injury_description": "Vanderbilt exited Tuesday's Western Conference Semifinals Game 1 loss to the Thunder in the second quarter after hitting the backboard and injuring his finger. He was quickly ruled out for the remainder of the game after exiting to the locker room and can be considered doubtful for Game 2 on Thursday until the Lakers offer an update on his status.",
+            "value_tier": "starter"
+          },
+          {
             "player": "Luka Doncic",
             "status": "Out",
             "position": "G",
@@ -1133,7 +799,7 @@
       },
       "injury_impact": {
         "home_elo_penalty": 31.0,
-        "away_elo_penalty": 34.5,
+        "away_elo_penalty": 44.16,
         "home_key_players_out": [
           {
             "player": "Jalen Williams",
@@ -1152,6 +818,13 @@
         ],
         "away_key_players_out": [
           {
+            "player": "Jarred Vanderbilt",
+            "position": "F",
+            "status": "Day-To-Day",
+            "elo_impact": 8.4,
+            "value_tier": "starter"
+          },
+          {
             "player": "Luka Doncic",
             "position": "G",
             "status": "Out",
@@ -1165,14 +838,15 @@
         "away_star_stack_multiplier": 1.15
       },
       "prediction_drivers": [
-        "ELO advantage: OKC +128 rating points",
+        "ELO advantage: OKC +145 rating points",
         "Jalen Williams (OKC) [Starter] OUT \u2014 \u221215 ELO",
         "Thomas Sorber (OKC) [Starter] OUT \u2014 \u221216 ELO",
+        "Jarred Vanderbilt (LAL) [Starter] DAY-TO-DAY \u2014 \u22128 ELO",
         "Luka Doncic (LAL) [Superstar] OUT \u2014 \u221230 ELO",
         "Net rating gap: OKC +11.1 vs LAL +1.8",
         "Home court: OKC +100 ELO advantage"
       ],
-      "explanation": "The model gives Oklahoma City Thunder a 71.0% win probability \u2014 a strong favorite over Los Angeles Lakers. Oklahoma City Thunder net rating: +11.1. Home court +100 ELO for Oklahoma City Thunder."
+      "explanation": "The model gives Oklahoma City Thunder a 72.1% win probability \u2014 a strong favorite over Los Angeles Lakers. Oklahoma City Thunder net rating: +11.1. Home court +100 ELO for Oklahoma City Thunder."
     },
     {
       "game_id": "401871161",
@@ -1189,10 +863,10 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.4134,
-        "logistic_prob": 0.4415,
-        "elo_prob": 0.3921,
-        "xgb_prob": 0.4519,
+        "ensemble_prob": 0.3951,
+        "logistic_prob": 0.4359,
+        "elo_prob": 0.3688,
+        "xgb_prob": 0.4327,
         "pyth_prob": 0.4964,
         "eff_prob": 0.55,
         "bayesian_prob": 0.9297
@@ -1205,18 +879,18 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6094,
-        "exp_margin": 3.29,
-        "prob_7plus": 0.3789,
-        "prob_14plus": 0.1784,
-        "prob_21plus": 0.0677,
+        "win_prob": 0.6101,
+        "exp_margin": 3.42,
+        "prob_7plus": 0.3783,
+        "prob_14plus": 0.1882,
+        "prob_21plus": 0.0719,
         "margin_percentiles": [
-          -16.1,
-          -11.9,
-          -4.8,
-          3.3,
-          11.3,
-          18.4,
+          -16.0,
+          -11.5,
+          -4.6,
+          3.2,
+          11.4,
+          18.8,
           23.0
         ]
       },
@@ -1288,8 +962,8 @@
       },
       "elo": {
         "home": 1599.3,
-        "away": 1727.2,
-        "diff": -127.9
+        "away": 1727.1,
+        "diff": -127.8
       },
       "bayesian": {
         "home_mu": 1783.0,
@@ -1316,25 +990,42 @@
         "away_pace": 100.0
       },
       "injuries": {
-        "home": [],
+        "home": [
+          {
+            "player": "Joel Embiid",
+            "status": "Day-To-Day",
+            "position": "C",
+            "injury_description": "Embiid is dealing with a right ankle sprain, though the issue isn't expected to be severe enough to stop him from playing Wednesday. Over five appearances during the 2026 postseason to this point, the star big man has averaged 25.2 points, 8.0 rebounds and 5.8 assists in 34.2 minutes per game.",
+            "value_tier": "superstar"
+          }
+        ],
         "away": []
       },
       "injury_impact": {
-        "home_elo_penalty": 0.0,
+        "home_elo_penalty": 17.28,
         "away_elo_penalty": 0.0,
-        "home_key_players_out": [],
+        "home_key_players_out": [
+          {
+            "player": "Joel Embiid",
+            "position": "C",
+            "status": "Day-To-Day",
+            "elo_impact": 16.0,
+            "value_tier": "superstar"
+          }
+        ],
         "away_key_players_out": [],
-        "home_star_count": 0,
+        "home_star_count": 1,
         "away_star_count": 0,
-        "home_star_stack_multiplier": 1.0,
+        "home_star_stack_multiplier": 1.08,
         "away_star_stack_multiplier": 1.0
       },
       "prediction_drivers": [
         "ELO advantage: NYK +128 rating points",
+        "Joel Embiid (PHI) [Superstar] DAY-TO-DAY \u2014 \u221216 ELO",
         "Net rating gap: PHI -0.2 vs NYK +6.3",
         "Home court: PHI +100 ELO advantage"
       ],
-      "explanation": "The model gives New York Knicks a 58.7% win probability \u2014 a slight favorite over Philadelphia 76ers. New York Knicks net rating: +6.3. Home court +100 ELO for Philadelphia 76ers."
+      "explanation": "The model gives New York Knicks a 60.5% win probability \u2014 a moderate favorite over Philadelphia 76ers. New York Knicks net rating: +6.3. Home court +100 ELO for Philadelphia 76ers."
     },
     {
       "game_id": "401871154",
@@ -1351,10 +1042,10 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.4582,
-        "logistic_prob": 0.5913,
-        "elo_prob": 0.3622,
-        "xgb_prob": 0.6201,
+        "ensemble_prob": 0.4455,
+        "logistic_prob": 0.5872,
+        "elo_prob": 0.3397,
+        "xgb_prob": 0.6321,
         "pyth_prob": 0.655,
         "eff_prob": 0.5722,
         "bayesian_prob": 0.9599
@@ -1367,18 +1058,18 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6361,
-        "exp_margin": 3.98,
-        "prob_7plus": 0.3985,
-        "prob_14plus": 0.1948,
-        "prob_21plus": 0.0747,
+        "win_prob": 0.6305,
+        "exp_margin": 3.83,
+        "prob_7plus": 0.3916,
+        "prob_14plus": 0.1963,
+        "prob_21plus": 0.0745,
         "margin_percentiles": [
-          -15.5,
-          -11.2,
-          -3.8,
-          4.0,
+          -15.7,
+          -11.4,
+          -4.1,
+          3.9,
           11.8,
-          19.1,
+          18.9,
           23.4
         ]
       },
@@ -1480,10 +1171,17 @@
       "injuries": {
         "home": [
           {
+            "player": "Anthony Edwards",
+            "status": "Day-To-Day",
+            "position": "G",
+            "injury_description": "Edwards played limited minutes off the bench in Monday's Game 1 win following a two-game absence due to a left knee bone bruise and hyperextension, posting 18 points (8-13 FG, 2-3 3Pt), three rebounds, three assists and one block in 25 minutes. If he's cleared to play ahead of Game 2, the superstar guard will likely remain on a minutes restriction.",
+            "value_tier": "superstar"
+          },
+          {
             "player": "Ayo Dosunmu",
             "status": "Day-To-Day",
             "position": "G",
-            "injury_description": "The swingman also missed Minnesota's Game 7 win over the Nuggets in Round 1 due to right calf soreness. The Timberwolves are planning to have Anthony Edwards (knee) back in the lineup Monday, which should lessen the blow of Dosunmu's absence dramatically. Dosunmu will hope to return for Game 2 on Wednesday in San Antonio.",
+            "injury_description": "Dosunmu has a chance to end a two-game absence with right calf soreness Wednesday. Terrence Shannon, who has logged 35 minutes in back-to-back contests for the Timberwolves, would likely be pushed into a lesser role if Dosunmu is available for Game 2.",
             "value_tier": "starter"
           },
           {
@@ -1499,7 +1197,7 @@
             "player": "Carter Bryant",
             "status": "Day-To-Day",
             "position": "F",
-            "injury_description": "Bryant didn't make much of an impact in the previous round against Portland, averaging 3.2 points, 2.2 rebounds and 1.4 assists in 9.2 minutes (five games). Keldon Johnson and Harrison Barnes could pick up a few extra minutes in Bryant's place Monday night.",
+            "injury_description": "Bryant missed Monday's Game 1 loss due to a right foot sprain he sustained in a recent practice, though head coach Mitch Johnson said he's optimistic it won't be a long-term issue. The rookie first-rounder averaged 3.2 points, 2.2 rebounds and 1.4 assists across 9.2 minutes per game in five first-round outings. If he remains out, Keldon Johnson could continue seeing a slight bump in minutes.",
             "value_tier": "starter"
           },
           {
@@ -1512,9 +1210,16 @@
         ]
       },
       "injury_impact": {
-        "home_elo_penalty": 12.0,
+        "home_elo_penalty": 29.02,
         "away_elo_penalty": 21.0,
         "home_key_players_out": [
+          {
+            "player": "Anthony Edwards",
+            "position": "G",
+            "status": "Day-To-Day",
+            "elo_impact": 15.0,
+            "value_tier": "superstar"
+          },
           {
             "player": "Ayo Dosunmu",
             "position": "G",
@@ -1546,13 +1251,14 @@
             "value_tier": "starter"
           }
         ],
-        "home_star_count": 0,
+        "home_star_count": 1,
         "away_star_count": 0,
-        "home_star_stack_multiplier": 1.0,
+        "home_star_stack_multiplier": 1.075,
         "away_star_stack_multiplier": 1.0
       },
       "prediction_drivers": [
         "ELO advantage: SAS +180 rating points",
+        "Anthony Edwards (MIN) [Superstar] DAY-TO-DAY \u2014 \u221215 ELO",
         "Ayo Dosunmu (MIN) [Starter] DAY-TO-DAY \u2014 \u22128 ELO",
         "Donte DiVincenzo (MIN) [Rotation] OUT \u2014 \u22124 ELO",
         "Carter Bryant (SAS) [Starter] DAY-TO-DAY \u2014 \u22127 ELO",
@@ -1560,7 +1266,7 @@
         "Net rating gap: MIN +3.4 vs SAS +8.3",
         "Home court: MIN +100 ELO advantage"
       ],
-      "explanation": "The model gives San Antonio Spurs a 54.2% win probability \u2014 a slight favorite over Minnesota Timberwolves. San Antonio Spurs net rating: +8.3. Home court +100 ELO for Minnesota Timberwolves."
+      "explanation": "The model gives San Antonio Spurs a 55.5% win probability \u2014 a slight favorite over Minnesota Timberwolves. San Antonio Spurs net rating: +8.3. Home court +100 ELO for Minnesota Timberwolves."
     },
     {
       "game_id": "401871335",
@@ -1577,13 +1283,13 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.5321,
-        "logistic_prob": 0.5984,
-        "elo_prob": 0.4806,
-        "xgb_prob": 0.6278,
-        "pyth_prob": 0.6576,
+        "ensemble_prob": 0.5093,
+        "logistic_prob": 0.5872,
+        "elo_prob": 0.4423,
+        "xgb_prob": 0.6475,
+        "pyth_prob": 0.656,
         "eff_prob": 0.5846,
-        "bayesian_prob": 0.9595
+        "bayesian_prob": 0.9597
       },
       "market": {
         "home_prob": null,
@@ -1593,19 +1299,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6246,
-        "exp_margin": 3.88,
-        "prob_7plus": 0.39,
-        "prob_14plus": 0.1905,
-        "prob_21plus": 0.0752,
+        "win_prob": 0.6305,
+        "exp_margin": 3.95,
+        "prob_7plus": 0.3985,
+        "prob_14plus": 0.1952,
+        "prob_21plus": 0.073,
         "margin_percentiles": [
-          -14.9,
-          -11.1,
+          -15.4,
+          -10.9,
           -3.9,
-          3.8,
+          4.0,
           11.9,
-          18.9,
-          23.1
+          19.0,
+          23.3
         ]
       },
       "adjustments": {
@@ -1619,14 +1325,9 @@
       },
       "h2h": {
         "home_wins": 16,
-        "away_wins": 6,
-        "total_meetings": 22,
+        "away_wins": 7,
+        "total_meetings": 23,
         "last_n": [
-          {
-            "date": "2024-10-16",
-            "winner": "DET",
-            "margin": 16
-          },
           {
             "date": "2024-10-25",
             "winner": "CLE",
@@ -1671,22 +1372,27 @@
             "date": "2026-03-04",
             "winner": "CLE",
             "margin": 4
+          },
+          {
+            "date": "2026-05-05",
+            "winner": "DET",
+            "margin": 10
           }
         ]
       },
       "elo": {
-        "home": 1644.3,
-        "away": 1727.6,
-        "diff": -83.3
+        "home": 1635.2,
+        "away": 1736.4,
+        "diff": -101.1
       },
       "bayesian": {
-        "home_mu": 1798.7,
+        "home_mu": 1798.8,
         "home_sigma": 40.0,
         "away_mu": 1800.0,
         "away_sigma": 40.0,
         "home_band": [
-          1758.7,
-          1838.7
+          1758.8,
+          1838.8
         ],
         "away_band": [
           1760.0,
@@ -1704,21 +1410,37 @@
         "away_pace": 100.0
       },
       "injuries": {
-        "home": [],
+        "home": [
+          {
+            "player": "Sam Merrill",
+            "status": "Day-To-Day",
+            "position": "G",
+            "injury_description": "Merrill was able to finish the first quarter but never checked back in due to a left hamstring injury. The Cavaliers are expected to provide an update on his status by Wednesday night ahead of Game 2 on Thursday.",
+            "value_tier": "starter"
+          }
+        ],
         "away": [
           {
             "player": "Kevin Huerter",
             "status": "Out",
             "position": "G",
-            "injury_description": "Huerter is trying to end a three-game absence with a left adductor strain Tuesday. If the sharpshooter is unable to suit up in Game 1, Javonte Green could see an uptick in playing time off the bench for the Pistons.",
+            "injury_description": "Huerter will miss a fourth consecutive contest due to a left adductor strain, and his next opportunity to play will come in Game 2 on Thursday. With the 27-year-old swingman sidelined, Daniss Jenkins and Javonte Green are candidates for increased minutes off the bench.",
             "value_tier": "starter"
           }
         ]
       },
       "injury_impact": {
-        "home_elo_penalty": 0.0,
+        "home_elo_penalty": 9.0,
         "away_elo_penalty": 18.0,
-        "home_key_players_out": [],
+        "home_key_players_out": [
+          {
+            "player": "Sam Merrill",
+            "position": "G",
+            "status": "Day-To-Day",
+            "elo_impact": 9.0,
+            "value_tier": "starter"
+          }
+        ],
         "away_key_players_out": [
           {
             "player": "Kevin Huerter",
@@ -1734,12 +1456,13 @@
         "away_star_stack_multiplier": 1.0
       },
       "prediction_drivers": [
-        "ELO advantage: DET +83 rating points",
+        "ELO advantage: DET +101 rating points",
+        "Sam Merrill (CLE) [Starter] DAY-TO-DAY \u2014 \u22129 ELO",
         "Kevin Huerter (DET) [Starter] OUT \u2014 \u221218 ELO",
         "Net rating gap: CLE +4.1 vs DET +8.2",
         "Home court: CLE +100 ELO advantage"
       ],
-      "explanation": "The model gives Cleveland Cavaliers a 53.2% win probability \u2014 a slight favorite over Detroit Pistons. Cleveland Cavaliers net rating: +4.1. Home court +100 ELO for Cleveland Cavaliers."
+      "explanation": "The model gives Cleveland Cavaliers a 50.9% win probability \u2014 a slight favorite over Detroit Pistons. Cleveland Cavaliers net rating: +4.1. Home court +100 ELO for Cleveland Cavaliers."
     },
     {
       "game_id": "401871328",
@@ -1756,13 +1479,13 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.4321,
-        "logistic_prob": 0.4415,
-        "elo_prob": 0.418,
-        "xgb_prob": 0.4727,
-        "pyth_prob": 0.4798,
+        "ensemble_prob": 0.4076,
+        "logistic_prob": 0.4359,
+        "elo_prob": 0.3807,
+        "xgb_prob": 0.4678,
+        "pyth_prob": 0.4776,
         "eff_prob": 0.5089,
-        "bayesian_prob": 0.9568
+        "bayesian_prob": 0.9572
       },
       "market": {
         "home_prob": null,
@@ -1772,19 +1495,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6351,
-        "exp_margin": 4.0,
-        "prob_7plus": 0.4062,
-        "prob_14plus": 0.1972,
-        "prob_21plus": 0.074,
+        "win_prob": 0.6277,
+        "exp_margin": 3.85,
+        "prob_7plus": 0.3947,
+        "prob_14plus": 0.1895,
+        "prob_21plus": 0.0694,
         "margin_percentiles": [
-          -15.4,
-          -11.1,
-          -4.1,
-          4.1,
-          12.0,
-          19.2,
-          23.2
+          -15.6,
+          -10.9,
+          -3.9,
+          3.9,
+          11.7,
+          18.7,
+          22.9
         ]
       },
       "adjustments": {
@@ -1798,14 +1521,9 @@
       },
       "h2h": {
         "home_wins": 8,
-        "away_wins": 10,
-        "total_meetings": 18,
+        "away_wins": 11,
+        "total_meetings": 19,
         "last_n": [
-          {
-            "date": "2023-12-24",
-            "winner": "LAL",
-            "margin": 9
-          },
           {
             "date": "2024-01-16",
             "winner": "LAL",
@@ -1850,26 +1568,31 @@
             "date": "2026-04-08",
             "winner": "OKC",
             "margin": 36
+          },
+          {
+            "date": "2026-05-06",
+            "winner": "OKC",
+            "margin": 18
           }
         ]
       },
       "elo": {
-        "home": 1670.7,
-        "away": 1798.3,
-        "diff": -127.6
+        "home": 1662.0,
+        "away": 1807.0,
+        "diff": -145.0
       },
       "bayesian": {
-        "home_mu": 1792.8,
+        "home_mu": 1793.5,
         "home_sigma": 40.0,
-        "away_mu": 1795.8,
+        "away_mu": 1796.2,
         "away_sigma": 40.0,
         "home_band": [
-          1752.8,
-          1832.8
+          1753.5,
+          1833.5
         ],
         "away_band": [
-          1755.8,
-          1835.8
+          1756.2,
+          1836.2
         ]
       },
       "efficiency": {
@@ -1884,6 +1607,13 @@
       },
       "injuries": {
         "home": [
+          {
+            "player": "Jarred Vanderbilt",
+            "status": "Day-To-Day",
+            "position": "F",
+            "injury_description": "Vanderbilt exited Tuesday's Western Conference Semifinals Game 1 loss to the Thunder in the second quarter after hitting the backboard and injuring his finger. He was quickly ruled out for the remainder of the game after exiting to the locker room and can be considered doubtful for Game 2 on Thursday until the Lakers offer an update on his status.",
+            "value_tier": "starter"
+          },
           {
             "player": "Luka Doncic",
             "status": "Out",
@@ -1910,9 +1640,16 @@
         ]
       },
       "injury_impact": {
-        "home_elo_penalty": 34.5,
+        "home_elo_penalty": 44.16,
         "away_elo_penalty": 31.0,
         "home_key_players_out": [
+          {
+            "player": "Jarred Vanderbilt",
+            "position": "F",
+            "status": "Day-To-Day",
+            "elo_impact": 8.4,
+            "value_tier": "starter"
+          },
           {
             "player": "Luka Doncic",
             "position": "G",
@@ -1943,14 +1680,15 @@
         "away_star_stack_multiplier": 1.0
       },
       "prediction_drivers": [
-        "ELO advantage: OKC +128 rating points",
+        "ELO advantage: OKC +145 rating points",
+        "Jarred Vanderbilt (LAL) [Starter] DAY-TO-DAY \u2014 \u22128 ELO",
         "Luka Doncic (LAL) [Superstar] OUT \u2014 \u221230 ELO",
         "Jalen Williams (OKC) [Starter] OUT \u2014 \u221215 ELO",
         "Thomas Sorber (OKC) [Starter] OUT \u2014 \u221216 ELO",
         "Net rating gap: LAL +1.8 vs OKC +11.1",
         "Home court: LAL +100 ELO advantage"
       ],
-      "explanation": "The model gives Oklahoma City Thunder a 56.8% win probability \u2014 a slight favorite over Los Angeles Lakers. Oklahoma City Thunder net rating: +11.1. Home court +100 ELO for Los Angeles Lakers."
+      "explanation": "The model gives Oklahoma City Thunder a 59.2% win probability \u2014 a slight favorite over Los Angeles Lakers. Oklahoma City Thunder net rating: +11.1. Home court +100 ELO for Los Angeles Lakers."
     },
     {
       "game_id": "401871162",
@@ -1967,10 +1705,10 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.4134,
-        "logistic_prob": 0.4415,
-        "elo_prob": 0.3921,
-        "xgb_prob": 0.4519,
+        "ensemble_prob": 0.3951,
+        "logistic_prob": 0.4359,
+        "elo_prob": 0.3688,
+        "xgb_prob": 0.4327,
         "pyth_prob": 0.4964,
         "eff_prob": 0.55,
         "bayesian_prob": 0.9297
@@ -1983,18 +1721,18 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6131,
-        "exp_margin": 3.32,
-        "prob_7plus": 0.3769,
-        "prob_14plus": 0.1801,
-        "prob_21plus": 0.0664,
+        "win_prob": 0.6145,
+        "exp_margin": 3.3,
+        "prob_7plus": 0.3749,
+        "prob_14plus": 0.1792,
+        "prob_21plus": 0.0644,
         "margin_percentiles": [
-          -16.1,
-          -11.7,
+          -16.0,
+          -11.9,
           -4.5,
-          3.3,
+          3.4,
           11.2,
-          18.3,
+          18.2,
           22.6
         ]
       },
@@ -2066,8 +1804,8 @@
       },
       "elo": {
         "home": 1599.3,
-        "away": 1727.2,
-        "diff": -127.9
+        "away": 1727.1,
+        "diff": -127.8
       },
       "bayesian": {
         "home_mu": 1783.0,
@@ -2094,25 +1832,42 @@
         "away_pace": 100.0
       },
       "injuries": {
-        "home": [],
+        "home": [
+          {
+            "player": "Joel Embiid",
+            "status": "Day-To-Day",
+            "position": "C",
+            "injury_description": "Embiid is dealing with a right ankle sprain, though the issue isn't expected to be severe enough to stop him from playing Wednesday. Over five appearances during the 2026 postseason to this point, the star big man has averaged 25.2 points, 8.0 rebounds and 5.8 assists in 34.2 minutes per game.",
+            "value_tier": "superstar"
+          }
+        ],
         "away": []
       },
       "injury_impact": {
-        "home_elo_penalty": 0.0,
+        "home_elo_penalty": 17.28,
         "away_elo_penalty": 0.0,
-        "home_key_players_out": [],
+        "home_key_players_out": [
+          {
+            "player": "Joel Embiid",
+            "position": "C",
+            "status": "Day-To-Day",
+            "elo_impact": 16.0,
+            "value_tier": "superstar"
+          }
+        ],
         "away_key_players_out": [],
-        "home_star_count": 0,
+        "home_star_count": 1,
         "away_star_count": 0,
-        "home_star_stack_multiplier": 1.0,
+        "home_star_stack_multiplier": 1.08,
         "away_star_stack_multiplier": 1.0
       },
       "prediction_drivers": [
         "ELO advantage: NYK +128 rating points",
+        "Joel Embiid (PHI) [Superstar] DAY-TO-DAY \u2014 \u221216 ELO",
         "Net rating gap: PHI -0.2 vs NYK +6.3",
         "Home court: PHI +100 ELO advantage"
       ],
-      "explanation": "The model gives New York Knicks a 58.7% win probability \u2014 a slight favorite over Philadelphia 76ers. New York Knicks net rating: +6.3. Home court +100 ELO for Philadelphia 76ers."
+      "explanation": "The model gives New York Knicks a 60.5% win probability \u2014 a moderate favorite over Philadelphia 76ers. New York Knicks net rating: +6.3. Home court +100 ELO for Philadelphia 76ers."
     },
     {
       "game_id": "401871155",
@@ -2129,10 +1884,10 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.4582,
-        "logistic_prob": 0.5913,
-        "elo_prob": 0.3622,
-        "xgb_prob": 0.6201,
+        "ensemble_prob": 0.4455,
+        "logistic_prob": 0.5872,
+        "elo_prob": 0.3397,
+        "xgb_prob": 0.6321,
         "pyth_prob": 0.655,
         "eff_prob": 0.5722,
         "bayesian_prob": 0.9599
@@ -2145,19 +1900,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6291,
-        "exp_margin": 3.87,
-        "prob_7plus": 0.3917,
-        "prob_14plus": 0.191,
-        "prob_21plus": 0.0735,
+        "win_prob": 0.6266,
+        "exp_margin": 3.84,
+        "prob_7plus": 0.392,
+        "prob_14plus": 0.1912,
+        "prob_21plus": 0.0699,
         "margin_percentiles": [
-          -15.3,
-          -11.0,
-          -3.9,
-          3.8,
+          -15.2,
+          -11.1,
+          -4.0,
+          3.9,
           11.6,
-          19.1,
-          23.1
+          18.9,
+          23.2
         ]
       },
       "adjustments": {
@@ -2258,10 +2013,17 @@
       "injuries": {
         "home": [
           {
+            "player": "Anthony Edwards",
+            "status": "Day-To-Day",
+            "position": "G",
+            "injury_description": "Edwards played limited minutes off the bench in Monday's Game 1 win following a two-game absence due to a left knee bone bruise and hyperextension, posting 18 points (8-13 FG, 2-3 3Pt), three rebounds, three assists and one block in 25 minutes. If he's cleared to play ahead of Game 2, the superstar guard will likely remain on a minutes restriction.",
+            "value_tier": "superstar"
+          },
+          {
             "player": "Ayo Dosunmu",
             "status": "Day-To-Day",
             "position": "G",
-            "injury_description": "The swingman also missed Minnesota's Game 7 win over the Nuggets in Round 1 due to right calf soreness. The Timberwolves are planning to have Anthony Edwards (knee) back in the lineup Monday, which should lessen the blow of Dosunmu's absence dramatically. Dosunmu will hope to return for Game 2 on Wednesday in San Antonio.",
+            "injury_description": "Dosunmu has a chance to end a two-game absence with right calf soreness Wednesday. Terrence Shannon, who has logged 35 minutes in back-to-back contests for the Timberwolves, would likely be pushed into a lesser role if Dosunmu is available for Game 2.",
             "value_tier": "starter"
           },
           {
@@ -2277,7 +2039,7 @@
             "player": "Carter Bryant",
             "status": "Day-To-Day",
             "position": "F",
-            "injury_description": "Bryant didn't make much of an impact in the previous round against Portland, averaging 3.2 points, 2.2 rebounds and 1.4 assists in 9.2 minutes (five games). Keldon Johnson and Harrison Barnes could pick up a few extra minutes in Bryant's place Monday night.",
+            "injury_description": "Bryant missed Monday's Game 1 loss due to a right foot sprain he sustained in a recent practice, though head coach Mitch Johnson said he's optimistic it won't be a long-term issue. The rookie first-rounder averaged 3.2 points, 2.2 rebounds and 1.4 assists across 9.2 minutes per game in five first-round outings. If he remains out, Keldon Johnson could continue seeing a slight bump in minutes.",
             "value_tier": "starter"
           },
           {
@@ -2290,9 +2052,16 @@
         ]
       },
       "injury_impact": {
-        "home_elo_penalty": 12.0,
+        "home_elo_penalty": 29.02,
         "away_elo_penalty": 21.0,
         "home_key_players_out": [
+          {
+            "player": "Anthony Edwards",
+            "position": "G",
+            "status": "Day-To-Day",
+            "elo_impact": 15.0,
+            "value_tier": "superstar"
+          },
           {
             "player": "Ayo Dosunmu",
             "position": "G",
@@ -2324,13 +2093,14 @@
             "value_tier": "starter"
           }
         ],
-        "home_star_count": 0,
+        "home_star_count": 1,
         "away_star_count": 0,
-        "home_star_stack_multiplier": 1.0,
+        "home_star_stack_multiplier": 1.075,
         "away_star_stack_multiplier": 1.0
       },
       "prediction_drivers": [
         "ELO advantage: SAS +180 rating points",
+        "Anthony Edwards (MIN) [Superstar] DAY-TO-DAY \u2014 \u221215 ELO",
         "Ayo Dosunmu (MIN) [Starter] DAY-TO-DAY \u2014 \u22128 ELO",
         "Donte DiVincenzo (MIN) [Rotation] OUT \u2014 \u22124 ELO",
         "Carter Bryant (SAS) [Starter] DAY-TO-DAY \u2014 \u22127 ELO",
@@ -2338,7 +2108,7 @@
         "Net rating gap: MIN +3.4 vs SAS +8.3",
         "Home court: MIN +100 ELO advantage"
       ],
-      "explanation": "The model gives San Antonio Spurs a 54.2% win probability \u2014 a slight favorite over Minnesota Timberwolves. San Antonio Spurs net rating: +8.3. Home court +100 ELO for Minnesota Timberwolves."
+      "explanation": "The model gives San Antonio Spurs a 55.5% win probability \u2014 a slight favorite over Minnesota Timberwolves. San Antonio Spurs net rating: +8.3. Home court +100 ELO for Minnesota Timberwolves."
     },
     {
       "game_id": "401871336",
@@ -2355,13 +2125,13 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.5321,
-        "logistic_prob": 0.5984,
-        "elo_prob": 0.4806,
-        "xgb_prob": 0.6278,
-        "pyth_prob": 0.6576,
+        "ensemble_prob": 0.5093,
+        "logistic_prob": 0.5872,
+        "elo_prob": 0.4423,
+        "xgb_prob": 0.6475,
+        "pyth_prob": 0.656,
         "eff_prob": 0.5846,
-        "bayesian_prob": 0.9595
+        "bayesian_prob": 0.9597
       },
       "market": {
         "home_prob": null,
@@ -2371,19 +2141,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6417,
-        "exp_margin": 4.11,
-        "prob_7plus": 0.4019,
-        "prob_14plus": 0.1989,
-        "prob_21plus": 0.0761,
+        "win_prob": 0.6307,
+        "exp_margin": 3.91,
+        "prob_7plus": 0.3958,
+        "prob_14plus": 0.1887,
+        "prob_21plus": 0.0721,
         "margin_percentiles": [
-          -15.2,
-          -11.1,
-          -3.8,
-          4.1,
-          11.9,
-          19.2,
-          23.5
+          -15.3,
+          -10.8,
+          -4.0,
+          3.9,
+          11.7,
+          18.7,
+          22.9
         ]
       },
       "adjustments": {
@@ -2397,14 +2167,9 @@
       },
       "h2h": {
         "home_wins": 16,
-        "away_wins": 6,
-        "total_meetings": 22,
+        "away_wins": 7,
+        "total_meetings": 23,
         "last_n": [
-          {
-            "date": "2024-10-16",
-            "winner": "DET",
-            "margin": 16
-          },
           {
             "date": "2024-10-25",
             "winner": "CLE",
@@ -2449,22 +2214,27 @@
             "date": "2026-03-04",
             "winner": "CLE",
             "margin": 4
+          },
+          {
+            "date": "2026-05-05",
+            "winner": "DET",
+            "margin": 10
           }
         ]
       },
       "elo": {
-        "home": 1644.3,
-        "away": 1727.6,
-        "diff": -83.3
+        "home": 1635.2,
+        "away": 1736.4,
+        "diff": -101.1
       },
       "bayesian": {
-        "home_mu": 1798.7,
+        "home_mu": 1798.8,
         "home_sigma": 40.0,
         "away_mu": 1800.0,
         "away_sigma": 40.0,
         "home_band": [
-          1758.7,
-          1838.7
+          1758.8,
+          1838.8
         ],
         "away_band": [
           1760.0,
@@ -2482,21 +2252,37 @@
         "away_pace": 100.0
       },
       "injuries": {
-        "home": [],
+        "home": [
+          {
+            "player": "Sam Merrill",
+            "status": "Day-To-Day",
+            "position": "G",
+            "injury_description": "Merrill was able to finish the first quarter but never checked back in due to a left hamstring injury. The Cavaliers are expected to provide an update on his status by Wednesday night ahead of Game 2 on Thursday.",
+            "value_tier": "starter"
+          }
+        ],
         "away": [
           {
             "player": "Kevin Huerter",
             "status": "Out",
             "position": "G",
-            "injury_description": "Huerter is trying to end a three-game absence with a left adductor strain Tuesday. If the sharpshooter is unable to suit up in Game 1, Javonte Green could see an uptick in playing time off the bench for the Pistons.",
+            "injury_description": "Huerter will miss a fourth consecutive contest due to a left adductor strain, and his next opportunity to play will come in Game 2 on Thursday. With the 27-year-old swingman sidelined, Daniss Jenkins and Javonte Green are candidates for increased minutes off the bench.",
             "value_tier": "starter"
           }
         ]
       },
       "injury_impact": {
-        "home_elo_penalty": 0.0,
+        "home_elo_penalty": 9.0,
         "away_elo_penalty": 18.0,
-        "home_key_players_out": [],
+        "home_key_players_out": [
+          {
+            "player": "Sam Merrill",
+            "position": "G",
+            "status": "Day-To-Day",
+            "elo_impact": 9.0,
+            "value_tier": "starter"
+          }
+        ],
         "away_key_players_out": [
           {
             "player": "Kevin Huerter",
@@ -2512,12 +2298,13 @@
         "away_star_stack_multiplier": 1.0
       },
       "prediction_drivers": [
-        "ELO advantage: DET +83 rating points",
+        "ELO advantage: DET +101 rating points",
+        "Sam Merrill (CLE) [Starter] DAY-TO-DAY \u2014 \u22129 ELO",
         "Kevin Huerter (DET) [Starter] OUT \u2014 \u221218 ELO",
         "Net rating gap: CLE +4.1 vs DET +8.2",
         "Home court: CLE +100 ELO advantage"
       ],
-      "explanation": "The model gives Cleveland Cavaliers a 53.2% win probability \u2014 a slight favorite over Detroit Pistons. Cleveland Cavaliers net rating: +4.1. Home court +100 ELO for Cleveland Cavaliers."
+      "explanation": "The model gives Cleveland Cavaliers a 50.9% win probability \u2014 a slight favorite over Detroit Pistons. Cleveland Cavaliers net rating: +4.1. Home court +100 ELO for Cleveland Cavaliers."
     },
     {
       "game_id": "401871329",
@@ -2534,13 +2321,13 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.4321,
-        "logistic_prob": 0.4415,
-        "elo_prob": 0.418,
-        "xgb_prob": 0.4727,
-        "pyth_prob": 0.4798,
+        "ensemble_prob": 0.4076,
+        "logistic_prob": 0.4359,
+        "elo_prob": 0.3807,
+        "xgb_prob": 0.4678,
+        "pyth_prob": 0.4776,
         "eff_prob": 0.5089,
-        "bayesian_prob": 0.9568
+        "bayesian_prob": 0.9572
       },
       "market": {
         "home_prob": null,
@@ -2550,19 +2337,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6281,
-        "exp_margin": 3.78,
-        "prob_7plus": 0.3871,
-        "prob_14plus": 0.189,
-        "prob_21plus": 0.0715,
+        "win_prob": 0.6288,
+        "exp_margin": 4.13,
+        "prob_7plus": 0.3992,
+        "prob_14plus": 0.2037,
+        "prob_21plus": 0.0754,
         "margin_percentiles": [
-          -15.4,
+          -15.2,
           -11.0,
-          -4.1,
-          3.6,
-          11.7,
-          18.8,
-          23.4
+          -3.8,
+          4.1,
+          12.2,
+          19.4,
+          23.5
         ]
       },
       "adjustments": {
@@ -2576,14 +2363,9 @@
       },
       "h2h": {
         "home_wins": 8,
-        "away_wins": 10,
-        "total_meetings": 18,
+        "away_wins": 11,
+        "total_meetings": 19,
         "last_n": [
-          {
-            "date": "2023-12-24",
-            "winner": "LAL",
-            "margin": 9
-          },
           {
             "date": "2024-01-16",
             "winner": "LAL",
@@ -2628,26 +2410,31 @@
             "date": "2026-04-08",
             "winner": "OKC",
             "margin": 36
+          },
+          {
+            "date": "2026-05-06",
+            "winner": "OKC",
+            "margin": 18
           }
         ]
       },
       "elo": {
-        "home": 1670.7,
-        "away": 1798.3,
-        "diff": -127.6
+        "home": 1662.0,
+        "away": 1807.0,
+        "diff": -145.0
       },
       "bayesian": {
-        "home_mu": 1792.8,
+        "home_mu": 1793.5,
         "home_sigma": 40.0,
-        "away_mu": 1795.8,
+        "away_mu": 1796.2,
         "away_sigma": 40.0,
         "home_band": [
-          1752.8,
-          1832.8
+          1753.5,
+          1833.5
         ],
         "away_band": [
-          1755.8,
-          1835.8
+          1756.2,
+          1836.2
         ]
       },
       "efficiency": {
@@ -2662,6 +2449,13 @@
       },
       "injuries": {
         "home": [
+          {
+            "player": "Jarred Vanderbilt",
+            "status": "Day-To-Day",
+            "position": "F",
+            "injury_description": "Vanderbilt exited Tuesday's Western Conference Semifinals Game 1 loss to the Thunder in the second quarter after hitting the backboard and injuring his finger. He was quickly ruled out for the remainder of the game after exiting to the locker room and can be considered doubtful for Game 2 on Thursday until the Lakers offer an update on his status.",
+            "value_tier": "starter"
+          },
           {
             "player": "Luka Doncic",
             "status": "Out",
@@ -2688,9 +2482,16 @@
         ]
       },
       "injury_impact": {
-        "home_elo_penalty": 34.5,
+        "home_elo_penalty": 44.16,
         "away_elo_penalty": 31.0,
         "home_key_players_out": [
+          {
+            "player": "Jarred Vanderbilt",
+            "position": "F",
+            "status": "Day-To-Day",
+            "elo_impact": 8.4,
+            "value_tier": "starter"
+          },
           {
             "player": "Luka Doncic",
             "position": "G",
@@ -2721,14 +2522,15 @@
         "away_star_stack_multiplier": 1.0
       },
       "prediction_drivers": [
-        "ELO advantage: OKC +128 rating points",
+        "ELO advantage: OKC +145 rating points",
+        "Jarred Vanderbilt (LAL) [Starter] DAY-TO-DAY \u2014 \u22128 ELO",
         "Luka Doncic (LAL) [Superstar] OUT \u2014 \u221230 ELO",
         "Jalen Williams (OKC) [Starter] OUT \u2014 \u221215 ELO",
         "Thomas Sorber (OKC) [Starter] OUT \u2014 \u221216 ELO",
         "Net rating gap: LAL +1.8 vs OKC +11.1",
         "Home court: LAL +100 ELO advantage"
       ],
-      "explanation": "The model gives Oklahoma City Thunder a 56.8% win probability \u2014 a slight favorite over Los Angeles Lakers. Oklahoma City Thunder net rating: +11.1. Home court +100 ELO for Los Angeles Lakers."
+      "explanation": "The model gives Oklahoma City Thunder a 59.2% win probability \u2014 a slight favorite over Los Angeles Lakers. Oklahoma City Thunder net rating: +11.1. Home court +100 ELO for Los Angeles Lakers."
     },
     {
       "game_id": "401871156",
@@ -2745,10 +2547,10 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.6923,
-        "logistic_prob": 0.5257,
-        "elo_prob": 0.8019,
-        "xgb_prob": 0.5313,
+        "ensemble_prob": 0.7068,
+        "logistic_prob": 0.5462,
+        "elo_prob": 0.817,
+        "xgb_prob": 0.5334,
         "pyth_prob": 0.6248,
         "eff_prob": 0.7028,
         "bayesian_prob": 0.9629
@@ -2761,19 +2563,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6276,
-        "exp_margin": 3.89,
-        "prob_7plus": 0.3964,
-        "prob_14plus": 0.1919,
-        "prob_21plus": 0.0699,
+        "win_prob": 0.6357,
+        "exp_margin": 4.06,
+        "prob_7plus": 0.3979,
+        "prob_14plus": 0.2021,
+        "prob_21plus": 0.0758,
         "margin_percentiles": [
-          -15.4,
-          -11.1,
+          -15.2,
+          -10.9,
           -3.9,
-          3.9,
-          11.8,
-          18.9,
-          23.0
+          4.0,
+          12.0,
+          19.2,
+          23.3
         ]
       },
       "adjustments": {
@@ -2877,7 +2679,7 @@
             "player": "Carter Bryant",
             "status": "Day-To-Day",
             "position": "F",
-            "injury_description": "Bryant didn't make much of an impact in the previous round against Portland, averaging 3.2 points, 2.2 rebounds and 1.4 assists in 9.2 minutes (five games). Keldon Johnson and Harrison Barnes could pick up a few extra minutes in Bryant's place Monday night.",
+            "injury_description": "Bryant missed Monday's Game 1 loss due to a right foot sprain he sustained in a recent practice, though head coach Mitch Johnson said he's optimistic it won't be a long-term issue. The rookie first-rounder averaged 3.2 points, 2.2 rebounds and 1.4 assists across 9.2 minutes per game in five first-round outings. If he remains out, Keldon Johnson could continue seeing a slight bump in minutes.",
             "value_tier": "starter"
           },
           {
@@ -2890,10 +2692,17 @@
         ],
         "away": [
           {
+            "player": "Anthony Edwards",
+            "status": "Day-To-Day",
+            "position": "G",
+            "injury_description": "Edwards played limited minutes off the bench in Monday's Game 1 win following a two-game absence due to a left knee bone bruise and hyperextension, posting 18 points (8-13 FG, 2-3 3Pt), three rebounds, three assists and one block in 25 minutes. If he's cleared to play ahead of Game 2, the superstar guard will likely remain on a minutes restriction.",
+            "value_tier": "superstar"
+          },
+          {
             "player": "Ayo Dosunmu",
             "status": "Day-To-Day",
             "position": "G",
-            "injury_description": "The swingman also missed Minnesota's Game 7 win over the Nuggets in Round 1 due to right calf soreness. The Timberwolves are planning to have Anthony Edwards (knee) back in the lineup Monday, which should lessen the blow of Dosunmu's absence dramatically. Dosunmu will hope to return for Game 2 on Wednesday in San Antonio.",
+            "injury_description": "Dosunmu has a chance to end a two-game absence with right calf soreness Wednesday. Terrence Shannon, who has logged 35 minutes in back-to-back contests for the Timberwolves, would likely be pushed into a lesser role if Dosunmu is available for Game 2.",
             "value_tier": "starter"
           },
           {
@@ -2907,7 +2716,7 @@
       },
       "injury_impact": {
         "home_elo_penalty": 21.0,
-        "away_elo_penalty": 12.0,
+        "away_elo_penalty": 29.02,
         "home_key_players_out": [
           {
             "player": "Carter Bryant",
@@ -2926,6 +2735,13 @@
         ],
         "away_key_players_out": [
           {
+            "player": "Anthony Edwards",
+            "position": "G",
+            "status": "Day-To-Day",
+            "elo_impact": 15.0,
+            "value_tier": "superstar"
+          },
+          {
             "player": "Ayo Dosunmu",
             "position": "G",
             "status": "Day-To-Day",
@@ -2941,20 +2757,21 @@
           }
         ],
         "home_star_count": 0,
-        "away_star_count": 0,
+        "away_star_count": 1,
         "home_star_stack_multiplier": 1.0,
-        "away_star_stack_multiplier": 1.0
+        "away_star_stack_multiplier": 1.075
       },
       "prediction_drivers": [
         "ELO advantage: SAS +180 rating points",
         "Carter Bryant (SAS) [Starter] DAY-TO-DAY \u2014 \u22127 ELO",
         "David Jones Garcia (SAS) [Starter] OUT \u2014 \u221214 ELO",
+        "Anthony Edwards (MIN) [Superstar] DAY-TO-DAY \u2014 \u221215 ELO",
         "Ayo Dosunmu (MIN) [Starter] DAY-TO-DAY \u2014 \u22128 ELO",
         "Donte DiVincenzo (MIN) [Rotation] OUT \u2014 \u22124 ELO",
         "Net rating gap: SAS +8.3 vs MIN +3.4",
         "Home court: SAS +100 ELO advantage"
       ],
-      "explanation": "The model gives San Antonio Spurs a 69.2% win probability \u2014 a moderate favorite over Minnesota Timberwolves. San Antonio Spurs net rating: +8.3. Home court +100 ELO for San Antonio Spurs."
+      "explanation": "The model gives San Antonio Spurs a 70.7% win probability \u2014 a strong favorite over Minnesota Timberwolves. San Antonio Spurs net rating: +8.3. Home court +100 ELO for San Antonio Spurs."
     },
     {
       "game_id": "401871163",
@@ -2971,10 +2788,10 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.6958,
-        "logistic_prob": 0.6591,
-        "elo_prob": 0.7377,
-        "xgb_prob": 0.5893,
+        "ensemble_prob": 0.7096,
+        "logistic_prob": 0.6572,
+        "elo_prob": 0.7563,
+        "xgb_prob": 0.6099,
         "pyth_prob": 0.7624,
         "eff_prob": 0.7212,
         "bayesian_prob": 0.9804
@@ -2987,19 +2804,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6473,
-        "exp_margin": 4.55,
-        "prob_7plus": 0.4163,
-        "prob_14plus": 0.2094,
-        "prob_21plus": 0.0782,
+        "win_prob": 0.6562,
+        "exp_margin": 4.67,
+        "prob_7plus": 0.4145,
+        "prob_14plus": 0.2151,
+        "prob_21plus": 0.0818,
         "margin_percentiles": [
-          -14.4,
+          -14.7,
           -10.2,
-          -3.4,
+          -3.1,
           4.5,
-          12.5,
-          19.5,
-          23.5
+          12.6,
+          19.7,
+          24.3
         ]
       },
       "adjustments": {
@@ -3069,9 +2886,9 @@
         ]
       },
       "elo": {
-        "home": 1727.2,
+        "home": 1727.1,
         "away": 1599.3,
-        "diff": 127.9
+        "diff": 127.8
       },
       "bayesian": {
         "home_mu": 1799.7,
@@ -3099,24 +2916,41 @@
       },
       "injuries": {
         "home": [],
-        "away": []
+        "away": [
+          {
+            "player": "Joel Embiid",
+            "status": "Day-To-Day",
+            "position": "C",
+            "injury_description": "Embiid is dealing with a right ankle sprain, though the issue isn't expected to be severe enough to stop him from playing Wednesday. Over five appearances during the 2026 postseason to this point, the star big man has averaged 25.2 points, 8.0 rebounds and 5.8 assists in 34.2 minutes per game.",
+            "value_tier": "superstar"
+          }
+        ]
       },
       "injury_impact": {
         "home_elo_penalty": 0.0,
-        "away_elo_penalty": 0.0,
+        "away_elo_penalty": 17.28,
         "home_key_players_out": [],
-        "away_key_players_out": [],
+        "away_key_players_out": [
+          {
+            "player": "Joel Embiid",
+            "position": "C",
+            "status": "Day-To-Day",
+            "elo_impact": 16.0,
+            "value_tier": "superstar"
+          }
+        ],
         "home_star_count": 0,
-        "away_star_count": 0,
+        "away_star_count": 1,
         "home_star_stack_multiplier": 1.0,
-        "away_star_stack_multiplier": 1.0
+        "away_star_stack_multiplier": 1.08
       },
       "prediction_drivers": [
         "ELO advantage: NYK +128 rating points",
+        "Joel Embiid (PHI) [Superstar] DAY-TO-DAY \u2014 \u221216 ELO",
         "Net rating gap: NYK +6.3 vs PHI -0.2",
         "Home court: NYK +100 ELO advantage"
       ],
-      "explanation": "The model gives New York Knicks a 69.6% win probability \u2014 a moderate favorite over Philadelphia 76ers. New York Knicks net rating: +6.3. Home court +100 ELO for New York Knicks."
+      "explanation": "The model gives New York Knicks a 71.0% win probability \u2014 a strong favorite over Philadelphia 76ers. New York Knicks net rating: +6.3. Home court +100 ELO for New York Knicks."
     },
     {
       "game_id": "401871330",
@@ -3133,13 +2967,13 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.71,
-        "logistic_prob": 0.6591,
-        "elo_prob": 0.7647,
-        "xgb_prob": 0.5763,
-        "pyth_prob": 0.7742,
+        "ensemble_prob": 0.7214,
+        "logistic_prob": 0.6572,
+        "elo_prob": 0.7915,
+        "xgb_prob": 0.5479,
+        "pyth_prob": 0.7757,
         "eff_prob": 0.7532,
-        "bayesian_prob": 0.9657
+        "bayesian_prob": 0.9653
       },
       "market": {
         "home_prob": null,
@@ -3149,19 +2983,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.637,
-        "exp_margin": 4.06,
-        "prob_7plus": 0.4027,
-        "prob_14plus": 0.1991,
-        "prob_21plus": 0.0743,
+        "win_prob": 0.6388,
+        "exp_margin": 4.31,
+        "prob_7plus": 0.4122,
+        "prob_14plus": 0.2093,
+        "prob_21plus": 0.0782,
         "margin_percentiles": [
-          -15.2,
-          -11.1,
-          -3.8,
-          4.1,
-          12.1,
-          19.1,
-          23.3
+          -15.1,
+          -10.7,
+          -3.6,
+          4.3,
+          12.3,
+          19.4,
+          23.4
         ]
       },
       "adjustments": {
@@ -3174,15 +3008,10 @@
         "home_elo_bonus": 100
       },
       "h2h": {
-        "home_wins": 10,
+        "home_wins": 11,
         "away_wins": 8,
-        "total_meetings": 18,
+        "total_meetings": 19,
         "last_n": [
-          {
-            "date": "2023-12-24",
-            "winner": "LAL",
-            "margin": 9
-          },
           {
             "date": "2024-01-16",
             "winner": "LAL",
@@ -3227,26 +3056,31 @@
             "date": "2026-04-08",
             "winner": "OKC",
             "margin": 36
+          },
+          {
+            "date": "2026-05-06",
+            "winner": "OKC",
+            "margin": 18
           }
         ]
       },
       "elo": {
-        "home": 1798.3,
-        "away": 1670.7,
-        "diff": 127.6
+        "home": 1807.0,
+        "away": 1662.0,
+        "diff": 145.0
       },
       "bayesian": {
-        "home_mu": 1795.8,
+        "home_mu": 1796.2,
         "home_sigma": 40.0,
-        "away_mu": 1792.8,
+        "away_mu": 1793.5,
         "away_sigma": 40.0,
         "home_band": [
-          1755.8,
-          1835.8
+          1756.2,
+          1836.2
         ],
         "away_band": [
-          1752.8,
-          1832.8
+          1753.5,
+          1833.5
         ]
       },
       "efficiency": {
@@ -3278,6 +3112,13 @@
         ],
         "away": [
           {
+            "player": "Jarred Vanderbilt",
+            "status": "Day-To-Day",
+            "position": "F",
+            "injury_description": "Vanderbilt exited Tuesday's Western Conference Semifinals Game 1 loss to the Thunder in the second quarter after hitting the backboard and injuring his finger. He was quickly ruled out for the remainder of the game after exiting to the locker room and can be considered doubtful for Game 2 on Thursday until the Lakers offer an update on his status.",
+            "value_tier": "starter"
+          },
+          {
             "player": "Luka Doncic",
             "status": "Out",
             "position": "G",
@@ -3288,7 +3129,7 @@
       },
       "injury_impact": {
         "home_elo_penalty": 31.0,
-        "away_elo_penalty": 34.5,
+        "away_elo_penalty": 44.16,
         "home_key_players_out": [
           {
             "player": "Jalen Williams",
@@ -3307,6 +3148,13 @@
         ],
         "away_key_players_out": [
           {
+            "player": "Jarred Vanderbilt",
+            "position": "F",
+            "status": "Day-To-Day",
+            "elo_impact": 8.4,
+            "value_tier": "starter"
+          },
+          {
             "player": "Luka Doncic",
             "position": "G",
             "status": "Out",
@@ -3320,14 +3168,15 @@
         "away_star_stack_multiplier": 1.15
       },
       "prediction_drivers": [
-        "ELO advantage: OKC +128 rating points",
+        "ELO advantage: OKC +145 rating points",
         "Jalen Williams (OKC) [Starter] OUT \u2014 \u221215 ELO",
         "Thomas Sorber (OKC) [Starter] OUT \u2014 \u221216 ELO",
+        "Jarred Vanderbilt (LAL) [Starter] DAY-TO-DAY \u2014 \u22128 ELO",
         "Luka Doncic (LAL) [Superstar] OUT \u2014 \u221230 ELO",
         "Net rating gap: OKC +11.1 vs LAL +1.8",
         "Home court: OKC +100 ELO advantage"
       ],
-      "explanation": "The model gives Oklahoma City Thunder a 71.0% win probability \u2014 a strong favorite over Los Angeles Lakers. Oklahoma City Thunder net rating: +11.1. Home court +100 ELO for Oklahoma City Thunder."
+      "explanation": "The model gives Oklahoma City Thunder a 72.1% win probability \u2014 a strong favorite over Los Angeles Lakers. Oklahoma City Thunder net rating: +11.1. Home court +100 ELO for Oklahoma City Thunder."
     },
     {
       "game_id": "401871337",
@@ -3344,13 +3193,13 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.6055,
-        "logistic_prob": 0.5257,
-        "elo_prob": 0.6624,
-        "xgb_prob": 0.5108,
-        "pyth_prob": 0.6222,
+        "ensemble_prob": 0.6262,
+        "logistic_prob": 0.5285,
+        "elo_prob": 0.6961,
+        "xgb_prob": 0.5095,
+        "pyth_prob": 0.6238,
         "eff_prob": 0.692,
-        "bayesian_prob": 0.9633
+        "bayesian_prob": 0.9631
       },
       "market": {
         "home_prob": null,
@@ -3360,19 +3209,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6329,
-        "exp_margin": 3.99,
-        "prob_7plus": 0.4038,
-        "prob_14plus": 0.1966,
-        "prob_21plus": 0.0724,
+        "win_prob": 0.6411,
+        "exp_margin": 4.25,
+        "prob_7plus": 0.406,
+        "prob_14plus": 0.2031,
+        "prob_21plus": 0.0765,
         "margin_percentiles": [
-          -15.4,
-          -11.1,
-          -4.1,
-          4.1,
-          11.9,
-          18.9,
-          23.2
+          -15.1,
+          -10.6,
+          -3.6,
+          4.2,
+          12.1,
+          19.3,
+          23.5
         ]
       },
       "adjustments": {
@@ -3385,15 +3234,10 @@
         "home_elo_bonus": 100
       },
       "h2h": {
-        "home_wins": 6,
+        "home_wins": 7,
         "away_wins": 16,
-        "total_meetings": 22,
+        "total_meetings": 23,
         "last_n": [
-          {
-            "date": "2024-10-16",
-            "winner": "DET",
-            "margin": 16
-          },
           {
             "date": "2024-10-25",
             "winner": "CLE",
@@ -3438,26 +3282,31 @@
             "date": "2026-03-04",
             "winner": "CLE",
             "margin": 4
+          },
+          {
+            "date": "2026-05-05",
+            "winner": "DET",
+            "margin": 10
           }
         ]
       },
       "elo": {
-        "home": 1727.6,
-        "away": 1644.3,
-        "diff": 83.3
+        "home": 1736.4,
+        "away": 1635.2,
+        "diff": 101.1
       },
       "bayesian": {
         "home_mu": 1800.0,
         "home_sigma": 40.0,
-        "away_mu": 1798.7,
+        "away_mu": 1798.8,
         "away_sigma": 40.0,
         "home_band": [
           1760.0,
           1840.0
         ],
         "away_band": [
-          1758.7,
-          1838.7
+          1758.8,
+          1838.8
         ]
       },
       "efficiency": {
@@ -3476,15 +3325,23 @@
             "player": "Kevin Huerter",
             "status": "Out",
             "position": "G",
-            "injury_description": "Huerter is trying to end a three-game absence with a left adductor strain Tuesday. If the sharpshooter is unable to suit up in Game 1, Javonte Green could see an uptick in playing time off the bench for the Pistons.",
+            "injury_description": "Huerter will miss a fourth consecutive contest due to a left adductor strain, and his next opportunity to play will come in Game 2 on Thursday. With the 27-year-old swingman sidelined, Daniss Jenkins and Javonte Green are candidates for increased minutes off the bench.",
             "value_tier": "starter"
           }
         ],
-        "away": []
+        "away": [
+          {
+            "player": "Sam Merrill",
+            "status": "Day-To-Day",
+            "position": "G",
+            "injury_description": "Merrill was able to finish the first quarter but never checked back in due to a left hamstring injury. The Cavaliers are expected to provide an update on his status by Wednesday night ahead of Game 2 on Thursday.",
+            "value_tier": "starter"
+          }
+        ]
       },
       "injury_impact": {
         "home_elo_penalty": 18.0,
-        "away_elo_penalty": 0.0,
+        "away_elo_penalty": 9.0,
         "home_key_players_out": [
           {
             "player": "Kevin Huerter",
@@ -3494,19 +3351,28 @@
             "value_tier": "starter"
           }
         ],
-        "away_key_players_out": [],
+        "away_key_players_out": [
+          {
+            "player": "Sam Merrill",
+            "position": "G",
+            "status": "Day-To-Day",
+            "elo_impact": 9.0,
+            "value_tier": "starter"
+          }
+        ],
         "home_star_count": 0,
         "away_star_count": 0,
         "home_star_stack_multiplier": 1.0,
         "away_star_stack_multiplier": 1.0
       },
       "prediction_drivers": [
-        "ELO advantage: DET +83 rating points",
+        "ELO advantage: DET +101 rating points",
         "Kevin Huerter (DET) [Starter] OUT \u2014 \u221218 ELO",
+        "Sam Merrill (CLE) [Starter] DAY-TO-DAY \u2014 \u22129 ELO",
         "Net rating gap: DET +8.2 vs CLE +4.1",
         "Home court: DET +100 ELO advantage"
       ],
-      "explanation": "The model gives Detroit Pistons a 60.6% win probability \u2014 a moderate favorite over Cleveland Cavaliers. Detroit Pistons net rating: +8.2. Home court +100 ELO for Detroit Pistons."
+      "explanation": "The model gives Detroit Pistons a 62.6% win probability \u2014 a moderate favorite over Cleveland Cavaliers. Detroit Pistons net rating: +8.2. Home court +100 ELO for Detroit Pistons."
     },
     {
       "game_id": "401871164",
@@ -3523,10 +3389,10 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.4134,
-        "logistic_prob": 0.4415,
-        "elo_prob": 0.3921,
-        "xgb_prob": 0.4519,
+        "ensemble_prob": 0.3951,
+        "logistic_prob": 0.4359,
+        "elo_prob": 0.3688,
+        "xgb_prob": 0.4327,
         "pyth_prob": 0.4964,
         "eff_prob": 0.55,
         "bayesian_prob": 0.9297
@@ -3539,19 +3405,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6035,
-        "exp_margin": 3.29,
-        "prob_7plus": 0.3794,
-        "prob_14plus": 0.183,
-        "prob_21plus": 0.0676,
+        "win_prob": 0.6109,
+        "exp_margin": 3.4,
+        "prob_7plus": 0.375,
+        "prob_14plus": 0.1819,
+        "prob_21plus": 0.0674,
         "margin_percentiles": [
-          -15.9,
-          -11.8,
-          -4.7,
-          3.1,
-          11.3,
-          18.3,
-          22.9
+          -15.8,
+          -11.6,
+          -4.5,
+          3.4,
+          11.1,
+          18.5,
+          22.8
         ]
       },
       "adjustments": {
@@ -3622,8 +3488,8 @@
       },
       "elo": {
         "home": 1599.3,
-        "away": 1727.2,
-        "diff": -127.9
+        "away": 1727.1,
+        "diff": -127.8
       },
       "bayesian": {
         "home_mu": 1783.0,
@@ -3650,25 +3516,42 @@
         "away_pace": 100.0
       },
       "injuries": {
-        "home": [],
+        "home": [
+          {
+            "player": "Joel Embiid",
+            "status": "Day-To-Day",
+            "position": "C",
+            "injury_description": "Embiid is dealing with a right ankle sprain, though the issue isn't expected to be severe enough to stop him from playing Wednesday. Over five appearances during the 2026 postseason to this point, the star big man has averaged 25.2 points, 8.0 rebounds and 5.8 assists in 34.2 minutes per game.",
+            "value_tier": "superstar"
+          }
+        ],
         "away": []
       },
       "injury_impact": {
-        "home_elo_penalty": 0.0,
+        "home_elo_penalty": 17.28,
         "away_elo_penalty": 0.0,
-        "home_key_players_out": [],
+        "home_key_players_out": [
+          {
+            "player": "Joel Embiid",
+            "position": "C",
+            "status": "Day-To-Day",
+            "elo_impact": 16.0,
+            "value_tier": "superstar"
+          }
+        ],
         "away_key_players_out": [],
-        "home_star_count": 0,
+        "home_star_count": 1,
         "away_star_count": 0,
-        "home_star_stack_multiplier": 1.0,
+        "home_star_stack_multiplier": 1.08,
         "away_star_stack_multiplier": 1.0
       },
       "prediction_drivers": [
         "ELO advantage: NYK +128 rating points",
+        "Joel Embiid (PHI) [Superstar] DAY-TO-DAY \u2014 \u221216 ELO",
         "Net rating gap: PHI -0.2 vs NYK +6.3",
         "Home court: PHI +100 ELO advantage"
       ],
-      "explanation": "The model gives New York Knicks a 58.7% win probability \u2014 a slight favorite over Philadelphia 76ers. New York Knicks net rating: +6.3. Home court +100 ELO for Philadelphia 76ers."
+      "explanation": "The model gives New York Knicks a 60.5% win probability \u2014 a moderate favorite over Philadelphia 76ers. New York Knicks net rating: +6.3. Home court +100 ELO for Philadelphia 76ers."
     },
     {
       "game_id": "401871157",
@@ -3685,10 +3568,10 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.4582,
-        "logistic_prob": 0.5913,
-        "elo_prob": 0.3622,
-        "xgb_prob": 0.6201,
+        "ensemble_prob": 0.4455,
+        "logistic_prob": 0.5872,
+        "elo_prob": 0.3397,
+        "xgb_prob": 0.6321,
         "pyth_prob": 0.655,
         "eff_prob": 0.5722,
         "bayesian_prob": 0.9599
@@ -3701,19 +3584,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6271,
-        "exp_margin": 3.75,
-        "prob_7plus": 0.3928,
-        "prob_14plus": 0.1931,
-        "prob_21plus": 0.0673,
+        "win_prob": 0.6401,
+        "exp_margin": 4.17,
+        "prob_7plus": 0.4027,
+        "prob_14plus": 0.2001,
+        "prob_21plus": 0.0739,
         "margin_percentiles": [
-          -15.7,
-          -11.4,
-          -4.1,
-          3.9,
-          11.6,
-          18.7,
-          23.0
+          -15.0,
+          -10.7,
+          -3.7,
+          4.3,
+          11.9,
+          19.1,
+          23.5
         ]
       },
       "adjustments": {
@@ -3814,10 +3697,17 @@
       "injuries": {
         "home": [
           {
+            "player": "Anthony Edwards",
+            "status": "Day-To-Day",
+            "position": "G",
+            "injury_description": "Edwards played limited minutes off the bench in Monday's Game 1 win following a two-game absence due to a left knee bone bruise and hyperextension, posting 18 points (8-13 FG, 2-3 3Pt), three rebounds, three assists and one block in 25 minutes. If he's cleared to play ahead of Game 2, the superstar guard will likely remain on a minutes restriction.",
+            "value_tier": "superstar"
+          },
+          {
             "player": "Ayo Dosunmu",
             "status": "Day-To-Day",
             "position": "G",
-            "injury_description": "The swingman also missed Minnesota's Game 7 win over the Nuggets in Round 1 due to right calf soreness. The Timberwolves are planning to have Anthony Edwards (knee) back in the lineup Monday, which should lessen the blow of Dosunmu's absence dramatically. Dosunmu will hope to return for Game 2 on Wednesday in San Antonio.",
+            "injury_description": "Dosunmu has a chance to end a two-game absence with right calf soreness Wednesday. Terrence Shannon, who has logged 35 minutes in back-to-back contests for the Timberwolves, would likely be pushed into a lesser role if Dosunmu is available for Game 2.",
             "value_tier": "starter"
           },
           {
@@ -3833,7 +3723,7 @@
             "player": "Carter Bryant",
             "status": "Day-To-Day",
             "position": "F",
-            "injury_description": "Bryant didn't make much of an impact in the previous round against Portland, averaging 3.2 points, 2.2 rebounds and 1.4 assists in 9.2 minutes (five games). Keldon Johnson and Harrison Barnes could pick up a few extra minutes in Bryant's place Monday night.",
+            "injury_description": "Bryant missed Monday's Game 1 loss due to a right foot sprain he sustained in a recent practice, though head coach Mitch Johnson said he's optimistic it won't be a long-term issue. The rookie first-rounder averaged 3.2 points, 2.2 rebounds and 1.4 assists across 9.2 minutes per game in five first-round outings. If he remains out, Keldon Johnson could continue seeing a slight bump in minutes.",
             "value_tier": "starter"
           },
           {
@@ -3846,9 +3736,16 @@
         ]
       },
       "injury_impact": {
-        "home_elo_penalty": 12.0,
+        "home_elo_penalty": 29.02,
         "away_elo_penalty": 21.0,
         "home_key_players_out": [
+          {
+            "player": "Anthony Edwards",
+            "position": "G",
+            "status": "Day-To-Day",
+            "elo_impact": 15.0,
+            "value_tier": "superstar"
+          },
           {
             "player": "Ayo Dosunmu",
             "position": "G",
@@ -3880,13 +3777,14 @@
             "value_tier": "starter"
           }
         ],
-        "home_star_count": 0,
+        "home_star_count": 1,
         "away_star_count": 0,
-        "home_star_stack_multiplier": 1.0,
+        "home_star_stack_multiplier": 1.075,
         "away_star_stack_multiplier": 1.0
       },
       "prediction_drivers": [
         "ELO advantage: SAS +180 rating points",
+        "Anthony Edwards (MIN) [Superstar] DAY-TO-DAY \u2014 \u221215 ELO",
         "Ayo Dosunmu (MIN) [Starter] DAY-TO-DAY \u2014 \u22128 ELO",
         "Donte DiVincenzo (MIN) [Rotation] OUT \u2014 \u22124 ELO",
         "Carter Bryant (SAS) [Starter] DAY-TO-DAY \u2014 \u22127 ELO",
@@ -3894,7 +3792,7 @@
         "Net rating gap: MIN +3.4 vs SAS +8.3",
         "Home court: MIN +100 ELO advantage"
       ],
-      "explanation": "The model gives San Antonio Spurs a 54.2% win probability \u2014 a slight favorite over Minnesota Timberwolves. San Antonio Spurs net rating: +8.3. Home court +100 ELO for Minnesota Timberwolves."
+      "explanation": "The model gives San Antonio Spurs a 55.5% win probability \u2014 a slight favorite over Minnesota Timberwolves. San Antonio Spurs net rating: +8.3. Home court +100 ELO for Minnesota Timberwolves."
     },
     {
       "game_id": "401871338",
@@ -3911,13 +3809,13 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.5321,
-        "logistic_prob": 0.5984,
-        "elo_prob": 0.4806,
-        "xgb_prob": 0.6278,
-        "pyth_prob": 0.6576,
+        "ensemble_prob": 0.5093,
+        "logistic_prob": 0.5872,
+        "elo_prob": 0.4423,
+        "xgb_prob": 0.6475,
+        "pyth_prob": 0.656,
         "eff_prob": 0.5846,
-        "bayesian_prob": 0.9595
+        "bayesian_prob": 0.9597
       },
       "market": {
         "home_prob": null,
@@ -3927,19 +3825,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6268,
-        "exp_margin": 3.82,
-        "prob_7plus": 0.3977,
-        "prob_14plus": 0.1935,
-        "prob_21plus": 0.0712,
+        "win_prob": 0.634,
+        "exp_margin": 4.06,
+        "prob_7plus": 0.4014,
+        "prob_14plus": 0.1967,
+        "prob_21plus": 0.0765,
         "margin_percentiles": [
-          -15.7,
-          -11.3,
-          -4.1,
-          3.9,
-          11.8,
-          18.8,
-          23.2
+          -15.2,
+          -11.0,
+          -3.9,
+          4.0,
+          12.0,
+          19.3,
+          23.6
         ]
       },
       "adjustments": {
@@ -3953,14 +3851,9 @@
       },
       "h2h": {
         "home_wins": 16,
-        "away_wins": 6,
-        "total_meetings": 22,
+        "away_wins": 7,
+        "total_meetings": 23,
         "last_n": [
-          {
-            "date": "2024-10-16",
-            "winner": "DET",
-            "margin": 16
-          },
           {
             "date": "2024-10-25",
             "winner": "CLE",
@@ -4005,22 +3898,27 @@
             "date": "2026-03-04",
             "winner": "CLE",
             "margin": 4
+          },
+          {
+            "date": "2026-05-05",
+            "winner": "DET",
+            "margin": 10
           }
         ]
       },
       "elo": {
-        "home": 1644.3,
-        "away": 1727.6,
-        "diff": -83.3
+        "home": 1635.2,
+        "away": 1736.4,
+        "diff": -101.1
       },
       "bayesian": {
-        "home_mu": 1798.7,
+        "home_mu": 1798.8,
         "home_sigma": 40.0,
         "away_mu": 1800.0,
         "away_sigma": 40.0,
         "home_band": [
-          1758.7,
-          1838.7
+          1758.8,
+          1838.8
         ],
         "away_band": [
           1760.0,
@@ -4038,21 +3936,37 @@
         "away_pace": 100.0
       },
       "injuries": {
-        "home": [],
+        "home": [
+          {
+            "player": "Sam Merrill",
+            "status": "Day-To-Day",
+            "position": "G",
+            "injury_description": "Merrill was able to finish the first quarter but never checked back in due to a left hamstring injury. The Cavaliers are expected to provide an update on his status by Wednesday night ahead of Game 2 on Thursday.",
+            "value_tier": "starter"
+          }
+        ],
         "away": [
           {
             "player": "Kevin Huerter",
             "status": "Out",
             "position": "G",
-            "injury_description": "Huerter is trying to end a three-game absence with a left adductor strain Tuesday. If the sharpshooter is unable to suit up in Game 1, Javonte Green could see an uptick in playing time off the bench for the Pistons.",
+            "injury_description": "Huerter will miss a fourth consecutive contest due to a left adductor strain, and his next opportunity to play will come in Game 2 on Thursday. With the 27-year-old swingman sidelined, Daniss Jenkins and Javonte Green are candidates for increased minutes off the bench.",
             "value_tier": "starter"
           }
         ]
       },
       "injury_impact": {
-        "home_elo_penalty": 0.0,
+        "home_elo_penalty": 9.0,
         "away_elo_penalty": 18.0,
-        "home_key_players_out": [],
+        "home_key_players_out": [
+          {
+            "player": "Sam Merrill",
+            "position": "G",
+            "status": "Day-To-Day",
+            "elo_impact": 9.0,
+            "value_tier": "starter"
+          }
+        ],
         "away_key_players_out": [
           {
             "player": "Kevin Huerter",
@@ -4068,12 +3982,13 @@
         "away_star_stack_multiplier": 1.0
       },
       "prediction_drivers": [
-        "ELO advantage: DET +83 rating points",
+        "ELO advantage: DET +101 rating points",
+        "Sam Merrill (CLE) [Starter] DAY-TO-DAY \u2014 \u22129 ELO",
         "Kevin Huerter (DET) [Starter] OUT \u2014 \u221218 ELO",
         "Net rating gap: CLE +4.1 vs DET +8.2",
         "Home court: CLE +100 ELO advantage"
       ],
-      "explanation": "The model gives Cleveland Cavaliers a 53.2% win probability \u2014 a slight favorite over Detroit Pistons. Cleveland Cavaliers net rating: +4.1. Home court +100 ELO for Cleveland Cavaliers."
+      "explanation": "The model gives Cleveland Cavaliers a 50.9% win probability \u2014 a slight favorite over Detroit Pistons. Cleveland Cavaliers net rating: +4.1. Home court +100 ELO for Cleveland Cavaliers."
     },
     {
       "game_id": "401871331",
@@ -4090,13 +4005,13 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.4321,
-        "logistic_prob": 0.4415,
-        "elo_prob": 0.418,
-        "xgb_prob": 0.4727,
-        "pyth_prob": 0.4798,
+        "ensemble_prob": 0.4076,
+        "logistic_prob": 0.4359,
+        "elo_prob": 0.3807,
+        "xgb_prob": 0.4678,
+        "pyth_prob": 0.4776,
         "eff_prob": 0.5089,
-        "bayesian_prob": 0.9568
+        "bayesian_prob": 0.9572
       },
       "market": {
         "home_prob": null,
@@ -4106,19 +4021,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.638,
-        "exp_margin": 3.99,
-        "prob_7plus": 0.3973,
-        "prob_14plus": 0.1941,
-        "prob_21plus": 0.0735,
+        "win_prob": 0.6237,
+        "exp_margin": 3.73,
+        "prob_7plus": 0.3903,
+        "prob_14plus": 0.1916,
+        "prob_21plus": 0.0744,
         "margin_percentiles": [
-          -15.0,
-          -11.0,
-          -4.0,
-          4.1,
-          11.8,
-          19.0,
-          23.1
+          -15.6,
+          -11.4,
+          -4.3,
+          3.6,
+          11.7,
+          18.9,
+          23.3
         ]
       },
       "adjustments": {
@@ -4132,14 +4047,9 @@
       },
       "h2h": {
         "home_wins": 8,
-        "away_wins": 10,
-        "total_meetings": 18,
+        "away_wins": 11,
+        "total_meetings": 19,
         "last_n": [
-          {
-            "date": "2023-12-24",
-            "winner": "LAL",
-            "margin": 9
-          },
           {
             "date": "2024-01-16",
             "winner": "LAL",
@@ -4184,26 +4094,31 @@
             "date": "2026-04-08",
             "winner": "OKC",
             "margin": 36
+          },
+          {
+            "date": "2026-05-06",
+            "winner": "OKC",
+            "margin": 18
           }
         ]
       },
       "elo": {
-        "home": 1670.7,
-        "away": 1798.3,
-        "diff": -127.6
+        "home": 1662.0,
+        "away": 1807.0,
+        "diff": -145.0
       },
       "bayesian": {
-        "home_mu": 1792.8,
+        "home_mu": 1793.5,
         "home_sigma": 40.0,
-        "away_mu": 1795.8,
+        "away_mu": 1796.2,
         "away_sigma": 40.0,
         "home_band": [
-          1752.8,
-          1832.8
+          1753.5,
+          1833.5
         ],
         "away_band": [
-          1755.8,
-          1835.8
+          1756.2,
+          1836.2
         ]
       },
       "efficiency": {
@@ -4218,6 +4133,13 @@
       },
       "injuries": {
         "home": [
+          {
+            "player": "Jarred Vanderbilt",
+            "status": "Day-To-Day",
+            "position": "F",
+            "injury_description": "Vanderbilt exited Tuesday's Western Conference Semifinals Game 1 loss to the Thunder in the second quarter after hitting the backboard and injuring his finger. He was quickly ruled out for the remainder of the game after exiting to the locker room and can be considered doubtful for Game 2 on Thursday until the Lakers offer an update on his status.",
+            "value_tier": "starter"
+          },
           {
             "player": "Luka Doncic",
             "status": "Out",
@@ -4244,9 +4166,16 @@
         ]
       },
       "injury_impact": {
-        "home_elo_penalty": 34.5,
+        "home_elo_penalty": 44.16,
         "away_elo_penalty": 31.0,
         "home_key_players_out": [
+          {
+            "player": "Jarred Vanderbilt",
+            "position": "F",
+            "status": "Day-To-Day",
+            "elo_impact": 8.4,
+            "value_tier": "starter"
+          },
           {
             "player": "Luka Doncic",
             "position": "G",
@@ -4277,14 +4206,15 @@
         "away_star_stack_multiplier": 1.0
       },
       "prediction_drivers": [
-        "ELO advantage: OKC +128 rating points",
+        "ELO advantage: OKC +145 rating points",
+        "Jarred Vanderbilt (LAL) [Starter] DAY-TO-DAY \u2014 \u22128 ELO",
         "Luka Doncic (LAL) [Superstar] OUT \u2014 \u221230 ELO",
         "Jalen Williams (OKC) [Starter] OUT \u2014 \u221215 ELO",
         "Thomas Sorber (OKC) [Starter] OUT \u2014 \u221216 ELO",
         "Net rating gap: LAL +1.8 vs OKC +11.1",
         "Home court: LAL +100 ELO advantage"
       ],
-      "explanation": "The model gives Oklahoma City Thunder a 56.8% win probability \u2014 a slight favorite over Los Angeles Lakers. Oklahoma City Thunder net rating: +11.1. Home court +100 ELO for Los Angeles Lakers."
+      "explanation": "The model gives Oklahoma City Thunder a 59.2% win probability \u2014 a slight favorite over Los Angeles Lakers. Oklahoma City Thunder net rating: +11.1. Home court +100 ELO for Los Angeles Lakers."
     },
     {
       "game_id": "401871158",
@@ -4301,10 +4231,10 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.6923,
-        "logistic_prob": 0.5257,
-        "elo_prob": 0.8019,
-        "xgb_prob": 0.5313,
+        "ensemble_prob": 0.7068,
+        "logistic_prob": 0.5462,
+        "elo_prob": 0.817,
+        "xgb_prob": 0.5334,
         "pyth_prob": 0.6248,
         "eff_prob": 0.7028,
         "bayesian_prob": 0.9629
@@ -4317,17 +4247,17 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6307,
-        "exp_margin": 3.89,
-        "prob_7plus": 0.391,
-        "prob_14plus": 0.1952,
-        "prob_21plus": 0.0748,
+        "win_prob": 0.6385,
+        "exp_margin": 4.09,
+        "prob_7plus": 0.41,
+        "prob_14plus": 0.1998,
+        "prob_21plus": 0.0744,
         "margin_percentiles": [
           -15.6,
-          -11.2,
-          -3.8,
-          3.8,
-          11.8,
+          -11.1,
+          -4.0,
+          4.3,
+          12.1,
           19.0,
           23.1
         ]
@@ -4433,7 +4363,7 @@
             "player": "Carter Bryant",
             "status": "Day-To-Day",
             "position": "F",
-            "injury_description": "Bryant didn't make much of an impact in the previous round against Portland, averaging 3.2 points, 2.2 rebounds and 1.4 assists in 9.2 minutes (five games). Keldon Johnson and Harrison Barnes could pick up a few extra minutes in Bryant's place Monday night.",
+            "injury_description": "Bryant missed Monday's Game 1 loss due to a right foot sprain he sustained in a recent practice, though head coach Mitch Johnson said he's optimistic it won't be a long-term issue. The rookie first-rounder averaged 3.2 points, 2.2 rebounds and 1.4 assists across 9.2 minutes per game in five first-round outings. If he remains out, Keldon Johnson could continue seeing a slight bump in minutes.",
             "value_tier": "starter"
           },
           {
@@ -4446,10 +4376,17 @@
         ],
         "away": [
           {
+            "player": "Anthony Edwards",
+            "status": "Day-To-Day",
+            "position": "G",
+            "injury_description": "Edwards played limited minutes off the bench in Monday's Game 1 win following a two-game absence due to a left knee bone bruise and hyperextension, posting 18 points (8-13 FG, 2-3 3Pt), three rebounds, three assists and one block in 25 minutes. If he's cleared to play ahead of Game 2, the superstar guard will likely remain on a minutes restriction.",
+            "value_tier": "superstar"
+          },
+          {
             "player": "Ayo Dosunmu",
             "status": "Day-To-Day",
             "position": "G",
-            "injury_description": "The swingman also missed Minnesota's Game 7 win over the Nuggets in Round 1 due to right calf soreness. The Timberwolves are planning to have Anthony Edwards (knee) back in the lineup Monday, which should lessen the blow of Dosunmu's absence dramatically. Dosunmu will hope to return for Game 2 on Wednesday in San Antonio.",
+            "injury_description": "Dosunmu has a chance to end a two-game absence with right calf soreness Wednesday. Terrence Shannon, who has logged 35 minutes in back-to-back contests for the Timberwolves, would likely be pushed into a lesser role if Dosunmu is available for Game 2.",
             "value_tier": "starter"
           },
           {
@@ -4463,7 +4400,7 @@
       },
       "injury_impact": {
         "home_elo_penalty": 21.0,
-        "away_elo_penalty": 12.0,
+        "away_elo_penalty": 29.02,
         "home_key_players_out": [
           {
             "player": "Carter Bryant",
@@ -4482,6 +4419,13 @@
         ],
         "away_key_players_out": [
           {
+            "player": "Anthony Edwards",
+            "position": "G",
+            "status": "Day-To-Day",
+            "elo_impact": 15.0,
+            "value_tier": "superstar"
+          },
+          {
             "player": "Ayo Dosunmu",
             "position": "G",
             "status": "Day-To-Day",
@@ -4497,20 +4441,21 @@
           }
         ],
         "home_star_count": 0,
-        "away_star_count": 0,
+        "away_star_count": 1,
         "home_star_stack_multiplier": 1.0,
-        "away_star_stack_multiplier": 1.0
+        "away_star_stack_multiplier": 1.075
       },
       "prediction_drivers": [
         "ELO advantage: SAS +180 rating points",
         "Carter Bryant (SAS) [Starter] DAY-TO-DAY \u2014 \u22127 ELO",
         "David Jones Garcia (SAS) [Starter] OUT \u2014 \u221214 ELO",
+        "Anthony Edwards (MIN) [Superstar] DAY-TO-DAY \u2014 \u221215 ELO",
         "Ayo Dosunmu (MIN) [Starter] DAY-TO-DAY \u2014 \u22128 ELO",
         "Donte DiVincenzo (MIN) [Rotation] OUT \u2014 \u22124 ELO",
         "Net rating gap: SAS +8.3 vs MIN +3.4",
         "Home court: SAS +100 ELO advantage"
       ],
-      "explanation": "The model gives San Antonio Spurs a 69.2% win probability \u2014 a moderate favorite over Minnesota Timberwolves. San Antonio Spurs net rating: +8.3. Home court +100 ELO for San Antonio Spurs."
+      "explanation": "The model gives San Antonio Spurs a 70.7% win probability \u2014 a strong favorite over Minnesota Timberwolves. San Antonio Spurs net rating: +8.3. Home court +100 ELO for San Antonio Spurs."
     },
     {
       "game_id": "401871165",
@@ -4527,10 +4472,10 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.6958,
-        "logistic_prob": 0.6591,
-        "elo_prob": 0.7377,
-        "xgb_prob": 0.5893,
+        "ensemble_prob": 0.7096,
+        "logistic_prob": 0.6572,
+        "elo_prob": 0.7563,
+        "xgb_prob": 0.6099,
         "pyth_prob": 0.7624,
         "eff_prob": 0.7212,
         "bayesian_prob": 0.9804
@@ -4543,19 +4488,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6617,
-        "exp_margin": 4.82,
-        "prob_7plus": 0.4262,
-        "prob_14plus": 0.2164,
-        "prob_21plus": 0.0814,
+        "win_prob": 0.6591,
+        "exp_margin": 4.78,
+        "prob_7plus": 0.4205,
+        "prob_14plus": 0.2172,
+        "prob_21plus": 0.0851,
         "margin_percentiles": [
-          -14.5,
-          -10.1,
-          -2.8,
-          4.7,
-          12.7,
-          19.8,
-          24.1
+          -14.3,
+          -10.2,
+          -3.0,
+          4.6,
+          12.6,
+          20.0,
+          24.0
         ]
       },
       "adjustments": {
@@ -4625,9 +4570,9 @@
         ]
       },
       "elo": {
-        "home": 1727.2,
+        "home": 1727.1,
         "away": 1599.3,
-        "diff": 127.9
+        "diff": 127.8
       },
       "bayesian": {
         "home_mu": 1799.7,
@@ -4655,24 +4600,41 @@
       },
       "injuries": {
         "home": [],
-        "away": []
+        "away": [
+          {
+            "player": "Joel Embiid",
+            "status": "Day-To-Day",
+            "position": "C",
+            "injury_description": "Embiid is dealing with a right ankle sprain, though the issue isn't expected to be severe enough to stop him from playing Wednesday. Over five appearances during the 2026 postseason to this point, the star big man has averaged 25.2 points, 8.0 rebounds and 5.8 assists in 34.2 minutes per game.",
+            "value_tier": "superstar"
+          }
+        ]
       },
       "injury_impact": {
         "home_elo_penalty": 0.0,
-        "away_elo_penalty": 0.0,
+        "away_elo_penalty": 17.28,
         "home_key_players_out": [],
-        "away_key_players_out": [],
+        "away_key_players_out": [
+          {
+            "player": "Joel Embiid",
+            "position": "C",
+            "status": "Day-To-Day",
+            "elo_impact": 16.0,
+            "value_tier": "superstar"
+          }
+        ],
         "home_star_count": 0,
-        "away_star_count": 0,
+        "away_star_count": 1,
         "home_star_stack_multiplier": 1.0,
-        "away_star_stack_multiplier": 1.0
+        "away_star_stack_multiplier": 1.08
       },
       "prediction_drivers": [
         "ELO advantage: NYK +128 rating points",
+        "Joel Embiid (PHI) [Superstar] DAY-TO-DAY \u2014 \u221216 ELO",
         "Net rating gap: NYK +6.3 vs PHI -0.2",
         "Home court: NYK +100 ELO advantage"
       ],
-      "explanation": "The model gives New York Knicks a 69.6% win probability \u2014 a moderate favorite over Philadelphia 76ers. New York Knicks net rating: +6.3. Home court +100 ELO for New York Knicks."
+      "explanation": "The model gives New York Knicks a 71.0% win probability \u2014 a strong favorite over Philadelphia 76ers. New York Knicks net rating: +6.3. Home court +100 ELO for New York Knicks."
     },
     {
       "game_id": "401871339",
@@ -4689,13 +4651,13 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.6055,
-        "logistic_prob": 0.5257,
-        "elo_prob": 0.6624,
-        "xgb_prob": 0.5108,
-        "pyth_prob": 0.6222,
+        "ensemble_prob": 0.6262,
+        "logistic_prob": 0.5285,
+        "elo_prob": 0.6961,
+        "xgb_prob": 0.5095,
+        "pyth_prob": 0.6238,
         "eff_prob": 0.692,
-        "bayesian_prob": 0.9633
+        "bayesian_prob": 0.9631
       },
       "market": {
         "home_prob": null,
@@ -4705,19 +4667,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6276,
-        "exp_margin": 3.97,
-        "prob_7plus": 0.3961,
-        "prob_14plus": 0.2005,
-        "prob_21plus": 0.0769,
+        "win_prob": 0.6373,
+        "exp_margin": 4.06,
+        "prob_7plus": 0.3999,
+        "prob_14plus": 0.1941,
+        "prob_21plus": 0.071,
         "margin_percentiles": [
-          -15.1,
-          -11.1,
-          -4.0,
-          3.9,
+          -14.9,
+          -10.8,
+          -3.7,
+          4.0,
           11.9,
-          19.3,
-          23.6
+          18.8,
+          23.1
         ]
       },
       "adjustments": {
@@ -4730,15 +4692,10 @@
         "home_elo_bonus": 100
       },
       "h2h": {
-        "home_wins": 6,
+        "home_wins": 7,
         "away_wins": 16,
-        "total_meetings": 22,
+        "total_meetings": 23,
         "last_n": [
-          {
-            "date": "2024-10-16",
-            "winner": "DET",
-            "margin": 16
-          },
           {
             "date": "2024-10-25",
             "winner": "CLE",
@@ -4783,26 +4740,31 @@
             "date": "2026-03-04",
             "winner": "CLE",
             "margin": 4
+          },
+          {
+            "date": "2026-05-05",
+            "winner": "DET",
+            "margin": 10
           }
         ]
       },
       "elo": {
-        "home": 1727.6,
-        "away": 1644.3,
-        "diff": 83.3
+        "home": 1736.4,
+        "away": 1635.2,
+        "diff": 101.1
       },
       "bayesian": {
         "home_mu": 1800.0,
         "home_sigma": 40.0,
-        "away_mu": 1798.7,
+        "away_mu": 1798.8,
         "away_sigma": 40.0,
         "home_band": [
           1760.0,
           1840.0
         ],
         "away_band": [
-          1758.7,
-          1838.7
+          1758.8,
+          1838.8
         ]
       },
       "efficiency": {
@@ -4821,15 +4783,23 @@
             "player": "Kevin Huerter",
             "status": "Out",
             "position": "G",
-            "injury_description": "Huerter is trying to end a three-game absence with a left adductor strain Tuesday. If the sharpshooter is unable to suit up in Game 1, Javonte Green could see an uptick in playing time off the bench for the Pistons.",
+            "injury_description": "Huerter will miss a fourth consecutive contest due to a left adductor strain, and his next opportunity to play will come in Game 2 on Thursday. With the 27-year-old swingman sidelined, Daniss Jenkins and Javonte Green are candidates for increased minutes off the bench.",
             "value_tier": "starter"
           }
         ],
-        "away": []
+        "away": [
+          {
+            "player": "Sam Merrill",
+            "status": "Day-To-Day",
+            "position": "G",
+            "injury_description": "Merrill was able to finish the first quarter but never checked back in due to a left hamstring injury. The Cavaliers are expected to provide an update on his status by Wednesday night ahead of Game 2 on Thursday.",
+            "value_tier": "starter"
+          }
+        ]
       },
       "injury_impact": {
         "home_elo_penalty": 18.0,
-        "away_elo_penalty": 0.0,
+        "away_elo_penalty": 9.0,
         "home_key_players_out": [
           {
             "player": "Kevin Huerter",
@@ -4839,19 +4809,28 @@
             "value_tier": "starter"
           }
         ],
-        "away_key_players_out": [],
+        "away_key_players_out": [
+          {
+            "player": "Sam Merrill",
+            "position": "G",
+            "status": "Day-To-Day",
+            "elo_impact": 9.0,
+            "value_tier": "starter"
+          }
+        ],
         "home_star_count": 0,
         "away_star_count": 0,
         "home_star_stack_multiplier": 1.0,
         "away_star_stack_multiplier": 1.0
       },
       "prediction_drivers": [
-        "ELO advantage: DET +83 rating points",
+        "ELO advantage: DET +101 rating points",
         "Kevin Huerter (DET) [Starter] OUT \u2014 \u221218 ELO",
+        "Sam Merrill (CLE) [Starter] DAY-TO-DAY \u2014 \u22129 ELO",
         "Net rating gap: DET +8.2 vs CLE +4.1",
         "Home court: DET +100 ELO advantage"
       ],
-      "explanation": "The model gives Detroit Pistons a 60.6% win probability \u2014 a moderate favorite over Cleveland Cavaliers. Detroit Pistons net rating: +8.2. Home court +100 ELO for Detroit Pistons."
+      "explanation": "The model gives Detroit Pistons a 62.6% win probability \u2014 a moderate favorite over Cleveland Cavaliers. Detroit Pistons net rating: +8.2. Home court +100 ELO for Detroit Pistons."
     },
     {
       "game_id": "401871332",
@@ -4868,13 +4847,13 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.71,
-        "logistic_prob": 0.6591,
-        "elo_prob": 0.7647,
-        "xgb_prob": 0.5763,
-        "pyth_prob": 0.7742,
+        "ensemble_prob": 0.7214,
+        "logistic_prob": 0.6572,
+        "elo_prob": 0.7915,
+        "xgb_prob": 0.5479,
+        "pyth_prob": 0.7757,
         "eff_prob": 0.7532,
-        "bayesian_prob": 0.9657
+        "bayesian_prob": 0.9653
       },
       "market": {
         "home_prob": null,
@@ -4884,19 +4863,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6408,
-        "exp_margin": 4.21,
-        "prob_7plus": 0.4071,
-        "prob_14plus": 0.2003,
-        "prob_21plus": 0.0783,
+        "win_prob": 0.6396,
+        "exp_margin": 4.1,
+        "prob_7plus": 0.4027,
+        "prob_14plus": 0.1952,
+        "prob_21plus": 0.0749,
         "margin_percentiles": [
           -15.1,
-          -10.8,
-          -3.7,
-          4.4,
-          12.0,
-          19.3,
-          23.5
+          -10.9,
+          -3.8,
+          4.1,
+          11.9,
+          18.9,
+          23.6
         ]
       },
       "adjustments": {
@@ -4909,15 +4888,10 @@
         "home_elo_bonus": 100
       },
       "h2h": {
-        "home_wins": 10,
+        "home_wins": 11,
         "away_wins": 8,
-        "total_meetings": 18,
+        "total_meetings": 19,
         "last_n": [
-          {
-            "date": "2023-12-24",
-            "winner": "LAL",
-            "margin": 9
-          },
           {
             "date": "2024-01-16",
             "winner": "LAL",
@@ -4962,26 +4936,31 @@
             "date": "2026-04-08",
             "winner": "OKC",
             "margin": 36
+          },
+          {
+            "date": "2026-05-06",
+            "winner": "OKC",
+            "margin": 18
           }
         ]
       },
       "elo": {
-        "home": 1798.3,
-        "away": 1670.7,
-        "diff": 127.6
+        "home": 1807.0,
+        "away": 1662.0,
+        "diff": 145.0
       },
       "bayesian": {
-        "home_mu": 1795.8,
+        "home_mu": 1796.2,
         "home_sigma": 40.0,
-        "away_mu": 1792.8,
+        "away_mu": 1793.5,
         "away_sigma": 40.0,
         "home_band": [
-          1755.8,
-          1835.8
+          1756.2,
+          1836.2
         ],
         "away_band": [
-          1752.8,
-          1832.8
+          1753.5,
+          1833.5
         ]
       },
       "efficiency": {
@@ -5013,6 +4992,13 @@
         ],
         "away": [
           {
+            "player": "Jarred Vanderbilt",
+            "status": "Day-To-Day",
+            "position": "F",
+            "injury_description": "Vanderbilt exited Tuesday's Western Conference Semifinals Game 1 loss to the Thunder in the second quarter after hitting the backboard and injuring his finger. He was quickly ruled out for the remainder of the game after exiting to the locker room and can be considered doubtful for Game 2 on Thursday until the Lakers offer an update on his status.",
+            "value_tier": "starter"
+          },
+          {
             "player": "Luka Doncic",
             "status": "Out",
             "position": "G",
@@ -5023,7 +5009,7 @@
       },
       "injury_impact": {
         "home_elo_penalty": 31.0,
-        "away_elo_penalty": 34.5,
+        "away_elo_penalty": 44.16,
         "home_key_players_out": [
           {
             "player": "Jalen Williams",
@@ -5042,6 +5028,13 @@
         ],
         "away_key_players_out": [
           {
+            "player": "Jarred Vanderbilt",
+            "position": "F",
+            "status": "Day-To-Day",
+            "elo_impact": 8.4,
+            "value_tier": "starter"
+          },
+          {
             "player": "Luka Doncic",
             "position": "G",
             "status": "Out",
@@ -5055,614 +5048,15 @@
         "away_star_stack_multiplier": 1.15
       },
       "prediction_drivers": [
-        "ELO advantage: OKC +128 rating points",
+        "ELO advantage: OKC +145 rating points",
         "Jalen Williams (OKC) [Starter] OUT \u2014 \u221215 ELO",
         "Thomas Sorber (OKC) [Starter] OUT \u2014 \u221216 ELO",
+        "Jarred Vanderbilt (LAL) [Starter] DAY-TO-DAY \u2014 \u22128 ELO",
         "Luka Doncic (LAL) [Superstar] OUT \u2014 \u221230 ELO",
         "Net rating gap: OKC +11.1 vs LAL +1.8",
         "Home court: OKC +100 ELO advantage"
       ],
-      "explanation": "The model gives Oklahoma City Thunder a 71.0% win probability \u2014 a strong favorite over Los Angeles Lakers. Oklahoma City Thunder net rating: +11.1. Home court +100 ELO for Oklahoma City Thunder."
-    },
-    {
-      "game_id": "401869393",
-      "game_time": "2026-04-30T23:00Z",
-      "status": "STATUS_FINAL",
-      "is_future": false,
-      "home_team": "ATL",
-      "away_team": "NYK",
-      "home_name": "Atlanta Hawks",
-      "away_name": "New York Knicks",
-      "home_logo": "https://a.espncdn.com/i/teamlogos/nba/500/atl.png",
-      "away_logo": "https://a.espncdn.com/i/teamlogos/nba/500/ny.png",
-      "neutral": false,
-      "home_score": 89,
-      "away_score": 140,
-      "predictions": {
-        "ensemble_prob": 0.3915,
-        "logistic_prob": 0.4689,
-        "elo_prob": 0.3214,
-        "xgb_prob": 0.5425,
-        "pyth_prob": 0.545,
-        "eff_prob": 0.5867,
-        "bayesian_prob": 0.9231
-      },
-      "market": {
-        "home_prob": null,
-        "edge": null,
-        "kelly_pct": null,
-        "home_american": null,
-        "away_american": null
-      },
-      "monte_carlo": {
-        "win_prob": 0.6093,
-        "exp_margin": 3.17,
-        "prob_7plus": 0.3734,
-        "prob_14plus": 0.179,
-        "prob_21plus": 0.064,
-        "margin_percentiles": [
-          -16.4,
-          -12.0,
-          -4.9,
-          3.3,
-          11.1,
-          18.2,
-          22.3
-        ]
-      },
-      "adjustments": {
-        "rest_home": 1,
-        "rest_away": 1,
-        "rest_diff": 0,
-        "travel_dist_miles": 748.0,
-        "b2b_home": true,
-        "b2b_away": true,
-        "home_elo_bonus": 100
-      },
-      "h2h": {
-        "home_wins": 9,
-        "away_wins": 16,
-        "total_meetings": 25,
-        "last_n": [
-          {
-            "date": "2025-04-05",
-            "winner": "NYK",
-            "margin": 16
-          },
-          {
-            "date": "2025-12-28",
-            "winner": "NYK",
-            "margin": 3
-          },
-          {
-            "date": "2026-01-03",
-            "winner": "ATL",
-            "margin": 12
-          },
-          {
-            "date": "2026-04-06",
-            "winner": "NYK",
-            "margin": 3
-          },
-          {
-            "date": "2026-04-18",
-            "winner": "NYK",
-            "margin": 11
-          },
-          {
-            "date": "2026-04-21",
-            "winner": "ATL",
-            "margin": 1
-          },
-          {
-            "date": "2026-04-23",
-            "winner": "ATL",
-            "margin": 1
-          },
-          {
-            "date": "2026-04-25",
-            "winner": "NYK",
-            "margin": 16
-          },
-          {
-            "date": "2026-04-29",
-            "winner": "NYK",
-            "margin": 29
-          },
-          {
-            "date": "2026-04-30",
-            "winner": "NYK",
-            "margin": 51
-          }
-        ]
-      },
-      "elo": {
-        "home": 1563.4,
-        "away": 1727.2,
-        "diff": -163.8
-      },
-      "bayesian": {
-        "home_mu": 1780.3,
-        "home_sigma": 40.0,
-        "away_mu": 1799.7,
-        "away_sigma": 40.0,
-        "home_band": [
-          1740.3,
-          1820.3
-        ],
-        "away_band": [
-          1759.7,
-          1839.7
-        ]
-      },
-      "efficiency": {
-        "home_off_rating": 118.46342,
-        "home_def_rating": 116.04878,
-        "home_net_rating": 2.4146400000000057,
-        "away_off_rating": 116.45122,
-        "away_def_rating": 110.12195,
-        "away_net_rating": 6.329270000000008,
-        "home_pace": 100.0,
-        "away_pace": 100.0
-      },
-      "injuries": {
-        "home": [
-          {
-            "player": "Keshon Gilbert",
-            "status": "Out",
-            "position": "G",
-            "injury_description": "Gilbert was a standout player for the Capital City Go-Go in the G League, and now he'll get a chance to prove himself in Atlanta. It remains to be seen if he'll get some looks at the NBA level, but it's likely that he gets plenty of reps with the College Park Skyhawks.",
-            "value_tier": "starter"
-          },
-          {
-            "player": "Jock Landale",
-            "status": "Out",
-            "position": "C",
-            "injury_description": "Landale continues to progress, but he will continue to be brought along slowly. In the meantime, Mouhamed Gueye is set to operate as the primary backup center to open the playoffs.",
-            "value_tier": "starter"
-          }
-        ],
-        "away": []
-      },
-      "injury_impact": {
-        "home_elo_penalty": 31.0,
-        "away_elo_penalty": 0.0,
-        "home_key_players_out": [
-          {
-            "player": "Keshon Gilbert",
-            "position": "G",
-            "status": "Out",
-            "elo_impact": 15.0,
-            "value_tier": "starter"
-          },
-          {
-            "player": "Jock Landale",
-            "position": "C",
-            "status": "Out",
-            "elo_impact": 16.0,
-            "value_tier": "starter"
-          }
-        ],
-        "away_key_players_out": [],
-        "home_star_count": 0,
-        "away_star_count": 0,
-        "home_star_stack_multiplier": 1.0,
-        "away_star_stack_multiplier": 1.0
-      },
-      "prediction_drivers": [
-        "ELO advantage: NYK +164 rating points",
-        "Keshon Gilbert (ATL) [Starter] OUT \u2014 \u221215 ELO",
-        "Jock Landale (ATL) [Starter] OUT \u2014 \u221216 ELO",
-        "Net rating gap: ATL +2.4 vs NYK +6.3",
-        "Back-to-back: ATL on zero days rest",
-        "Back-to-back: NYK on zero days rest",
-        "Home court: ATL +100 ELO advantage"
-      ],
-      "explanation": "The model gives New York Knicks a 60.9% win probability \u2014 a moderate favorite over Atlanta Hawks. New York Knicks net rating: +6.3. Atlanta Hawks on a back-to-back. New York Knicks on a back-to-back. Home court +100 ELO for Atlanta Hawks."
-    },
-    {
-      "game_id": "401869410",
-      "game_time": "2026-05-01T00:00Z",
-      "status": "STATUS_FINAL",
-      "is_future": false,
-      "home_team": "PHI",
-      "away_team": "BOS",
-      "home_name": "Philadelphia 76ers",
-      "away_name": "Boston Celtics",
-      "home_logo": "https://a.espncdn.com/i/teamlogos/nba/500/phi.png",
-      "away_logo": "https://a.espncdn.com/i/teamlogos/nba/500/bos.png",
-      "neutral": false,
-      "home_score": 106,
-      "away_score": 93,
-      "predictions": {
-        "ensemble_prob": 0.475,
-        "logistic_prob": 0.4123,
-        "elo_prob": 0.5029,
-        "xgb_prob": 0.4679,
-        "pyth_prob": 0.4493,
-        "eff_prob": 0.5305,
-        "bayesian_prob": 0.9299
-      },
-      "market": {
-        "home_prob": null,
-        "edge": null,
-        "kelly_pct": null,
-        "home_american": null,
-        "away_american": null
-      },
-      "monte_carlo": {
-        "win_prob": 0.616,
-        "exp_margin": 3.42,
-        "prob_7plus": 0.3776,
-        "prob_14plus": 0.1854,
-        "prob_21plus": 0.0663,
-        "margin_percentiles": [
-          -15.9,
-          -11.7,
-          -4.5,
-          3.5,
-          11.5,
-          18.6,
-          22.4
-        ]
-      },
-      "adjustments": {
-        "rest_home": 7,
-        "rest_away": 7,
-        "rest_diff": 0,
-        "travel_dist_miles": 273.0,
-        "b2b_home": false,
-        "b2b_away": false,
-        "home_elo_bonus": 100
-      },
-      "h2h": {
-        "home_wins": 14,
-        "away_wins": 23,
-        "total_meetings": 37,
-        "last_n": [
-          {
-            "date": "2025-10-31",
-            "winner": "BOS",
-            "margin": 1
-          },
-          {
-            "date": "2025-11-12",
-            "winner": "PHI",
-            "margin": 2
-          },
-          {
-            "date": "2026-03-02",
-            "winner": "BOS",
-            "margin": 16
-          },
-          {
-            "date": "2026-04-19",
-            "winner": "BOS",
-            "margin": 32
-          },
-          {
-            "date": "2026-04-21",
-            "winner": "PHI",
-            "margin": 14
-          },
-          {
-            "date": "2026-04-24",
-            "winner": "BOS",
-            "margin": 8
-          },
-          {
-            "date": "2026-04-26",
-            "winner": "BOS",
-            "margin": 32
-          },
-          {
-            "date": "2026-04-28",
-            "winner": "PHI",
-            "margin": 16
-          },
-          {
-            "date": "2026-05-01",
-            "winner": "PHI",
-            "margin": 13
-          },
-          {
-            "date": "2026-05-02",
-            "winner": "PHI",
-            "margin": 9
-          }
-        ]
-      },
-      "elo": {
-        "home": 1599.3,
-        "away": 1684.7,
-        "diff": -85.4
-      },
-      "bayesian": {
-        "home_mu": 1783.0,
-        "home_sigma": 40.0,
-        "away_mu": 1799.6,
-        "away_sigma": 40.0,
-        "home_band": [
-          1743.0,
-          1823.0
-        ],
-        "away_band": [
-          1759.6,
-          1839.6
-        ]
-      },
-      "efficiency": {
-        "home_off_rating": 115.87805,
-        "home_def_rating": 116.060974,
-        "home_net_rating": -0.18292399999999986,
-        "away_off_rating": 114.85366,
-        "away_def_rating": 107.15854,
-        "away_net_rating": 7.695120000000003,
-        "home_pace": 100.0,
-        "away_pace": 100.0
-      },
-      "injuries": {
-        "home": [],
-        "away": [
-          {
-            "player": "Jayson Tatum",
-            "status": "Out",
-            "position": "F",
-            "injury_description": "It's a big blow for the Celtics, who are facing elimination after being up 3-1 in the series. Tatum appeared to sustain the injury during Game 6 on Thursday, and the issue is severe enough for the superstar forward to miss Saturday's contest. As he did for most of the regular season, Jaylen Brown will be the Celtics' top offensive option, and the Celtics will turn to Derrick White, Payton Pritchard, Sam Hauser, Baylor Scheierman and others to take on larger roles on both ends of the floor without Tatum.",
-            "value_tier": "superstar"
-          }
-        ]
-      },
-      "injury_impact": {
-        "home_elo_penalty": 0.0,
-        "away_elo_penalty": 31.92,
-        "home_key_players_out": [],
-        "away_key_players_out": [
-          {
-            "player": "Jayson Tatum",
-            "position": "F",
-            "status": "Out",
-            "elo_impact": 28.0,
-            "value_tier": "superstar"
-          }
-        ],
-        "home_star_count": 0,
-        "away_star_count": 1,
-        "home_star_stack_multiplier": 1.0,
-        "away_star_stack_multiplier": 1.14
-      },
-      "prediction_drivers": [
-        "ELO advantage: BOS +85 rating points",
-        "Jayson Tatum (BOS) [Superstar] OUT \u2014 \u221228 ELO",
-        "Net rating gap: PHI -0.2 vs BOS +7.7",
-        "Home court: PHI +100 ELO advantage"
-      ],
-      "explanation": "The model gives Boston Celtics a 52.5% win probability \u2014 a slight favorite over Philadelphia 76ers. Boston Celtics net rating: +7.7. Home court +100 ELO for Philadelphia 76ers."
-    },
-    {
-      "game_id": "401869402",
-      "game_time": "2026-05-01T01:30Z",
-      "status": "STATUS_FINAL",
-      "is_future": false,
-      "home_team": "MIN",
-      "away_team": "DEN",
-      "home_name": "Minnesota Timberwolves",
-      "away_name": "Denver Nuggets",
-      "home_logo": "https://a.espncdn.com/i/teamlogos/nba/500/min.png",
-      "away_logo": "https://a.espncdn.com/i/teamlogos/nba/500/den.png",
-      "neutral": false,
-      "home_score": 110,
-      "away_score": 98,
-      "predictions": {
-        "ensemble_prob": 0.5763,
-        "logistic_prob": 0.5661,
-        "elo_prob": 0.5743,
-        "xgb_prob": 0.6015,
-        "pyth_prob": 0.6578,
-        "eff_prob": 0.6158,
-        "bayesian_prob": 0.9611
-      },
-      "market": {
-        "home_prob": null,
-        "edge": null,
-        "kelly_pct": null,
-        "home_american": null,
-        "away_american": null
-      },
-      "monte_carlo": {
-        "win_prob": 0.6294,
-        "exp_margin": 3.93,
-        "prob_7plus": 0.3928,
-        "prob_14plus": 0.1907,
-        "prob_21plus": 0.0723,
-        "margin_percentiles": [
-          -15.0,
-          -10.8,
-          -3.9,
-          4.0,
-          11.5,
-          19.0,
-          23.1
-        ]
-      },
-      "adjustments": {
-        "rest_home": 7,
-        "rest_away": 7,
-        "rest_diff": 0,
-        "travel_dist_miles": 699.0,
-        "b2b_home": false,
-        "b2b_away": false,
-        "home_elo_bonus": 100
-      },
-      "h2h": {
-        "home_wins": 23,
-        "away_wins": 18,
-        "total_meetings": 41,
-        "last_n": [
-          {
-            "date": "2025-10-28",
-            "winner": "DEN",
-            "margin": 13
-          },
-          {
-            "date": "2025-11-16",
-            "winner": "DEN",
-            "margin": 11
-          },
-          {
-            "date": "2025-12-26",
-            "winner": "DEN",
-            "margin": 4
-          },
-          {
-            "date": "2026-03-01",
-            "winner": "MIN",
-            "margin": 9
-          },
-          {
-            "date": "2026-04-18",
-            "winner": "DEN",
-            "margin": 11
-          },
-          {
-            "date": "2026-04-21",
-            "winner": "MIN",
-            "margin": 5
-          },
-          {
-            "date": "2026-04-24",
-            "winner": "MIN",
-            "margin": 17
-          },
-          {
-            "date": "2026-04-26",
-            "winner": "MIN",
-            "margin": 16
-          },
-          {
-            "date": "2026-04-28",
-            "winner": "DEN",
-            "margin": 12
-          },
-          {
-            "date": "2026-05-01",
-            "winner": "MIN",
-            "margin": 12
-          }
-        ]
-      },
-      "elo": {
-        "home": 1634.2,
-        "away": 1653.3,
-        "diff": -19.2
-      },
-      "bayesian": {
-        "home_mu": 1798.7,
-        "home_sigma": 40.0,
-        "away_mu": 1798.9,
-        "away_sigma": 40.0,
-        "home_band": [
-          1758.7,
-          1838.7
-        ],
-        "away_band": [
-          1758.9,
-          1838.9
-        ]
-      },
-      "efficiency": {
-        "home_off_rating": 118.0,
-        "home_def_rating": 114.64634,
-        "home_net_rating": 3.353660000000005,
-        "away_off_rating": 122.07317,
-        "away_def_rating": 116.914635,
-        "away_net_rating": 5.1585350000000005,
-        "home_pace": 100.0,
-        "away_pace": 100.0
-      },
-      "injuries": {
-        "home": [
-          {
-            "player": "Ayo Dosunmu",
-            "status": "Day-To-Day",
-            "position": "G",
-            "injury_description": "The swingman also missed Minnesota's Game 7 win over the Nuggets in Round 1 due to right calf soreness. The Timberwolves are planning to have Anthony Edwards (knee) back in the lineup Monday, which should lessen the blow of Dosunmu's absence dramatically. Dosunmu will hope to return for Game 2 on Wednesday in San Antonio.",
-            "value_tier": "starter"
-          },
-          {
-            "player": "Donte DiVincenzo",
-            "status": "Out",
-            "position": "G",
-            "injury_description": "DiVincenzo will have his surgery done by Dr. Martin O'Malley, the same surgeon who repaired the torn right Achilles of Jayson Tatum in May of 2025. The fact that the procedure is taking place within 24 hours of DiVincenzo's injury should help with the recovery, though it would be unfair to expect the veteran guard to return as quickly as Tatum did, which took approximately 10 months for the latter. It seems more likely that DiVincenzo will miss the entire 2026-27 season, though if he does progress enough to return, it wouldn't be until late in the regular season. The Timberwolves will also be without Anthony Edwards (knee) for multiple weeks, so the team will turn to Ayo Dosunmu, Mike Conley and Bones Hyland to carry more of the load for the rest of the postseason.",
-            "value_tier": "rotation"
-          }
-        ],
-        "away": [
-          {
-            "player": "Aaron Gordon",
-            "status": "Out",
-            "position": "F",
-            "injury_description": "Gordon attempted to warm up ahead of Thursday's clash, but he's not feeling healthy enough to give it a go. Spencer Jones stepped into the starting lineup in Gordon's place in Game 5 and should be considered the favorite to start again in Game 6.",
-            "value_tier": "rotation"
-          },
-          {
-            "player": "Peyton Watson",
-            "status": "Out",
-            "position": "G",
-            "injury_description": "Watson's absence with a right hamstring strain will have now exceeded a month by the time Denver's next contest comes around. If the Nuggets are able to stave off elimination Thursday, Watson's next chance to take the floor would come Saturday in Game 7.",
-            "value_tier": "starter"
-          }
-        ]
-      },
-      "injury_impact": {
-        "home_elo_penalty": 12.0,
-        "away_elo_penalty": 19.2,
-        "home_key_players_out": [
-          {
-            "player": "Ayo Dosunmu",
-            "position": "G",
-            "status": "Day-To-Day",
-            "elo_impact": 7.5,
-            "value_tier": "starter"
-          },
-          {
-            "player": "Donte DiVincenzo",
-            "position": "G",
-            "status": "Out",
-            "elo_impact": 4.5,
-            "value_tier": "rotation"
-          }
-        ],
-        "away_key_players_out": [
-          {
-            "player": "Aaron Gordon",
-            "position": "F",
-            "status": "Out",
-            "elo_impact": 4.2,
-            "value_tier": "rotation"
-          },
-          {
-            "player": "Peyton Watson",
-            "position": "G",
-            "status": "Out",
-            "elo_impact": 15.0,
-            "value_tier": "starter"
-          }
-        ],
-        "home_star_count": 0,
-        "away_star_count": 0,
-        "home_star_stack_multiplier": 1.0,
-        "away_star_stack_multiplier": 1.0
-      },
-      "prediction_drivers": [
-        "Ayo Dosunmu (MIN) [Starter] DAY-TO-DAY \u2014 \u22128 ELO",
-        "Donte DiVincenzo (MIN) [Rotation] OUT \u2014 \u22124 ELO",
-        "Aaron Gordon (DEN) [Rotation] OUT \u2014 \u22124 ELO",
-        "Peyton Watson (DEN) [Starter] OUT \u2014 \u221215 ELO",
-        "Offensive rating: DEN leads by 4.1 pts/100",
-        "Home court: MIN +100 ELO advantage"
-      ],
-      "explanation": "The model gives Minnesota Timberwolves a 57.6% win probability \u2014 a slight favorite over Denver Nuggets. Minnesota Timberwolves net rating: +3.4. Home court +100 ELO for Minnesota Timberwolves."
+      "explanation": "The model gives Oklahoma City Thunder a 72.1% win probability \u2014 a strong favorite over Los Angeles Lakers. Oklahoma City Thunder net rating: +11.1. Home court +100 ELO for Oklahoma City Thunder."
     },
     {
       "game_id": "401869417",
@@ -5679,11 +5073,11 @@
       "home_score": 79,
       "away_score": 93,
       "predictions": {
-        "ensemble_prob": 0.4467,
-        "logistic_prob": 0.5257,
-        "elo_prob": 0.3792,
-        "xgb_prob": 0.5853,
-        "pyth_prob": 0.5651,
+        "ensemble_prob": 0.4411,
+        "logistic_prob": 0.5285,
+        "elo_prob": 0.3677,
+        "xgb_prob": 0.589,
+        "pyth_prob": 0.5646,
         "eff_prob": 0.5356,
         "bayesian_prob": 0.953
       },
@@ -5695,19 +5089,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6296,
-        "exp_margin": 3.82,
-        "prob_7plus": 0.3923,
-        "prob_14plus": 0.195,
-        "prob_21plus": 0.0709,
+        "win_prob": 0.6289,
+        "exp_margin": 3.83,
+        "prob_7plus": 0.3881,
+        "prob_14plus": 0.1892,
+        "prob_21plus": 0.0715,
         "margin_percentiles": [
-          -15.5,
-          -11.2,
+          -15.4,
+          -11.0,
           -4.1,
-          4.0,
-          11.7,
-          18.8,
-          22.9
+          3.8,
+          11.6,
+          18.7,
+          23.4
         ]
       },
       "adjustments": {
@@ -5777,9 +5171,9 @@
         ]
       },
       "elo": {
-        "home": 1582.6,
-        "away": 1727.6,
-        "diff": -145.0
+        "home": 1582.9,
+        "away": 1736.4,
+        "diff": -153.5
       },
       "bayesian": {
         "home_mu": 1794.7,
@@ -5827,7 +5221,7 @@
             "player": "Kevin Huerter",
             "status": "Out",
             "position": "G",
-            "injury_description": "Huerter is trying to end a three-game absence with a left adductor strain Tuesday. If the sharpshooter is unable to suit up in Game 1, Javonte Green could see an uptick in playing time off the bench for the Pistons.",
+            "injury_description": "Huerter will miss a fourth consecutive contest due to a left adductor strain, and his next opportunity to play will come in Game 2 on Thursday. With the 27-year-old swingman sidelined, Daniss Jenkins and Javonte Green are candidates for increased minutes off the bench.",
             "value_tier": "starter"
           }
         ]
@@ -5866,14 +5260,14 @@
         "away_star_stack_multiplier": 1.0
       },
       "prediction_drivers": [
-        "ELO advantage: DET +145 rating points",
+        "ELO advantage: DET +154 rating points",
         "Jonathan Isaac (ORL) [Rotation] OUT \u2014 \u22124 ELO",
         "Franz Wagner (ORL) [All-Star] OUT \u2014 \u221221 ELO",
         "Kevin Huerter (DET) [Starter] OUT \u2014 \u221218 ELO",
         "Net rating gap: ORL +0.6 vs DET +8.2",
         "Home court: ORL +100 ELO advantage"
       ],
-      "explanation": "The model gives Detroit Pistons a 55.3% win probability \u2014 a slight favorite over Orlando Magic. Detroit Pistons net rating: +8.2. Home court +100 ELO for Orlando Magic."
+      "explanation": "The model gives Detroit Pistons a 55.9% win probability \u2014 a slight favorite over Orlando Magic. Detroit Pistons net rating: +8.2. Home court +100 ELO for Orlando Magic."
     },
     {
       "game_id": "401869381",
@@ -5890,13 +5284,13 @@
       "home_score": 112,
       "away_score": 110,
       "predictions": {
-        "ensemble_prob": 0.4364,
-        "logistic_prob": 0.4415,
-        "elo_prob": 0.4139,
-        "xgb_prob": 0.5176,
-        "pyth_prob": 0.5301,
+        "ensemble_prob": 0.4515,
+        "logistic_prob": 0.4359,
+        "elo_prob": 0.439,
+        "xgb_prob": 0.5277,
+        "pyth_prob": 0.5314,
         "eff_prob": 0.6231,
-        "bayesian_prob": 0.9621
+        "bayesian_prob": 0.962
       },
       "market": {
         "home_prob": null,
@@ -5906,18 +5300,18 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6415,
-        "exp_margin": 4.2,
-        "prob_7plus": 0.4097,
-        "prob_14plus": 0.1978,
-        "prob_21plus": 0.0742,
+        "win_prob": 0.6381,
+        "exp_margin": 4.06,
+        "prob_7plus": 0.3993,
+        "prob_14plus": 0.1988,
+        "prob_21plus": 0.0734,
         "margin_percentiles": [
-          -15.4,
+          -15.5,
           -11.0,
-          -3.6,
-          4.4,
-          12.1,
-          19.0,
+          -3.8,
+          4.0,
+          12.0,
+          19.1,
           23.2
         ]
       },
@@ -5988,22 +5382,22 @@
         ]
       },
       "elo": {
-        "home": 1564.3,
-        "away": 1644.3,
-        "diff": -80.0
+        "home": 1564.1,
+        "away": 1635.2,
+        "diff": -71.2
       },
       "bayesian": {
         "home_mu": 1799.2,
         "home_sigma": 40.0,
-        "away_mu": 1798.7,
+        "away_mu": 1798.8,
         "away_sigma": 40.0,
         "home_band": [
           1759.2,
           1839.2
         ],
         "away_band": [
-          1758.7,
-          1838.7
+          1758.8,
+          1838.8
         ]
       },
       "efficiency": {
@@ -6040,11 +5434,19 @@
             "value_tier": "starter"
           }
         ],
-        "away": []
+        "away": [
+          {
+            "player": "Sam Merrill",
+            "status": "Day-To-Day",
+            "position": "G",
+            "injury_description": "Merrill was able to finish the first quarter but never checked back in due to a left hamstring injury. The Cavaliers are expected to provide an update on his status by Wednesday night ahead of Game 2 on Thursday.",
+            "value_tier": "starter"
+          }
+        ]
       },
       "injury_impact": {
         "home_elo_penalty": 34.2,
-        "away_elo_penalty": 0.0,
+        "away_elo_penalty": 9.0,
         "home_key_players_out": [
           {
             "player": "Brandon Ingram",
@@ -6068,21 +5470,29 @@
             "value_tier": "starter"
           }
         ],
-        "away_key_players_out": [],
+        "away_key_players_out": [
+          {
+            "player": "Sam Merrill",
+            "position": "G",
+            "status": "Day-To-Day",
+            "elo_impact": 9.0,
+            "value_tier": "starter"
+          }
+        ],
         "home_star_count": 0,
         "away_star_count": 0,
         "home_star_stack_multiplier": 1.0,
         "away_star_stack_multiplier": 1.0
       },
       "prediction_drivers": [
-        "ELO advantage: CLE +80 rating points",
         "Brandon Ingram (TOR) [Rotation] OUT \u2014 \u22124 ELO",
         "Immanuel Quickley (TOR) [Starter] OUT \u2014 \u221215 ELO",
         "Chucky Hepburn (TOR) [Starter] OUT \u2014 \u221215 ELO",
+        "Sam Merrill (CLE) [Starter] DAY-TO-DAY \u2014 \u22129 ELO",
         "Offensive rating: CLE leads by 4.9 pts/100",
         "Home court: TOR +100 ELO advantage"
       ],
-      "explanation": "The model gives Cleveland Cavaliers a 56.4% win probability \u2014 a slight favorite over Toronto Raptors. Cleveland Cavaliers net rating: +4.1. Home court +100 ELO for Toronto Raptors."
+      "explanation": "The model gives Cleveland Cavaliers a 54.8% win probability \u2014 a slight favorite over Toronto Raptors. Cleveland Cavaliers net rating: +4.1. Home court +100 ELO for Toronto Raptors."
     },
     {
       "game_id": "401869409",
@@ -6099,13 +5509,13 @@
       "home_score": 78,
       "away_score": 98,
       "predictions": {
-        "ensemble_prob": 0.5557,
-        "logistic_prob": 0.5913,
-        "elo_prob": 0.5293,
-        "xgb_prob": 0.6017,
-        "pyth_prob": 0.7046,
+        "ensemble_prob": 0.5715,
+        "logistic_prob": 0.5872,
+        "elo_prob": 0.5555,
+        "xgb_prob": 0.6092,
+        "pyth_prob": 0.7061,
         "eff_prob": 0.6845,
-        "bayesian_prob": 0.9686
+        "bayesian_prob": 0.9678
       },
       "market": {
         "home_prob": null,
@@ -6115,19 +5525,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6397,
-        "exp_margin": 4.24,
-        "prob_7plus": 0.4042,
-        "prob_14plus": 0.2029,
-        "prob_21plus": 0.077,
+        "win_prob": 0.6316,
+        "exp_margin": 3.87,
+        "prob_7plus": 0.3908,
+        "prob_14plus": 0.1949,
+        "prob_21plus": 0.0747,
         "margin_percentiles": [
-          -15.3,
-          -11.0,
-          -3.6,
-          4.2,
-          12.2,
-          19.3,
-          23.6
+          -15.7,
+          -11.2,
+          -4.1,
+          3.9,
+          11.9,
+          19.1,
+          23.1
         ]
       },
       "adjustments": {
@@ -6198,21 +5608,21 @@
       },
       "elo": {
         "home": 1621.7,
-        "away": 1670.7,
-        "diff": -49.0
+        "away": 1662.0,
+        "diff": -40.3
       },
       "bayesian": {
         "home_mu": 1798.1,
         "home_sigma": 40.0,
-        "away_mu": 1792.8,
+        "away_mu": 1793.5,
         "away_sigma": 40.0,
         "home_band": [
           1758.1,
           1838.1
         ],
         "away_band": [
-          1752.8,
-          1832.8
+          1753.5,
+          1833.5
         ]
       },
       "efficiency": {
@@ -6251,6 +5661,13 @@
         ],
         "away": [
           {
+            "player": "Jarred Vanderbilt",
+            "status": "Day-To-Day",
+            "position": "F",
+            "injury_description": "Vanderbilt exited Tuesday's Western Conference Semifinals Game 1 loss to the Thunder in the second quarter after hitting the backboard and injuring his finger. He was quickly ruled out for the remainder of the game after exiting to the locker room and can be considered doubtful for Game 2 on Thursday until the Lakers offer an update on his status.",
+            "value_tier": "starter"
+          },
+          {
             "player": "Luka Doncic",
             "status": "Out",
             "position": "G",
@@ -6261,7 +5678,7 @@
       },
       "injury_impact": {
         "home_elo_penalty": 42.52,
-        "away_elo_penalty": 34.5,
+        "away_elo_penalty": 44.16,
         "home_key_players_out": [
           {
             "player": "Kevin Durant",
@@ -6287,6 +5704,13 @@
         ],
         "away_key_players_out": [
           {
+            "player": "Jarred Vanderbilt",
+            "position": "F",
+            "status": "Day-To-Day",
+            "elo_impact": 8.4,
+            "value_tier": "starter"
+          },
+          {
             "player": "Luka Doncic",
             "position": "G",
             "status": "Out",
@@ -6303,11 +5727,12 @@
         "Kevin Durant (HOU) [Superstar] OUT \u2014 \u221228 ELO",
         "Steven Adams (HOU) [Rotation] OUT \u2014 \u22125 ELO",
         "Fred VanVleet (HOU) [Rotation] OUT \u2014 \u22124 ELO",
+        "Jarred Vanderbilt (LAL) [Starter] DAY-TO-DAY \u2014 \u22128 ELO",
         "Luka Doncic (LAL) [Superstar] OUT \u2014 \u221230 ELO",
         "Net rating gap: HOU +5.2 vs LAL +1.8",
         "Home court: HOU +100 ELO advantage"
       ],
-      "explanation": "The model gives Houston Rockets a 55.6% win probability \u2014 a slight favorite over Los Angeles Lakers. Houston Rockets net rating: +5.2. Home court +100 ELO for Houston Rockets."
+      "explanation": "The model gives Houston Rockets a 57.2% win probability \u2014 a slight favorite over Los Angeles Lakers. Houston Rockets net rating: +5.2. Home court +100 ELO for Houston Rockets."
     },
     {
       "game_id": "401869412",
@@ -6324,10 +5749,10 @@
       "home_score": 100,
       "away_score": 109,
       "predictions": {
-        "ensemble_prob": 0.6607,
-        "logistic_prob": 0.7,
-        "elo_prob": 0.6519,
-        "xgb_prob": 0.6307,
+        "ensemble_prob": 0.6703,
+        "logistic_prob": 0.6906,
+        "elo_prob": 0.6744,
+        "xgb_prob": 0.62,
         "pyth_prob": 0.7949,
         "eff_prob": 0.7367,
         "bayesian_prob": 0.9803
@@ -6340,19 +5765,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6524,
-        "exp_margin": 4.6,
-        "prob_7plus": 0.4202,
-        "prob_14plus": 0.2108,
-        "prob_21plus": 0.0819,
+        "win_prob": 0.6596,
+        "exp_margin": 4.72,
+        "prob_7plus": 0.4214,
+        "prob_14plus": 0.2125,
+        "prob_21plus": 0.0832,
         "margin_percentiles": [
-          -14.6,
-          -10.4,
+          -14.7,
+          -10.3,
           -3.2,
-          4.5,
-          12.3,
-          19.6,
-          23.8
+          4.7,
+          12.6,
+          19.7,
+          24.1
         ]
       },
       "adjustments": {
@@ -6422,9 +5847,9 @@
         ]
       },
       "elo": {
-        "home": 1684.7,
+        "home": 1685.0,
         "away": 1599.3,
-        "diff": 85.4
+        "diff": 85.7
       },
       "bayesian": {
         "home_mu": 1799.6,
@@ -6460,11 +5885,19 @@
             "value_tier": "superstar"
           }
         ],
-        "away": []
+        "away": [
+          {
+            "player": "Joel Embiid",
+            "status": "Day-To-Day",
+            "position": "C",
+            "injury_description": "Embiid is dealing with a right ankle sprain, though the issue isn't expected to be severe enough to stop him from playing Wednesday. Over five appearances during the 2026 postseason to this point, the star big man has averaged 25.2 points, 8.0 rebounds and 5.8 assists in 34.2 minutes per game.",
+            "value_tier": "superstar"
+          }
+        ]
       },
       "injury_impact": {
         "home_elo_penalty": 31.92,
-        "away_elo_penalty": 0.0,
+        "away_elo_penalty": 17.28,
         "home_key_players_out": [
           {
             "player": "Jayson Tatum",
@@ -6474,21 +5907,30 @@
             "value_tier": "superstar"
           }
         ],
-        "away_key_players_out": [],
+        "away_key_players_out": [
+          {
+            "player": "Joel Embiid",
+            "position": "C",
+            "status": "Day-To-Day",
+            "elo_impact": 16.0,
+            "value_tier": "superstar"
+          }
+        ],
         "home_star_count": 1,
-        "away_star_count": 0,
+        "away_star_count": 1,
         "home_star_stack_multiplier": 1.14,
-        "away_star_stack_multiplier": 1.0
+        "away_star_stack_multiplier": 1.08
       },
       "prediction_drivers": [
-        "ELO advantage: BOS +85 rating points",
+        "ELO advantage: BOS +86 rating points",
         "Jayson Tatum (BOS) [Superstar] OUT \u2014 \u221228 ELO",
+        "Joel Embiid (PHI) [Superstar] DAY-TO-DAY \u2014 \u221216 ELO",
         "Net rating gap: BOS +7.7 vs PHI -0.2",
         "Back-to-back: BOS on zero days rest",
         "Back-to-back: PHI on zero days rest",
         "Home court: BOS +100 ELO advantage"
       ],
-      "explanation": "The model gives Boston Celtics a 66.1% win probability \u2014 a moderate favorite over Philadelphia 76ers. Boston Celtics net rating: +7.7. Boston Celtics on a back-to-back. Philadelphia 76ers on a back-to-back. Home court +100 ELO for Boston Celtics."
+      "explanation": "The model gives Boston Celtics a 67.0% win probability \u2014 a moderate favorite over Philadelphia 76ers. Boston Celtics net rating: +7.7. Boston Celtics on a back-to-back. Philadelphia 76ers on a back-to-back. Home court +100 ELO for Boston Celtics."
     },
     {
       "game_id": "401869418",
@@ -6505,11 +5947,11 @@
       "home_score": 116,
       "away_score": 94,
       "predictions": {
-        "ensemble_prob": 0.7033,
-        "logistic_prob": 0.5984,
-        "elo_prob": 0.7841,
-        "xgb_prob": 0.5546,
-        "pyth_prob": 0.7088,
+        "ensemble_prob": 0.7042,
+        "logistic_prob": 0.5872,
+        "elo_prob": 0.7923,
+        "xgb_prob": 0.5468,
+        "pyth_prob": 0.7092,
         "eff_prob": 0.7328,
         "bayesian_prob": 0.9686
       },
@@ -6521,19 +5963,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.634,
-        "exp_margin": 4.07,
-        "prob_7plus": 0.4002,
-        "prob_14plus": 0.1996,
-        "prob_21plus": 0.0696,
+        "win_prob": 0.6472,
+        "exp_margin": 4.32,
+        "prob_7plus": 0.4099,
+        "prob_14plus": 0.2073,
+        "prob_21plus": 0.0744,
         "margin_percentiles": [
-          -14.9,
-          -10.9,
-          -3.9,
-          4.1,
-          12.0,
-          19.0,
-          22.9
+          -15.2,
+          -10.8,
+          -3.6,
+          4.3,
+          12.4,
+          19.2,
+          23.5
         ]
       },
       "adjustments": {
@@ -6603,9 +6045,9 @@
         ]
       },
       "elo": {
-        "home": 1727.6,
-        "away": 1582.6,
-        "diff": 145.0
+        "home": 1736.4,
+        "away": 1582.9,
+        "diff": 153.5
       },
       "bayesian": {
         "home_mu": 1800.0,
@@ -6637,7 +6079,7 @@
             "player": "Kevin Huerter",
             "status": "Out",
             "position": "G",
-            "injury_description": "Huerter is trying to end a three-game absence with a left adductor strain Tuesday. If the sharpshooter is unable to suit up in Game 1, Javonte Green could see an uptick in playing time off the bench for the Pistons.",
+            "injury_description": "Huerter will miss a fourth consecutive contest due to a left adductor strain, and his next opportunity to play will come in Game 2 on Thursday. With the 27-year-old swingman sidelined, Daniss Jenkins and Javonte Green are candidates for increased minutes off the bench.",
             "value_tier": "starter"
           }
         ],
@@ -6692,14 +6134,14 @@
         "away_star_stack_multiplier": 1.105
       },
       "prediction_drivers": [
-        "ELO advantage: DET +145 rating points",
+        "ELO advantage: DET +154 rating points",
         "Kevin Huerter (DET) [Starter] OUT \u2014 \u221218 ELO",
         "Jonathan Isaac (ORL) [Rotation] OUT \u2014 \u22124 ELO",
         "Franz Wagner (ORL) [All-Star] OUT \u2014 \u221221 ELO",
         "Net rating gap: DET +8.2 vs ORL +0.6",
         "Home court: DET +100 ELO advantage"
       ],
-      "explanation": "The model gives Detroit Pistons a 70.3% win probability \u2014 a strong favorite over Orlando Magic. Detroit Pistons net rating: +8.2. Home court +100 ELO for Detroit Pistons."
+      "explanation": "The model gives Detroit Pistons a 70.4% win probability \u2014 a strong favorite over Orlando Magic. Detroit Pistons net rating: +8.2. Home court +100 ELO for Detroit Pistons."
     },
     {
       "game_id": "401869384",
@@ -6716,13 +6158,13 @@
       "home_score": 114,
       "away_score": 102,
       "predictions": {
-        "ensemble_prob": 0.6955,
-        "logistic_prob": 0.6591,
-        "elo_prob": 0.7245,
-        "xgb_prob": 0.6402,
-        "pyth_prob": 0.737,
+        "ensemble_prob": 0.684,
+        "logistic_prob": 0.6572,
+        "elo_prob": 0.7035,
+        "xgb_prob": 0.6503,
+        "pyth_prob": 0.7361,
         "eff_prob": 0.6567,
-        "bayesian_prob": 0.9608
+        "bayesian_prob": 0.9609
       },
       "market": {
         "home_prob": null,
@@ -6732,19 +6174,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.628,
-        "exp_margin": 3.93,
-        "prob_7plus": 0.395,
-        "prob_14plus": 0.1938,
-        "prob_21plus": 0.0752,
+        "win_prob": 0.6333,
+        "exp_margin": 4.01,
+        "prob_7plus": 0.3977,
+        "prob_14plus": 0.1966,
+        "prob_21plus": 0.0738,
         "margin_percentiles": [
-          -15.4,
-          -11.2,
+          -15.1,
+          -10.9,
           -3.9,
           3.9,
-          11.8,
-          19.0,
-          23.5
+          11.9,
+          19.2,
+          23.2
         ]
       },
       "adjustments": {
@@ -6814,18 +6256,18 @@
         ]
       },
       "elo": {
-        "home": 1644.3,
-        "away": 1564.3,
-        "diff": 80.0
+        "home": 1635.2,
+        "away": 1564.1,
+        "diff": 71.2
       },
       "bayesian": {
-        "home_mu": 1798.7,
+        "home_mu": 1798.8,
         "home_sigma": 40.0,
         "away_mu": 1799.2,
         "away_sigma": 40.0,
         "home_band": [
-          1758.7,
-          1838.7
+          1758.8,
+          1838.8
         ],
         "away_band": [
           1759.2,
@@ -6843,7 +6285,15 @@
         "away_pace": 100.0
       },
       "injuries": {
-        "home": [],
+        "home": [
+          {
+            "player": "Sam Merrill",
+            "status": "Day-To-Day",
+            "position": "G",
+            "injury_description": "Merrill was able to finish the first quarter but never checked back in due to a left hamstring injury. The Cavaliers are expected to provide an update on his status by Wednesday night ahead of Game 2 on Thursday.",
+            "value_tier": "starter"
+          }
+        ],
         "away": [
           {
             "player": "Brandon Ingram",
@@ -6869,9 +6319,17 @@
         ]
       },
       "injury_impact": {
-        "home_elo_penalty": 0.0,
+        "home_elo_penalty": 9.0,
         "away_elo_penalty": 34.2,
-        "home_key_players_out": [],
+        "home_key_players_out": [
+          {
+            "player": "Sam Merrill",
+            "position": "G",
+            "status": "Day-To-Day",
+            "elo_impact": 9.0,
+            "value_tier": "starter"
+          }
+        ],
         "away_key_players_out": [
           {
             "player": "Brandon Ingram",
@@ -6901,14 +6359,14 @@
         "away_star_stack_multiplier": 1.0
       },
       "prediction_drivers": [
-        "ELO advantage: CLE +80 rating points",
+        "Sam Merrill (CLE) [Starter] DAY-TO-DAY \u2014 \u22129 ELO",
         "Brandon Ingram (TOR) [Rotation] OUT \u2014 \u22124 ELO",
         "Immanuel Quickley (TOR) [Starter] OUT \u2014 \u221215 ELO",
         "Chucky Hepburn (TOR) [Starter] OUT \u2014 \u221215 ELO",
         "Offensive rating: CLE leads by 4.9 pts/100",
         "Home court: CLE +100 ELO advantage"
       ],
-      "explanation": "The model gives Cleveland Cavaliers a 69.6% win probability \u2014 a moderate favorite over Toronto Raptors. Cleveland Cavaliers net rating: +4.1. Home court +100 ELO for Cleveland Cavaliers."
+      "explanation": "The model gives Cleveland Cavaliers a 68.4% win probability \u2014 a moderate favorite over Toronto Raptors. Cleveland Cavaliers net rating: +4.1. Home court +100 ELO for Cleveland Cavaliers."
     },
     {
       "game_id": "401871159",
@@ -6925,10 +6383,10 @@
       "home_score": 137,
       "away_score": 98,
       "predictions": {
-        "ensemble_prob": 0.6958,
-        "logistic_prob": 0.6591,
-        "elo_prob": 0.7377,
-        "xgb_prob": 0.5893,
+        "ensemble_prob": 0.7096,
+        "logistic_prob": 0.6572,
+        "elo_prob": 0.7563,
+        "xgb_prob": 0.6099,
         "pyth_prob": 0.7624,
         "eff_prob": 0.7212,
         "bayesian_prob": 0.9804
@@ -6941,18 +6399,18 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6544,
-        "exp_margin": 4.59,
-        "prob_7plus": 0.4219,
-        "prob_14plus": 0.2079,
-        "prob_21plus": 0.0807,
+        "win_prob": 0.6656,
+        "exp_margin": 4.88,
+        "prob_7plus": 0.4295,
+        "prob_14plus": 0.2222,
+        "prob_21plus": 0.0823,
         "margin_percentiles": [
-          -15.2,
-          -10.5,
-          -3.4,
-          4.8,
-          12.5,
-          19.5,
+          -14.6,
+          -10.2,
+          -3.0,
+          4.9,
+          12.9,
+          20.0,
           23.8
         ]
       },
@@ -7023,9 +6481,9 @@
         ]
       },
       "elo": {
-        "home": 1727.2,
+        "home": 1727.1,
         "away": 1599.3,
-        "diff": 127.9
+        "diff": 127.8
       },
       "bayesian": {
         "home_mu": 1799.7,
@@ -7053,24 +6511,41 @@
       },
       "injuries": {
         "home": [],
-        "away": []
+        "away": [
+          {
+            "player": "Joel Embiid",
+            "status": "Day-To-Day",
+            "position": "C",
+            "injury_description": "Embiid is dealing with a right ankle sprain, though the issue isn't expected to be severe enough to stop him from playing Wednesday. Over five appearances during the 2026 postseason to this point, the star big man has averaged 25.2 points, 8.0 rebounds and 5.8 assists in 34.2 minutes per game.",
+            "value_tier": "superstar"
+          }
+        ]
       },
       "injury_impact": {
         "home_elo_penalty": 0.0,
-        "away_elo_penalty": 0.0,
+        "away_elo_penalty": 17.28,
         "home_key_players_out": [],
-        "away_key_players_out": [],
+        "away_key_players_out": [
+          {
+            "player": "Joel Embiid",
+            "position": "C",
+            "status": "Day-To-Day",
+            "elo_impact": 16.0,
+            "value_tier": "superstar"
+          }
+        ],
         "home_star_count": 0,
-        "away_star_count": 0,
+        "away_star_count": 1,
         "home_star_stack_multiplier": 1.0,
-        "away_star_stack_multiplier": 1.0
+        "away_star_stack_multiplier": 1.08
       },
       "prediction_drivers": [
         "ELO advantage: NYK +128 rating points",
+        "Joel Embiid (PHI) [Superstar] DAY-TO-DAY \u2014 \u221216 ELO",
         "Net rating gap: NYK +6.3 vs PHI -0.2",
         "Home court: NYK +100 ELO advantage"
       ],
-      "explanation": "The model gives New York Knicks a 69.6% win probability \u2014 a moderate favorite over Philadelphia 76ers. New York Knicks net rating: +6.3. Home court +100 ELO for New York Knicks."
+      "explanation": "The model gives New York Knicks a 71.0% win probability \u2014 a strong favorite over Philadelphia 76ers. New York Knicks net rating: +6.3. Home court +100 ELO for New York Knicks."
     },
     {
       "game_id": "401871152",
@@ -7087,10 +6562,10 @@
       "home_score": 102,
       "away_score": 104,
       "predictions": {
-        "ensemble_prob": 0.6923,
-        "logistic_prob": 0.5257,
-        "elo_prob": 0.8019,
-        "xgb_prob": 0.5313,
+        "ensemble_prob": 0.7068,
+        "logistic_prob": 0.5462,
+        "elo_prob": 0.817,
+        "xgb_prob": 0.5334,
         "pyth_prob": 0.6248,
         "eff_prob": 0.7028,
         "bayesian_prob": 0.9629
@@ -7103,19 +6578,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6375,
-        "exp_margin": 4.11,
-        "prob_7plus": 0.4019,
-        "prob_14plus": 0.1999,
-        "prob_21plus": 0.0749,
+        "win_prob": 0.6278,
+        "exp_margin": 3.74,
+        "prob_7plus": 0.3902,
+        "prob_14plus": 0.1876,
+        "prob_21plus": 0.0726,
         "margin_percentiles": [
-          -14.8,
-          -10.8,
-          -3.9,
-          4.1,
-          12.0,
-          19.1,
-          23.4
+          -15.7,
+          -11.3,
+          -4.1,
+          3.8,
+          11.6,
+          18.9,
+          23.1
         ]
       },
       "adjustments": {
@@ -7219,7 +6694,7 @@
             "player": "Carter Bryant",
             "status": "Day-To-Day",
             "position": "F",
-            "injury_description": "Bryant didn't make much of an impact in the previous round against Portland, averaging 3.2 points, 2.2 rebounds and 1.4 assists in 9.2 minutes (five games). Keldon Johnson and Harrison Barnes could pick up a few extra minutes in Bryant's place Monday night.",
+            "injury_description": "Bryant missed Monday's Game 1 loss due to a right foot sprain he sustained in a recent practice, though head coach Mitch Johnson said he's optimistic it won't be a long-term issue. The rookie first-rounder averaged 3.2 points, 2.2 rebounds and 1.4 assists across 9.2 minutes per game in five first-round outings. If he remains out, Keldon Johnson could continue seeing a slight bump in minutes.",
             "value_tier": "starter"
           },
           {
@@ -7232,10 +6707,17 @@
         ],
         "away": [
           {
+            "player": "Anthony Edwards",
+            "status": "Day-To-Day",
+            "position": "G",
+            "injury_description": "Edwards played limited minutes off the bench in Monday's Game 1 win following a two-game absence due to a left knee bone bruise and hyperextension, posting 18 points (8-13 FG, 2-3 3Pt), three rebounds, three assists and one block in 25 minutes. If he's cleared to play ahead of Game 2, the superstar guard will likely remain on a minutes restriction.",
+            "value_tier": "superstar"
+          },
+          {
             "player": "Ayo Dosunmu",
             "status": "Day-To-Day",
             "position": "G",
-            "injury_description": "The swingman also missed Minnesota's Game 7 win over the Nuggets in Round 1 due to right calf soreness. The Timberwolves are planning to have Anthony Edwards (knee) back in the lineup Monday, which should lessen the blow of Dosunmu's absence dramatically. Dosunmu will hope to return for Game 2 on Wednesday in San Antonio.",
+            "injury_description": "Dosunmu has a chance to end a two-game absence with right calf soreness Wednesday. Terrence Shannon, who has logged 35 minutes in back-to-back contests for the Timberwolves, would likely be pushed into a lesser role if Dosunmu is available for Game 2.",
             "value_tier": "starter"
           },
           {
@@ -7249,7 +6731,7 @@
       },
       "injury_impact": {
         "home_elo_penalty": 21.0,
-        "away_elo_penalty": 12.0,
+        "away_elo_penalty": 29.02,
         "home_key_players_out": [
           {
             "player": "Carter Bryant",
@@ -7268,6 +6750,13 @@
         ],
         "away_key_players_out": [
           {
+            "player": "Anthony Edwards",
+            "position": "G",
+            "status": "Day-To-Day",
+            "elo_impact": 15.0,
+            "value_tier": "superstar"
+          },
+          {
             "player": "Ayo Dosunmu",
             "position": "G",
             "status": "Day-To-Day",
@@ -7283,20 +6772,443 @@
           }
         ],
         "home_star_count": 0,
-        "away_star_count": 0,
+        "away_star_count": 1,
         "home_star_stack_multiplier": 1.0,
-        "away_star_stack_multiplier": 1.0
+        "away_star_stack_multiplier": 1.075
       },
       "prediction_drivers": [
         "ELO advantage: SAS +180 rating points",
         "Carter Bryant (SAS) [Starter] DAY-TO-DAY \u2014 \u22127 ELO",
         "David Jones Garcia (SAS) [Starter] OUT \u2014 \u221214 ELO",
+        "Anthony Edwards (MIN) [Superstar] DAY-TO-DAY \u2014 \u221215 ELO",
         "Ayo Dosunmu (MIN) [Starter] DAY-TO-DAY \u2014 \u22128 ELO",
         "Donte DiVincenzo (MIN) [Rotation] OUT \u2014 \u22124 ELO",
         "Net rating gap: SAS +8.3 vs MIN +3.4",
         "Home court: SAS +100 ELO advantage"
       ],
-      "explanation": "The model gives San Antonio Spurs a 69.2% win probability \u2014 a moderate favorite over Minnesota Timberwolves. San Antonio Spurs net rating: +8.3. Home court +100 ELO for San Antonio Spurs."
+      "explanation": "The model gives San Antonio Spurs a 70.7% win probability \u2014 a strong favorite over Minnesota Timberwolves. San Antonio Spurs net rating: +8.3. Home court +100 ELO for San Antonio Spurs."
+    },
+    {
+      "game_id": "401871333",
+      "game_time": "2026-05-05T23:00Z",
+      "status": "STATUS_FINAL",
+      "is_future": false,
+      "home_team": "DET",
+      "away_team": "CLE",
+      "home_name": "Detroit Pistons",
+      "away_name": "Cleveland Cavaliers",
+      "home_logo": "https://a.espncdn.com/i/teamlogos/nba/500/det.png",
+      "away_logo": "https://a.espncdn.com/i/teamlogos/nba/500/cle.png",
+      "neutral": false,
+      "home_score": 111,
+      "away_score": 101,
+      "predictions": {
+        "ensemble_prob": 0.6262,
+        "logistic_prob": 0.5285,
+        "elo_prob": 0.6961,
+        "xgb_prob": 0.5095,
+        "pyth_prob": 0.6238,
+        "eff_prob": 0.692,
+        "bayesian_prob": 0.9631
+      },
+      "market": {
+        "home_prob": null,
+        "edge": null,
+        "kelly_pct": null,
+        "home_american": null,
+        "away_american": null
+      },
+      "monte_carlo": {
+        "win_prob": 0.6408,
+        "exp_margin": 4.13,
+        "prob_7plus": 0.4016,
+        "prob_14plus": 0.2,
+        "prob_21plus": 0.0739,
+        "margin_percentiles": [
+          -15.0,
+          -10.7,
+          -3.8,
+          4.1,
+          12.0,
+          19.0,
+          23.1
+        ]
+      },
+      "adjustments": {
+        "rest_home": 7,
+        "rest_away": 7,
+        "rest_diff": 0,
+        "travel_dist_miles": 90.0,
+        "b2b_home": false,
+        "b2b_away": false,
+        "home_elo_bonus": 100
+      },
+      "h2h": {
+        "home_wins": 7,
+        "away_wins": 16,
+        "total_meetings": 23,
+        "last_n": [
+          {
+            "date": "2024-10-25",
+            "winner": "CLE",
+            "margin": 12
+          },
+          {
+            "date": "2025-01-28",
+            "winner": "CLE",
+            "margin": 19
+          },
+          {
+            "date": "2025-02-06",
+            "winner": "CLE",
+            "margin": 3
+          },
+          {
+            "date": "2025-03-28",
+            "winner": "DET",
+            "margin": 11
+          },
+          {
+            "date": "2025-10-14",
+            "winner": "CLE",
+            "margin": 18
+          },
+          {
+            "date": "2025-10-27",
+            "winner": "CLE",
+            "margin": 21
+          },
+          {
+            "date": "2026-01-04",
+            "winner": "DET",
+            "margin": 4
+          },
+          {
+            "date": "2026-02-28",
+            "winner": "DET",
+            "margin": 3
+          },
+          {
+            "date": "2026-03-04",
+            "winner": "CLE",
+            "margin": 4
+          },
+          {
+            "date": "2026-05-05",
+            "winner": "DET",
+            "margin": 10
+          }
+        ]
+      },
+      "elo": {
+        "home": 1736.4,
+        "away": 1635.2,
+        "diff": 101.1
+      },
+      "bayesian": {
+        "home_mu": 1800.0,
+        "home_sigma": 40.0,
+        "away_mu": 1798.8,
+        "away_sigma": 40.0,
+        "home_band": [
+          1760.0,
+          1840.0
+        ],
+        "away_band": [
+          1758.8,
+          1838.8
+        ]
+      },
+      "efficiency": {
+        "home_off_rating": 117.768295,
+        "home_def_rating": 109.60976,
+        "home_net_rating": 8.158535,
+        "away_off_rating": 119.51219,
+        "away_def_rating": 115.414635,
+        "away_net_rating": 4.097555,
+        "home_pace": 100.0,
+        "away_pace": 100.0
+      },
+      "injuries": {
+        "home": [
+          {
+            "player": "Kevin Huerter",
+            "status": "Out",
+            "position": "G",
+            "injury_description": "Huerter will miss a fourth consecutive contest due to a left adductor strain, and his next opportunity to play will come in Game 2 on Thursday. With the 27-year-old swingman sidelined, Daniss Jenkins and Javonte Green are candidates for increased minutes off the bench.",
+            "value_tier": "starter"
+          }
+        ],
+        "away": [
+          {
+            "player": "Sam Merrill",
+            "status": "Day-To-Day",
+            "position": "G",
+            "injury_description": "Merrill was able to finish the first quarter but never checked back in due to a left hamstring injury. The Cavaliers are expected to provide an update on his status by Wednesday night ahead of Game 2 on Thursday.",
+            "value_tier": "starter"
+          }
+        ]
+      },
+      "injury_impact": {
+        "home_elo_penalty": 18.0,
+        "away_elo_penalty": 9.0,
+        "home_key_players_out": [
+          {
+            "player": "Kevin Huerter",
+            "position": "G",
+            "status": "Out",
+            "elo_impact": 18.0,
+            "value_tier": "starter"
+          }
+        ],
+        "away_key_players_out": [
+          {
+            "player": "Sam Merrill",
+            "position": "G",
+            "status": "Day-To-Day",
+            "elo_impact": 9.0,
+            "value_tier": "starter"
+          }
+        ],
+        "home_star_count": 0,
+        "away_star_count": 0,
+        "home_star_stack_multiplier": 1.0,
+        "away_star_stack_multiplier": 1.0
+      },
+      "prediction_drivers": [
+        "ELO advantage: DET +101 rating points",
+        "Kevin Huerter (DET) [Starter] OUT \u2014 \u221218 ELO",
+        "Sam Merrill (CLE) [Starter] DAY-TO-DAY \u2014 \u22129 ELO",
+        "Net rating gap: DET +8.2 vs CLE +4.1",
+        "Home court: DET +100 ELO advantage"
+      ],
+      "explanation": "The model gives Detroit Pistons a 62.6% win probability \u2014 a moderate favorite over Cleveland Cavaliers. Detroit Pistons net rating: +8.2. Home court +100 ELO for Detroit Pistons."
+    },
+    {
+      "game_id": "401871326",
+      "game_time": "2026-05-06T00:30Z",
+      "status": "STATUS_FINAL",
+      "is_future": false,
+      "home_team": "OKC",
+      "away_team": "LAL",
+      "home_name": "Oklahoma City Thunder",
+      "away_name": "Los Angeles Lakers",
+      "home_logo": "https://a.espncdn.com/i/teamlogos/nba/500/okc.png",
+      "away_logo": "https://a.espncdn.com/i/teamlogos/nba/500/lal.png",
+      "neutral": false,
+      "home_score": 108,
+      "away_score": 90,
+      "predictions": {
+        "ensemble_prob": 0.7214,
+        "logistic_prob": 0.6572,
+        "elo_prob": 0.7915,
+        "xgb_prob": 0.5479,
+        "pyth_prob": 0.7757,
+        "eff_prob": 0.7532,
+        "bayesian_prob": 0.9653
+      },
+      "market": {
+        "home_prob": null,
+        "edge": null,
+        "kelly_pct": null,
+        "home_american": null,
+        "away_american": null
+      },
+      "monte_carlo": {
+        "win_prob": 0.6349,
+        "exp_margin": 4.08,
+        "prob_7plus": 0.4029,
+        "prob_14plus": 0.1994,
+        "prob_21plus": 0.0749,
+        "margin_percentiles": [
+          -15.1,
+          -11.1,
+          -3.9,
+          4.2,
+          12.0,
+          19.2,
+          23.4
+        ]
+      },
+      "adjustments": {
+        "rest_home": 7,
+        "rest_away": 7,
+        "rest_diff": 0,
+        "travel_dist_miles": 1180.0,
+        "b2b_home": false,
+        "b2b_away": false,
+        "home_elo_bonus": 100
+      },
+      "h2h": {
+        "home_wins": 11,
+        "away_wins": 8,
+        "total_meetings": 19,
+        "last_n": [
+          {
+            "date": "2024-01-16",
+            "winner": "LAL",
+            "margin": 7
+          },
+          {
+            "date": "2024-03-05",
+            "winner": "LAL",
+            "margin": 12
+          },
+          {
+            "date": "2024-11-30",
+            "winner": "OKC",
+            "margin": 8
+          },
+          {
+            "date": "2025-04-06",
+            "winner": "LAL",
+            "margin": 27
+          },
+          {
+            "date": "2025-04-09",
+            "winner": "OKC",
+            "margin": 16
+          },
+          {
+            "date": "2025-11-13",
+            "winner": "OKC",
+            "margin": 29
+          },
+          {
+            "date": "2026-02-10",
+            "winner": "OKC",
+            "margin": 9
+          },
+          {
+            "date": "2026-04-03",
+            "winner": "OKC",
+            "margin": 43
+          },
+          {
+            "date": "2026-04-08",
+            "winner": "OKC",
+            "margin": 36
+          },
+          {
+            "date": "2026-05-06",
+            "winner": "OKC",
+            "margin": 18
+          }
+        ]
+      },
+      "elo": {
+        "home": 1807.0,
+        "away": 1662.0,
+        "diff": 145.0
+      },
+      "bayesian": {
+        "home_mu": 1796.2,
+        "home_sigma": 40.0,
+        "away_mu": 1793.5,
+        "away_sigma": 40.0,
+        "home_band": [
+          1756.2,
+          1836.2
+        ],
+        "away_band": [
+          1753.5,
+          1833.5
+        ]
+      },
+      "efficiency": {
+        "home_off_rating": 119.02439,
+        "home_def_rating": 107.87805,
+        "home_net_rating": 11.146339999999995,
+        "away_off_rating": 116.34146,
+        "away_def_rating": 114.57317,
+        "away_net_rating": 1.7682899999999933,
+        "home_pace": 100.0,
+        "away_pace": 100.0
+      },
+      "injuries": {
+        "home": [
+          {
+            "player": "Jalen Williams",
+            "status": "Out",
+            "position": "G",
+            "injury_description": "Head coach Mark Daigneault said Monday that Williams is week-to-week after suffering a Grade 1 left hamstring strain in Oklahoma City's win over Phoenix on April 22. The star forward can be considered doubtful for future contests until the Thunder offer another update on his status. In the meantime, Ajay Mitchell and Cason Wallace will likely see increased minutes.",
+            "value_tier": "starter"
+          },
+          {
+            "player": "Thomas Sorber",
+            "status": "Out",
+            "position": "C",
+            "injury_description": "Sorber was selected No. 15 overall in the 2025 NBA Draft out of Georgetown by the reigning NBA champions. The rookie center was already dealing with a foot injury that cut his season with the Hoyas short and kept him out of the Summer League. Now he'll likely have to wait until the 2026-27 campaign to make his debut on the professional level.",
+            "value_tier": "starter"
+          }
+        ],
+        "away": [
+          {
+            "player": "Jarred Vanderbilt",
+            "status": "Day-To-Day",
+            "position": "F",
+            "injury_description": "Vanderbilt exited Tuesday's Western Conference Semifinals Game 1 loss to the Thunder in the second quarter after hitting the backboard and injuring his finger. He was quickly ruled out for the remainder of the game after exiting to the locker room and can be considered doubtful for Game 2 on Thursday until the Lakers offer an update on his status.",
+            "value_tier": "starter"
+          },
+          {
+            "player": "Luka Doncic",
+            "status": "Out",
+            "position": "G",
+            "injury_description": "Doncic hasn't been doing \"full-fledged running\" or participating in full-contact sessions. While the Lakers apparently haven't ruled him out for the series altogether, Charania added that it is still a \"slow path\" regarding his recovery efforts from a Grade 2 hamstring strain. The multi-time All-Star hasn't played in over a month after suffering the injury in the 139-96 loss to the Thunder on April 2. However, even if Doncic is cleared to return during the postseason, it's logical to assume he will be limited for at least a few contests. In the meantime, Rui Hachimura is expected to remain in the starting lineup.",
+            "value_tier": "superstar"
+          }
+        ]
+      },
+      "injury_impact": {
+        "home_elo_penalty": 31.0,
+        "away_elo_penalty": 44.16,
+        "home_key_players_out": [
+          {
+            "player": "Jalen Williams",
+            "position": "G",
+            "status": "Out",
+            "elo_impact": 15.0,
+            "value_tier": "starter"
+          },
+          {
+            "player": "Thomas Sorber",
+            "position": "C",
+            "status": "Out",
+            "elo_impact": 16.0,
+            "value_tier": "starter"
+          }
+        ],
+        "away_key_players_out": [
+          {
+            "player": "Jarred Vanderbilt",
+            "position": "F",
+            "status": "Day-To-Day",
+            "elo_impact": 8.4,
+            "value_tier": "starter"
+          },
+          {
+            "player": "Luka Doncic",
+            "position": "G",
+            "status": "Out",
+            "elo_impact": 30.0,
+            "value_tier": "superstar"
+          }
+        ],
+        "home_star_count": 0,
+        "away_star_count": 1,
+        "home_star_stack_multiplier": 1.0,
+        "away_star_stack_multiplier": 1.15
+      },
+      "prediction_drivers": [
+        "ELO advantage: OKC +145 rating points",
+        "Jalen Williams (OKC) [Starter] OUT \u2014 \u221215 ELO",
+        "Thomas Sorber (OKC) [Starter] OUT \u2014 \u221216 ELO",
+        "Jarred Vanderbilt (LAL) [Starter] DAY-TO-DAY \u2014 \u22128 ELO",
+        "Luka Doncic (LAL) [Superstar] OUT \u2014 \u221230 ELO",
+        "Net rating gap: OKC +11.1 vs LAL +1.8",
+        "Home court: OKC +100 ELO advantage"
+      ],
+      "explanation": "The model gives Oklahoma City Thunder a 72.1% win probability \u2014 a strong favorite over Los Angeles Lakers. Oklahoma City Thunder net rating: +11.1. Home court +100 ELO for Oklahoma City Thunder."
     }
   ]
 }
