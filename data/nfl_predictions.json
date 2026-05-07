@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-06T10:09:38.535969+00:00",
+  "updated": "2026-05-07T10:14:18.709783+00:00",
   "season": 2025,
   "week": 5,
   "is_offseason": true,
@@ -36,18 +36,18 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.4298,
-        "exp_margin": -2.5,
-        "prob_7plus": 0.2471,
-        "prob_14plus": 0.1212,
-        "prob_21plus": 0.0493,
+        "win_prob": 0.427,
+        "exp_margin": -2.53,
+        "prob_7plus": 0.2531,
+        "prob_14plus": 0.1203,
+        "prob_21plus": 0.0491,
         "margin_percentiles": [
-          -25.8,
-          -20.4,
-          -12.2,
-          -2.4,
-          6.9,
-          15.6,
+          -26.0,
+          -20.6,
+          -12.0,
+          -2.5,
+          7.1,
+          15.5,
           20.9
         ]
       },
@@ -118,6 +118,13 @@
         ],
         "away": [
           {
+            "player": "Dante Fowler Jr.",
+            "status": "Active",
+            "position": "DE",
+            "injury_description": "The deal is worth up to $5 million. Fowler will turn 32 years old later this summer and is headed into his 12th season out of the University of Florida. He appeared in all 17 regular-season games with the Cowboys last season, making 11 starts, but recorded just 3.0 sacks as a sub-package edge rusher while playing 32 percent of the defensive snaps. In Seattle, he'll provide depth behind DeMarcus Lawrence, Uchenna Nwosu and Derick Hall.",
+            "value_tier": "starter"
+          },
+          {
             "player": "Levi Wentz",
             "status": "Active",
             "position": "WR",
@@ -143,13 +150,6 @@
             "status": "Active",
             "position": "TE",
             "injury_description": "The details of the deal are unknown at this point, but Bryant fits with the Seahawks' recent approach of seeking out hard-nosed tight ends. As for his competition, 2024 fourth-rounder AJ Barner, 2025 second-rounder Elijah Arroyo and veteran Eric Saubert are all likely to make Seattle's 53-man roster to start the 2026 season, but there's a decent chance the team keeps four tight ends, meaning one of Bryant or Nick Kallerup could potentially make the opening roster too.",
-            "value_tier": "starter"
-          },
-          {
-            "player": "Michael Dansby",
-            "status": "Active",
-            "position": "CB",
-            "injury_description": "Not that it's unusual for late seventh-round picks, but Dansby was well off the NFL Draft radar after playing three seasons at San Jose State and one at Arizona, all of them unremarkable. At a listed 5-foot-11, 185 pounds, Dansby didn't participate in pre-draft athletic testing, so his skill set and tools grade both are question marks at best. Perhaps the Seahawks saw something in Dansby's special-teams upside.",
             "value_tier": "starter"
           }
         ]
@@ -223,9 +223,9 @@
       "home_score": 34,
       "away_score": 17,
       "predictions": {
-        "ensemble_prob": 0.3226,
+        "ensemble_prob": 0.3236,
         "logistic_prob": 0.1786,
-        "elo_prob": 0.3634,
+        "elo_prob": 0.37,
         "xgb_prob": 0.2185,
         "pyth_prob": 0.4938,
         "eff_prob": 0.6773,
@@ -239,19 +239,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.505,
+        "win_prob": 0.5044,
         "exp_margin": 0.14,
-        "prob_7plus": 0.311,
-        "prob_14plus": 0.168,
-        "prob_21plus": 0.0735,
+        "prob_7plus": 0.3132,
+        "prob_14plus": 0.1602,
+        "prob_21plus": 0.0684,
         "margin_percentiles": [
-          -23.5,
-          -18.3,
-          -9.6,
+          -22.6,
+          -17.5,
+          -9.4,
           0.2,
-          9.7,
-          18.6,
-          23.9
+          9.6,
+          18.0,
+          23.1
         ]
       },
       "adjustments": {
@@ -265,7 +265,7 @@
       "elo": {
         "home": 1408.9,
         "away": 1525.8,
-        "diff": -97.4
+        "diff": -92.4
       },
       "bayesian": {
         "home_mu": 1592.2,
@@ -321,6 +321,13 @@
         ],
         "away": [
           {
+            "player": "Tucker Large",
+            "status": "Out",
+            "position": "S",
+            "injury_description": "Large signed with the team as an undrafted free agent May 1 but ended up spending less than a week on their active roster. He will now miss at least the first four games of the regular season.",
+            "value_tier": "starter"
+          },
+          {
             "player": "Jalen Carter",
             "status": "Active",
             "position": "DT",
@@ -347,21 +354,14 @@
             "position": "DT",
             "injury_description": "Bernard (6-foot-4, 306 pounds) put together an impressive workout performance at the International Player Pathway Pro Day, highlighted by a 4.69 40-yard dash and a 39-inch vertical. Though he has not played organized football at the collegiate level, Philadelphia is intrigued enough by the potential of his rare combination of size and athleticism to invest draft capital into Bernard's development. While Bernard looks set to begin his career working at defensive tackle, he could also test his hand at edge rusher or along the O-line.",
             "value_tier": "starter"
-          },
-          {
-            "player": "Cole Wisniewski",
-            "status": "Active",
-            "position": "S",
-            "injury_description": "Wisniewski probably is not a serious starting safety candidate at the NFL level, but at 6-foot-3, 219 pounds the Texas Tech product has the build to crash hard against the run from the strong safety position. His 2025 season with the Red Raiders was his sixth collegiate season after playing the prior five years at North Dakota State, mostly as a backup. The Eagles will probably be content if Wisniewski can simply play on special teams.",
-            "value_tier": "starter"
           }
         ]
       },
       "injury_impact": {
         "home_elo_penalty": 13.6,
-        "away_elo_penalty": 4.0,
+        "away_elo_penalty": 9.0,
         "home_impact_score": 0.1236,
-        "away_impact_score": 0.0364,
+        "away_impact_score": 0.0818,
         "home_key_players_out": [
           {
             "player": "Darius Slayton",
@@ -401,6 +401,13 @@
         ],
         "away_key_players_out": [
           {
+            "player": "Tucker Large",
+            "position": "S",
+            "status": "Out",
+            "elo_impact": 5.0,
+            "value_tier": "starter"
+          },
+          {
             "player": "Jonathan Greenard",
             "position": "LB",
             "status": "Questionable",
@@ -425,12 +432,13 @@
         "Darius Slayton (NYG) [Starter] QUESTIONABLE \u2014 \u22123 ELO",
         "Kayvon Thibodeaux (NYG) [Starter] QUESTIONABLE \u2014 \u22122 ELO",
         "Sam Roberts (NYG) [Starter] QUESTIONABLE \u2014 \u22122 ELO",
+        "Tucker Large (PHI) [Starter] OUT \u2014 \u22125 ELO",
         "Jonathan Greenard (PHI) [Starter] QUESTIONABLE \u2014 \u22122 ELO",
         "Chandler Martin (PHI) [Starter] QUESTIONABLE \u2014 \u22122 ELO",
         "Efficiency gap: NYG net +0.075 vs PHI net -0.244",
         "Home field: NYG +65 ELO home advantage"
       ],
-      "explanation": "The model gives Philadelphia Eagles a 67.7% win probability \u2014 a moderate favorite over New York Giants. The ELO gap is 117 points with home field adding approximately 65 ELO points."
+      "explanation": "The model gives Philadelphia Eagles a 67.6% win probability \u2014 a moderate favorite over New York Giants. The ELO gap is 117 points with home field adding approximately 65 ELO points."
     },
     {
       "game_id": "401772634",
@@ -464,19 +472,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.1877,
-        "exp_margin": -12.65,
-        "prob_7plus": 0.0833,
-        "prob_14plus": 0.0301,
-        "prob_21plus": 0.01,
+        "win_prob": 0.1933,
+        "exp_margin": -12.35,
+        "prob_7plus": 0.0887,
+        "prob_14plus": 0.0309,
+        "prob_21plus": 0.0105,
         "margin_percentiles": [
-          -36.1,
-          -31.0,
-          -22.3,
-          -12.6,
+          -36.0,
+          -30.6,
+          -21.7,
+          -12.3,
           -2.9,
-          5.6,
-          10.6
+          6.0,
+          11.0
         ]
       },
       "adjustments": {
@@ -651,9 +659,9 @@
       "home_score": 31,
       "away_score": 27,
       "predictions": {
-        "ensemble_prob": 0.8439,
+        "ensemble_prob": 0.8423,
         "logistic_prob": 1.0,
-        "elo_prob": 0.7237,
+        "elo_prob": 0.7132,
         "xgb_prob": 0.875,
         "pyth_prob": 0.7223,
         "eff_prob": 0.6291,
@@ -667,19 +675,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.7052,
-        "exp_margin": 7.69,
-        "prob_7plus": 0.5177,
-        "prob_14plus": 0.3288,
-        "prob_21plus": 0.1767,
+        "win_prob": 0.718,
+        "exp_margin": 8.09,
+        "prob_7plus": 0.5268,
+        "prob_14plus": 0.3354,
+        "prob_21plus": 0.1791,
         "margin_percentiles": [
-          -15.9,
-          -10.7,
-          -1.9,
-          7.5,
-          17.4,
-          26.2,
-          31.1
+          -15.3,
+          -10.2,
+          -1.4,
+          8.0,
+          17.5,
+          26.4,
+          31.9
         ]
       },
       "adjustments": {
@@ -693,7 +701,7 @@
       "elo": {
         "home": 1478.9,
         "away": 1354.2,
-        "diff": 167.3
+        "diff": 158.3
       },
       "bayesian": {
         "home_mu": 1640.3,
@@ -711,6 +719,20 @@
       },
       "injuries": {
         "home": [
+          {
+            "player": "Hunter Wohler",
+            "status": "Questionable",
+            "position": "S",
+            "injury_description": "General manager Chris Ballard indicated a couple weeks ago that Wohler was at the end of his rehab process for the Lisfranc injury he suffered during preseason last year, and Wohler echoed those sentiments to reporters Wednesday. The Colts recently added promising safety prospect A.J. Haulcy in the third round of the 2026 NFL Draft, but they're still otherwise relatively thin at the position behind returning starter Camryn Bynum, so a strong start to training camp could still start Wohler on a trajectory towards earning a depth spot on the 53-man roster for 2026.",
+            "value_tier": "starter"
+          },
+          {
+            "player": "Jack Wilson",
+            "status": "Injured Reserve",
+            "position": "OT",
+            "injury_description": "Wilson was initially let go by the team but will remain in Indianapolis after clearing waivers. The 26-year-old spent all of the 2025 campaign on injured reserve and will now be forced to miss the entirety of the upcoming season as well.",
+            "value_tier": "starter"
+          },
           {
             "player": "Anthony Richardson Sr.",
             "status": "Questionable",
@@ -730,20 +752,6 @@
             "status": "Active",
             "position": "RB",
             "injury_description": "McGowan had a tumultuous college career, which saw him dismissed from Oklahoma's program after being arrested in April of 2021. He didn't see the field again until 2024 with New Mexico State and ended his college career with Kentucky in 2025, when he turned 165 carries into 725 yards and 12 touchdowns along with 19 catches for 126 yards over 11 games. McGowan has good size with a 6-foot, 223-pound frame, and he has the flexibility and strength to move around defenders, though he's not as explosive as other backfield prospects. There will be questions around his character heading into his NFL rookie season, but he'll have the opportunity to prove himself in Indianapolis, where he'll compete against DJ Giddens and Ulysses Bentley for rotational snaps behind lead back Jonathan Taylor.",
-            "value_tier": "starter"
-          },
-          {
-            "player": "Caden Curry",
-            "status": "Active",
-            "position": "LB",
-            "injury_description": "If the draft were just a matter of selecting the most productive college football players, then Curry (6-foot-3, 257 pounds) would have gone much earlier than this. It's almost puzzling that Curry could lead the 2025 Buckeyes defense in tackles for loss (16.5) and sacks (11.0) and still fall this far in the draft, especially given all the other star-level talent boasted by the Buckeyes defense. Curry was a backup for his first three years at Ohio State, however, and his short arms (30 and 1/8 inches) might leave him less effective at shedding blocks than he was at the college level. Some great collegiate players just don't really translate to the pro level due to lack of athletic traits, and Curry's grades on that front are poor enough that he likely projects as a backup in the NFL.",
-            "value_tier": "starter"
-          },
-          {
-            "player": "George Gumbs Jr.",
-            "status": "Active",
-            "position": "LB",
-            "injury_description": "Gumbs (6-foot-4, 245 pounds) spent time transitioning between multiple positions early in his career at Northern Illinois, including wide receiver and tight end, before settling in as an edge rusher in 2023 and then transferring to Florida in 2024 and starting one-and-half seasons. As a rookie, the 23-year-old will be a solid candidate to carve out a rotational role in Indianapolis' deep pass rush corps that includes Laiatu Latu, JT Tuimoloau, Micheal Clemons and Arden Key, as well as defensive tackles DeForest Buckner (neck) and Grover Stewart.",
             "value_tier": "starter"
           }
         ],
@@ -786,23 +794,30 @@
         ]
       },
       "injury_impact": {
-        "home_elo_penalty": 35.2,
+        "home_elo_penalty": 44.2,
         "away_elo_penalty": 2.8,
-        "home_impact_score": 0.32,
+        "home_impact_score": 0.4018,
         "away_impact_score": 0.0255,
         "home_key_players_out": [
-          {
-            "player": "Anthony Richardson Sr.",
-            "position": "QB",
-            "status": "Questionable",
-            "elo_impact": 12.0,
-            "value_tier": "starter"
-          },
           {
             "player": "Hunter Wohler",
             "position": "S",
             "status": "Questionable",
             "elo_impact": 2.0,
+            "value_tier": "starter"
+          },
+          {
+            "player": "Jack Wilson",
+            "position": "OT",
+            "status": "Injured Reserve",
+            "elo_impact": 9.0,
+            "value_tier": "starter"
+          },
+          {
+            "player": "Anthony Richardson Sr.",
+            "position": "QB",
+            "status": "Questionable",
+            "elo_impact": 12.0,
             "value_tier": "starter"
           },
           {
@@ -857,15 +872,15 @@
       },
       "prediction_drivers": [
         "ELO advantage: IND +125 rating points",
-        "Anthony Richardson Sr. (IND) [Starter] QUESTIONABLE \u2014 \u221212 ELO",
         "Hunter Wohler (IND) [Starter] QUESTIONABLE \u2014 \u22122 ELO",
-        "Justin Walley (IND) [Starter] QUESTIONABLE \u2014 \u22122 ELO",
+        "Jack Wilson (IND) [Starter] INJURED RESERVE \u2014 \u22129 ELO",
+        "Anthony Richardson Sr. (IND) [Starter] QUESTIONABLE \u2014 \u221212 ELO",
         "Trey Benson (ARI) [Starter] QUESTIONABLE \u2014 \u22123 ELO",
         "Efficiency gap: IND net +0.232 vs ARI net +0.098",
         "Travel penalty: away team travels 1506 miles",
         "Home field: IND +65 ELO home advantage"
       ],
-      "explanation": "The model gives Indianapolis Colts a 84.4% win probability \u2014 a strong favorite over Arizona Cardinals. The ELO gap is 125 points with home field adding approximately 65 ELO points. Travel distance 1506 miles factors into the away team rating."
+      "explanation": "The model gives Indianapolis Colts a 84.2% win probability \u2014 a strong favorite over Arizona Cardinals. The ELO gap is 125 points with home field adding approximately 65 ELO points. Travel distance 1506 miles factors into the away team rating."
     },
     {
       "game_id": "401772750",
@@ -899,19 +914,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.4378,
-        "exp_margin": -2.27,
-        "prob_7plus": 0.2605,
-        "prob_14plus": 0.1287,
-        "prob_21plus": 0.0527,
+        "win_prob": 0.4341,
+        "exp_margin": -2.36,
+        "prob_7plus": 0.2543,
+        "prob_14plus": 0.1262,
+        "prob_21plus": 0.0512,
         "margin_percentiles": [
           -25.8,
-          -20.6,
-          -11.9,
-          -2.3,
-          7.5,
-          16.2,
-          21.4
+          -20.5,
+          -12.0,
+          -2.2,
+          7.2,
+          16.0,
+          21.1
         ]
       },
       "adjustments": {
@@ -1087,19 +1102,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.4486,
-        "exp_margin": -2.0,
-        "prob_7plus": 0.2659,
-        "prob_14plus": 0.1308,
-        "prob_21plus": 0.0514,
+        "win_prob": 0.4471,
+        "exp_margin": -1.86,
+        "prob_7plus": 0.2638,
+        "prob_14plus": 0.1324,
+        "prob_21plus": 0.0537,
         "margin_percentiles": [
-          -25.4,
-          -20.3,
-          -11.7,
+          -25.2,
+          -19.9,
+          -11.4,
           -1.8,
-          7.6,
-          16.3,
-          21.1
+          7.7,
+          16.4,
+          21.4
         ]
       },
       "adjustments": {
@@ -1290,19 +1305,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6142,
-        "exp_margin": 3.97,
-        "prob_7plus": 0.4179,
-        "prob_14plus": 0.2399,
-        "prob_21plus": 0.1138,
+        "win_prob": 0.6134,
+        "exp_margin": 4.15,
+        "prob_7plus": 0.422,
+        "prob_14plus": 0.2456,
+        "prob_21plus": 0.1148,
         "margin_percentiles": [
-          -19.4,
-          -14.1,
-          -5.5,
-          4.1,
-          13.5,
-          22.1,
-          27.2
+          -19.2,
+          -14.3,
+          -5.6,
+          4.2,
+          13.8,
+          22.3,
+          27.3
         ]
       },
       "adjustments": {
@@ -1335,6 +1350,13 @@
       "injuries": {
         "home": [
           {
+            "player": "Eli Heidenreich",
+            "status": "Active",
+            "position": "RB",
+            "injury_description": "The team roster and Heidenreich's player page both show 'RB/WR' as his position, reflecting uncertainty about his NFL future after a three-year run at Navy yielded 169 carries and 109 catches (for 3,151 yards and 23 TDs). A 4.44 40 at the combine confirmed that Heidenreich has NFL-caliber athleticism, but he's thin for a running back (6-feet, 198 pounds) and doesn't have much experience running routes from the perimeter. While there's always some chance the Steelers create a unique role in their offense for Heidenreich, the more likely reality for a seventh-round pick (230th overall) is that he'll need to show value on special teams and/or as the backup for a more conventional role (e.g., third-down back, slot receiver).",
+            "value_tier": "starter"
+          },
+          {
             "player": "Daequan Hardy",
             "status": "Injured Reserve",
             "position": "CB",
@@ -1360,13 +1382,6 @@
             "status": "Active",
             "position": "TE",
             "injury_description": "Metayer appeared in 43 college games, playing at Cincinnati for two seasons before transferring to Arizona State to finish his collegiate career with the Sun Devils. The tight end caught 94 passes for 971 yards and 14 touchdowns over the four-year span. Metayer will spend training camp competing with Riley Nowakowski, J.J. Galbreath and Lake McRee for the chance to start the season providing special teams and offensive depth value behind starters Pat Freiermuth and Darnell Washington.",
-            "value_tier": "starter"
-          },
-          {
-            "player": "Laith Marjan",
-            "status": "Active",
-            "position": "PK",
-            "injury_description": "Marjan ended his college career at Kansas, making 14 of 17 field goals (including a career-long attempt of 55 yards) and converting all 40 of his extra-point tries. Current Steelers kicker Chris Boswell suffered some inconsistencies near the end of the 2025 season, so Marjan is likely a training camp addition to help Boswell tighten up his game with some competition. Boswell is well regarded as one of the league's most productive kickers, so it likely would take a collapse by him and a stellar showing by Marjan to change any positions on the depth chart by September.",
             "value_tier": "starter"
           }
         ],
@@ -1502,19 +1517,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6291,
-        "exp_margin": 4.8,
-        "prob_7plus": 0.439,
-        "prob_14plus": 0.2566,
-        "prob_21plus": 0.1267,
+        "win_prob": 0.6292,
+        "exp_margin": 4.57,
+        "prob_7plus": 0.4342,
+        "prob_14plus": 0.2518,
+        "prob_21plus": 0.1219,
         "margin_percentiles": [
-          -18.4,
-          -13.3,
-          -4.7,
-          4.8,
-          14.3,
-          23.0,
-          28.3
+          -19.0,
+          -13.6,
+          -5.1,
+          4.6,
+          14.1,
+          22.5,
+          28.1
         ]
       },
       "adjustments": {
@@ -1689,18 +1704,18 @@
       },
       "monte_carlo": {
         "win_prob": 0.5193,
-        "exp_margin": 0.73,
-        "prob_7plus": 0.3296,
-        "prob_14plus": 0.1763,
-        "prob_21plus": 0.0786,
+        "exp_margin": 0.69,
+        "prob_7plus": 0.329,
+        "prob_14plus": 0.1714,
+        "prob_21plus": 0.0723,
         "margin_percentiles": [
-          -23.0,
-          -17.5,
-          -9.0,
-          0.7,
-          10.3,
-          19.0,
-          24.3
+          -22.7,
+          -17.1,
+          -8.7,
+          0.8,
+          10.2,
+          18.6,
+          23.7
         ]
       },
       "adjustments": {
@@ -1733,6 +1748,13 @@
       "injuries": {
         "home": [
           {
+            "player": "Travis Hunter",
+            "status": "Questionable",
+            "position": "WR",
+            "injury_description": "Gladstone made similar comments about positional expectations in January, saying Hunter will play on both sides of the ball (without elaborating on the extent). Jacksonville brass may not even have an answer there internally, after Hunter's rookie season was cut short by an LCL tear at the end of October. Fellow WRs Jakobi Meyers and Parker Washington then emerged down the stretch, teaming up with Brian Thomas to form a solid trio at the position. All three are still under contract, whereas Jacksonville lost CB Greg Newsome to the Giants in free agency, leaving a clear opening for a starting job. Conventional wisdom right now suggests Hunter will fill that job while working in a part-time role on offense. It's a reasonable expectation, yet best viewed as an evolving situation rather than a locked-in plan. For now, Hunter is a limited participant in the offseason program, with early workouts unlikely to provide any meaningful hint about his NFL future.",
+            "value_tier": "starter"
+          },
+          {
             "player": "Bhayshul Tuten",
             "status": "Active",
             "position": "RB",
@@ -1759,16 +1781,16 @@
             "position": "WR",
             "injury_description": "Pena, a sixth-year senior, played his first five college seasons with Syracuse before ending his college journey at Penn State. The wide receiver started eight games in 2025 and participated in 13, totalling 49 receptions for 552 receiving yards and two receiving touchdowns. Pena's average size (5-foot-10, 187 pounds) and speed will do him no favors at the NFL level, but his toughness and intuitive feel for space may sneak him onto an NFL roster as a punt return option.",
             "value_tier": "starter"
-          },
-          {
-            "player": "Ben Patterson",
-            "status": "Active",
-            "position": "WR",
-            "injury_description": "Patterson played all four of his collegiate seasons for Texas Permian Basin, playing every game for the Falcons in his final three seasons. The wide receiver accumulated 32 catches for 678 receiving yards and five receiving touchdowns over 14 games in the 2025 season. Now Patterson looks to continue his football career at the next level with the Jaguars.",
-            "value_tier": "starter"
           }
         ],
         "away": [
+          {
+            "player": "Dante Fowler Jr.",
+            "status": "Active",
+            "position": "DE",
+            "injury_description": "The deal is worth up to $5 million. Fowler will turn 32 years old later this summer and is headed into his 12th season out of the University of Florida. He appeared in all 17 regular-season games with the Cowboys last season, making 11 starts, but recorded just 3.0 sacks as a sub-package edge rusher while playing 32 percent of the defensive snaps. In Seattle, he'll provide depth behind DeMarcus Lawrence, Uchenna Nwosu and Derick Hall.",
+            "value_tier": "starter"
+          },
           {
             "player": "Levi Wentz",
             "status": "Active",
@@ -1795,13 +1817,6 @@
             "status": "Active",
             "position": "TE",
             "injury_description": "The details of the deal are unknown at this point, but Bryant fits with the Seahawks' recent approach of seeking out hard-nosed tight ends. As for his competition, 2024 fourth-rounder AJ Barner, 2025 second-rounder Elijah Arroyo and veteran Eric Saubert are all likely to make Seattle's 53-man roster to start the 2026 season, but there's a decent chance the team keeps four tight ends, meaning one of Bryant or Nick Kallerup could potentially make the opening roster too.",
-            "value_tier": "starter"
-          },
-          {
-            "player": "Michael Dansby",
-            "status": "Active",
-            "position": "CB",
-            "injury_description": "Not that it's unusual for late seventh-round picks, but Dansby was well off the NFL Draft radar after playing three seasons at San Jose State and one at Arizona, all of them unremarkable. At a listed 5-foot-11, 185 pounds, Dansby didn't participate in pre-draft athletic testing, so his skill set and tools grade both are question marks at best. Perhaps the Seahawks saw something in Dansby's special-teams upside.",
             "value_tier": "starter"
           }
         ]
@@ -1884,19 +1899,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.4579,
-        "exp_margin": -1.3,
-        "prob_7plus": 0.2837,
-        "prob_14plus": 0.1452,
-        "prob_21plus": 0.059,
+        "win_prob": 0.4638,
+        "exp_margin": -1.29,
+        "prob_7plus": 0.2788,
+        "prob_14plus": 0.1377,
+        "prob_21plus": 0.0575,
         "margin_percentiles": [
-          -24.8,
+          -24.6,
           -19.5,
-          -11.1,
-          -1.4,
-          8.5,
-          17.0,
-          22.2
+          -10.8,
+          -1.2,
+          8.2,
+          16.7,
+          21.9
         ]
       },
       "adjustments": {
@@ -2071,19 +2086,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.54,
-        "exp_margin": 1.69,
-        "prob_7plus": 0.3492,
-        "prob_14plus": 0.1918,
-        "prob_21plus": 0.0892,
+        "win_prob": 0.5406,
+        "exp_margin": 1.51,
+        "prob_7plus": 0.3499,
+        "prob_14plus": 0.19,
+        "prob_21plus": 0.0869,
         "margin_percentiles": [
-          -21.3,
-          -16.3,
+          -21.9,
+          -17.0,
           -7.9,
-          1.5,
+          1.4,
           11.1,
-          20.1,
-          25.3
+          19.8,
+          25.0
         ]
       },
       "adjustments": {
@@ -2250,9 +2265,9 @@
       "home_score": 27,
       "away_score": 18,
       "predictions": {
-        "ensemble_prob": 0.6746,
+        "ensemble_prob": 0.6741,
         "logistic_prob": 0.6957,
-        "elo_prob": 0.7514,
+        "elo_prob": 0.7482,
         "xgb_prob": 0.6874,
         "pyth_prob": 0.6724,
         "eff_prob": 0.5288,
@@ -2266,19 +2281,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6079,
-        "exp_margin": 3.91,
-        "prob_7plus": 0.4105,
-        "prob_14plus": 0.2361,
-        "prob_21plus": 0.1155,
+        "win_prob": 0.6104,
+        "exp_margin": 3.99,
+        "prob_7plus": 0.4146,
+        "prob_14plus": 0.2435,
+        "prob_21plus": 0.1158,
         "margin_percentiles": [
           -19.2,
-          -14.1,
-          -5.8,
-          3.8,
-          13.4,
-          22.2,
-          27.5
+          -14.4,
+          -5.6,
+          3.9,
+          13.7,
+          22.5,
+          27.2
         ]
       },
       "adjustments": {
@@ -2292,7 +2307,7 @@
       "elo": {
         "home": 1506.8,
         "away": 1434.6,
-        "diff": 192.2
+        "diff": 189.2
       },
       "bayesian": {
         "home_mu": 1622.0,
@@ -2310,6 +2325,13 @@
       },
       "injuries": {
         "home": [
+          {
+            "player": "Tucker Kraft",
+            "status": "Questionable",
+            "position": "TE",
+            "injury_description": "Gutekunst previously labeled Kraft ahead of schedule in mid-January, and it appears the tight end's progress has continued on an encouraging track. He noted that Kraft is further along in his rehab than Parsons, which makes sense considering the timing of their respective ACL tears (early Nov. vs. mid-Dec.). Kraft, meanwhile, has stated that he's targeting a Week 1 return. He's entering his age-26 season and the final year of his deal with the Packers, though Gutekunst has confirmed talks regarding an extension are underway. After Green Bay allowed Romeo Doubs to sign elsewhere as a free agent (Patriots) and dealt Dontayvion Wicks in a trade (Eagles), Kraft is facing a clearer path to targets alongside returning wideouts Christian Watson, Jayden Reed and Matthew Golden. In eight regular-season games prior to tearing his ACL in 2025, Kraft had emerged as Green Bay's leading receiver with 32 grabs for 489 yards and six scores on 44 targets.",
+            "value_tier": "starter"
+          },
           {
             "player": "Tyrod Taylor",
             "status": "Active",
@@ -2336,13 +2358,6 @@
             "status": "Active",
             "position": "QB",
             "injury_description": "Drones started his college career at Baylor, playing in seven games over two seasons before transferring to Virginia Tech in 2023, where he started the remainder of his collegiate games. The quarterback participated in 12 games in 2025, going 178-for-315 (56.5 percent) and accumulating 1,919 yards and 17 touchdowns to nine interceptions. Drones will have to outperform Desmond Ridder and Kyle McCord in training camp to have a shot at backing up Jordan Love during the 2026 NFL season.",
-            "value_tier": "starter"
-          },
-          {
-            "player": "Lukas Van Ness",
-            "status": "Active",
-            "position": "DE",
-            "injury_description": "The move keeps the 24-year-old under contract through 2027 and guarantees him a salary near $13.8 million. The three-year pro missed half of last season with an ankle injury, which caused him to finish with a disappointing 1.5 sacks and 19 tackles (12 solo) over nine regular-season games. The 2024 season wasn't much better as he recorded 33 tackles (22 solo) and six tackles for loss in 17 regular-season games, but he at least combined for 7.0 sacks over his first two seasons. Green Bay's switch to a 3-4 defensive scheme could impact Van Ness's playing time, but with Micah Parsons still rehabbing back from a December ACL tear and pass-rush depth lost this season in the form of Rashan Gary and Kingsley Enagbare, the new scheme won't be a reason that Van Ness, a 2023 first-round pick, would be kept off the field.",
             "value_tier": "starter"
           }
         ],
@@ -2385,11 +2400,18 @@
         ]
       },
       "injury_impact": {
-        "home_elo_penalty": 7.6,
+        "home_elo_penalty": 10.6,
         "away_elo_penalty": 6.6,
-        "home_impact_score": 0.0691,
+        "home_impact_score": 0.0964,
         "away_impact_score": 0.06,
         "home_key_players_out": [
+          {
+            "player": "Tucker Kraft",
+            "position": "TE",
+            "status": "Questionable",
+            "elo_impact": 3.0,
+            "value_tier": "starter"
+          },
           {
             "player": "Zach Tom",
             "position": "OT",
@@ -2442,9 +2464,9 @@
       },
       "prediction_drivers": [
         "ELO advantage: GB +72 rating points",
+        "Tucker Kraft (GB) [Starter] QUESTIONABLE \u2014 \u22123 ELO",
         "Zach Tom (GB) [Starter] QUESTIONABLE \u2014 \u22124 ELO",
         "Micah Parsons (GB) [Starter] QUESTIONABLE \u2014 \u22123 ELO",
-        "Sean Rhyan (GB) [Starter] QUESTIONABLE \u2014 \u22121 ELO",
         "Connor Lew (CIN) [Starter] QUESTIONABLE \u2014 \u22121 ELO",
         "Kris Jenkins Jr. (CIN) [Starter] QUESTIONABLE \u2014 \u22122 ELO",
         "Erick All Jr. (CIN) [Starter] QUESTIONABLE \u2014 \u22123 ELO",
@@ -2452,7 +2474,7 @@
         "Rest advantage: GB has 6 extra days rest",
         "Home field: GB +65 ELO home advantage"
       ],
-      "explanation": "The model gives Green Bay Packers a 67.5% win probability \u2014 a moderate favorite over Cincinnati Bengals. The ELO gap is 72 points with home field adding approximately 65 ELO points. Rest advantage favors GB."
+      "explanation": "The model gives Green Bay Packers a 67.4% win probability \u2014 a moderate favorite over Cincinnati Bengals. The ELO gap is 72 points with home field adding approximately 65 ELO points. Rest advantage favors GB."
     },
     {
       "game_id": "401772749",
@@ -2486,19 +2508,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.4841,
-        "exp_margin": -0.59,
-        "prob_7plus": 0.2954,
-        "prob_14plus": 0.1519,
-        "prob_21plus": 0.0636,
+        "win_prob": 0.4855,
+        "exp_margin": -0.48,
+        "prob_7plus": 0.296,
+        "prob_14plus": 0.1508,
+        "prob_21plus": 0.0662,
         "margin_percentiles": [
-          -23.8,
-          -18.6,
-          -10.0,
-          -0.7,
-          8.9,
-          17.5,
-          22.7
+          -23.9,
+          -18.4,
+          -9.8,
+          -0.5,
+          9.0,
+          17.6,
+          22.8
         ]
       },
       "adjustments": {
@@ -2689,19 +2711,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.5018,
-        "exp_margin": 0.05,
-        "prob_7plus": 0.3112,
-        "prob_14plus": 0.1606,
-        "prob_21plus": 0.0641,
+        "win_prob": 0.495,
+        "exp_margin": -0.05,
+        "prob_7plus": 0.3065,
+        "prob_14plus": 0.1627,
+        "prob_21plus": 0.0695,
         "margin_percentiles": [
-          -22.7,
+          -23.0,
           -18.0,
           -9.6,
-          0.1,
-          9.5,
-          17.9,
-          22.8
+          -0.2,
+          9.4,
+          18.2,
+          23.4
         ]
       },
       "adjustments": {
@@ -2737,7 +2759,7 @@
             "player": "Kenneth Walker III",
             "status": "Active",
             "position": "RB",
-            "injury_description": "On the heels of being named the most valuable player of Super Bowl LX, Walker inked a lucrative three-year deal to lead Kansas City's backfield this coming season. Edholm notes that Walker earned a reputation as a run-first back during his four-year stint with Seattle, but the 2022 second-rounder -- who logged 31 catches in 17 regular-season games in 2025 -- has reportedly been spending time with QB Patrick Mahomes (who is bouncing back from a December ACL/LCL injury) this offseason in anticipation of a potentially expanded role as a pass-catcher. \"We've been working on getting connected in the passing game and everything, so that's good,\" Walker said. \"I feel like I'll be used more in the pass game.\" Either way, as the clear-cut RB1 for his new team, Walker figures to be busy out of the gate this coming season, while Mahomes works his way back to form. Competing for complementary work behind Walker will be a pair of newcomers in rookie Emmett Johnson and free agent addition Emari Demercado, as well as 2025 seventh-rounder Brashard Smith.",
+            "injury_description": "On the heels of being named the most valuable player of Super Bowl LX, Walker inked a lucrative three-year deal to lead Kansas City's backfield this coming season. Edholm notes that Walker earned a reputation as a run-first back during his four-year stint with Seattle, but the 2022 second-rounder -- who logged 31 catches in 17 regular-season games in 2025 -- has reportedly been spending time with QB Patrick Mahomes (who is bouncing back from a December ACL/LCL injury) this offseason in anticipation of a potentially expanded role as a pass catcher. \"We've been working on getting connected in the passing game and everything, so that's good,\" Walker said. \"I feel like I'll be used more in the pass game.\" Either way, as the clear-cut RB1 for his new team, Walker figures to be busy out of the gate this coming season while Mahomes works his way back to form. Competing for complementary work behind Walker will be a pair of newcomers in rookie Emmett Johnson and free agent addition Emari Demercado, as well as 2025 seventh-rounder Brashard Smith.",
             "value_tier": "starter"
           },
           {
@@ -2876,19 +2898,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.4735,
-        "exp_margin": -0.92,
-        "prob_7plus": 0.2914,
-        "prob_14plus": 0.1474,
-        "prob_21plus": 0.0601,
+        "win_prob": 0.48,
+        "exp_margin": -0.78,
+        "prob_7plus": 0.2856,
+        "prob_14plus": 0.1453,
+        "prob_21plus": 0.0615,
         "margin_percentiles": [
-          -24.2,
-          -19.1,
-          -10.7,
-          -0.9,
-          8.7,
-          17.6,
-          22.1
+          -23.9,
+          -18.7,
+          -10.1,
+          -0.7,
+          8.5,
+          17.2,
+          22.4
         ]
       },
       "adjustments": {
@@ -3103,19 +3125,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.4225,
-        "exp_margin": -2.85,
-        "prob_7plus": 0.2392,
-        "prob_14plus": 0.1125,
-        "prob_21plus": 0.0441,
+        "win_prob": 0.4269,
+        "exp_margin": -2.61,
+        "prob_7plus": 0.247,
+        "prob_14plus": 0.1168,
+        "prob_21plus": 0.0475,
         "margin_percentiles": [
-          -25.7,
+          -26.1,
           -21.0,
-          -12.4,
-          -2.8,
-          6.5,
-          14.9,
-          19.9
+          -12.1,
+          -2.6,
+          6.9,
+          15.3,
+          20.7
         ]
       },
       "adjustments": {
@@ -3307,19 +3329,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.5521,
-        "exp_margin": 1.82,
-        "prob_7plus": 0.3585,
-        "prob_14plus": 0.1918,
-        "prob_21plus": 0.0899,
+        "win_prob": 0.554,
+        "exp_margin": 1.9,
+        "prob_7plus": 0.3581,
+        "prob_14plus": 0.2,
+        "prob_21plus": 0.0863,
         "margin_percentiles": [
-          -21.7,
-          -16.5,
-          -7.8,
-          1.8,
-          11.2,
-          20.1,
-          25.4
+          -21.6,
+          -16.2,
+          -7.6,
+          1.9,
+          11.4,
+          19.8,
+          25.1
         ]
       },
       "adjustments": {
@@ -3389,6 +3411,13 @@
         ],
         "away": [
           {
+            "player": "Eli Heidenreich",
+            "status": "Active",
+            "position": "RB",
+            "injury_description": "The team roster and Heidenreich's player page both show 'RB/WR' as his position, reflecting uncertainty about his NFL future after a three-year run at Navy yielded 169 carries and 109 catches (for 3,151 yards and 23 TDs). A 4.44 40 at the combine confirmed that Heidenreich has NFL-caliber athleticism, but he's thin for a running back (6-feet, 198 pounds) and doesn't have much experience running routes from the perimeter. While there's always some chance the Steelers create a unique role in their offense for Heidenreich, the more likely reality for a seventh-round pick (230th overall) is that he'll need to show value on special teams and/or as the backup for a more conventional role (e.g., third-down back, slot receiver).",
+            "value_tier": "starter"
+          },
+          {
             "player": "Daequan Hardy",
             "status": "Injured Reserve",
             "position": "CB",
@@ -3414,13 +3443,6 @@
             "status": "Active",
             "position": "TE",
             "injury_description": "Metayer appeared in 43 college games, playing at Cincinnati for two seasons before transferring to Arizona State to finish his collegiate career with the Sun Devils. The tight end caught 94 passes for 971 yards and 14 touchdowns over the four-year span. Metayer will spend training camp competing with Riley Nowakowski, J.J. Galbreath and Lake McRee for the chance to start the season providing special teams and offensive depth value behind starters Pat Freiermuth and Darnell Washington.",
-            "value_tier": "starter"
-          },
-          {
-            "player": "Laith Marjan",
-            "status": "Active",
-            "position": "PK",
-            "injury_description": "Marjan ended his college career at Kansas, making 14 of 17 field goals (including a career-long attempt of 55 yards) and converting all 40 of his extra-point tries. Current Steelers kicker Chris Boswell suffered some inconsistencies near the end of the 2025 season, so Marjan is likely a training camp addition to help Boswell tighten up his game with some competition. Boswell is well regarded as one of the league's most productive kickers, so it likely would take a collapse by him and a stellar showing by Marjan to change any positions on the depth chart by September.",
             "value_tier": "starter"
           }
         ]
@@ -3526,19 +3548,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.4802,
-        "exp_margin": -0.59,
-        "prob_7plus": 0.2965,
-        "prob_14plus": 0.1567,
-        "prob_21plus": 0.0665,
+        "win_prob": 0.479,
+        "exp_margin": -0.6,
+        "prob_7plus": 0.2983,
+        "prob_14plus": 0.155,
+        "prob_21plus": 0.0669,
         "margin_percentiles": [
-          -23.7,
-          -18.7,
-          -10.3,
+          -23.8,
+          -18.9,
+          -10.1,
           -0.7,
           9.1,
-          18.0,
-          23.0
+          17.9,
+          22.8
         ]
       },
       "adjustments": {
@@ -3571,6 +3593,13 @@
       "injuries": {
         "home": [
           {
+            "player": "Travis Hunter",
+            "status": "Questionable",
+            "position": "WR",
+            "injury_description": "Gladstone made similar comments about positional expectations in January, saying Hunter will play on both sides of the ball (without elaborating on the extent). Jacksonville brass may not even have an answer there internally, after Hunter's rookie season was cut short by an LCL tear at the end of October. Fellow WRs Jakobi Meyers and Parker Washington then emerged down the stretch, teaming up with Brian Thomas to form a solid trio at the position. All three are still under contract, whereas Jacksonville lost CB Greg Newsome to the Giants in free agency, leaving a clear opening for a starting job. Conventional wisdom right now suggests Hunter will fill that job while working in a part-time role on offense. It's a reasonable expectation, yet best viewed as an evolving situation rather than a locked-in plan. For now, Hunter is a limited participant in the offseason program, with early workouts unlikely to provide any meaningful hint about his NFL future.",
+            "value_tier": "starter"
+          },
+          {
             "player": "Bhayshul Tuten",
             "status": "Active",
             "position": "RB",
@@ -3596,13 +3625,6 @@
             "status": "Active",
             "position": "WR",
             "injury_description": "Pena, a sixth-year senior, played his first five college seasons with Syracuse before ending his college journey at Penn State. The wide receiver started eight games in 2025 and participated in 13, totalling 49 receptions for 552 receiving yards and two receiving touchdowns. Pena's average size (5-foot-10, 187 pounds) and speed will do him no favors at the NFL level, but his toughness and intuitive feel for space may sneak him onto an NFL roster as a punt return option.",
-            "value_tier": "starter"
-          },
-          {
-            "player": "Ben Patterson",
-            "status": "Active",
-            "position": "WR",
-            "injury_description": "Patterson played all four of his collegiate seasons for Texas Permian Basin, playing every game for the Falcons in his final three seasons. The wide receiver accumulated 32 catches for 678 receiving yards and five receiving touchdowns over 14 games in the 2025 season. Now Patterson looks to continue his football career at the next level with the Jaguars.",
             "value_tier": "starter"
           }
         ],
@@ -3712,19 +3734,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6577,
-        "exp_margin": 5.84,
-        "prob_7plus": 0.4626,
-        "prob_14plus": 0.2835,
-        "prob_21plus": 0.1444,
+        "win_prob": 0.6606,
+        "exp_margin": 5.96,
+        "prob_7plus": 0.4718,
+        "prob_14plus": 0.2895,
+        "prob_21plus": 0.1436,
         "margin_percentiles": [
-          -17.4,
-          -12.5,
-          -3.6,
-          5.7,
-          15.5,
-          24.2,
-          29.4
+          -17.5,
+          -12.2,
+          -3.8,
+          5.9,
+          15.8,
+          24.1,
+          28.9
         ]
       },
       "adjustments": {
@@ -3915,16 +3937,16 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6453,
-        "exp_margin": 5.39,
-        "prob_7plus": 0.452,
-        "prob_14plus": 0.2725,
-        "prob_21plus": 0.1342,
+        "win_prob": 0.641,
+        "exp_margin": 5.18,
+        "prob_7plus": 0.4526,
+        "prob_14plus": 0.2717,
+        "prob_21plus": 0.1369,
         "margin_percentiles": [
-          -17.7,
-          -12.5,
-          -4.1,
-          5.3,
+          -18.7,
+          -13.2,
+          -4.5,
+          5.2,
           15.0,
           23.5,
           28.6
@@ -4109,19 +4131,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.3468,
+        "win_prob": 0.3451,
         "exp_margin": -5.77,
-        "prob_7plus": 0.1861,
-        "prob_14plus": 0.0801,
-        "prob_21plus": 0.0268,
+        "prob_7plus": 0.1845,
+        "prob_14plus": 0.0805,
+        "prob_21plus": 0.0265,
         "margin_percentiles": [
-          -29.1,
-          -24.1,
-          -15.4,
-          -5.7,
+          -28.8,
+          -23.8,
+          -15.3,
+          -5.8,
           3.9,
           12.2,
-          17.4
+          17.5
         ]
       },
       "adjustments": {
@@ -4312,19 +4334,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6914,
-        "exp_margin": 7.03,
-        "prob_7plus": 0.5042,
-        "prob_14plus": 0.3109,
-        "prob_21plus": 0.1603,
+        "win_prob": 0.6845,
+        "exp_margin": 6.95,
+        "prob_7plus": 0.5018,
+        "prob_14plus": 0.3129,
+        "prob_21plus": 0.167,
         "margin_percentiles": [
-          -16.4,
-          -11.0,
-          -2.5,
+          -16.3,
+          -11.6,
+          -2.8,
           7.1,
-          16.8,
-          25.2,
-          29.9
+          16.7,
+          25.4,
+          30.5
         ]
       },
       "adjustments": {
@@ -4360,7 +4382,7 @@
             "player": "Kenneth Walker III",
             "status": "Active",
             "position": "RB",
-            "injury_description": "On the heels of being named the most valuable player of Super Bowl LX, Walker inked a lucrative three-year deal to lead Kansas City's backfield this coming season. Edholm notes that Walker earned a reputation as a run-first back during his four-year stint with Seattle, but the 2022 second-rounder -- who logged 31 catches in 17 regular-season games in 2025 -- has reportedly been spending time with QB Patrick Mahomes (who is bouncing back from a December ACL/LCL injury) this offseason in anticipation of a potentially expanded role as a pass-catcher. \"We've been working on getting connected in the passing game and everything, so that's good,\" Walker said. \"I feel like I'll be used more in the pass game.\" Either way, as the clear-cut RB1 for his new team, Walker figures to be busy out of the gate this coming season, while Mahomes works his way back to form. Competing for complementary work behind Walker will be a pair of newcomers in rookie Emmett Johnson and free agent addition Emari Demercado, as well as 2025 seventh-rounder Brashard Smith.",
+            "injury_description": "On the heels of being named the most valuable player of Super Bowl LX, Walker inked a lucrative three-year deal to lead Kansas City's backfield this coming season. Edholm notes that Walker earned a reputation as a run-first back during his four-year stint with Seattle, but the 2022 second-rounder -- who logged 31 catches in 17 regular-season games in 2025 -- has reportedly been spending time with QB Patrick Mahomes (who is bouncing back from a December ACL/LCL injury) this offseason in anticipation of a potentially expanded role as a pass catcher. \"We've been working on getting connected in the passing game and everything, so that's good,\" Walker said. \"I feel like I'll be used more in the pass game.\" Either way, as the clear-cut RB1 for his new team, Walker figures to be busy out of the gate this coming season while Mahomes works his way back to form. Competing for complementary work behind Walker will be a pair of newcomers in rookie Emmett Johnson and free agent addition Emari Demercado, as well as 2025 seventh-rounder Brashard Smith.",
             "value_tier": "starter"
           },
           {
@@ -4482,9 +4504,9 @@
       "home_score": 22,
       "away_score": 28,
       "predictions": {
-        "ensemble_prob": 0.5119,
+        "ensemble_prob": 0.5128,
         "logistic_prob": 0.5062,
-        "elo_prob": 0.6991,
+        "elo_prob": 0.7051,
         "xgb_prob": 0.3529,
         "pyth_prob": 0.5525,
         "eff_prob": 0.5757,
@@ -4498,19 +4520,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.5483,
-        "exp_margin": 1.86,
-        "prob_7plus": 0.3558,
-        "prob_14plus": 0.196,
-        "prob_21plus": 0.0874,
+        "win_prob": 0.5629,
+        "exp_margin": 2.16,
+        "prob_7plus": 0.3641,
+        "prob_14plus": 0.2031,
+        "prob_21plus": 0.0902,
         "margin_percentiles": [
           -21.3,
           -16.0,
-          -7.4,
-          1.7,
-          11.4,
-          20.0,
-          24.9
+          -7.2,
+          2.1,
+          11.7,
+          20.3,
+          25.3
         ]
       },
       "adjustments": {
@@ -4524,7 +4546,7 @@
       "elo": {
         "home": 1535.6,
         "away": 1525.8,
-        "diff": 146.5
+        "diff": 151.5
       },
       "bayesian": {
         "home_mu": 1641.2,
@@ -4580,6 +4602,13 @@
         ],
         "away": [
           {
+            "player": "Tucker Large",
+            "status": "Out",
+            "position": "S",
+            "injury_description": "Large signed with the team as an undrafted free agent May 1 but ended up spending less than a week on their active roster. He will now miss at least the first four games of the regular season.",
+            "value_tier": "starter"
+          },
+          {
             "player": "Jalen Carter",
             "status": "Active",
             "position": "DT",
@@ -4606,21 +4635,14 @@
             "position": "DT",
             "injury_description": "Bernard (6-foot-4, 306 pounds) put together an impressive workout performance at the International Player Pathway Pro Day, highlighted by a 4.69 40-yard dash and a 39-inch vertical. Though he has not played organized football at the collegiate level, Philadelphia is intrigued enough by the potential of his rare combination of size and athleticism to invest draft capital into Bernard's development. While Bernard looks set to begin his career working at defensive tackle, he could also test his hand at edge rusher or along the O-line.",
             "value_tier": "starter"
-          },
-          {
-            "player": "Cole Wisniewski",
-            "status": "Active",
-            "position": "S",
-            "injury_description": "Wisniewski probably is not a serious starting safety candidate at the NFL level, but at 6-foot-3, 219 pounds the Texas Tech product has the build to crash hard against the run from the strong safety position. His 2025 season with the Red Raiders was his sixth collegiate season after playing the prior five years at North Dakota State, mostly as a backup. The Eagles will probably be content if Wisniewski can simply play on special teams.",
-            "value_tier": "starter"
           }
         ]
       },
       "injury_impact": {
         "home_elo_penalty": 14.4,
-        "away_elo_penalty": 4.0,
+        "away_elo_penalty": 9.0,
         "home_impact_score": 0.1309,
-        "away_impact_score": 0.0364,
+        "away_impact_score": 0.0818,
         "home_key_players_out": [
           {
             "player": "Caleb Banks",
@@ -4638,6 +4660,13 @@
           }
         ],
         "away_key_players_out": [
+          {
+            "player": "Tucker Large",
+            "position": "S",
+            "status": "Out",
+            "elo_impact": 5.0,
+            "value_tier": "starter"
+          },
           {
             "player": "Jonathan Greenard",
             "position": "LB",
@@ -4661,12 +4690,13 @@
       "prediction_drivers": [
         "Caleb Banks (MIN) [Starter] QUESTIONABLE \u2014 \u22122 ELO",
         "J.J. McCarthy (MIN) [Starter] QUESTIONABLE \u2014 \u221212 ELO",
+        "Tucker Large (PHI) [Starter] OUT \u2014 \u22125 ELO",
         "Jonathan Greenard (PHI) [Starter] QUESTIONABLE \u2014 \u22122 ELO",
         "Chandler Martin (PHI) [Starter] QUESTIONABLE \u2014 \u22122 ELO",
         "Rest advantage: MIN has 5 extra days rest",
         "Home field: MIN +65 ELO home advantage"
       ],
-      "explanation": "The model gives Minnesota Vikings a 51.2% win probability \u2014 a slight favorite over Philadelphia Eagles. The ELO gap is 10 points with home field adding approximately 65 ELO points. Rest advantage favors MIN."
+      "explanation": "The model gives Minnesota Vikings a 51.3% win probability \u2014 a slight favorite over Philadelphia Eagles. The ELO gap is 10 points with home field adding approximately 65 ELO points. Rest advantage favors MIN."
     },
     {
       "game_id": "401772860",
@@ -4700,19 +4730,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.3425,
-        "exp_margin": -5.43,
-        "prob_7plus": 0.1889,
-        "prob_14plus": 0.0876,
-        "prob_21plus": 0.0328,
+        "win_prob": 0.3446,
+        "exp_margin": -5.71,
+        "prob_7plus": 0.1816,
+        "prob_14plus": 0.0801,
+        "prob_21plus": 0.0285,
         "margin_percentiles": [
-          -28.5,
-          -23.5,
-          -14.9,
-          -5.4,
-          4.1,
-          12.9,
-          18.3
+          -28.9,
+          -23.9,
+          -15.2,
+          -5.5,
+          3.8,
+          12.3,
+          17.4
         ]
       },
       "adjustments": {
@@ -4895,19 +4925,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.697,
-        "exp_margin": 7.3,
-        "prob_7plus": 0.5119,
-        "prob_14plus": 0.3179,
-        "prob_21plus": 0.1676,
+        "win_prob": 0.6935,
+        "exp_margin": 7.15,
+        "prob_7plus": 0.5046,
+        "prob_14plus": 0.3124,
+        "prob_21plus": 0.1639,
         "margin_percentiles": [
-          -15.9,
-          -11.0,
-          -2.2,
-          7.4,
-          16.9,
-          25.4,
-          30.8
+          -16.2,
+          -11.1,
+          -2.4,
+          7.1,
+          16.6,
+          25.3,
+          30.9
         ]
       },
       "adjustments": {
@@ -5105,9 +5135,9 @@
       "home_score": 24,
       "away_score": 38,
       "predictions": {
-        "ensemble_prob": 0.5792,
+        "ensemble_prob": 0.5807,
         "logistic_prob": 0.5062,
-        "elo_prob": 0.7328,
+        "elo_prob": 0.7428,
         "xgb_prob": 0.659,
         "pyth_prob": 0.5781,
         "eff_prob": 0.4637,
@@ -5121,19 +5151,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.5556,
-        "exp_margin": 2.04,
-        "prob_7plus": 0.3613,
-        "prob_14plus": 0.1985,
-        "prob_21plus": 0.0941,
+        "win_prob": 0.5641,
+        "exp_margin": 2.2,
+        "prob_7plus": 0.3676,
+        "prob_14plus": 0.2013,
+        "prob_21plus": 0.092,
         "margin_percentiles": [
           -21.1,
-          -16.2,
-          -7.6,
-          2.0,
-          11.7,
+          -15.7,
+          -7.5,
+          2.3,
+          11.6,
           20.5,
-          25.4
+          25.5
         ]
       },
       "adjustments": {
@@ -5147,7 +5177,7 @@
       "elo": {
         "home": 1535.6,
         "away": 1478.9,
-        "diff": 175.3
+        "diff": 184.3
       },
       "bayesian": {
         "home_mu": 1630.8,
@@ -5203,6 +5233,20 @@
         ],
         "away": [
           {
+            "player": "Hunter Wohler",
+            "status": "Questionable",
+            "position": "S",
+            "injury_description": "General manager Chris Ballard indicated a couple weeks ago that Wohler was at the end of his rehab process for the Lisfranc injury he suffered during preseason last year, and Wohler echoed those sentiments to reporters Wednesday. The Colts recently added promising safety prospect A.J. Haulcy in the third round of the 2026 NFL Draft, but they're still otherwise relatively thin at the position behind returning starter Camryn Bynum, so a strong start to training camp could still start Wohler on a trajectory towards earning a depth spot on the 53-man roster for 2026.",
+            "value_tier": "starter"
+          },
+          {
+            "player": "Jack Wilson",
+            "status": "Injured Reserve",
+            "position": "OT",
+            "injury_description": "Wilson was initially let go by the team but will remain in Indianapolis after clearing waivers. The 26-year-old spent all of the 2025 campaign on injured reserve and will now be forced to miss the entirety of the upcoming season as well.",
+            "value_tier": "starter"
+          },
+          {
             "player": "Anthony Richardson Sr.",
             "status": "Questionable",
             "position": "QB",
@@ -5222,28 +5266,14 @@
             "position": "RB",
             "injury_description": "McGowan had a tumultuous college career, which saw him dismissed from Oklahoma's program after being arrested in April of 2021. He didn't see the field again until 2024 with New Mexico State and ended his college career with Kentucky in 2025, when he turned 165 carries into 725 yards and 12 touchdowns along with 19 catches for 126 yards over 11 games. McGowan has good size with a 6-foot, 223-pound frame, and he has the flexibility and strength to move around defenders, though he's not as explosive as other backfield prospects. There will be questions around his character heading into his NFL rookie season, but he'll have the opportunity to prove himself in Indianapolis, where he'll compete against DJ Giddens and Ulysses Bentley for rotational snaps behind lead back Jonathan Taylor.",
             "value_tier": "starter"
-          },
-          {
-            "player": "Caden Curry",
-            "status": "Active",
-            "position": "LB",
-            "injury_description": "If the draft were just a matter of selecting the most productive college football players, then Curry (6-foot-3, 257 pounds) would have gone much earlier than this. It's almost puzzling that Curry could lead the 2025 Buckeyes defense in tackles for loss (16.5) and sacks (11.0) and still fall this far in the draft, especially given all the other star-level talent boasted by the Buckeyes defense. Curry was a backup for his first three years at Ohio State, however, and his short arms (30 and 1/8 inches) might leave him less effective at shedding blocks than he was at the college level. Some great collegiate players just don't really translate to the pro level due to lack of athletic traits, and Curry's grades on that front are poor enough that he likely projects as a backup in the NFL.",
-            "value_tier": "starter"
-          },
-          {
-            "player": "George Gumbs Jr.",
-            "status": "Active",
-            "position": "LB",
-            "injury_description": "Gumbs (6-foot-4, 245 pounds) spent time transitioning between multiple positions early in his career at Northern Illinois, including wide receiver and tight end, before settling in as an edge rusher in 2023 and then transferring to Florida in 2024 and starting one-and-half seasons. As a rookie, the 23-year-old will be a solid candidate to carve out a rotational role in Indianapolis' deep pass rush corps that includes Laiatu Latu, JT Tuimoloau, Micheal Clemons and Arden Key, as well as defensive tackles DeForest Buckner (neck) and Grover Stewart.",
-            "value_tier": "starter"
           }
         ]
       },
       "injury_impact": {
         "home_elo_penalty": 3.6,
-        "away_elo_penalty": 35.2,
+        "away_elo_penalty": 44.2,
         "home_impact_score": 0.0327,
-        "away_impact_score": 0.32,
+        "away_impact_score": 0.4018,
         "home_key_players_out": [
           {
             "player": "Joe Alt",
@@ -5255,17 +5285,24 @@
         ],
         "away_key_players_out": [
           {
-            "player": "Anthony Richardson Sr.",
-            "position": "QB",
-            "status": "Questionable",
-            "elo_impact": 12.0,
-            "value_tier": "starter"
-          },
-          {
             "player": "Hunter Wohler",
             "position": "S",
             "status": "Questionable",
             "elo_impact": 2.0,
+            "value_tier": "starter"
+          },
+          {
+            "player": "Jack Wilson",
+            "position": "OT",
+            "status": "Injured Reserve",
+            "elo_impact": 9.0,
+            "value_tier": "starter"
+          },
+          {
+            "player": "Anthony Richardson Sr.",
+            "position": "QB",
+            "status": "Questionable",
+            "elo_impact": 12.0,
             "value_tier": "starter"
           },
           {
@@ -5312,14 +5349,14 @@
       "prediction_drivers": [
         "ELO advantage: LAC +57 rating points",
         "Joe Alt (LAC) [Starter] QUESTIONABLE \u2014 \u22124 ELO",
-        "Anthony Richardson Sr. (IND) [Starter] QUESTIONABLE \u2014 \u221212 ELO",
         "Hunter Wohler (IND) [Starter] QUESTIONABLE \u2014 \u22122 ELO",
-        "Justin Walley (IND) [Starter] QUESTIONABLE \u2014 \u22122 ELO",
+        "Jack Wilson (IND) [Starter] INJURED RESERVE \u2014 \u22129 ELO",
+        "Anthony Richardson Sr. (IND) [Starter] QUESTIONABLE \u2014 \u221212 ELO",
         "Efficiency gap: LAC net -0.219 vs IND net +0.232",
         "Travel penalty: away team travels 1815 miles",
         "Home field: LAC +65 ELO home advantage"
       ],
-      "explanation": "The model gives Los Angeles Chargers a 57.9% win probability \u2014 a slight favorite over Indianapolis Colts. The ELO gap is 57 points with home field adding approximately 65 ELO points. Travel distance 1815 miles factors into the away team rating."
+      "explanation": "The model gives Los Angeles Chargers a 58.1% win probability \u2014 a slight favorite over Indianapolis Colts. The ELO gap is 57 points with home field adding approximately 65 ELO points. Travel distance 1815 miles factors into the away team rating."
     },
     {
       "game_id": "401772864",
@@ -5353,19 +5390,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.5612,
-        "exp_margin": 2.39,
-        "prob_7plus": 0.3761,
-        "prob_14plus": 0.2048,
-        "prob_21plus": 0.0914,
+        "win_prob": 0.5716,
+        "exp_margin": 2.59,
+        "prob_7plus": 0.3809,
+        "prob_14plus": 0.2123,
+        "prob_21plus": 0.1005,
         "margin_percentiles": [
-          -20.6,
-          -15.7,
-          -7.1,
-          2.2,
-          12.0,
-          20.4,
-          25.7
+          -21.0,
+          -15.9,
+          -7.2,
+          2.6,
+          12.4,
+          21.0,
+          26.3
         ]
       },
       "adjustments": {
@@ -5531,9 +5568,9 @@
       "home_score": 23,
       "away_score": 27,
       "predictions": {
-        "ensemble_prob": 0.3013,
+        "ensemble_prob": 0.3019,
         "logistic_prob": 0.1786,
-        "elo_prob": 0.3899,
+        "elo_prob": 0.394,
         "xgb_prob": 0.1695,
         "pyth_prob": 0.4619,
         "eff_prob": 0.6114,
@@ -5547,19 +5584,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.4352,
-        "exp_margin": -2.32,
-        "prob_7plus": 0.258,
-        "prob_14plus": 0.1283,
-        "prob_21plus": 0.0534,
+        "win_prob": 0.4501,
+        "exp_margin": -2.03,
+        "prob_7plus": 0.2683,
+        "prob_14plus": 0.128,
+        "prob_21plus": 0.0488,
         "margin_percentiles": [
-          -25.8,
-          -20.5,
-          -12.0,
-          -2.4,
-          7.3,
-          16.1,
-          21.3
+          -25.5,
+          -20.2,
+          -11.5,
+          -2.0,
+          7.7,
+          15.9,
+          20.9
         ]
       },
       "adjustments": {
@@ -5573,7 +5610,7 @@
       "elo": {
         "home": 1354.2,
         "away": 1506.8,
-        "diff": -77.8
+        "diff": -74.8
       },
       "bayesian": {
         "home_mu": 1500.7,
@@ -5629,6 +5666,13 @@
         ],
         "away": [
           {
+            "player": "Tucker Kraft",
+            "status": "Questionable",
+            "position": "TE",
+            "injury_description": "Gutekunst previously labeled Kraft ahead of schedule in mid-January, and it appears the tight end's progress has continued on an encouraging track. He noted that Kraft is further along in his rehab than Parsons, which makes sense considering the timing of their respective ACL tears (early Nov. vs. mid-Dec.). Kraft, meanwhile, has stated that he's targeting a Week 1 return. He's entering his age-26 season and the final year of his deal with the Packers, though Gutekunst has confirmed talks regarding an extension are underway. After Green Bay allowed Romeo Doubs to sign elsewhere as a free agent (Patriots) and dealt Dontayvion Wicks in a trade (Eagles), Kraft is facing a clearer path to targets alongside returning wideouts Christian Watson, Jayden Reed and Matthew Golden. In eight regular-season games prior to tearing his ACL in 2025, Kraft had emerged as Green Bay's leading receiver with 32 grabs for 489 yards and six scores on 44 targets.",
+            "value_tier": "starter"
+          },
+          {
             "player": "Tyrod Taylor",
             "status": "Active",
             "position": "QB",
@@ -5655,21 +5699,14 @@
             "position": "QB",
             "injury_description": "Drones started his college career at Baylor, playing in seven games over two seasons before transferring to Virginia Tech in 2023, where he started the remainder of his collegiate games. The quarterback participated in 12 games in 2025, going 178-for-315 (56.5 percent) and accumulating 1,919 yards and 17 touchdowns to nine interceptions. Drones will have to outperform Desmond Ridder and Kyle McCord in training camp to have a shot at backing up Jordan Love during the 2026 NFL season.",
             "value_tier": "starter"
-          },
-          {
-            "player": "Lukas Van Ness",
-            "status": "Active",
-            "position": "DE",
-            "injury_description": "The move keeps the 24-year-old under contract through 2027 and guarantees him a salary near $13.8 million. The three-year pro missed half of last season with an ankle injury, which caused him to finish with a disappointing 1.5 sacks and 19 tackles (12 solo) over nine regular-season games. The 2024 season wasn't much better as he recorded 33 tackles (22 solo) and six tackles for loss in 17 regular-season games, but he at least combined for 7.0 sacks over his first two seasons. Green Bay's switch to a 3-4 defensive scheme could impact Van Ness's playing time, but with Micah Parsons still rehabbing back from a December ACL tear and pass-rush depth lost this season in the form of Rashan Gary and Kingsley Enagbare, the new scheme won't be a reason that Van Ness, a 2023 first-round pick, would be kept off the field.",
-            "value_tier": "starter"
           }
         ]
       },
       "injury_impact": {
         "home_elo_penalty": 2.8,
-        "away_elo_penalty": 7.6,
+        "away_elo_penalty": 10.6,
         "home_impact_score": 0.0255,
-        "away_impact_score": 0.0691,
+        "away_impact_score": 0.0964,
         "home_key_players_out": [
           {
             "player": "Trey Benson",
@@ -5680,6 +5717,13 @@
           }
         ],
         "away_key_players_out": [
+          {
+            "player": "Tucker Kraft",
+            "position": "TE",
+            "status": "Questionable",
+            "elo_impact": 3.0,
+            "value_tier": "starter"
+          },
           {
             "player": "Zach Tom",
             "position": "OT",
@@ -5710,12 +5754,12 @@
       "prediction_drivers": [
         "ELO advantage: GB +153 rating points",
         "Trey Benson (ARI) [Starter] QUESTIONABLE \u2014 \u22123 ELO",
+        "Tucker Kraft (GB) [Starter] QUESTIONABLE \u2014 \u22123 ELO",
         "Zach Tom (GB) [Starter] QUESTIONABLE \u2014 \u22124 ELO",
         "Micah Parsons (GB) [Starter] QUESTIONABLE \u2014 \u22123 ELO",
-        "Sean Rhyan (GB) [Starter] QUESTIONABLE \u2014 \u22121 ELO",
         "Home field: ARI +65 ELO home advantage"
       ],
-      "explanation": "The model gives Green Bay Packers a 69.9% win probability \u2014 a moderate favorite over Arizona Cardinals. The ELO gap is 153 points with home field adding approximately 65 ELO points. Travel distance 1498 miles factors into the away team rating."
+      "explanation": "The model gives Green Bay Packers a 69.8% win probability \u2014 a moderate favorite over Arizona Cardinals. The ELO gap is 153 points with home field adding approximately 65 ELO points. Travel distance 1498 miles factors into the away team rating."
     },
     {
       "game_id": "401772924",
@@ -5749,19 +5793,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6225,
-        "exp_margin": 4.36,
-        "prob_7plus": 0.4325,
-        "prob_14plus": 0.248,
-        "prob_21plus": 0.12,
+        "win_prob": 0.6248,
+        "exp_margin": 4.43,
+        "prob_7plus": 0.4228,
+        "prob_14plus": 0.2464,
+        "prob_21plus": 0.121,
         "margin_percentiles": [
-          -19.1,
-          -13.8,
-          -5.3,
+          -18.6,
+          -13.6,
+          -5.0,
           4.4,
-          13.9,
+          13.8,
           22.5,
-          27.5
+          27.6
         ]
       },
       "adjustments": {
@@ -5969,19 +6013,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6499,
-        "exp_margin": 5.53,
-        "prob_7plus": 0.4522,
-        "prob_14plus": 0.2753,
-        "prob_21plus": 0.14,
+        "win_prob": 0.6471,
+        "exp_margin": 5.39,
+        "prob_7plus": 0.4501,
+        "prob_14plus": 0.2658,
+        "prob_21plus": 0.1319,
         "margin_percentiles": [
-          -17.4,
-          -12.4,
-          -4.0,
+          -17.7,
+          -12.6,
+          -4.1,
           5.3,
-          15.2,
-          24.0,
-          29.3
+          14.8,
+          23.6,
+          29.2
         ]
       },
       "adjustments": {
@@ -6156,19 +6200,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6437,
-        "exp_margin": 5.1,
-        "prob_7plus": 0.4514,
-        "prob_14plus": 0.2627,
-        "prob_21plus": 0.1306,
+        "win_prob": 0.6345,
+        "exp_margin": 4.99,
+        "prob_7plus": 0.4455,
+        "prob_14plus": 0.2707,
+        "prob_21plus": 0.1358,
         "margin_percentiles": [
-          -18.4,
-          -13.2,
-          -4.3,
-          5.2,
-          14.5,
+          -18.7,
+          -13.5,
+          -4.6,
+          4.9,
+          14.9,
           23.5,
-          28.3
+          28.5
         ]
       },
       "adjustments": {
@@ -6201,6 +6245,13 @@
       "injuries": {
         "home": [
           {
+            "player": "Dante Fowler Jr.",
+            "status": "Active",
+            "position": "DE",
+            "injury_description": "The deal is worth up to $5 million. Fowler will turn 32 years old later this summer and is headed into his 12th season out of the University of Florida. He appeared in all 17 regular-season games with the Cowboys last season, making 11 starts, but recorded just 3.0 sacks as a sub-package edge rusher while playing 32 percent of the defensive snaps. In Seattle, he'll provide depth behind DeMarcus Lawrence, Uchenna Nwosu and Derick Hall.",
+            "value_tier": "starter"
+          },
+          {
             "player": "Levi Wentz",
             "status": "Active",
             "position": "WR",
@@ -6227,16 +6278,16 @@
             "position": "TE",
             "injury_description": "The details of the deal are unknown at this point, but Bryant fits with the Seahawks' recent approach of seeking out hard-nosed tight ends. As for his competition, 2024 fourth-rounder AJ Barner, 2025 second-rounder Elijah Arroyo and veteran Eric Saubert are all likely to make Seattle's 53-man roster to start the 2026 season, but there's a decent chance the team keeps four tight ends, meaning one of Bryant or Nick Kallerup could potentially make the opening roster too.",
             "value_tier": "starter"
-          },
-          {
-            "player": "Michael Dansby",
-            "status": "Active",
-            "position": "CB",
-            "injury_description": "Not that it's unusual for late seventh-round picks, but Dansby was well off the NFL Draft radar after playing three seasons at San Jose State and one at Arizona, all of them unremarkable. At a listed 5-foot-11, 185 pounds, Dansby didn't participate in pre-draft athletic testing, so his skill set and tools grade both are question marks at best. Perhaps the Seahawks saw something in Dansby's special-teams upside.",
-            "value_tier": "starter"
           }
         ],
         "away": [
+          {
+            "player": "C.J. Stroud",
+            "status": "Active",
+            "position": "QB",
+            "injury_description": "Stroud shouldn't lack for motivation, coming off a 2025 campaign in which he and his offensive line were the weak links on an otherwise loaded team. The Texans then picked up his fifth-year option this offseason, though it's not equivalent to a huge vote of confidence when the price tag ($25.9 million) is lower than what it costs to re-sign even a mediocre starting QB. There's still hope in Houston that Stroud can be more than mediocre, with help from a remade offensive line that added first-round pick Keylan Rutledge and veterans Braden Smith, Wyatt Teller and Evan Brown. The combination of better blocking and a locked-in QB could do wonders for Houston's offense, but even a slimmed-down version of Stroud is unlikely to offer much in the way of rushing stats for his fantasy managers.",
+            "value_tier": "starter"
+          },
           {
             "player": "Ali Gaye",
             "status": "Active",
@@ -6263,13 +6314,6 @@
             "status": "Active",
             "position": "WR",
             "injury_description": "Bond (5-foot-11, 197 pounds) is likely a slot receiver to the Texans after a Boston College career where he provided quality underneath receiving production but little in the way of big plays. Bond's reliable hands could prove useful to the Texans. It just would probably require some injuries at receiver first.",
-            "value_tier": "starter"
-          },
-          {
-            "player": "Kamari Ramsey",
-            "status": "Active",
-            "position": "S",
-            "injury_description": "Ramsey (6-foot-0, 202 pounds) started the second of his first two collegiate seasons at UCLA and then both of his campaigns at USC, though over the course of his three seasons as a starter he missed a total of seven games due to injury. While Ramsey doesn't stand out in terms of frame, athleticism or physicality, he boasts experience and versatility, having rotated between his natural position at safety and nickel in 2025 to help round out USC's secondary. As a rookie in Houston, Ramsey figures to compete with M.J. Stewart and Jaylen Reed for depth opportunities behind Reed Blankenship and Calen Bullock.",
             "value_tier": "starter"
           }
         ]
@@ -6369,19 +6413,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.5632,
-        "exp_margin": 2.18,
-        "prob_7plus": 0.3656,
-        "prob_14plus": 0.2012,
-        "prob_21plus": 0.0961,
+        "win_prob": 0.5606,
+        "exp_margin": 2.1,
+        "prob_7plus": 0.3706,
+        "prob_14plus": 0.2063,
+        "prob_21plus": 0.0917,
         "margin_percentiles": [
-          -21.2,
-          -16.1,
-          -7.4,
+          -21.7,
+          -16.0,
+          -7.5,
           2.2,
-          11.5,
-          20.6,
-          25.7
+          11.7,
+          20.3,
+          25.2
         ]
       },
       "adjustments": {
@@ -6563,19 +6607,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6917,
-        "exp_margin": 7.13,
-        "prob_7plus": 0.503,
-        "prob_14plus": 0.3111,
-        "prob_21plus": 0.1629,
+        "win_prob": 0.6894,
+        "exp_margin": 7.02,
+        "prob_7plus": 0.501,
+        "prob_14plus": 0.3106,
+        "prob_21plus": 0.1643,
         "margin_percentiles": [
           -16.1,
-          -11.1,
+          -11.0,
           -2.5,
-          7.1,
+          7.0,
           16.6,
-          25.3,
-          31.0
+          25.2,
+          30.5
         ]
       },
       "adjustments": {
@@ -6764,19 +6808,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.7681,
-        "exp_margin": 10.49,
-        "prob_7plus": 0.593,
-        "prob_14plus": 0.4037,
-        "prob_21plus": 0.229,
+        "win_prob": 0.7658,
+        "exp_margin": 10.37,
+        "prob_7plus": 0.5908,
+        "prob_14plus": 0.3973,
+        "prob_21plus": 0.2282,
         "margin_percentiles": [
           -12.8,
-          -7.6,
-          0.8,
-          10.6,
-          20.1,
-          28.7,
-          33.8
+          -7.4,
+          0.7,
+          10.2,
+          20.0,
+          28.8,
+          34.1
         ]
       },
       "adjustments": {
@@ -6975,19 +7019,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.7202,
-        "exp_margin": 8.46,
-        "prob_7plus": 0.5413,
-        "prob_14plus": 0.349,
-        "prob_21plus": 0.1927,
+        "win_prob": 0.7183,
+        "exp_margin": 8.26,
+        "prob_7plus": 0.5362,
+        "prob_14plus": 0.3457,
+        "prob_21plus": 0.1838,
         "margin_percentiles": [
-          -14.8,
-          -9.7,
-          -1.2,
-          8.5,
-          18.2,
-          26.6,
-          31.9
+          -15.0,
+          -10.0,
+          -1.5,
+          8.3,
+          17.9,
+          26.4,
+          31.6
         ]
       },
       "adjustments": {
@@ -7162,9 +7206,9 @@
       "home_score": 38,
       "away_score": 20,
       "predictions": {
-        "ensemble_prob": 0.7431,
+        "ensemble_prob": 0.7423,
         "logistic_prob": 0.8095,
-        "elo_prob": 0.757,
+        "elo_prob": 0.7517,
         "xgb_prob": 0.8102,
         "pyth_prob": 0.6842,
         "eff_prob": 0.5017,
@@ -7178,19 +7222,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6518,
-        "exp_margin": 5.39,
-        "prob_7plus": 0.4549,
-        "prob_14plus": 0.2657,
-        "prob_21plus": 0.1338,
+        "win_prob": 0.6522,
+        "exp_margin": 5.27,
+        "prob_7plus": 0.4501,
+        "prob_14plus": 0.2682,
+        "prob_21plus": 0.1331,
         "margin_percentiles": [
-          -17.8,
-          -12.9,
-          -4.0,
-          5.4,
-          14.8,
-          23.4,
-          28.8
+          -18.4,
+          -13.0,
+          -4.2,
+          5.2,
+          14.9,
+          23.1,
+          28.6
         ]
       },
       "adjustments": {
@@ -7204,7 +7248,7 @@
       "elo": {
         "home": 1525.8,
         "away": 1408.9,
-        "diff": 197.4
+        "diff": 192.4
       },
       "bayesian": {
         "home_mu": 1656.3,
@@ -7222,6 +7266,13 @@
       },
       "injuries": {
         "home": [
+          {
+            "player": "Tucker Large",
+            "status": "Out",
+            "position": "S",
+            "injury_description": "Large signed with the team as an undrafted free agent May 1 but ended up spending less than a week on their active roster. He will now miss at least the first four games of the regular season.",
+            "value_tier": "starter"
+          },
           {
             "player": "Jalen Carter",
             "status": "Active",
@@ -7248,13 +7299,6 @@
             "status": "Active",
             "position": "DT",
             "injury_description": "Bernard (6-foot-4, 306 pounds) put together an impressive workout performance at the International Player Pathway Pro Day, highlighted by a 4.69 40-yard dash and a 39-inch vertical. Though he has not played organized football at the collegiate level, Philadelphia is intrigued enough by the potential of his rare combination of size and athleticism to invest draft capital into Bernard's development. While Bernard looks set to begin his career working at defensive tackle, he could also test his hand at edge rusher or along the O-line.",
-            "value_tier": "starter"
-          },
-          {
-            "player": "Cole Wisniewski",
-            "status": "Active",
-            "position": "S",
-            "injury_description": "Wisniewski probably is not a serious starting safety candidate at the NFL level, but at 6-foot-3, 219 pounds the Texas Tech product has the build to crash hard against the run from the strong safety position. His 2025 season with the Red Raiders was his sixth collegiate season after playing the prior five years at North Dakota State, mostly as a backup. The Eagles will probably be content if Wisniewski can simply play on special teams.",
             "value_tier": "starter"
           }
         ],
@@ -7297,11 +7341,18 @@
         ]
       },
       "injury_impact": {
-        "home_elo_penalty": 4.0,
+        "home_elo_penalty": 9.0,
         "away_elo_penalty": 13.6,
-        "home_impact_score": 0.0364,
+        "home_impact_score": 0.0818,
         "away_impact_score": 0.1236,
         "home_key_players_out": [
+          {
+            "player": "Tucker Large",
+            "position": "S",
+            "status": "Out",
+            "elo_impact": 5.0,
+            "value_tier": "starter"
+          },
           {
             "player": "Jonathan Greenard",
             "position": "LB",
@@ -7361,6 +7412,7 @@
       },
       "prediction_drivers": [
         "ELO advantage: PHI +117 rating points",
+        "Tucker Large (PHI) [Starter] OUT \u2014 \u22125 ELO",
         "Jonathan Greenard (PHI) [Starter] QUESTIONABLE \u2014 \u22122 ELO",
         "Chandler Martin (PHI) [Starter] QUESTIONABLE \u2014 \u22122 ELO",
         "Darius Slayton (NYG) [Starter] QUESTIONABLE \u2014 \u22123 ELO",
@@ -7369,7 +7421,7 @@
         "Efficiency gap: PHI net -0.244 vs NYG net +0.075",
         "Home field: PHI +65 ELO home advantage"
       ],
-      "explanation": "The model gives Philadelphia Eagles a 74.3% win probability \u2014 a strong favorite over New York Giants. The ELO gap is 117 points with home field adding approximately 65 ELO points."
+      "explanation": "The model gives Philadelphia Eagles a 74.2% win probability \u2014 a strong favorite over New York Giants. The ELO gap is 117 points with home field adding approximately 65 ELO points."
     },
     {
       "game_id": "401772865",
@@ -7403,19 +7455,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.4482,
-        "exp_margin": -1.77,
-        "prob_7plus": 0.2668,
-        "prob_14plus": 0.1326,
-        "prob_21plus": 0.0552,
+        "win_prob": 0.4631,
+        "exp_margin": -1.48,
+        "prob_7plus": 0.2753,
+        "prob_14plus": 0.1366,
+        "prob_21plus": 0.055,
         "margin_percentiles": [
-          -25.3,
-          -20.2,
-          -11.2,
-          -1.7,
-          7.8,
-          16.4,
-          21.7
+          -25.0,
+          -19.9,
+          -11.1,
+          -1.4,
+          8.2,
+          16.6,
+          21.6
         ]
       },
       "adjustments": {
@@ -7614,18 +7666,18 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.5186,
-        "exp_margin": 0.8,
-        "prob_7plus": 0.3318,
-        "prob_14plus": 0.1772,
-        "prob_21plus": 0.0785,
+        "win_prob": 0.5226,
+        "exp_margin": 0.9,
+        "prob_7plus": 0.3382,
+        "prob_14plus": 0.1746,
+        "prob_21plus": 0.0744,
         "margin_percentiles": [
-          -22.7,
-          -17.6,
-          -8.7,
-          0.7,
+          -22.0,
+          -17.1,
+          -8.6,
+          0.8,
           10.4,
-          19.1,
+          18.8,
           23.9
         ]
       },
@@ -7808,19 +7860,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.625,
-        "exp_margin": 4.5,
-        "prob_7plus": 0.4344,
-        "prob_14plus": 0.255,
-        "prob_21plus": 0.1196,
+        "win_prob": 0.6271,
+        "exp_margin": 4.66,
+        "prob_7plus": 0.4345,
+        "prob_14plus": 0.2558,
+        "prob_21plus": 0.1259,
         "margin_percentiles": [
-          -18.8,
-          -13.5,
-          -5.0,
-          4.6,
-          14.2,
-          22.4,
-          27.2
+          -18.9,
+          -13.4,
+          -4.8,
+          4.7,
+          14.3,
+          22.7,
+          27.7
         ]
       },
       "adjustments": {
@@ -7853,6 +7905,13 @@
       "injuries": {
         "home": [
           {
+            "player": "C.J. Stroud",
+            "status": "Active",
+            "position": "QB",
+            "injury_description": "Stroud shouldn't lack for motivation, coming off a 2025 campaign in which he and his offensive line were the weak links on an otherwise loaded team. The Texans then picked up his fifth-year option this offseason, though it's not equivalent to a huge vote of confidence when the price tag ($25.9 million) is lower than what it costs to re-sign even a mediocre starting QB. There's still hope in Houston that Stroud can be more than mediocre, with help from a remade offensive line that added first-round pick Keylan Rutledge and veterans Braden Smith, Wyatt Teller and Evan Brown. The combination of better blocking and a locked-in QB could do wonders for Houston's offense, but even a slimmed-down version of Stroud is unlikely to offer much in the way of rushing stats for his fantasy managers.",
+            "value_tier": "starter"
+          },
+          {
             "player": "Ali Gaye",
             "status": "Active",
             "position": "DE",
@@ -7878,13 +7937,6 @@
             "status": "Active",
             "position": "WR",
             "injury_description": "Bond (5-foot-11, 197 pounds) is likely a slot receiver to the Texans after a Boston College career where he provided quality underneath receiving production but little in the way of big plays. Bond's reliable hands could prove useful to the Texans. It just would probably require some injuries at receiver first.",
-            "value_tier": "starter"
-          },
-          {
-            "player": "Kamari Ramsey",
-            "status": "Active",
-            "position": "S",
-            "injury_description": "Ramsey (6-foot-0, 202 pounds) started the second of his first two collegiate seasons at UCLA and then both of his campaigns at USC, though over the course of his three seasons as a starter he missed a total of seven games due to injury. While Ramsey doesn't stand out in terms of frame, athleticism or physicality, he boasts experience and versatility, having rotated between his natural position at safety and nickel in 2025 to help round out USC's secondary. As a rookie in Houston, Ramsey figures to compete with M.J. Stewart and Jaylen Reed for depth opportunities behind Reed Blankenship and Calen Bullock.",
             "value_tier": "starter"
           }
         ],
@@ -8027,19 +8079,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.5951,
-        "exp_margin": 3.41,
-        "prob_7plus": 0.4003,
-        "prob_14plus": 0.2286,
-        "prob_21plus": 0.1046,
+        "win_prob": 0.5877,
+        "exp_margin": 3.22,
+        "prob_7plus": 0.3962,
+        "prob_14plus": 0.225,
+        "prob_21plus": 0.104,
         "margin_percentiles": [
           -19.9,
-          -14.9,
-          -6.1,
-          3.4,
-          12.9,
+          -14.8,
+          -6.3,
+          3.3,
+          12.8,
           21.3,
-          26.6
+          26.3
         ]
       },
       "adjustments": {
@@ -8221,19 +8273,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.7293,
-        "exp_margin": 8.61,
-        "prob_7plus": 0.547,
-        "prob_14plus": 0.3541,
-        "prob_21plus": 0.1941,
+        "win_prob": 0.7349,
+        "exp_margin": 8.88,
+        "prob_7plus": 0.5578,
+        "prob_14plus": 0.3626,
+        "prob_21plus": 0.1935,
         "margin_percentiles": [
-          -14.9,
-          -9.7,
-          -1.0,
-          8.6,
-          18.3,
+          -14.5,
+          -9.0,
+          -0.7,
+          9.1,
+          18.4,
           26.7,
-          32.0
+          31.7
         ]
       },
       "adjustments": {
@@ -8400,9 +8452,9 @@
       "home_score": 38,
       "away_score": 14,
       "predictions": {
-        "ensemble_prob": 0.8513,
+        "ensemble_prob": 0.8497,
         "logistic_prob": 1.0,
-        "elo_prob": 0.7403,
+        "elo_prob": 0.7302,
         "xgb_prob": 0.8471,
         "pyth_prob": 0.7637,
         "eff_prob": 0.6804,
@@ -8416,18 +8468,18 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.7162,
-        "exp_margin": 7.96,
-        "prob_7plus": 0.5269,
-        "prob_14plus": 0.3312,
-        "prob_21plus": 0.1752,
+        "win_prob": 0.7085,
+        "exp_margin": 7.72,
+        "prob_7plus": 0.5199,
+        "prob_14plus": 0.3315,
+        "prob_21plus": 0.1741,
         "margin_percentiles": [
-          -14.9,
-          -9.8,
-          -1.4,
-          7.9,
-          17.5,
-          26.0,
+          -15.9,
+          -10.3,
+          -1.8,
+          7.7,
+          17.3,
+          25.8,
           30.9
         ]
       },
@@ -8442,7 +8494,7 @@
       "elo": {
         "home": 1478.9,
         "away": 1329.9,
-        "diff": 182.0
+        "diff": 173.0
       },
       "bayesian": {
         "home_mu": 1640.3,
@@ -8460,6 +8512,20 @@
       },
       "injuries": {
         "home": [
+          {
+            "player": "Hunter Wohler",
+            "status": "Questionable",
+            "position": "S",
+            "injury_description": "General manager Chris Ballard indicated a couple weeks ago that Wohler was at the end of his rehab process for the Lisfranc injury he suffered during preseason last year, and Wohler echoed those sentiments to reporters Wednesday. The Colts recently added promising safety prospect A.J. Haulcy in the third round of the 2026 NFL Draft, but they're still otherwise relatively thin at the position behind returning starter Camryn Bynum, so a strong start to training camp could still start Wohler on a trajectory towards earning a depth spot on the 53-man roster for 2026.",
+            "value_tier": "starter"
+          },
+          {
+            "player": "Jack Wilson",
+            "status": "Injured Reserve",
+            "position": "OT",
+            "injury_description": "Wilson was initially let go by the team but will remain in Indianapolis after clearing waivers. The 26-year-old spent all of the 2025 campaign on injured reserve and will now be forced to miss the entirety of the upcoming season as well.",
+            "value_tier": "starter"
+          },
           {
             "player": "Anthony Richardson Sr.",
             "status": "Questionable",
@@ -8479,20 +8545,6 @@
             "status": "Active",
             "position": "RB",
             "injury_description": "McGowan had a tumultuous college career, which saw him dismissed from Oklahoma's program after being arrested in April of 2021. He didn't see the field again until 2024 with New Mexico State and ended his college career with Kentucky in 2025, when he turned 165 carries into 725 yards and 12 touchdowns along with 19 catches for 126 yards over 11 games. McGowan has good size with a 6-foot, 223-pound frame, and he has the flexibility and strength to move around defenders, though he's not as explosive as other backfield prospects. There will be questions around his character heading into his NFL rookie season, but he'll have the opportunity to prove himself in Indianapolis, where he'll compete against DJ Giddens and Ulysses Bentley for rotational snaps behind lead back Jonathan Taylor.",
-            "value_tier": "starter"
-          },
-          {
-            "player": "Caden Curry",
-            "status": "Active",
-            "position": "LB",
-            "injury_description": "If the draft were just a matter of selecting the most productive college football players, then Curry (6-foot-3, 257 pounds) would have gone much earlier than this. It's almost puzzling that Curry could lead the 2025 Buckeyes defense in tackles for loss (16.5) and sacks (11.0) and still fall this far in the draft, especially given all the other star-level talent boasted by the Buckeyes defense. Curry was a backup for his first three years at Ohio State, however, and his short arms (30 and 1/8 inches) might leave him less effective at shedding blocks than he was at the college level. Some great collegiate players just don't really translate to the pro level due to lack of athletic traits, and Curry's grades on that front are poor enough that he likely projects as a backup in the NFL.",
-            "value_tier": "starter"
-          },
-          {
-            "player": "George Gumbs Jr.",
-            "status": "Active",
-            "position": "LB",
-            "injury_description": "Gumbs (6-foot-4, 245 pounds) spent time transitioning between multiple positions early in his career at Northern Illinois, including wide receiver and tight end, before settling in as an edge rusher in 2023 and then transferring to Florida in 2024 and starting one-and-half seasons. As a rookie, the 23-year-old will be a solid candidate to carve out a rotational role in Indianapolis' deep pass rush corps that includes Laiatu Latu, JT Tuimoloau, Micheal Clemons and Arden Key, as well as defensive tackles DeForest Buckner (neck) and Grover Stewart.",
             "value_tier": "starter"
           }
         ],
@@ -8535,23 +8587,30 @@
         ]
       },
       "injury_impact": {
-        "home_elo_penalty": 35.2,
+        "home_elo_penalty": 44.2,
         "away_elo_penalty": 15.2,
-        "home_impact_score": 0.32,
+        "home_impact_score": 0.4018,
         "away_impact_score": 0.1382,
         "home_key_players_out": [
-          {
-            "player": "Anthony Richardson Sr.",
-            "position": "QB",
-            "status": "Questionable",
-            "elo_impact": 12.0,
-            "value_tier": "starter"
-          },
           {
             "player": "Hunter Wohler",
             "position": "S",
             "status": "Questionable",
             "elo_impact": 2.0,
+            "value_tier": "starter"
+          },
+          {
+            "player": "Jack Wilson",
+            "position": "OT",
+            "status": "Injured Reserve",
+            "elo_impact": 9.0,
+            "value_tier": "starter"
+          },
+          {
+            "player": "Anthony Richardson Sr.",
+            "position": "QB",
+            "status": "Questionable",
+            "elo_impact": 12.0,
             "value_tier": "starter"
           },
           {
@@ -8613,15 +8672,15 @@
       },
       "prediction_drivers": [
         "ELO advantage: IND +149 rating points",
-        "Anthony Richardson Sr. (IND) [Starter] QUESTIONABLE \u2014 \u221212 ELO",
         "Hunter Wohler (IND) [Starter] QUESTIONABLE \u2014 \u22122 ELO",
-        "Justin Walley (IND) [Starter] QUESTIONABLE \u2014 \u22122 ELO",
+        "Jack Wilson (IND) [Starter] INJURED RESERVE \u2014 \u22129 ELO",
+        "Anthony Richardson Sr. (IND) [Starter] QUESTIONABLE \u2014 \u221212 ELO",
         "Calvin Ridley (TEN) [Starter] QUESTIONABLE \u2014 \u22123 ELO",
         "Cam Ward (TEN) [Starter] QUESTIONABLE \u2014 \u221212 ELO",
         "Efficiency gap: IND net +0.232 vs TEN net -0.099",
         "Home field: IND +65 ELO home advantage"
       ],
-      "explanation": "The model gives Indianapolis Colts a 85.1% win probability \u2014 a strong favorite over Tennessee Titans. The ELO gap is 149 points with home field adding approximately 65 ELO points."
+      "explanation": "The model gives Indianapolis Colts a 85.0% win probability \u2014 a strong favorite over Tennessee Titans. The ELO gap is 149 points with home field adding approximately 65 ELO points."
     },
     {
       "game_id": "401772925",
@@ -8639,9 +8698,9 @@
       "home_score": 25,
       "away_score": 35,
       "predictions": {
-        "ensemble_prob": 0.5036,
+        "ensemble_prob": 0.5042,
         "logistic_prob": 0.5062,
-        "elo_prob": 0.5912,
+        "elo_prob": 0.5953,
         "xgb_prob": 0.3718,
         "pyth_prob": 0.5736,
         "eff_prob": 0.5827,
@@ -8655,19 +8714,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.5631,
-        "exp_margin": 2.22,
-        "prob_7plus": 0.3644,
-        "prob_14plus": 0.2015,
-        "prob_21plus": 0.0893,
+        "win_prob": 0.5632,
+        "exp_margin": 2.17,
+        "prob_7plus": 0.3737,
+        "prob_14plus": 0.2084,
+        "prob_21plus": 0.0894,
         "margin_percentiles": [
-          -21.0,
-          -16.0,
-          -7.2,
+          -21.2,
+          -16.3,
+          -7.6,
           2.3,
-          11.8,
-          20.2,
-          25.3
+          12.0,
+          20.3,
+          25.5
         ]
       },
       "adjustments": {
@@ -8681,7 +8740,7 @@
       "elo": {
         "home": 1495.9,
         "away": 1506.8,
-        "diff": 64.1
+        "diff": 67.1
       },
       "bayesian": {
         "home_mu": 1608.8,
@@ -8699,6 +8758,13 @@
       },
       "injuries": {
         "home": [
+          {
+            "player": "Eli Heidenreich",
+            "status": "Active",
+            "position": "RB",
+            "injury_description": "The team roster and Heidenreich's player page both show 'RB/WR' as his position, reflecting uncertainty about his NFL future after a three-year run at Navy yielded 169 carries and 109 catches (for 3,151 yards and 23 TDs). A 4.44 40 at the combine confirmed that Heidenreich has NFL-caliber athleticism, but he's thin for a running back (6-feet, 198 pounds) and doesn't have much experience running routes from the perimeter. While there's always some chance the Steelers create a unique role in their offense for Heidenreich, the more likely reality for a seventh-round pick (230th overall) is that he'll need to show value on special teams and/or as the backup for a more conventional role (e.g., third-down back, slot receiver).",
+            "value_tier": "starter"
+          },
           {
             "player": "Daequan Hardy",
             "status": "Injured Reserve",
@@ -8726,16 +8792,16 @@
             "position": "TE",
             "injury_description": "Metayer appeared in 43 college games, playing at Cincinnati for two seasons before transferring to Arizona State to finish his collegiate career with the Sun Devils. The tight end caught 94 passes for 971 yards and 14 touchdowns over the four-year span. Metayer will spend training camp competing with Riley Nowakowski, J.J. Galbreath and Lake McRee for the chance to start the season providing special teams and offensive depth value behind starters Pat Freiermuth and Darnell Washington.",
             "value_tier": "starter"
-          },
-          {
-            "player": "Laith Marjan",
-            "status": "Active",
-            "position": "PK",
-            "injury_description": "Marjan ended his college career at Kansas, making 14 of 17 field goals (including a career-long attempt of 55 yards) and converting all 40 of his extra-point tries. Current Steelers kicker Chris Boswell suffered some inconsistencies near the end of the 2025 season, so Marjan is likely a training camp addition to help Boswell tighten up his game with some competition. Boswell is well regarded as one of the league's most productive kickers, so it likely would take a collapse by him and a stellar showing by Marjan to change any positions on the depth chart by September.",
-            "value_tier": "starter"
           }
         ],
         "away": [
+          {
+            "player": "Tucker Kraft",
+            "status": "Questionable",
+            "position": "TE",
+            "injury_description": "Gutekunst previously labeled Kraft ahead of schedule in mid-January, and it appears the tight end's progress has continued on an encouraging track. He noted that Kraft is further along in his rehab than Parsons, which makes sense considering the timing of their respective ACL tears (early Nov. vs. mid-Dec.). Kraft, meanwhile, has stated that he's targeting a Week 1 return. He's entering his age-26 season and the final year of his deal with the Packers, though Gutekunst has confirmed talks regarding an extension are underway. After Green Bay allowed Romeo Doubs to sign elsewhere as a free agent (Patriots) and dealt Dontayvion Wicks in a trade (Eagles), Kraft is facing a clearer path to targets alongside returning wideouts Christian Watson, Jayden Reed and Matthew Golden. In eight regular-season games prior to tearing his ACL in 2025, Kraft had emerged as Green Bay's leading receiver with 32 grabs for 489 yards and six scores on 44 targets.",
+            "value_tier": "starter"
+          },
           {
             "player": "Tyrod Taylor",
             "status": "Active",
@@ -8763,21 +8829,14 @@
             "position": "QB",
             "injury_description": "Drones started his college career at Baylor, playing in seven games over two seasons before transferring to Virginia Tech in 2023, where he started the remainder of his collegiate games. The quarterback participated in 12 games in 2025, going 178-for-315 (56.5 percent) and accumulating 1,919 yards and 17 touchdowns to nine interceptions. Drones will have to outperform Desmond Ridder and Kyle McCord in training camp to have a shot at backing up Jordan Love during the 2026 NFL season.",
             "value_tier": "starter"
-          },
-          {
-            "player": "Lukas Van Ness",
-            "status": "Active",
-            "position": "DE",
-            "injury_description": "The move keeps the 24-year-old under contract through 2027 and guarantees him a salary near $13.8 million. The three-year pro missed half of last season with an ankle injury, which caused him to finish with a disappointing 1.5 sacks and 19 tackles (12 solo) over nine regular-season games. The 2024 season wasn't much better as he recorded 33 tackles (22 solo) and six tackles for loss in 17 regular-season games, but he at least combined for 7.0 sacks over his first two seasons. Green Bay's switch to a 3-4 defensive scheme could impact Van Ness's playing time, but with Micah Parsons still rehabbing back from a December ACL tear and pass-rush depth lost this season in the form of Rashan Gary and Kingsley Enagbare, the new scheme won't be a reason that Van Ness, a 2023 first-round pick, would be kept off the field.",
-            "value_tier": "starter"
           }
         ]
       },
       "injury_impact": {
         "home_elo_penalty": 21.6,
-        "away_elo_penalty": 7.6,
+        "away_elo_penalty": 10.6,
         "home_impact_score": 0.1964,
-        "away_impact_score": 0.0691,
+        "away_impact_score": 0.0964,
         "home_key_players_out": [
           {
             "player": "Daequan Hardy",
@@ -8802,6 +8861,13 @@
           }
         ],
         "away_key_players_out": [
+          {
+            "player": "Tucker Kraft",
+            "position": "TE",
+            "status": "Questionable",
+            "elo_impact": 3.0,
+            "value_tier": "starter"
+          },
           {
             "player": "Zach Tom",
             "position": "OT",
@@ -8833,9 +8899,9 @@
         "Daequan Hardy (PIT) [Starter] INJURED RESERVE \u2014 \u22126 ELO",
         "Broderick Jones (PIT) [Starter] QUESTIONABLE \u2014 \u22124 ELO",
         "Drew Allar (PIT) [Starter] QUESTIONABLE \u2014 \u221212 ELO",
+        "Tucker Kraft (GB) [Starter] QUESTIONABLE \u2014 \u22123 ELO",
         "Zach Tom (GB) [Starter] QUESTIONABLE \u2014 \u22124 ELO",
         "Micah Parsons (GB) [Starter] QUESTIONABLE \u2014 \u22123 ELO",
-        "Sean Rhyan (GB) [Starter] QUESTIONABLE \u2014 \u22121 ELO",
         "Home field: PIT +65 ELO home advantage"
       ],
       "explanation": "The model gives Pittsburgh Steelers a 50.4% win probability \u2014 a slight favorite over Green Bay Packers. The ELO gap is 11 points with home field adding approximately 65 ELO points."
@@ -8872,19 +8938,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6133,
-        "exp_margin": 3.97,
-        "prob_7plus": 0.4169,
-        "prob_14plus": 0.2377,
-        "prob_21plus": 0.1113,
+        "win_prob": 0.6134,
+        "exp_margin": 4.17,
+        "prob_7plus": 0.4208,
+        "prob_14plus": 0.2507,
+        "prob_21plus": 0.121,
         "margin_percentiles": [
-          -19.1,
-          -14.1,
-          -5.7,
-          4.1,
-          13.4,
-          21.9,
-          27.1
+          -19.3,
+          -14.2,
+          -5.4,
+          4.3,
+          14.0,
+          22.5,
+          27.5
         ]
       },
       "adjustments": {
@@ -8920,7 +8986,7 @@
             "player": "Kenneth Walker III",
             "status": "Active",
             "position": "RB",
-            "injury_description": "On the heels of being named the most valuable player of Super Bowl LX, Walker inked a lucrative three-year deal to lead Kansas City's backfield this coming season. Edholm notes that Walker earned a reputation as a run-first back during his four-year stint with Seattle, but the 2022 second-rounder -- who logged 31 catches in 17 regular-season games in 2025 -- has reportedly been spending time with QB Patrick Mahomes (who is bouncing back from a December ACL/LCL injury) this offseason in anticipation of a potentially expanded role as a pass-catcher. \"We've been working on getting connected in the passing game and everything, so that's good,\" Walker said. \"I feel like I'll be used more in the pass game.\" Either way, as the clear-cut RB1 for his new team, Walker figures to be busy out of the gate this coming season, while Mahomes works his way back to form. Competing for complementary work behind Walker will be a pair of newcomers in rookie Emmett Johnson and free agent addition Emari Demercado, as well as 2025 seventh-rounder Brashard Smith.",
+            "injury_description": "On the heels of being named the most valuable player of Super Bowl LX, Walker inked a lucrative three-year deal to lead Kansas City's backfield this coming season. Edholm notes that Walker earned a reputation as a run-first back during his four-year stint with Seattle, but the 2022 second-rounder -- who logged 31 catches in 17 regular-season games in 2025 -- has reportedly been spending time with QB Patrick Mahomes (who is bouncing back from a December ACL/LCL injury) this offseason in anticipation of a potentially expanded role as a pass catcher. \"We've been working on getting connected in the passing game and everything, so that's good,\" Walker said. \"I feel like I'll be used more in the pass game.\" Either way, as the clear-cut RB1 for his new team, Walker figures to be busy out of the gate this coming season while Mahomes works his way back to form. Competing for complementary work behind Walker will be a pair of newcomers in rookie Emmett Johnson and free agent addition Emari Demercado, as well as 2025 seventh-rounder Brashard Smith.",
             "value_tier": "starter"
           },
           {
