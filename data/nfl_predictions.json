@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-09T09:08:38.845237+00:00",
+  "updated": "2026-05-10T09:22:43.337403+00:00",
   "season": 2025,
   "week": 5,
   "is_offseason": true,
@@ -20,9 +20,9 @@
       "home_score": 13,
       "away_score": 29,
       "predictions": {
-        "ensemble_prob": 0.3986,
+        "ensemble_prob": 0.3982,
         "logistic_prob": 0.2667,
-        "elo_prob": 0.4555,
+        "elo_prob": 0.4527,
         "xgb_prob": 0.4321,
         "pyth_prob": 0.4803,
         "eff_prob": 0.5391,
@@ -36,19 +36,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.4394,
-        "exp_margin": -2.25,
-        "prob_7plus": 0.2582,
-        "prob_14plus": 0.1262,
-        "prob_21plus": 0.0505,
+        "win_prob": 0.4378,
+        "exp_margin": -2.39,
+        "prob_7plus": 0.2527,
+        "prob_14plus": 0.1217,
+        "prob_21plus": 0.0491,
         "margin_percentiles": [
-          -25.3,
-          -20.4,
-          -11.9,
-          -2.1,
-          7.4,
-          15.8,
-          21.0
+          -26.0,
+          -20.7,
+          -12.0,
+          -2.4,
+          7.1,
+          15.6,
+          20.9
         ]
       },
       "adjustments": {
@@ -62,7 +62,7 @@
       "elo": {
         "home": 1671.9,
         "away": 1761.7,
-        "diff": -31.0
+        "diff": -33.0
       },
       "bayesian": {
         "home_mu": 1716.3,
@@ -81,10 +81,17 @@
       "injuries": {
         "home": [
           {
+            "player": "Quintayvious Hutchins",
+            "status": "Questionable",
+            "position": "LB",
+            "injury_description": "Hutchins, a 2026 seventh-round pick, is competing to carve out a reserve role in New England's edge rushing corps. He will have plenty of time to heal up in advance of June minicamp activities, though the details and severity of his injury remain undisclosed. A five-year contributor at Boston College, Hutchins wrapped up his senior year in 2025 with 35 total tackles, including 2.0 sacks, across 10 appearances.",
+            "value_tier": "starter"
+          },
+          {
             "player": "Myles Montgomery",
             "status": "Active",
             "position": "RB",
-            "injury_description": "Montgomery mostly played in a backup role through his first four seasons at between Cincinnati and UCF before stepping up in his fifth year at UCF, rushing 143 times for 705 yards and four touchdowns and adding 17 receptions for 182 yards. The Patriots already have Rhamondre Stevenson and TreVeyon Henderson established at the top of the depth chart, so Montgomery needs to contribute on special teams to earn a depth role.",
+            "injury_description": "Montgomery mostly played in a backup role through his first four seasons between Cincinnati and UCF before stepping up in his fifth year at the latter, rushing 143 times for 705 yards and four touchdowns and adding 17 receptions for 182 yards. The Patriots already have Rhamondre Stevenson and TreVeyon Henderson established at the top of the depth chart, so Montgomery needs to contribute on special teams to earn a depth role.",
             "value_tier": "starter"
           },
           {
@@ -106,13 +113,6 @@
             "status": "Active",
             "position": "WR",
             "injury_description": "DeGennaro spent five seasons between Maryland and Richmond before finally settling in at James Madison for the 2025 campaign. He finished with 28 receptions for 500 yards (second on the team) and five touchdowns (tied for first). DeGennaro's team-high 17.4 yards per reception was impressive, and he backed it up with a 4.40 40-yard dash at the NFL Combine. The late breakout is obviously concerning, but he could find a spot on special teams with a strong offseason program and training camp.",
-            "value_tier": "starter"
-          },
-          {
-            "player": "Tanner Arkin",
-            "status": "Active",
-            "position": "TE",
-            "injury_description": "Arkin's best college season was his fifth year at Illinois, when he caught 13 passes for 114 yards and two touchdowns across 13 games. He'll have a difficult time securing a spot on the 53-man roster, as the Patriots currently are carrying five tight ends, including Hunter Henry, Julian Hill and rookie third-round pick Eli Raridon.",
             "value_tier": "starter"
           }
         ],
@@ -155,11 +155,18 @@
         ]
       },
       "injury_impact": {
-        "home_elo_penalty": 1.2,
+        "home_elo_penalty": 3.2,
         "away_elo_penalty": 6.0,
-        "home_impact_score": 0.0109,
+        "home_impact_score": 0.0291,
         "away_impact_score": 0.0545,
         "home_key_players_out": [
+          {
+            "player": "Quintayvious Hutchins",
+            "position": "LB",
+            "status": "Questionable",
+            "elo_impact": 2.0,
+            "value_tier": "starter"
+          },
           {
             "player": "Alijah Vera-Tucker",
             "position": "G",
@@ -191,13 +198,14 @@
       },
       "prediction_drivers": [
         "ELO advantage: SEA +90 rating points",
+        "Quintayvious Hutchins (NE) [Starter] QUESTIONABLE \u2014 \u22122 ELO",
         "Alijah Vera-Tucker (NE) [Starter] QUESTIONABLE \u2014 \u22121 ELO",
         "Zach Charbonnet (SEA) [Starter] QUESTIONABLE \u2014 \u22123 ELO",
         "Tory Horton (SEA) [Starter] QUESTIONABLE \u2014 \u22123 ELO",
         "Efficiency gap: NE net +0.019 vs SEA net -0.116",
         "Travel penalty: away team travels 2491 miles"
       ],
-      "explanation": "The model gives Seattle Seahawks a 60.1% win probability \u2014 a moderate favorite over New England Patriots. The ELO gap is 90 points at a neutral site. Travel distance 2491 miles factors into the away team rating."
+      "explanation": "The model gives Seattle Seahawks a 60.2% win probability \u2014 a moderate favorite over New England Patriots. The ELO gap is 90 points at a neutral site. Travel distance 2491 miles factors into the away team rating."
     },
     {
       "game_id": "401772940",
@@ -231,19 +239,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.5015,
-        "exp_margin": 0.13,
-        "prob_7plus": 0.3154,
-        "prob_14plus": 0.1692,
-        "prob_21plus": 0.0692,
+        "win_prob": 0.4986,
+        "exp_margin": 0.04,
+        "prob_7plus": 0.3121,
+        "prob_14plus": 0.1638,
+        "prob_21plus": 0.0694,
         "margin_percentiles": [
-          -23.0,
-          -18.1,
-          -9.5,
-          0.0,
+          -23.1,
+          -18.0,
+          -9.7,
+          -0.1,
           9.7,
-          18.3,
-          23.0
+          18.1,
+          23.5
         ]
       },
       "adjustments": {
@@ -464,19 +472,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.1921,
-        "exp_margin": -12.35,
-        "prob_7plus": 0.0845,
-        "prob_14plus": 0.0297,
-        "prob_21plus": 0.0076,
+        "win_prob": 0.1846,
+        "exp_margin": -12.64,
+        "prob_7plus": 0.0797,
+        "prob_14plus": 0.0295,
+        "prob_21plus": 0.0092,
         "margin_percentiles": [
-          -35.3,
-          -30.2,
-          -21.9,
-          -12.4,
-          -2.7,
-          5.6,
-          10.7
+          -36.3,
+          -31.0,
+          -22.4,
+          -12.3,
+          -2.9,
+          5.4,
+          10.5
         ]
       },
       "adjustments": {
@@ -546,6 +554,13 @@
         ],
         "away": [
           {
+            "player": "Bo Nix",
+            "status": "Questionable",
+            "position": "QB",
+            "injury_description": "Nix continues to progress in his recovery from surgery to repair a broken brone in his right ankle that he underwent in late January. The initial recovery timeline was 12 weeks, but the Broncos won't push the third-year quarterback too much during June's minicamp, with Jarrett Stidham expected to take the majority of snaps at that time, though Nix should be a full go for training camp.",
+            "value_tier": "starter"
+          },
+          {
             "player": "Joseph Manjack IV",
             "status": "Active",
             "position": "WR",
@@ -556,7 +571,7 @@
             "player": "Kolbe Katsis",
             "status": "Active",
             "position": "WR",
-            "injury_description": "Katsis was dominant for Northern Arizona of the FCS last season, recording 95 receptions for 1,566 yards and 12 touchdowns over two seasons. He earned All-Big Sky First Team honors as a wide receiver and as a kick returner, as he averaged 30.6 yards per kick return while scoring once. The Broncos have a deep receiver corps, so Katsis likely will need to produce immediately as a returner to earn a 53-man roster spot.",
+            "injury_description": "Katsis was dominant for Northern Arizona of the FCS last season, and he recorded a combined 95 receptions for 1,566 yards and 12 touchdowns over his last two college campaigns. He earned All-Big Sky First Team honors as a wide receiver and as a kick returner, as he averaged 30.6 yards per kick return while scoring once. The Broncos have a deep receiver corps, so Katsis likely will need to produce immediately as a returner to earn a 53-man roster spot.",
             "value_tier": "starter"
           },
           {
@@ -571,13 +586,6 @@
             "status": "Active",
             "position": "WR",
             "injury_description": "Bryant was injured in Denver's season-ending loss to the Patriots in the AFC Championship Game. The 2025 third-round pick had 31 catches for 378 yards and one TD on 49 targets in 15 games during his rookie regular season. Bryant has regained health but will need to impress the coaching staff throughout training camp and the preseason to earn a prominent role in a deep wide receiver room that Denver bolstered by trading for Jaylen Waddle in the offseason while retaining Courtland Sutton, Troy Franklin (hamstring), Marvin Mims and Bryant.",
-            "value_tier": "starter"
-          },
-          {
-            "player": "Devon Key",
-            "status": "Active",
-            "position": "S",
-            "injury_description": "Once Denver made the tender offer, the safety had no choice but to remain with the team, or sit out the season. Key also was tendered by the Broncos for the 2025 campaign. He has appeared on more than 200 special-teams snaps in each of the last two regular seasons.",
             "value_tier": "starter"
           }
         ]
@@ -667,19 +675,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.7261,
-        "exp_margin": 8.32,
-        "prob_7plus": 0.5394,
-        "prob_14plus": 0.3456,
-        "prob_21plus": 0.1828,
+        "win_prob": 0.7205,
+        "exp_margin": 8.27,
+        "prob_7plus": 0.5303,
+        "prob_14plus": 0.3377,
+        "prob_21plus": 0.183,
         "margin_percentiles": [
-          -15.2,
+          -14.9,
           -9.8,
-          -1.1,
-          8.3,
-          17.9,
-          26.5,
-          31.8
+          -1.3,
+          8.1,
+          17.8,
+          26.6,
+          32.0
         ]
       },
       "adjustments": {
@@ -715,7 +723,7 @@
             "player": "Anthony Richardson Sr.",
             "status": "Active",
             "position": "QB",
-            "injury_description": "Richardson initially opted against reporting for the start of the team's voluntary offseason workout program after he requested a trade back in February but has since had a change of heart, as he reported to the team earlier this week. Coming off a fractured orbital that ended his 2025 season last October, Richardson is back to 100 percent health. There's still a decent chance he's not part of the Colts' roster later this summer after Indy declined the quarterback's 2027 option. Richardson is competing with Riley Leonard for the QB2 gig and figures to draw interest as a former first-round pick with theoretical upside when healthy.",
+            "injury_description": "Richardson initially opted against reporting for the start of the team's voluntary offseason workout program after he requested a trade back in February but has since had a change of heart, as he reported to the team earlier this week. Coming off a fractured orbital that ended his 2025 season last October, Richardson is back to 100 percent health. There's still a decent chance he's not part of the Colts' roster later this summer after Indy declined the quarterback's 2027 option. Richardson is competing with Riley Leonard for the QB2 gig behind Daniel Jones and figures to draw interest as a one-time first-round pick with theoretical upside when healthy.",
             "value_tier": "starter"
           },
           {
@@ -899,19 +907,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.4485,
-        "exp_margin": -2.11,
-        "prob_7plus": 0.2589,
-        "prob_14plus": 0.1211,
-        "prob_21plus": 0.0495,
+        "win_prob": 0.4347,
+        "exp_margin": -2.28,
+        "prob_7plus": 0.2614,
+        "prob_14plus": 0.1271,
+        "prob_21plus": 0.0515,
         "margin_percentiles": [
-          -25.9,
+          -25.8,
           -20.4,
-          -11.6,
-          -1.9,
-          7.3,
-          15.7,
-          21.0
+          -12.0,
+          -2.4,
+          7.5,
+          15.9,
+          21.3
         ]
       },
       "adjustments": {
@@ -1071,9 +1079,9 @@
       "home_score": 19,
       "away_score": 25,
       "predictions": {
-        "ensemble_prob": 0.2633,
+        "ensemble_prob": 0.2631,
         "logistic_prob": 0.1786,
-        "elo_prob": 0.2818,
+        "elo_prob": 0.2804,
         "xgb_prob": 0.1695,
         "pyth_prob": 0.3866,
         "eff_prob": 0.5168,
@@ -1087,19 +1095,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.4511,
-        "exp_margin": -1.81,
-        "prob_7plus": 0.2692,
-        "prob_14plus": 0.1333,
-        "prob_21plus": 0.0522,
+        "win_prob": 0.4599,
+        "exp_margin": -1.61,
+        "prob_7plus": 0.2691,
+        "prob_14plus": 0.1309,
+        "prob_21plus": 0.0508,
         "margin_percentiles": [
           -24.8,
-          -20.0,
-          -11.6,
-          -1.8,
-          7.8,
-          16.1,
-          21.3
+          -19.6,
+          -11.1,
+          -1.5,
+          7.9,
+          16.2,
+          21.1
         ]
       },
       "adjustments": {
@@ -1113,7 +1121,7 @@
       "elo": {
         "home": 1441.2,
         "away": 1671.9,
-        "diff": -162.6
+        "diff": -163.8
       },
       "bayesian": {
         "home_mu": 1605.0,
@@ -1131,6 +1139,13 @@
       },
       "injuries": {
         "home": [
+          {
+            "player": "Jordyn Tyson",
+            "status": "Questionable",
+            "position": "WR",
+            "injury_description": "Saints head coach Kellen Moore clarified that Tyson is dealing with a soft-tissue injury and that his absence Saturday was planned, per Underhill. Tyson participated in Friday's session, and there's no indication that it will impact his ability to participate in future offseason programs. The Arizona State product was the eighth overall pick of the 2026 NFL Draft, and his addition gives the Saints a lethal one-two punch at wide receiver with Tyson working alongside Chris Olave.",
+            "value_tier": "starter"
+          },
           {
             "player": "Alvin Kamara",
             "status": "Questionable",
@@ -1158,21 +1173,21 @@
             "position": "PK",
             "injury_description": "Shipley ended his final season with the Texas Longhorns 20-for-24 on field-goal attempts, with his longest make coming in at 53 yards. The kicker should provide Charlie Smyth with some competition in camp, as Smyth logged only six NFL starts with the Saints in 2025 after taking over for Blake Grupe.",
             "value_tier": "starter"
-          },
-          {
-            "player": "Cody Hardy",
-            "status": "Active",
-            "position": "TE",
-            "injury_description": "Hardy played in 44 games over his college career, spending three years at Elon before transferring to North Carolina State as a senior. The tight end produced just six receptions for 83 yards and two touchdowns in his final season, but his main value came as a run blocker. The 6-foot-5, 271-pound rookie will have to show significant special teams upside for a shot to remain on the Saints' depth chart come September.",
-            "value_tier": "starter"
           }
         ],
         "away": [
           {
+            "player": "Quintayvious Hutchins",
+            "status": "Questionable",
+            "position": "LB",
+            "injury_description": "Hutchins, a 2026 seventh-round pick, is competing to carve out a reserve role in New England's edge rushing corps. He will have plenty of time to heal up in advance of June minicamp activities, though the details and severity of his injury remain undisclosed. A five-year contributor at Boston College, Hutchins wrapped up his senior year in 2025 with 35 total tackles, including 2.0 sacks, across 10 appearances.",
+            "value_tier": "starter"
+          },
+          {
             "player": "Myles Montgomery",
             "status": "Active",
             "position": "RB",
-            "injury_description": "Montgomery mostly played in a backup role through his first four seasons at between Cincinnati and UCF before stepping up in his fifth year at UCF, rushing 143 times for 705 yards and four touchdowns and adding 17 receptions for 182 yards. The Patriots already have Rhamondre Stevenson and TreVeyon Henderson established at the top of the depth chart, so Montgomery needs to contribute on special teams to earn a depth role.",
+            "injury_description": "Montgomery mostly played in a backup role through his first four seasons between Cincinnati and UCF before stepping up in his fifth year at the latter, rushing 143 times for 705 yards and four touchdowns and adding 17 receptions for 182 yards. The Patriots already have Rhamondre Stevenson and TreVeyon Henderson established at the top of the depth chart, so Montgomery needs to contribute on special teams to earn a depth role.",
             "value_tier": "starter"
           },
           {
@@ -1195,22 +1210,22 @@
             "position": "WR",
             "injury_description": "DeGennaro spent five seasons between Maryland and Richmond before finally settling in at James Madison for the 2025 campaign. He finished with 28 receptions for 500 yards (second on the team) and five touchdowns (tied for first). DeGennaro's team-high 17.4 yards per reception was impressive, and he backed it up with a 4.40 40-yard dash at the NFL Combine. The late breakout is obviously concerning, but he could find a spot on special teams with a strong offseason program and training camp.",
             "value_tier": "starter"
-          },
-          {
-            "player": "Tanner Arkin",
-            "status": "Active",
-            "position": "TE",
-            "injury_description": "Arkin's best college season was his fifth year at Illinois, when he caught 13 passes for 114 yards and two touchdowns across 13 games. He'll have a difficult time securing a spot on the 53-man roster, as the Patriots currently are carrying five tight ends, including Hunter Henry, Julian Hill and rookie third-round pick Eli Raridon.",
-            "value_tier": "starter"
           }
         ]
       },
       "injury_impact": {
-        "home_elo_penalty": 6.0,
-        "away_elo_penalty": 1.2,
-        "home_impact_score": 0.0545,
-        "away_impact_score": 0.0109,
+        "home_elo_penalty": 9.2,
+        "away_elo_penalty": 3.2,
+        "home_impact_score": 0.0836,
+        "away_impact_score": 0.0291,
         "home_key_players_out": [
+          {
+            "player": "Jordyn Tyson",
+            "position": "WR",
+            "status": "Questionable",
+            "elo_impact": 3.2,
+            "value_tier": "starter"
+          },
           {
             "player": "Alvin Kamara",
             "position": "RB",
@@ -1228,6 +1243,13 @@
         ],
         "away_key_players_out": [
           {
+            "player": "Quintayvious Hutchins",
+            "position": "LB",
+            "status": "Questionable",
+            "elo_impact": 2.0,
+            "value_tier": "starter"
+          },
+          {
             "player": "Alijah Vera-Tucker",
             "position": "G",
             "status": "Questionable",
@@ -1242,8 +1264,10 @@
       },
       "prediction_drivers": [
         "ELO advantage: NE +231 rating points",
+        "Jordyn Tyson (NO) [Starter] QUESTIONABLE \u2014 \u22123 ELO",
         "Alvin Kamara (NO) [Starter] QUESTIONABLE \u2014 \u22123 ELO",
         "Devaughn Vele (NO) [Starter] QUESTIONABLE \u2014 \u22123 ELO",
+        "Quintayvious Hutchins (NE) [Starter] QUESTIONABLE \u2014 \u22122 ELO",
         "Alijah Vera-Tucker (NE) [Starter] QUESTIONABLE \u2014 \u22121 ELO",
         "Efficiency gap: NO net -0.247 vs NE net +0.019",
         "Home field: NO +65 ELO home advantage"
@@ -1282,19 +1306,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.613,
-        "exp_margin": 4.12,
-        "prob_7plus": 0.4206,
-        "prob_14plus": 0.2425,
-        "prob_21plus": 0.1165,
+        "win_prob": 0.6282,
+        "exp_margin": 4.44,
+        "prob_7plus": 0.4305,
+        "prob_14plus": 0.2527,
+        "prob_21plus": 0.1256,
         "margin_percentiles": [
-          -19.6,
-          -14.2,
-          -5.5,
-          4.2,
-          13.7,
-          22.3,
-          27.6
+          -19.1,
+          -14.1,
+          -5.3,
+          4.5,
+          14.1,
+          22.8,
+          27.7
         ]
       },
       "adjustments": {
@@ -1367,7 +1391,7 @@
             "player": "Elijah Chatman",
             "status": "Active",
             "position": "DT",
-            "injury_description": "Chatman played 22 games for the Giants over the previous two seasons, recording 24 tackles and 1.0 sacks. The 25-year-old will compete for a depth role on Cleveland's stout defensive line.",
+            "injury_description": "Chatman played 22 regular-season games for the Giants over the previous two seasons, recording 24 tackles, including 1.0 sacks. The 25-year-old will compete for a depth role on Cleveland's stout defensive line.",
             "value_tier": "starter"
           },
           {
@@ -1388,7 +1412,7 @@
             "player": "Jeremiah Owusu-Koramoah",
             "status": "Out",
             "position": "LB",
-            "injury_description": "Owusu-Koramoah sustained a serious neck injury last October against the Ravens. The linebacker's NFL future was called into question due to the nature of the injury, but a move to the reserve/PUP list instead of a release is a good sign that his playing days may not be over quite yet. No timeline has been given for Owusu-Koramoah's potential return, however, so his career may still hang in the balance.",
+            "injury_description": "Owusu-Koramoah sustained a serious neck injury last October against the Ravens. The linebacker's NFL future was called into question due to the nature of the injury, and while a move to the reserve/PUP list instead of a release is a sign that his playing days may not be over quite yet, he will be required to miss the entire 2026 season, per Mary Kay Cabot of The Cleveland Plain Dealer.",
             "value_tier": "starter"
           },
           {
@@ -1502,19 +1526,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.633,
-        "exp_margin": 4.66,
-        "prob_7plus": 0.4332,
-        "prob_14plus": 0.2546,
-        "prob_21plus": 0.1241,
+        "win_prob": 0.6265,
+        "exp_margin": 4.5,
+        "prob_7plus": 0.4252,
+        "prob_14plus": 0.2518,
+        "prob_21plus": 0.1182,
         "margin_percentiles": [
-          -18.7,
-          -13.2,
-          -4.9,
-          4.6,
-          14.3,
-          22.7,
-          28.0
+          -18.4,
+          -13.4,
+          -4.8,
+          4.5,
+          14.1,
+          22.4,
+          27.1
         ]
       },
       "adjustments": {
@@ -1688,19 +1712,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.5212,
-        "exp_margin": 0.79,
-        "prob_7plus": 0.3288,
-        "prob_14plus": 0.1756,
-        "prob_21plus": 0.0769,
+        "win_prob": 0.5193,
+        "exp_margin": 0.7,
+        "prob_7plus": 0.3223,
+        "prob_14plus": 0.1724,
+        "prob_21plus": 0.0722,
         "margin_percentiles": [
-          -22.8,
-          -17.5,
-          -8.6,
-          0.8,
-          10.2,
-          18.9,
-          24.0
+          -22.3,
+          -16.9,
+          -8.5,
+          0.7,
+          10.1,
+          18.6,
+          23.7
         ]
       },
       "adjustments": {
@@ -1884,19 +1908,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.4617,
-        "exp_margin": -1.23,
-        "prob_7plus": 0.2802,
-        "prob_14plus": 0.1411,
-        "prob_21plus": 0.0591,
+        "win_prob": 0.4773,
+        "exp_margin": -0.96,
+        "prob_7plus": 0.2898,
+        "prob_14plus": 0.1456,
+        "prob_21plus": 0.0594,
         "margin_percentiles": [
-          -24.3,
-          -19.3,
-          -10.9,
-          -1.4,
-          8.2,
-          17.0,
-          22.4
+          -24.5,
+          -19.4,
+          -10.4,
+          -0.7,
+          8.8,
+          17.1,
+          22.1
         ]
       },
       "adjustments": {
@@ -2071,19 +2095,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.5346,
-        "exp_margin": 1.23,
-        "prob_7plus": 0.3413,
-        "prob_14plus": 0.183,
-        "prob_21plus": 0.0838,
+        "win_prob": 0.5404,
+        "exp_margin": 1.43,
+        "prob_7plus": 0.3436,
+        "prob_14plus": 0.1848,
+        "prob_21plus": 0.0855,
         "margin_percentiles": [
-          -22.1,
-          -16.9,
-          -8.4,
-          1.3,
-          10.8,
+          -22.0,
+          -16.7,
+          -8.1,
+          1.5,
+          10.9,
           19.6,
-          24.7
+          25.1
         ]
       },
       "adjustments": {
@@ -2266,19 +2290,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.608,
-        "exp_margin": 4.06,
-        "prob_7plus": 0.4154,
-        "prob_14plus": 0.2439,
-        "prob_21plus": 0.1188,
+        "win_prob": 0.6079,
+        "exp_margin": 3.97,
+        "prob_7plus": 0.4178,
+        "prob_14plus": 0.2415,
+        "prob_21plus": 0.1193,
         "margin_percentiles": [
-          -18.9,
-          -14.2,
+          -19.6,
+          -14.5,
           -5.7,
-          3.8,
-          13.7,
+          4.0,
+          13.6,
           22.4,
-          27.3
+          27.7
         ]
       },
       "adjustments": {
@@ -2485,19 +2509,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.4765,
-        "exp_margin": -0.71,
-        "prob_7plus": 0.2931,
-        "prob_14plus": 0.1502,
-        "prob_21plus": 0.0634,
+        "win_prob": 0.4855,
+        "exp_margin": -0.35,
+        "prob_7plus": 0.3005,
+        "prob_14plus": 0.1566,
+        "prob_21plus": 0.0668,
         "margin_percentiles": [
-          -23.8,
-          -18.8,
-          -10.3,
-          -0.8,
-          8.9,
-          17.4,
-          22.8
+          -23.3,
+          -18.4,
+          -10.0,
+          -0.5,
+          9.2,
+          18.1,
+          23.1
         ]
       },
       "adjustments": {
@@ -2688,19 +2712,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.5041,
-        "exp_margin": -0.01,
-        "prob_7plus": 0.3111,
-        "prob_14plus": 0.1618,
-        "prob_21plus": 0.0691,
+        "win_prob": 0.4976,
+        "exp_margin": -0.08,
+        "prob_7plus": 0.3093,
+        "prob_14plus": 0.1553,
+        "prob_21plus": 0.0671,
         "margin_percentiles": [
           -23.3,
-          -18.3,
-          -9.6,
-          0.2,
-          9.6,
-          18.2,
-          23.3
+          -18.2,
+          -9.4,
+          -0.1,
+          9.5,
+          17.8,
+          23.1
         ]
       },
       "adjustments": {
@@ -2875,19 +2899,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.4828,
-        "exp_margin": -0.74,
-        "prob_7plus": 0.2908,
-        "prob_14plus": 0.1476,
-        "prob_21plus": 0.0598,
+        "win_prob": 0.4785,
+        "exp_margin": -0.71,
+        "prob_7plus": 0.2957,
+        "prob_14plus": 0.1529,
+        "prob_21plus": 0.0635,
         "margin_percentiles": [
-          -24.3,
-          -19.2,
-          -10.1,
-          -0.6,
-          8.7,
-          17.0,
-          22.5
+          -24.4,
+          -18.8,
+          -10.5,
+          -0.7,
+          8.9,
+          17.6,
+          22.7
         ]
       },
       "adjustments": {
@@ -3077,19 +3101,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.4214,
-        "exp_margin": -2.81,
-        "prob_7plus": 0.2445,
-        "prob_14plus": 0.1156,
-        "prob_21plus": 0.0456,
+        "win_prob": 0.4262,
+        "exp_margin": -2.63,
+        "prob_7plus": 0.2511,
+        "prob_14plus": 0.1172,
+        "prob_21plus": 0.0489,
         "margin_percentiles": [
-          -25.6,
-          -20.9,
-          -12.5,
-          -2.8,
-          6.8,
-          15.3,
-          20.3
+          -26.0,
+          -21.0,
+          -12.1,
+          -2.7,
+          7.0,
+          15.5,
+          20.8
         ]
       },
       "adjustments": {
@@ -3281,19 +3305,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.545,
-        "exp_margin": 1.47,
-        "prob_7plus": 0.3491,
-        "prob_14plus": 0.1882,
-        "prob_21plus": 0.085,
+        "win_prob": 0.5538,
+        "exp_margin": 1.82,
+        "prob_7plus": 0.3581,
+        "prob_14plus": 0.1978,
+        "prob_21plus": 0.0916,
         "margin_percentiles": [
-          -21.6,
-          -16.6,
-          -8.0,
-          1.5,
-          11.1,
-          19.6,
-          24.7
+          -22.1,
+          -16.5,
+          -7.8,
+          1.8,
+          11.5,
+          20.4,
+          25.3
         ]
       },
       "adjustments": {
@@ -3492,19 +3516,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.4799,
-        "exp_margin": -0.87,
-        "prob_7plus": 0.2896,
-        "prob_14plus": 0.1442,
-        "prob_21plus": 0.0581,
+        "win_prob": 0.4903,
+        "exp_margin": -0.35,
+        "prob_7plus": 0.3046,
+        "prob_14plus": 0.1546,
+        "prob_21plus": 0.0675,
         "margin_percentiles": [
-          -24.6,
-          -19.1,
-          -10.3,
-          -0.7,
-          8.6,
-          17.1,
-          22.1
+          -23.8,
+          -18.7,
+          -10.0,
+          -0.3,
+          9.3,
+          17.8,
+          22.9
         ]
       },
       "adjustments": {
@@ -3662,9 +3686,9 @@
       "home_score": 26,
       "away_score": 14,
       "predictions": {
-        "ensemble_prob": 0.7177,
+        "ensemble_prob": 0.7183,
         "logistic_prob": 0.6957,
-        "elo_prob": 0.6794,
+        "elo_prob": 0.6834,
         "xgb_prob": 0.7952,
         "pyth_prob": 0.6805,
         "eff_prob": 0.7028,
@@ -3678,18 +3702,18 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6683,
+        "win_prob": 0.6672,
         "exp_margin": 6.17,
-        "prob_7plus": 0.4773,
-        "prob_14plus": 0.2911,
-        "prob_21plus": 0.1473,
+        "prob_7plus": 0.4788,
+        "prob_14plus": 0.2929,
+        "prob_21plus": 0.1541,
         "margin_percentiles": [
-          -17.5,
-          -12.0,
-          -3.4,
-          6.2,
-          15.8,
-          24.3,
+          -17.4,
+          -12.5,
+          -3.5,
+          6.3,
+          16.0,
+          24.7,
           29.7
         ]
       },
@@ -3704,7 +3728,7 @@
       "elo": {
         "home": 1549.2,
         "away": 1441.2,
-        "diff": 130.5
+        "diff": 133.7
       },
       "bayesian": {
         "home_mu": 1690.2,
@@ -3760,6 +3784,13 @@
         ],
         "away": [
           {
+            "player": "Jordyn Tyson",
+            "status": "Questionable",
+            "position": "WR",
+            "injury_description": "Saints head coach Kellen Moore clarified that Tyson is dealing with a soft-tissue injury and that his absence Saturday was planned, per Underhill. Tyson participated in Friday's session, and there's no indication that it will impact his ability to participate in future offseason programs. The Arizona State product was the eighth overall pick of the 2026 NFL Draft, and his addition gives the Saints a lethal one-two punch at wide receiver with Tyson working alongside Chris Olave.",
+            "value_tier": "starter"
+          },
+          {
             "player": "Alvin Kamara",
             "status": "Questionable",
             "position": "RB",
@@ -3786,21 +3817,14 @@
             "position": "PK",
             "injury_description": "Shipley ended his final season with the Texas Longhorns 20-for-24 on field-goal attempts, with his longest make coming in at 53 yards. The kicker should provide Charlie Smyth with some competition in camp, as Smyth logged only six NFL starts with the Saints in 2025 after taking over for Blake Grupe.",
             "value_tier": "starter"
-          },
-          {
-            "player": "Cody Hardy",
-            "status": "Active",
-            "position": "TE",
-            "injury_description": "Hardy played in 44 games over his college career, spending three years at Elon before transferring to North Carolina State as a senior. The tight end produced just six receptions for 83 yards and two touchdowns in his final season, but his main value came as a run blocker. The 6-foot-5, 271-pound rookie will have to show significant special teams upside for a shot to remain on the Saints' depth chart come September.",
-            "value_tier": "starter"
           }
         ]
       },
       "injury_impact": {
         "home_elo_penalty": 5.6,
-        "away_elo_penalty": 6.0,
+        "away_elo_penalty": 9.2,
         "home_impact_score": 0.0509,
-        "away_impact_score": 0.0545,
+        "away_impact_score": 0.0836,
         "home_key_players_out": [
           {
             "player": "T.J. Edwards",
@@ -3818,6 +3842,13 @@
           }
         ],
         "away_key_players_out": [
+          {
+            "player": "Jordyn Tyson",
+            "position": "WR",
+            "status": "Questionable",
+            "elo_impact": 3.2,
+            "value_tier": "starter"
+          },
           {
             "player": "Alvin Kamara",
             "position": "RB",
@@ -3842,6 +3873,7 @@
         "ELO advantage: CHI +108 rating points",
         "T.J. Edwards (CHI) [Starter] QUESTIONABLE \u2014 \u22122 ELO",
         "Jedrick Wills Jr. (CHI) [Starter] QUESTIONABLE \u2014 \u22124 ELO",
+        "Jordyn Tyson (NO) [Starter] QUESTIONABLE \u2014 \u22123 ELO",
         "Alvin Kamara (NO) [Starter] QUESTIONABLE \u2014 \u22123 ELO",
         "Devaughn Vele (NO) [Starter] QUESTIONABLE \u2014 \u22123 ELO",
         "Efficiency gap: CHI net +0.176 vs NO net -0.247",
@@ -3881,19 +3913,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6426,
-        "exp_margin": 5.25,
-        "prob_7plus": 0.4456,
-        "prob_14plus": 0.2659,
-        "prob_21plus": 0.1354,
+        "win_prob": 0.6366,
+        "exp_margin": 5.15,
+        "prob_7plus": 0.4454,
+        "prob_14plus": 0.2646,
+        "prob_21plus": 0.1349,
         "margin_percentiles": [
-          -18.3,
-          -12.7,
-          -4.2,
+          -18.0,
+          -13.0,
+          -4.6,
           5.1,
-          14.7,
-          23.7,
-          28.9
+          14.6,
+          23.5,
+          29.0
         ]
       },
       "adjustments": {
@@ -3929,7 +3961,7 @@
             "player": "Elijah Chatman",
             "status": "Active",
             "position": "DT",
-            "injury_description": "Chatman played 22 games for the Giants over the previous two seasons, recording 24 tackles and 1.0 sacks. The 25-year-old will compete for a depth role on Cleveland's stout defensive line.",
+            "injury_description": "Chatman played 22 regular-season games for the Giants over the previous two seasons, recording 24 tackles, including 1.0 sacks. The 25-year-old will compete for a depth role on Cleveland's stout defensive line.",
             "value_tier": "starter"
           },
           {
@@ -3950,7 +3982,7 @@
             "player": "Jeremiah Owusu-Koramoah",
             "status": "Out",
             "position": "LB",
-            "injury_description": "Owusu-Koramoah sustained a serious neck injury last October against the Ravens. The linebacker's NFL future was called into question due to the nature of the injury, but a move to the reserve/PUP list instead of a release is a good sign that his playing days may not be over quite yet. No timeline has been given for Owusu-Koramoah's potential return, however, so his career may still hang in the balance.",
+            "injury_description": "Owusu-Koramoah sustained a serious neck injury last October against the Ravens. The linebacker's NFL future was called into question due to the nature of the injury, and while a move to the reserve/PUP list instead of a release is a sign that his playing days may not be over quite yet, he will be required to miss the entire 2026 season, per Mary Kay Cabot of The Cleveland Plain Dealer.",
             "value_tier": "starter"
           },
           {
@@ -4067,9 +4099,9 @@
       "home_score": 13,
       "away_score": 31,
       "predictions": {
-        "ensemble_prob": 0.178,
+        "ensemble_prob": 0.1782,
         "logistic_prob": 0.0,
-        "elo_prob": 0.1525,
+        "elo_prob": 0.154,
         "xgb_prob": 0.1604,
         "pyth_prob": 0.3112,
         "eff_prob": 0.5592,
@@ -4083,19 +4115,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.3407,
+        "win_prob": 0.3408,
         "exp_margin": -5.74,
-        "prob_7plus": 0.1837,
-        "prob_14plus": 0.083,
-        "prob_21plus": 0.0319,
+        "prob_7plus": 0.1859,
+        "prob_14plus": 0.0828,
+        "prob_21plus": 0.031,
         "margin_percentiles": [
-          -28.9,
-          -23.6,
+          -29.3,
+          -23.9,
           -15.4,
-          -5.9,
-          3.9,
-          12.5,
-          17.7
+          -5.8,
+          4.0,
+          12.6,
+          18.0
         ]
       },
       "adjustments": {
@@ -4109,7 +4141,7 @@
       "elo": {
         "home": 1329.9,
         "away": 1671.9,
-        "diff": -298.0
+        "diff": -296.0
       },
       "bayesian": {
         "home_mu": 1508.7,
@@ -4165,10 +4197,17 @@
         ],
         "away": [
           {
+            "player": "Quintayvious Hutchins",
+            "status": "Questionable",
+            "position": "LB",
+            "injury_description": "Hutchins, a 2026 seventh-round pick, is competing to carve out a reserve role in New England's edge rushing corps. He will have plenty of time to heal up in advance of June minicamp activities, though the details and severity of his injury remain undisclosed. A five-year contributor at Boston College, Hutchins wrapped up his senior year in 2025 with 35 total tackles, including 2.0 sacks, across 10 appearances.",
+            "value_tier": "starter"
+          },
+          {
             "player": "Myles Montgomery",
             "status": "Active",
             "position": "RB",
-            "injury_description": "Montgomery mostly played in a backup role through his first four seasons at between Cincinnati and UCF before stepping up in his fifth year at UCF, rushing 143 times for 705 yards and four touchdowns and adding 17 receptions for 182 yards. The Patriots already have Rhamondre Stevenson and TreVeyon Henderson established at the top of the depth chart, so Montgomery needs to contribute on special teams to earn a depth role.",
+            "injury_description": "Montgomery mostly played in a backup role through his first four seasons between Cincinnati and UCF before stepping up in his fifth year at the latter, rushing 143 times for 705 yards and four touchdowns and adding 17 receptions for 182 yards. The Patriots already have Rhamondre Stevenson and TreVeyon Henderson established at the top of the depth chart, so Montgomery needs to contribute on special teams to earn a depth role.",
             "value_tier": "starter"
           },
           {
@@ -4191,21 +4230,14 @@
             "position": "WR",
             "injury_description": "DeGennaro spent five seasons between Maryland and Richmond before finally settling in at James Madison for the 2025 campaign. He finished with 28 receptions for 500 yards (second on the team) and five touchdowns (tied for first). DeGennaro's team-high 17.4 yards per reception was impressive, and he backed it up with a 4.40 40-yard dash at the NFL Combine. The late breakout is obviously concerning, but he could find a spot on special teams with a strong offseason program and training camp.",
             "value_tier": "starter"
-          },
-          {
-            "player": "Tanner Arkin",
-            "status": "Active",
-            "position": "TE",
-            "injury_description": "Arkin's best college season was his fifth year at Illinois, when he caught 13 passes for 114 yards and two touchdowns across 13 games. He'll have a difficult time securing a spot on the 53-man roster, as the Patriots currently are carrying five tight ends, including Hunter Henry, Julian Hill and rookie third-round pick Eli Raridon.",
-            "value_tier": "starter"
           }
         ]
       },
       "injury_impact": {
         "home_elo_penalty": 15.2,
-        "away_elo_penalty": 1.2,
+        "away_elo_penalty": 3.2,
         "home_impact_score": 0.1382,
-        "away_impact_score": 0.0109,
+        "away_impact_score": 0.0291,
         "home_key_players_out": [
           {
             "player": "Calvin Ridley",
@@ -4224,6 +4256,13 @@
         ],
         "away_key_players_out": [
           {
+            "player": "Quintayvious Hutchins",
+            "position": "LB",
+            "status": "Questionable",
+            "elo_impact": 2.0,
+            "value_tier": "starter"
+          },
+          {
             "player": "Alijah Vera-Tucker",
             "position": "G",
             "status": "Questionable",
@@ -4240,6 +4279,7 @@
         "ELO advantage: NE +342 rating points",
         "Calvin Ridley (TEN) [Starter] QUESTIONABLE \u2014 \u22123 ELO",
         "Cam Ward (TEN) [Starter] QUESTIONABLE \u2014 \u221212 ELO",
+        "Quintayvious Hutchins (NE) [Starter] QUESTIONABLE \u2014 \u22122 ELO",
         "Alijah Vera-Tucker (NE) [Starter] QUESTIONABLE \u2014 \u22121 ELO",
         "Efficiency gap: TEN net -0.099 vs NE net +0.019",
         "Home field: TEN +65 ELO home advantage"
@@ -4278,19 +4318,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6946,
-        "exp_margin": 7.21,
-        "prob_7plus": 0.5099,
-        "prob_14plus": 0.3176,
-        "prob_21plus": 0.1703,
+        "win_prob": 0.6841,
+        "exp_margin": 6.87,
+        "prob_7plus": 0.4949,
+        "prob_14plus": 0.3091,
+        "prob_21plus": 0.1577,
         "margin_percentiles": [
-          -16.1,
-          -11.0,
+          -16.3,
+          -11.2,
           -2.5,
-          7.4,
-          16.8,
-          25.5,
-          30.5
+          6.8,
+          16.5,
+          24.9,
+          30.2
         ]
       },
       "adjustments": {
@@ -4464,19 +4504,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.5457,
+        "win_prob": 0.5514,
         "exp_margin": 1.73,
-        "prob_7plus": 0.3572,
-        "prob_14plus": 0.1954,
-        "prob_21plus": 0.0856,
+        "prob_7plus": 0.3598,
+        "prob_14plus": 0.192,
+        "prob_21plus": 0.0864,
         "margin_percentiles": [
-          -21.8,
+          -21.7,
           -16.7,
           -7.8,
-          1.7,
-          11.5,
-          19.8,
-          25.1
+          1.8,
+          11.4,
+          19.9,
+          24.8
         ]
       },
       "adjustments": {
@@ -4674,19 +4714,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.3383,
-        "exp_margin": -5.8,
-        "prob_7plus": 0.1853,
-        "prob_14plus": 0.0818,
-        "prob_21plus": 0.0279,
+        "win_prob": 0.3465,
+        "exp_margin": -5.36,
+        "prob_7plus": 0.1898,
+        "prob_14plus": 0.0885,
+        "prob_21plus": 0.035,
         "margin_percentiles": [
           -28.7,
-          -23.8,
-          -15.3,
-          -5.9,
-          3.8,
-          12.2,
-          17.3
+          -23.6,
+          -14.8,
+          -5.4,
+          4.1,
+          12.7,
+          18.2
         ]
       },
       "adjustments": {
@@ -4869,19 +4909,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6953,
-        "exp_margin": 7.35,
-        "prob_7plus": 0.5089,
-        "prob_14plus": 0.322,
-        "prob_21plus": 0.1694,
+        "win_prob": 0.6917,
+        "exp_margin": 7.29,
+        "prob_7plus": 0.5027,
+        "prob_14plus": 0.3179,
+        "prob_21plus": 0.1728,
         "margin_percentiles": [
-          -16.2,
-          -11.1,
-          -2.2,
-          7.3,
+          -15.7,
+          -11.0,
+          -2.4,
+          7.1,
           17.0,
-          25.9,
-          31.2
+          25.8,
+          30.6
         ]
       },
       "adjustments": {
@@ -4914,6 +4954,13 @@
       "injuries": {
         "home": [
           {
+            "player": "Bo Nix",
+            "status": "Questionable",
+            "position": "QB",
+            "injury_description": "Nix continues to progress in his recovery from surgery to repair a broken brone in his right ankle that he underwent in late January. The initial recovery timeline was 12 weeks, but the Broncos won't push the third-year quarterback too much during June's minicamp, with Jarrett Stidham expected to take the majority of snaps at that time, though Nix should be a full go for training camp.",
+            "value_tier": "starter"
+          },
+          {
             "player": "Joseph Manjack IV",
             "status": "Active",
             "position": "WR",
@@ -4924,7 +4971,7 @@
             "player": "Kolbe Katsis",
             "status": "Active",
             "position": "WR",
-            "injury_description": "Katsis was dominant for Northern Arizona of the FCS last season, recording 95 receptions for 1,566 yards and 12 touchdowns over two seasons. He earned All-Big Sky First Team honors as a wide receiver and as a kick returner, as he averaged 30.6 yards per kick return while scoring once. The Broncos have a deep receiver corps, so Katsis likely will need to produce immediately as a returner to earn a 53-man roster spot.",
+            "injury_description": "Katsis was dominant for Northern Arizona of the FCS last season, and he recorded a combined 95 receptions for 1,566 yards and 12 touchdowns over his last two college campaigns. He earned All-Big Sky First Team honors as a wide receiver and as a kick returner, as he averaged 30.6 yards per kick return while scoring once. The Broncos have a deep receiver corps, so Katsis likely will need to produce immediately as a returner to earn a 53-man roster spot.",
             "value_tier": "starter"
           },
           {
@@ -4939,13 +4986,6 @@
             "status": "Active",
             "position": "WR",
             "injury_description": "Bryant was injured in Denver's season-ending loss to the Patriots in the AFC Championship Game. The 2025 third-round pick had 31 catches for 378 yards and one TD on 49 targets in 15 games during his rookie regular season. Bryant has regained health but will need to impress the coaching staff throughout training camp and the preseason to earn a prominent role in a deep wide receiver room that Denver bolstered by trading for Jaylen Waddle in the offseason while retaining Courtland Sutton, Troy Franklin (hamstring), Marvin Mims and Bryant.",
-            "value_tier": "starter"
-          },
-          {
-            "player": "Devon Key",
-            "status": "Active",
-            "position": "S",
-            "injury_description": "Once Denver made the tender offer, the safety had no choice but to remain with the team, or sit out the season. Key also was tendered by the Broncos for the 2025 campaign. He has appeared on more than 200 special-teams snaps in each of the last two regular seasons.",
             "value_tier": "starter"
           }
         ],
@@ -5095,19 +5135,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.5601,
-        "exp_margin": 2.03,
-        "prob_7plus": 0.3612,
-        "prob_14plus": 0.1986,
-        "prob_21plus": 0.0914,
+        "win_prob": 0.564,
+        "exp_margin": 2.29,
+        "prob_7plus": 0.3652,
+        "prob_14plus": 0.2011,
+        "prob_21plus": 0.0941,
         "margin_percentiles": [
-          -21.4,
-          -16.2,
-          -7.5,
-          2.2,
-          11.6,
-          20.3,
-          25.6
+          -20.9,
+          -15.8,
+          -7.2,
+          2.3,
+          11.7,
+          20.4,
+          25.8
         ]
       },
       "adjustments": {
@@ -5180,7 +5220,7 @@
             "player": "Anthony Richardson Sr.",
             "status": "Active",
             "position": "QB",
-            "injury_description": "Richardson initially opted against reporting for the start of the team's voluntary offseason workout program after he requested a trade back in February but has since had a change of heart, as he reported to the team earlier this week. Coming off a fractured orbital that ended his 2025 season last October, Richardson is back to 100 percent health. There's still a decent chance he's not part of the Colts' roster later this summer after Indy declined the quarterback's 2027 option. Richardson is competing with Riley Leonard for the QB2 gig and figures to draw interest as a former first-round pick with theoretical upside when healthy.",
+            "injury_description": "Richardson initially opted against reporting for the start of the team's voluntary offseason workout program after he requested a trade back in February but has since had a change of heart, as he reported to the team earlier this week. Coming off a fractured orbital that ended his 2025 season last October, Richardson is back to 100 percent health. There's still a decent chance he's not part of the Colts' roster later this summer after Indy declined the quarterback's 2027 option. Richardson is competing with Riley Leonard for the QB2 gig behind Daniel Jones and figures to draw interest as a one-time first-round pick with theoretical upside when healthy.",
             "value_tier": "starter"
           },
           {
@@ -5327,19 +5367,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.5725,
-        "exp_margin": 2.54,
-        "prob_7plus": 0.3765,
-        "prob_14plus": 0.2117,
-        "prob_21plus": 0.0957,
+        "win_prob": 0.5674,
+        "exp_margin": 2.48,
+        "prob_7plus": 0.3749,
+        "prob_14plus": 0.2144,
+        "prob_21plus": 0.0999,
         "margin_percentiles": [
-          -21.2,
-          -15.8,
-          -6.9,
-          2.6,
-          12.2,
-          20.7,
-          25.7
+          -20.7,
+          -16.0,
+          -7.2,
+          2.5,
+          12.3,
+          21.0,
+          25.8
         ]
       },
       "adjustments": {
@@ -5521,19 +5561,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.4391,
-        "exp_margin": -2.11,
-        "prob_7plus": 0.2661,
-        "prob_14plus": 0.1337,
-        "prob_21plus": 0.0547,
+        "win_prob": 0.4385,
+        "exp_margin": -2.16,
+        "prob_7plus": 0.2613,
+        "prob_14plus": 0.1293,
+        "prob_21plus": 0.0555,
         "margin_percentiles": [
-          -25.3,
+          -25.8,
           -20.5,
-          -11.8,
+          -12.0,
           -2.2,
-          7.7,
+          7.5,
           16.2,
-          21.5
+          21.7
         ]
       },
       "adjustments": {
@@ -5730,19 +5770,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6205,
-        "exp_margin": 4.36,
-        "prob_7plus": 0.4233,
-        "prob_14plus": 0.2448,
-        "prob_21plus": 0.1178,
+        "win_prob": 0.6222,
+        "exp_margin": 4.49,
+        "prob_7plus": 0.431,
+        "prob_14plus": 0.2554,
+        "prob_21plus": 0.1209,
         "margin_percentiles": [
-          -18.2,
-          -13.4,
-          -5.1,
-          4.4,
-          13.8,
-          22.3,
-          27.3
+          -19.1,
+          -13.7,
+          -5.0,
+          4.5,
+          14.2,
+          22.5,
+          27.8
         ]
       },
       "adjustments": {
@@ -5925,19 +5965,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.647,
-        "exp_margin": 5.28,
-        "prob_7plus": 0.4498,
-        "prob_14plus": 0.2723,
-        "prob_21plus": 0.1407,
+        "win_prob": 0.655,
+        "exp_margin": 5.58,
+        "prob_7plus": 0.4551,
+        "prob_14plus": 0.2788,
+        "prob_21plus": 0.1392,
         "margin_percentiles": [
-          -18.7,
-          -12.9,
-          -4.2,
-          5.2,
-          14.9,
+          -17.6,
+          -12.4,
+          -3.7,
+          5.4,
+          15.2,
           23.8,
-          28.6
+          28.5
         ]
       },
       "adjustments": {
@@ -6112,19 +6152,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6373,
-        "exp_margin": 5.0,
-        "prob_7plus": 0.4446,
-        "prob_14plus": 0.2606,
-        "prob_21plus": 0.1307,
+        "win_prob": 0.642,
+        "exp_margin": 5.19,
+        "prob_7plus": 0.4526,
+        "prob_14plus": 0.2682,
+        "prob_21plus": 0.129,
         "margin_percentiles": [
-          -17.9,
-          -13.0,
-          -4.6,
-          5.0,
-          14.5,
-          23.2,
-          28.1
+          -18.7,
+          -13.1,
+          -4.3,
+          5.4,
+          14.8,
+          23.3,
+          28.5
         ]
       },
       "adjustments": {
@@ -6325,19 +6365,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.5599,
-        "exp_margin": 2.08,
-        "prob_7plus": 0.3642,
-        "prob_14plus": 0.2037,
-        "prob_21plus": 0.0887,
+        "win_prob": 0.5559,
+        "exp_margin": 2.06,
+        "prob_7plus": 0.3684,
+        "prob_14plus": 0.2064,
+        "prob_21plus": 0.0932,
         "margin_percentiles": [
-          -21.4,
-          -16.3,
-          -7.4,
-          2.1,
-          11.8,
-          20.1,
-          25.0
+          -21.1,
+          -16.1,
+          -7.8,
+          2.0,
+          11.7,
+          20.5,
+          25.3
         ]
       },
       "adjustments": {
@@ -6519,19 +6559,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6936,
-        "exp_margin": 7.19,
-        "prob_7plus": 0.5102,
-        "prob_14plus": 0.3117,
-        "prob_21plus": 0.1656,
+        "win_prob": 0.6954,
+        "exp_margin": 7.24,
+        "prob_7plus": 0.5073,
+        "prob_14plus": 0.3189,
+        "prob_21plus": 0.1602,
         "margin_percentiles": [
-          -16.3,
-          -11.2,
+          -15.8,
+          -10.7,
           -2.4,
           7.3,
           16.8,
-          25.4,
-          30.9
+          24.9,
+          30.1
         ]
       },
       "adjustments": {
@@ -6695,19 +6735,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.7612,
-        "exp_margin": 10.1,
-        "prob_7plus": 0.5837,
-        "prob_14plus": 0.3947,
-        "prob_21plus": 0.219,
+        "win_prob": 0.7601,
+        "exp_margin": 10.32,
+        "prob_7plus": 0.5929,
+        "prob_14plus": 0.4006,
+        "prob_21plus": 0.2272,
         "margin_percentiles": [
-          -12.9,
-          -7.8,
-          0.5,
-          10.0,
-          19.6,
-          28.2,
-          33.3
+          -13.1,
+          -8.2,
+          0.4,
+          10.4,
+          19.8,
+          28.6,
+          34.1
         ]
       },
       "adjustments": {
@@ -6882,9 +6922,9 @@
       "home_score": 32,
       "away_score": 13,
       "predictions": {
-        "ensemble_prob": 0.8749,
+        "ensemble_prob": 0.8748,
         "logistic_prob": 1.0,
-        "elo_prob": 0.8834,
+        "elo_prob": 0.8822,
         "xgb_prob": 0.8442,
         "pyth_prob": 0.7877,
         "eff_prob": 0.6841,
@@ -6898,19 +6938,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.7253,
-        "exp_margin": 8.53,
-        "prob_7plus": 0.5491,
-        "prob_14plus": 0.3508,
-        "prob_21plus": 0.1872,
+        "win_prob": 0.7254,
+        "exp_margin": 8.42,
+        "prob_7plus": 0.5423,
+        "prob_14plus": 0.3444,
+        "prob_21plus": 0.1848,
         "margin_percentiles": [
-          -14.5,
-          -9.8,
+          -15.1,
+          -9.3,
           -1.0,
-          8.8,
-          18.1,
+          8.5,
+          17.9,
           26.6,
-          31.6
+          31.5
         ]
       },
       "adjustments": {
@@ -6924,7 +6964,7 @@
       "elo": {
         "home": 1671.9,
         "away": 1412.4,
-        "diff": 351.7
+        "diff": 349.7
       },
       "bayesian": {
         "home_mu": 1716.3,
@@ -6943,10 +6983,17 @@
       "injuries": {
         "home": [
           {
+            "player": "Quintayvious Hutchins",
+            "status": "Questionable",
+            "position": "LB",
+            "injury_description": "Hutchins, a 2026 seventh-round pick, is competing to carve out a reserve role in New England's edge rushing corps. He will have plenty of time to heal up in advance of June minicamp activities, though the details and severity of his injury remain undisclosed. A five-year contributor at Boston College, Hutchins wrapped up his senior year in 2025 with 35 total tackles, including 2.0 sacks, across 10 appearances.",
+            "value_tier": "starter"
+          },
+          {
             "player": "Myles Montgomery",
             "status": "Active",
             "position": "RB",
-            "injury_description": "Montgomery mostly played in a backup role through his first four seasons at between Cincinnati and UCF before stepping up in his fifth year at UCF, rushing 143 times for 705 yards and four touchdowns and adding 17 receptions for 182 yards. The Patriots already have Rhamondre Stevenson and TreVeyon Henderson established at the top of the depth chart, so Montgomery needs to contribute on special teams to earn a depth role.",
+            "injury_description": "Montgomery mostly played in a backup role through his first four seasons between Cincinnati and UCF before stepping up in his fifth year at the latter, rushing 143 times for 705 yards and four touchdowns and adding 17 receptions for 182 yards. The Patriots already have Rhamondre Stevenson and TreVeyon Henderson established at the top of the depth chart, so Montgomery needs to contribute on special teams to earn a depth role.",
             "value_tier": "starter"
           },
           {
@@ -6969,13 +7016,6 @@
             "position": "WR",
             "injury_description": "DeGennaro spent five seasons between Maryland and Richmond before finally settling in at James Madison for the 2025 campaign. He finished with 28 receptions for 500 yards (second on the team) and five touchdowns (tied for first). DeGennaro's team-high 17.4 yards per reception was impressive, and he backed it up with a 4.40 40-yard dash at the NFL Combine. The late breakout is obviously concerning, but he could find a spot on special teams with a strong offseason program and training camp.",
             "value_tier": "starter"
-          },
-          {
-            "player": "Tanner Arkin",
-            "status": "Active",
-            "position": "TE",
-            "injury_description": "Arkin's best college season was his fifth year at Illinois, when he caught 13 passes for 114 yards and two touchdowns across 13 games. He'll have a difficult time securing a spot on the 53-man roster, as the Patriots currently are carrying five tight ends, including Hunter Henry, Julian Hill and rookie third-round pick Eli Raridon.",
-            "value_tier": "starter"
           }
         ],
         "away": [
@@ -6983,7 +7023,7 @@
             "player": "Elijah Chatman",
             "status": "Active",
             "position": "DT",
-            "injury_description": "Chatman played 22 games for the Giants over the previous two seasons, recording 24 tackles and 1.0 sacks. The 25-year-old will compete for a depth role on Cleveland's stout defensive line.",
+            "injury_description": "Chatman played 22 regular-season games for the Giants over the previous two seasons, recording 24 tackles, including 1.0 sacks. The 25-year-old will compete for a depth role on Cleveland's stout defensive line.",
             "value_tier": "starter"
           },
           {
@@ -7004,7 +7044,7 @@
             "player": "Jeremiah Owusu-Koramoah",
             "status": "Out",
             "position": "LB",
-            "injury_description": "Owusu-Koramoah sustained a serious neck injury last October against the Ravens. The linebacker's NFL future was called into question due to the nature of the injury, but a move to the reserve/PUP list instead of a release is a good sign that his playing days may not be over quite yet. No timeline has been given for Owusu-Koramoah's potential return, however, so his career may still hang in the balance.",
+            "injury_description": "Owusu-Koramoah sustained a serious neck injury last October against the Ravens. The linebacker's NFL future was called into question due to the nature of the injury, and while a move to the reserve/PUP list instead of a release is a sign that his playing days may not be over quite yet, he will be required to miss the entire 2026 season, per Mary Kay Cabot of The Cleveland Plain Dealer.",
             "value_tier": "starter"
           },
           {
@@ -7017,11 +7057,18 @@
         ]
       },
       "injury_impact": {
-        "home_elo_penalty": 1.2,
+        "home_elo_penalty": 3.2,
         "away_elo_penalty": 11.4,
-        "home_impact_score": 0.0109,
+        "home_impact_score": 0.0291,
         "away_impact_score": 0.1036,
         "home_key_players_out": [
+          {
+            "player": "Quintayvious Hutchins",
+            "position": "LB",
+            "status": "Questionable",
+            "elo_impact": 2.0,
+            "value_tier": "starter"
+          },
           {
             "player": "Alijah Vera-Tucker",
             "position": "G",
@@ -7060,6 +7107,7 @@
       },
       "prediction_drivers": [
         "ELO advantage: NE +260 rating points",
+        "Quintayvious Hutchins (NE) [Starter] QUESTIONABLE \u2014 \u22122 ELO",
         "Alijah Vera-Tucker (NE) [Starter] QUESTIONABLE \u2014 \u22121 ELO",
         "Jeremiah Owusu-Koramoah (CLE) [Starter] OUT \u2014 \u22125 ELO",
         "Dawand Jones (CLE) [Starter] QUESTIONABLE \u2014 \u22124 ELO",
@@ -7101,19 +7149,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6357,
-        "exp_margin": 5.06,
-        "prob_7plus": 0.4422,
-        "prob_14plus": 0.2639,
-        "prob_21plus": 0.133,
+        "win_prob": 0.6342,
+        "exp_margin": 4.92,
+        "prob_7plus": 0.4465,
+        "prob_14plus": 0.2602,
+        "prob_21plus": 0.1296,
         "margin_percentiles": [
-          -17.9,
-          -12.8,
+          -18.4,
+          -13.4,
           -4.6,
-          4.9,
-          14.7,
-          23.4,
-          28.5
+          5.1,
+          14.4,
+          23.1,
+          27.9
         ]
       },
       "adjustments": {
@@ -7334,19 +7382,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.4571,
-        "exp_margin": -1.64,
-        "prob_7plus": 0.2746,
-        "prob_14plus": 0.1381,
-        "prob_21plus": 0.0546,
+        "win_prob": 0.4588,
+        "exp_margin": -1.46,
+        "prob_7plus": 0.2737,
+        "prob_14plus": 0.1328,
+        "prob_21plus": 0.0573,
         "margin_percentiles": [
-          -25.0,
-          -20.0,
-          -11.5,
-          -1.6,
-          8.0,
-          16.7,
-          21.5
+          -24.6,
+          -19.5,
+          -11.1,
+          -1.4,
+          8.2,
+          16.6,
+          22.0
         ]
       },
       "adjustments": {
@@ -7545,19 +7593,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.5247,
-        "exp_margin": 0.8,
-        "prob_7plus": 0.3313,
-        "prob_14plus": 0.1749,
-        "prob_21plus": 0.0747,
+        "win_prob": 0.523,
+        "exp_margin": 0.89,
+        "prob_7plus": 0.3333,
+        "prob_14plus": 0.1751,
+        "prob_21plus": 0.0789,
         "margin_percentiles": [
           -22.5,
-          -17.1,
+          -17.3,
           -8.7,
           0.8,
           10.3,
-          18.8,
-          23.6
+          19.1,
+          24.5
         ]
       },
       "adjustments": {
@@ -7739,19 +7787,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6238,
-        "exp_margin": 4.48,
-        "prob_7plus": 0.4258,
-        "prob_14plus": 0.2501,
-        "prob_21plus": 0.1205,
+        "win_prob": 0.6199,
+        "exp_margin": 4.55,
+        "prob_7plus": 0.4292,
+        "prob_14plus": 0.2555,
+        "prob_21plus": 0.1229,
         "margin_percentiles": [
-          -18.5,
-          -13.7,
-          -5.0,
+          -18.3,
+          -13.4,
+          -5.3,
           4.4,
-          14.0,
-          22.7,
-          27.3
+          14.3,
+          22.6,
+          27.9
         ]
       },
       "adjustments": {
@@ -7942,9 +7990,9 @@
       "home_score": 3,
       "away_score": 23,
       "predictions": {
-        "ensemble_prob": 0.5144,
+        "ensemble_prob": 0.5137,
         "logistic_prob": 0.5062,
-        "elo_prob": 0.5928,
+        "elo_prob": 0.5883,
         "xgb_prob": 0.4635,
         "pyth_prob": 0.5453,
         "eff_prob": 0.5193,
@@ -7958,18 +8006,18 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.5904,
-        "exp_margin": 3.3,
-        "prob_7plus": 0.3941,
-        "prob_14plus": 0.2222,
-        "prob_21plus": 0.1112,
+        "win_prob": 0.594,
+        "exp_margin": 3.34,
+        "prob_7plus": 0.3962,
+        "prob_14plus": 0.2216,
+        "prob_21plus": 0.1014,
         "margin_percentiles": [
-          -19.9,
-          -14.8,
-          -6.3,
+          -19.6,
+          -14.7,
+          -5.9,
           3.3,
-          12.8,
-          21.9,
+          12.7,
+          21.1,
           26.6
         ]
       },
@@ -7984,7 +8032,7 @@
       "elo": {
         "home": 1441.2,
         "away": 1458.9,
-        "diff": 65.2
+        "diff": 62.0
       },
       "bayesian": {
         "home_mu": 1605.0,
@@ -8002,6 +8050,13 @@
       },
       "injuries": {
         "home": [
+          {
+            "player": "Jordyn Tyson",
+            "status": "Questionable",
+            "position": "WR",
+            "injury_description": "Saints head coach Kellen Moore clarified that Tyson is dealing with a soft-tissue injury and that his absence Saturday was planned, per Underhill. Tyson participated in Friday's session, and there's no indication that it will impact his ability to participate in future offseason programs. The Arizona State product was the eighth overall pick of the 2026 NFL Draft, and his addition gives the Saints a lethal one-two punch at wide receiver with Tyson working alongside Chris Olave.",
+            "value_tier": "starter"
+          },
           {
             "player": "Alvin Kamara",
             "status": "Questionable",
@@ -8028,13 +8083,6 @@
             "status": "Active",
             "position": "PK",
             "injury_description": "Shipley ended his final season with the Texas Longhorns 20-for-24 on field-goal attempts, with his longest make coming in at 53 yards. The kicker should provide Charlie Smyth with some competition in camp, as Smyth logged only six NFL starts with the Saints in 2025 after taking over for Blake Grupe.",
-            "value_tier": "starter"
-          },
-          {
-            "player": "Cody Hardy",
-            "status": "Active",
-            "position": "TE",
-            "injury_description": "Hardy played in 44 games over his college career, spending three years at Elon before transferring to North Carolina State as a senior. The tight end produced just six receptions for 83 yards and two touchdowns in his final season, but his main value came as a run blocker. The 6-foot-5, 271-pound rookie will have to show significant special teams upside for a shot to remain on the Saints' depth chart come September.",
             "value_tier": "starter"
           }
         ],
@@ -8077,11 +8125,18 @@
         ]
       },
       "injury_impact": {
-        "home_elo_penalty": 6.0,
+        "home_elo_penalty": 9.2,
         "away_elo_penalty": 3.0,
-        "home_impact_score": 0.0545,
+        "home_impact_score": 0.0836,
         "away_impact_score": 0.0273,
         "home_key_players_out": [
+          {
+            "player": "Jordyn Tyson",
+            "position": "WR",
+            "status": "Questionable",
+            "elo_impact": 3.2,
+            "value_tier": "starter"
+          },
           {
             "player": "Alvin Kamara",
             "position": "RB",
@@ -8112,6 +8167,7 @@
         "away_star_stack_multiplier": 1.0
       },
       "prediction_drivers": [
+        "Jordyn Tyson (NO) [Starter] QUESTIONABLE \u2014 \u22123 ELO",
         "Alvin Kamara (NO) [Starter] QUESTIONABLE \u2014 \u22123 ELO",
         "Devaughn Vele (NO) [Starter] QUESTIONABLE \u2014 \u22123 ELO",
         "Ko Kieft (TB) [Starter] QUESTIONABLE \u2014 \u22123 ELO",
@@ -8152,19 +8208,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.7394,
-        "exp_margin": 8.94,
-        "prob_7plus": 0.5528,
-        "prob_14plus": 0.3571,
-        "prob_21plus": 0.1955,
+        "win_prob": 0.7428,
+        "exp_margin": 9.09,
+        "prob_7plus": 0.5602,
+        "prob_14plus": 0.3614,
+        "prob_21plus": 0.2002,
         "margin_percentiles": [
           -14.3,
-          -8.9,
-          -0.5,
-          8.8,
-          18.3,
-          27.1,
-          32.1
+          -9.0,
+          -0.3,
+          9.2,
+          18.6,
+          27.3,
+          32.2
         ]
       },
       "adjustments": {
@@ -8197,6 +8253,13 @@
       "injuries": {
         "home": [
           {
+            "player": "Bo Nix",
+            "status": "Questionable",
+            "position": "QB",
+            "injury_description": "Nix continues to progress in his recovery from surgery to repair a broken brone in his right ankle that he underwent in late January. The initial recovery timeline was 12 weeks, but the Broncos won't push the third-year quarterback too much during June's minicamp, with Jarrett Stidham expected to take the majority of snaps at that time, though Nix should be a full go for training camp.",
+            "value_tier": "starter"
+          },
+          {
             "player": "Joseph Manjack IV",
             "status": "Active",
             "position": "WR",
@@ -8207,7 +8270,7 @@
             "player": "Kolbe Katsis",
             "status": "Active",
             "position": "WR",
-            "injury_description": "Katsis was dominant for Northern Arizona of the FCS last season, recording 95 receptions for 1,566 yards and 12 touchdowns over two seasons. He earned All-Big Sky First Team honors as a wide receiver and as a kick returner, as he averaged 30.6 yards per kick return while scoring once. The Broncos have a deep receiver corps, so Katsis likely will need to produce immediately as a returner to earn a 53-man roster spot.",
+            "injury_description": "Katsis was dominant for Northern Arizona of the FCS last season, and he recorded a combined 95 receptions for 1,566 yards and 12 touchdowns over his last two college campaigns. He earned All-Big Sky First Team honors as a wide receiver and as a kick returner, as he averaged 30.6 yards per kick return while scoring once. The Broncos have a deep receiver corps, so Katsis likely will need to produce immediately as a returner to earn a 53-man roster spot.",
             "value_tier": "starter"
           },
           {
@@ -8222,13 +8285,6 @@
             "status": "Active",
             "position": "WR",
             "injury_description": "Bryant was injured in Denver's season-ending loss to the Patriots in the AFC Championship Game. The 2025 third-round pick had 31 catches for 378 yards and one TD on 49 targets in 15 games during his rookie regular season. Bryant has regained health but will need to impress the coaching staff throughout training camp and the preseason to earn a prominent role in a deep wide receiver room that Denver bolstered by trading for Jaylen Waddle in the offseason while retaining Courtland Sutton, Troy Franklin (hamstring), Marvin Mims and Bryant.",
-            "value_tier": "starter"
-          },
-          {
-            "player": "Devon Key",
-            "status": "Active",
-            "position": "S",
-            "injury_description": "Once Denver made the tender offer, the safety had no choice but to remain with the team, or sit out the season. Key also was tendered by the Broncos for the 2025 campaign. He has appeared on more than 200 special-teams snaps in each of the last two regular seasons.",
             "value_tier": "starter"
           }
         ],
@@ -8347,18 +8403,18 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.7077,
-        "exp_margin": 7.63,
-        "prob_7plus": 0.5165,
-        "prob_14plus": 0.3271,
-        "prob_21plus": 0.1746,
+        "win_prob": 0.7088,
+        "exp_margin": 7.8,
+        "prob_7plus": 0.5205,
+        "prob_14plus": 0.3322,
+        "prob_21plus": 0.1764,
         "margin_percentiles": [
-          -15.9,
-          -10.4,
-          -1.7,
-          7.5,
-          17.1,
-          25.8,
+          -15.3,
+          -10.3,
+          -1.9,
+          7.7,
+          17.4,
+          25.9,
           30.8
         ]
       },
@@ -8395,7 +8451,7 @@
             "player": "Anthony Richardson Sr.",
             "status": "Active",
             "position": "QB",
-            "injury_description": "Richardson initially opted against reporting for the start of the team's voluntary offseason workout program after he requested a trade back in February but has since had a change of heart, as he reported to the team earlier this week. Coming off a fractured orbital that ended his 2025 season last October, Richardson is back to 100 percent health. There's still a decent chance he's not part of the Colts' roster later this summer after Indy declined the quarterback's 2027 option. Richardson is competing with Riley Leonard for the QB2 gig and figures to draw interest as a former first-round pick with theoretical upside when healthy.",
+            "injury_description": "Richardson initially opted against reporting for the start of the team's voluntary offseason workout program after he requested a trade back in February but has since had a change of heart, as he reported to the team earlier this week. Coming off a fractured orbital that ended his 2025 season last October, Richardson is back to 100 percent health. There's still a decent chance he's not part of the Colts' roster later this summer after Indy declined the quarterback's 2027 option. Richardson is competing with Riley Leonard for the QB2 gig behind Daniel Jones and figures to draw interest as a one-time first-round pick with theoretical upside when healthy.",
             "value_tier": "starter"
           },
           {
@@ -8586,19 +8642,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.553,
-        "exp_margin": 2.26,
-        "prob_7plus": 0.3706,
-        "prob_14plus": 0.2086,
-        "prob_21plus": 0.0967,
+        "win_prob": 0.5572,
+        "exp_margin": 2.02,
+        "prob_7plus": 0.3608,
+        "prob_14plus": 0.203,
+        "prob_21plus": 0.0923,
         "margin_percentiles": [
-          -21.2,
-          -16.1,
+          -21.6,
+          -16.3,
           -7.5,
-          2.0,
-          12.0,
-          20.7,
-          26.3
+          2.1,
+          11.6,
+          20.3,
+          25.4
         ]
       },
       "adjustments": {
@@ -8810,19 +8866,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6054,
-        "exp_margin": 3.93,
-        "prob_7plus": 0.4142,
-        "prob_14plus": 0.2357,
-        "prob_21plus": 0.1121,
+        "win_prob": 0.6153,
+        "exp_margin": 4.23,
+        "prob_7plus": 0.422,
+        "prob_14plus": 0.2432,
+        "prob_21plus": 0.1172,
         "margin_percentiles": [
-          -19.3,
-          -13.9,
-          -5.5,
-          3.8,
-          13.4,
-          22.1,
-          27.4
+          -18.8,
+          -13.6,
+          -5.4,
+          4.0,
+          13.7,
+          22.3,
+          27.6
         ]
       },
       "adjustments": {
