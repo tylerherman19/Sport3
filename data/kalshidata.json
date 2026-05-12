@@ -1,7 +1,113 @@
 {
-  "updated": "2026-05-11T11:54:00.093540+00:00",
-  "market_count": 26,
+  "updated": "2026-05-12T10:24:21.356099+00:00",
+  "market_count": 9,
   "markets": [
+    {
+      "can_close_early": true,
+      "close_time": "2026-05-29T17:00:00Z",
+      "created_time": "2026-05-12T04:00:59.574735Z",
+      "custom_strike": {
+        "basketball_team": "65569528-1888-40aa-9d62-2b0e8142a9b4"
+      },
+      "early_close_condition": "This market will close and expire after a winner is declared.",
+      "event_ticker": "KXNBAGAME-26MAY15DETCLE",
+      "expected_expiration_time": "2026-05-15T20:00:00Z",
+      "expiration_time": "2026-05-29T17:00:00Z",
+      "expiration_value": "",
+      "fractional_trading_enabled": true,
+      "last_price_dollars": "0.4300",
+      "latest_expiration_time": "2026-05-29T17:00:00Z",
+      "liquidity_dollars": "0.0000",
+      "market_type": "binary",
+      "no_ask_dollars": "0.5800",
+      "no_bid_dollars": "0.5700",
+      "no_sub_title": "Detroit",
+      "notional_value_dollars": "1.0000",
+      "occurrence_datetime": "2026-05-15T20:00:00Z",
+      "open_interest_fp": "4064.31",
+      "open_time": "2026-05-12T04:05:00Z",
+      "previous_price_dollars": "0.0000",
+      "previous_yes_ask_dollars": "0.0000",
+      "previous_yes_bid_dollars": "0.0000",
+      "price_level_structure": "linear_cent",
+      "price_ranges": [
+        {
+          "end": "1.0000",
+          "start": "0.0000",
+          "step": "0.0100"
+        }
+      ],
+      "response_price_units": "usd_cent",
+      "result": "",
+      "rules_primary": "If Detroit wins the Game 6: Detroit at Cleveland professional basketball game originally scheduled for May 15, 2026, then the market resolves to Yes.",
+      "rules_secondary": "",
+      "settlement_timer_seconds": 30,
+      "status": "active",
+      "strike_type": "structured",
+      "ticker": "KXNBAGAME-26MAY15DETCLE-DET",
+      "title": "Game 6: Detroit at Cleveland Winner?",
+      "updated_time": "2026-05-12T04:05:00.983665Z",
+      "volume_24h_fp": "4147.53",
+      "volume_fp": "4147.53",
+      "yes_ask_dollars": "0.4300",
+      "yes_ask_size_fp": "11673.81",
+      "yes_bid_dollars": "0.4200",
+      "yes_bid_size_fp": "0.25",
+      "yes_sub_title": "Detroit"
+    },
+    {
+      "can_close_early": true,
+      "close_time": "2026-05-29T17:00:00Z",
+      "created_time": "2026-05-12T04:00:59.574735Z",
+      "custom_strike": {
+        "basketball_team": "90381a35-42a6-4975-851f-175418e4271a"
+      },
+      "early_close_condition": "This market will close and expire after a winner is declared.",
+      "event_ticker": "KXNBAGAME-26MAY15DETCLE",
+      "expected_expiration_time": "2026-05-15T20:00:00Z",
+      "expiration_time": "2026-05-29T17:00:00Z",
+      "expiration_value": "",
+      "fractional_trading_enabled": true,
+      "last_price_dollars": "0.6000",
+      "latest_expiration_time": "2026-05-29T17:00:00Z",
+      "liquidity_dollars": "0.0000",
+      "market_type": "binary",
+      "no_ask_dollars": "0.4200",
+      "no_bid_dollars": "0.4000",
+      "no_sub_title": "Cleveland",
+      "notional_value_dollars": "1.0000",
+      "occurrence_datetime": "2026-05-15T20:00:00Z",
+      "open_interest_fp": "1938.56",
+      "open_time": "2026-05-12T04:05:00Z",
+      "previous_price_dollars": "0.0000",
+      "previous_yes_ask_dollars": "0.0000",
+      "previous_yes_bid_dollars": "0.0000",
+      "price_level_structure": "linear_cent",
+      "price_ranges": [
+        {
+          "end": "1.0000",
+          "start": "0.0000",
+          "step": "0.0100"
+        }
+      ],
+      "response_price_units": "usd_cent",
+      "result": "",
+      "rules_primary": "If Cleveland wins the Game 6: Detroit at Cleveland professional basketball game originally scheduled for May 15, 2026, then the market resolves to Yes.",
+      "rules_secondary": "",
+      "settlement_timer_seconds": 30,
+      "status": "active",
+      "strike_type": "structured",
+      "ticker": "KXNBAGAME-26MAY15DETCLE-CLE",
+      "title": "Game 6: Detroit at Cleveland Winner?",
+      "updated_time": "2026-05-12T04:05:00.983665Z",
+      "volume_24h_fp": "2133.36",
+      "volume_fp": "2151.37",
+      "yes_ask_dollars": "0.6000",
+      "yes_ask_size_fp": "4272.42",
+      "yes_bid_dollars": "0.5800",
+      "yes_bid_size_fp": "67.00",
+      "yes_sub_title": "Cleveland"
+    },
     {
       "can_close_early": true,
       "close_time": "2026-05-29T17:00:00Z",
@@ -15,20 +121,20 @@
       "expiration_time": "2026-05-29T17:00:00Z",
       "expiration_value": "",
       "fractional_trading_enabled": true,
-      "last_price_dollars": "0.6400",
+      "last_price_dollars": "0.6500",
       "latest_expiration_time": "2026-05-29T17:00:00Z",
       "liquidity_dollars": "0.0000",
       "market_type": "binary",
       "no_ask_dollars": "0.3700",
-      "no_bid_dollars": "0.3600",
+      "no_bid_dollars": "0.3500",
       "no_sub_title": "San Antonio",
       "notional_value_dollars": "1.0000",
       "occurrence_datetime": "2026-05-15T20:00:00Z",
-      "open_interest_fp": "2158.85",
+      "open_interest_fp": "28053.37",
       "open_time": "2026-05-11T04:06:00Z",
-      "previous_price_dollars": "0.0000",
-      "previous_yes_ask_dollars": "0.0000",
-      "previous_yes_bid_dollars": "0.0000",
+      "previous_price_dollars": "0.6600",
+      "previous_yes_ask_dollars": "0.6700",
+      "previous_yes_bid_dollars": "0.6300",
       "price_level_structure": "linear_cent",
       "price_ranges": [
         {
@@ -47,12 +153,12 @@
       "ticker": "KXNBAGAME-26MAY15SASMIN-SAS",
       "title": "Game 6: San Antonio at Minnesota Winner?",
       "updated_time": "2026-05-11T04:06:00.982643Z",
-      "volume_24h_fp": "2414.23",
-      "volume_fp": "2444.23",
-      "yes_ask_dollars": "0.6400",
-      "yes_ask_size_fp": "49.00",
+      "volume_24h_fp": "35153.43",
+      "volume_fp": "37283.80",
+      "yes_ask_dollars": "0.6500",
+      "yes_ask_size_fp": "2287.33",
       "yes_bid_dollars": "0.6300",
-      "yes_bid_size_fp": "224.00",
+      "yes_bid_size_fp": "4255.12",
       "yes_sub_title": "San Antonio"
     },
     {
@@ -68,20 +174,20 @@
       "expiration_time": "2026-05-29T17:00:00Z",
       "expiration_value": "",
       "fractional_trading_enabled": true,
-      "last_price_dollars": "0.3600",
+      "last_price_dollars": "0.3700",
       "latest_expiration_time": "2026-05-29T17:00:00Z",
       "liquidity_dollars": "0.0000",
       "market_type": "binary",
       "no_ask_dollars": "0.6400",
-      "no_bid_dollars": "0.6100",
+      "no_bid_dollars": "0.6300",
       "no_sub_title": "Minnesota",
       "notional_value_dollars": "1.0000",
       "occurrence_datetime": "2026-05-15T20:00:00Z",
-      "open_interest_fp": "884.78",
+      "open_interest_fp": "13326.57",
       "open_time": "2026-05-11T04:06:00Z",
-      "previous_price_dollars": "0.0000",
-      "previous_yes_ask_dollars": "0.0000",
-      "previous_yes_bid_dollars": "0.0000",
+      "previous_price_dollars": "0.3000",
+      "previous_yes_ask_dollars": "0.3900",
+      "previous_yes_bid_dollars": "0.3400",
       "price_level_structure": "linear_cent",
       "price_ranges": [
         {
@@ -100,12 +206,12 @@
       "ticker": "KXNBAGAME-26MAY15SASMIN-MIN",
       "title": "Game 6: San Antonio at Minnesota Winner?",
       "updated_time": "2026-05-11T04:06:00.982643Z",
-      "volume_24h_fp": "1632.45",
-      "volume_fp": "1632.45",
-      "yes_ask_dollars": "0.3900",
-      "yes_ask_size_fp": "620.00",
+      "volume_24h_fp": "13641.25",
+      "volume_fp": "15050.27",
+      "yes_ask_dollars": "0.3700",
+      "yes_ask_size_fp": "3359.65",
       "yes_bid_dollars": "0.3600",
-      "yes_bid_size_fp": "781.83",
+      "yes_bid_size_fp": "638.25",
       "yes_sub_title": "Minnesota"
     },
     {
@@ -121,20 +227,20 @@
       "expiration_time": "2026-05-27T17:00:00Z",
       "expiration_value": "",
       "fractional_trading_enabled": true,
-      "last_price_dollars": "0.6400",
+      "last_price_dollars": "0.6200",
       "latest_expiration_time": "2026-05-27T17:00:00Z",
       "liquidity_dollars": "0.0000",
       "market_type": "binary",
       "no_ask_dollars": "0.3900",
-      "no_bid_dollars": "0.3700",
+      "no_bid_dollars": "0.3800",
       "no_sub_title": "Detroit",
       "notional_value_dollars": "1.0000",
       "occurrence_datetime": "2026-05-13T20:00:00Z",
-      "open_interest_fp": "90702.25",
+      "open_interest_fp": "121664.00",
       "open_time": "2026-05-10T01:06:00Z",
-      "previous_price_dollars": "0.5500",
-      "previous_yes_ask_dollars": "0.5500",
-      "previous_yes_bid_dollars": "0.5400",
+      "previous_price_dollars": "0.6300",
+      "previous_yes_ask_dollars": "0.6200",
+      "previous_yes_bid_dollars": "0.5900",
       "price_level_structure": "linear_cent",
       "price_ranges": [
         {
@@ -153,12 +259,12 @@
       "ticker": "KXNBAGAME-26MAY13CLEDET-DET",
       "title": "Game 5: Cleveland at Detroit Winner?",
       "updated_time": "2026-05-10T01:06:01.146236Z",
-      "volume_24h_fp": "90431.71",
-      "volume_fp": "90931.58",
-      "yes_ask_dollars": "0.6300",
-      "yes_ask_size_fp": "396.04",
+      "volume_24h_fp": "38257.66",
+      "volume_fp": "129119.60",
+      "yes_ask_dollars": "0.6200",
+      "yes_ask_size_fp": "431662.49",
       "yes_bid_dollars": "0.6100",
-      "yes_bid_size_fp": "3.32",
+      "yes_bid_size_fp": "154460.92",
       "yes_sub_title": "Detroit"
     },
     {
@@ -174,20 +280,20 @@
       "expiration_time": "2026-05-27T17:00:00Z",
       "expiration_value": "",
       "fractional_trading_enabled": true,
-      "last_price_dollars": "0.4100",
+      "last_price_dollars": "0.3900",
       "latest_expiration_time": "2026-05-27T17:00:00Z",
       "liquidity_dollars": "0.0000",
       "market_type": "binary",
-      "no_ask_dollars": "0.6100",
-      "no_bid_dollars": "0.5900",
+      "no_ask_dollars": "0.6200",
+      "no_bid_dollars": "0.6100",
       "no_sub_title": "Cleveland",
       "notional_value_dollars": "1.0000",
       "occurrence_datetime": "2026-05-13T20:00:00Z",
-      "open_interest_fp": "12043.73",
+      "open_interest_fp": "75498.32",
       "open_time": "2026-05-10T01:06:00Z",
-      "previous_price_dollars": "0.4600",
-      "previous_yes_ask_dollars": "0.4600",
-      "previous_yes_bid_dollars": "0.4300",
+      "previous_price_dollars": "0.4000",
+      "previous_yes_ask_dollars": "0.4000",
+      "previous_yes_bid_dollars": "0.3800",
       "price_level_structure": "linear_cent",
       "price_ranges": [
         {
@@ -206,12 +312,12 @@
       "ticker": "KXNBAGAME-26MAY13CLEDET-CLE",
       "title": "Game 5: Cleveland at Detroit Winner?",
       "updated_time": "2026-05-10T01:06:01.146236Z",
-      "volume_24h_fp": "12162.47",
-      "volume_fp": "13057.54",
-      "yes_ask_dollars": "0.4100",
-      "yes_ask_size_fp": "1579.16",
-      "yes_bid_dollars": "0.3900",
-      "yes_bid_size_fp": "9.00",
+      "volume_24h_fp": "80740.44",
+      "volume_fp": "93684.71",
+      "yes_ask_dollars": "0.3900",
+      "yes_ask_size_fp": "434605.32",
+      "yes_bid_dollars": "0.3800",
+      "yes_bid_size_fp": "125348.06",
       "yes_sub_title": "Cleveland"
     },
     {
@@ -236,11 +342,11 @@
       "no_sub_title": "San Antonio",
       "notional_value_dollars": "1.0000",
       "occurrence_datetime": "2026-05-12T20:00:00Z",
-      "open_interest_fp": "245852.83",
+      "open_interest_fp": "452785.61",
       "open_time": "2026-05-07T07:06:00Z",
-      "previous_price_dollars": "0.7100",
-      "previous_yes_ask_dollars": "0.7100",
-      "previous_yes_bid_dollars": "0.7000",
+      "previous_price_dollars": "0.7700",
+      "previous_yes_ask_dollars": "0.7800",
+      "previous_yes_bid_dollars": "0.7700",
       "price_level_structure": "linear_cent",
       "price_ranges": [
         {
@@ -259,12 +365,12 @@
       "ticker": "KXNBAGAME-26MAY12MINSAS-SAS",
       "title": "Game 5: Minnesota at San Antonio Winner?",
       "updated_time": "2026-05-07T07:06:00.304337Z",
-      "volume_24h_fp": "192724.52",
-      "volume_fp": "339018.50",
+      "volume_24h_fp": "271797.56",
+      "volume_fp": "619226.20",
       "yes_ask_dollars": "0.7800",
-      "yes_ask_size_fp": "1140557.43",
+      "yes_ask_size_fp": "319842.77",
       "yes_bid_dollars": "0.7700",
-      "yes_bid_size_fp": "9755.98",
+      "yes_bid_size_fp": "78652.12",
       "yes_sub_title": "San Antonio"
     },
     {
@@ -289,11 +395,11 @@
       "no_sub_title": "Minnesota",
       "notional_value_dollars": "1.0000",
       "occurrence_datetime": "2026-05-12T20:00:00Z",
-      "open_interest_fp": "360716.10",
+      "open_interest_fp": "996758.70",
       "open_time": "2026-05-07T07:06:00Z",
-      "previous_price_dollars": "0.2900",
-      "previous_yes_ask_dollars": "0.2900",
-      "previous_yes_bid_dollars": "0.2800",
+      "previous_price_dollars": "0.2400",
+      "previous_yes_ask_dollars": "0.2400",
+      "previous_yes_bid_dollars": "0.2300",
       "price_level_structure": "linear_cent",
       "price_ranges": [
         {
@@ -312,522 +418,78 @@
       "ticker": "KXNBAGAME-26MAY12MINSAS-MIN",
       "title": "Game 5: Minnesota at San Antonio Winner?",
       "updated_time": "2026-05-07T07:06:00.304337Z",
-      "volume_24h_fp": "444263.49",
-      "volume_fp": "505301.62",
+      "volume_24h_fp": "963094.24",
+      "volume_fp": "1458317.42",
       "yes_ask_dollars": "0.2300",
-      "yes_ask_size_fp": "5080.53",
+      "yes_ask_size_fp": "130909.63",
       "yes_bid_dollars": "0.2200",
-      "yes_bid_size_fp": "143134.51",
+      "yes_bid_size_fp": "156698.38",
       "yes_sub_title": "Minnesota"
     },
     {
       "can_close_early": true,
-      "close_time": "2026-05-26T00:00:00Z",
-      "created_time": "2026-05-04T15:01:10.274283Z",
+      "close_time": "2026-05-15T22:35:00Z",
+      "created_time": "2026-05-12T10:22:02.949869Z",
       "custom_strike": {
-        "basketball_team": "65569528-1888-40aa-9d62-2b0e8142a9b4"
+        "Associated Events": "KXMLBHIT-26MAY121835NYYBAL,KXMLBHIT-26MAY121840WSHCIN,KXMLBKS-26MAY121840COLPIT,KXMLBSPREAD-26MAY121840COLPIT,KXNBA3PT-26MAY12MINSAS,KXNBAGAME-26MAY12MINSAS,KXNBAPTS-26MAY12MINSAS",
+        "Associated Market Sides": "yes,yes,yes,yes,yes,yes,yes",
+        "Associated Markets": "KXMLBHIT-26MAY121835NYYBAL-NYYAJUDGE99-1,KXMLBHIT-26MAY121840WSHCIN-WSHCABRAMS5-1,KXMLBKS-26MAY121840COLPIT-PITPSKENES30-4,KXMLBSPREAD-26MAY121840COLPIT-PIT2,KXNBA3PT-26MAY12MINSAS-SASVWEMBANYAMA1-1,KXNBAGAME-26MAY12MINSAS-SAS,KXNBAPTS-26MAY12MINSAS-SASDVASSELL24-10",
+        "Multivariate Event Ticker": "KXMVESPORTSMULTIGAMEEXTENDED-S20269061840F8D9"
       },
-      "early_close_condition": "This market will close and expire after a winner is declared.",
-      "event_ticker": "KXNBAGAME-26MAY11DETCLE",
-      "expected_expiration_time": "2026-05-12T03:00:00Z",
-      "expiration_time": "2026-05-26T00:00:00Z",
-      "expiration_value": "",
-      "fractional_trading_enabled": true,
-      "last_price_dollars": "0.4100",
-      "latest_expiration_time": "2026-05-26T00:00:00Z",
-      "liquidity_dollars": "0.0000",
-      "market_type": "binary",
-      "no_ask_dollars": "0.6000",
-      "no_bid_dollars": "0.5900",
-      "no_sub_title": "Detroit",
-      "notional_value_dollars": "1.0000",
-      "occurrence_datetime": "2026-05-12T03:00:00Z",
-      "open_interest_fp": "521970.17",
-      "open_time": "2026-05-04T15:06:00Z",
-      "previous_price_dollars": "0.4100",
-      "previous_yes_ask_dollars": "0.4100",
-      "previous_yes_bid_dollars": "0.4000",
-      "price_level_structure": "linear_cent",
-      "price_ranges": [
-        {
-          "end": "1.0000",
-          "start": "0.0000",
-          "step": "0.0100"
-        }
-      ],
-      "response_price_units": "usd_cent",
-      "result": "",
-      "rules_primary": "If Detroit wins the Game 4: Detroit at Cleveland professional basketball game originally scheduled for May 11, 2026, then the market resolves to Yes.",
-      "rules_secondary": "",
-      "settlement_timer_seconds": 30,
-      "status": "active",
-      "strike_type": "structured",
-      "ticker": "KXNBAGAME-26MAY11DETCLE-DET",
-      "title": "Game 4: Detroit at Cleveland Winner?",
-      "updated_time": "2026-05-04T15:06:00.302566Z",
-      "volume_24h_fp": "543521.64",
-      "volume_fp": "611549.51",
-      "yes_ask_dollars": "0.4100",
-      "yes_ask_size_fp": "575283.47",
-      "yes_bid_dollars": "0.4000",
-      "yes_bid_size_fp": "150937.78",
-      "yes_sub_title": "Detroit"
-    },
-    {
-      "can_close_early": true,
-      "close_time": "2026-05-26T00:00:00Z",
-      "created_time": "2026-05-04T15:01:10.274283Z",
-      "custom_strike": {
-        "basketball_team": "90381a35-42a6-4975-851f-175418e4271a"
-      },
-      "early_close_condition": "This market will close and expire after a winner is declared.",
-      "event_ticker": "KXNBAGAME-26MAY11DETCLE",
-      "expected_expiration_time": "2026-05-12T03:00:00Z",
-      "expiration_time": "2026-05-26T00:00:00Z",
-      "expiration_value": "",
-      "fractional_trading_enabled": true,
-      "last_price_dollars": "0.6000",
-      "latest_expiration_time": "2026-05-26T00:00:00Z",
-      "liquidity_dollars": "0.0000",
-      "market_type": "binary",
-      "no_ask_dollars": "0.4100",
-      "no_bid_dollars": "0.4000",
-      "no_sub_title": "Cleveland",
-      "notional_value_dollars": "1.0000",
-      "occurrence_datetime": "2026-05-12T03:00:00Z",
-      "open_interest_fp": "196597.09",
-      "open_time": "2026-05-04T15:06:00Z",
-      "previous_price_dollars": "0.6000",
-      "previous_yes_ask_dollars": "0.6000",
-      "previous_yes_bid_dollars": "0.5900",
-      "price_level_structure": "linear_cent",
-      "price_ranges": [
-        {
-          "end": "1.0000",
-          "start": "0.0000",
-          "step": "0.0100"
-        }
-      ],
-      "response_price_units": "usd_cent",
-      "result": "",
-      "rules_primary": "If Cleveland wins the Game 4: Detroit at Cleveland professional basketball game originally scheduled for May 11, 2026, then the market resolves to Yes.",
-      "rules_secondary": "",
-      "settlement_timer_seconds": 30,
-      "status": "active",
-      "strike_type": "structured",
-      "ticker": "KXNBAGAME-26MAY11DETCLE-CLE",
-      "title": "Game 4: Detroit at Cleveland Winner?",
-      "updated_time": "2026-05-04T15:06:00.302566Z",
-      "volume_24h_fp": "248939.66",
-      "volume_fp": "276592.60",
-      "yes_ask_dollars": "0.6000",
-      "yes_ask_size_fp": "909983.53",
-      "yes_bid_dollars": "0.5900",
-      "yes_bid_size_fp": "55410.57",
-      "yes_sub_title": "Cleveland"
-    },
-    {
-      "can_close_early": true,
-      "close_time": "2026-05-26T02:30:00Z",
-      "created_time": "2026-05-03T02:50:17.807428Z",
-      "custom_strike": {
-        "basketball_team": "a85f6eca-2f3b-4f61-83ab-8d049f59ce2c"
-      },
-      "early_close_condition": "This market will close and expire after a winner is declared.",
-      "event_ticker": "KXNBAGAME-26MAY11OKCLAL",
-      "expected_expiration_time": "2026-05-12T05:30:00Z",
-      "expiration_time": "2026-05-26T02:30:00Z",
-      "expiration_value": "",
-      "fractional_trading_enabled": true,
-      "last_price_dollars": "0.8200",
-      "latest_expiration_time": "2026-05-26T02:30:00Z",
-      "liquidity_dollars": "0.0000",
-      "market_type": "binary",
-      "no_ask_dollars": "0.1900",
-      "no_bid_dollars": "0.1800",
-      "no_sub_title": "Oklahoma City",
-      "notional_value_dollars": "1.0000",
-      "occurrence_datetime": "2026-05-12T05:30:00Z",
-      "open_interest_fp": "608691.76",
-      "open_time": "2026-05-03T02:55:00Z",
-      "previous_price_dollars": "0.8200",
-      "previous_yes_ask_dollars": "0.8200",
-      "previous_yes_bid_dollars": "0.8100",
-      "price_level_structure": "linear_cent",
-      "price_ranges": [
-        {
-          "end": "1.0000",
-          "start": "0.0000",
-          "step": "0.0100"
-        }
-      ],
-      "response_price_units": "usd_cent",
-      "result": "",
-      "rules_primary": "If Oklahoma City wins the Game 4: Oklahoma City at Los Angeles L professional basketball game originally scheduled for May 11, 2026, then the market resolves to Yes.",
-      "rules_secondary": "",
-      "settlement_timer_seconds": 30,
-      "status": "active",
-      "strike_type": "structured",
-      "ticker": "KXNBAGAME-26MAY11OKCLAL-OKC",
-      "title": "Game 4: Oklahoma City at Los Angeles L Winner?",
-      "updated_time": "2026-05-03T02:55:00.303686Z",
-      "volume_24h_fp": "527532.61",
-      "volume_fp": "685671.94",
-      "yes_ask_dollars": "0.8200",
-      "yes_ask_size_fp": "26865.21",
-      "yes_bid_dollars": "0.8100",
-      "yes_bid_size_fp": "191387.23",
-      "yes_sub_title": "Oklahoma City"
-    },
-    {
-      "can_close_early": true,
-      "close_time": "2026-05-26T02:30:00Z",
-      "created_time": "2026-05-03T02:50:17.807428Z",
-      "custom_strike": {
-        "basketball_team": "2ef4d31c-0b46-4f43-a403-f44d62489034"
-      },
-      "early_close_condition": "This market will close and expire after a winner is declared.",
-      "event_ticker": "KXNBAGAME-26MAY11OKCLAL",
-      "expected_expiration_time": "2026-05-12T05:30:00Z",
-      "expiration_time": "2026-05-26T02:30:00Z",
-      "expiration_value": "",
-      "fractional_trading_enabled": true,
-      "last_price_dollars": "0.1900",
-      "latest_expiration_time": "2026-05-26T02:30:00Z",
-      "liquidity_dollars": "0.0000",
-      "market_type": "binary",
-      "no_ask_dollars": "0.8200",
-      "no_bid_dollars": "0.8100",
-      "no_sub_title": "Los Angeles L",
-      "notional_value_dollars": "1.0000",
-      "occurrence_datetime": "2026-05-12T05:30:00Z",
-      "open_interest_fp": "1609680.38",
-      "open_time": "2026-05-03T02:55:00Z",
-      "previous_price_dollars": "0.1900",
-      "previous_yes_ask_dollars": "0.1900",
-      "previous_yes_bid_dollars": "0.1800",
-      "price_level_structure": "linear_cent",
-      "price_ranges": [
-        {
-          "end": "1.0000",
-          "start": "0.0000",
-          "step": "0.0100"
-        }
-      ],
-      "response_price_units": "usd_cent",
-      "result": "",
-      "rules_primary": "If Los Angeles L wins the Game 4: Oklahoma City at Los Angeles L professional basketball game originally scheduled for May 11, 2026, then the market resolves to Yes.",
-      "rules_secondary": "",
-      "settlement_timer_seconds": 30,
-      "status": "active",
-      "strike_type": "structured",
-      "ticker": "KXNBAGAME-26MAY11OKCLAL-LAL",
-      "title": "Game 4: Oklahoma City at Los Angeles L Winner?",
-      "updated_time": "2026-05-03T02:55:00.303686Z",
-      "volume_24h_fp": "1384378.07",
-      "volume_fp": "1745968.41",
-      "yes_ask_dollars": "0.1900",
-      "yes_ask_size_fp": "3019358.96",
-      "yes_bid_dollars": "0.1800",
-      "yes_bid_size_fp": "104112.10",
-      "yes_sub_title": "Los Angeles L"
-    },
-    {
-      "can_close_early": true,
-      "close_time": "2026-05-25T19:00:00Z",
-      "created_time": "2026-05-11T11:52:58.079089Z",
-      "custom_strike": {
-        "Associated Events": "KXEPLGAME-26MAY11TOTLEE,KXIPLGAME-26MAY11DCPBKS,KXLALIGAGAME-26MAY11RVCGIR,KXMLBGAME-26MAY111810LAACLE,KXMLBGAME-26MAY111835NYYBAL,KXMLBGAME-26MAY111907TBTOR,KXMLBGAME-26MAY112005AZTEX,KXMLBGAME-26MAY112010SEAHOU,KXMLBGAME-26MAY112210SFLAD,KXMLBTOTAL-26MAY111810LAACLE,KXMLBTOTAL-26MAY111835NYYBAL,KXMLBTOTAL-26MAY111907TBTOR,KXMLBTOTAL-26MAY112005AZTEX,KXMLBTOTAL-26MAY112010SEAHOU,KXMLBTOTAL-26MAY112210SFLAD,KXNBAGAME-26MAY11DETCLE,KXNBAGAME-26MAY11OKCLAL,KXNBATOTAL-26MAY11DETCLE,KXNBATOTAL-26MAY11OKCLAL,KXSERIEAGAME-26MAY11NAPBFC,KXUFCFIGHT-26MAY16MGOMOR",
-        "Associated Market Sides": "yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes",
-        "Associated Markets": "KXEPLGAME-26MAY11TOTLEE-TOT,KXIPLGAME-26MAY11DCPBKS-PBKS,KXLALIGAGAME-26MAY11RVCGIR-RVC,KXMLBGAME-26MAY111810LAACLE-LAA,KXMLBGAME-26MAY111835NYYBAL-NYY,KXMLBGAME-26MAY111907TBTOR-TB,KXMLBGAME-26MAY112005AZTEX-AZ,KXMLBGAME-26MAY112010SEAHOU-SEA,KXMLBGAME-26MAY112210SFLAD-SF,KXMLBTOTAL-26MAY111810LAACLE-3,KXMLBTOTAL-26MAY111835NYYBAL-7,KXMLBTOTAL-26MAY111907TBTOR-5,KXMLBTOTAL-26MAY112005AZTEX-6,KXMLBTOTAL-26MAY112010SEAHOU-6,KXMLBTOTAL-26MAY112210SFLAD-6,KXNBAGAME-26MAY11DETCLE-CLE,KXNBAGAME-26MAY11OKCLAL-OKC,KXNBATOTAL-26MAY11DETCLE-196,KXNBATOTAL-26MAY11OKCLAL-198,KXSERIEAGAME-26MAY11NAPBFC-NAP,KXUFCFIGHT-26MAY16MGOMOR-MGO",
-        "Multivariate Event Ticker": "KXMVECROSSCATEGORY-S2026F40B7E53EC2"
-      },
-      "event_ticker": "KXMVECROSSCATEGORY-S2026F40B7E53EC2",
-      "expected_expiration_time": "2026-05-17T04:40:00Z",
-      "expiration_time": "2026-05-25T19:00:00Z",
-      "expiration_value": "",
-      "fractional_trading_enabled": true,
-      "last_price_dollars": "0.0020",
-      "latest_expiration_time": "2026-05-25T19:00:00Z",
-      "liquidity_dollars": "0.0000",
-      "market_type": "binary",
-      "mve_collection_ticker": "KXMVECROSSCATEGORY-R",
-      "mve_selected_legs": [
-        {
-          "event_ticker": "KXEPLGAME-26MAY11TOTLEE",
-          "market_ticker": "KXEPLGAME-26MAY11TOTLEE-TOT",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXIPLGAME-26MAY11DCPBKS",
-          "market_ticker": "KXIPLGAME-26MAY11DCPBKS-PBKS",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXLALIGAGAME-26MAY11RVCGIR",
-          "market_ticker": "KXLALIGAGAME-26MAY11RVCGIR-RVC",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBGAME-26MAY111810LAACLE",
-          "market_ticker": "KXMLBGAME-26MAY111810LAACLE-LAA",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBGAME-26MAY111835NYYBAL",
-          "market_ticker": "KXMLBGAME-26MAY111835NYYBAL-NYY",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBGAME-26MAY111907TBTOR",
-          "market_ticker": "KXMLBGAME-26MAY111907TBTOR-TB",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBGAME-26MAY112005AZTEX",
-          "market_ticker": "KXMLBGAME-26MAY112005AZTEX-AZ",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBGAME-26MAY112010SEAHOU",
-          "market_ticker": "KXMLBGAME-26MAY112010SEAHOU-SEA",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBGAME-26MAY112210SFLAD",
-          "market_ticker": "KXMLBGAME-26MAY112210SFLAD-SF",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBTOTAL-26MAY111810LAACLE",
-          "market_ticker": "KXMLBTOTAL-26MAY111810LAACLE-3",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBTOTAL-26MAY111835NYYBAL",
-          "market_ticker": "KXMLBTOTAL-26MAY111835NYYBAL-7",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBTOTAL-26MAY111907TBTOR",
-          "market_ticker": "KXMLBTOTAL-26MAY111907TBTOR-5",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBTOTAL-26MAY112005AZTEX",
-          "market_ticker": "KXMLBTOTAL-26MAY112005AZTEX-6",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBTOTAL-26MAY112010SEAHOU",
-          "market_ticker": "KXMLBTOTAL-26MAY112010SEAHOU-6",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBTOTAL-26MAY112210SFLAD",
-          "market_ticker": "KXMLBTOTAL-26MAY112210SFLAD-6",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXNBAGAME-26MAY11DETCLE",
-          "market_ticker": "KXNBAGAME-26MAY11DETCLE-CLE",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXNBAGAME-26MAY11OKCLAL",
-          "market_ticker": "KXNBAGAME-26MAY11OKCLAL-OKC",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXNBATOTAL-26MAY11DETCLE",
-          "market_ticker": "KXNBATOTAL-26MAY11DETCLE-196",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXNBATOTAL-26MAY11OKCLAL",
-          "market_ticker": "KXNBATOTAL-26MAY11OKCLAL-198",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXSERIEAGAME-26MAY11NAPBFC",
-          "market_ticker": "KXSERIEAGAME-26MAY11NAPBFC-NAP",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXUFCFIGHT-26MAY16MGOMOR",
-          "market_ticker": "KXUFCFIGHT-26MAY16MGOMOR-MGO",
-          "side": "yes"
-        }
-      ],
-      "no_ask_dollars": "1.0000",
-      "no_bid_dollars": "0.9970",
-      "no_sub_title": "yes Tottenham,yes Punjab Kings,yes Vallecano,yes Los Angeles A,yes New York Y,yes Tampa Bay,yes Arizona,yes Seattle,yes San Francisco,yes Over 2.5 runs scored,yes Over 6.5 runs scored,yes Over 4.5 runs scored,yes Over 5.5 runs scored,yes Over 5.5 runs scored,yes Over 5.5 runs scored,yes Cleveland,yes Oklahoma City,yes Over 196.5 points scored,yes Over 198.5 points scored,yes Napoli,yes David Mgoyan",
-      "notional_value_dollars": "1.0000",
-      "open_interest_fp": "454.00",
-      "open_time": "2026-05-11T11:52:58Z",
-      "previous_price_dollars": "0.0000",
-      "previous_yes_ask_dollars": "0.0000",
-      "previous_yes_bid_dollars": "0.0000",
-      "price_level_structure": "deci_cent",
-      "price_ranges": [
-        {
-          "end": "1.0000",
-          "start": "0.0000",
-          "step": "0.0010"
-        }
-      ],
-      "response_price_units": "usd_cent",
-      "result": "",
-      "rules_primary": "",
-      "rules_secondary": "",
-      "settlement_timer_seconds": 5,
-      "status": "active",
-      "strike_type": "custom",
-      "ticker": "KXMVECROSSCATEGORY-S2026F40B7E53EC2-E32344D730D",
-      "title": "yes Tottenham,yes Punjab Kings,yes Vallecano,yes Los Angeles A,yes New York Y,yes Tampa Bay,yes Arizona,yes Seattle,yes San Francisco,yes Over 2.5 runs scored,yes Over 6.5 runs scored,yes Over 4.5 runs scored,yes Over 5.5 runs scored,yes Over 5.5 runs scored,yes Over 5.5 runs scored,yes Cleveland,yes Oklahoma City,yes Over 196.5 points scored,yes Over 198.5 points scored,yes Napoli,yes David Mgoyan",
-      "updated_time": "2026-05-11T11:52:58.987035Z",
-      "volume_24h_fp": "0.00",
-      "volume_fp": "454.00",
-      "yes_ask_dollars": "0.0030",
-      "yes_ask_size_fp": "8668.00",
-      "yes_bid_dollars": "0.0000",
-      "yes_bid_size_fp": "0.00",
-      "yes_sub_title": "yes Tottenham,yes Punjab Kings,yes Vallecano,yes Los Angeles A,yes New York Y,yes Tampa Bay,yes Arizona,yes Seattle,yes San Francisco,yes Over 2.5 runs scored,yes Over 6.5 runs scored,yes Over 4.5 runs scored,yes Over 5.5 runs scored,yes Over 5.5 runs scored,yes Over 5.5 runs scored,yes Cleveland,yes Oklahoma City,yes Over 196.5 points scored,yes Over 198.5 points scored,yes Napoli,yes David Mgoyan"
-    },
-    {
-      "can_close_early": true,
-      "close_time": "2026-05-25T19:00:00Z",
-      "created_time": "2026-05-11T11:52:50.974062Z",
-      "custom_strike": {
-        "Associated Events": "KXEPLGAME-26MAY11TOTLEE,KXIPLGAME-26MAY11DCPBKS,KXLALIGAGAME-26MAY11RVCGIR,KXMLBGAME-26MAY111810LAACLE,KXMLBGAME-26MAY111835NYYBAL,KXMLBGAME-26MAY111907TBTOR,KXMLBGAME-26MAY112005AZTEX,KXMLBGAME-26MAY112010SEAHOU,KXMLBGAME-26MAY112210SFLAD,KXMLBTOTAL-26MAY111810LAACLE,KXMLBTOTAL-26MAY111835NYYBAL,KXMLBTOTAL-26MAY111907TBTOR,KXMLBTOTAL-26MAY112005AZTEX,KXMLBTOTAL-26MAY112010SEAHOU,KXMLBTOTAL-26MAY112210SFLAD,KXNBAGAME-26MAY11DETCLE,KXNBAGAME-26MAY11OKCLAL,KXNBATOTAL-26MAY11DETCLE,KXNBATOTAL-26MAY11OKCLAL,KXSERIEAGAME-26MAY11NAPBFC,KXUFCFIGHT-26MAY16MGOMOR",
-        "Associated Market Sides": "yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes",
-        "Associated Markets": "KXEPLGAME-26MAY11TOTLEE-TOT,KXIPLGAME-26MAY11DCPBKS-PBKS,KXLALIGAGAME-26MAY11RVCGIR-RVC,KXMLBGAME-26MAY111810LAACLE-CLE,KXMLBGAME-26MAY111835NYYBAL-NYY,KXMLBGAME-26MAY111907TBTOR-TB,KXMLBGAME-26MAY112005AZTEX-AZ,KXMLBGAME-26MAY112010SEAHOU-SEA,KXMLBGAME-26MAY112210SFLAD-SF,KXMLBTOTAL-26MAY111810LAACLE-3,KXMLBTOTAL-26MAY111835NYYBAL-7,KXMLBTOTAL-26MAY111907TBTOR-5,KXMLBTOTAL-26MAY112005AZTEX-6,KXMLBTOTAL-26MAY112010SEAHOU-6,KXMLBTOTAL-26MAY112210SFLAD-6,KXNBAGAME-26MAY11DETCLE-CLE,KXNBAGAME-26MAY11OKCLAL-OKC,KXNBATOTAL-26MAY11DETCLE-196,KXNBATOTAL-26MAY11OKCLAL-198,KXSERIEAGAME-26MAY11NAPBFC-NAP,KXUFCFIGHT-26MAY16MGOMOR-MGO",
-        "Multivariate Event Ticker": "KXMVECROSSCATEGORY-S2026F40B7E53EC2"
-      },
-      "event_ticker": "KXMVECROSSCATEGORY-S2026F40B7E53EC2",
-      "expected_expiration_time": "2026-05-17T04:40:00Z",
-      "expiration_time": "2026-05-25T19:00:00Z",
+      "event_ticker": "KXMVESPORTSMULTIGAMEEXTENDED-S20269061840F8D9",
+      "expected_expiration_time": "2026-05-13T03:00:00Z",
+      "expiration_time": "2026-05-15T22:35:00Z",
       "expiration_value": "",
       "fractional_trading_enabled": true,
       "is_provisional": true,
       "last_price_dollars": "0.0000",
-      "latest_expiration_time": "2026-05-25T19:00:00Z",
+      "latest_expiration_time": "2026-05-15T22:35:00Z",
       "liquidity_dollars": "0.0000",
       "market_type": "binary",
-      "mve_collection_ticker": "KXMVECROSSCATEGORY-R",
+      "mve_collection_ticker": "KXMVESPORTSMULTIGAMEEXTENDED-R",
       "mve_selected_legs": [
         {
-          "event_ticker": "KXEPLGAME-26MAY11TOTLEE",
-          "market_ticker": "KXEPLGAME-26MAY11TOTLEE-TOT",
+          "event_ticker": "KXMLBHIT-26MAY121835NYYBAL",
+          "market_ticker": "KXMLBHIT-26MAY121835NYYBAL-NYYAJUDGE99-1",
           "side": "yes"
         },
         {
-          "event_ticker": "KXIPLGAME-26MAY11DCPBKS",
-          "market_ticker": "KXIPLGAME-26MAY11DCPBKS-PBKS",
+          "event_ticker": "KXMLBHIT-26MAY121840WSHCIN",
+          "market_ticker": "KXMLBHIT-26MAY121840WSHCIN-WSHCABRAMS5-1",
           "side": "yes"
         },
         {
-          "event_ticker": "KXLALIGAGAME-26MAY11RVCGIR",
-          "market_ticker": "KXLALIGAGAME-26MAY11RVCGIR-RVC",
+          "event_ticker": "KXMLBKS-26MAY121840COLPIT",
+          "market_ticker": "KXMLBKS-26MAY121840COLPIT-PITPSKENES30-4",
           "side": "yes"
         },
         {
-          "event_ticker": "KXMLBGAME-26MAY111810LAACLE",
-          "market_ticker": "KXMLBGAME-26MAY111810LAACLE-CLE",
+          "event_ticker": "KXMLBSPREAD-26MAY121840COLPIT",
+          "market_ticker": "KXMLBSPREAD-26MAY121840COLPIT-PIT2",
           "side": "yes"
         },
         {
-          "event_ticker": "KXMLBGAME-26MAY111835NYYBAL",
-          "market_ticker": "KXMLBGAME-26MAY111835NYYBAL-NYY",
+          "event_ticker": "KXNBA3PT-26MAY12MINSAS",
+          "market_ticker": "KXNBA3PT-26MAY12MINSAS-SASVWEMBANYAMA1-1",
           "side": "yes"
         },
         {
-          "event_ticker": "KXMLBGAME-26MAY111907TBTOR",
-          "market_ticker": "KXMLBGAME-26MAY111907TBTOR-TB",
+          "event_ticker": "KXNBAGAME-26MAY12MINSAS",
+          "market_ticker": "KXNBAGAME-26MAY12MINSAS-SAS",
           "side": "yes"
         },
         {
-          "event_ticker": "KXMLBGAME-26MAY112005AZTEX",
-          "market_ticker": "KXMLBGAME-26MAY112005AZTEX-AZ",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBGAME-26MAY112010SEAHOU",
-          "market_ticker": "KXMLBGAME-26MAY112010SEAHOU-SEA",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBGAME-26MAY112210SFLAD",
-          "market_ticker": "KXMLBGAME-26MAY112210SFLAD-SF",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBTOTAL-26MAY111810LAACLE",
-          "market_ticker": "KXMLBTOTAL-26MAY111810LAACLE-3",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBTOTAL-26MAY111835NYYBAL",
-          "market_ticker": "KXMLBTOTAL-26MAY111835NYYBAL-7",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBTOTAL-26MAY111907TBTOR",
-          "market_ticker": "KXMLBTOTAL-26MAY111907TBTOR-5",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBTOTAL-26MAY112005AZTEX",
-          "market_ticker": "KXMLBTOTAL-26MAY112005AZTEX-6",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBTOTAL-26MAY112010SEAHOU",
-          "market_ticker": "KXMLBTOTAL-26MAY112010SEAHOU-6",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBTOTAL-26MAY112210SFLAD",
-          "market_ticker": "KXMLBTOTAL-26MAY112210SFLAD-6",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXNBAGAME-26MAY11DETCLE",
-          "market_ticker": "KXNBAGAME-26MAY11DETCLE-CLE",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXNBAGAME-26MAY11OKCLAL",
-          "market_ticker": "KXNBAGAME-26MAY11OKCLAL-OKC",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXNBATOTAL-26MAY11DETCLE",
-          "market_ticker": "KXNBATOTAL-26MAY11DETCLE-196",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXNBATOTAL-26MAY11OKCLAL",
-          "market_ticker": "KXNBATOTAL-26MAY11OKCLAL-198",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXSERIEAGAME-26MAY11NAPBFC",
-          "market_ticker": "KXSERIEAGAME-26MAY11NAPBFC-NAP",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXUFCFIGHT-26MAY16MGOMOR",
-          "market_ticker": "KXUFCFIGHT-26MAY16MGOMOR-MGO",
+          "event_ticker": "KXNBAPTS-26MAY12MINSAS",
+          "market_ticker": "KXNBAPTS-26MAY12MINSAS-SASDVASSELL24-10",
           "side": "yes"
         }
       ],
       "no_ask_dollars": "1.0000",
-      "no_bid_dollars": "0.0000",
-      "no_sub_title": "yes Tottenham,yes Punjab Kings,yes Vallecano,yes Cleveland,yes New York Y,yes Tampa Bay,yes Arizona,yes Seattle,yes San Francisco,yes Over 2.5 runs scored,yes Over 6.5 runs scored,yes Over 4.5 runs scored,yes Over 5.5 runs scored,yes Over 5.5 runs scored,yes Over 5.5 runs scored,yes Cleveland,yes Oklahoma City,yes Over 196.5 points scored,yes Over 198.5 points scored,yes Napoli,yes David Mgoyan",
+      "no_bid_dollars": "0.5660",
+      "no_sub_title": "yes Aaron Judge: 1+,yes CJ Abrams: 1+,yes Paul Skenes: 4+,yes Pittsburgh wins by over 1.5 runs,yes Victor Wembanyama: 1+,yes San Antonio,yes Devin Vassell: 10+",
       "notional_value_dollars": "1.0000",
       "open_interest_fp": "0.00",
-      "open_time": "2026-05-11T11:52:50Z",
+      "open_time": "2026-05-12T10:22:02Z",
       "previous_price_dollars": "0.0000",
       "previous_yes_ask_dollars": "0.0000",
       "previous_yes_bid_dollars": "0.0000",
@@ -846,2078 +508,16 @@
       "settlement_timer_seconds": 5,
       "status": "active",
       "strike_type": "custom",
-      "ticker": "KXMVECROSSCATEGORY-S2026F40B7E53EC2-73DA977996C",
-      "title": "yes Tottenham,yes Punjab Kings,yes Vallecano,yes Cleveland,yes New York Y,yes Tampa Bay,yes Arizona,yes Seattle,yes San Francisco,yes Over 2.5 runs scored,yes Over 6.5 runs scored,yes Over 4.5 runs scored,yes Over 5.5 runs scored,yes Over 5.5 runs scored,yes Over 5.5 runs scored,yes Cleveland,yes Oklahoma City,yes Over 196.5 points scored,yes Over 198.5 points scored,yes Napoli,yes David Mgoyan",
-      "updated_time": "2026-05-11T11:52:51.985964Z",
+      "ticker": "KXMVESPORTSMULTIGAMEEXTENDED-S20269061840F8D9-5B52C3C266D",
+      "title": "yes Aaron Judge: 1+,yes CJ Abrams: 1+,yes Paul Skenes: 4+,yes Pittsburgh wins by over 1.5 runs,yes Victor Wembanyama: 1+,yes San Antonio,yes Devin Vassell: 10+",
+      "updated_time": "2026-05-12T10:22:02.983232Z",
       "volume_24h_fp": "0.00",
       "volume_fp": "0.00",
-      "yes_ask_dollars": "1.0000",
-      "yes_ask_size_fp": "0.00",
+      "yes_ask_dollars": "0.4340",
+      "yes_ask_size_fp": "233.00",
       "yes_bid_dollars": "0.0000",
       "yes_bid_size_fp": "0.00",
-      "yes_sub_title": "yes Tottenham,yes Punjab Kings,yes Vallecano,yes Cleveland,yes New York Y,yes Tampa Bay,yes Arizona,yes Seattle,yes San Francisco,yes Over 2.5 runs scored,yes Over 6.5 runs scored,yes Over 4.5 runs scored,yes Over 5.5 runs scored,yes Over 5.5 runs scored,yes Over 5.5 runs scored,yes Cleveland,yes Oklahoma City,yes Over 196.5 points scored,yes Over 198.5 points scored,yes Napoli,yes David Mgoyan"
-    },
-    {
-      "can_close_early": true,
-      "close_time": "2026-05-25T19:00:00Z",
-      "created_time": "2026-05-11T11:52:19.081372Z",
-      "custom_strike": {
-        "Associated Events": "KXEPLGAME-26MAY11TOTLEE,KXIPLGAME-26MAY11DCPBKS,KXLALIGAGAME-26MAY11RVCGIR,KXMLBGAME-26MAY111810LAACLE,KXMLBGAME-26MAY111835NYYBAL,KXMLBGAME-26MAY111907TBTOR,KXMLBGAME-26MAY112005AZTEX,KXMLBGAME-26MAY112010SEAHOU,KXMLBGAME-26MAY112210SFLAD,KXMLBTOTAL-26MAY111810LAACLE,KXMLBTOTAL-26MAY111835NYYBAL,KXMLBTOTAL-26MAY111907TBTOR,KXMLBTOTAL-26MAY112005AZTEX,KXMLBTOTAL-26MAY112010SEAHOU,KXMLBTOTAL-26MAY112210SFLAD,KXNBAGAME-26MAY11DETCLE,KXNBAGAME-26MAY11OKCLAL,KXNBATOTAL-26MAY11DETCLE,KXNBATOTAL-26MAY11OKCLAL,KXSERIEAGAME-26MAY11NAPBFC,KXUFCFIGHT-26MAY16MGOMOR,KXWNBAGAME-26MAY12ATLDAL",
-        "Associated Market Sides": "yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes",
-        "Associated Markets": "KXEPLGAME-26MAY11TOTLEE-TOT,KXIPLGAME-26MAY11DCPBKS-PBKS,KXLALIGAGAME-26MAY11RVCGIR-RVC,KXMLBGAME-26MAY111810LAACLE-CLE,KXMLBGAME-26MAY111835NYYBAL-NYY,KXMLBGAME-26MAY111907TBTOR-TB,KXMLBGAME-26MAY112005AZTEX-AZ,KXMLBGAME-26MAY112010SEAHOU-SEA,KXMLBGAME-26MAY112210SFLAD-LAD,KXMLBTOTAL-26MAY111810LAACLE-3,KXMLBTOTAL-26MAY111835NYYBAL-7,KXMLBTOTAL-26MAY111907TBTOR-5,KXMLBTOTAL-26MAY112005AZTEX-6,KXMLBTOTAL-26MAY112010SEAHOU-6,KXMLBTOTAL-26MAY112210SFLAD-6,KXNBAGAME-26MAY11DETCLE-CLE,KXNBAGAME-26MAY11OKCLAL-OKC,KXNBATOTAL-26MAY11DETCLE-196,KXNBATOTAL-26MAY11OKCLAL-198,KXSERIEAGAME-26MAY11NAPBFC-NAP,KXUFCFIGHT-26MAY16MGOMOR-MGO,KXWNBAGAME-26MAY12ATLDAL-ATL",
-        "Multivariate Event Ticker": "KXMVECROSSCATEGORY-S2026AE2DAE806B5"
-      },
-      "event_ticker": "KXMVECROSSCATEGORY-S2026AE2DAE806B5",
-      "expected_expiration_time": "2026-05-17T04:40:00Z",
-      "expiration_time": "2026-05-25T19:00:00Z",
-      "expiration_value": "",
-      "fractional_trading_enabled": true,
-      "is_provisional": true,
-      "last_price_dollars": "0.0000",
-      "latest_expiration_time": "2026-05-25T19:00:00Z",
-      "liquidity_dollars": "0.0000",
-      "market_type": "binary",
-      "mve_collection_ticker": "KXMVECROSSCATEGORY-R",
-      "mve_selected_legs": [
-        {
-          "event_ticker": "KXEPLGAME-26MAY11TOTLEE",
-          "market_ticker": "KXEPLGAME-26MAY11TOTLEE-TOT",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXIPLGAME-26MAY11DCPBKS",
-          "market_ticker": "KXIPLGAME-26MAY11DCPBKS-PBKS",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXLALIGAGAME-26MAY11RVCGIR",
-          "market_ticker": "KXLALIGAGAME-26MAY11RVCGIR-RVC",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBGAME-26MAY111810LAACLE",
-          "market_ticker": "KXMLBGAME-26MAY111810LAACLE-CLE",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBGAME-26MAY111835NYYBAL",
-          "market_ticker": "KXMLBGAME-26MAY111835NYYBAL-NYY",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBGAME-26MAY111907TBTOR",
-          "market_ticker": "KXMLBGAME-26MAY111907TBTOR-TB",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBGAME-26MAY112005AZTEX",
-          "market_ticker": "KXMLBGAME-26MAY112005AZTEX-AZ",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBGAME-26MAY112010SEAHOU",
-          "market_ticker": "KXMLBGAME-26MAY112010SEAHOU-SEA",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBGAME-26MAY112210SFLAD",
-          "market_ticker": "KXMLBGAME-26MAY112210SFLAD-LAD",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBTOTAL-26MAY111810LAACLE",
-          "market_ticker": "KXMLBTOTAL-26MAY111810LAACLE-3",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBTOTAL-26MAY111835NYYBAL",
-          "market_ticker": "KXMLBTOTAL-26MAY111835NYYBAL-7",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBTOTAL-26MAY111907TBTOR",
-          "market_ticker": "KXMLBTOTAL-26MAY111907TBTOR-5",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBTOTAL-26MAY112005AZTEX",
-          "market_ticker": "KXMLBTOTAL-26MAY112005AZTEX-6",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBTOTAL-26MAY112010SEAHOU",
-          "market_ticker": "KXMLBTOTAL-26MAY112010SEAHOU-6",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBTOTAL-26MAY112210SFLAD",
-          "market_ticker": "KXMLBTOTAL-26MAY112210SFLAD-6",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXNBAGAME-26MAY11DETCLE",
-          "market_ticker": "KXNBAGAME-26MAY11DETCLE-CLE",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXNBAGAME-26MAY11OKCLAL",
-          "market_ticker": "KXNBAGAME-26MAY11OKCLAL-OKC",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXNBATOTAL-26MAY11DETCLE",
-          "market_ticker": "KXNBATOTAL-26MAY11DETCLE-196",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXNBATOTAL-26MAY11OKCLAL",
-          "market_ticker": "KXNBATOTAL-26MAY11OKCLAL-198",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXSERIEAGAME-26MAY11NAPBFC",
-          "market_ticker": "KXSERIEAGAME-26MAY11NAPBFC-NAP",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXUFCFIGHT-26MAY16MGOMOR",
-          "market_ticker": "KXUFCFIGHT-26MAY16MGOMOR-MGO",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXWNBAGAME-26MAY12ATLDAL",
-          "market_ticker": "KXWNBAGAME-26MAY12ATLDAL-ATL",
-          "side": "yes"
-        }
-      ],
-      "no_ask_dollars": "1.0000",
-      "no_bid_dollars": "0.0000",
-      "no_sub_title": "yes Tottenham,yes Punjab Kings,yes Vallecano,yes Cleveland,yes New York Y,yes Tampa Bay,yes Arizona,yes Seattle,yes Los Angeles D,yes Over 2.5 runs scored,yes Over 6.5 runs scored,yes Over 4.5 runs scored,yes Over 5.5 runs scored,yes Over 5.5 runs scored,yes Over 5.5 runs scored,yes Cleveland,yes Oklahoma City,yes Over 196.5 points scored,yes Over 198.5 points scored,yes Napoli,yes David Mgoyan,yes Atlanta",
-      "notional_value_dollars": "1.0000",
-      "open_interest_fp": "0.00",
-      "open_time": "2026-05-11T11:52:19Z",
-      "previous_price_dollars": "0.0000",
-      "previous_yes_ask_dollars": "0.0000",
-      "previous_yes_bid_dollars": "0.0000",
-      "price_level_structure": "deci_cent",
-      "price_ranges": [
-        {
-          "end": "1.0000",
-          "start": "0.0000",
-          "step": "0.0010"
-        }
-      ],
-      "response_price_units": "usd_cent",
-      "result": "",
-      "rules_primary": "",
-      "rules_secondary": "",
-      "settlement_timer_seconds": 5,
-      "status": "active",
-      "strike_type": "custom",
-      "ticker": "KXMVECROSSCATEGORY-S2026AE2DAE806B5-54FE73BBD18",
-      "title": "yes Tottenham,yes Punjab Kings,yes Vallecano,yes Cleveland,yes New York Y,yes Tampa Bay,yes Arizona,yes Seattle,yes Los Angeles D,yes Over 2.5 runs scored,yes Over 6.5 runs scored,yes Over 4.5 runs scored,yes Over 5.5 runs scored,yes Over 5.5 runs scored,yes Over 5.5 runs scored,yes Cleveland,yes Oklahoma City,yes Over 196.5 points scored,yes Over 198.5 points scored,yes Napoli,yes David Mgoyan,yes Atlanta",
-      "updated_time": "2026-05-11T11:52:19.986141Z",
-      "volume_24h_fp": "0.00",
-      "volume_fp": "0.00",
-      "yes_ask_dollars": "1.0000",
-      "yes_ask_size_fp": "0.00",
-      "yes_bid_dollars": "0.0000",
-      "yes_bid_size_fp": "0.00",
-      "yes_sub_title": "yes Tottenham,yes Punjab Kings,yes Vallecano,yes Cleveland,yes New York Y,yes Tampa Bay,yes Arizona,yes Seattle,yes Los Angeles D,yes Over 2.5 runs scored,yes Over 6.5 runs scored,yes Over 4.5 runs scored,yes Over 5.5 runs scored,yes Over 5.5 runs scored,yes Over 5.5 runs scored,yes Cleveland,yes Oklahoma City,yes Over 196.5 points scored,yes Over 198.5 points scored,yes Napoli,yes David Mgoyan,yes Atlanta"
-    },
-    {
-      "can_close_early": true,
-      "close_time": "2026-05-25T19:00:00Z",
-      "created_time": "2026-05-11T11:51:36.20605Z",
-      "custom_strike": {
-        "Associated Events": "KXEPLGAME-26MAY11TOTLEE,KXIPLGAME-26MAY11DCPBKS,KXLALIGAGAME-26MAY11RVCGIR,KXMLBGAME-26MAY111810LAACLE,KXMLBGAME-26MAY111835NYYBAL,KXMLBGAME-26MAY111907TBTOR,KXMLBGAME-26MAY112005AZTEX,KXMLBGAME-26MAY112010SEAHOU,KXMLBGAME-26MAY112210SFLAD,KXMLBTOTAL-26MAY111810LAACLE,KXMLBTOTAL-26MAY111835NYYBAL,KXMLBTOTAL-26MAY111907TBTOR,KXMLBTOTAL-26MAY112005AZTEX,KXMLBTOTAL-26MAY112010SEAHOU,KXMLBTOTAL-26MAY112210SFLAD,KXNBAGAME-26MAY11DETCLE,KXNBAGAME-26MAY11OKCLAL,KXNBATOTAL-26MAY11DETCLE,KXNBATOTAL-26MAY11OKCLAL,KXSERIEAGAME-26MAY11NAPBFC,KXUFCFIGHT-26MAY16MGOMOR",
-        "Associated Market Sides": "yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes",
-        "Associated Markets": "KXEPLGAME-26MAY11TOTLEE-TOT,KXIPLGAME-26MAY11DCPBKS-PBKS,KXLALIGAGAME-26MAY11RVCGIR-RVC,KXMLBGAME-26MAY111810LAACLE-CLE,KXMLBGAME-26MAY111835NYYBAL-NYY,KXMLBGAME-26MAY111907TBTOR-TB,KXMLBGAME-26MAY112005AZTEX-AZ,KXMLBGAME-26MAY112010SEAHOU-SEA,KXMLBGAME-26MAY112210SFLAD-LAD,KXMLBTOTAL-26MAY111810LAACLE-3,KXMLBTOTAL-26MAY111835NYYBAL-7,KXMLBTOTAL-26MAY111907TBTOR-5,KXMLBTOTAL-26MAY112005AZTEX-6,KXMLBTOTAL-26MAY112010SEAHOU-6,KXMLBTOTAL-26MAY112210SFLAD-6,KXNBAGAME-26MAY11DETCLE-CLE,KXNBAGAME-26MAY11OKCLAL-OKC,KXNBATOTAL-26MAY11DETCLE-196,KXNBATOTAL-26MAY11OKCLAL-198,KXSERIEAGAME-26MAY11NAPBFC-NAP,KXUFCFIGHT-26MAY16MGOMOR-MGO",
-        "Multivariate Event Ticker": "KXMVECROSSCATEGORY-S2026F40B7E53EC2"
-      },
-      "event_ticker": "KXMVECROSSCATEGORY-S2026F40B7E53EC2",
-      "expected_expiration_time": "2026-05-17T04:40:00Z",
-      "expiration_time": "2026-05-25T19:00:00Z",
-      "expiration_value": "",
-      "fractional_trading_enabled": true,
-      "is_provisional": true,
-      "last_price_dollars": "0.0000",
-      "latest_expiration_time": "2026-05-25T19:00:00Z",
-      "liquidity_dollars": "0.0000",
-      "market_type": "binary",
-      "mve_collection_ticker": "KXMVECROSSCATEGORY-R",
-      "mve_selected_legs": [
-        {
-          "event_ticker": "KXEPLGAME-26MAY11TOTLEE",
-          "market_ticker": "KXEPLGAME-26MAY11TOTLEE-TOT",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXIPLGAME-26MAY11DCPBKS",
-          "market_ticker": "KXIPLGAME-26MAY11DCPBKS-PBKS",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXLALIGAGAME-26MAY11RVCGIR",
-          "market_ticker": "KXLALIGAGAME-26MAY11RVCGIR-RVC",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBGAME-26MAY111810LAACLE",
-          "market_ticker": "KXMLBGAME-26MAY111810LAACLE-CLE",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBGAME-26MAY111835NYYBAL",
-          "market_ticker": "KXMLBGAME-26MAY111835NYYBAL-NYY",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBGAME-26MAY111907TBTOR",
-          "market_ticker": "KXMLBGAME-26MAY111907TBTOR-TB",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBGAME-26MAY112005AZTEX",
-          "market_ticker": "KXMLBGAME-26MAY112005AZTEX-AZ",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBGAME-26MAY112010SEAHOU",
-          "market_ticker": "KXMLBGAME-26MAY112010SEAHOU-SEA",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBGAME-26MAY112210SFLAD",
-          "market_ticker": "KXMLBGAME-26MAY112210SFLAD-LAD",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBTOTAL-26MAY111810LAACLE",
-          "market_ticker": "KXMLBTOTAL-26MAY111810LAACLE-3",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBTOTAL-26MAY111835NYYBAL",
-          "market_ticker": "KXMLBTOTAL-26MAY111835NYYBAL-7",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBTOTAL-26MAY111907TBTOR",
-          "market_ticker": "KXMLBTOTAL-26MAY111907TBTOR-5",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBTOTAL-26MAY112005AZTEX",
-          "market_ticker": "KXMLBTOTAL-26MAY112005AZTEX-6",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBTOTAL-26MAY112010SEAHOU",
-          "market_ticker": "KXMLBTOTAL-26MAY112010SEAHOU-6",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBTOTAL-26MAY112210SFLAD",
-          "market_ticker": "KXMLBTOTAL-26MAY112210SFLAD-6",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXNBAGAME-26MAY11DETCLE",
-          "market_ticker": "KXNBAGAME-26MAY11DETCLE-CLE",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXNBAGAME-26MAY11OKCLAL",
-          "market_ticker": "KXNBAGAME-26MAY11OKCLAL-OKC",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXNBATOTAL-26MAY11DETCLE",
-          "market_ticker": "KXNBATOTAL-26MAY11DETCLE-196",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXNBATOTAL-26MAY11OKCLAL",
-          "market_ticker": "KXNBATOTAL-26MAY11OKCLAL-198",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXSERIEAGAME-26MAY11NAPBFC",
-          "market_ticker": "KXSERIEAGAME-26MAY11NAPBFC-NAP",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXUFCFIGHT-26MAY16MGOMOR",
-          "market_ticker": "KXUFCFIGHT-26MAY16MGOMOR-MGO",
-          "side": "yes"
-        }
-      ],
-      "no_ask_dollars": "1.0000",
-      "no_bid_dollars": "0.0000",
-      "no_sub_title": "yes Tottenham,yes Punjab Kings,yes Vallecano,yes Cleveland,yes New York Y,yes Tampa Bay,yes Arizona,yes Seattle,yes Los Angeles D,yes Over 2.5 runs scored,yes Over 6.5 runs scored,yes Over 4.5 runs scored,yes Over 5.5 runs scored,yes Over 5.5 runs scored,yes Over 5.5 runs scored,yes Cleveland,yes Oklahoma City,yes Over 196.5 points scored,yes Over 198.5 points scored,yes Napoli,yes David Mgoyan",
-      "notional_value_dollars": "1.0000",
-      "open_interest_fp": "0.00",
-      "open_time": "2026-05-11T11:51:36Z",
-      "previous_price_dollars": "0.0000",
-      "previous_yes_ask_dollars": "0.0000",
-      "previous_yes_bid_dollars": "0.0000",
-      "price_level_structure": "deci_cent",
-      "price_ranges": [
-        {
-          "end": "1.0000",
-          "start": "0.0000",
-          "step": "0.0010"
-        }
-      ],
-      "response_price_units": "usd_cent",
-      "result": "",
-      "rules_primary": "",
-      "rules_secondary": "",
-      "settlement_timer_seconds": 5,
-      "status": "active",
-      "strike_type": "custom",
-      "ticker": "KXMVECROSSCATEGORY-S2026F40B7E53EC2-37534EBD0C2",
-      "title": "yes Tottenham,yes Punjab Kings,yes Vallecano,yes Cleveland,yes New York Y,yes Tampa Bay,yes Arizona,yes Seattle,yes Los Angeles D,yes Over 2.5 runs scored,yes Over 6.5 runs scored,yes Over 4.5 runs scored,yes Over 5.5 runs scored,yes Over 5.5 runs scored,yes Over 5.5 runs scored,yes Cleveland,yes Oklahoma City,yes Over 196.5 points scored,yes Over 198.5 points scored,yes Napoli,yes David Mgoyan",
-      "updated_time": "2026-05-11T11:51:36.985566Z",
-      "volume_24h_fp": "0.00",
-      "volume_fp": "0.00",
-      "yes_ask_dollars": "1.0000",
-      "yes_ask_size_fp": "0.00",
-      "yes_bid_dollars": "0.0000",
-      "yes_bid_size_fp": "0.00",
-      "yes_sub_title": "yes Tottenham,yes Punjab Kings,yes Vallecano,yes Cleveland,yes New York Y,yes Tampa Bay,yes Arizona,yes Seattle,yes Los Angeles D,yes Over 2.5 runs scored,yes Over 6.5 runs scored,yes Over 4.5 runs scored,yes Over 5.5 runs scored,yes Over 5.5 runs scored,yes Over 5.5 runs scored,yes Cleveland,yes Oklahoma City,yes Over 196.5 points scored,yes Over 198.5 points scored,yes Napoli,yes David Mgoyan"
-    },
-    {
-      "can_close_early": true,
-      "close_time": "2026-05-25T19:00:00Z",
-      "created_time": "2026-05-11T11:51:33.603526Z",
-      "custom_strike": {
-        "Associated Events": "KXEPLGAME-26MAY11TOTLEE,KXIPLGAME-26MAY11DCPBKS,KXLALIGAGAME-26MAY11RVCGIR,KXMLBGAME-26MAY111810LAACLE,KXMLBGAME-26MAY111835NYYBAL,KXMLBGAME-26MAY111907TBTOR,KXMLBGAME-26MAY112005AZTEX,KXMLBGAME-26MAY112010SEAHOU,KXMLBGAME-26MAY112210SFLAD,KXMLBTOTAL-26MAY111810LAACLE,KXMLBTOTAL-26MAY111835NYYBAL,KXMLBTOTAL-26MAY111907TBTOR,KXMLBTOTAL-26MAY112005AZTEX,KXMLBTOTAL-26MAY112010SEAHOU,KXMLBTOTAL-26MAY112210SFLAD,KXNBAGAME-26MAY11DETCLE,KXNBAGAME-26MAY11OKCLAL,KXNBATOTAL-26MAY11DETCLE,KXNBATOTAL-26MAY11OKCLAL,KXSERIEAGAME-26MAY11NAPBFC,KXUFCFIGHT-26MAY16MGOMOR",
-        "Associated Market Sides": "yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes",
-        "Associated Markets": "KXEPLGAME-26MAY11TOTLEE-TOT,KXIPLGAME-26MAY11DCPBKS-PBKS,KXLALIGAGAME-26MAY11RVCGIR-RVC,KXMLBGAME-26MAY111810LAACLE-CLE,KXMLBGAME-26MAY111835NYYBAL-NYY,KXMLBGAME-26MAY111907TBTOR-TB,KXMLBGAME-26MAY112005AZTEX-AZ,KXMLBGAME-26MAY112010SEAHOU-SEA,KXMLBGAME-26MAY112210SFLAD-LAD,KXMLBTOTAL-26MAY111810LAACLE-3,KXMLBTOTAL-26MAY111835NYYBAL-7,KXMLBTOTAL-26MAY111907TBTOR-5,KXMLBTOTAL-26MAY112005AZTEX-6,KXMLBTOTAL-26MAY112010SEAHOU-6,KXMLBTOTAL-26MAY112210SFLAD-6,KXNBAGAME-26MAY11DETCLE-CLE,KXNBAGAME-26MAY11OKCLAL-LAL,KXNBATOTAL-26MAY11DETCLE-196,KXNBATOTAL-26MAY11OKCLAL-198,KXSERIEAGAME-26MAY11NAPBFC-NAP,KXUFCFIGHT-26MAY16MGOMOR-MGO",
-        "Multivariate Event Ticker": "KXMVECROSSCATEGORY-S2026F40B7E53EC2"
-      },
-      "event_ticker": "KXMVECROSSCATEGORY-S2026F40B7E53EC2",
-      "expected_expiration_time": "2026-05-17T04:40:00Z",
-      "expiration_time": "2026-05-25T19:00:00Z",
-      "expiration_value": "",
-      "fractional_trading_enabled": true,
-      "is_provisional": true,
-      "last_price_dollars": "0.0000",
-      "latest_expiration_time": "2026-05-25T19:00:00Z",
-      "liquidity_dollars": "0.0000",
-      "market_type": "binary",
-      "mve_collection_ticker": "KXMVECROSSCATEGORY-R",
-      "mve_selected_legs": [
-        {
-          "event_ticker": "KXEPLGAME-26MAY11TOTLEE",
-          "market_ticker": "KXEPLGAME-26MAY11TOTLEE-TOT",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXIPLGAME-26MAY11DCPBKS",
-          "market_ticker": "KXIPLGAME-26MAY11DCPBKS-PBKS",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXLALIGAGAME-26MAY11RVCGIR",
-          "market_ticker": "KXLALIGAGAME-26MAY11RVCGIR-RVC",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBGAME-26MAY111810LAACLE",
-          "market_ticker": "KXMLBGAME-26MAY111810LAACLE-CLE",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBGAME-26MAY111835NYYBAL",
-          "market_ticker": "KXMLBGAME-26MAY111835NYYBAL-NYY",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBGAME-26MAY111907TBTOR",
-          "market_ticker": "KXMLBGAME-26MAY111907TBTOR-TB",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBGAME-26MAY112005AZTEX",
-          "market_ticker": "KXMLBGAME-26MAY112005AZTEX-AZ",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBGAME-26MAY112010SEAHOU",
-          "market_ticker": "KXMLBGAME-26MAY112010SEAHOU-SEA",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBGAME-26MAY112210SFLAD",
-          "market_ticker": "KXMLBGAME-26MAY112210SFLAD-LAD",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBTOTAL-26MAY111810LAACLE",
-          "market_ticker": "KXMLBTOTAL-26MAY111810LAACLE-3",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBTOTAL-26MAY111835NYYBAL",
-          "market_ticker": "KXMLBTOTAL-26MAY111835NYYBAL-7",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBTOTAL-26MAY111907TBTOR",
-          "market_ticker": "KXMLBTOTAL-26MAY111907TBTOR-5",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBTOTAL-26MAY112005AZTEX",
-          "market_ticker": "KXMLBTOTAL-26MAY112005AZTEX-6",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBTOTAL-26MAY112010SEAHOU",
-          "market_ticker": "KXMLBTOTAL-26MAY112010SEAHOU-6",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBTOTAL-26MAY112210SFLAD",
-          "market_ticker": "KXMLBTOTAL-26MAY112210SFLAD-6",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXNBAGAME-26MAY11DETCLE",
-          "market_ticker": "KXNBAGAME-26MAY11DETCLE-CLE",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXNBAGAME-26MAY11OKCLAL",
-          "market_ticker": "KXNBAGAME-26MAY11OKCLAL-LAL",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXNBATOTAL-26MAY11DETCLE",
-          "market_ticker": "KXNBATOTAL-26MAY11DETCLE-196",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXNBATOTAL-26MAY11OKCLAL",
-          "market_ticker": "KXNBATOTAL-26MAY11OKCLAL-198",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXSERIEAGAME-26MAY11NAPBFC",
-          "market_ticker": "KXSERIEAGAME-26MAY11NAPBFC-NAP",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXUFCFIGHT-26MAY16MGOMOR",
-          "market_ticker": "KXUFCFIGHT-26MAY16MGOMOR-MGO",
-          "side": "yes"
-        }
-      ],
-      "no_ask_dollars": "1.0000",
-      "no_bid_dollars": "0.0000",
-      "no_sub_title": "yes Tottenham,yes Punjab Kings,yes Vallecano,yes Cleveland,yes New York Y,yes Tampa Bay,yes Arizona,yes Seattle,yes Los Angeles D,yes Over 2.5 runs scored,yes Over 6.5 runs scored,yes Over 4.5 runs scored,yes Over 5.5 runs scored,yes Over 5.5 runs scored,yes Over 5.5 runs scored,yes Cleveland,yes Los Angeles L,yes Over 196.5 points scored,yes Over 198.5 points scored,yes Napoli,yes David Mgoyan",
-      "notional_value_dollars": "1.0000",
-      "open_interest_fp": "0.00",
-      "open_time": "2026-05-11T11:51:33Z",
-      "previous_price_dollars": "0.0000",
-      "previous_yes_ask_dollars": "0.0000",
-      "previous_yes_bid_dollars": "0.0000",
-      "price_level_structure": "deci_cent",
-      "price_ranges": [
-        {
-          "end": "1.0000",
-          "start": "0.0000",
-          "step": "0.0010"
-        }
-      ],
-      "response_price_units": "usd_cent",
-      "result": "",
-      "rules_primary": "",
-      "rules_secondary": "",
-      "settlement_timer_seconds": 5,
-      "status": "active",
-      "strike_type": "custom",
-      "ticker": "KXMVECROSSCATEGORY-S2026F40B7E53EC2-51380512E9C",
-      "title": "yes Tottenham,yes Punjab Kings,yes Vallecano,yes Cleveland,yes New York Y,yes Tampa Bay,yes Arizona,yes Seattle,yes Los Angeles D,yes Over 2.5 runs scored,yes Over 6.5 runs scored,yes Over 4.5 runs scored,yes Over 5.5 runs scored,yes Over 5.5 runs scored,yes Over 5.5 runs scored,yes Cleveland,yes Los Angeles L,yes Over 196.5 points scored,yes Over 198.5 points scored,yes Napoli,yes David Mgoyan",
-      "updated_time": "2026-05-11T11:51:33.985754Z",
-      "volume_24h_fp": "0.00",
-      "volume_fp": "0.00",
-      "yes_ask_dollars": "1.0000",
-      "yes_ask_size_fp": "0.00",
-      "yes_bid_dollars": "0.0000",
-      "yes_bid_size_fp": "0.00",
-      "yes_sub_title": "yes Tottenham,yes Punjab Kings,yes Vallecano,yes Cleveland,yes New York Y,yes Tampa Bay,yes Arizona,yes Seattle,yes Los Angeles D,yes Over 2.5 runs scored,yes Over 6.5 runs scored,yes Over 4.5 runs scored,yes Over 5.5 runs scored,yes Over 5.5 runs scored,yes Over 5.5 runs scored,yes Cleveland,yes Los Angeles L,yes Over 196.5 points scored,yes Over 198.5 points scored,yes Napoli,yes David Mgoyan"
-    },
-    {
-      "can_close_early": true,
-      "close_time": "2026-05-25T19:00:00Z",
-      "created_time": "2026-05-11T11:51:29.283855Z",
-      "custom_strike": {
-        "Associated Events": "KXEPLGAME-26MAY11TOTLEE,KXIPLGAME-26MAY11DCPBKS,KXLALIGAGAME-26MAY11RVCGIR,KXMLBGAME-26MAY111810LAACLE,KXMLBGAME-26MAY111835NYYBAL,KXMLBGAME-26MAY111907TBTOR,KXMLBGAME-26MAY112005AZTEX,KXMLBGAME-26MAY112010SEAHOU,KXMLBGAME-26MAY112210SFLAD,KXMLBTOTAL-26MAY111810LAACLE,KXMLBTOTAL-26MAY111835NYYBAL,KXMLBTOTAL-26MAY111907TBTOR,KXMLBTOTAL-26MAY112005AZTEX,KXMLBTOTAL-26MAY112010SEAHOU,KXMLBTOTAL-26MAY112210SFLAD,KXNBAGAME-26MAY11DETCLE,KXNBATOTAL-26MAY11DETCLE,KXNBATOTAL-26MAY11OKCLAL,KXSERIEAGAME-26MAY11NAPBFC,KXUFCFIGHT-26MAY16MGOMOR",
-        "Associated Market Sides": "yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes",
-        "Associated Markets": "KXEPLGAME-26MAY11TOTLEE-TOT,KXIPLGAME-26MAY11DCPBKS-PBKS,KXLALIGAGAME-26MAY11RVCGIR-RVC,KXMLBGAME-26MAY111810LAACLE-CLE,KXMLBGAME-26MAY111835NYYBAL-NYY,KXMLBGAME-26MAY111907TBTOR-TB,KXMLBGAME-26MAY112005AZTEX-AZ,KXMLBGAME-26MAY112010SEAHOU-SEA,KXMLBGAME-26MAY112210SFLAD-LAD,KXMLBTOTAL-26MAY111810LAACLE-3,KXMLBTOTAL-26MAY111835NYYBAL-7,KXMLBTOTAL-26MAY111907TBTOR-5,KXMLBTOTAL-26MAY112005AZTEX-6,KXMLBTOTAL-26MAY112010SEAHOU-6,KXMLBTOTAL-26MAY112210SFLAD-6,KXNBAGAME-26MAY11DETCLE-CLE,KXNBATOTAL-26MAY11DETCLE-196,KXNBATOTAL-26MAY11OKCLAL-198,KXSERIEAGAME-26MAY11NAPBFC-NAP,KXUFCFIGHT-26MAY16MGOMOR-MGO",
-        "Multivariate Event Ticker": "KXMVECROSSCATEGORY-S2026752FEC94B3F"
-      },
-      "event_ticker": "KXMVECROSSCATEGORY-S2026752FEC94B3F",
-      "expected_expiration_time": "2026-05-17T04:40:00Z",
-      "expiration_time": "2026-05-25T19:00:00Z",
-      "expiration_value": "",
-      "fractional_trading_enabled": true,
-      "is_provisional": true,
-      "last_price_dollars": "0.0000",
-      "latest_expiration_time": "2026-05-25T19:00:00Z",
-      "liquidity_dollars": "0.0000",
-      "market_type": "binary",
-      "mve_collection_ticker": "KXMVECROSSCATEGORY-R",
-      "mve_selected_legs": [
-        {
-          "event_ticker": "KXEPLGAME-26MAY11TOTLEE",
-          "market_ticker": "KXEPLGAME-26MAY11TOTLEE-TOT",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXIPLGAME-26MAY11DCPBKS",
-          "market_ticker": "KXIPLGAME-26MAY11DCPBKS-PBKS",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXLALIGAGAME-26MAY11RVCGIR",
-          "market_ticker": "KXLALIGAGAME-26MAY11RVCGIR-RVC",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBGAME-26MAY111810LAACLE",
-          "market_ticker": "KXMLBGAME-26MAY111810LAACLE-CLE",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBGAME-26MAY111835NYYBAL",
-          "market_ticker": "KXMLBGAME-26MAY111835NYYBAL-NYY",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBGAME-26MAY111907TBTOR",
-          "market_ticker": "KXMLBGAME-26MAY111907TBTOR-TB",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBGAME-26MAY112005AZTEX",
-          "market_ticker": "KXMLBGAME-26MAY112005AZTEX-AZ",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBGAME-26MAY112010SEAHOU",
-          "market_ticker": "KXMLBGAME-26MAY112010SEAHOU-SEA",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBGAME-26MAY112210SFLAD",
-          "market_ticker": "KXMLBGAME-26MAY112210SFLAD-LAD",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBTOTAL-26MAY111810LAACLE",
-          "market_ticker": "KXMLBTOTAL-26MAY111810LAACLE-3",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBTOTAL-26MAY111835NYYBAL",
-          "market_ticker": "KXMLBTOTAL-26MAY111835NYYBAL-7",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBTOTAL-26MAY111907TBTOR",
-          "market_ticker": "KXMLBTOTAL-26MAY111907TBTOR-5",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBTOTAL-26MAY112005AZTEX",
-          "market_ticker": "KXMLBTOTAL-26MAY112005AZTEX-6",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBTOTAL-26MAY112010SEAHOU",
-          "market_ticker": "KXMLBTOTAL-26MAY112010SEAHOU-6",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBTOTAL-26MAY112210SFLAD",
-          "market_ticker": "KXMLBTOTAL-26MAY112210SFLAD-6",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXNBAGAME-26MAY11DETCLE",
-          "market_ticker": "KXNBAGAME-26MAY11DETCLE-CLE",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXNBATOTAL-26MAY11DETCLE",
-          "market_ticker": "KXNBATOTAL-26MAY11DETCLE-196",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXNBATOTAL-26MAY11OKCLAL",
-          "market_ticker": "KXNBATOTAL-26MAY11OKCLAL-198",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXSERIEAGAME-26MAY11NAPBFC",
-          "market_ticker": "KXSERIEAGAME-26MAY11NAPBFC-NAP",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXUFCFIGHT-26MAY16MGOMOR",
-          "market_ticker": "KXUFCFIGHT-26MAY16MGOMOR-MGO",
-          "side": "yes"
-        }
-      ],
-      "no_ask_dollars": "1.0000",
-      "no_bid_dollars": "0.0000",
-      "no_sub_title": "yes Tottenham,yes Punjab Kings,yes Vallecano,yes Cleveland,yes New York Y,yes Tampa Bay,yes Arizona,yes Seattle,yes Los Angeles D,yes Over 2.5 runs scored,yes Over 6.5 runs scored,yes Over 4.5 runs scored,yes Over 5.5 runs scored,yes Over 5.5 runs scored,yes Over 5.5 runs scored,yes Cleveland,yes Over 196.5 points scored,yes Over 198.5 points scored,yes Napoli,yes David Mgoyan",
-      "notional_value_dollars": "1.0000",
-      "open_interest_fp": "0.00",
-      "open_time": "2026-05-11T11:51:29Z",
-      "previous_price_dollars": "0.0000",
-      "previous_yes_ask_dollars": "0.0000",
-      "previous_yes_bid_dollars": "0.0000",
-      "price_level_structure": "deci_cent",
-      "price_ranges": [
-        {
-          "end": "1.0000",
-          "start": "0.0000",
-          "step": "0.0010"
-        }
-      ],
-      "response_price_units": "usd_cent",
-      "result": "",
-      "rules_primary": "",
-      "rules_secondary": "",
-      "settlement_timer_seconds": 5,
-      "status": "active",
-      "strike_type": "custom",
-      "ticker": "KXMVECROSSCATEGORY-S2026752FEC94B3F-2AD34CF32AD",
-      "title": "yes Tottenham,yes Punjab Kings,yes Vallecano,yes Cleveland,yes New York Y,yes Tampa Bay,yes Arizona,yes Seattle,yes Los Angeles D,yes Over 2.5 runs scored,yes Over 6.5 runs scored,yes Over 4.5 runs scored,yes Over 5.5 runs scored,yes Over 5.5 runs scored,yes Over 5.5 runs scored,yes Cleveland,yes Over 196.5 points scored,yes Over 198.5 points scored,yes Napoli,yes David Mgoyan",
-      "updated_time": "2026-05-11T11:51:29.986855Z",
-      "volume_24h_fp": "0.00",
-      "volume_fp": "0.00",
-      "yes_ask_dollars": "1.0000",
-      "yes_ask_size_fp": "0.00",
-      "yes_bid_dollars": "0.0000",
-      "yes_bid_size_fp": "0.00",
-      "yes_sub_title": "yes Tottenham,yes Punjab Kings,yes Vallecano,yes Cleveland,yes New York Y,yes Tampa Bay,yes Arizona,yes Seattle,yes Los Angeles D,yes Over 2.5 runs scored,yes Over 6.5 runs scored,yes Over 4.5 runs scored,yes Over 5.5 runs scored,yes Over 5.5 runs scored,yes Over 5.5 runs scored,yes Cleveland,yes Over 196.5 points scored,yes Over 198.5 points scored,yes Napoli,yes David Mgoyan"
-    },
-    {
-      "can_close_early": true,
-      "close_time": "2026-05-25T19:00:00Z",
-      "created_time": "2026-05-11T11:51:19.54585Z",
-      "custom_strike": {
-        "Associated Events": "KXEPLGAME-26MAY11TOTLEE,KXIPLGAME-26MAY11DCPBKS,KXLALIGAGAME-26MAY11RVCGIR,KXMLBGAME-26MAY111810LAACLE,KXMLBGAME-26MAY111835NYYBAL,KXMLBGAME-26MAY111907TBTOR,KXMLBGAME-26MAY112005AZTEX,KXMLBGAME-26MAY112010SEAHOU,KXMLBGAME-26MAY112210SFLAD,KXMLBTOTAL-26MAY111810LAACLE,KXMLBTOTAL-26MAY111835NYYBAL,KXMLBTOTAL-26MAY111907TBTOR,KXMLBTOTAL-26MAY112005AZTEX,KXMLBTOTAL-26MAY112010SEAHOU,KXMLBTOTAL-26MAY112210SFLAD,KXNBAGAME-26MAY11OKCLAL,KXNBATOTAL-26MAY11DETCLE,KXNBATOTAL-26MAY11OKCLAL,KXSERIEAGAME-26MAY11NAPBFC,KXUFCFIGHT-26MAY16MGOMOR",
-        "Associated Market Sides": "yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes",
-        "Associated Markets": "KXEPLGAME-26MAY11TOTLEE-TOT,KXIPLGAME-26MAY11DCPBKS-PBKS,KXLALIGAGAME-26MAY11RVCGIR-RVC,KXMLBGAME-26MAY111810LAACLE-CLE,KXMLBGAME-26MAY111835NYYBAL-NYY,KXMLBGAME-26MAY111907TBTOR-TB,KXMLBGAME-26MAY112005AZTEX-AZ,KXMLBGAME-26MAY112010SEAHOU-SEA,KXMLBGAME-26MAY112210SFLAD-LAD,KXMLBTOTAL-26MAY111810LAACLE-3,KXMLBTOTAL-26MAY111835NYYBAL-7,KXMLBTOTAL-26MAY111907TBTOR-5,KXMLBTOTAL-26MAY112005AZTEX-6,KXMLBTOTAL-26MAY112010SEAHOU-6,KXMLBTOTAL-26MAY112210SFLAD-6,KXNBAGAME-26MAY11OKCLAL-OKC,KXNBATOTAL-26MAY11DETCLE-196,KXNBATOTAL-26MAY11OKCLAL-198,KXSERIEAGAME-26MAY11NAPBFC-NAP,KXUFCFIGHT-26MAY16MGOMOR-MGO",
-        "Multivariate Event Ticker": "KXMVECROSSCATEGORY-S20260DD978443BD"
-      },
-      "event_ticker": "KXMVECROSSCATEGORY-S20260DD978443BD",
-      "expected_expiration_time": "2026-05-17T04:40:00Z",
-      "expiration_time": "2026-05-25T19:00:00Z",
-      "expiration_value": "",
-      "fractional_trading_enabled": true,
-      "is_provisional": true,
-      "last_price_dollars": "0.0000",
-      "latest_expiration_time": "2026-05-25T19:00:00Z",
-      "liquidity_dollars": "0.0000",
-      "market_type": "binary",
-      "mve_collection_ticker": "KXMVECROSSCATEGORY-R",
-      "mve_selected_legs": [
-        {
-          "event_ticker": "KXEPLGAME-26MAY11TOTLEE",
-          "market_ticker": "KXEPLGAME-26MAY11TOTLEE-TOT",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXIPLGAME-26MAY11DCPBKS",
-          "market_ticker": "KXIPLGAME-26MAY11DCPBKS-PBKS",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXLALIGAGAME-26MAY11RVCGIR",
-          "market_ticker": "KXLALIGAGAME-26MAY11RVCGIR-RVC",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBGAME-26MAY111810LAACLE",
-          "market_ticker": "KXMLBGAME-26MAY111810LAACLE-CLE",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBGAME-26MAY111835NYYBAL",
-          "market_ticker": "KXMLBGAME-26MAY111835NYYBAL-NYY",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBGAME-26MAY111907TBTOR",
-          "market_ticker": "KXMLBGAME-26MAY111907TBTOR-TB",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBGAME-26MAY112005AZTEX",
-          "market_ticker": "KXMLBGAME-26MAY112005AZTEX-AZ",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBGAME-26MAY112010SEAHOU",
-          "market_ticker": "KXMLBGAME-26MAY112010SEAHOU-SEA",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBGAME-26MAY112210SFLAD",
-          "market_ticker": "KXMLBGAME-26MAY112210SFLAD-LAD",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBTOTAL-26MAY111810LAACLE",
-          "market_ticker": "KXMLBTOTAL-26MAY111810LAACLE-3",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBTOTAL-26MAY111835NYYBAL",
-          "market_ticker": "KXMLBTOTAL-26MAY111835NYYBAL-7",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBTOTAL-26MAY111907TBTOR",
-          "market_ticker": "KXMLBTOTAL-26MAY111907TBTOR-5",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBTOTAL-26MAY112005AZTEX",
-          "market_ticker": "KXMLBTOTAL-26MAY112005AZTEX-6",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBTOTAL-26MAY112010SEAHOU",
-          "market_ticker": "KXMLBTOTAL-26MAY112010SEAHOU-6",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBTOTAL-26MAY112210SFLAD",
-          "market_ticker": "KXMLBTOTAL-26MAY112210SFLAD-6",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXNBAGAME-26MAY11OKCLAL",
-          "market_ticker": "KXNBAGAME-26MAY11OKCLAL-OKC",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXNBATOTAL-26MAY11DETCLE",
-          "market_ticker": "KXNBATOTAL-26MAY11DETCLE-196",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXNBATOTAL-26MAY11OKCLAL",
-          "market_ticker": "KXNBATOTAL-26MAY11OKCLAL-198",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXSERIEAGAME-26MAY11NAPBFC",
-          "market_ticker": "KXSERIEAGAME-26MAY11NAPBFC-NAP",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXUFCFIGHT-26MAY16MGOMOR",
-          "market_ticker": "KXUFCFIGHT-26MAY16MGOMOR-MGO",
-          "side": "yes"
-        }
-      ],
-      "no_ask_dollars": "1.0000",
-      "no_bid_dollars": "0.0000",
-      "no_sub_title": "yes Tottenham,yes Punjab Kings,yes Vallecano,yes Cleveland,yes New York Y,yes Tampa Bay,yes Arizona,yes Seattle,yes Los Angeles D,yes Over 2.5 runs scored,yes Over 6.5 runs scored,yes Over 4.5 runs scored,yes Over 5.5 runs scored,yes Over 5.5 runs scored,yes Over 5.5 runs scored,yes Oklahoma City,yes Over 196.5 points scored,yes Over 198.5 points scored,yes Napoli,yes David Mgoyan",
-      "notional_value_dollars": "1.0000",
-      "open_interest_fp": "0.00",
-      "open_time": "2026-05-11T11:51:19Z",
-      "previous_price_dollars": "0.0000",
-      "previous_yes_ask_dollars": "0.0000",
-      "previous_yes_bid_dollars": "0.0000",
-      "price_level_structure": "deci_cent",
-      "price_ranges": [
-        {
-          "end": "1.0000",
-          "start": "0.0000",
-          "step": "0.0010"
-        }
-      ],
-      "response_price_units": "usd_cent",
-      "result": "",
-      "rules_primary": "",
-      "rules_secondary": "",
-      "settlement_timer_seconds": 5,
-      "status": "active",
-      "strike_type": "custom",
-      "ticker": "KXMVECROSSCATEGORY-S20260DD978443BD-F52C871EB45",
-      "title": "yes Tottenham,yes Punjab Kings,yes Vallecano,yes Cleveland,yes New York Y,yes Tampa Bay,yes Arizona,yes Seattle,yes Los Angeles D,yes Over 2.5 runs scored,yes Over 6.5 runs scored,yes Over 4.5 runs scored,yes Over 5.5 runs scored,yes Over 5.5 runs scored,yes Over 5.5 runs scored,yes Oklahoma City,yes Over 196.5 points scored,yes Over 198.5 points scored,yes Napoli,yes David Mgoyan",
-      "updated_time": "2026-05-11T11:51:19.985934Z",
-      "volume_24h_fp": "0.00",
-      "volume_fp": "0.00",
-      "yes_ask_dollars": "1.0000",
-      "yes_ask_size_fp": "0.00",
-      "yes_bid_dollars": "0.0000",
-      "yes_bid_size_fp": "0.00",
-      "yes_sub_title": "yes Tottenham,yes Punjab Kings,yes Vallecano,yes Cleveland,yes New York Y,yes Tampa Bay,yes Arizona,yes Seattle,yes Los Angeles D,yes Over 2.5 runs scored,yes Over 6.5 runs scored,yes Over 4.5 runs scored,yes Over 5.5 runs scored,yes Over 5.5 runs scored,yes Over 5.5 runs scored,yes Oklahoma City,yes Over 196.5 points scored,yes Over 198.5 points scored,yes Napoli,yes David Mgoyan"
-    },
-    {
-      "can_close_early": true,
-      "close_time": "2026-05-25T19:00:00Z",
-      "created_time": "2026-05-11T11:51:11.065268Z",
-      "custom_strike": {
-        "Associated Events": "KXEPLGAME-26MAY11TOTLEE,KXIPLGAME-26MAY11DCPBKS,KXLALIGAGAME-26MAY11RVCGIR,KXMLBGAME-26MAY111810LAACLE,KXMLBGAME-26MAY111835NYYBAL,KXMLBGAME-26MAY111907TBTOR,KXMLBGAME-26MAY112005AZTEX,KXMLBGAME-26MAY112010SEAHOU,KXMLBGAME-26MAY112210SFLAD,KXMLBTOTAL-26MAY111810LAACLE,KXMLBTOTAL-26MAY111835NYYBAL,KXMLBTOTAL-26MAY111907TBTOR,KXMLBTOTAL-26MAY112005AZTEX,KXMLBTOTAL-26MAY112010SEAHOU,KXMLBTOTAL-26MAY112210SFLAD,KXNBATOTAL-26MAY11DETCLE,KXNBATOTAL-26MAY11OKCLAL,KXSERIEAGAME-26MAY11NAPBFC,KXUFCFIGHT-26MAY16MGOMOR",
-        "Associated Market Sides": "yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes",
-        "Associated Markets": "KXEPLGAME-26MAY11TOTLEE-TOT,KXIPLGAME-26MAY11DCPBKS-PBKS,KXLALIGAGAME-26MAY11RVCGIR-RVC,KXMLBGAME-26MAY111810LAACLE-CLE,KXMLBGAME-26MAY111835NYYBAL-NYY,KXMLBGAME-26MAY111907TBTOR-TB,KXMLBGAME-26MAY112005AZTEX-AZ,KXMLBGAME-26MAY112010SEAHOU-SEA,KXMLBGAME-26MAY112210SFLAD-LAD,KXMLBTOTAL-26MAY111810LAACLE-3,KXMLBTOTAL-26MAY111835NYYBAL-7,KXMLBTOTAL-26MAY111907TBTOR-5,KXMLBTOTAL-26MAY112005AZTEX-6,KXMLBTOTAL-26MAY112010SEAHOU-6,KXMLBTOTAL-26MAY112210SFLAD-6,KXNBATOTAL-26MAY11DETCLE-196,KXNBATOTAL-26MAY11OKCLAL-198,KXSERIEAGAME-26MAY11NAPBFC-NAP,KXUFCFIGHT-26MAY16MGOMOR-MGO",
-        "Multivariate Event Ticker": "KXMVECROSSCATEGORY-S2026D177DE7E38B"
-      },
-      "event_ticker": "KXMVECROSSCATEGORY-S2026D177DE7E38B",
-      "expected_expiration_time": "2026-05-17T04:40:00Z",
-      "expiration_time": "2026-05-25T19:00:00Z",
-      "expiration_value": "",
-      "fractional_trading_enabled": true,
-      "is_provisional": true,
-      "last_price_dollars": "0.0000",
-      "latest_expiration_time": "2026-05-25T19:00:00Z",
-      "liquidity_dollars": "0.0000",
-      "market_type": "binary",
-      "mve_collection_ticker": "KXMVECROSSCATEGORY-R",
-      "mve_selected_legs": [
-        {
-          "event_ticker": "KXEPLGAME-26MAY11TOTLEE",
-          "market_ticker": "KXEPLGAME-26MAY11TOTLEE-TOT",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXIPLGAME-26MAY11DCPBKS",
-          "market_ticker": "KXIPLGAME-26MAY11DCPBKS-PBKS",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXLALIGAGAME-26MAY11RVCGIR",
-          "market_ticker": "KXLALIGAGAME-26MAY11RVCGIR-RVC",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBGAME-26MAY111810LAACLE",
-          "market_ticker": "KXMLBGAME-26MAY111810LAACLE-CLE",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBGAME-26MAY111835NYYBAL",
-          "market_ticker": "KXMLBGAME-26MAY111835NYYBAL-NYY",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBGAME-26MAY111907TBTOR",
-          "market_ticker": "KXMLBGAME-26MAY111907TBTOR-TB",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBGAME-26MAY112005AZTEX",
-          "market_ticker": "KXMLBGAME-26MAY112005AZTEX-AZ",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBGAME-26MAY112010SEAHOU",
-          "market_ticker": "KXMLBGAME-26MAY112010SEAHOU-SEA",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBGAME-26MAY112210SFLAD",
-          "market_ticker": "KXMLBGAME-26MAY112210SFLAD-LAD",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBTOTAL-26MAY111810LAACLE",
-          "market_ticker": "KXMLBTOTAL-26MAY111810LAACLE-3",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBTOTAL-26MAY111835NYYBAL",
-          "market_ticker": "KXMLBTOTAL-26MAY111835NYYBAL-7",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBTOTAL-26MAY111907TBTOR",
-          "market_ticker": "KXMLBTOTAL-26MAY111907TBTOR-5",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBTOTAL-26MAY112005AZTEX",
-          "market_ticker": "KXMLBTOTAL-26MAY112005AZTEX-6",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBTOTAL-26MAY112010SEAHOU",
-          "market_ticker": "KXMLBTOTAL-26MAY112010SEAHOU-6",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBTOTAL-26MAY112210SFLAD",
-          "market_ticker": "KXMLBTOTAL-26MAY112210SFLAD-6",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXNBATOTAL-26MAY11DETCLE",
-          "market_ticker": "KXNBATOTAL-26MAY11DETCLE-196",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXNBATOTAL-26MAY11OKCLAL",
-          "market_ticker": "KXNBATOTAL-26MAY11OKCLAL-198",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXSERIEAGAME-26MAY11NAPBFC",
-          "market_ticker": "KXSERIEAGAME-26MAY11NAPBFC-NAP",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXUFCFIGHT-26MAY16MGOMOR",
-          "market_ticker": "KXUFCFIGHT-26MAY16MGOMOR-MGO",
-          "side": "yes"
-        }
-      ],
-      "no_ask_dollars": "1.0000",
-      "no_bid_dollars": "0.0000",
-      "no_sub_title": "yes Tottenham,yes Punjab Kings,yes Vallecano,yes Cleveland,yes New York Y,yes Tampa Bay,yes Arizona,yes Seattle,yes Los Angeles D,yes Over 2.5 runs scored,yes Over 6.5 runs scored,yes Over 4.5 runs scored,yes Over 5.5 runs scored,yes Over 5.5 runs scored,yes Over 5.5 runs scored,yes Over 196.5 points scored,yes Over 198.5 points scored,yes Napoli,yes David Mgoyan",
-      "notional_value_dollars": "1.0000",
-      "open_interest_fp": "0.00",
-      "open_time": "2026-05-11T11:51:11Z",
-      "previous_price_dollars": "0.0000",
-      "previous_yes_ask_dollars": "0.0000",
-      "previous_yes_bid_dollars": "0.0000",
-      "price_level_structure": "deci_cent",
-      "price_ranges": [
-        {
-          "end": "1.0000",
-          "start": "0.0000",
-          "step": "0.0010"
-        }
-      ],
-      "response_price_units": "usd_cent",
-      "result": "",
-      "rules_primary": "",
-      "rules_secondary": "",
-      "settlement_timer_seconds": 5,
-      "status": "active",
-      "strike_type": "custom",
-      "ticker": "KXMVECROSSCATEGORY-S2026D177DE7E38B-9EEF116D740",
-      "title": "yes Tottenham,yes Punjab Kings,yes Vallecano,yes Cleveland,yes New York Y,yes Tampa Bay,yes Arizona,yes Seattle,yes Los Angeles D,yes Over 2.5 runs scored,yes Over 6.5 runs scored,yes Over 4.5 runs scored,yes Over 5.5 runs scored,yes Over 5.5 runs scored,yes Over 5.5 runs scored,yes Over 196.5 points scored,yes Over 198.5 points scored,yes Napoli,yes David Mgoyan",
-      "updated_time": "2026-05-11T11:51:11.985262Z",
-      "volume_24h_fp": "0.00",
-      "volume_fp": "0.00",
-      "yes_ask_dollars": "1.0000",
-      "yes_ask_size_fp": "0.00",
-      "yes_bid_dollars": "0.0000",
-      "yes_bid_size_fp": "0.00",
-      "yes_sub_title": "yes Tottenham,yes Punjab Kings,yes Vallecano,yes Cleveland,yes New York Y,yes Tampa Bay,yes Arizona,yes Seattle,yes Los Angeles D,yes Over 2.5 runs scored,yes Over 6.5 runs scored,yes Over 4.5 runs scored,yes Over 5.5 runs scored,yes Over 5.5 runs scored,yes Over 5.5 runs scored,yes Over 196.5 points scored,yes Over 198.5 points scored,yes Napoli,yes David Mgoyan"
-    },
-    {
-      "can_close_early": true,
-      "close_time": "2026-05-25T19:00:00Z",
-      "created_time": "2026-05-11T11:51:03.671186Z",
-      "custom_strike": {
-        "Associated Events": "KXEPLGAME-26MAY11TOTLEE,KXIPLGAME-26MAY11DCPBKS,KXLALIGAGAME-26MAY11RVCGIR,KXMLBGAME-26MAY111810LAACLE,KXMLBGAME-26MAY111835NYYBAL,KXMLBGAME-26MAY111907TBTOR,KXMLBGAME-26MAY112005AZTEX,KXMLBGAME-26MAY112010SEAHOU,KXMLBTOTAL-26MAY111810LAACLE,KXMLBTOTAL-26MAY111835NYYBAL,KXMLBTOTAL-26MAY111907TBTOR,KXMLBTOTAL-26MAY112005AZTEX,KXMLBTOTAL-26MAY112010SEAHOU,KXMLBTOTAL-26MAY112210SFLAD,KXNBATOTAL-26MAY11DETCLE,KXNBATOTAL-26MAY11OKCLAL,KXSERIEAGAME-26MAY11NAPBFC,KXUFCFIGHT-26MAY16MGOMOR",
-        "Associated Market Sides": "yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes",
-        "Associated Markets": "KXEPLGAME-26MAY11TOTLEE-TOT,KXIPLGAME-26MAY11DCPBKS-PBKS,KXLALIGAGAME-26MAY11RVCGIR-RVC,KXMLBGAME-26MAY111810LAACLE-CLE,KXMLBGAME-26MAY111835NYYBAL-NYY,KXMLBGAME-26MAY111907TBTOR-TB,KXMLBGAME-26MAY112005AZTEX-AZ,KXMLBGAME-26MAY112010SEAHOU-SEA,KXMLBTOTAL-26MAY111810LAACLE-3,KXMLBTOTAL-26MAY111835NYYBAL-7,KXMLBTOTAL-26MAY111907TBTOR-5,KXMLBTOTAL-26MAY112005AZTEX-6,KXMLBTOTAL-26MAY112010SEAHOU-6,KXMLBTOTAL-26MAY112210SFLAD-6,KXNBATOTAL-26MAY11DETCLE-196,KXNBATOTAL-26MAY11OKCLAL-198,KXSERIEAGAME-26MAY11NAPBFC-NAP,KXUFCFIGHT-26MAY16MGOMOR-MGO",
-        "Multivariate Event Ticker": "KXMVECROSSCATEGORY-S2026610F070B8D6"
-      },
-      "event_ticker": "KXMVECROSSCATEGORY-S2026610F070B8D6",
-      "expected_expiration_time": "2026-05-17T04:40:00Z",
-      "expiration_time": "2026-05-25T19:00:00Z",
-      "expiration_value": "",
-      "fractional_trading_enabled": true,
-      "is_provisional": true,
-      "last_price_dollars": "0.0000",
-      "latest_expiration_time": "2026-05-25T19:00:00Z",
-      "liquidity_dollars": "0.0000",
-      "market_type": "binary",
-      "mve_collection_ticker": "KXMVECROSSCATEGORY-R",
-      "mve_selected_legs": [
-        {
-          "event_ticker": "KXEPLGAME-26MAY11TOTLEE",
-          "market_ticker": "KXEPLGAME-26MAY11TOTLEE-TOT",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXIPLGAME-26MAY11DCPBKS",
-          "market_ticker": "KXIPLGAME-26MAY11DCPBKS-PBKS",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXLALIGAGAME-26MAY11RVCGIR",
-          "market_ticker": "KXLALIGAGAME-26MAY11RVCGIR-RVC",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBGAME-26MAY111810LAACLE",
-          "market_ticker": "KXMLBGAME-26MAY111810LAACLE-CLE",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBGAME-26MAY111835NYYBAL",
-          "market_ticker": "KXMLBGAME-26MAY111835NYYBAL-NYY",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBGAME-26MAY111907TBTOR",
-          "market_ticker": "KXMLBGAME-26MAY111907TBTOR-TB",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBGAME-26MAY112005AZTEX",
-          "market_ticker": "KXMLBGAME-26MAY112005AZTEX-AZ",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBGAME-26MAY112010SEAHOU",
-          "market_ticker": "KXMLBGAME-26MAY112010SEAHOU-SEA",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBTOTAL-26MAY111810LAACLE",
-          "market_ticker": "KXMLBTOTAL-26MAY111810LAACLE-3",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBTOTAL-26MAY111835NYYBAL",
-          "market_ticker": "KXMLBTOTAL-26MAY111835NYYBAL-7",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBTOTAL-26MAY111907TBTOR",
-          "market_ticker": "KXMLBTOTAL-26MAY111907TBTOR-5",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBTOTAL-26MAY112005AZTEX",
-          "market_ticker": "KXMLBTOTAL-26MAY112005AZTEX-6",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBTOTAL-26MAY112010SEAHOU",
-          "market_ticker": "KXMLBTOTAL-26MAY112010SEAHOU-6",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBTOTAL-26MAY112210SFLAD",
-          "market_ticker": "KXMLBTOTAL-26MAY112210SFLAD-6",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXNBATOTAL-26MAY11DETCLE",
-          "market_ticker": "KXNBATOTAL-26MAY11DETCLE-196",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXNBATOTAL-26MAY11OKCLAL",
-          "market_ticker": "KXNBATOTAL-26MAY11OKCLAL-198",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXSERIEAGAME-26MAY11NAPBFC",
-          "market_ticker": "KXSERIEAGAME-26MAY11NAPBFC-NAP",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXUFCFIGHT-26MAY16MGOMOR",
-          "market_ticker": "KXUFCFIGHT-26MAY16MGOMOR-MGO",
-          "side": "yes"
-        }
-      ],
-      "no_ask_dollars": "1.0000",
-      "no_bid_dollars": "0.0000",
-      "no_sub_title": "yes Tottenham,yes Punjab Kings,yes Vallecano,yes Cleveland,yes New York Y,yes Tampa Bay,yes Arizona,yes Seattle,yes Over 2.5 runs scored,yes Over 6.5 runs scored,yes Over 4.5 runs scored,yes Over 5.5 runs scored,yes Over 5.5 runs scored,yes Over 5.5 runs scored,yes Over 196.5 points scored,yes Over 198.5 points scored,yes Napoli,yes David Mgoyan",
-      "notional_value_dollars": "1.0000",
-      "open_interest_fp": "0.00",
-      "open_time": "2026-05-11T11:51:03Z",
-      "previous_price_dollars": "0.0000",
-      "previous_yes_ask_dollars": "0.0000",
-      "previous_yes_bid_dollars": "0.0000",
-      "price_level_structure": "deci_cent",
-      "price_ranges": [
-        {
-          "end": "1.0000",
-          "start": "0.0000",
-          "step": "0.0010"
-        }
-      ],
-      "response_price_units": "usd_cent",
-      "result": "",
-      "rules_primary": "",
-      "rules_secondary": "",
-      "settlement_timer_seconds": 5,
-      "status": "active",
-      "strike_type": "custom",
-      "ticker": "KXMVECROSSCATEGORY-S2026610F070B8D6-2274CD035A1",
-      "title": "yes Tottenham,yes Punjab Kings,yes Vallecano,yes Cleveland,yes New York Y,yes Tampa Bay,yes Arizona,yes Seattle,yes Over 2.5 runs scored,yes Over 6.5 runs scored,yes Over 4.5 runs scored,yes Over 5.5 runs scored,yes Over 5.5 runs scored,yes Over 5.5 runs scored,yes Over 196.5 points scored,yes Over 198.5 points scored,yes Napoli,yes David Mgoyan",
-      "updated_time": "2026-05-11T11:51:03.986029Z",
-      "volume_24h_fp": "0.00",
-      "volume_fp": "0.00",
-      "yes_ask_dollars": "1.0000",
-      "yes_ask_size_fp": "0.00",
-      "yes_bid_dollars": "0.0000",
-      "yes_bid_size_fp": "0.00",
-      "yes_sub_title": "yes Tottenham,yes Punjab Kings,yes Vallecano,yes Cleveland,yes New York Y,yes Tampa Bay,yes Arizona,yes Seattle,yes Over 2.5 runs scored,yes Over 6.5 runs scored,yes Over 4.5 runs scored,yes Over 5.5 runs scored,yes Over 5.5 runs scored,yes Over 5.5 runs scored,yes Over 196.5 points scored,yes Over 198.5 points scored,yes Napoli,yes David Mgoyan"
-    },
-    {
-      "can_close_early": true,
-      "close_time": "2026-05-25T19:00:00Z",
-      "created_time": "2026-05-11T11:50:54.139319Z",
-      "custom_strike": {
-        "Associated Events": "KXEPLGAME-26MAY11TOTLEE,KXIPLGAME-26MAY11DCPBKS,KXLALIGAGAME-26MAY11RVCGIR,KXMLBGAME-26MAY111810LAACLE,KXMLBGAME-26MAY111835NYYBAL,KXMLBGAME-26MAY111907TBTOR,KXMLBGAME-26MAY112005AZTEX,KXMLBTOTAL-26MAY111810LAACLE,KXMLBTOTAL-26MAY111835NYYBAL,KXMLBTOTAL-26MAY111907TBTOR,KXMLBTOTAL-26MAY112005AZTEX,KXMLBTOTAL-26MAY112010SEAHOU,KXMLBTOTAL-26MAY112210SFLAD,KXNBATOTAL-26MAY11DETCLE,KXNBATOTAL-26MAY11OKCLAL,KXSERIEAGAME-26MAY11NAPBFC,KXUFCFIGHT-26MAY16MGOMOR",
-        "Associated Market Sides": "yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes",
-        "Associated Markets": "KXEPLGAME-26MAY11TOTLEE-TOT,KXIPLGAME-26MAY11DCPBKS-PBKS,KXLALIGAGAME-26MAY11RVCGIR-RVC,KXMLBGAME-26MAY111810LAACLE-CLE,KXMLBGAME-26MAY111835NYYBAL-NYY,KXMLBGAME-26MAY111907TBTOR-TB,KXMLBGAME-26MAY112005AZTEX-AZ,KXMLBTOTAL-26MAY111810LAACLE-3,KXMLBTOTAL-26MAY111835NYYBAL-7,KXMLBTOTAL-26MAY111907TBTOR-5,KXMLBTOTAL-26MAY112005AZTEX-6,KXMLBTOTAL-26MAY112010SEAHOU-6,KXMLBTOTAL-26MAY112210SFLAD-6,KXNBATOTAL-26MAY11DETCLE-196,KXNBATOTAL-26MAY11OKCLAL-198,KXSERIEAGAME-26MAY11NAPBFC-NAP,KXUFCFIGHT-26MAY16MGOMOR-MGO",
-        "Multivariate Event Ticker": "KXMVECROSSCATEGORY-S2026028AA60CB4A"
-      },
-      "event_ticker": "KXMVECROSSCATEGORY-S2026028AA60CB4A",
-      "expected_expiration_time": "2026-05-17T04:40:00Z",
-      "expiration_time": "2026-05-25T19:00:00Z",
-      "expiration_value": "",
-      "fractional_trading_enabled": true,
-      "is_provisional": true,
-      "last_price_dollars": "0.0000",
-      "latest_expiration_time": "2026-05-25T19:00:00Z",
-      "liquidity_dollars": "0.0000",
-      "market_type": "binary",
-      "mve_collection_ticker": "KXMVECROSSCATEGORY-R",
-      "mve_selected_legs": [
-        {
-          "event_ticker": "KXEPLGAME-26MAY11TOTLEE",
-          "market_ticker": "KXEPLGAME-26MAY11TOTLEE-TOT",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXIPLGAME-26MAY11DCPBKS",
-          "market_ticker": "KXIPLGAME-26MAY11DCPBKS-PBKS",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXLALIGAGAME-26MAY11RVCGIR",
-          "market_ticker": "KXLALIGAGAME-26MAY11RVCGIR-RVC",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBGAME-26MAY111810LAACLE",
-          "market_ticker": "KXMLBGAME-26MAY111810LAACLE-CLE",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBGAME-26MAY111835NYYBAL",
-          "market_ticker": "KXMLBGAME-26MAY111835NYYBAL-NYY",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBGAME-26MAY111907TBTOR",
-          "market_ticker": "KXMLBGAME-26MAY111907TBTOR-TB",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBGAME-26MAY112005AZTEX",
-          "market_ticker": "KXMLBGAME-26MAY112005AZTEX-AZ",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBTOTAL-26MAY111810LAACLE",
-          "market_ticker": "KXMLBTOTAL-26MAY111810LAACLE-3",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBTOTAL-26MAY111835NYYBAL",
-          "market_ticker": "KXMLBTOTAL-26MAY111835NYYBAL-7",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBTOTAL-26MAY111907TBTOR",
-          "market_ticker": "KXMLBTOTAL-26MAY111907TBTOR-5",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBTOTAL-26MAY112005AZTEX",
-          "market_ticker": "KXMLBTOTAL-26MAY112005AZTEX-6",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBTOTAL-26MAY112010SEAHOU",
-          "market_ticker": "KXMLBTOTAL-26MAY112010SEAHOU-6",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBTOTAL-26MAY112210SFLAD",
-          "market_ticker": "KXMLBTOTAL-26MAY112210SFLAD-6",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXNBATOTAL-26MAY11DETCLE",
-          "market_ticker": "KXNBATOTAL-26MAY11DETCLE-196",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXNBATOTAL-26MAY11OKCLAL",
-          "market_ticker": "KXNBATOTAL-26MAY11OKCLAL-198",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXSERIEAGAME-26MAY11NAPBFC",
-          "market_ticker": "KXSERIEAGAME-26MAY11NAPBFC-NAP",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXUFCFIGHT-26MAY16MGOMOR",
-          "market_ticker": "KXUFCFIGHT-26MAY16MGOMOR-MGO",
-          "side": "yes"
-        }
-      ],
-      "no_ask_dollars": "1.0000",
-      "no_bid_dollars": "0.0000",
-      "no_sub_title": "yes Tottenham,yes Punjab Kings,yes Vallecano,yes Cleveland,yes New York Y,yes Tampa Bay,yes Arizona,yes Over 2.5 runs scored,yes Over 6.5 runs scored,yes Over 4.5 runs scored,yes Over 5.5 runs scored,yes Over 5.5 runs scored,yes Over 5.5 runs scored,yes Over 196.5 points scored,yes Over 198.5 points scored,yes Napoli,yes David Mgoyan",
-      "notional_value_dollars": "1.0000",
-      "open_interest_fp": "0.00",
-      "open_time": "2026-05-11T11:50:54Z",
-      "previous_price_dollars": "0.0000",
-      "previous_yes_ask_dollars": "0.0000",
-      "previous_yes_bid_dollars": "0.0000",
-      "price_level_structure": "deci_cent",
-      "price_ranges": [
-        {
-          "end": "1.0000",
-          "start": "0.0000",
-          "step": "0.0010"
-        }
-      ],
-      "response_price_units": "usd_cent",
-      "result": "",
-      "rules_primary": "",
-      "rules_secondary": "",
-      "settlement_timer_seconds": 5,
-      "status": "active",
-      "strike_type": "custom",
-      "ticker": "KXMVECROSSCATEGORY-S2026028AA60CB4A-66E9CA497CD",
-      "title": "yes Tottenham,yes Punjab Kings,yes Vallecano,yes Cleveland,yes New York Y,yes Tampa Bay,yes Arizona,yes Over 2.5 runs scored,yes Over 6.5 runs scored,yes Over 4.5 runs scored,yes Over 5.5 runs scored,yes Over 5.5 runs scored,yes Over 5.5 runs scored,yes Over 196.5 points scored,yes Over 198.5 points scored,yes Napoli,yes David Mgoyan",
-      "updated_time": "2026-05-11T11:50:54.985153Z",
-      "volume_24h_fp": "0.00",
-      "volume_fp": "0.00",
-      "yes_ask_dollars": "1.0000",
-      "yes_ask_size_fp": "0.00",
-      "yes_bid_dollars": "0.0000",
-      "yes_bid_size_fp": "0.00",
-      "yes_sub_title": "yes Tottenham,yes Punjab Kings,yes Vallecano,yes Cleveland,yes New York Y,yes Tampa Bay,yes Arizona,yes Over 2.5 runs scored,yes Over 6.5 runs scored,yes Over 4.5 runs scored,yes Over 5.5 runs scored,yes Over 5.5 runs scored,yes Over 5.5 runs scored,yes Over 196.5 points scored,yes Over 198.5 points scored,yes Napoli,yes David Mgoyan"
-    },
-    {
-      "can_close_early": true,
-      "close_time": "2026-05-25T19:00:00Z",
-      "created_time": "2026-05-11T11:50:51.589757Z",
-      "custom_strike": {
-        "Associated Events": "KXEPLGAME-26MAY11TOTLEE,KXIPLGAME-26MAY11DCPBKS,KXLALIGAGAME-26MAY11RVCGIR,KXMLBGAME-26MAY111810LAACLE,KXMLBGAME-26MAY111835NYYBAL,KXMLBGAME-26MAY111907TBTOR,KXMLBGAME-26MAY112005AZTEX,KXMLBTOTAL-26MAY111810LAACLE,KXMLBTOTAL-26MAY111835NYYBAL,KXMLBTOTAL-26MAY111907TBTOR,KXMLBTOTAL-26MAY112005AZTEX,KXMLBTOTAL-26MAY112010SEAHOU,KXMLBTOTAL-26MAY112210SFLAD,KXNBATOTAL-26MAY11DETCLE,KXNBATOTAL-26MAY11OKCLAL,KXSERIEAGAME-26MAY11NAPBFC,KXUFCFIGHT-26MAY16MGOMOR",
-        "Associated Market Sides": "yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes",
-        "Associated Markets": "KXEPLGAME-26MAY11TOTLEE-TOT,KXIPLGAME-26MAY11DCPBKS-PBKS,KXLALIGAGAME-26MAY11RVCGIR-RVC,KXMLBGAME-26MAY111810LAACLE-CLE,KXMLBGAME-26MAY111835NYYBAL-NYY,KXMLBGAME-26MAY111907TBTOR-TB,KXMLBGAME-26MAY112005AZTEX-TEX,KXMLBTOTAL-26MAY111810LAACLE-3,KXMLBTOTAL-26MAY111835NYYBAL-7,KXMLBTOTAL-26MAY111907TBTOR-5,KXMLBTOTAL-26MAY112005AZTEX-6,KXMLBTOTAL-26MAY112010SEAHOU-6,KXMLBTOTAL-26MAY112210SFLAD-6,KXNBATOTAL-26MAY11DETCLE-196,KXNBATOTAL-26MAY11OKCLAL-198,KXSERIEAGAME-26MAY11NAPBFC-NAP,KXUFCFIGHT-26MAY16MGOMOR-MGO",
-        "Multivariate Event Ticker": "KXMVECROSSCATEGORY-S2026028AA60CB4A"
-      },
-      "event_ticker": "KXMVECROSSCATEGORY-S2026028AA60CB4A",
-      "expected_expiration_time": "2026-05-17T04:40:00Z",
-      "expiration_time": "2026-05-25T19:00:00Z",
-      "expiration_value": "",
-      "fractional_trading_enabled": true,
-      "is_provisional": true,
-      "last_price_dollars": "0.0000",
-      "latest_expiration_time": "2026-05-25T19:00:00Z",
-      "liquidity_dollars": "0.0000",
-      "market_type": "binary",
-      "mve_collection_ticker": "KXMVECROSSCATEGORY-R",
-      "mve_selected_legs": [
-        {
-          "event_ticker": "KXEPLGAME-26MAY11TOTLEE",
-          "market_ticker": "KXEPLGAME-26MAY11TOTLEE-TOT",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXIPLGAME-26MAY11DCPBKS",
-          "market_ticker": "KXIPLGAME-26MAY11DCPBKS-PBKS",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXLALIGAGAME-26MAY11RVCGIR",
-          "market_ticker": "KXLALIGAGAME-26MAY11RVCGIR-RVC",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBGAME-26MAY111810LAACLE",
-          "market_ticker": "KXMLBGAME-26MAY111810LAACLE-CLE",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBGAME-26MAY111835NYYBAL",
-          "market_ticker": "KXMLBGAME-26MAY111835NYYBAL-NYY",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBGAME-26MAY111907TBTOR",
-          "market_ticker": "KXMLBGAME-26MAY111907TBTOR-TB",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBGAME-26MAY112005AZTEX",
-          "market_ticker": "KXMLBGAME-26MAY112005AZTEX-TEX",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBTOTAL-26MAY111810LAACLE",
-          "market_ticker": "KXMLBTOTAL-26MAY111810LAACLE-3",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBTOTAL-26MAY111835NYYBAL",
-          "market_ticker": "KXMLBTOTAL-26MAY111835NYYBAL-7",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBTOTAL-26MAY111907TBTOR",
-          "market_ticker": "KXMLBTOTAL-26MAY111907TBTOR-5",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBTOTAL-26MAY112005AZTEX",
-          "market_ticker": "KXMLBTOTAL-26MAY112005AZTEX-6",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBTOTAL-26MAY112010SEAHOU",
-          "market_ticker": "KXMLBTOTAL-26MAY112010SEAHOU-6",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBTOTAL-26MAY112210SFLAD",
-          "market_ticker": "KXMLBTOTAL-26MAY112210SFLAD-6",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXNBATOTAL-26MAY11DETCLE",
-          "market_ticker": "KXNBATOTAL-26MAY11DETCLE-196",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXNBATOTAL-26MAY11OKCLAL",
-          "market_ticker": "KXNBATOTAL-26MAY11OKCLAL-198",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXSERIEAGAME-26MAY11NAPBFC",
-          "market_ticker": "KXSERIEAGAME-26MAY11NAPBFC-NAP",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXUFCFIGHT-26MAY16MGOMOR",
-          "market_ticker": "KXUFCFIGHT-26MAY16MGOMOR-MGO",
-          "side": "yes"
-        }
-      ],
-      "no_ask_dollars": "1.0000",
-      "no_bid_dollars": "0.0000",
-      "no_sub_title": "yes Tottenham,yes Punjab Kings,yes Vallecano,yes Cleveland,yes New York Y,yes Tampa Bay,yes Texas,yes Over 2.5 runs scored,yes Over 6.5 runs scored,yes Over 4.5 runs scored,yes Over 5.5 runs scored,yes Over 5.5 runs scored,yes Over 5.5 runs scored,yes Over 196.5 points scored,yes Over 198.5 points scored,yes Napoli,yes David Mgoyan",
-      "notional_value_dollars": "1.0000",
-      "open_interest_fp": "0.00",
-      "open_time": "2026-05-11T11:50:51Z",
-      "previous_price_dollars": "0.0000",
-      "previous_yes_ask_dollars": "0.0000",
-      "previous_yes_bid_dollars": "0.0000",
-      "price_level_structure": "deci_cent",
-      "price_ranges": [
-        {
-          "end": "1.0000",
-          "start": "0.0000",
-          "step": "0.0010"
-        }
-      ],
-      "response_price_units": "usd_cent",
-      "result": "",
-      "rules_primary": "",
-      "rules_secondary": "",
-      "settlement_timer_seconds": 5,
-      "status": "active",
-      "strike_type": "custom",
-      "ticker": "KXMVECROSSCATEGORY-S2026028AA60CB4A-045A7C15CFE",
-      "title": "yes Tottenham,yes Punjab Kings,yes Vallecano,yes Cleveland,yes New York Y,yes Tampa Bay,yes Texas,yes Over 2.5 runs scored,yes Over 6.5 runs scored,yes Over 4.5 runs scored,yes Over 5.5 runs scored,yes Over 5.5 runs scored,yes Over 5.5 runs scored,yes Over 196.5 points scored,yes Over 198.5 points scored,yes Napoli,yes David Mgoyan",
-      "updated_time": "2026-05-11T11:50:51.984917Z",
-      "volume_24h_fp": "0.00",
-      "volume_fp": "0.00",
-      "yes_ask_dollars": "1.0000",
-      "yes_ask_size_fp": "0.00",
-      "yes_bid_dollars": "0.0000",
-      "yes_bid_size_fp": "0.00",
-      "yes_sub_title": "yes Tottenham,yes Punjab Kings,yes Vallecano,yes Cleveland,yes New York Y,yes Tampa Bay,yes Texas,yes Over 2.5 runs scored,yes Over 6.5 runs scored,yes Over 4.5 runs scored,yes Over 5.5 runs scored,yes Over 5.5 runs scored,yes Over 5.5 runs scored,yes Over 196.5 points scored,yes Over 198.5 points scored,yes Napoli,yes David Mgoyan"
-    },
-    {
-      "can_close_early": true,
-      "close_time": "2026-05-25T19:00:00Z",
-      "created_time": "2026-05-11T11:50:40.191925Z",
-      "custom_strike": {
-        "Associated Events": "KXEPLGAME-26MAY11TOTLEE,KXIPLGAME-26MAY11DCPBKS,KXLALIGAGAME-26MAY11RVCGIR,KXMLBGAME-26MAY111810LAACLE,KXMLBGAME-26MAY111835NYYBAL,KXMLBGAME-26MAY111907TBTOR,KXMLBTOTAL-26MAY111810LAACLE,KXMLBTOTAL-26MAY111835NYYBAL,KXMLBTOTAL-26MAY111907TBTOR,KXMLBTOTAL-26MAY112005AZTEX,KXMLBTOTAL-26MAY112010SEAHOU,KXMLBTOTAL-26MAY112210SFLAD,KXNBATOTAL-26MAY11DETCLE,KXNBATOTAL-26MAY11OKCLAL,KXSERIEAGAME-26MAY11NAPBFC,KXUFCFIGHT-26MAY16MGOMOR",
-        "Associated Market Sides": "yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes",
-        "Associated Markets": "KXEPLGAME-26MAY11TOTLEE-TOT,KXIPLGAME-26MAY11DCPBKS-PBKS,KXLALIGAGAME-26MAY11RVCGIR-RVC,KXMLBGAME-26MAY111810LAACLE-CLE,KXMLBGAME-26MAY111835NYYBAL-NYY,KXMLBGAME-26MAY111907TBTOR-TB,KXMLBTOTAL-26MAY111810LAACLE-3,KXMLBTOTAL-26MAY111835NYYBAL-7,KXMLBTOTAL-26MAY111907TBTOR-5,KXMLBTOTAL-26MAY112005AZTEX-6,KXMLBTOTAL-26MAY112010SEAHOU-6,KXMLBTOTAL-26MAY112210SFLAD-6,KXNBATOTAL-26MAY11DETCLE-196,KXNBATOTAL-26MAY11OKCLAL-198,KXSERIEAGAME-26MAY11NAPBFC-NAP,KXUFCFIGHT-26MAY16MGOMOR-MGO",
-        "Multivariate Event Ticker": "KXMVECROSSCATEGORY-S2026200F769A746"
-      },
-      "event_ticker": "KXMVECROSSCATEGORY-S2026200F769A746",
-      "expected_expiration_time": "2026-05-17T04:40:00Z",
-      "expiration_time": "2026-05-25T19:00:00Z",
-      "expiration_value": "",
-      "fractional_trading_enabled": true,
-      "is_provisional": true,
-      "last_price_dollars": "0.0000",
-      "latest_expiration_time": "2026-05-25T19:00:00Z",
-      "liquidity_dollars": "0.0000",
-      "market_type": "binary",
-      "mve_collection_ticker": "KXMVECROSSCATEGORY-R",
-      "mve_selected_legs": [
-        {
-          "event_ticker": "KXEPLGAME-26MAY11TOTLEE",
-          "market_ticker": "KXEPLGAME-26MAY11TOTLEE-TOT",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXIPLGAME-26MAY11DCPBKS",
-          "market_ticker": "KXIPLGAME-26MAY11DCPBKS-PBKS",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXLALIGAGAME-26MAY11RVCGIR",
-          "market_ticker": "KXLALIGAGAME-26MAY11RVCGIR-RVC",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBGAME-26MAY111810LAACLE",
-          "market_ticker": "KXMLBGAME-26MAY111810LAACLE-CLE",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBGAME-26MAY111835NYYBAL",
-          "market_ticker": "KXMLBGAME-26MAY111835NYYBAL-NYY",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBGAME-26MAY111907TBTOR",
-          "market_ticker": "KXMLBGAME-26MAY111907TBTOR-TB",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBTOTAL-26MAY111810LAACLE",
-          "market_ticker": "KXMLBTOTAL-26MAY111810LAACLE-3",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBTOTAL-26MAY111835NYYBAL",
-          "market_ticker": "KXMLBTOTAL-26MAY111835NYYBAL-7",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBTOTAL-26MAY111907TBTOR",
-          "market_ticker": "KXMLBTOTAL-26MAY111907TBTOR-5",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBTOTAL-26MAY112005AZTEX",
-          "market_ticker": "KXMLBTOTAL-26MAY112005AZTEX-6",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBTOTAL-26MAY112010SEAHOU",
-          "market_ticker": "KXMLBTOTAL-26MAY112010SEAHOU-6",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBTOTAL-26MAY112210SFLAD",
-          "market_ticker": "KXMLBTOTAL-26MAY112210SFLAD-6",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXNBATOTAL-26MAY11DETCLE",
-          "market_ticker": "KXNBATOTAL-26MAY11DETCLE-196",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXNBATOTAL-26MAY11OKCLAL",
-          "market_ticker": "KXNBATOTAL-26MAY11OKCLAL-198",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXSERIEAGAME-26MAY11NAPBFC",
-          "market_ticker": "KXSERIEAGAME-26MAY11NAPBFC-NAP",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXUFCFIGHT-26MAY16MGOMOR",
-          "market_ticker": "KXUFCFIGHT-26MAY16MGOMOR-MGO",
-          "side": "yes"
-        }
-      ],
-      "no_ask_dollars": "1.0000",
-      "no_bid_dollars": "0.0000",
-      "no_sub_title": "yes Tottenham,yes Punjab Kings,yes Vallecano,yes Cleveland,yes New York Y,yes Tampa Bay,yes Over 2.5 runs scored,yes Over 6.5 runs scored,yes Over 4.5 runs scored,yes Over 5.5 runs scored,yes Over 5.5 runs scored,yes Over 5.5 runs scored,yes Over 196.5 points scored,yes Over 198.5 points scored,yes Napoli,yes David Mgoyan",
-      "notional_value_dollars": "1.0000",
-      "open_interest_fp": "0.00",
-      "open_time": "2026-05-11T11:50:40Z",
-      "previous_price_dollars": "0.0000",
-      "previous_yes_ask_dollars": "0.0000",
-      "previous_yes_bid_dollars": "0.0000",
-      "price_level_structure": "deci_cent",
-      "price_ranges": [
-        {
-          "end": "1.0000",
-          "start": "0.0000",
-          "step": "0.0010"
-        }
-      ],
-      "response_price_units": "usd_cent",
-      "result": "",
-      "rules_primary": "",
-      "rules_secondary": "",
-      "settlement_timer_seconds": 5,
-      "status": "active",
-      "strike_type": "custom",
-      "ticker": "KXMVECROSSCATEGORY-S2026200F769A746-C159078CC60",
-      "title": "yes Tottenham,yes Punjab Kings,yes Vallecano,yes Cleveland,yes New York Y,yes Tampa Bay,yes Over 2.5 runs scored,yes Over 6.5 runs scored,yes Over 4.5 runs scored,yes Over 5.5 runs scored,yes Over 5.5 runs scored,yes Over 5.5 runs scored,yes Over 196.5 points scored,yes Over 198.5 points scored,yes Napoli,yes David Mgoyan",
-      "updated_time": "2026-05-11T11:50:40.985133Z",
-      "volume_24h_fp": "0.00",
-      "volume_fp": "0.00",
-      "yes_ask_dollars": "1.0000",
-      "yes_ask_size_fp": "0.00",
-      "yes_bid_dollars": "0.0000",
-      "yes_bid_size_fp": "0.00",
-      "yes_sub_title": "yes Tottenham,yes Punjab Kings,yes Vallecano,yes Cleveland,yes New York Y,yes Tampa Bay,yes Over 2.5 runs scored,yes Over 6.5 runs scored,yes Over 4.5 runs scored,yes Over 5.5 runs scored,yes Over 5.5 runs scored,yes Over 5.5 runs scored,yes Over 196.5 points scored,yes Over 198.5 points scored,yes Napoli,yes David Mgoyan"
-    },
-    {
-      "can_close_early": true,
-      "close_time": "2026-05-25T19:00:00Z",
-      "created_time": "2026-05-11T11:50:28.27404Z",
-      "custom_strike": {
-        "Associated Events": "KXEPLGAME-26MAY11TOTLEE,KXIPLGAME-26MAY11DCPBKS,KXLALIGAGAME-26MAY11RVCGIR,KXMLBGAME-26MAY111835NYYBAL,KXMLBTOTAL-26MAY111810LAACLE,KXMLBTOTAL-26MAY111835NYYBAL,KXMLBTOTAL-26MAY111907TBTOR,KXMLBTOTAL-26MAY112005AZTEX,KXMLBTOTAL-26MAY112010SEAHOU,KXMLBTOTAL-26MAY112210SFLAD,KXNBATOTAL-26MAY11DETCLE,KXNBATOTAL-26MAY11OKCLAL,KXSERIEAGAME-26MAY11NAPBFC,KXUFCFIGHT-26MAY16MGOMOR",
-        "Associated Market Sides": "yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes",
-        "Associated Markets": "KXEPLGAME-26MAY11TOTLEE-TOT,KXIPLGAME-26MAY11DCPBKS-PBKS,KXLALIGAGAME-26MAY11RVCGIR-RVC,KXMLBGAME-26MAY111835NYYBAL-NYY,KXMLBTOTAL-26MAY111810LAACLE-3,KXMLBTOTAL-26MAY111835NYYBAL-7,KXMLBTOTAL-26MAY111907TBTOR-5,KXMLBTOTAL-26MAY112005AZTEX-6,KXMLBTOTAL-26MAY112010SEAHOU-6,KXMLBTOTAL-26MAY112210SFLAD-6,KXNBATOTAL-26MAY11DETCLE-196,KXNBATOTAL-26MAY11OKCLAL-198,KXSERIEAGAME-26MAY11NAPBFC-NAP,KXUFCFIGHT-26MAY16MGOMOR-MGO",
-        "Multivariate Event Ticker": "KXMVECROSSCATEGORY-S2026FDCD39F6BF0"
-      },
-      "event_ticker": "KXMVECROSSCATEGORY-S2026FDCD39F6BF0",
-      "expected_expiration_time": "2026-05-17T04:40:00Z",
-      "expiration_time": "2026-05-25T19:00:00Z",
-      "expiration_value": "",
-      "fractional_trading_enabled": true,
-      "is_provisional": true,
-      "last_price_dollars": "0.0000",
-      "latest_expiration_time": "2026-05-25T19:00:00Z",
-      "liquidity_dollars": "0.0000",
-      "market_type": "binary",
-      "mve_collection_ticker": "KXMVECROSSCATEGORY-R",
-      "mve_selected_legs": [
-        {
-          "event_ticker": "KXEPLGAME-26MAY11TOTLEE",
-          "market_ticker": "KXEPLGAME-26MAY11TOTLEE-TOT",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXIPLGAME-26MAY11DCPBKS",
-          "market_ticker": "KXIPLGAME-26MAY11DCPBKS-PBKS",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXLALIGAGAME-26MAY11RVCGIR",
-          "market_ticker": "KXLALIGAGAME-26MAY11RVCGIR-RVC",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBGAME-26MAY111835NYYBAL",
-          "market_ticker": "KXMLBGAME-26MAY111835NYYBAL-NYY",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBTOTAL-26MAY111810LAACLE",
-          "market_ticker": "KXMLBTOTAL-26MAY111810LAACLE-3",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBTOTAL-26MAY111835NYYBAL",
-          "market_ticker": "KXMLBTOTAL-26MAY111835NYYBAL-7",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBTOTAL-26MAY111907TBTOR",
-          "market_ticker": "KXMLBTOTAL-26MAY111907TBTOR-5",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBTOTAL-26MAY112005AZTEX",
-          "market_ticker": "KXMLBTOTAL-26MAY112005AZTEX-6",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBTOTAL-26MAY112010SEAHOU",
-          "market_ticker": "KXMLBTOTAL-26MAY112010SEAHOU-6",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBTOTAL-26MAY112210SFLAD",
-          "market_ticker": "KXMLBTOTAL-26MAY112210SFLAD-6",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXNBATOTAL-26MAY11DETCLE",
-          "market_ticker": "KXNBATOTAL-26MAY11DETCLE-196",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXNBATOTAL-26MAY11OKCLAL",
-          "market_ticker": "KXNBATOTAL-26MAY11OKCLAL-198",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXSERIEAGAME-26MAY11NAPBFC",
-          "market_ticker": "KXSERIEAGAME-26MAY11NAPBFC-NAP",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXUFCFIGHT-26MAY16MGOMOR",
-          "market_ticker": "KXUFCFIGHT-26MAY16MGOMOR-MGO",
-          "side": "yes"
-        }
-      ],
-      "no_ask_dollars": "1.0000",
-      "no_bid_dollars": "0.0000",
-      "no_sub_title": "yes Tottenham,yes Punjab Kings,yes Vallecano,yes New York Y,yes Over 2.5 runs scored,yes Over 6.5 runs scored,yes Over 4.5 runs scored,yes Over 5.5 runs scored,yes Over 5.5 runs scored,yes Over 5.5 runs scored,yes Over 196.5 points scored,yes Over 198.5 points scored,yes Napoli,yes David Mgoyan",
-      "notional_value_dollars": "1.0000",
-      "open_interest_fp": "0.00",
-      "open_time": "2026-05-11T11:50:28Z",
-      "previous_price_dollars": "0.0000",
-      "previous_yes_ask_dollars": "0.0000",
-      "previous_yes_bid_dollars": "0.0000",
-      "price_level_structure": "deci_cent",
-      "price_ranges": [
-        {
-          "end": "1.0000",
-          "start": "0.0000",
-          "step": "0.0010"
-        }
-      ],
-      "response_price_units": "usd_cent",
-      "result": "",
-      "rules_primary": "",
-      "rules_secondary": "",
-      "settlement_timer_seconds": 5,
-      "status": "active",
-      "strike_type": "custom",
-      "ticker": "KXMVECROSSCATEGORY-S2026FDCD39F6BF0-FF19C8821D0",
-      "title": "yes Tottenham,yes Punjab Kings,yes Vallecano,yes New York Y,yes Over 2.5 runs scored,yes Over 6.5 runs scored,yes Over 4.5 runs scored,yes Over 5.5 runs scored,yes Over 5.5 runs scored,yes Over 5.5 runs scored,yes Over 196.5 points scored,yes Over 198.5 points scored,yes Napoli,yes David Mgoyan",
-      "updated_time": "2026-05-11T11:50:28.985299Z",
-      "volume_24h_fp": "0.00",
-      "volume_fp": "0.00",
-      "yes_ask_dollars": "1.0000",
-      "yes_ask_size_fp": "0.00",
-      "yes_bid_dollars": "0.0000",
-      "yes_bid_size_fp": "0.00",
-      "yes_sub_title": "yes Tottenham,yes Punjab Kings,yes Vallecano,yes New York Y,yes Over 2.5 runs scored,yes Over 6.5 runs scored,yes Over 4.5 runs scored,yes Over 5.5 runs scored,yes Over 5.5 runs scored,yes Over 5.5 runs scored,yes Over 196.5 points scored,yes Over 198.5 points scored,yes Napoli,yes David Mgoyan"
-    },
-    {
-      "can_close_early": true,
-      "close_time": "2026-05-25T19:00:00Z",
-      "created_time": "2026-05-11T11:50:20.321099Z",
-      "custom_strike": {
-        "Associated Events": "KXEPLGAME-26MAY11TOTLEE,KXIPLGAME-26MAY11DCPBKS,KXLALIGAGAME-26MAY11RVCGIR,KXMLBGAME-26MAY111810LAACLE,KXMLBGAME-26MAY111835NYYBAL,KXMLBTOTAL-26MAY111810LAACLE,KXMLBTOTAL-26MAY111835NYYBAL,KXMLBTOTAL-26MAY111907TBTOR,KXMLBTOTAL-26MAY112005AZTEX,KXMLBTOTAL-26MAY112010SEAHOU,KXMLBTOTAL-26MAY112210SFLAD,KXNBATOTAL-26MAY11DETCLE,KXNBATOTAL-26MAY11OKCLAL,KXSERIEAGAME-26MAY11NAPBFC,KXUFCFIGHT-26MAY16MGOMOR",
-        "Associated Market Sides": "yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes",
-        "Associated Markets": "KXEPLGAME-26MAY11TOTLEE-TOT,KXIPLGAME-26MAY11DCPBKS-PBKS,KXLALIGAGAME-26MAY11RVCGIR-RVC,KXMLBGAME-26MAY111810LAACLE-CLE,KXMLBGAME-26MAY111835NYYBAL-BAL,KXMLBTOTAL-26MAY111810LAACLE-3,KXMLBTOTAL-26MAY111835NYYBAL-7,KXMLBTOTAL-26MAY111907TBTOR-5,KXMLBTOTAL-26MAY112005AZTEX-6,KXMLBTOTAL-26MAY112010SEAHOU-6,KXMLBTOTAL-26MAY112210SFLAD-6,KXNBATOTAL-26MAY11DETCLE-196,KXNBATOTAL-26MAY11OKCLAL-198,KXSERIEAGAME-26MAY11NAPBFC-NAP,KXUFCFIGHT-26MAY16MGOMOR-MGO",
-        "Multivariate Event Ticker": "KXMVECROSSCATEGORY-S202624DE76F3C36"
-      },
-      "event_ticker": "KXMVECROSSCATEGORY-S202624DE76F3C36",
-      "expected_expiration_time": "2026-05-17T04:40:00Z",
-      "expiration_time": "2026-05-25T19:00:00Z",
-      "expiration_value": "",
-      "fractional_trading_enabled": true,
-      "is_provisional": true,
-      "last_price_dollars": "0.0000",
-      "latest_expiration_time": "2026-05-25T19:00:00Z",
-      "liquidity_dollars": "0.0000",
-      "market_type": "binary",
-      "mve_collection_ticker": "KXMVECROSSCATEGORY-R",
-      "mve_selected_legs": [
-        {
-          "event_ticker": "KXEPLGAME-26MAY11TOTLEE",
-          "market_ticker": "KXEPLGAME-26MAY11TOTLEE-TOT",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXIPLGAME-26MAY11DCPBKS",
-          "market_ticker": "KXIPLGAME-26MAY11DCPBKS-PBKS",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXLALIGAGAME-26MAY11RVCGIR",
-          "market_ticker": "KXLALIGAGAME-26MAY11RVCGIR-RVC",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBGAME-26MAY111810LAACLE",
-          "market_ticker": "KXMLBGAME-26MAY111810LAACLE-CLE",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBGAME-26MAY111835NYYBAL",
-          "market_ticker": "KXMLBGAME-26MAY111835NYYBAL-BAL",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBTOTAL-26MAY111810LAACLE",
-          "market_ticker": "KXMLBTOTAL-26MAY111810LAACLE-3",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBTOTAL-26MAY111835NYYBAL",
-          "market_ticker": "KXMLBTOTAL-26MAY111835NYYBAL-7",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBTOTAL-26MAY111907TBTOR",
-          "market_ticker": "KXMLBTOTAL-26MAY111907TBTOR-5",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBTOTAL-26MAY112005AZTEX",
-          "market_ticker": "KXMLBTOTAL-26MAY112005AZTEX-6",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBTOTAL-26MAY112010SEAHOU",
-          "market_ticker": "KXMLBTOTAL-26MAY112010SEAHOU-6",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBTOTAL-26MAY112210SFLAD",
-          "market_ticker": "KXMLBTOTAL-26MAY112210SFLAD-6",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXNBATOTAL-26MAY11DETCLE",
-          "market_ticker": "KXNBATOTAL-26MAY11DETCLE-196",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXNBATOTAL-26MAY11OKCLAL",
-          "market_ticker": "KXNBATOTAL-26MAY11OKCLAL-198",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXSERIEAGAME-26MAY11NAPBFC",
-          "market_ticker": "KXSERIEAGAME-26MAY11NAPBFC-NAP",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXUFCFIGHT-26MAY16MGOMOR",
-          "market_ticker": "KXUFCFIGHT-26MAY16MGOMOR-MGO",
-          "side": "yes"
-        }
-      ],
-      "no_ask_dollars": "1.0000",
-      "no_bid_dollars": "0.0000",
-      "no_sub_title": "yes Tottenham,yes Punjab Kings,yes Vallecano,yes Cleveland,yes Baltimore,yes Over 2.5 runs scored,yes Over 6.5 runs scored,yes Over 4.5 runs scored,yes Over 5.5 runs scored,yes Over 5.5 runs scored,yes Over 5.5 runs scored,yes Over 196.5 points scored,yes Over 198.5 points scored,yes Napoli,yes David Mgoyan",
-      "notional_value_dollars": "1.0000",
-      "open_interest_fp": "0.00",
-      "open_time": "2026-05-11T11:50:20Z",
-      "previous_price_dollars": "0.0000",
-      "previous_yes_ask_dollars": "0.0000",
-      "previous_yes_bid_dollars": "0.0000",
-      "price_level_structure": "deci_cent",
-      "price_ranges": [
-        {
-          "end": "1.0000",
-          "start": "0.0000",
-          "step": "0.0010"
-        }
-      ],
-      "response_price_units": "usd_cent",
-      "result": "",
-      "rules_primary": "",
-      "rules_secondary": "",
-      "settlement_timer_seconds": 5,
-      "status": "active",
-      "strike_type": "custom",
-      "ticker": "KXMVECROSSCATEGORY-S202624DE76F3C36-C4B82CA4B77",
-      "title": "yes Tottenham,yes Punjab Kings,yes Vallecano,yes Cleveland,yes Baltimore,yes Over 2.5 runs scored,yes Over 6.5 runs scored,yes Over 4.5 runs scored,yes Over 5.5 runs scored,yes Over 5.5 runs scored,yes Over 5.5 runs scored,yes Over 196.5 points scored,yes Over 198.5 points scored,yes Napoli,yes David Mgoyan",
-      "updated_time": "2026-05-11T11:50:20.984397Z",
-      "volume_24h_fp": "0.00",
-      "volume_fp": "0.00",
-      "yes_ask_dollars": "1.0000",
-      "yes_ask_size_fp": "0.00",
-      "yes_bid_dollars": "0.0000",
-      "yes_bid_size_fp": "0.00",
-      "yes_sub_title": "yes Tottenham,yes Punjab Kings,yes Vallecano,yes Cleveland,yes Baltimore,yes Over 2.5 runs scored,yes Over 6.5 runs scored,yes Over 4.5 runs scored,yes Over 5.5 runs scored,yes Over 5.5 runs scored,yes Over 5.5 runs scored,yes Over 196.5 points scored,yes Over 198.5 points scored,yes Napoli,yes David Mgoyan"
-    },
-    {
-      "can_close_early": true,
-      "close_time": "2026-05-25T19:00:00Z",
-      "created_time": "2026-05-11T11:50:09.063185Z",
-      "custom_strike": {
-        "Associated Events": "KXEPLGAME-26MAY11TOTLEE,KXIPLGAME-26MAY11DCPBKS,KXLALIGAGAME-26MAY11RVCGIR,KXMLBGAME-26MAY111810LAACLE,KXMLBGAME-26MAY111835NYYBAL,KXMLBTOTAL-26MAY111810LAACLE,KXMLBTOTAL-26MAY111835NYYBAL,KXMLBTOTAL-26MAY111907TBTOR,KXMLBTOTAL-26MAY112005AZTEX,KXMLBTOTAL-26MAY112010SEAHOU,KXMLBTOTAL-26MAY112210SFLAD,KXNBATOTAL-26MAY11DETCLE,KXNBATOTAL-26MAY11OKCLAL,KXSERIEAGAME-26MAY11NAPBFC,KXUFCFIGHT-26MAY16MGOMOR",
-        "Associated Market Sides": "yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes",
-        "Associated Markets": "KXEPLGAME-26MAY11TOTLEE-TOT,KXIPLGAME-26MAY11DCPBKS-PBKS,KXLALIGAGAME-26MAY11RVCGIR-RVC,KXMLBGAME-26MAY111810LAACLE-CLE,KXMLBGAME-26MAY111835NYYBAL-NYY,KXMLBTOTAL-26MAY111810LAACLE-3,KXMLBTOTAL-26MAY111835NYYBAL-7,KXMLBTOTAL-26MAY111907TBTOR-5,KXMLBTOTAL-26MAY112005AZTEX-6,KXMLBTOTAL-26MAY112010SEAHOU-6,KXMLBTOTAL-26MAY112210SFLAD-6,KXNBATOTAL-26MAY11DETCLE-196,KXNBATOTAL-26MAY11OKCLAL-198,KXSERIEAGAME-26MAY11NAPBFC-NAP,KXUFCFIGHT-26MAY16MGOMOR-MGO",
-        "Multivariate Event Ticker": "KXMVECROSSCATEGORY-S202624DE76F3C36"
-      },
-      "event_ticker": "KXMVECROSSCATEGORY-S202624DE76F3C36",
-      "expected_expiration_time": "2026-05-17T04:40:00Z",
-      "expiration_time": "2026-05-25T19:00:00Z",
-      "expiration_value": "",
-      "fractional_trading_enabled": true,
-      "is_provisional": true,
-      "last_price_dollars": "0.0000",
-      "latest_expiration_time": "2026-05-25T19:00:00Z",
-      "liquidity_dollars": "0.0000",
-      "market_type": "binary",
-      "mve_collection_ticker": "KXMVECROSSCATEGORY-R",
-      "mve_selected_legs": [
-        {
-          "event_ticker": "KXEPLGAME-26MAY11TOTLEE",
-          "market_ticker": "KXEPLGAME-26MAY11TOTLEE-TOT",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXIPLGAME-26MAY11DCPBKS",
-          "market_ticker": "KXIPLGAME-26MAY11DCPBKS-PBKS",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXLALIGAGAME-26MAY11RVCGIR",
-          "market_ticker": "KXLALIGAGAME-26MAY11RVCGIR-RVC",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBGAME-26MAY111810LAACLE",
-          "market_ticker": "KXMLBGAME-26MAY111810LAACLE-CLE",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBGAME-26MAY111835NYYBAL",
-          "market_ticker": "KXMLBGAME-26MAY111835NYYBAL-NYY",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBTOTAL-26MAY111810LAACLE",
-          "market_ticker": "KXMLBTOTAL-26MAY111810LAACLE-3",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBTOTAL-26MAY111835NYYBAL",
-          "market_ticker": "KXMLBTOTAL-26MAY111835NYYBAL-7",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBTOTAL-26MAY111907TBTOR",
-          "market_ticker": "KXMLBTOTAL-26MAY111907TBTOR-5",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBTOTAL-26MAY112005AZTEX",
-          "market_ticker": "KXMLBTOTAL-26MAY112005AZTEX-6",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBTOTAL-26MAY112010SEAHOU",
-          "market_ticker": "KXMLBTOTAL-26MAY112010SEAHOU-6",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBTOTAL-26MAY112210SFLAD",
-          "market_ticker": "KXMLBTOTAL-26MAY112210SFLAD-6",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXNBATOTAL-26MAY11DETCLE",
-          "market_ticker": "KXNBATOTAL-26MAY11DETCLE-196",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXNBATOTAL-26MAY11OKCLAL",
-          "market_ticker": "KXNBATOTAL-26MAY11OKCLAL-198",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXSERIEAGAME-26MAY11NAPBFC",
-          "market_ticker": "KXSERIEAGAME-26MAY11NAPBFC-NAP",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXUFCFIGHT-26MAY16MGOMOR",
-          "market_ticker": "KXUFCFIGHT-26MAY16MGOMOR-MGO",
-          "side": "yes"
-        }
-      ],
-      "no_ask_dollars": "1.0000",
-      "no_bid_dollars": "0.0000",
-      "no_sub_title": "yes Tottenham,yes Punjab Kings,yes Vallecano,yes Cleveland,yes New York Y,yes Over 2.5 runs scored,yes Over 6.5 runs scored,yes Over 4.5 runs scored,yes Over 5.5 runs scored,yes Over 5.5 runs scored,yes Over 5.5 runs scored,yes Over 196.5 points scored,yes Over 198.5 points scored,yes Napoli,yes David Mgoyan",
-      "notional_value_dollars": "1.0000",
-      "open_interest_fp": "0.00",
-      "open_time": "2026-05-11T11:50:09Z",
-      "previous_price_dollars": "0.0000",
-      "previous_yes_ask_dollars": "0.0000",
-      "previous_yes_bid_dollars": "0.0000",
-      "price_level_structure": "deci_cent",
-      "price_ranges": [
-        {
-          "end": "1.0000",
-          "start": "0.0000",
-          "step": "0.0010"
-        }
-      ],
-      "response_price_units": "usd_cent",
-      "result": "",
-      "rules_primary": "",
-      "rules_secondary": "",
-      "settlement_timer_seconds": 5,
-      "status": "active",
-      "strike_type": "custom",
-      "ticker": "KXMVECROSSCATEGORY-S202624DE76F3C36-4A8536D3A94",
-      "title": "yes Tottenham,yes Punjab Kings,yes Vallecano,yes Cleveland,yes New York Y,yes Over 2.5 runs scored,yes Over 6.5 runs scored,yes Over 4.5 runs scored,yes Over 5.5 runs scored,yes Over 5.5 runs scored,yes Over 5.5 runs scored,yes Over 196.5 points scored,yes Over 198.5 points scored,yes Napoli,yes David Mgoyan",
-      "updated_time": "2026-05-11T11:50:09.984405Z",
-      "volume_24h_fp": "0.00",
-      "volume_fp": "0.00",
-      "yes_ask_dollars": "1.0000",
-      "yes_ask_size_fp": "0.00",
-      "yes_bid_dollars": "0.0000",
-      "yes_bid_size_fp": "0.00",
-      "yes_sub_title": "yes Tottenham,yes Punjab Kings,yes Vallecano,yes Cleveland,yes New York Y,yes Over 2.5 runs scored,yes Over 6.5 runs scored,yes Over 4.5 runs scored,yes Over 5.5 runs scored,yes Over 5.5 runs scored,yes Over 5.5 runs scored,yes Over 196.5 points scored,yes Over 198.5 points scored,yes Napoli,yes David Mgoyan"
-    },
-    {
-      "can_close_early": true,
-      "close_time": "2026-05-25T19:00:00Z",
-      "created_time": "2026-05-11T11:49:47.590618Z",
-      "custom_strike": {
-        "Associated Events": "KXEPLGAME-26MAY11TOTLEE,KXIPLGAME-26MAY11DCPBKS,KXLALIGAGAME-26MAY11RVCGIR,KXMLBGAME-26MAY111810LAACLE,KXMLBGAME-26MAY121840COLPIT,KXMLBTOTAL-26MAY111810LAACLE,KXMLBTOTAL-26MAY111835NYYBAL,KXMLBTOTAL-26MAY111907TBTOR,KXMLBTOTAL-26MAY112005AZTEX,KXMLBTOTAL-26MAY112010SEAHOU,KXMLBTOTAL-26MAY112210SFLAD,KXNBATOTAL-26MAY11DETCLE,KXNBATOTAL-26MAY11OKCLAL,KXSERIEAGAME-26MAY11NAPBFC,KXUFCFIGHT-26MAY16MGOMOR",
-        "Associated Market Sides": "yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes",
-        "Associated Markets": "KXEPLGAME-26MAY11TOTLEE-TOT,KXIPLGAME-26MAY11DCPBKS-PBKS,KXLALIGAGAME-26MAY11RVCGIR-RVC,KXMLBGAME-26MAY111810LAACLE-CLE,KXMLBGAME-26MAY121840COLPIT-PIT,KXMLBTOTAL-26MAY111810LAACLE-3,KXMLBTOTAL-26MAY111835NYYBAL-7,KXMLBTOTAL-26MAY111907TBTOR-5,KXMLBTOTAL-26MAY112005AZTEX-6,KXMLBTOTAL-26MAY112010SEAHOU-6,KXMLBTOTAL-26MAY112210SFLAD-6,KXNBATOTAL-26MAY11DETCLE-196,KXNBATOTAL-26MAY11OKCLAL-198,KXSERIEAGAME-26MAY11NAPBFC-NAP,KXUFCFIGHT-26MAY16MGOMOR-MGO",
-        "Multivariate Event Ticker": "KXMVECROSSCATEGORY-S2026239CA951924"
-      },
-      "event_ticker": "KXMVECROSSCATEGORY-S2026239CA951924",
-      "expected_expiration_time": "2026-05-17T04:40:00Z",
-      "expiration_time": "2026-05-25T19:00:00Z",
-      "expiration_value": "",
-      "fractional_trading_enabled": true,
-      "is_provisional": true,
-      "last_price_dollars": "0.0000",
-      "latest_expiration_time": "2026-05-25T19:00:00Z",
-      "liquidity_dollars": "0.0000",
-      "market_type": "binary",
-      "mve_collection_ticker": "KXMVECROSSCATEGORY-R",
-      "mve_selected_legs": [
-        {
-          "event_ticker": "KXEPLGAME-26MAY11TOTLEE",
-          "market_ticker": "KXEPLGAME-26MAY11TOTLEE-TOT",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXIPLGAME-26MAY11DCPBKS",
-          "market_ticker": "KXIPLGAME-26MAY11DCPBKS-PBKS",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXLALIGAGAME-26MAY11RVCGIR",
-          "market_ticker": "KXLALIGAGAME-26MAY11RVCGIR-RVC",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBGAME-26MAY111810LAACLE",
-          "market_ticker": "KXMLBGAME-26MAY111810LAACLE-CLE",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBGAME-26MAY121840COLPIT",
-          "market_ticker": "KXMLBGAME-26MAY121840COLPIT-PIT",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBTOTAL-26MAY111810LAACLE",
-          "market_ticker": "KXMLBTOTAL-26MAY111810LAACLE-3",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBTOTAL-26MAY111835NYYBAL",
-          "market_ticker": "KXMLBTOTAL-26MAY111835NYYBAL-7",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBTOTAL-26MAY111907TBTOR",
-          "market_ticker": "KXMLBTOTAL-26MAY111907TBTOR-5",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBTOTAL-26MAY112005AZTEX",
-          "market_ticker": "KXMLBTOTAL-26MAY112005AZTEX-6",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBTOTAL-26MAY112010SEAHOU",
-          "market_ticker": "KXMLBTOTAL-26MAY112010SEAHOU-6",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBTOTAL-26MAY112210SFLAD",
-          "market_ticker": "KXMLBTOTAL-26MAY112210SFLAD-6",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXNBATOTAL-26MAY11DETCLE",
-          "market_ticker": "KXNBATOTAL-26MAY11DETCLE-196",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXNBATOTAL-26MAY11OKCLAL",
-          "market_ticker": "KXNBATOTAL-26MAY11OKCLAL-198",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXSERIEAGAME-26MAY11NAPBFC",
-          "market_ticker": "KXSERIEAGAME-26MAY11NAPBFC-NAP",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXUFCFIGHT-26MAY16MGOMOR",
-          "market_ticker": "KXUFCFIGHT-26MAY16MGOMOR-MGO",
-          "side": "yes"
-        }
-      ],
-      "no_ask_dollars": "1.0000",
-      "no_bid_dollars": "0.0000",
-      "no_sub_title": "yes Tottenham,yes Punjab Kings,yes Vallecano,yes Cleveland,yes Pittsburgh,yes Over 2.5 runs scored,yes Over 6.5 runs scored,yes Over 4.5 runs scored,yes Over 5.5 runs scored,yes Over 5.5 runs scored,yes Over 5.5 runs scored,yes Over 196.5 points scored,yes Over 198.5 points scored,yes Napoli,yes David Mgoyan",
-      "notional_value_dollars": "1.0000",
-      "open_interest_fp": "0.00",
-      "open_time": "2026-05-11T11:49:47Z",
-      "previous_price_dollars": "0.0000",
-      "previous_yes_ask_dollars": "0.0000",
-      "previous_yes_bid_dollars": "0.0000",
-      "price_level_structure": "deci_cent",
-      "price_ranges": [
-        {
-          "end": "1.0000",
-          "start": "0.0000",
-          "step": "0.0010"
-        }
-      ],
-      "response_price_units": "usd_cent",
-      "result": "",
-      "rules_primary": "",
-      "rules_secondary": "",
-      "settlement_timer_seconds": 5,
-      "status": "active",
-      "strike_type": "custom",
-      "ticker": "KXMVECROSSCATEGORY-S2026239CA951924-7BA3A390950",
-      "title": "yes Tottenham,yes Punjab Kings,yes Vallecano,yes Cleveland,yes Pittsburgh,yes Over 2.5 runs scored,yes Over 6.5 runs scored,yes Over 4.5 runs scored,yes Over 5.5 runs scored,yes Over 5.5 runs scored,yes Over 5.5 runs scored,yes Over 196.5 points scored,yes Over 198.5 points scored,yes Napoli,yes David Mgoyan",
-      "updated_time": "2026-05-11T11:49:47.984355Z",
-      "volume_24h_fp": "0.00",
-      "volume_fp": "0.00",
-      "yes_ask_dollars": "1.0000",
-      "yes_ask_size_fp": "0.00",
-      "yes_bid_dollars": "0.0000",
-      "yes_bid_size_fp": "0.00",
-      "yes_sub_title": "yes Tottenham,yes Punjab Kings,yes Vallecano,yes Cleveland,yes Pittsburgh,yes Over 2.5 runs scored,yes Over 6.5 runs scored,yes Over 4.5 runs scored,yes Over 5.5 runs scored,yes Over 5.5 runs scored,yes Over 5.5 runs scored,yes Over 196.5 points scored,yes Over 198.5 points scored,yes Napoli,yes David Mgoyan"
+      "yes_sub_title": "yes Aaron Judge: 1+,yes CJ Abrams: 1+,yes Paul Skenes: 4+,yes Pittsburgh wins by over 1.5 runs,yes Victor Wembanyama: 1+,yes San Antonio,yes Devin Vassell: 10+"
     }
   ]
 }
