@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-13T10:13:38.874605+00:00",
+  "updated": "2026-05-14T10:06:23.264607+00:00",
   "season": 2025,
   "week": 5,
   "is_offseason": true,
@@ -36,19 +36,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.4379,
-        "exp_margin": -2.17,
-        "prob_7plus": 0.259,
-        "prob_14plus": 0.1295,
-        "prob_21plus": 0.0512,
+        "win_prob": 0.4326,
+        "exp_margin": -2.44,
+        "prob_7plus": 0.25,
+        "prob_14plus": 0.1225,
+        "prob_21plus": 0.0499,
         "margin_percentiles": [
-          -25.5,
-          -20.4,
-          -11.6,
-          -2.1,
-          7.5,
-          16.0,
-          21.2
+          -25.7,
+          -20.5,
+          -12.1,
+          -2.4,
+          7.0,
+          15.8,
+          21.0
         ]
       },
       "adjustments": {
@@ -239,19 +239,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.5024,
-        "exp_margin": 0.1,
-        "prob_7plus": 0.3076,
-        "prob_14plus": 0.1633,
+        "win_prob": 0.4983,
+        "exp_margin": -0.02,
+        "prob_7plus": 0.308,
+        "prob_14plus": 0.1638,
         "prob_21plus": 0.0705,
         "margin_percentiles": [
-          -23.4,
-          -18.0,
-          -9.3,
-          0.1,
-          9.5,
+          -23.5,
+          -18.2,
+          -9.5,
+          -0.1,
+          9.4,
           18.2,
-          23.4
+          23.5
         ]
       },
       "adjustments": {
@@ -284,6 +284,13 @@
       "injuries": {
         "home": [
           {
+            "player": "Malik Nabers",
+            "status": "Questionable",
+            "position": "WR",
+            "injury_description": "Nabers initially had surgery Oct. 28 to address ACL and meniscus tears in his right knee. He then dealt with stiffness in the knee this spring and had the clean-up procedure at some point in April. The Giants reportedly still hope Nabers will be ready for Week 1, but it's not looking especially good for his full participation at the start of training camp. He'll likely remain limited to meetings and rehab work during the offseason program, ceding first-team WR reps to the likes of Darius Slayton, Darnell Mooney, Calvin Austin and Malachi Fields.",
+            "value_tier": "starter"
+          },
+          {
             "player": "Dominic Zvada",
             "status": "Active",
             "position": "PK",
@@ -309,13 +316,6 @@
             "status": "Active",
             "position": "CB",
             "injury_description": "New York had high expectations for Banks when the team selected him in the first round of the 2023 NFL Draft, but the Maryland product has largely disappointed. Banks has managed to stay mostly healthy during his first three NFL campaigns, playing in 45 of a possible 51 regular-season games, but after starting every contest in which he participated from 2023-24, he logged just six starts over 16 contests last year. Banks appears set to compete for playing time with second-round pick Colton Hood and free-agent acquisition Greg Newsome during the upcoming season.",
-            "value_tier": "starter"
-          },
-          {
-            "player": "Darius Slayton",
-            "status": "Questionable",
-            "position": "WR",
-            "injury_description": "Slayton is expected to face a multi-month recovery timeline, but he would have plenty of time to ramp up ahead of the regular season in September if the veteran wide receiver is indeed cleared by the start of training camp. The Giants lost 2025 target leader Wan'Dale Robinson in free agency but are expected to get top wide receiver Malik Nabers (knee) back in 2026 and bolstered their wide receiver room by signing Darnell Mooney and Calvin Austin, in addition to drafting Malachi Fields in the third round, providing competition for Slayton's starting job.",
             "value_tier": "starter"
           }
         ],
@@ -364,6 +364,13 @@
         "away_impact_score": 0.0818,
         "home_key_players_out": [
           {
+            "player": "Malik Nabers",
+            "position": "WR",
+            "status": "Questionable",
+            "elo_impact": 3.2,
+            "value_tier": "starter"
+          },
+          {
             "player": "Darius Slayton",
             "position": "WR",
             "status": "Questionable",
@@ -389,13 +396,6 @@
             "position": "RB",
             "status": "Questionable",
             "elo_impact": 2.8,
-            "value_tier": "starter"
-          },
-          {
-            "player": "Malik Nabers",
-            "position": "WR",
-            "status": "Questionable",
-            "elo_impact": 3.2,
             "value_tier": "starter"
           }
         ],
@@ -429,9 +429,9 @@
       },
       "prediction_drivers": [
         "ELO advantage: PHI +117 rating points",
+        "Malik Nabers (NYG) [Starter] QUESTIONABLE \u2014 \u22123 ELO",
         "Darius Slayton (NYG) [Starter] QUESTIONABLE \u2014 \u22123 ELO",
         "Kayvon Thibodeaux (NYG) [Starter] QUESTIONABLE \u2014 \u22122 ELO",
-        "Sam Roberts (NYG) [Starter] QUESTIONABLE \u2014 \u22122 ELO",
         "Tucker Large (PHI) [Starter] OUT \u2014 \u22125 ELO",
         "Jonathan Greenard (PHI) [Starter] QUESTIONABLE \u2014 \u22122 ELO",
         "Chandler Martin (PHI) [Starter] QUESTIONABLE \u2014 \u22122 ELO",
@@ -456,9 +456,9 @@
       "home_score": 11,
       "away_score": 13,
       "predictions": {
-        "ensemble_prob": 0.1739,
+        "ensemble_prob": 0.1744,
         "logistic_prob": 0.0,
-        "elo_prob": 0.1353,
+        "elo_prob": 0.1387,
         "xgb_prob": 0.1655,
         "pyth_prob": 0.2759,
         "eff_prob": 0.5645,
@@ -472,19 +472,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.1896,
-        "exp_margin": -12.38,
-        "prob_7plus": 0.0865,
-        "prob_14plus": 0.0296,
-        "prob_21plus": 0.0092,
+        "win_prob": 0.1926,
+        "exp_margin": -12.44,
+        "prob_7plus": 0.0876,
+        "prob_14plus": 0.0306,
+        "prob_21plus": 0.0091,
         "margin_percentiles": [
           -35.6,
-          -30.4,
-          -21.6,
+          -31.0,
+          -22.3,
           -12.4,
-          -2.9,
-          5.7,
-          10.7
+          -2.8,
+          5.9,
+          11.0
         ]
       },
       "adjustments": {
@@ -498,7 +498,7 @@
       "elo": {
         "home": 1316.0,
         "away": 1633.9,
-        "diff": -322.2
+        "diff": -317.2
       },
       "bayesian": {
         "home_mu": 1399.2,
@@ -517,10 +517,10 @@
       "injuries": {
         "home": [
           {
-            "player": "Chris Smith II",
-            "status": "Injured Reserve",
-            "position": "S",
-            "injury_description": "Smith was not claimed off waivers and will now stay with the Jets on injured reserve for the 2026 season, barring an injury settlement. The free safety played 14 games last season, split between three separate teams, and is primarily a special teams contributor.",
+            "player": "Tim Patrick",
+            "status": "Active",
+            "position": "WR",
+            "injury_description": "In 16 regular-season games with the Jaguars in 2025, the 32-year-old caught 15 of his 24 targets for 187 yards and three touchdowns.  With the Jets, Patrick will add veteran presence to his new team's wide receiver room while bringing inside-outside flexibility to the table. As things stand, Patrick figures to compete for rotational WR snaps behind Garrett Wilson, Adonai Mitchell and Omar Cooper.",
             "value_tier": "starter"
           },
           {
@@ -557,7 +557,7 @@
             "player": "Michael Woods II",
             "status": "Active",
             "position": "WR",
-            "injury_description": "Woods spent time on Green Bay's practice squad last season but was never elevated to the active roster. The 26-year-old last appeared in a regular-season game during the 2024 campaign with the Browns and will look to earn a spot on Denver's final roster.",
+            "injury_description": "Woods spent time on Green Bay's practice squad last season but was never elevated to the active roster. The 26-year-old last appeared in a regular-season game during the 2024 campaign with the Browns and will look to earn a spot on Denver's Week 1 roster.",
             "value_tier": "starter"
           },
           {
@@ -591,18 +591,11 @@
         ]
       },
       "injury_impact": {
-        "home_elo_penalty": 11.2,
+        "home_elo_penalty": 6.2,
         "away_elo_penalty": 14.8,
-        "home_impact_score": 0.1018,
+        "home_impact_score": 0.0564,
         "away_impact_score": 0.1345,
         "home_key_players_out": [
-          {
-            "player": "Chris Smith II",
-            "position": "S",
-            "status": "Injured Reserve",
-            "elo_impact": 5.0,
-            "value_tier": "starter"
-          },
           {
             "player": "Gus Hartwig",
             "position": "C",
@@ -641,7 +634,6 @@
       },
       "prediction_drivers": [
         "ELO advantage: DEN +318 rating points",
-        "Chris Smith II (NYJ) [Starter] INJURED RESERVE \u2014 \u22125 ELO",
         "Gus Hartwig (NYJ) [Starter] OUT \u2014 \u22123 ELO",
         "Garrett Wilson (NYJ) [Starter] QUESTIONABLE \u2014 \u22123 ELO",
         "Bo Nix (DEN) [Starter] QUESTIONABLE \u2014 \u221212 ELO",
@@ -683,19 +675,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.7167,
-        "exp_margin": 8.11,
-        "prob_7plus": 0.5324,
-        "prob_14plus": 0.337,
-        "prob_21plus": 0.1819,
+        "win_prob": 0.7186,
+        "exp_margin": 8.32,
+        "prob_7plus": 0.5342,
+        "prob_14plus": 0.3448,
+        "prob_21plus": 0.1851,
         "margin_percentiles": [
-          -15.1,
-          -10.0,
-          -1.3,
+          -15.2,
+          -9.9,
+          -1.4,
           8.2,
           17.8,
-          26.1,
-          31.3
+          26.7,
+          31.9
         ]
       },
       "adjustments": {
@@ -915,19 +907,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.431,
-        "exp_margin": -2.43,
-        "prob_7plus": 0.2518,
-        "prob_14plus": 0.1208,
-        "prob_21plus": 0.0488,
+        "win_prob": 0.429,
+        "exp_margin": -2.63,
+        "prob_7plus": 0.2508,
+        "prob_14plus": 0.1221,
+        "prob_21plus": 0.0491,
         "margin_percentiles": [
-          -25.7,
-          -20.7,
-          -11.8,
-          -2.4,
-          7.1,
-          15.4,
-          20.9
+          -26.2,
+          -20.8,
+          -12.2,
+          -2.7,
+          7.0,
+          15.6,
+          20.8
         ]
       },
       "adjustments": {
@@ -960,6 +952,13 @@
       "injuries": {
         "home": [
           {
+            "player": "De'Von Achane",
+            "status": "Active",
+            "position": "RB",
+            "injury_description": "Achane was headed into the final year of his rookie deal, and new GM Jon-Eric Sullivan and coach Jeff Hafley had been adamant that the talented running back is a building block of the future in Miami, even after the Dolphins shed salary this offseason. Achane's new deal will pay him $17 million per year in new money, making him the league's third-highest-paid running back behind Saquon Barkley and Christian McCaffrey. Achane started all 16 regular-season games in which he appeared last season, totaling a career-high 1,350 rushing yards and eight touchdown on 238 carries, averaging a league-high 5.8 yards per carry. He added 67 catches for 488 yards and four additional touchdowns on 85 targets in the passing game. Achane is still just 24 years old and figures to be a top-12 fantasy pick this season.",
+            "value_tier": "starter"
+          },
+          {
             "player": "Donaven McCulley",
             "status": "Active",
             "position": "WR",
@@ -986,16 +985,16 @@
             "position": "OT",
             "injury_description": "Sullivan said that Proctor will train at both tackle and guard, but to begin the season, 2025 second-rounder Jonah Savaiinaea will go to right guard to make room for Proctor at left guard. He won't turn 21 until June, and despite his otherwise massive stature, his 33-inch arms are short by tackle standards, so it makes decent sense that Miami won't task him with protecting recent signing Malik Willis' blindside right off the bat.",
             "value_tier": "starter"
-          },
-          {
-            "player": "Theo Wease Jr.",
-            "status": "Active",
-            "position": "WR",
-            "injury_description": "Wease played substantial snaps at wide receiver for the Dolphins' last three contests of the 2025 season. He caught six of his 10 targets for 130 yards and one touchdown over the three-game span. The team drafted Caleb Douglas and Chris Bell (ACL) in the third round of the 2026 draft, as well as Kevin Coleman in the fifth round. With all three new receivers set to compete throughout the preseason, Wease may have to show out to remain on the roster.",
-            "value_tier": "starter"
           }
         ],
         "away": [
+          {
+            "player": "Jerry Wilson",
+            "status": "Active",
+            "position": "CB",
+            "injury_description": "",
+            "value_tier": "starter"
+          },
           {
             "player": "Oronde Gadsden",
             "status": "Active",
@@ -1022,13 +1021,6 @@
             "status": "Active",
             "position": "WR",
             "injury_description": "New offensive coordinator Mike McDaniel reportedly had significant interest in Thompson because of his blazing 4.26 40-yard dash, reminiscent of the wide receiver archetype he valued as a head coach in Miami. It's hard to tell if the Chargers will have designated plays for Thompson, or if they will continue to feature Harris, the 2025 second-round pick who made his bones at the collegiate level as a RPO specialist. Harris' rookie year was relatively mundane (30-324-1) despite playing all 17 regular-season games, but with Keenan Allen potentially on his way out, there overall could be more opportunities available in Los Angeles in what figures to be a more pass-happy scheme.",
-            "value_tier": "starter"
-          },
-          {
-            "player": "Evan Svoboda",
-            "status": "Active",
-            "position": "TE",
-            "injury_description": "Svoboda was originally a quarterback at Wyoming before switching over to tight end in 2025. He caught 11 passes for 92 yards and a touchdown during the 2025 campaign. Svoboda was one of two tight ends the team added as undrafted free agents alongside Jerand Bradley.",
             "value_tier": "starter"
           }
         ]
@@ -1087,9 +1079,9 @@
       "home_score": 19,
       "away_score": 25,
       "predictions": {
-        "ensemble_prob": 0.2631,
+        "ensemble_prob": 0.2616,
         "logistic_prob": 0.1786,
-        "elo_prob": 0.2804,
+        "elo_prob": 0.27,
         "xgb_prob": 0.1695,
         "pyth_prob": 0.3866,
         "eff_prob": 0.5168,
@@ -1103,19 +1095,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.4458,
-        "exp_margin": -1.88,
-        "prob_7plus": 0.266,
-        "prob_14plus": 0.1293,
-        "prob_21plus": 0.0501,
+        "win_prob": 0.4545,
+        "exp_margin": -1.82,
+        "prob_7plus": 0.2667,
+        "prob_14plus": 0.1294,
+        "prob_21plus": 0.0531,
         "margin_percentiles": [
-          -24.8,
-          -20.2,
-          -11.3,
-          -1.9,
-          7.7,
+          -25.3,
+          -20.0,
+          -11.4,
+          -1.7,
+          7.8,
           16.1,
-          21.1
+          21.5
         ]
       },
       "adjustments": {
@@ -1129,7 +1121,7 @@
       "elo": {
         "home": 1441.2,
         "away": 1671.9,
-        "diff": -163.8
+        "diff": -172.8
       },
       "bayesian": {
         "home_mu": 1605.0,
@@ -1147,6 +1139,20 @@
       },
       "injuries": {
         "home": [
+          {
+            "player": "Nick Saldiveri",
+            "status": "Out",
+            "position": "OT",
+            "injury_description": "Saldiveri is apparently still working his way back onto the field from the knee injury he suffered back in December of 2024. As it stands, he'll now have to miss at least the first four weeks of the 2026 campaign.",
+            "value_tier": "starter"
+          },
+          {
+            "player": "Brock Rechsteiner",
+            "status": "Active",
+            "position": "WR",
+            "injury_description": "Rechsteiner earned a spot on the roster after impressing during his tryout at New Orleans' rookie minicamp. He spent his collegiate career at Jacksonville State, catching 53 passes for 629 yards and seven touchdowns across three seasons.",
+            "value_tier": "starter"
+          },
           {
             "player": "Jordyn Tyson",
             "status": "Questionable",
@@ -1166,20 +1172,6 @@
             "status": "Active",
             "position": "DE",
             "injury_description": "As the seventh overall pick in 2023 Draft and a defensive end, Wilson's fifth-year option would have come in at $14.475 million. The pass rusher's career has been disappointing thus far in relation to the draft capital invested in him, so it makes sense that the Saints' trade acquisition is more of a one-year flyer on a once-promising and athletic player and not a commitment to pursue his future. If Wilson can revive his career in 2026 with a better season, the team may look to keep his services in New Orleans long term.",
-            "value_tier": "starter"
-          },
-          {
-            "player": "Devaughn Vele",
-            "status": "Questionable",
-            "position": "WR",
-            "injury_description": "New Orleans used the No. 8 overall pick on Jordyn Tyson, who figures to start alongside Chris Olave from Day 1, and later on the Saints took Bryce Lance in the fourth round and Barion Brown in the sixth. Acquired from the Broncos during the preseason last summer, Vele appeared in 13 regular-season games for the Saints, making seven starts, and produced a 25-293-2 line on 39 targets. Following the trade of Rashid Shaheed to Seattle, Vele became a starter but was injured in Week 15 and missed the final three contests. Capable of playing the slot or outside and on special teams, Vele should have a role in 2026, but the target competition is much stiffer.",
-            "value_tier": "starter"
-          },
-          {
-            "player": "Mason Shipley",
-            "status": "Active",
-            "position": "PK",
-            "injury_description": "Shipley ended his final season with the Texas Longhorns 20-for-24 on field-goal attempts, with his longest make coming in at 53 yards. The kicker should provide Charlie Smyth with some competition in camp, as Smyth logged only six NFL starts with the Saints in 2025 after taking over for Blake Grupe.",
             "value_tier": "starter"
           }
         ],
@@ -1222,11 +1214,18 @@
         ]
       },
       "injury_impact": {
-        "home_elo_penalty": 9.2,
+        "home_elo_penalty": 18.2,
         "away_elo_penalty": 3.2,
-        "home_impact_score": 0.0836,
+        "home_impact_score": 0.1655,
         "away_impact_score": 0.0291,
         "home_key_players_out": [
+          {
+            "player": "Nick Saldiveri",
+            "position": "OT",
+            "status": "Out",
+            "elo_impact": 9.0,
+            "value_tier": "starter"
+          },
           {
             "player": "Jordyn Tyson",
             "position": "WR",
@@ -1272,15 +1271,15 @@
       },
       "prediction_drivers": [
         "ELO advantage: NE +231 rating points",
+        "Nick Saldiveri (NO) [Starter] OUT \u2014 \u22129 ELO",
         "Jordyn Tyson (NO) [Starter] QUESTIONABLE \u2014 \u22123 ELO",
         "Alvin Kamara (NO) [Starter] QUESTIONABLE \u2014 \u22123 ELO",
-        "Devaughn Vele (NO) [Starter] QUESTIONABLE \u2014 \u22123 ELO",
         "Quintayvious Hutchins (NE) [Starter] QUESTIONABLE \u2014 \u22122 ELO",
         "Alijah Vera-Tucker (NE) [Starter] QUESTIONABLE \u2014 \u22121 ELO",
         "Efficiency gap: NO net -0.247 vs NE net +0.019",
         "Home field: NO +65 ELO home advantage"
       ],
-      "explanation": "The model gives New England Patriots a 73.7% win probability \u2014 a strong favorite over New Orleans Saints. The ELO gap is 231 points with home field adding approximately 65 ELO points. Travel distance 1341 miles factors into the away team rating."
+      "explanation": "The model gives New England Patriots a 73.8% win probability \u2014 a strong favorite over New Orleans Saints. The ELO gap is 231 points with home field adding approximately 65 ELO points. Travel distance 1341 miles factors into the away team rating."
     },
     {
       "game_id": "401772748",
@@ -1314,19 +1313,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6188,
-        "exp_margin": 4.19,
-        "prob_7plus": 0.4241,
-        "prob_14plus": 0.2479,
-        "prob_21plus": 0.1176,
+        "win_prob": 0.6125,
+        "exp_margin": 4.1,
+        "prob_7plus": 0.4204,
+        "prob_14plus": 0.2432,
+        "prob_21plus": 0.1181,
         "margin_percentiles": [
-          -19.0,
-          -13.8,
-          -5.5,
-          4.3,
-          13.9,
-          22.2,
-          27.1
+          -19.3,
+          -14.0,
+          -5.4,
+          4.0,
+          13.7,
+          22.3,
+          27.5
         ]
       },
       "adjustments": {
@@ -1534,19 +1533,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6171,
-        "exp_margin": 4.55,
-        "prob_7plus": 0.4247,
-        "prob_14plus": 0.2531,
-        "prob_21plus": 0.1253,
+        "win_prob": 0.6214,
+        "exp_margin": 4.45,
+        "prob_7plus": 0.4303,
+        "prob_14plus": 0.2539,
+        "prob_21plus": 0.1179,
         "margin_percentiles": [
-          -18.6,
-          -13.5,
-          -4.9,
-          4.3,
+          -18.7,
+          -13.7,
+          -5.1,
+          4.5,
           14.1,
-          23.1,
-          28.3
+          22.5,
+          27.5
         ]
       },
       "adjustments": {
@@ -1720,19 +1719,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.5107,
-        "exp_margin": 0.56,
-        "prob_7plus": 0.3273,
-        "prob_14plus": 0.1742,
-        "prob_21plus": 0.0738,
+        "win_prob": 0.5197,
+        "exp_margin": 0.51,
+        "prob_7plus": 0.3268,
+        "prob_14plus": 0.1709,
+        "prob_21plus": 0.0741,
         "margin_percentiles": [
-          -22.6,
-          -17.4,
-          -9.0,
-          0.4,
-          10.2,
+          -23.2,
+          -17.9,
+          -9.1,
+          0.7,
+          10.1,
           18.5,
-          23.9
+          24.0
         ]
       },
       "adjustments": {
@@ -1916,19 +1915,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.4654,
-        "exp_margin": -1.3,
-        "prob_7plus": 0.2787,
-        "prob_14plus": 0.1378,
-        "prob_21plus": 0.054,
+        "win_prob": 0.4685,
+        "exp_margin": -1.11,
+        "prob_7plus": 0.2839,
+        "prob_14plus": 0.1404,
+        "prob_21plus": 0.0567,
         "margin_percentiles": [
-          -24.7,
-          -19.5,
-          -10.8,
-          -1.2,
+          -24.0,
+          -19.2,
+          -10.7,
+          -1.1,
           8.3,
-          16.6,
-          21.6
+          17.0,
+          21.9
         ]
       },
       "adjustments": {
@@ -1963,7 +1962,7 @@
           {
             "player": "K'Von Wallace",
             "status": "Active",
-            "position": "S",
+            "position": "CB",
             "injury_description": "Wallace is a six-year veteran who has appeared in 74 career regular-season games. The safety was signed to compete for a depth role in the Baltimore secondary under new head coach Jesse Minter. Minter likes to run three safeties frequently, so Wallace will compete with Keondre Jackson and Jahquez Robinson for snaps behind the team's starters. The 28-year-old's experience as both a depth option and special teams player will give him an edge during what will likely be a heated training camp battle to stay on the 53-man roster.",
             "value_tier": "starter"
           },
@@ -2103,19 +2102,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.5459,
-        "exp_margin": 1.52,
-        "prob_7plus": 0.3476,
-        "prob_14plus": 0.189,
-        "prob_21plus": 0.0856,
+        "win_prob": 0.544,
+        "exp_margin": 1.65,
+        "prob_7plus": 0.3598,
+        "prob_14plus": 0.1926,
+        "prob_21plus": 0.0895,
         "margin_percentiles": [
-          -21.8,
+          -22.3,
           -16.7,
-          -7.8,
-          1.6,
-          11.0,
-          19.8,
-          24.8
+          -8.0,
+          1.7,
+          11.1,
+          20.1,
+          25.4
         ]
       },
       "adjustments": {
@@ -2148,6 +2147,13 @@
       "injuries": {
         "home": [
           {
+            "player": "Benito Jones",
+            "status": "Active",
+            "position": "DT",
+            "injury_description": "Jones appeared in 14 games with Miami in 2025, but he was shut down ahead of Week 17 with a back injury. Now, he's evidently in good shape for football activities again and is getting a shot with a new team. Las Vegas recently lost defensive tackle Leki Fotu to the Giants in free agency, and it's reasonable to suspect Jones could fill a similar role to the one Fotu left behind with the Raiders.",
+            "value_tier": "starter"
+          },
+          {
             "player": "Justin Shorter",
             "status": "Injured Reserve",
             "position": "WR",
@@ -2173,13 +2179,6 @@
             "status": "Active",
             "position": "WR",
             "injury_description": "Williams played his first three collegiate campaigns with Clemson before transferring to Indiana. In his final year of eligibility, he recorded 36 catches for 438 yards and six touchdowns over 15 games. Williams didn't have the most prolific college career and struggled to stay healthy at times, but he has good size at 6-foot-3 and could have a slight advantage over the Raiders' other rookie wideouts entering training camp because he played at Indiana with QB Fernando Mendoza, who Las Vegas drafted first overall in the 2026 NFL Draft.",
-            "value_tier": "starter"
-          },
-          {
-            "player": "Corey Rucker",
-            "status": "Active",
-            "position": "WR",
-            "injury_description": "Rucker finished a strong collegiate career by recording over 1,000 receiving yards with Arkansas State in each of his final two campaigns. He scored 11 touchdowns and averaged 72 catches during that two-year span. His biggest claim to fame, however, is his NCAA freshman record of 310 receiving yards in a contest against Louisiana-Monroe in 2020. He has good speed (4.38 40-yard dash) and stands 6-foot tall, but spending almost all of his time during college in the Sun Belt may have hurt his draft status. Regardless, Las Vegas isn't brimming with WR talent, so Rucker could feasibly see NFL action as a rookie if he impresses the organization.",
             "value_tier": "starter"
           }
         ],
@@ -2282,9 +2281,9 @@
       "home_score": 27,
       "away_score": 18,
       "predictions": {
-        "ensemble_prob": 0.6736,
+        "ensemble_prob": 0.6738,
         "logistic_prob": 0.6957,
-        "elo_prob": 0.7449,
+        "elo_prob": 0.7462,
         "xgb_prob": 0.6874,
         "pyth_prob": 0.6724,
         "eff_prob": 0.5288,
@@ -2298,19 +2297,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6037,
-        "exp_margin": 3.81,
-        "prob_7plus": 0.4098,
-        "prob_14plus": 0.2319,
-        "prob_21plus": 0.1106,
+        "win_prob": 0.6123,
+        "exp_margin": 4.13,
+        "prob_7plus": 0.4182,
+        "prob_14plus": 0.2444,
+        "prob_21plus": 0.1146,
         "margin_percentiles": [
           -19.1,
-          -13.8,
-          -5.6,
-          3.7,
-          13.3,
-          21.7,
-          26.9
+          -13.9,
+          -5.3,
+          4.1,
+          13.8,
+          22.0,
+          27.0
         ]
       },
       "adjustments": {
@@ -2324,7 +2323,7 @@
       "elo": {
         "home": 1506.8,
         "away": 1434.6,
-        "diff": 186.2
+        "diff": 187.4
       },
       "bayesian": {
         "home_mu": 1622.0,
@@ -2342,6 +2341,13 @@
       },
       "injuries": {
         "home": [
+          {
+            "player": "Brenden Rice",
+            "status": "Active",
+            "position": "WR",
+            "injury_description": "Rice was waived by the Raiders on Monday and now gets a fresh start in the Packers' wide receiver corps, which saw Romeo Doubs (signed by New England) and Dontayvion Wicks (dealt to Philadelphia) depart this offseason. A 2024 seventh-round pick, Rice was initially selected by the Chargers, with whom he combined for 10 offensive snaps across three regular-season games as a rookie. He was cut by Los Angeles in 2025 and then spent time on the practice squads of the Patriots, Seahawks and Raiders.",
+            "value_tier": "starter"
+          },
           {
             "player": "Luke Lachey",
             "status": "Active",
@@ -2368,13 +2374,6 @@
             "status": "Active",
             "position": "QB",
             "injury_description": "Taylor last saw game action in Week 14 of the 2025 campaign for the Jets, with whom he made four starts in the second season of his two-year, $12 million contract prior to sustaining a knee injury. The 36-year-old quarterback has since recovered from that injury and slots in as the favorite to back up Jordan Love in a Packers quarterback room that also includes Kyle McCord and Kyron Drones.",
-            "value_tier": "starter"
-          },
-          {
-            "player": "Jaden Nixon",
-            "status": "Active",
-            "position": "RB",
-            "injury_description": "Nixon played for several colleges before closing out his career at UCF in 2025. The running back participated in 12 games, rushing 71 times for 554 yards and seven touchdowns. He also added 17 receptions for 88 receiving yards in that span. With Josh Jacobs locked in as the No. 1 option at running back, Nixon will battle with several other candidates in training camp to hold down a depth role on the roster.",
             "value_tier": "starter"
           }
         ],
@@ -2417,9 +2416,9 @@
         ]
       },
       "injury_impact": {
-        "home_elo_penalty": 10.6,
+        "home_elo_penalty": 9.4,
         "away_elo_penalty": 3.6,
-        "home_impact_score": 0.0964,
+        "home_impact_score": 0.0855,
         "away_impact_score": 0.0327,
         "home_key_players_out": [
           {
@@ -2441,13 +2440,6 @@
             "position": "DE",
             "status": "Questionable",
             "elo_impact": 2.8,
-            "value_tier": "starter"
-          },
-          {
-            "player": "Sean Rhyan",
-            "position": "G",
-            "status": "Questionable",
-            "elo_impact": 1.2,
             "value_tier": "starter"
           }
         ],
@@ -2501,9 +2493,9 @@
       "home_score": 30,
       "away_score": 19,
       "predictions": {
-        "ensemble_prob": 0.3061,
+        "ensemble_prob": 0.3055,
         "logistic_prob": 0.1786,
-        "elo_prob": 0.3862,
+        "elo_prob": 0.3824,
         "xgb_prob": 0.1894,
         "pyth_prob": 0.5117,
         "eff_prob": 0.5807,
@@ -2517,18 +2509,18 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.4718,
-        "exp_margin": -0.85,
-        "prob_7plus": 0.2905,
-        "prob_14plus": 0.1513,
-        "prob_21plus": 0.0648,
+        "win_prob": 0.4851,
+        "exp_margin": -0.4,
+        "prob_7plus": 0.3028,
+        "prob_14plus": 0.1521,
+        "prob_21plus": 0.0642,
         "margin_percentiles": [
-          -24.5,
-          -19.0,
-          -10.6,
-          -0.9,
-          8.8,
-          17.9,
+          -23.7,
+          -18.5,
+          -9.9,
+          -0.5,
+          9.2,
+          17.7,
           23.0
         ]
       },
@@ -2543,7 +2535,7 @@
       "elo": {
         "home": 1458.9,
         "away": 1602.0,
-        "diff": -80.5
+        "diff": -83.3
       },
       "bayesian": {
         "home_mu": 1585.0,
@@ -2561,6 +2553,13 @@
       },
       "injuries": {
         "home": [
+          {
+            "player": "Bucky Irving",
+            "status": "Questionable",
+            "position": "RB",
+            "injury_description": "Irving missed seven games from Week 2 to Week 12 due to a combination of shoulder and foot/ankle injuries in 2025. Though he returned for Tampa Bay's final six regular-season games, the 2024 fourth-rounder shared snaps with Sean Tucker (re-signed) and Rachaad White (signed with Commanders) and never quite looked fully healthy. The shoulder injury required an offseason procedure to address and Irving isn't yet cleared to practice, though Greg Auman of Fox Sports reports that his rehab is proceeding on schedule. Per Auman, Irving is expected to be limited during OTAs, which will take place between late May and early June, before being fully cleared for the start of training camp in July. Presumably, he will also be limited at mandatory minicamp from June 16-18. Tampa Bay added Kenneth Gainwell to the backfield via a two-year, $14 million contract in free agency, positioning Irving to face increased competition for touches, especially for change-of-pace work and third-down scenarios.",
+            "value_tier": "starter"
+          },
           {
             "player": "Ted Hurst",
             "status": "Active",
@@ -2587,13 +2586,6 @@
             "status": "Active",
             "position": "DT",
             "injury_description": "Kancey was sidelined for most of the 2025 season due to a pectoral injury he suffered in Week 2, but the defensive tackle's output has been more than satisfactory for the Buccaneers to justify spending the $14.475 million required to retain him through 2027. The 2023 first-round pick has accumulated 54 tackles (41 solo), including 11.5 sacks, through 29 career regular-season games thus far. With the team selecting linebacker Rueben Bain in the first round of the 2026 NFL Draft, the Bucs will be acquiring an influx of talent on the defensive line that should only increase Kancey's potential for production this season.",
-            "value_tier": "starter"
-          },
-          {
-            "player": "Jalen McMillan",
-            "status": "Active",
-            "position": "WR",
-            "injury_description": "The Bucs continued to shake up their wide receiver room by selecting Hurst with the 84th overall pick last Friday. Over the offseason, the team has subtracted Mike Evans, who signed with the 49ers in free agency, and added Hurst to a group that still includes Chris Godwin, Emeka Egbuka, McMillan and Tez Johnson. McMillan missed most of last season with a neck injury before making his debut in Week 15. In four regular-season games, McMillan produced a respectable 12-178-0 line on 15 targets. Egbuka faded fast after a big first half of the campaign, and Godwin didn't look anything like his old self after breaking his ankle in 2024. How this depth chart shakes out during training camp and the preseason will be something to watch for an offense that likes to throw the football.",
             "value_tier": "starter"
           }
         ],
@@ -2636,11 +2628,18 @@
         ]
       },
       "injury_impact": {
-        "home_elo_penalty": 3.0,
+        "home_elo_penalty": 5.8,
         "away_elo_penalty": 8.6,
-        "home_impact_score": 0.0273,
+        "home_impact_score": 0.0527,
         "away_impact_score": 0.0782,
         "home_key_players_out": [
+          {
+            "player": "Bucky Irving",
+            "position": "RB",
+            "status": "Questionable",
+            "elo_impact": 2.8,
+            "value_tier": "starter"
+          },
           {
             "player": "Ko Kieft",
             "position": "TE",
@@ -2679,6 +2678,7 @@
       },
       "prediction_drivers": [
         "ELO advantage: SF +143 rating points",
+        "Bucky Irving (TB) [Starter] QUESTIONABLE \u2014 \u22123 ELO",
         "Ko Kieft (TB) [Starter] QUESTIONABLE \u2014 \u22123 ELO",
         "George Kittle (SF) [Starter] QUESTIONABLE \u2014 \u22123 ELO",
         "Mykel Williams (SF) [Starter] QUESTIONABLE \u2014 \u22123 ELO",
@@ -2686,7 +2686,7 @@
         "Travel penalty: away team travels 2371 miles",
         "Home field: TB +65 ELO home advantage"
       ],
-      "explanation": "The model gives San Francisco 49ers a 69.4% win probability \u2014 a moderate favorite over Tampa Bay Buccaneers. The ELO gap is 143 points with home field adding approximately 65 ELO points. Travel distance 2371 miles factors into the away team rating."
+      "explanation": "The model gives San Francisco 49ers a 69.5% win probability \u2014 a moderate favorite over Tampa Bay Buccaneers. The ELO gap is 143 points with home field adding approximately 65 ELO points. Travel distance 2371 miles factors into the away team rating."
     },
     {
       "game_id": "401772923",
@@ -2720,19 +2720,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.4998,
-        "exp_margin": -0.01,
-        "prob_7plus": 0.3097,
-        "prob_14plus": 0.1632,
-        "prob_21plus": 0.069,
+        "win_prob": 0.4967,
+        "exp_margin": -0.0,
+        "prob_7plus": 0.3109,
+        "prob_14plus": 0.1585,
+        "prob_21plus": 0.0652,
         "margin_percentiles": [
-          -23.2,
-          -18.0,
+          -23.3,
+          -18.1,
           -9.6,
-          -0.0,
+          -0.1,
           9.6,
-          18.0,
-          23.5
+          17.7,
+          23.1
         ]
       },
       "adjustments": {
@@ -2891,9 +2891,9 @@
       "home_score": 24,
       "away_score": 14,
       "predictions": {
-        "ensemble_prob": 0.3155,
+        "ensemble_prob": 0.3129,
         "logistic_prob": 0.1786,
-        "elo_prob": 0.5442,
+        "elo_prob": 0.527,
         "xgb_prob": 0.185,
         "pyth_prob": 0.4596,
         "eff_prob": 0.5276,
@@ -2907,19 +2907,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.4861,
-        "exp_margin": -0.55,
-        "prob_7plus": 0.2983,
-        "prob_14plus": 0.1569,
-        "prob_21plus": 0.0674,
+        "win_prob": 0.4799,
+        "exp_margin": -0.8,
+        "prob_7plus": 0.2901,
+        "prob_14plus": 0.1499,
+        "prob_21plus": 0.0632,
         "margin_percentiles": [
-          -24.5,
-          -19.0,
-          -10.2,
-          -0.5,
-          9.1,
-          17.8,
-          23.0
+          -24.2,
+          -19.2,
+          -10.5,
+          -0.8,
+          8.8,
+          17.7,
+          22.6
         ]
       },
       "adjustments": {
@@ -2933,7 +2933,7 @@
       "elo": {
         "home": 1483.8,
         "away": 1620.4,
-        "diff": 30.8
+        "diff": 18.8
       },
       "bayesian": {
         "home_mu": 1620.3,
@@ -2951,6 +2951,13 @@
       },
       "injuries": {
         "home": [
+          {
+            "player": "Michael Penix Jr.",
+            "status": "Questionable",
+            "position": "QB",
+            "injury_description": "Penix is six months into his recovery from a partially torn left ACL suffered in mid-November of the 2025 season, his third such injury in the last eight years, so his participation in throwing drills is an encouraging sign. Atlanta has confirmed that the third-year QB is taking part in Phase 2 of the offseason program, which includes individual and group work but not yet 7-on-7 or 11-on-11 team drills. Beyond continuing his rehab and meeting the expected trajectory of Year 3 development, Penix also faces the challenge of learning new head coach Kevin Stefanski's offense while competing for the starting job with fellow southpaw Tua Tagovailoa, who signed a one-year, $1.3 million deal with Atlanta this offseason. Penix has offered optimism that he will be ready for Week 1, though the Falcons haven't provided an official timetable for his recovery.",
+            "value_tier": "starter"
+          },
           {
             "player": "Keelan Marion",
             "status": "Active",
@@ -2977,13 +2984,6 @@
             "status": "Active",
             "position": "WR",
             "injury_description": "Anthony caught 31 of 54 targets for 391 yards and a touchdown while also adding 27 yards and two scores on five carries over 12 contests at Wisconsin in 2025. More notably, the wide receiver compiled 446 yards and a touchdown on 16 kickoff returns, and his best path towards making the Falcons' 53-man roster is likely as a special-teams asset.",
-            "value_tier": "starter"
-          },
-          {
-            "player": "Jack Strand",
-            "status": "Active",
-            "position": "QB",
-            "injury_description": "Strand compiled 3,546 passing yards and 42 touchdowns through the air while completing 63 percent of his passes over 11 contests during his senior campaign with Minnesota State-Moorhead before going undrafted in April's draft. The quarterback will look to compete with Trevor Siemian for Atlanta's No. 3 QB role in 2026.",
             "value_tier": "starter"
           }
         ],
@@ -3026,11 +3026,19 @@
         ]
       },
       "injury_impact": {
-        "home_elo_penalty": 0.0,
+        "home_elo_penalty": 12.0,
         "away_elo_penalty": 17.4,
-        "home_impact_score": 0.0,
+        "home_impact_score": 0.1091,
         "away_impact_score": 0.1582,
-        "home_key_players_out": [],
+        "home_key_players_out": [
+          {
+            "player": "Michael Penix Jr.",
+            "position": "QB",
+            "status": "Questionable",
+            "elo_impact": 12.0,
+            "value_tier": "starter"
+          }
+        ],
         "away_key_players_out": [
           {
             "player": "Ben VanSumeren",
@@ -3068,6 +3076,7 @@
       },
       "prediction_drivers": [
         "ELO advantage: BUF +137 rating points",
+        "Michael Penix Jr. (ATL) [Starter] QUESTIONABLE \u2014 \u221212 ELO",
         "Ben VanSumeren (BUF) [Starter] QUESTIONABLE \u2014 \u22121 ELO",
         "Tyler Bass (BUF) [Starter] QUESTIONABLE \u2014 \u22121 ELO",
         "Dalton Kincaid (BUF) [Starter] QUESTIONABLE \u2014 \u22123 ELO",
@@ -3075,7 +3084,7 @@
         "Rest advantage: ATL has 8 extra days rest",
         "Home field: ATL +65 ELO home advantage"
       ],
-      "explanation": "The model gives Buffalo Bills a 68.5% win probability \u2014 a moderate favorite over Atlanta Falcons. The ELO gap is 137 points with home field adding approximately 65 ELO points. Rest advantage favors ATL."
+      "explanation": "The model gives Buffalo Bills a 68.7% win probability \u2014 a moderate favorite over Atlanta Falcons. The ELO gap is 137 points with home field adding approximately 65 ELO points. Rest advantage favors ATL."
     },
     {
       "game_id": "401772717",
@@ -3109,19 +3118,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.4222,
-        "exp_margin": -2.8,
-        "prob_7plus": 0.2448,
-        "prob_14plus": 0.1187,
-        "prob_21plus": 0.0495,
+        "win_prob": 0.4165,
+        "exp_margin": -2.96,
+        "prob_7plus": 0.2416,
+        "prob_14plus": 0.1197,
+        "prob_21plus": 0.0459,
         "margin_percentiles": [
-          -26.1,
-          -20.9,
-          -12.5,
-          -2.7,
-          6.8,
-          15.3,
-          20.9
+          -26.5,
+          -21.2,
+          -12.7,
+          -3.0,
+          6.6,
+          15.5,
+          20.3
         ]
       },
       "adjustments": {
@@ -3305,19 +3314,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.5513,
-        "exp_margin": 1.81,
-        "prob_7plus": 0.3596,
-        "prob_14plus": 0.1983,
-        "prob_21plus": 0.0882,
+        "win_prob": 0.5487,
+        "exp_margin": 1.9,
+        "prob_7plus": 0.3626,
+        "prob_14plus": 0.2011,
+        "prob_21plus": 0.0918,
         "margin_percentiles": [
-          -21.9,
-          -16.7,
-          -7.7,
-          1.7,
-          11.7,
+          -21.1,
+          -16.4,
+          -7.8,
+          1.8,
+          11.8,
           20.3,
-          25.0
+          25.4
         ]
       },
       "adjustments": {
@@ -3516,19 +3525,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.4824,
-        "exp_margin": -0.57,
-        "prob_7plus": 0.299,
-        "prob_14plus": 0.157,
-        "prob_21plus": 0.064,
+        "win_prob": 0.4839,
+        "exp_margin": -0.45,
+        "prob_7plus": 0.2967,
+        "prob_14plus": 0.1574,
+        "prob_21plus": 0.0647,
         "margin_percentiles": [
-          -24.0,
-          -18.9,
-          -10.1,
+          -23.6,
+          -18.6,
+          -9.9,
           -0.6,
           9.0,
-          17.7,
-          23.0
+          18.0,
+          22.7
         ]
       },
       "adjustments": {
@@ -3686,9 +3695,9 @@
       "home_score": 26,
       "away_score": 14,
       "predictions": {
-        "ensemble_prob": 0.7183,
+        "ensemble_prob": 0.7199,
         "logistic_prob": 0.6957,
-        "elo_prob": 0.6834,
+        "elo_prob": 0.6945,
         "xgb_prob": 0.7952,
         "pyth_prob": 0.6805,
         "eff_prob": 0.7028,
@@ -3702,19 +3711,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6641,
-        "exp_margin": 6.08,
-        "prob_7plus": 0.4756,
-        "prob_14plus": 0.2909,
-        "prob_21plus": 0.1434,
+        "win_prob": 0.6664,
+        "exp_margin": 6.1,
+        "prob_7plus": 0.472,
+        "prob_14plus": 0.2876,
+        "prob_21plus": 0.1477,
         "margin_percentiles": [
-          -17.1,
+          -17.3,
           -12.0,
           -3.5,
-          6.1,
+          6.0,
           15.7,
-          24.0,
-          29.1
+          24.1,
+          29.6
         ]
       },
       "adjustments": {
@@ -3728,7 +3737,7 @@
       "elo": {
         "home": 1549.2,
         "away": 1441.2,
-        "diff": 133.7
+        "diff": 142.7
       },
       "bayesian": {
         "home_mu": 1690.2,
@@ -3784,6 +3793,20 @@
         ],
         "away": [
           {
+            "player": "Nick Saldiveri",
+            "status": "Out",
+            "position": "OT",
+            "injury_description": "Saldiveri is apparently still working his way back onto the field from the knee injury he suffered back in December of 2024. As it stands, he'll now have to miss at least the first four weeks of the 2026 campaign.",
+            "value_tier": "starter"
+          },
+          {
+            "player": "Brock Rechsteiner",
+            "status": "Active",
+            "position": "WR",
+            "injury_description": "Rechsteiner earned a spot on the roster after impressing during his tryout at New Orleans' rookie minicamp. He spent his collegiate career at Jacksonville State, catching 53 passes for 629 yards and seven touchdowns across three seasons.",
+            "value_tier": "starter"
+          },
+          {
             "player": "Jordyn Tyson",
             "status": "Questionable",
             "position": "WR",
@@ -3803,28 +3826,14 @@
             "position": "DE",
             "injury_description": "As the seventh overall pick in 2023 Draft and a defensive end, Wilson's fifth-year option would have come in at $14.475 million. The pass rusher's career has been disappointing thus far in relation to the draft capital invested in him, so it makes sense that the Saints' trade acquisition is more of a one-year flyer on a once-promising and athletic player and not a commitment to pursue his future. If Wilson can revive his career in 2026 with a better season, the team may look to keep his services in New Orleans long term.",
             "value_tier": "starter"
-          },
-          {
-            "player": "Devaughn Vele",
-            "status": "Questionable",
-            "position": "WR",
-            "injury_description": "New Orleans used the No. 8 overall pick on Jordyn Tyson, who figures to start alongside Chris Olave from Day 1, and later on the Saints took Bryce Lance in the fourth round and Barion Brown in the sixth. Acquired from the Broncos during the preseason last summer, Vele appeared in 13 regular-season games for the Saints, making seven starts, and produced a 25-293-2 line on 39 targets. Following the trade of Rashid Shaheed to Seattle, Vele became a starter but was injured in Week 15 and missed the final three contests. Capable of playing the slot or outside and on special teams, Vele should have a role in 2026, but the target competition is much stiffer.",
-            "value_tier": "starter"
-          },
-          {
-            "player": "Mason Shipley",
-            "status": "Active",
-            "position": "PK",
-            "injury_description": "Shipley ended his final season with the Texas Longhorns 20-for-24 on field-goal attempts, with his longest make coming in at 53 yards. The kicker should provide Charlie Smyth with some competition in camp, as Smyth logged only six NFL starts with the Saints in 2025 after taking over for Blake Grupe.",
-            "value_tier": "starter"
           }
         ]
       },
       "injury_impact": {
         "home_elo_penalty": 5.6,
-        "away_elo_penalty": 9.2,
+        "away_elo_penalty": 18.2,
         "home_impact_score": 0.0509,
-        "away_impact_score": 0.0836,
+        "away_impact_score": 0.1655,
         "home_key_players_out": [
           {
             "player": "T.J. Edwards",
@@ -3842,6 +3851,13 @@
           }
         ],
         "away_key_players_out": [
+          {
+            "player": "Nick Saldiveri",
+            "position": "OT",
+            "status": "Out",
+            "elo_impact": 9.0,
+            "value_tier": "starter"
+          },
           {
             "player": "Jordyn Tyson",
             "position": "WR",
@@ -3873,13 +3889,13 @@
         "ELO advantage: CHI +108 rating points",
         "T.J. Edwards (CHI) [Starter] QUESTIONABLE \u2014 \u22122 ELO",
         "Jedrick Wills Jr. (CHI) [Starter] QUESTIONABLE \u2014 \u22124 ELO",
+        "Nick Saldiveri (NO) [Starter] OUT \u2014 \u22129 ELO",
         "Jordyn Tyson (NO) [Starter] QUESTIONABLE \u2014 \u22123 ELO",
         "Alvin Kamara (NO) [Starter] QUESTIONABLE \u2014 \u22123 ELO",
-        "Devaughn Vele (NO) [Starter] QUESTIONABLE \u2014 \u22123 ELO",
         "Efficiency gap: CHI net +0.176 vs NO net -0.247",
         "Home field: CHI +65 ELO home advantage"
       ],
-      "explanation": "The model gives Chicago Bears a 71.8% win probability \u2014 a strong favorite over New Orleans Saints. The ELO gap is 108 points with home field adding approximately 65 ELO points."
+      "explanation": "The model gives Chicago Bears a 72.0% win probability \u2014 a strong favorite over New Orleans Saints. The ELO gap is 108 points with home field adding approximately 65 ELO points."
     },
     {
       "game_id": "401772754",
@@ -3913,19 +3929,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6335,
-        "exp_margin": 5.01,
-        "prob_7plus": 0.4509,
-        "prob_14plus": 0.2652,
-        "prob_21plus": 0.1261,
+        "win_prob": 0.648,
+        "exp_margin": 5.44,
+        "prob_7plus": 0.4536,
+        "prob_14plus": 0.279,
+        "prob_21plus": 0.1404,
         "margin_percentiles": [
-          -18.2,
-          -13.2,
-          -4.6,
-          5.2,
-          14.6,
-          23.0,
-          28.3
+          -17.8,
+          -12.8,
+          -4.4,
+          5.3,
+          15.1,
+          23.9,
+          29.0
         ]
       },
       "adjustments": {
@@ -3995,6 +4011,13 @@
         ],
         "away": [
           {
+            "player": "De'Von Achane",
+            "status": "Active",
+            "position": "RB",
+            "injury_description": "Achane was headed into the final year of his rookie deal, and new GM Jon-Eric Sullivan and coach Jeff Hafley had been adamant that the talented running back is a building block of the future in Miami, even after the Dolphins shed salary this offseason. Achane's new deal will pay him $17 million per year in new money, making him the league's third-highest-paid running back behind Saquon Barkley and Christian McCaffrey. Achane started all 16 regular-season games in which he appeared last season, totaling a career-high 1,350 rushing yards and eight touchdown on 238 carries, averaging a league-high 5.8 yards per carry. He added 67 catches for 488 yards and four additional touchdowns on 85 targets in the passing game. Achane is still just 24 years old and figures to be a top-12 fantasy pick this season.",
+            "value_tier": "starter"
+          },
+          {
             "player": "Donaven McCulley",
             "status": "Active",
             "position": "WR",
@@ -4020,13 +4043,6 @@
             "status": "Active",
             "position": "OT",
             "injury_description": "Sullivan said that Proctor will train at both tackle and guard, but to begin the season, 2025 second-rounder Jonah Savaiinaea will go to right guard to make room for Proctor at left guard. He won't turn 21 until June, and despite his otherwise massive stature, his 33-inch arms are short by tackle standards, so it makes decent sense that Miami won't task him with protecting recent signing Malik Willis' blindside right off the bat.",
-            "value_tier": "starter"
-          },
-          {
-            "player": "Theo Wease Jr.",
-            "status": "Active",
-            "position": "WR",
-            "injury_description": "Wease played substantial snaps at wide receiver for the Dolphins' last three contests of the 2025 season. He caught six of his 10 targets for 130 yards and one touchdown over the three-game span. The team drafted Caleb Douglas and Chris Bell (ACL) in the third round of the 2026 draft, as well as Kevin Coleman in the fifth round. With all three new receivers set to compete throughout the preseason, Wease may have to show out to remain on the roster.",
             "value_tier": "starter"
           }
         ]
@@ -4115,17 +4131,17 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.3497,
-        "exp_margin": -5.39,
-        "prob_7plus": 0.1892,
-        "prob_14plus": 0.0839,
-        "prob_21plus": 0.0307,
+        "win_prob": 0.3432,
+        "exp_margin": -5.73,
+        "prob_7plus": 0.1826,
+        "prob_14plus": 0.0846,
+        "prob_21plus": 0.0303,
         "margin_percentiles": [
-          -28.3,
-          -23.3,
-          -14.9,
-          -5.5,
-          4.2,
+          -29.1,
+          -24.0,
+          -15.3,
+          -5.7,
+          3.9,
           12.5,
           17.8
         ]
@@ -4318,19 +4334,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6946,
-        "exp_margin": 7.15,
-        "prob_7plus": 0.5082,
-        "prob_14plus": 0.3147,
-        "prob_21plus": 0.1646,
+        "win_prob": 0.685,
+        "exp_margin": 6.81,
+        "prob_7plus": 0.4973,
+        "prob_14plus": 0.3087,
+        "prob_21plus": 0.1606,
         "margin_percentiles": [
-          -16.4,
-          -11.0,
-          -2.4,
-          7.2,
-          16.7,
+          -16.7,
+          -11.3,
+          -2.7,
+          6.9,
+          16.5,
           25.2,
-          30.4
+          29.8
         ]
       },
       "adjustments": {
@@ -4400,6 +4416,13 @@
         ],
         "away": [
           {
+            "player": "Benito Jones",
+            "status": "Active",
+            "position": "DT",
+            "injury_description": "Jones appeared in 14 games with Miami in 2025, but he was shut down ahead of Week 17 with a back injury. Now, he's evidently in good shape for football activities again and is getting a shot with a new team. Las Vegas recently lost defensive tackle Leki Fotu to the Giants in free agency, and it's reasonable to suspect Jones could fill a similar role to the one Fotu left behind with the Raiders.",
+            "value_tier": "starter"
+          },
+          {
             "player": "Justin Shorter",
             "status": "Injured Reserve",
             "position": "WR",
@@ -4425,13 +4448,6 @@
             "status": "Active",
             "position": "WR",
             "injury_description": "Williams played his first three collegiate campaigns with Clemson before transferring to Indiana. In his final year of eligibility, he recorded 36 catches for 438 yards and six touchdowns over 15 games. Williams didn't have the most prolific college career and struggled to stay healthy at times, but he has good size at 6-foot-3 and could have a slight advantage over the Raiders' other rookie wideouts entering training camp because he played at Indiana with QB Fernando Mendoza, who Las Vegas drafted first overall in the 2026 NFL Draft.",
-            "value_tier": "starter"
-          },
-          {
-            "player": "Corey Rucker",
-            "status": "Active",
-            "position": "WR",
-            "injury_description": "Rucker finished a strong collegiate career by recording over 1,000 receiving yards with Arkansas State in each of his final two campaigns. He scored 11 touchdowns and averaged 72 catches during that two-year span. His biggest claim to fame, however, is his NCAA freshman record of 310 receiving yards in a contest against Louisiana-Monroe in 2020. He has good speed (4.38 40-yard dash) and stands 6-foot tall, but spending almost all of his time during college in the Sun Belt may have hurt his draft status. Regardless, Las Vegas isn't brimming with WR talent, so Rucker could feasibly see NFL action as a rookie if he impresses the organization.",
             "value_tier": "starter"
           }
         ]
@@ -4504,19 +4520,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.5612,
-        "exp_margin": 2.14,
-        "prob_7plus": 0.3674,
-        "prob_14plus": 0.2049,
-        "prob_21plus": 0.0928,
+        "win_prob": 0.5592,
+        "exp_margin": 2.02,
+        "prob_7plus": 0.3669,
+        "prob_14plus": 0.197,
+        "prob_21plus": 0.087,
         "margin_percentiles": [
-          -21.6,
-          -16.0,
-          -7.5,
-          2.1,
-          11.9,
-          20.4,
-          25.2
+          -21.4,
+          -16.2,
+          -7.6,
+          2.3,
+          11.6,
+          19.9,
+          25.0
         ]
       },
       "adjustments": {
@@ -4698,9 +4714,9 @@
       "home_score": 6,
       "away_score": 13,
       "predictions": {
-        "ensemble_prob": 0.3156,
+        "ensemble_prob": 0.3167,
         "logistic_prob": 0.1786,
-        "elo_prob": 0.4058,
+        "elo_prob": 0.4128,
         "xgb_prob": 0.1756,
         "pyth_prob": 0.5035,
         "eff_prob": 0.6532,
@@ -4714,19 +4730,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.352,
-        "exp_margin": -5.44,
-        "prob_7plus": 0.1904,
-        "prob_14plus": 0.0846,
-        "prob_21plus": 0.0299,
+        "win_prob": 0.3477,
+        "exp_margin": -5.6,
+        "prob_7plus": 0.1916,
+        "prob_14plus": 0.0815,
+        "prob_21plus": 0.0294,
         "margin_percentiles": [
-          -28.6,
+          -28.4,
           -23.7,
-          -15.0,
-          -5.4,
+          -15.2,
+          -5.8,
           4.2,
-          12.6,
-          17.8
+          12.4,
+          17.6
         ]
       },
       "adjustments": {
@@ -4740,7 +4756,7 @@
       "elo": {
         "home": 1316.0,
         "away": 1438.1,
-        "diff": -66.2
+        "diff": -61.2
       },
       "bayesian": {
         "home_mu": 1399.2,
@@ -4759,10 +4775,10 @@
       "injuries": {
         "home": [
           {
-            "player": "Chris Smith II",
-            "status": "Injured Reserve",
-            "position": "S",
-            "injury_description": "Smith was not claimed off waivers and will now stay with the Jets on injured reserve for the 2026 season, barring an injury settlement. The free safety played 14 games last season, split between three separate teams, and is primarily a special teams contributor.",
+            "player": "Tim Patrick",
+            "status": "Active",
+            "position": "WR",
+            "injury_description": "In 16 regular-season games with the Jaguars in 2025, the 32-year-old caught 15 of his 24 targets for 187 yards and three touchdowns.  With the Jets, Patrick will add veteran presence to his new team's wide receiver room while bringing inside-outside flexibility to the table. As things stand, Patrick figures to compete for rotational WR snaps behind Garrett Wilson, Adonai Mitchell and Omar Cooper.",
             "value_tier": "starter"
           },
           {
@@ -4833,18 +4849,11 @@
         ]
       },
       "injury_impact": {
-        "home_elo_penalty": 11.2,
+        "home_elo_penalty": 6.2,
         "away_elo_penalty": 3.0,
-        "home_impact_score": 0.1018,
+        "home_impact_score": 0.0564,
         "away_impact_score": 0.0273,
         "home_key_players_out": [
-          {
-            "player": "Chris Smith II",
-            "position": "S",
-            "status": "Injured Reserve",
-            "elo_impact": 5.0,
-            "value_tier": "starter"
-          },
           {
             "player": "Gus Hartwig",
             "position": "C",
@@ -4876,14 +4885,13 @@
       },
       "prediction_drivers": [
         "ELO advantage: CAR +122 rating points",
-        "Chris Smith II (NYJ) [Starter] INJURED RESERVE \u2014 \u22125 ELO",
         "Gus Hartwig (NYJ) [Starter] OUT \u2014 \u22123 ELO",
         "Garrett Wilson (NYJ) [Starter] QUESTIONABLE \u2014 \u22123 ELO",
         "Ja'Tavion Sanders (CAR) [Starter] QUESTIONABLE \u2014 \u22123 ELO",
         "Efficiency gap: NYJ net -0.018 vs CAR net -0.242",
         "Home field: NYJ +65 ELO home advantage"
       ],
-      "explanation": "The model gives Carolina Panthers a 68.4% win probability \u2014 a moderate favorite over New York Jets. The ELO gap is 122 points with home field adding approximately 65 ELO points."
+      "explanation": "The model gives Carolina Panthers a 68.3% win probability \u2014 a moderate favorite over New York Jets. The ELO gap is 122 points with home field adding approximately 65 ELO points."
     },
     {
       "game_id": "401772757",
@@ -4917,19 +4925,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6961,
-        "exp_margin": 7.27,
-        "prob_7plus": 0.5102,
-        "prob_14plus": 0.3164,
-        "prob_21plus": 0.161,
+        "win_prob": 0.697,
+        "exp_margin": 7.13,
+        "prob_7plus": 0.5052,
+        "prob_14plus": 0.3137,
+        "prob_21plus": 0.1614,
         "margin_percentiles": [
-          -15.9,
-          -11.0,
-          -2.3,
-          7.4,
+          -15.8,
+          -10.9,
+          -2.4,
+          7.2,
           16.7,
-          25.3,
-          30.5
+          24.9,
+          29.8
         ]
       },
       "adjustments": {
@@ -4965,7 +4973,7 @@
             "player": "Michael Woods II",
             "status": "Active",
             "position": "WR",
-            "injury_description": "Woods spent time on Green Bay's practice squad last season but was never elevated to the active roster. The 26-year-old last appeared in a regular-season game during the 2024 campaign with the Browns and will look to earn a spot on Denver's final roster.",
+            "injury_description": "Woods spent time on Green Bay's practice squad last season but was never elevated to the active roster. The 26-year-old last appeared in a regular-season game during the 2024 campaign with the Browns and will look to earn a spot on Denver's Week 1 roster.",
             "value_tier": "starter"
           },
           {
@@ -4999,6 +5007,13 @@
         ],
         "away": [
           {
+            "player": "Malik Nabers",
+            "status": "Questionable",
+            "position": "WR",
+            "injury_description": "Nabers initially had surgery Oct. 28 to address ACL and meniscus tears in his right knee. He then dealt with stiffness in the knee this spring and had the clean-up procedure at some point in April. The Giants reportedly still hope Nabers will be ready for Week 1, but it's not looking especially good for his full participation at the start of training camp. He'll likely remain limited to meetings and rehab work during the offseason program, ceding first-team WR reps to the likes of Darius Slayton, Darnell Mooney, Calvin Austin and Malachi Fields.",
+            "value_tier": "starter"
+          },
+          {
             "player": "Dominic Zvada",
             "status": "Active",
             "position": "PK",
@@ -5024,13 +5039,6 @@
             "status": "Active",
             "position": "CB",
             "injury_description": "New York had high expectations for Banks when the team selected him in the first round of the 2023 NFL Draft, but the Maryland product has largely disappointed. Banks has managed to stay mostly healthy during his first three NFL campaigns, playing in 45 of a possible 51 regular-season games, but after starting every contest in which he participated from 2023-24, he logged just six starts over 16 contests last year. Banks appears set to compete for playing time with second-round pick Colton Hood and free-agent acquisition Greg Newsome during the upcoming season.",
-            "value_tier": "starter"
-          },
-          {
-            "player": "Darius Slayton",
-            "status": "Questionable",
-            "position": "WR",
-            "injury_description": "Slayton is expected to face a multi-month recovery timeline, but he would have plenty of time to ramp up ahead of the regular season in September if the veteran wide receiver is indeed cleared by the start of training camp. The Giants lost 2025 target leader Wan'Dale Robinson in free agency but are expected to get top wide receiver Malik Nabers (knee) back in 2026 and bolstered their wide receiver room by signing Darnell Mooney and Calvin Austin, in addition to drafting Malachi Fields in the third round, providing competition for Slayton's starting job.",
             "value_tier": "starter"
           }
         ]
@@ -5058,6 +5066,13 @@
         ],
         "away_key_players_out": [
           {
+            "player": "Malik Nabers",
+            "position": "WR",
+            "status": "Questionable",
+            "elo_impact": 3.2,
+            "value_tier": "starter"
+          },
+          {
             "player": "Darius Slayton",
             "position": "WR",
             "status": "Questionable",
@@ -5084,13 +5099,6 @@
             "status": "Questionable",
             "elo_impact": 2.8,
             "value_tier": "starter"
-          },
-          {
-            "player": "Malik Nabers",
-            "position": "WR",
-            "status": "Questionable",
-            "elo_impact": 3.2,
-            "value_tier": "starter"
           }
         ],
         "home_star_count": 0,
@@ -5102,9 +5110,9 @@
         "ELO advantage: DEN +225 rating points",
         "Bo Nix (DEN) [Starter] QUESTIONABLE \u2014 \u221212 ELO",
         "Matt Henningsen (DEN) [Starter] QUESTIONABLE \u2014 \u22123 ELO",
+        "Malik Nabers (NYG) [Starter] QUESTIONABLE \u2014 \u22123 ELO",
         "Darius Slayton (NYG) [Starter] QUESTIONABLE \u2014 \u22123 ELO",
         "Kayvon Thibodeaux (NYG) [Starter] QUESTIONABLE \u2014 \u22122 ELO",
-        "Sam Roberts (NYG) [Starter] QUESTIONABLE \u2014 \u22122 ELO",
         "Efficiency gap: DEN net -0.243 vs NYG net +0.075",
         "Travel penalty: away team travels 1628 miles",
         "Home field: DEN +65 ELO home advantage"
@@ -5143,19 +5151,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.5597,
-        "exp_margin": 2.06,
-        "prob_7plus": 0.3624,
-        "prob_14plus": 0.2022,
-        "prob_21plus": 0.0909,
+        "win_prob": 0.567,
+        "exp_margin": 2.3,
+        "prob_7plus": 0.3725,
+        "prob_14plus": 0.2026,
+        "prob_21plus": 0.0933,
         "margin_percentiles": [
-          -21.0,
-          -16.0,
-          -7.6,
-          2.1,
-          11.6,
-          20.3,
-          25.1
+          -21.2,
+          -15.8,
+          -7.3,
+          2.4,
+          11.8,
+          20.6,
+          25.8
         ]
       },
       "adjustments": {
@@ -5188,6 +5196,13 @@
       "injuries": {
         "home": [
           {
+            "player": "Jerry Wilson",
+            "status": "Active",
+            "position": "CB",
+            "injury_description": "",
+            "value_tier": "starter"
+          },
+          {
             "player": "Oronde Gadsden",
             "status": "Active",
             "position": "TE",
@@ -5213,13 +5228,6 @@
             "status": "Active",
             "position": "WR",
             "injury_description": "New offensive coordinator Mike McDaniel reportedly had significant interest in Thompson because of his blazing 4.26 40-yard dash, reminiscent of the wide receiver archetype he valued as a head coach in Miami. It's hard to tell if the Chargers will have designated plays for Thompson, or if they will continue to feature Harris, the 2025 second-round pick who made his bones at the collegiate level as a RPO specialist. Harris' rookie year was relatively mundane (30-324-1) despite playing all 17 regular-season games, but with Keenan Allen potentially on his way out, there overall could be more opportunities available in Los Angeles in what figures to be a more pass-happy scheme.",
-            "value_tier": "starter"
-          },
-          {
-            "player": "Evan Svoboda",
-            "status": "Active",
-            "position": "TE",
-            "injury_description": "Svoboda was originally a quarterback at Wyoming before switching over to tight end in 2025. He caught 11 passes for 92 yards and a touchdown during the 2025 campaign. Svoboda was one of two tight ends the team added as undrafted free agents alongside Jerand Bradley.",
             "value_tier": "starter"
           }
         ],
@@ -5375,19 +5383,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.5768,
-        "exp_margin": 2.88,
-        "prob_7plus": 0.3824,
-        "prob_14plus": 0.217,
-        "prob_21plus": 0.0981,
+        "win_prob": 0.5716,
+        "exp_margin": 2.48,
+        "prob_7plus": 0.3785,
+        "prob_14plus": 0.2072,
+        "prob_21plus": 0.0964,
         "margin_percentiles": [
-          -20.3,
-          -15.1,
-          -6.5,
-          2.9,
-          12.4,
-          20.9,
-          25.8
+          -21.0,
+          -16.0,
+          -7.2,
+          2.5,
+          12.1,
+          20.8,
+          25.7
         ]
       },
       "adjustments": {
@@ -5545,9 +5553,9 @@
       "home_score": 23,
       "away_score": 27,
       "predictions": {
-        "ensemble_prob": 0.3019,
+        "ensemble_prob": 0.3016,
         "logistic_prob": 0.1786,
-        "elo_prob": 0.394,
+        "elo_prob": 0.3924,
         "xgb_prob": 0.1695,
         "pyth_prob": 0.4619,
         "eff_prob": 0.6114,
@@ -5561,19 +5569,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.4398,
-        "exp_margin": -2.13,
-        "prob_7plus": 0.264,
-        "prob_14plus": 0.1315,
-        "prob_21plus": 0.0546,
+        "win_prob": 0.4345,
+        "exp_margin": -2.31,
+        "prob_7plus": 0.2551,
+        "prob_14plus": 0.1243,
+        "prob_21plus": 0.0497,
         "margin_percentiles": [
-          -26.3,
-          -20.4,
-          -11.8,
-          -2.2,
-          7.6,
-          16.3,
-          21.6
+          -25.3,
+          -20.2,
+          -11.9,
+          -2.4,
+          7.2,
+          15.9,
+          21.0
         ]
       },
       "adjustments": {
@@ -5587,7 +5595,7 @@
       "elo": {
         "home": 1354.2,
         "away": 1506.8,
-        "diff": -74.8
+        "diff": -76.0
       },
       "bayesian": {
         "home_mu": 1500.7,
@@ -5643,6 +5651,13 @@
         ],
         "away": [
           {
+            "player": "Brenden Rice",
+            "status": "Active",
+            "position": "WR",
+            "injury_description": "Rice was waived by the Raiders on Monday and now gets a fresh start in the Packers' wide receiver corps, which saw Romeo Doubs (signed by New England) and Dontayvion Wicks (dealt to Philadelphia) depart this offseason. A 2024 seventh-round pick, Rice was initially selected by the Chargers, with whom he combined for 10 offensive snaps across three regular-season games as a rookie. He was cut by Los Angeles in 2025 and then spent time on the practice squads of the Patriots, Seahawks and Raiders.",
+            "value_tier": "starter"
+          },
+          {
             "player": "Luke Lachey",
             "status": "Active",
             "position": "TE",
@@ -5669,21 +5684,14 @@
             "position": "QB",
             "injury_description": "Taylor last saw game action in Week 14 of the 2025 campaign for the Jets, with whom he made four starts in the second season of his two-year, $12 million contract prior to sustaining a knee injury. The 36-year-old quarterback has since recovered from that injury and slots in as the favorite to back up Jordan Love in a Packers quarterback room that also includes Kyle McCord and Kyron Drones.",
             "value_tier": "starter"
-          },
-          {
-            "player": "Jaden Nixon",
-            "status": "Active",
-            "position": "RB",
-            "injury_description": "Nixon played for several colleges before closing out his career at UCF in 2025. The running back participated in 12 games, rushing 71 times for 554 yards and seven touchdowns. He also added 17 receptions for 88 receiving yards in that span. With Josh Jacobs locked in as the No. 1 option at running back, Nixon will battle with several other candidates in training camp to hold down a depth role on the roster.",
-            "value_tier": "starter"
           }
         ]
       },
       "injury_impact": {
         "home_elo_penalty": 2.8,
-        "away_elo_penalty": 10.6,
+        "away_elo_penalty": 9.4,
         "home_impact_score": 0.0255,
-        "away_impact_score": 0.0964,
+        "away_impact_score": 0.0855,
         "home_key_players_out": [
           {
             "player": "Trey Benson",
@@ -5713,13 +5721,6 @@
             "position": "DE",
             "status": "Questionable",
             "elo_impact": 2.8,
-            "value_tier": "starter"
-          },
-          {
-            "player": "Sean Rhyan",
-            "position": "G",
-            "status": "Questionable",
-            "elo_impact": 1.2,
             "value_tier": "starter"
           }
         ],
@@ -5754,9 +5755,9 @@
       "home_score": 20,
       "away_score": 10,
       "predictions": {
-        "ensemble_prob": 0.7751,
+        "ensemble_prob": 0.777,
         "logistic_prob": 0.8095,
-        "elo_prob": 0.74,
+        "elo_prob": 0.753,
         "xgb_prob": 0.8723,
         "pyth_prob": 0.683,
         "eff_prob": 0.6293,
@@ -5770,18 +5771,18 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6077,
-        "exp_margin": 4.18,
-        "prob_7plus": 0.4161,
-        "prob_14plus": 0.2488,
-        "prob_21plus": 0.1177,
+        "win_prob": 0.6246,
+        "exp_margin": 4.29,
+        "prob_7plus": 0.426,
+        "prob_14plus": 0.2465,
+        "prob_21plus": 0.1212,
         "margin_percentiles": [
-          -18.9,
-          -13.8,
-          -5.4,
-          3.9,
+          -19.3,
+          -14.1,
+          -5.2,
+          4.4,
           13.9,
-          22.3,
+          22.6,
           27.7
         ]
       },
@@ -5796,7 +5797,7 @@
       "elo": {
         "home": 1602.0,
         "away": 1483.8,
-        "diff": 181.7
+        "diff": 193.7
       },
       "bayesian": {
         "home_mu": 1663.8,
@@ -5852,6 +5853,13 @@
         ],
         "away": [
           {
+            "player": "Michael Penix Jr.",
+            "status": "Questionable",
+            "position": "QB",
+            "injury_description": "Penix is six months into his recovery from a partially torn left ACL suffered in mid-November of the 2025 season, his third such injury in the last eight years, so his participation in throwing drills is an encouraging sign. Atlanta has confirmed that the third-year QB is taking part in Phase 2 of the offseason program, which includes individual and group work but not yet 7-on-7 or 11-on-11 team drills. Beyond continuing his rehab and meeting the expected trajectory of Year 3 development, Penix also faces the challenge of learning new head coach Kevin Stefanski's offense while competing for the starting job with fellow southpaw Tua Tagovailoa, who signed a one-year, $1.3 million deal with Atlanta this offseason. Penix has offered optimism that he will be ready for Week 1, though the Falcons haven't provided an official timetable for his recovery.",
+            "value_tier": "starter"
+          },
+          {
             "player": "Keelan Marion",
             "status": "Active",
             "position": "WR",
@@ -5878,21 +5886,14 @@
             "position": "WR",
             "injury_description": "Anthony caught 31 of 54 targets for 391 yards and a touchdown while also adding 27 yards and two scores on five carries over 12 contests at Wisconsin in 2025. More notably, the wide receiver compiled 446 yards and a touchdown on 16 kickoff returns, and his best path towards making the Falcons' 53-man roster is likely as a special-teams asset.",
             "value_tier": "starter"
-          },
-          {
-            "player": "Jack Strand",
-            "status": "Active",
-            "position": "QB",
-            "injury_description": "Strand compiled 3,546 passing yards and 42 touchdowns through the air while completing 63 percent of his passes over 11 contests during his senior campaign with Minnesota State-Moorhead before going undrafted in April's draft. The quarterback will look to compete with Trevor Siemian for Atlanta's No. 3 QB role in 2026.",
-            "value_tier": "starter"
           }
         ]
       },
       "injury_impact": {
         "home_elo_penalty": 8.6,
-        "away_elo_penalty": 0.0,
+        "away_elo_penalty": 12.0,
         "home_impact_score": 0.0782,
-        "away_impact_score": 0.0,
+        "away_impact_score": 0.1091,
         "home_key_players_out": [
           {
             "player": "George Kittle",
@@ -5916,7 +5917,15 @@
             "value_tier": "starter"
           }
         ],
-        "away_key_players_out": [],
+        "away_key_players_out": [
+          {
+            "player": "Michael Penix Jr.",
+            "position": "QB",
+            "status": "Questionable",
+            "elo_impact": 12.0,
+            "value_tier": "starter"
+          }
+        ],
         "home_star_count": 0,
         "away_star_count": 0,
         "home_star_stack_multiplier": 1.0,
@@ -5927,11 +5936,12 @@
         "George Kittle (SF) [Starter] QUESTIONABLE \u2014 \u22123 ELO",
         "Mykel Williams (SF) [Starter] QUESTIONABLE \u2014 \u22123 ELO",
         "Nick Bosa (SF) [Starter] QUESTIONABLE \u2014 \u22123 ELO",
+        "Michael Penix Jr. (ATL) [Starter] QUESTIONABLE \u2014 \u221212 ELO",
         "Efficiency gap: SF net +0.053 vs ATL net -0.081",
         "Travel penalty: away team travels 2117 miles",
         "Home field: SF +65 ELO home advantage"
       ],
-      "explanation": "The model gives San Francisco 49ers a 77.5% win probability \u2014 a strong favorite over Atlanta Falcons. The ELO gap is 118 points with home field adding approximately 65 ELO points. Travel distance 2117 miles factors into the away team rating."
+      "explanation": "The model gives San Francisco 49ers a 77.7% win probability \u2014 a strong favorite over Atlanta Falcons. The ELO gap is 118 points with home field adding approximately 65 ELO points. Travel distance 2117 miles factors into the away team rating."
     },
     {
       "game_id": "401772816",
@@ -5949,9 +5959,9 @@
       "home_score": 24,
       "away_score": 9,
       "predictions": {
-        "ensemble_prob": 0.6878,
+        "ensemble_prob": 0.6883,
         "logistic_prob": 0.6957,
-        "elo_prob": 0.6918,
+        "elo_prob": 0.6952,
         "xgb_prob": 0.6983,
         "pyth_prob": 0.6652,
         "eff_prob": 0.6628,
@@ -5965,19 +5975,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6433,
-        "exp_margin": 5.31,
-        "prob_7plus": 0.4528,
-        "prob_14plus": 0.2695,
-        "prob_21plus": 0.1327,
+        "win_prob": 0.6501,
+        "exp_margin": 5.42,
+        "prob_7plus": 0.4552,
+        "prob_14plus": 0.2694,
+        "prob_21plus": 0.1328,
         "margin_percentiles": [
-          -17.7,
-          -13.0,
-          -4.3,
-          5.3,
+          -17.8,
+          -12.4,
+          -4.0,
+          5.4,
           14.8,
-          23.5,
-          28.9
+          23.3,
+          28.4
         ]
       },
       "adjustments": {
@@ -5991,7 +6001,7 @@
       "elo": {
         "home": 1527.0,
         "away": 1458.9,
-        "diff": 140.5
+        "diff": 143.3
       },
       "bayesian": {
         "home_mu": 1653.6,
@@ -6047,6 +6057,13 @@
         ],
         "away": [
           {
+            "player": "Bucky Irving",
+            "status": "Questionable",
+            "position": "RB",
+            "injury_description": "Irving missed seven games from Week 2 to Week 12 due to a combination of shoulder and foot/ankle injuries in 2025. Though he returned for Tampa Bay's final six regular-season games, the 2024 fourth-rounder shared snaps with Sean Tucker (re-signed) and Rachaad White (signed with Commanders) and never quite looked fully healthy. The shoulder injury required an offseason procedure to address and Irving isn't yet cleared to practice, though Greg Auman of Fox Sports reports that his rehab is proceeding on schedule. Per Auman, Irving is expected to be limited during OTAs, which will take place between late May and early June, before being fully cleared for the start of training camp in July. Presumably, he will also be limited at mandatory minicamp from June 16-18. Tampa Bay added Kenneth Gainwell to the backfield via a two-year, $14 million contract in free agency, positioning Irving to face increased competition for touches, especially for change-of-pace work and third-down scenarios.",
+            "value_tier": "starter"
+          },
+          {
             "player": "Ted Hurst",
             "status": "Active",
             "position": "WR",
@@ -6073,21 +6090,14 @@
             "position": "DT",
             "injury_description": "Kancey was sidelined for most of the 2025 season due to a pectoral injury he suffered in Week 2, but the defensive tackle's output has been more than satisfactory for the Buccaneers to justify spending the $14.475 million required to retain him through 2027. The 2023 first-round pick has accumulated 54 tackles (41 solo), including 11.5 sacks, through 29 career regular-season games thus far. With the team selecting linebacker Rueben Bain in the first round of the 2026 NFL Draft, the Bucs will be acquiring an influx of talent on the defensive line that should only increase Kancey's potential for production this season.",
             "value_tier": "starter"
-          },
-          {
-            "player": "Jalen McMillan",
-            "status": "Active",
-            "position": "WR",
-            "injury_description": "The Bucs continued to shake up their wide receiver room by selecting Hurst with the 84th overall pick last Friday. Over the offseason, the team has subtracted Mike Evans, who signed with the 49ers in free agency, and added Hurst to a group that still includes Chris Godwin, Emeka Egbuka, McMillan and Tez Johnson. McMillan missed most of last season with a neck injury before making his debut in Week 15. In four regular-season games, McMillan produced a respectable 12-178-0 line on 15 targets. Egbuka faded fast after a big first half of the campaign, and Godwin didn't look anything like his old self after breaking his ankle in 2024. How this depth chart shakes out during training camp and the preseason will be something to watch for an offense that likes to throw the football.",
-            "value_tier": "starter"
           }
         ]
       },
       "injury_impact": {
         "home_elo_penalty": 3.6,
-        "away_elo_penalty": 3.0,
+        "away_elo_penalty": 5.8,
         "home_impact_score": 0.0327,
-        "away_impact_score": 0.0273,
+        "away_impact_score": 0.0527,
         "home_key_players_out": [
           {
             "player": "Penei Sewell",
@@ -6098,6 +6108,13 @@
           }
         ],
         "away_key_players_out": [
+          {
+            "player": "Bucky Irving",
+            "position": "RB",
+            "status": "Questionable",
+            "elo_impact": 2.8,
+            "value_tier": "starter"
+          },
           {
             "player": "Ko Kieft",
             "position": "TE",
@@ -6114,6 +6131,7 @@
       "prediction_drivers": [
         "ELO advantage: DET +68 rating points",
         "Penei Sewell (DET) [Starter] QUESTIONABLE \u2014 \u22124 ELO",
+        "Bucky Irving (TB) [Starter] QUESTIONABLE \u2014 \u22123 ELO",
         "Ko Kieft (TB) [Starter] QUESTIONABLE \u2014 \u22123 ELO",
         "Efficiency gap: DET net +0.273 vs TB net +0.011",
         "Home field: DET +65 ELO home advantage"
@@ -6152,19 +6170,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6507,
-        "exp_margin": 5.31,
-        "prob_7plus": 0.452,
-        "prob_14plus": 0.2686,
-        "prob_21plus": 0.1384,
+        "win_prob": 0.6466,
+        "exp_margin": 5.03,
+        "prob_7plus": 0.4443,
+        "prob_14plus": 0.2614,
+        "prob_21plus": 0.1277,
         "margin_percentiles": [
-          -18.3,
-          -13.0,
-          -4.1,
-          5.3,
-          14.7,
-          23.7,
-          28.9
+          -17.9,
+          -13.1,
+          -4.5,
+          5.1,
+          14.4,
+          22.8,
+          27.9
         ]
       },
       "adjustments": {
@@ -6365,19 +6383,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.558,
-        "exp_margin": 2.02,
-        "prob_7plus": 0.3584,
-        "prob_14plus": 0.1982,
-        "prob_21plus": 0.0888,
+        "win_prob": 0.5615,
+        "exp_margin": 2.17,
+        "prob_7plus": 0.3688,
+        "prob_14plus": 0.2038,
+        "prob_21plus": 0.0905,
         "margin_percentiles": [
-          -21.5,
+          -21.2,
           -16.2,
           -7.4,
-          2.1,
-          11.4,
+          2.2,
+          11.8,
           20.1,
-          25.6
+          25.3
         ]
       },
       "adjustments": {
@@ -6410,6 +6428,13 @@
       "injuries": {
         "home": [
           {
+            "player": "Jerry Wilson",
+            "status": "Active",
+            "position": "CB",
+            "injury_description": "",
+            "value_tier": "starter"
+          },
+          {
             "player": "Oronde Gadsden",
             "status": "Active",
             "position": "TE",
@@ -6435,13 +6460,6 @@
             "status": "Active",
             "position": "WR",
             "injury_description": "New offensive coordinator Mike McDaniel reportedly had significant interest in Thompson because of his blazing 4.26 40-yard dash, reminiscent of the wide receiver archetype he valued as a head coach in Miami. It's hard to tell if the Chargers will have designated plays for Thompson, or if they will continue to feature Harris, the 2025 second-round pick who made his bones at the collegiate level as a RPO specialist. Harris' rookie year was relatively mundane (30-324-1) despite playing all 17 regular-season games, but with Keenan Allen potentially on his way out, there overall could be more opportunities available in Los Angeles in what figures to be a more pass-happy scheme.",
-            "value_tier": "starter"
-          },
-          {
-            "player": "Evan Svoboda",
-            "status": "Active",
-            "position": "TE",
-            "injury_description": "Svoboda was originally a quarterback at Wyoming before switching over to tight end in 2025. He caught 11 passes for 92 yards and a touchdown during the 2025 campaign. Svoboda was one of two tight ends the team added as undrafted free agents alongside Jerand Bradley.",
             "value_tier": "starter"
           }
         ],
@@ -6543,9 +6561,9 @@
       "home_score": 10,
       "away_score": 34,
       "predictions": {
-        "ensemble_prob": 0.577,
+        "ensemble_prob": 0.5747,
         "logistic_prob": 0.5062,
-        "elo_prob": 0.676,
+        "elo_prob": 0.6607,
         "xgb_prob": 0.5985,
         "pyth_prob": 0.6154,
         "eff_prob": 0.5819,
@@ -6559,19 +6577,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6947,
-        "exp_margin": 7.04,
-        "prob_7plus": 0.5036,
-        "prob_14plus": 0.3039,
-        "prob_21plus": 0.1558,
+        "win_prob": 0.6948,
+        "exp_margin": 7.2,
+        "prob_7plus": 0.5004,
+        "prob_14plus": 0.315,
+        "prob_21plus": 0.1657,
         "margin_percentiles": [
-          -16.1,
-          -11.0,
-          -2.2,
-          7.1,
-          16.2,
-          25.0,
-          30.1
+          -16.0,
+          -10.8,
+          -2.4,
+          7.0,
+          16.8,
+          25.5,
+          30.5
         ]
       },
       "adjustments": {
@@ -6585,7 +6603,7 @@
       "elo": {
         "home": 1483.8,
         "away": 1438.2,
-        "diff": 127.7
+        "diff": 115.7
       },
       "bayesian": {
         "home_mu": 1620.3,
@@ -6603,6 +6621,13 @@
       },
       "injuries": {
         "home": [
+          {
+            "player": "Michael Penix Jr.",
+            "status": "Questionable",
+            "position": "QB",
+            "injury_description": "Penix is six months into his recovery from a partially torn left ACL suffered in mid-November of the 2025 season, his third such injury in the last eight years, so his participation in throwing drills is an encouraging sign. Atlanta has confirmed that the third-year QB is taking part in Phase 2 of the offseason program, which includes individual and group work but not yet 7-on-7 or 11-on-11 team drills. Beyond continuing his rehab and meeting the expected trajectory of Year 3 development, Penix also faces the challenge of learning new head coach Kevin Stefanski's offense while competing for the starting job with fellow southpaw Tua Tagovailoa, who signed a one-year, $1.3 million deal with Atlanta this offseason. Penix has offered optimism that he will be ready for Week 1, though the Falcons haven't provided an official timetable for his recovery.",
+            "value_tier": "starter"
+          },
           {
             "player": "Keelan Marion",
             "status": "Active",
@@ -6630,16 +6655,16 @@
             "position": "WR",
             "injury_description": "Anthony caught 31 of 54 targets for 391 yards and a touchdown while also adding 27 yards and two scores on five carries over 12 contests at Wisconsin in 2025. More notably, the wide receiver compiled 446 yards and a touchdown on 16 kickoff returns, and his best path towards making the Falcons' 53-man roster is likely as a special-teams asset.",
             "value_tier": "starter"
-          },
-          {
-            "player": "Jack Strand",
-            "status": "Active",
-            "position": "QB",
-            "injury_description": "Strand compiled 3,546 passing yards and 42 touchdowns through the air while completing 63 percent of his passes over 11 contests during his senior campaign with Minnesota State-Moorhead before going undrafted in April's draft. The quarterback will look to compete with Trevor Siemian for Atlanta's No. 3 QB role in 2026.",
-            "value_tier": "starter"
           }
         ],
         "away": [
+          {
+            "player": "De'Von Achane",
+            "status": "Active",
+            "position": "RB",
+            "injury_description": "Achane was headed into the final year of his rookie deal, and new GM Jon-Eric Sullivan and coach Jeff Hafley had been adamant that the talented running back is a building block of the future in Miami, even after the Dolphins shed salary this offseason. Achane's new deal will pay him $17 million per year in new money, making him the league's third-highest-paid running back behind Saquon Barkley and Christian McCaffrey. Achane started all 16 regular-season games in which he appeared last season, totaling a career-high 1,350 rushing yards and eight touchdown on 238 carries, averaging a league-high 5.8 yards per carry. He added 67 catches for 488 yards and four additional touchdowns on 85 targets in the passing game. Achane is still just 24 years old and figures to be a top-12 fantasy pick this season.",
+            "value_tier": "starter"
+          },
           {
             "player": "Donaven McCulley",
             "status": "Active",
@@ -6667,22 +6692,23 @@
             "position": "OT",
             "injury_description": "Sullivan said that Proctor will train at both tackle and guard, but to begin the season, 2025 second-rounder Jonah Savaiinaea will go to right guard to make room for Proctor at left guard. He won't turn 21 until June, and despite his otherwise massive stature, his 33-inch arms are short by tackle standards, so it makes decent sense that Miami won't task him with protecting recent signing Malik Willis' blindside right off the bat.",
             "value_tier": "starter"
-          },
-          {
-            "player": "Theo Wease Jr.",
-            "status": "Active",
-            "position": "WR",
-            "injury_description": "Wease played substantial snaps at wide receiver for the Dolphins' last three contests of the 2025 season. He caught six of his 10 targets for 130 yards and one touchdown over the three-game span. The team drafted Caleb Douglas and Chris Bell (ACL) in the third round of the 2026 draft, as well as Kevin Coleman in the fifth round. With all three new receivers set to compete throughout the preseason, Wease may have to show out to remain on the roster.",
-            "value_tier": "starter"
           }
         ]
       },
       "injury_impact": {
-        "home_elo_penalty": 0.0,
+        "home_elo_penalty": 12.0,
         "away_elo_penalty": 3.2,
-        "home_impact_score": 0.0,
+        "home_impact_score": 0.1091,
         "away_impact_score": 0.0291,
-        "home_key_players_out": [],
+        "home_key_players_out": [
+          {
+            "player": "Michael Penix Jr.",
+            "position": "QB",
+            "status": "Questionable",
+            "elo_impact": 12.0,
+            "value_tier": "starter"
+          }
+        ],
         "away_key_players_out": [
           {
             "player": "Chris Bell",
@@ -6698,10 +6724,11 @@
         "away_star_stack_multiplier": 1.0
       },
       "prediction_drivers": [
+        "Michael Penix Jr. (ATL) [Starter] QUESTIONABLE \u2014 \u221212 ELO",
         "Chris Bell (MIA) [Starter] QUESTIONABLE \u2014 \u22123 ELO",
         "Home field: ATL +65 ELO home advantage"
       ],
-      "explanation": "The model gives Atlanta Falcons a 57.7% win probability \u2014 a slight favorite over Miami Dolphins. The ELO gap is 46 points with home field adding approximately 65 ELO points."
+      "explanation": "The model gives Atlanta Falcons a 57.5% win probability \u2014 a slight favorite over Miami Dolphins. The ELO gap is 46 points with home field adding approximately 65 ELO points."
     },
     {
       "game_id": "401772758",
@@ -6719,9 +6746,9 @@
       "home_score": 38,
       "away_score": 39,
       "predictions": {
-        "ensemble_prob": 0.7646,
+        "ensemble_prob": 0.7639,
         "logistic_prob": 0.8095,
-        "elo_prob": 0.7744,
+        "elo_prob": 0.7693,
         "xgb_prob": 0.7878,
         "pyth_prob": 0.6836,
         "eff_prob": 0.6655,
@@ -6735,19 +6762,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.7675,
-        "exp_margin": 10.2,
-        "prob_7plus": 0.5883,
-        "prob_14plus": 0.3892,
-        "prob_21plus": 0.2175,
+        "win_prob": 0.7605,
+        "exp_margin": 9.92,
+        "prob_7plus": 0.5833,
+        "prob_14plus": 0.3838,
+        "prob_21plus": 0.2171,
         "margin_percentiles": [
-          -13.4,
-          -7.8,
-          0.8,
-          10.2,
+          -13.6,
+          -8.2,
+          0.4,
+          10.0,
           19.5,
-          28.4,
-          33.9
+          27.9,
+          33.1
         ]
       },
       "adjustments": {
@@ -6761,7 +6788,7 @@
       "elo": {
         "home": 1434.6,
         "away": 1316.0,
-        "diff": 214.2
+        "diff": 209.2
       },
       "bayesian": {
         "home_mu": 1588.6,
@@ -6817,10 +6844,10 @@
         ],
         "away": [
           {
-            "player": "Chris Smith II",
-            "status": "Injured Reserve",
-            "position": "S",
-            "injury_description": "Smith was not claimed off waivers and will now stay with the Jets on injured reserve for the 2026 season, barring an injury settlement. The free safety played 14 games last season, split between three separate teams, and is primarily a special teams contributor.",
+            "player": "Tim Patrick",
+            "status": "Active",
+            "position": "WR",
+            "injury_description": "In 16 regular-season games with the Jaguars in 2025, the 32-year-old caught 15 of his 24 targets for 187 yards and three touchdowns.  With the Jets, Patrick will add veteran presence to his new team's wide receiver room while bringing inside-outside flexibility to the table. As things stand, Patrick figures to compete for rotational WR snaps behind Garrett Wilson, Adonai Mitchell and Omar Cooper.",
             "value_tier": "starter"
           },
           {
@@ -6855,9 +6882,9 @@
       },
       "injury_impact": {
         "home_elo_penalty": 3.6,
-        "away_elo_penalty": 11.2,
+        "away_elo_penalty": 6.2,
         "home_impact_score": 0.0327,
-        "away_impact_score": 0.1018,
+        "away_impact_score": 0.0564,
         "home_key_players_out": [
           {
             "player": "Connor Lew",
@@ -6875,13 +6902,6 @@
           }
         ],
         "away_key_players_out": [
-          {
-            "player": "Chris Smith II",
-            "position": "S",
-            "status": "Injured Reserve",
-            "elo_impact": 5.0,
-            "value_tier": "starter"
-          },
           {
             "player": "Gus Hartwig",
             "position": "C",
@@ -6906,13 +6926,12 @@
         "ELO advantage: CIN +119 rating points",
         "Connor Lew (CIN) [Starter] QUESTIONABLE \u2014 \u22121 ELO",
         "Kris Jenkins Jr. (CIN) [Starter] QUESTIONABLE \u2014 \u22122 ELO",
-        "Chris Smith II (NYJ) [Starter] INJURED RESERVE \u2014 \u22125 ELO",
         "Gus Hartwig (NYJ) [Starter] OUT \u2014 \u22123 ELO",
         "Garrett Wilson (NYJ) [Starter] QUESTIONABLE \u2014 \u22123 ELO",
         "Efficiency gap: CIN net +0.255 vs NYJ net -0.018",
         "Home field: CIN +65 ELO home advantage"
       ],
-      "explanation": "The model gives Cincinnati Bengals a 76.5% win probability \u2014 a strong favorite over New York Jets. The ELO gap is 119 points with home field adding approximately 65 ELO points."
+      "explanation": "The model gives Cincinnati Bengals a 76.4% win probability \u2014 a strong favorite over New York Jets. The ELO gap is 119 points with home field adding approximately 65 ELO points."
     },
     {
       "game_id": "401772868",
@@ -6946,19 +6965,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.7246,
-        "exp_margin": 8.46,
-        "prob_7plus": 0.5407,
-        "prob_14plus": 0.3477,
-        "prob_21plus": 0.19,
+        "win_prob": 0.7277,
+        "exp_margin": 8.37,
+        "prob_7plus": 0.5444,
+        "prob_14plus": 0.343,
+        "prob_21plus": 0.1821,
         "margin_percentiles": [
-          -15.2,
+          -15.0,
           -9.8,
-          -1.1,
-          8.3,
-          18.0,
-          26.7,
-          31.9
+          -1.0,
+          8.5,
+          17.8,
+          26.2,
+          31.3
         ]
       },
       "adjustments": {
@@ -7157,19 +7176,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6417,
-        "exp_margin": 4.96,
-        "prob_7plus": 0.4394,
-        "prob_14plus": 0.258,
-        "prob_21plus": 0.129,
+        "win_prob": 0.6433,
+        "exp_margin": 5.25,
+        "prob_7plus": 0.4471,
+        "prob_14plus": 0.2692,
+        "prob_21plus": 0.1357,
         "margin_percentiles": [
-          -18.6,
-          -13.3,
-          -4.5,
-          4.9,
-          14.3,
-          23.0,
-          28.4
+          -17.6,
+          -12.5,
+          -4.3,
+          5.1,
+          14.8,
+          23.5,
+          28.6
         ]
       },
       "adjustments": {
@@ -7239,6 +7258,13 @@
         ],
         "away": [
           {
+            "player": "Malik Nabers",
+            "status": "Questionable",
+            "position": "WR",
+            "injury_description": "Nabers initially had surgery Oct. 28 to address ACL and meniscus tears in his right knee. He then dealt with stiffness in the knee this spring and had the clean-up procedure at some point in April. The Giants reportedly still hope Nabers will be ready for Week 1, but it's not looking especially good for his full participation at the start of training camp. He'll likely remain limited to meetings and rehab work during the offseason program, ceding first-team WR reps to the likes of Darius Slayton, Darnell Mooney, Calvin Austin and Malachi Fields.",
+            "value_tier": "starter"
+          },
+          {
             "player": "Dominic Zvada",
             "status": "Active",
             "position": "PK",
@@ -7264,13 +7290,6 @@
             "status": "Active",
             "position": "CB",
             "injury_description": "New York had high expectations for Banks when the team selected him in the first round of the 2023 NFL Draft, but the Maryland product has largely disappointed. Banks has managed to stay mostly healthy during his first three NFL campaigns, playing in 45 of a possible 51 regular-season games, but after starting every contest in which he participated from 2023-24, he logged just six starts over 16 contests last year. Banks appears set to compete for playing time with second-round pick Colton Hood and free-agent acquisition Greg Newsome during the upcoming season.",
-            "value_tier": "starter"
-          },
-          {
-            "player": "Darius Slayton",
-            "status": "Questionable",
-            "position": "WR",
-            "injury_description": "Slayton is expected to face a multi-month recovery timeline, but he would have plenty of time to ramp up ahead of the regular season in September if the veteran wide receiver is indeed cleared by the start of training camp. The Giants lost 2025 target leader Wan'Dale Robinson in free agency but are expected to get top wide receiver Malik Nabers (knee) back in 2026 and bolstered their wide receiver room by signing Darnell Mooney and Calvin Austin, in addition to drafting Malachi Fields in the third round, providing competition for Slayton's starting job.",
             "value_tier": "starter"
           }
         ]
@@ -7305,6 +7324,13 @@
         ],
         "away_key_players_out": [
           {
+            "player": "Malik Nabers",
+            "position": "WR",
+            "status": "Questionable",
+            "elo_impact": 3.2,
+            "value_tier": "starter"
+          },
+          {
             "player": "Darius Slayton",
             "position": "WR",
             "status": "Questionable",
@@ -7331,13 +7357,6 @@
             "status": "Questionable",
             "elo_impact": 2.8,
             "value_tier": "starter"
-          },
-          {
-            "player": "Malik Nabers",
-            "position": "WR",
-            "status": "Questionable",
-            "elo_impact": 3.2,
-            "value_tier": "starter"
           }
         ],
         "home_star_count": 0,
@@ -7350,9 +7369,9 @@
         "Tucker Large (PHI) [Starter] OUT \u2014 \u22125 ELO",
         "Jonathan Greenard (PHI) [Starter] QUESTIONABLE \u2014 \u22122 ELO",
         "Chandler Martin (PHI) [Starter] QUESTIONABLE \u2014 \u22122 ELO",
+        "Malik Nabers (NYG) [Starter] QUESTIONABLE \u2014 \u22123 ELO",
         "Darius Slayton (NYG) [Starter] QUESTIONABLE \u2014 \u22123 ELO",
         "Kayvon Thibodeaux (NYG) [Starter] QUESTIONABLE \u2014 \u22122 ELO",
-        "Sam Roberts (NYG) [Starter] QUESTIONABLE \u2014 \u22122 ELO",
         "Efficiency gap: PHI net -0.244 vs NYG net +0.075",
         "Home field: PHI +65 ELO home advantage"
       ],
@@ -7390,19 +7409,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.4615,
-        "exp_margin": -1.59,
-        "prob_7plus": 0.2758,
-        "prob_14plus": 0.1365,
-        "prob_21plus": 0.053,
+        "win_prob": 0.4535,
+        "exp_margin": -1.74,
+        "prob_7plus": 0.2691,
+        "prob_14plus": 0.1356,
+        "prob_21plus": 0.0541,
         "margin_percentiles": [
-          -25.4,
-          -20.0,
-          -11.0,
-          -1.4,
-          8.2,
-          16.4,
-          21.3
+          -24.9,
+          -19.9,
+          -11.4,
+          -1.6,
+          7.8,
+          16.5,
+          21.7
         ]
       },
       "adjustments": {
@@ -7601,19 +7620,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.5196,
-        "exp_margin": 0.83,
-        "prob_7plus": 0.332,
-        "prob_14plus": 0.179,
-        "prob_21plus": 0.0793,
+        "win_prob": 0.5258,
+        "exp_margin": 0.94,
+        "prob_7plus": 0.3333,
+        "prob_14plus": 0.1787,
+        "prob_21plus": 0.0762,
         "margin_percentiles": [
-          -22.7,
-          -17.4,
-          -8.6,
-          0.8,
-          10.5,
-          18.9,
-          24.1
+          -22.3,
+          -17.2,
+          -8.5,
+          0.9,
+          10.6,
+          19.2,
+          24.2
         ]
       },
       "adjustments": {
@@ -7648,7 +7667,7 @@
           {
             "player": "K'Von Wallace",
             "status": "Active",
-            "position": "S",
+            "position": "CB",
             "injury_description": "Wallace is a six-year veteran who has appeared in 74 career regular-season games. The safety was signed to compete for a depth role in the Baltimore secondary under new head coach Jesse Minter. Minter likes to run three safeties frequently, so Wallace will compete with Keondre Jackson and Jahquez Robinson for snaps behind the team's starters. The 28-year-old's experience as both a depth option and special teams player will give him an edge during what will likely be a heated training camp battle to stay on the 53-man roster.",
             "value_tier": "starter"
           },
@@ -7795,19 +7814,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6241,
-        "exp_margin": 4.41,
-        "prob_7plus": 0.4251,
-        "prob_14plus": 0.2507,
-        "prob_21plus": 0.1169,
+        "win_prob": 0.6215,
+        "exp_margin": 4.59,
+        "prob_7plus": 0.4285,
+        "prob_14plus": 0.2514,
+        "prob_21plus": 0.1257,
         "margin_percentiles": [
-          -18.6,
-          -13.8,
-          -5.1,
+          -18.2,
+          -13.4,
+          -5.0,
           4.2,
-          14.1,
-          22.4,
-          27.5
+          14.0,
+          23.0,
+          28.4
         ]
       },
       "adjustments": {
@@ -7998,9 +8017,9 @@
       "home_score": 3,
       "away_score": 23,
       "predictions": {
-        "ensemble_prob": 0.5137,
+        "ensemble_prob": 0.5124,
         "logistic_prob": 0.5062,
-        "elo_prob": 0.5883,
+        "elo_prob": 0.5796,
         "xgb_prob": 0.4635,
         "pyth_prob": 0.5453,
         "eff_prob": 0.5193,
@@ -8014,19 +8033,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.5883,
-        "exp_margin": 3.32,
-        "prob_7plus": 0.4007,
-        "prob_14plus": 0.2269,
-        "prob_21plus": 0.1071,
+        "win_prob": 0.5847,
+        "exp_margin": 3.15,
+        "prob_7plus": 0.3975,
+        "prob_14plus": 0.2209,
+        "prob_21plus": 0.1033,
         "margin_percentiles": [
-          -20.6,
+          -20.3,
           -15.1,
-          -6.2,
-          3.3,
-          13.0,
-          21.5,
-          26.9
+          -6.3,
+          3.1,
+          12.7,
+          21.3,
+          26.1
         ]
       },
       "adjustments": {
@@ -8040,7 +8059,7 @@
       "elo": {
         "home": 1441.2,
         "away": 1458.9,
-        "diff": 62.0
+        "diff": 55.8
       },
       "bayesian": {
         "home_mu": 1605.0,
@@ -8058,6 +8077,20 @@
       },
       "injuries": {
         "home": [
+          {
+            "player": "Nick Saldiveri",
+            "status": "Out",
+            "position": "OT",
+            "injury_description": "Saldiveri is apparently still working his way back onto the field from the knee injury he suffered back in December of 2024. As it stands, he'll now have to miss at least the first four weeks of the 2026 campaign.",
+            "value_tier": "starter"
+          },
+          {
+            "player": "Brock Rechsteiner",
+            "status": "Active",
+            "position": "WR",
+            "injury_description": "Rechsteiner earned a spot on the roster after impressing during his tryout at New Orleans' rookie minicamp. He spent his collegiate career at Jacksonville State, catching 53 passes for 629 yards and seven touchdowns across three seasons.",
+            "value_tier": "starter"
+          },
           {
             "player": "Jordyn Tyson",
             "status": "Questionable",
@@ -8078,23 +8111,16 @@
             "position": "DE",
             "injury_description": "As the seventh overall pick in 2023 Draft and a defensive end, Wilson's fifth-year option would have come in at $14.475 million. The pass rusher's career has been disappointing thus far in relation to the draft capital invested in him, so it makes sense that the Saints' trade acquisition is more of a one-year flyer on a once-promising and athletic player and not a commitment to pursue his future. If Wilson can revive his career in 2026 with a better season, the team may look to keep his services in New Orleans long term.",
             "value_tier": "starter"
-          },
-          {
-            "player": "Devaughn Vele",
-            "status": "Questionable",
-            "position": "WR",
-            "injury_description": "New Orleans used the No. 8 overall pick on Jordyn Tyson, who figures to start alongside Chris Olave from Day 1, and later on the Saints took Bryce Lance in the fourth round and Barion Brown in the sixth. Acquired from the Broncos during the preseason last summer, Vele appeared in 13 regular-season games for the Saints, making seven starts, and produced a 25-293-2 line on 39 targets. Following the trade of Rashid Shaheed to Seattle, Vele became a starter but was injured in Week 15 and missed the final three contests. Capable of playing the slot or outside and on special teams, Vele should have a role in 2026, but the target competition is much stiffer.",
-            "value_tier": "starter"
-          },
-          {
-            "player": "Mason Shipley",
-            "status": "Active",
-            "position": "PK",
-            "injury_description": "Shipley ended his final season with the Texas Longhorns 20-for-24 on field-goal attempts, with his longest make coming in at 53 yards. The kicker should provide Charlie Smyth with some competition in camp, as Smyth logged only six NFL starts with the Saints in 2025 after taking over for Blake Grupe.",
-            "value_tier": "starter"
           }
         ],
         "away": [
+          {
+            "player": "Bucky Irving",
+            "status": "Questionable",
+            "position": "RB",
+            "injury_description": "Irving missed seven games from Week 2 to Week 12 due to a combination of shoulder and foot/ankle injuries in 2025. Though he returned for Tampa Bay's final six regular-season games, the 2024 fourth-rounder shared snaps with Sean Tucker (re-signed) and Rachaad White (signed with Commanders) and never quite looked fully healthy. The shoulder injury required an offseason procedure to address and Irving isn't yet cleared to practice, though Greg Auman of Fox Sports reports that his rehab is proceeding on schedule. Per Auman, Irving is expected to be limited during OTAs, which will take place between late May and early June, before being fully cleared for the start of training camp in July. Presumably, he will also be limited at mandatory minicamp from June 16-18. Tampa Bay added Kenneth Gainwell to the backfield via a two-year, $14 million contract in free agency, positioning Irving to face increased competition for touches, especially for change-of-pace work and third-down scenarios.",
+            "value_tier": "starter"
+          },
           {
             "player": "Ted Hurst",
             "status": "Active",
@@ -8122,22 +8148,22 @@
             "position": "DT",
             "injury_description": "Kancey was sidelined for most of the 2025 season due to a pectoral injury he suffered in Week 2, but the defensive tackle's output has been more than satisfactory for the Buccaneers to justify spending the $14.475 million required to retain him through 2027. The 2023 first-round pick has accumulated 54 tackles (41 solo), including 11.5 sacks, through 29 career regular-season games thus far. With the team selecting linebacker Rueben Bain in the first round of the 2026 NFL Draft, the Bucs will be acquiring an influx of talent on the defensive line that should only increase Kancey's potential for production this season.",
             "value_tier": "starter"
-          },
-          {
-            "player": "Jalen McMillan",
-            "status": "Active",
-            "position": "WR",
-            "injury_description": "The Bucs continued to shake up their wide receiver room by selecting Hurst with the 84th overall pick last Friday. Over the offseason, the team has subtracted Mike Evans, who signed with the 49ers in free agency, and added Hurst to a group that still includes Chris Godwin, Emeka Egbuka, McMillan and Tez Johnson. McMillan missed most of last season with a neck injury before making his debut in Week 15. In four regular-season games, McMillan produced a respectable 12-178-0 line on 15 targets. Egbuka faded fast after a big first half of the campaign, and Godwin didn't look anything like his old self after breaking his ankle in 2024. How this depth chart shakes out during training camp and the preseason will be something to watch for an offense that likes to throw the football.",
-            "value_tier": "starter"
           }
         ]
       },
       "injury_impact": {
-        "home_elo_penalty": 9.2,
-        "away_elo_penalty": 3.0,
-        "home_impact_score": 0.0836,
-        "away_impact_score": 0.0273,
+        "home_elo_penalty": 18.2,
+        "away_elo_penalty": 5.8,
+        "home_impact_score": 0.1655,
+        "away_impact_score": 0.0527,
         "home_key_players_out": [
+          {
+            "player": "Nick Saldiveri",
+            "position": "OT",
+            "status": "Out",
+            "elo_impact": 9.0,
+            "value_tier": "starter"
+          },
           {
             "player": "Jordyn Tyson",
             "position": "WR",
@@ -8162,6 +8188,13 @@
         ],
         "away_key_players_out": [
           {
+            "player": "Bucky Irving",
+            "position": "RB",
+            "status": "Questionable",
+            "elo_impact": 2.8,
+            "value_tier": "starter"
+          },
+          {
             "player": "Ko Kieft",
             "position": "TE",
             "status": "Questionable",
@@ -8175,14 +8208,15 @@
         "away_star_stack_multiplier": 1.0
       },
       "prediction_drivers": [
+        "Nick Saldiveri (NO) [Starter] OUT \u2014 \u22129 ELO",
         "Jordyn Tyson (NO) [Starter] QUESTIONABLE \u2014 \u22123 ELO",
         "Alvin Kamara (NO) [Starter] QUESTIONABLE \u2014 \u22123 ELO",
-        "Devaughn Vele (NO) [Starter] QUESTIONABLE \u2014 \u22123 ELO",
+        "Bucky Irving (TB) [Starter] QUESTIONABLE \u2014 \u22123 ELO",
         "Ko Kieft (TB) [Starter] QUESTIONABLE \u2014 \u22123 ELO",
         "Efficiency gap: NO net -0.247 vs TB net +0.011",
         "Home field: NO +65 ELO home advantage"
       ],
-      "explanation": "The model gives New Orleans Saints a 51.4% win probability \u2014 a slight favorite over Tampa Bay Buccaneers. The ELO gap is 18 points with home field adding approximately 65 ELO points."
+      "explanation": "The model gives New Orleans Saints a 51.2% win probability \u2014 a slight favorite over Tampa Bay Buccaneers. The ELO gap is 18 points with home field adding approximately 65 ELO points."
     },
     {
       "game_id": "401772762",
@@ -8216,19 +8250,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.7327,
+        "win_prob": 0.7283,
         "exp_margin": 8.91,
-        "prob_7plus": 0.5494,
-        "prob_14plus": 0.3581,
-        "prob_21plus": 0.1988,
+        "prob_7plus": 0.5545,
+        "prob_14plus": 0.3602,
+        "prob_21plus": 0.2011,
         "margin_percentiles": [
           -14.3,
-          -9.2,
-          -0.7,
-          8.9,
-          18.4,
-          27.3,
-          32.5
+          -9.4,
+          -0.9,
+          8.8,
+          18.5,
+          27.4,
+          32.6
         ]
       },
       "adjustments": {
@@ -8264,7 +8298,7 @@
             "player": "Michael Woods II",
             "status": "Active",
             "position": "WR",
-            "injury_description": "Woods spent time on Green Bay's practice squad last season but was never elevated to the active roster. The 26-year-old last appeared in a regular-season game during the 2024 campaign with the Browns and will look to earn a spot on Denver's final roster.",
+            "injury_description": "Woods spent time on Green Bay's practice squad last season but was never elevated to the active roster. The 26-year-old last appeared in a regular-season game during the 2024 campaign with the Browns and will look to earn a spot on Denver's Week 1 roster.",
             "value_tier": "starter"
           },
           {
@@ -8411,18 +8445,18 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.7139,
-        "exp_margin": 7.91,
-        "prob_7plus": 0.5234,
-        "prob_14plus": 0.3357,
-        "prob_21plus": 0.1783,
+        "win_prob": 0.7099,
+        "exp_margin": 7.97,
+        "prob_7plus": 0.5305,
+        "prob_14plus": 0.3368,
+        "prob_21plus": 0.181,
         "margin_percentiles": [
-          -15.5,
-          -10.2,
-          -1.6,
-          7.8,
-          17.5,
-          26.1,
+          -15.4,
+          -10.3,
+          -1.9,
+          7.9,
+          17.7,
+          26.2,
           31.3
         ]
       },
@@ -8634,9 +8668,9 @@
       "home_score": 25,
       "away_score": 35,
       "predictions": {
-        "ensemble_prob": 0.5042,
+        "ensemble_prob": 0.5039,
         "logistic_prob": 0.5062,
-        "elo_prob": 0.5953,
+        "elo_prob": 0.5937,
         "xgb_prob": 0.3718,
         "pyth_prob": 0.5736,
         "eff_prob": 0.5827,
@@ -8650,19 +8684,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.5623,
-        "exp_margin": 2.13,
-        "prob_7plus": 0.3659,
-        "prob_14plus": 0.2025,
-        "prob_21plus": 0.0933,
+        "win_prob": 0.5561,
+        "exp_margin": 1.87,
+        "prob_7plus": 0.3596,
+        "prob_14plus": 0.1924,
+        "prob_21plus": 0.083,
         "margin_percentiles": [
           -21.2,
-          -16.1,
+          -15.9,
           -7.6,
-          2.2,
-          11.7,
-          20.4,
-          25.5
+          2.0,
+          11.4,
+          19.8,
+          24.6
         ]
       },
       "adjustments": {
@@ -8676,7 +8710,7 @@
       "elo": {
         "home": 1495.9,
         "away": 1506.8,
-        "diff": 67.1
+        "diff": 65.9
       },
       "bayesian": {
         "home_mu": 1608.8,
@@ -8732,6 +8766,13 @@
         ],
         "away": [
           {
+            "player": "Brenden Rice",
+            "status": "Active",
+            "position": "WR",
+            "injury_description": "Rice was waived by the Raiders on Monday and now gets a fresh start in the Packers' wide receiver corps, which saw Romeo Doubs (signed by New England) and Dontayvion Wicks (dealt to Philadelphia) depart this offseason. A 2024 seventh-round pick, Rice was initially selected by the Chargers, with whom he combined for 10 offensive snaps across three regular-season games as a rookie. He was cut by Los Angeles in 2025 and then spent time on the practice squads of the Patriots, Seahawks and Raiders.",
+            "value_tier": "starter"
+          },
+          {
             "player": "Luke Lachey",
             "status": "Active",
             "position": "TE",
@@ -8758,21 +8799,14 @@
             "position": "QB",
             "injury_description": "Taylor last saw game action in Week 14 of the 2025 campaign for the Jets, with whom he made four starts in the second season of his two-year, $12 million contract prior to sustaining a knee injury. The 36-year-old quarterback has since recovered from that injury and slots in as the favorite to back up Jordan Love in a Packers quarterback room that also includes Kyle McCord and Kyron Drones.",
             "value_tier": "starter"
-          },
-          {
-            "player": "Jaden Nixon",
-            "status": "Active",
-            "position": "RB",
-            "injury_description": "Nixon played for several colleges before closing out his career at UCF in 2025. The running back participated in 12 games, rushing 71 times for 554 yards and seven touchdowns. He also added 17 receptions for 88 receiving yards in that span. With Josh Jacobs locked in as the No. 1 option at running back, Nixon will battle with several other candidates in training camp to hold down a depth role on the roster.",
-            "value_tier": "starter"
           }
         ]
       },
       "injury_impact": {
         "home_elo_penalty": 21.6,
-        "away_elo_penalty": 10.6,
+        "away_elo_penalty": 9.4,
         "home_impact_score": 0.1964,
-        "away_impact_score": 0.0964,
+        "away_impact_score": 0.0855,
         "home_key_players_out": [
           {
             "player": "Daequan Hardy",
@@ -8816,13 +8850,6 @@
             "position": "DE",
             "status": "Questionable",
             "elo_impact": 2.8,
-            "value_tier": "starter"
-          },
-          {
-            "player": "Sean Rhyan",
-            "position": "G",
-            "status": "Questionable",
-            "elo_impact": 1.2,
             "value_tier": "starter"
           }
         ],
@@ -8874,18 +8901,18 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.609,
-        "exp_margin": 3.98,
-        "prob_7plus": 0.413,
-        "prob_14plus": 0.2415,
-        "prob_21plus": 0.1145,
+        "win_prob": 0.6107,
+        "exp_margin": 4.03,
+        "prob_7plus": 0.4177,
+        "prob_14plus": 0.2385,
+        "prob_21plus": 0.1129,
         "margin_percentiles": [
-          -19.5,
-          -14.2,
-          -5.5,
-          3.8,
-          13.6,
-          22.1,
+          -19.0,
+          -14.1,
+          -5.4,
+          4.1,
+          13.5,
+          21.9,
           27.0
         ]
       },
