@@ -1,34 +1,34 @@
 {
-  "updated": "2026-05-15T11:10:29.568688+00:00",
-  "market_count": 12,
+  "updated": "2026-05-16T09:21:57.676090+00:00",
+  "market_count": 45,
   "markets": [
     {
       "can_close_early": true,
-      "close_time": "2026-05-29T17:00:00Z",
-      "created_time": "2026-05-12T04:00:59.574735Z",
+      "close_time": "2026-09-17T00:15:00Z",
+      "created_time": "2026-05-15T17:00:00.517457Z",
       "custom_strike": {
-        "basketball_team": "65569528-1888-40aa-9d62-2b0e8142a9b4"
+        "football_team": "64f72720-2e4a-4cc8-a39b-ca148aecb389"
       },
       "early_close_condition": "This market will close and expire after a winner is declared.",
-      "event_ticker": "KXNBAGAME-26MAY15DETCLE",
-      "expected_expiration_time": "2026-05-15T20:00:00Z",
-      "expiration_time": "2026-05-29T17:00:00Z",
+      "event_ticker": "KXNFLGAME-26SEP14DENKC",
+      "expected_expiration_time": "2026-09-15T03:15:00Z",
+      "expiration_time": "2026-09-17T00:15:00Z",
       "expiration_value": "",
       "fractional_trading_enabled": true,
-      "last_price_dollars": "0.4000",
-      "latest_expiration_time": "2026-05-29T17:00:00Z",
+      "last_price_dollars": "0.6900",
+      "latest_expiration_time": "2026-09-17T00:15:00Z",
       "liquidity_dollars": "0.0000",
       "market_type": "binary",
-      "no_ask_dollars": "0.6100",
-      "no_bid_dollars": "0.6000",
-      "no_sub_title": "Detroit",
+      "no_ask_dollars": "0.7500",
+      "no_bid_dollars": "0.3500",
+      "no_sub_title": "Kansas City",
       "notional_value_dollars": "1.0000",
-      "occurrence_datetime": "2026-05-15T20:00:00Z",
-      "open_interest_fp": "671012.73",
-      "open_time": "2026-05-12T04:05:00Z",
-      "previous_price_dollars": "0.4000",
-      "previous_yes_ask_dollars": "0.4000",
-      "previous_yes_bid_dollars": "0.3900",
+      "occurrence_datetime": "2026-09-15T03:15:00Z",
+      "open_interest_fp": "6.00",
+      "open_time": "2026-05-15T17:04:00Z",
+      "previous_price_dollars": "0.0000",
+      "previous_yes_ask_dollars": "0.0000",
+      "previous_yes_bid_dollars": "0.0000",
       "price_level_structure": "linear_cent",
       "price_ranges": [
         {
@@ -39,49 +39,49 @@
       ],
       "response_price_units": "usd_cent",
       "result": "",
-      "rules_primary": "If Detroit wins the Game 6: Detroit at Cleveland professional basketball game originally scheduled for May 15, 2026, then the market resolves to Yes.",
-      "rules_secondary": "",
-      "settlement_timer_seconds": 30,
+      "rules_primary": "If Kansas City wins the Denver vs Kansas City professional football game originally scheduled for Sep 14, 2026, then the market resolves to Yes.",
+      "rules_secondary": "The following market refers to the team who wins the Denver vs Kansas City professional football game originally scheduled for Sep 14, 2026. If the game ends in a tie, the market will resolve to $0.50 for each team. If the game is postponed but begins within 48 hours from its originally scheduled start time, the market will remain open and resolve based on the official final result. If the game is not started within 48 hours, the market will resolve to a fair market price.",
+      "settlement_timer_seconds": 60,
       "status": "active",
       "strike_type": "structured",
-      "ticker": "KXNBAGAME-26MAY15DETCLE-DET",
-      "title": "Game 6: Detroit at Cleveland Winner?",
-      "updated_time": "2026-05-12T04:05:00.983665Z",
-      "volume_24h_fp": "575506.90",
-      "volume_fp": "857503.26",
-      "yes_ask_dollars": "0.4000",
-      "yes_ask_size_fp": "1589660.44",
-      "yes_bid_dollars": "0.3900",
-      "yes_bid_size_fp": "370.00",
-      "yes_sub_title": "Detroit"
+      "ticker": "KXNFLGAME-26SEP14DENKC-KC",
+      "title": "Will Kansas City win the Denver vs Kansas City Pro Football game?",
+      "updated_time": "2026-05-15T17:04:00.836408Z",
+      "volume_24h_fp": "6.00",
+      "volume_fp": "6.00",
+      "yes_ask_dollars": "0.6500",
+      "yes_ask_size_fp": "6.00",
+      "yes_bid_dollars": "0.2500",
+      "yes_bid_size_fp": "506.00",
+      "yes_sub_title": "Kansas City"
     },
     {
       "can_close_early": true,
-      "close_time": "2026-05-29T17:00:00Z",
-      "created_time": "2026-05-12T04:00:59.574735Z",
+      "close_time": "2026-09-17T00:15:00Z",
+      "created_time": "2026-05-15T17:00:00.517457Z",
       "custom_strike": {
-        "basketball_team": "90381a35-42a6-4975-851f-175418e4271a"
+        "football_team": "0aa02fd7-1bb1-474b-98e1-5379d0a191e3"
       },
       "early_close_condition": "This market will close and expire after a winner is declared.",
-      "event_ticker": "KXNBAGAME-26MAY15DETCLE",
-      "expected_expiration_time": "2026-05-15T20:00:00Z",
-      "expiration_time": "2026-05-29T17:00:00Z",
+      "event_ticker": "KXNFLGAME-26SEP14DENKC",
+      "expected_expiration_time": "2026-09-15T03:15:00Z",
+      "expiration_time": "2026-09-17T00:15:00Z",
       "expiration_value": "",
       "fractional_trading_enabled": true,
       "last_price_dollars": "0.6200",
-      "latest_expiration_time": "2026-05-29T17:00:00Z",
+      "latest_expiration_time": "2026-09-17T00:15:00Z",
       "liquidity_dollars": "0.0000",
       "market_type": "binary",
-      "no_ask_dollars": "0.3900",
+      "no_ask_dollars": "0.5600",
       "no_bid_dollars": "0.3800",
-      "no_sub_title": "Cleveland",
+      "no_sub_title": "Denver",
       "notional_value_dollars": "1.0000",
-      "occurrence_datetime": "2026-05-15T20:00:00Z",
-      "open_interest_fp": "461431.53",
-      "open_time": "2026-05-12T04:05:00Z",
-      "previous_price_dollars": "0.6100",
-      "previous_yes_ask_dollars": "0.6100",
-      "previous_yes_bid_dollars": "0.6000",
+      "occurrence_datetime": "2026-09-15T03:15:00Z",
+      "open_interest_fp": "60.01",
+      "open_time": "2026-05-15T17:04:00Z",
+      "previous_price_dollars": "0.0000",
+      "previous_yes_ask_dollars": "0.0000",
+      "previous_yes_bid_dollars": "0.0000",
       "price_level_structure": "linear_cent",
       "price_ranges": [
         {
@@ -92,49 +92,49 @@
       ],
       "response_price_units": "usd_cent",
       "result": "",
-      "rules_primary": "If Cleveland wins the Game 6: Detroit at Cleveland professional basketball game originally scheduled for May 15, 2026, then the market resolves to Yes.",
-      "rules_secondary": "",
-      "settlement_timer_seconds": 30,
+      "rules_primary": "If Denver wins the Denver vs Kansas City professional football game originally scheduled for Sep 14, 2026, then the market resolves to Yes.",
+      "rules_secondary": "The following market refers to the team who wins the Denver vs Kansas City professional football game originally scheduled for Sep 14, 2026. If the game ends in a tie, the market will resolve to $0.50 for each team. If the game is postponed but begins within 48 hours from its originally scheduled start time, the market will remain open and resolve based on the official final result. If the game is not started within 48 hours, the market will resolve to a fair market price.",
+      "settlement_timer_seconds": 60,
       "status": "active",
       "strike_type": "structured",
-      "ticker": "KXNBAGAME-26MAY15DETCLE-CLE",
-      "title": "Game 6: Detroit at Cleveland Winner?",
-      "updated_time": "2026-05-12T04:05:00.983665Z",
-      "volume_24h_fp": "380140.52",
-      "volume_fp": "532293.16",
+      "ticker": "KXNFLGAME-26SEP14DENKC-DEN",
+      "title": "Will Denver win the Denver vs Kansas City Pro Football game?",
+      "updated_time": "2026-05-15T17:04:00.836408Z",
+      "volume_24h_fp": "60.01",
+      "volume_fp": "60.01",
       "yes_ask_dollars": "0.6200",
-      "yes_ask_size_fp": "1548692.83",
-      "yes_bid_dollars": "0.6100",
-      "yes_bid_size_fp": "14569.68",
-      "yes_sub_title": "Cleveland"
+      "yes_ask_size_fp": "3.00",
+      "yes_bid_dollars": "0.4400",
+      "yes_bid_size_fp": "1.00",
+      "yes_sub_title": "Denver"
     },
     {
       "can_close_early": true,
-      "close_time": "2026-05-29T17:00:00Z",
-      "created_time": "2026-05-11T04:01:17.27824Z",
+      "close_time": "2026-09-16T00:20:00Z",
+      "created_time": "2026-05-15T16:59:59.803431Z",
       "custom_strike": {
-        "basketball_team": "ad36c3e8-4194-4e63-920f-7c50f46191a6"
+        "football_team": "4fa3f3ec-f7e7-41ec-9383-a40af2d26297"
       },
       "early_close_condition": "This market will close and expire after a winner is declared.",
-      "event_ticker": "KXNBAGAME-26MAY15SASMIN",
-      "expected_expiration_time": "2026-05-15T20:00:00Z",
-      "expiration_time": "2026-05-29T17:00:00Z",
+      "event_ticker": "KXNFLGAME-26SEP13DALNYG",
+      "expected_expiration_time": "2026-09-14T03:20:00Z",
+      "expiration_time": "2026-09-16T00:20:00Z",
       "expiration_value": "",
       "fractional_trading_enabled": true,
-      "last_price_dollars": "0.6600",
-      "latest_expiration_time": "2026-05-29T17:00:00Z",
+      "last_price_dollars": "0.5600",
+      "latest_expiration_time": "2026-09-16T00:20:00Z",
       "liquidity_dollars": "0.0000",
       "market_type": "binary",
-      "no_ask_dollars": "0.3500",
-      "no_bid_dollars": "0.3400",
-      "no_sub_title": "San Antonio",
+      "no_ask_dollars": "0.5600",
+      "no_bid_dollars": "0.4500",
+      "no_sub_title": "New York G",
       "notional_value_dollars": "1.0000",
-      "occurrence_datetime": "2026-05-15T20:00:00Z",
-      "open_interest_fp": "940635.69",
-      "open_time": "2026-05-11T04:06:00Z",
-      "previous_price_dollars": "0.6500",
-      "previous_yes_ask_dollars": "0.6500",
-      "previous_yes_bid_dollars": "0.6400",
+      "occurrence_datetime": "2026-09-14T03:20:00Z",
+      "open_interest_fp": "86.75",
+      "open_time": "2026-05-15T17:04:00Z",
+      "previous_price_dollars": "0.0000",
+      "previous_yes_ask_dollars": "0.0000",
+      "previous_yes_bid_dollars": "0.0000",
       "price_level_structure": "linear_cent",
       "price_ranges": [
         {
@@ -145,49 +145,314 @@
       ],
       "response_price_units": "usd_cent",
       "result": "",
-      "rules_primary": "If San Antonio wins the Game 6: San Antonio at Minnesota professional basketball game originally scheduled for May 15, 2026, then the market resolves to Yes.",
-      "rules_secondary": "",
-      "settlement_timer_seconds": 30,
+      "rules_primary": "If New York G wins the Dallas vs New York G professional football game originally scheduled for Sep 13, 2026, then the market resolves to Yes.",
+      "rules_secondary": "The following market refers to the team who wins the Dallas vs New York G professional football game originally scheduled for Sep 13, 2026. If the game ends in a tie, the market will resolve to $0.50 for each team. If the game is postponed but begins within 48 hours from its originally scheduled start time, the market will remain open and resolve based on the official final result. If the game is not started within 48 hours, the market will resolve to a fair market price.",
+      "settlement_timer_seconds": 60,
       "status": "active",
       "strike_type": "structured",
-      "ticker": "KXNBAGAME-26MAY15SASMIN-SAS",
-      "title": "Game 6: San Antonio at Minnesota Winner?",
-      "updated_time": "2026-05-11T04:06:00.982643Z",
-      "volume_24h_fp": "518966.75",
-      "volume_fp": "1040122.81",
-      "yes_ask_dollars": "0.6600",
-      "yes_ask_size_fp": "3247746.76",
-      "yes_bid_dollars": "0.6500",
-      "yes_bid_size_fp": "175826.33",
-      "yes_sub_title": "San Antonio"
+      "ticker": "KXNFLGAME-26SEP13DALNYG-NYG",
+      "title": "Will New York G win the Dallas vs New York G Pro Football game?",
+      "updated_time": "2026-05-15T17:04:00.836408Z",
+      "volume_24h_fp": "86.75",
+      "volume_fp": "86.75",
+      "yes_ask_dollars": "0.5500",
+      "yes_ask_size_fp": "121.25",
+      "yes_bid_dollars": "0.4400",
+      "yes_bid_size_fp": "133.00",
+      "yes_sub_title": "New York G"
     },
     {
       "can_close_early": true,
-      "close_time": "2026-05-29T17:00:00Z",
-      "created_time": "2026-05-11T04:01:17.27824Z",
+      "close_time": "2026-09-16T00:20:00Z",
+      "created_time": "2026-05-15T16:59:59.803431Z",
       "custom_strike": {
-        "basketball_team": "29e3c04e-fadb-4006-be20-cbb8c159ce0e"
+        "football_team": "62b97b7c-5503-461c-b328-fd8543219b22"
       },
       "early_close_condition": "This market will close and expire after a winner is declared.",
-      "event_ticker": "KXNBAGAME-26MAY15SASMIN",
-      "expected_expiration_time": "2026-05-15T20:00:00Z",
-      "expiration_time": "2026-05-29T17:00:00Z",
+      "event_ticker": "KXNFLGAME-26SEP13DALNYG",
+      "expected_expiration_time": "2026-09-14T03:20:00Z",
+      "expiration_time": "2026-09-16T00:20:00Z",
       "expiration_value": "",
       "fractional_trading_enabled": true,
-      "last_price_dollars": "0.3500",
-      "latest_expiration_time": "2026-05-29T17:00:00Z",
+      "last_price_dollars": "0.5900",
+      "latest_expiration_time": "2026-09-16T00:20:00Z",
       "liquidity_dollars": "0.0000",
       "market_type": "binary",
-      "no_ask_dollars": "0.6600",
-      "no_bid_dollars": "0.6500",
+      "no_ask_dollars": "0.6400",
+      "no_bid_dollars": "0.2700",
+      "no_sub_title": "Dallas",
+      "notional_value_dollars": "1.0000",
+      "occurrence_datetime": "2026-09-14T03:20:00Z",
+      "open_interest_fp": "8.00",
+      "open_time": "2026-05-15T17:04:00Z",
+      "previous_price_dollars": "0.0000",
+      "previous_yes_ask_dollars": "0.0000",
+      "previous_yes_bid_dollars": "0.0000",
+      "price_level_structure": "linear_cent",
+      "price_ranges": [
+        {
+          "end": "1.0000",
+          "start": "0.0000",
+          "step": "0.0100"
+        }
+      ],
+      "response_price_units": "usd_cent",
+      "result": "",
+      "rules_primary": "If Dallas wins the Dallas vs New York G professional football game originally scheduled for Sep 13, 2026, then the market resolves to Yes.",
+      "rules_secondary": "The following market refers to the team who wins the Dallas vs New York G professional football game originally scheduled for Sep 13, 2026. If the game ends in a tie, the market will resolve to $0.50 for each team. If the game is postponed but begins within 48 hours from its originally scheduled start time, the market will remain open and resolve based on the official final result. If the game is not started within 48 hours, the market will resolve to a fair market price.",
+      "settlement_timer_seconds": 60,
+      "status": "active",
+      "strike_type": "structured",
+      "ticker": "KXNFLGAME-26SEP13DALNYG-DAL",
+      "title": "Will Dallas win the Dallas vs New York G Pro Football game?",
+      "updated_time": "2026-05-15T17:04:00.836408Z",
+      "volume_24h_fp": "8.00",
+      "volume_fp": "8.00",
+      "yes_ask_dollars": "0.7300",
+      "yes_ask_size_fp": "65.00",
+      "yes_bid_dollars": "0.3600",
+      "yes_bid_size_fp": "108.00",
+      "yes_sub_title": "Dallas"
+    },
+    {
+      "can_close_early": true,
+      "close_time": "2026-09-15T20:25:00Z",
+      "created_time": "2026-05-15T16:59:59.161432Z",
+      "custom_strike": {
+        "football_team": "aa65dda6-9cb8-4c8b-812b-d0c1feaae54f"
+      },
+      "early_close_condition": "This market will close and expire after a winner is declared.",
+      "event_ticker": "KXNFLGAME-26SEP13WASPHI",
+      "expected_expiration_time": "2026-09-13T23:25:00Z",
+      "expiration_time": "2026-09-15T20:25:00Z",
+      "expiration_value": "",
+      "fractional_trading_enabled": true,
+      "last_price_dollars": "0.0000",
+      "latest_expiration_time": "2026-09-15T20:25:00Z",
+      "liquidity_dollars": "0.0000",
+      "market_type": "binary",
+      "no_ask_dollars": "0.7700",
+      "no_bid_dollars": "0.4500",
+      "no_sub_title": "Washington",
+      "notional_value_dollars": "1.0000",
+      "occurrence_datetime": "2026-09-13T23:25:00Z",
+      "open_interest_fp": "0.00",
+      "open_time": "2026-05-15T17:04:00Z",
+      "previous_price_dollars": "0.0000",
+      "previous_yes_ask_dollars": "0.0000",
+      "previous_yes_bid_dollars": "0.0000",
+      "price_level_structure": "linear_cent",
+      "price_ranges": [
+        {
+          "end": "1.0000",
+          "start": "0.0000",
+          "step": "0.0100"
+        }
+      ],
+      "response_price_units": "usd_cent",
+      "result": "",
+      "rules_primary": "If Washington wins the Washington vs Philadelphia professional football game originally scheduled for Sep 13, 2026, then the market resolves to Yes.",
+      "rules_secondary": "The following market refers to the team who wins the Washington vs Philadelphia professional football game originally scheduled for Sep 13, 2026. If the game ends in a tie, the market will resolve to $0.50 for each team. If the game is postponed but begins within 48 hours from its originally scheduled start time, the market will remain open and resolve based on the official final result. If the game is not started within 48 hours, the market will resolve to a fair market price.",
+      "settlement_timer_seconds": 60,
+      "status": "active",
+      "strike_type": "structured",
+      "ticker": "KXNFLGAME-26SEP13WASPHI-WAS",
+      "title": "Will Washington win the Washington vs Philadelphia Pro Football game?",
+      "updated_time": "2026-05-15T17:04:00.836408Z",
+      "volume_24h_fp": "0.00",
+      "volume_fp": "0.00",
+      "yes_ask_dollars": "0.5500",
+      "yes_ask_size_fp": "8.00",
+      "yes_bid_dollars": "0.2300",
+      "yes_bid_size_fp": "300.00",
+      "yes_sub_title": "Washington"
+    },
+    {
+      "can_close_early": true,
+      "close_time": "2026-09-15T20:25:00Z",
+      "created_time": "2026-05-15T16:59:59.161432Z",
+      "custom_strike": {
+        "football_team": "bc65405b-5bda-425c-b7c5-681c382e6a5a"
+      },
+      "early_close_condition": "This market will close and expire after a winner is declared.",
+      "event_ticker": "KXNFLGAME-26SEP13WASPHI",
+      "expected_expiration_time": "2026-09-13T23:25:00Z",
+      "expiration_time": "2026-09-15T20:25:00Z",
+      "expiration_value": "",
+      "fractional_trading_enabled": true,
+      "last_price_dollars": "0.7600",
+      "latest_expiration_time": "2026-09-15T20:25:00Z",
+      "liquidity_dollars": "0.0000",
+      "market_type": "binary",
+      "no_ask_dollars": "0.6900",
+      "no_bid_dollars": "0.2900",
+      "no_sub_title": "Philadelphia",
+      "notional_value_dollars": "1.0000",
+      "occurrence_datetime": "2026-09-13T23:25:00Z",
+      "open_interest_fp": "6.47",
+      "open_time": "2026-05-15T17:04:00Z",
+      "previous_price_dollars": "0.0000",
+      "previous_yes_ask_dollars": "0.0000",
+      "previous_yes_bid_dollars": "0.0000",
+      "price_level_structure": "linear_cent",
+      "price_ranges": [
+        {
+          "end": "1.0000",
+          "start": "0.0000",
+          "step": "0.0100"
+        }
+      ],
+      "response_price_units": "usd_cent",
+      "result": "",
+      "rules_primary": "If Philadelphia wins the Washington vs Philadelphia professional football game originally scheduled for Sep 13, 2026, then the market resolves to Yes.",
+      "rules_secondary": "The following market refers to the team who wins the Washington vs Philadelphia professional football game originally scheduled for Sep 13, 2026. If the game ends in a tie, the market will resolve to $0.50 for each team. If the game is postponed but begins within 48 hours from its originally scheduled start time, the market will remain open and resolve based on the official final result. If the game is not started within 48 hours, the market will resolve to a fair market price.",
+      "settlement_timer_seconds": 60,
+      "status": "active",
+      "strike_type": "structured",
+      "ticker": "KXNFLGAME-26SEP13WASPHI-PHI",
+      "title": "Will Philadelphia win the Washington vs Philadelphia Pro Football game?",
+      "updated_time": "2026-05-15T17:04:00.836408Z",
+      "volume_24h_fp": "6.47",
+      "volume_fp": "6.47",
+      "yes_ask_dollars": "0.7100",
+      "yes_ask_size_fp": "8.00",
+      "yes_bid_dollars": "0.3100",
+      "yes_bid_size_fp": "506.47",
+      "yes_sub_title": "Philadelphia"
+    },
+    {
+      "can_close_early": true,
+      "close_time": "2026-09-15T20:25:00Z",
+      "created_time": "2026-05-15T16:59:58.572937Z",
+      "custom_strike": {
+        "football_team": "4cba614d-2d32-48ef-a066-1524437fbaff"
+      },
+      "early_close_condition": "This market will close and expire after a winner is declared.",
+      "event_ticker": "KXNFLGAME-26SEP13MIALV",
+      "expected_expiration_time": "2026-09-13T23:25:00Z",
+      "expiration_time": "2026-09-15T20:25:00Z",
+      "expiration_value": "",
+      "fractional_trading_enabled": true,
+      "last_price_dollars": "0.0000",
+      "latest_expiration_time": "2026-09-15T20:25:00Z",
+      "liquidity_dollars": "0.0000",
+      "market_type": "binary",
+      "no_ask_dollars": "0.7500",
+      "no_bid_dollars": "0.3800",
+      "no_sub_title": "Miami",
+      "notional_value_dollars": "1.0000",
+      "occurrence_datetime": "2026-09-13T23:25:00Z",
+      "open_interest_fp": "0.00",
+      "open_time": "2026-05-15T17:04:00Z",
+      "previous_price_dollars": "0.0000",
+      "previous_yes_ask_dollars": "0.0000",
+      "previous_yes_bid_dollars": "0.0000",
+      "price_level_structure": "linear_cent",
+      "price_ranges": [
+        {
+          "end": "1.0000",
+          "start": "0.0000",
+          "step": "0.0100"
+        }
+      ],
+      "response_price_units": "usd_cent",
+      "result": "",
+      "rules_primary": "If Miami wins the Miami vs Las Vegas professional football game originally scheduled for Sep 13, 2026, then the market resolves to Yes.",
+      "rules_secondary": "The following market refers to the team who wins the Miami vs Las Vegas professional football game originally scheduled for Sep 13, 2026. If the game ends in a tie, the market will resolve to $0.50 for each team. If the game is postponed but begins within 48 hours from its originally scheduled start time, the market will remain open and resolve based on the official final result. If the game is not started within 48 hours, the market will resolve to a fair market price.",
+      "settlement_timer_seconds": 60,
+      "status": "active",
+      "strike_type": "structured",
+      "ticker": "KXNFLGAME-26SEP13MIALV-MIA",
+      "title": "Will Miami win the Miami vs Las Vegas Pro Football game?",
+      "updated_time": "2026-05-15T17:04:00.836408Z",
+      "volume_24h_fp": "0.00",
+      "volume_fp": "0.00",
+      "yes_ask_dollars": "0.6200",
+      "yes_ask_size_fp": "10.00",
+      "yes_bid_dollars": "0.2500",
+      "yes_bid_size_fp": "20.00",
+      "yes_sub_title": "Miami"
+    },
+    {
+      "can_close_early": true,
+      "close_time": "2026-09-15T20:25:00Z",
+      "created_time": "2026-05-15T16:59:58.572937Z",
+      "custom_strike": {
+        "football_team": "8b1ce23e-7d64-4213-85e9-7d12bc8c4d85"
+      },
+      "early_close_condition": "This market will close and expire after a winner is declared.",
+      "event_ticker": "KXNFLGAME-26SEP13MIALV",
+      "expected_expiration_time": "2026-09-13T23:25:00Z",
+      "expiration_time": "2026-09-15T20:25:00Z",
+      "expiration_value": "",
+      "fractional_trading_enabled": true,
+      "last_price_dollars": "0.6700",
+      "latest_expiration_time": "2026-09-15T20:25:00Z",
+      "liquidity_dollars": "0.0000",
+      "market_type": "binary",
+      "no_ask_dollars": "0.7000",
+      "no_bid_dollars": "0.3300",
+      "no_sub_title": "Las Vegas",
+      "notional_value_dollars": "1.0000",
+      "occurrence_datetime": "2026-09-13T23:25:00Z",
+      "open_interest_fp": "15.78",
+      "open_time": "2026-05-15T17:04:00Z",
+      "previous_price_dollars": "0.0000",
+      "previous_yes_ask_dollars": "0.0000",
+      "previous_yes_bid_dollars": "0.0000",
+      "price_level_structure": "linear_cent",
+      "price_ranges": [
+        {
+          "end": "1.0000",
+          "start": "0.0000",
+          "step": "0.0100"
+        }
+      ],
+      "response_price_units": "usd_cent",
+      "result": "",
+      "rules_primary": "If Las Vegas wins the Miami vs Las Vegas professional football game originally scheduled for Sep 13, 2026, then the market resolves to Yes.",
+      "rules_secondary": "The following market refers to the team who wins the Miami vs Las Vegas professional football game originally scheduled for Sep 13, 2026. If the game ends in a tie, the market will resolve to $0.50 for each team. If the game is postponed but begins within 48 hours from its originally scheduled start time, the market will remain open and resolve based on the official final result. If the game is not started within 48 hours, the market will resolve to a fair market price.",
+      "settlement_timer_seconds": 60,
+      "status": "active",
+      "strike_type": "structured",
+      "ticker": "KXNFLGAME-26SEP13MIALV-LV",
+      "title": "Will Las Vegas win the Miami vs Las Vegas Pro Football game?",
+      "updated_time": "2026-05-15T17:04:00.836408Z",
+      "volume_24h_fp": "15.78",
+      "volume_fp": "15.78",
+      "yes_ask_dollars": "0.6700",
+      "yes_ask_size_fp": "6.00",
+      "yes_bid_dollars": "0.3000",
+      "yes_bid_size_fp": "10.00",
+      "yes_sub_title": "Las Vegas"
+    },
+    {
+      "can_close_early": true,
+      "close_time": "2026-09-15T20:25:00Z",
+      "created_time": "2026-05-15T16:59:57.708613Z",
+      "custom_strike": {
+        "football_team": "2279efa0-9284-4224-9647-09b14f6983ce"
+      },
+      "early_close_condition": "This market will close and expire after a winner is declared.",
+      "event_ticker": "KXNFLGAME-26SEP13GBMIN",
+      "expected_expiration_time": "2026-09-13T23:25:00Z",
+      "expiration_time": "2026-09-15T20:25:00Z",
+      "expiration_value": "",
+      "fractional_trading_enabled": true,
+      "last_price_dollars": "0.0000",
+      "latest_expiration_time": "2026-09-15T20:25:00Z",
+      "liquidity_dollars": "0.0000",
+      "market_type": "binary",
+      "no_ask_dollars": "0.5500",
+      "no_bid_dollars": "0.3800",
       "no_sub_title": "Minnesota",
       "notional_value_dollars": "1.0000",
-      "occurrence_datetime": "2026-05-15T20:00:00Z",
-      "open_interest_fp": "791265.01",
-      "open_time": "2026-05-11T04:06:00Z",
-      "previous_price_dollars": "0.3600",
-      "previous_yes_ask_dollars": "0.3600",
-      "previous_yes_bid_dollars": "0.3500",
+      "occurrence_datetime": "2026-09-13T23:25:00Z",
+      "open_interest_fp": "0.00",
+      "open_time": "2026-05-15T17:04:00Z",
+      "previous_price_dollars": "0.0000",
+      "previous_yes_ask_dollars": "0.0000",
+      "previous_yes_bid_dollars": "0.0000",
       "price_level_structure": "linear_cent",
       "price_ranges": [
         {
@@ -198,518 +463,1694 @@
       ],
       "response_price_units": "usd_cent",
       "result": "",
-      "rules_primary": "If Minnesota wins the Game 6: San Antonio at Minnesota professional basketball game originally scheduled for May 15, 2026, then the market resolves to Yes.",
-      "rules_secondary": "",
-      "settlement_timer_seconds": 30,
+      "rules_primary": "If Minnesota wins the Green Bay vs Minnesota professional football game originally scheduled for Sep 13, 2026, then the market resolves to Yes.",
+      "rules_secondary": "The following market refers to the team who wins the Green Bay vs Minnesota professional football game originally scheduled for Sep 13, 2026. If the game ends in a tie, the market will resolve to $0.50 for each team. If the game is postponed but begins within 48 hours from its originally scheduled start time, the market will remain open and resolve based on the official final result. If the game is not started within 48 hours, the market will resolve to a fair market price.",
+      "settlement_timer_seconds": 60,
       "status": "active",
       "strike_type": "structured",
-      "ticker": "KXNBAGAME-26MAY15SASMIN-MIN",
-      "title": "Game 6: San Antonio at Minnesota Winner?",
-      "updated_time": "2026-05-11T04:06:00.982643Z",
-      "volume_24h_fp": "643398.16",
-      "volume_fp": "859325.53",
-      "yes_ask_dollars": "0.3500",
-      "yes_ask_size_fp": "288521.19",
-      "yes_bid_dollars": "0.3400",
-      "yes_bid_size_fp": "46193.21",
+      "ticker": "KXNFLGAME-26SEP13GBMIN-MIN",
+      "title": "Will Minnesota win the Green Bay vs Minnesota Pro Football game?",
+      "updated_time": "2026-05-15T17:04:00.836408Z",
+      "volume_24h_fp": "0.00",
+      "volume_fp": "0.00",
+      "yes_ask_dollars": "0.6200",
+      "yes_ask_size_fp": "10.00",
+      "yes_bid_dollars": "0.4500",
+      "yes_bid_size_fp": "122.22",
       "yes_sub_title": "Minnesota"
     },
     {
       "can_close_early": true,
-      "close_time": "2026-05-29T11:30:00Z",
-      "created_time": "2026-05-15T11:10:11.876485Z",
+      "close_time": "2026-09-15T20:25:00Z",
+      "created_time": "2026-05-15T16:59:57.708613Z",
       "custom_strike": {
-        "Associated Events": "KXATPMATCH-26MAY15RUUDAR,KXIPLGAME-26MAY15CSKLSG,KXMLBGAME-26MAY151840PHIPIT,KXMLBGAME-26MAY151845TORDET,KXMLBGAME-26MAY151940CHCCWS,KXMLBGAME-26MAY152138LADLAA,KXMLBTOTAL-26MAY152040AZCOL,KXNBAGAME-26MAY15DETCLE,KXNBAGAME-26MAY15SASMIN,KXWNBAGAME-26MAY15LVCONN,KXWNBAGAME-26MAY15WSHIND",
+        "football_team": "08c52d1f-7ce1-445f-be72-97de0554ecc8"
+      },
+      "early_close_condition": "This market will close and expire after a winner is declared.",
+      "event_ticker": "KXNFLGAME-26SEP13GBMIN",
+      "expected_expiration_time": "2026-09-13T23:25:00Z",
+      "expiration_time": "2026-09-15T20:25:00Z",
+      "expiration_value": "",
+      "fractional_trading_enabled": true,
+      "last_price_dollars": "0.2400",
+      "latest_expiration_time": "2026-09-15T20:25:00Z",
+      "liquidity_dollars": "0.0000",
+      "market_type": "binary",
+      "no_ask_dollars": "0.7600",
+      "no_bid_dollars": "0.4000",
+      "no_sub_title": "Green Bay",
+      "notional_value_dollars": "1.0000",
+      "occurrence_datetime": "2026-09-13T23:25:00Z",
+      "open_interest_fp": "15.86",
+      "open_time": "2026-05-15T17:04:00Z",
+      "previous_price_dollars": "0.0000",
+      "previous_yes_ask_dollars": "0.0000",
+      "previous_yes_bid_dollars": "0.0000",
+      "price_level_structure": "linear_cent",
+      "price_ranges": [
+        {
+          "end": "1.0000",
+          "start": "0.0000",
+          "step": "0.0100"
+        }
+      ],
+      "response_price_units": "usd_cent",
+      "result": "",
+      "rules_primary": "If Green Bay wins the Green Bay vs Minnesota professional football game originally scheduled for Sep 13, 2026, then the market resolves to Yes.",
+      "rules_secondary": "The following market refers to the team who wins the Green Bay vs Minnesota professional football game originally scheduled for Sep 13, 2026. If the game ends in a tie, the market will resolve to $0.50 for each team. If the game is postponed but begins within 48 hours from its originally scheduled start time, the market will remain open and resolve based on the official final result. If the game is not started within 48 hours, the market will resolve to a fair market price.",
+      "settlement_timer_seconds": 60,
+      "status": "active",
+      "strike_type": "structured",
+      "ticker": "KXNFLGAME-26SEP13GBMIN-GB",
+      "title": "Will Green Bay win the Green Bay vs Minnesota Pro Football game?",
+      "updated_time": "2026-05-15T17:04:00.836408Z",
+      "volume_24h_fp": "15.86",
+      "volume_fp": "15.86",
+      "yes_ask_dollars": "0.6000",
+      "yes_ask_size_fp": "52.00",
+      "yes_bid_dollars": "0.2400",
+      "yes_bid_size_fp": "997.00",
+      "yes_sub_title": "Green Bay"
+    },
+    {
+      "can_close_early": true,
+      "close_time": "2026-09-15T20:25:00Z",
+      "created_time": "2026-05-15T16:59:57.097306Z",
+      "custom_strike": {
+        "football_team": "611e3786-3bfe-4919-bbd5-bc70fc13d827"
+      },
+      "early_close_condition": "This market will close and expire after a winner is declared.",
+      "event_ticker": "KXNFLGAME-26SEP13ARILAC",
+      "expected_expiration_time": "2026-09-13T23:25:00Z",
+      "expiration_time": "2026-09-15T20:25:00Z",
+      "expiration_value": "",
+      "fractional_trading_enabled": true,
+      "last_price_dollars": "0.7500",
+      "latest_expiration_time": "2026-09-15T20:25:00Z",
+      "liquidity_dollars": "0.0000",
+      "market_type": "binary",
+      "no_ask_dollars": "0.2500",
+      "no_bid_dollars": "0.2000",
+      "no_sub_title": "Los Angeles C",
+      "notional_value_dollars": "1.0000",
+      "occurrence_datetime": "2026-09-13T23:25:00Z",
+      "open_interest_fp": "788.26",
+      "open_time": "2026-05-15T17:04:00Z",
+      "previous_price_dollars": "0.0000",
+      "previous_yes_ask_dollars": "0.0000",
+      "previous_yes_bid_dollars": "0.0000",
+      "price_level_structure": "linear_cent",
+      "price_ranges": [
+        {
+          "end": "1.0000",
+          "start": "0.0000",
+          "step": "0.0100"
+        }
+      ],
+      "response_price_units": "usd_cent",
+      "result": "",
+      "rules_primary": "If Los Angeles C wins the Arizona vs Los Angeles C professional football game originally scheduled for Sep 13, 2026, then the market resolves to Yes.",
+      "rules_secondary": "The following market refers to the team who wins the Arizona vs Los Angeles C professional football game originally scheduled for Sep 13, 2026. If the game ends in a tie, the market will resolve to $0.50 for each team. If the game is postponed but begins within 48 hours from its originally scheduled start time, the market will remain open and resolve based on the official final result. If the game is not started within 48 hours, the market will resolve to a fair market price.",
+      "settlement_timer_seconds": 60,
+      "status": "active",
+      "strike_type": "structured",
+      "ticker": "KXNFLGAME-26SEP13ARILAC-LAC",
+      "title": "Will Los Angeles C win the Arizona vs Los Angeles C Pro Football game?",
+      "updated_time": "2026-05-15T17:04:00.836408Z",
+      "volume_24h_fp": "802.58",
+      "volume_fp": "802.58",
+      "yes_ask_dollars": "0.8000",
+      "yes_ask_size_fp": "25.00",
+      "yes_bid_dollars": "0.7500",
+      "yes_bid_size_fp": "25.00",
+      "yes_sub_title": "Los Angeles C"
+    },
+    {
+      "can_close_early": true,
+      "close_time": "2026-09-15T20:25:00Z",
+      "created_time": "2026-05-15T16:59:57.097306Z",
+      "custom_strike": {
+        "football_team": "d73dae4f-1f08-4b5e-bf23-4e25e9b6a69c"
+      },
+      "early_close_condition": "This market will close and expire after a winner is declared.",
+      "event_ticker": "KXNFLGAME-26SEP13ARILAC",
+      "expected_expiration_time": "2026-09-13T23:25:00Z",
+      "expiration_time": "2026-09-15T20:25:00Z",
+      "expiration_value": "",
+      "fractional_trading_enabled": true,
+      "last_price_dollars": "0.2200",
+      "latest_expiration_time": "2026-09-15T20:25:00Z",
+      "liquidity_dollars": "0.0000",
+      "market_type": "binary",
+      "no_ask_dollars": "0.7800",
+      "no_bid_dollars": "0.7200",
+      "no_sub_title": "Arizona",
+      "notional_value_dollars": "1.0000",
+      "occurrence_datetime": "2026-09-13T23:25:00Z",
+      "open_interest_fp": "442.45",
+      "open_time": "2026-05-15T17:04:00Z",
+      "previous_price_dollars": "0.0000",
+      "previous_yes_ask_dollars": "0.0000",
+      "previous_yes_bid_dollars": "0.0000",
+      "price_level_structure": "linear_cent",
+      "price_ranges": [
+        {
+          "end": "1.0000",
+          "start": "0.0000",
+          "step": "0.0100"
+        }
+      ],
+      "response_price_units": "usd_cent",
+      "result": "",
+      "rules_primary": "If Arizona wins the Arizona vs Los Angeles C professional football game originally scheduled for Sep 13, 2026, then the market resolves to Yes.",
+      "rules_secondary": "The following market refers to the team who wins the Arizona vs Los Angeles C professional football game originally scheduled for Sep 13, 2026. If the game ends in a tie, the market will resolve to $0.50 for each team. If the game is postponed but begins within 48 hours from its originally scheduled start time, the market will remain open and resolve based on the official final result. If the game is not started within 48 hours, the market will resolve to a fair market price.",
+      "settlement_timer_seconds": 60,
+      "status": "active",
+      "strike_type": "structured",
+      "ticker": "KXNFLGAME-26SEP13ARILAC-ARI",
+      "title": "Will Arizona win the Arizona vs Los Angeles C Pro Football game?",
+      "updated_time": "2026-05-15T17:04:00.836408Z",
+      "volume_24h_fp": "442.45",
+      "volume_fp": "442.45",
+      "yes_ask_dollars": "0.2800",
+      "yes_ask_size_fp": "475.47",
+      "yes_bid_dollars": "0.2200",
+      "yes_bid_size_fp": "0.03",
+      "yes_sub_title": "Arizona"
+    },
+    {
+      "can_close_early": true,
+      "close_time": "2026-09-15T17:00:00Z",
+      "created_time": "2026-05-15T16:59:56.329629Z",
+      "custom_strike": {
+        "football_team": "96edbad3-1be5-4528-a3ed-c6e0c28c5fa0"
+      },
+      "early_close_condition": "This market will close and expire after a winner is declared.",
+      "event_ticker": "KXNFLGAME-26SEP13BUFHOU",
+      "expected_expiration_time": "2026-09-13T20:00:00Z",
+      "expiration_time": "2026-09-15T17:00:00Z",
+      "expiration_value": "",
+      "fractional_trading_enabled": true,
+      "last_price_dollars": "0.0000",
+      "latest_expiration_time": "2026-09-15T17:00:00Z",
+      "liquidity_dollars": "0.0000",
+      "market_type": "binary",
+      "no_ask_dollars": "0.7500",
+      "no_bid_dollars": "0.4700",
+      "no_sub_title": "Houston",
+      "notional_value_dollars": "1.0000",
+      "occurrence_datetime": "2026-09-13T20:00:00Z",
+      "open_interest_fp": "0.00",
+      "open_time": "2026-05-15T17:04:00Z",
+      "previous_price_dollars": "0.0000",
+      "previous_yes_ask_dollars": "0.0000",
+      "previous_yes_bid_dollars": "0.0000",
+      "price_level_structure": "linear_cent",
+      "price_ranges": [
+        {
+          "end": "1.0000",
+          "start": "0.0000",
+          "step": "0.0100"
+        }
+      ],
+      "response_price_units": "usd_cent",
+      "result": "",
+      "rules_primary": "If Houston wins the Buffalo vs Houston professional football game originally scheduled for Sep 13, 2026, then the market resolves to Yes.",
+      "rules_secondary": "The following market refers to the team who wins the Buffalo vs Houston professional football game originally scheduled for Sep 13, 2026. If the game ends in a tie, the market will resolve to $0.50 for each team. If the game is postponed but begins within 48 hours from its originally scheduled start time, the market will remain open and resolve based on the official final result. If the game is not started within 48 hours, the market will resolve to a fair market price.",
+      "settlement_timer_seconds": 60,
+      "status": "active",
+      "strike_type": "structured",
+      "ticker": "KXNFLGAME-26SEP13BUFHOU-HOU",
+      "title": "Will Houston win the Buffalo vs Houston Pro Football game?",
+      "updated_time": "2026-05-15T17:04:00.836408Z",
+      "volume_24h_fp": "0.00",
+      "volume_fp": "0.00",
+      "yes_ask_dollars": "0.5300",
+      "yes_ask_size_fp": "8.00",
+      "yes_bid_dollars": "0.2500",
+      "yes_bid_size_fp": "500.00",
+      "yes_sub_title": "Houston"
+    },
+    {
+      "can_close_early": true,
+      "close_time": "2026-09-15T17:00:00Z",
+      "created_time": "2026-05-15T16:59:56.329629Z",
+      "custom_strike": {
+        "football_team": "f9acd396-ba35-4cae-a431-a44b2af707b0"
+      },
+      "early_close_condition": "This market will close and expire after a winner is declared.",
+      "event_ticker": "KXNFLGAME-26SEP13BUFHOU",
+      "expected_expiration_time": "2026-09-13T20:00:00Z",
+      "expiration_time": "2026-09-15T17:00:00Z",
+      "expiration_value": "",
+      "fractional_trading_enabled": true,
+      "last_price_dollars": "0.7600",
+      "latest_expiration_time": "2026-09-15T17:00:00Z",
+      "liquidity_dollars": "0.0000",
+      "market_type": "binary",
+      "no_ask_dollars": "0.6400",
+      "no_bid_dollars": "0.3000",
+      "no_sub_title": "Buffalo",
+      "notional_value_dollars": "1.0000",
+      "occurrence_datetime": "2026-09-13T20:00:00Z",
+      "open_interest_fp": "2.58",
+      "open_time": "2026-05-15T17:04:00Z",
+      "previous_price_dollars": "0.0000",
+      "previous_yes_ask_dollars": "0.0000",
+      "previous_yes_bid_dollars": "0.0000",
+      "price_level_structure": "linear_cent",
+      "price_ranges": [
+        {
+          "end": "1.0000",
+          "start": "0.0000",
+          "step": "0.0100"
+        }
+      ],
+      "response_price_units": "usd_cent",
+      "result": "",
+      "rules_primary": "If Buffalo wins the Buffalo vs Houston professional football game originally scheduled for Sep 13, 2026, then the market resolves to Yes.",
+      "rules_secondary": "The following market refers to the team who wins the Buffalo vs Houston professional football game originally scheduled for Sep 13, 2026. If the game ends in a tie, the market will resolve to $0.50 for each team. If the game is postponed but begins within 48 hours from its originally scheduled start time, the market will remain open and resolve based on the official final result. If the game is not started within 48 hours, the market will resolve to a fair market price.",
+      "settlement_timer_seconds": 60,
+      "status": "active",
+      "strike_type": "structured",
+      "ticker": "KXNFLGAME-26SEP13BUFHOU-BUF",
+      "title": "Will Buffalo win the Buffalo vs Houston Pro Football game?",
+      "updated_time": "2026-05-15T17:04:00.836408Z",
+      "volume_24h_fp": "2.58",
+      "volume_fp": "2.58",
+      "yes_ask_dollars": "0.7000",
+      "yes_ask_size_fp": "11.00",
+      "yes_bid_dollars": "0.3600",
+      "yes_bid_size_fp": "502.58",
+      "yes_sub_title": "Buffalo"
+    },
+    {
+      "can_close_early": true,
+      "close_time": "2026-09-15T17:00:00Z",
+      "created_time": "2026-05-15T16:59:55.640634Z",
+      "custom_strike": {
+        "football_team": "f7c2cd06-61bf-469e-984f-3ef56cb8f3d7"
+      },
+      "early_close_condition": "This market will close and expire after a winner is declared.",
+      "event_ticker": "KXNFLGAME-26SEP13NODET",
+      "expected_expiration_time": "2026-09-13T20:00:00Z",
+      "expiration_time": "2026-09-15T17:00:00Z",
+      "expiration_value": "",
+      "fractional_trading_enabled": true,
+      "last_price_dollars": "0.6000",
+      "latest_expiration_time": "2026-09-15T17:00:00Z",
+      "liquidity_dollars": "0.0000",
+      "market_type": "binary",
+      "no_ask_dollars": "0.7600",
+      "no_bid_dollars": "0.4800",
+      "no_sub_title": "New Orleans",
+      "notional_value_dollars": "1.0000",
+      "occurrence_datetime": "2026-09-13T20:00:00Z",
+      "open_interest_fp": "0.16",
+      "open_time": "2026-05-15T17:04:00Z",
+      "previous_price_dollars": "0.0000",
+      "previous_yes_ask_dollars": "0.0000",
+      "previous_yes_bid_dollars": "0.0000",
+      "price_level_structure": "linear_cent",
+      "price_ranges": [
+        {
+          "end": "1.0000",
+          "start": "0.0000",
+          "step": "0.0100"
+        }
+      ],
+      "response_price_units": "usd_cent",
+      "result": "",
+      "rules_primary": "If New Orleans wins the New Orleans vs Detroit professional football game originally scheduled for Sep 13, 2026, then the market resolves to Yes.",
+      "rules_secondary": "The following market refers to the team who wins the New Orleans vs Detroit professional football game originally scheduled for Sep 13, 2026. If the game ends in a tie, the market will resolve to $0.50 for each team. If the game is postponed but begins within 48 hours from its originally scheduled start time, the market will remain open and resolve based on the official final result. If the game is not started within 48 hours, the market will resolve to a fair market price.",
+      "settlement_timer_seconds": 60,
+      "status": "active",
+      "strike_type": "structured",
+      "ticker": "KXNFLGAME-26SEP13NODET-NO",
+      "title": "Will New Orleans win the New Orleans vs Detroit Pro Football game?",
+      "updated_time": "2026-05-15T17:04:00.836408Z",
+      "volume_24h_fp": "0.16",
+      "volume_fp": "0.16",
+      "yes_ask_dollars": "0.5200",
+      "yes_ask_size_fp": "4.00",
+      "yes_bid_dollars": "0.2400",
+      "yes_bid_size_fp": "100.16",
+      "yes_sub_title": "New Orleans"
+    },
+    {
+      "can_close_early": true,
+      "close_time": "2026-09-15T17:00:00Z",
+      "created_time": "2026-05-15T16:59:55.640634Z",
+      "custom_strike": {
+        "football_team": "f95a55a7-8472-4ffa-be20-14547e3c32ff"
+      },
+      "early_close_condition": "This market will close and expire after a winner is declared.",
+      "event_ticker": "KXNFLGAME-26SEP13NODET",
+      "expected_expiration_time": "2026-09-13T20:00:00Z",
+      "expiration_time": "2026-09-15T17:00:00Z",
+      "expiration_value": "",
+      "fractional_trading_enabled": true,
+      "last_price_dollars": "0.7700",
+      "latest_expiration_time": "2026-09-15T17:00:00Z",
+      "liquidity_dollars": "0.0000",
+      "market_type": "binary",
+      "no_ask_dollars": "0.4300",
+      "no_bid_dollars": "0.2400",
+      "no_sub_title": "Detroit",
+      "notional_value_dollars": "1.0000",
+      "occurrence_datetime": "2026-09-13T20:00:00Z",
+      "open_interest_fp": "60.55",
+      "open_time": "2026-05-15T17:04:00Z",
+      "previous_price_dollars": "0.0000",
+      "previous_yes_ask_dollars": "0.0000",
+      "previous_yes_bid_dollars": "0.0000",
+      "price_level_structure": "linear_cent",
+      "price_ranges": [
+        {
+          "end": "1.0000",
+          "start": "0.0000",
+          "step": "0.0100"
+        }
+      ],
+      "response_price_units": "usd_cent",
+      "result": "",
+      "rules_primary": "If Detroit wins the New Orleans vs Detroit professional football game originally scheduled for Sep 13, 2026, then the market resolves to Yes.",
+      "rules_secondary": "The following market refers to the team who wins the New Orleans vs Detroit professional football game originally scheduled for Sep 13, 2026. If the game ends in a tie, the market will resolve to $0.50 for each team. If the game is postponed but begins within 48 hours from its originally scheduled start time, the market will remain open and resolve based on the official final result. If the game is not started within 48 hours, the market will resolve to a fair market price.",
+      "settlement_timer_seconds": 60,
+      "status": "active",
+      "strike_type": "structured",
+      "ticker": "KXNFLGAME-26SEP13NODET-DET",
+      "title": "Will Detroit win the New Orleans vs Detroit Pro Football game?",
+      "updated_time": "2026-05-15T17:04:00.836408Z",
+      "volume_24h_fp": "60.55",
+      "volume_fp": "60.55",
+      "yes_ask_dollars": "0.7600",
+      "yes_ask_size_fp": "100.00",
+      "yes_bid_dollars": "0.5700",
+      "yes_bid_size_fp": "10.00",
+      "yes_sub_title": "Detroit"
+    },
+    {
+      "can_close_early": true,
+      "close_time": "2026-09-15T17:00:00Z",
+      "created_time": "2026-05-15T16:59:54.983522Z",
+      "custom_strike": {
+        "football_team": "7c86629b-eafc-47b4-9204-b46a2d0e9cbb"
+      },
+      "early_close_condition": "This market will close and expire after a winner is declared.",
+      "event_ticker": "KXNFLGAME-26SEP13NYJTEN",
+      "expected_expiration_time": "2026-09-13T20:00:00Z",
+      "expiration_time": "2026-09-15T17:00:00Z",
+      "expiration_value": "",
+      "fractional_trading_enabled": true,
+      "last_price_dollars": "0.6800",
+      "latest_expiration_time": "2026-09-15T17:00:00Z",
+      "liquidity_dollars": "0.0000",
+      "market_type": "binary",
+      "no_ask_dollars": "0.4500",
+      "no_bid_dollars": "0.3600",
+      "no_sub_title": "Tennessee",
+      "notional_value_dollars": "1.0000",
+      "occurrence_datetime": "2026-09-13T20:00:00Z",
+      "open_interest_fp": "19.97",
+      "open_time": "2026-05-15T17:04:00Z",
+      "previous_price_dollars": "0.0000",
+      "previous_yes_ask_dollars": "0.0000",
+      "previous_yes_bid_dollars": "0.0000",
+      "price_level_structure": "linear_cent",
+      "price_ranges": [
+        {
+          "end": "1.0000",
+          "start": "0.0000",
+          "step": "0.0100"
+        }
+      ],
+      "response_price_units": "usd_cent",
+      "result": "",
+      "rules_primary": "If Tennessee wins the New York J vs Tennessee professional football game originally scheduled for Sep 13, 2026, then the market resolves to Yes.",
+      "rules_secondary": "The following market refers to the team who wins the New York J vs Tennessee professional football game originally scheduled for Sep 13, 2026. If the game ends in a tie, the market will resolve to $0.50 for each team. If the game is postponed but begins within 48 hours from its originally scheduled start time, the market will remain open and resolve based on the official final result. If the game is not started within 48 hours, the market will resolve to a fair market price.",
+      "settlement_timer_seconds": 60,
+      "status": "active",
+      "strike_type": "structured",
+      "ticker": "KXNFLGAME-26SEP13NYJTEN-TEN",
+      "title": "Will Tennessee win the New York J vs Tennessee Pro Football game?",
+      "updated_time": "2026-05-15T17:04:00.836408Z",
+      "volume_24h_fp": "22.80",
+      "volume_fp": "22.80",
+      "yes_ask_dollars": "0.6400",
+      "yes_ask_size_fp": "2.83",
+      "yes_bid_dollars": "0.5500",
+      "yes_bid_size_fp": "1.00",
+      "yes_sub_title": "Tennessee"
+    },
+    {
+      "can_close_early": true,
+      "close_time": "2026-09-15T17:00:00Z",
+      "created_time": "2026-05-15T16:59:54.983522Z",
+      "custom_strike": {
+        "football_team": "ccc2af2d-5c4d-4717-8036-5ba6bec5cfbd"
+      },
+      "early_close_condition": "This market will close and expire after a winner is declared.",
+      "event_ticker": "KXNFLGAME-26SEP13NYJTEN",
+      "expected_expiration_time": "2026-09-13T20:00:00Z",
+      "expiration_time": "2026-09-15T17:00:00Z",
+      "expiration_value": "",
+      "fractional_trading_enabled": true,
+      "last_price_dollars": "0.0000",
+      "latest_expiration_time": "2026-09-15T17:00:00Z",
+      "liquidity_dollars": "0.0000",
+      "market_type": "binary",
+      "no_ask_dollars": "0.7600",
+      "no_bid_dollars": "0.4100",
+      "no_sub_title": "New York J",
+      "notional_value_dollars": "1.0000",
+      "occurrence_datetime": "2026-09-13T20:00:00Z",
+      "open_interest_fp": "0.00",
+      "open_time": "2026-05-15T17:04:00Z",
+      "previous_price_dollars": "0.0000",
+      "previous_yes_ask_dollars": "0.0000",
+      "previous_yes_bid_dollars": "0.0000",
+      "price_level_structure": "linear_cent",
+      "price_ranges": [
+        {
+          "end": "1.0000",
+          "start": "0.0000",
+          "step": "0.0100"
+        }
+      ],
+      "response_price_units": "usd_cent",
+      "result": "",
+      "rules_primary": "If New York J wins the New York J vs Tennessee professional football game originally scheduled for Sep 13, 2026, then the market resolves to Yes.",
+      "rules_secondary": "The following market refers to the team who wins the New York J vs Tennessee professional football game originally scheduled for Sep 13, 2026. If the game ends in a tie, the market will resolve to $0.50 for each team. If the game is postponed but begins within 48 hours from its originally scheduled start time, the market will remain open and resolve based on the official final result. If the game is not started within 48 hours, the market will resolve to a fair market price.",
+      "settlement_timer_seconds": 60,
+      "status": "active",
+      "strike_type": "structured",
+      "ticker": "KXNFLGAME-26SEP13NYJTEN-NYJ",
+      "title": "Will New York J win the New York J vs Tennessee Pro Football game?",
+      "updated_time": "2026-05-15T17:04:00.836408Z",
+      "volume_24h_fp": "0.00",
+      "volume_fp": "0.00",
+      "yes_ask_dollars": "0.5900",
+      "yes_ask_size_fp": "9.00",
+      "yes_bid_dollars": "0.2400",
+      "yes_bid_size_fp": "500.00",
+      "yes_sub_title": "New York J"
+    },
+    {
+      "can_close_early": true,
+      "close_time": "2026-09-15T17:00:00Z",
+      "created_time": "2026-05-15T16:59:54.343275Z",
+      "custom_strike": {
+        "football_team": "1105fa0d-c798-4020-9e24-f377a334b3d9"
+      },
+      "early_close_condition": "This market will close and expire after a winner is declared.",
+      "event_ticker": "KXNFLGAME-26SEP13TBCIN",
+      "expected_expiration_time": "2026-09-13T20:00:00Z",
+      "expiration_time": "2026-09-15T17:00:00Z",
+      "expiration_value": "",
+      "fractional_trading_enabled": true,
+      "last_price_dollars": "0.6400",
+      "latest_expiration_time": "2026-09-15T17:00:00Z",
+      "liquidity_dollars": "0.0000",
+      "market_type": "binary",
+      "no_ask_dollars": "0.7000",
+      "no_bid_dollars": "0.3600",
+      "no_sub_title": "Tampa Bay",
+      "notional_value_dollars": "1.0000",
+      "occurrence_datetime": "2026-09-13T20:00:00Z",
+      "open_interest_fp": "0.15",
+      "open_time": "2026-05-15T17:04:00Z",
+      "previous_price_dollars": "0.0000",
+      "previous_yes_ask_dollars": "0.0000",
+      "previous_yes_bid_dollars": "0.0000",
+      "price_level_structure": "linear_cent",
+      "price_ranges": [
+        {
+          "end": "1.0000",
+          "start": "0.0000",
+          "step": "0.0100"
+        }
+      ],
+      "response_price_units": "usd_cent",
+      "result": "",
+      "rules_primary": "If Tampa Bay wins the Tampa Bay vs Cincinnati professional football game originally scheduled for Sep 13, 2026, then the market resolves to Yes.",
+      "rules_secondary": "The following market refers to the team who wins the Tampa Bay vs Cincinnati professional football game originally scheduled for Sep 13, 2026. If the game ends in a tie, the market will resolve to $0.50 for each team. If the game is postponed but begins within 48 hours from its originally scheduled start time, the market will remain open and resolve based on the official final result. If the game is not started within 48 hours, the market will resolve to a fair market price.",
+      "settlement_timer_seconds": 60,
+      "status": "active",
+      "strike_type": "structured",
+      "ticker": "KXNFLGAME-26SEP13TBCIN-TB",
+      "title": "Will Tampa Bay win the Tampa Bay vs Cincinnati Pro Football game?",
+      "updated_time": "2026-05-15T17:04:00.836408Z",
+      "volume_24h_fp": "0.15",
+      "volume_fp": "0.15",
+      "yes_ask_dollars": "0.6400",
+      "yes_ask_size_fp": "10.00",
+      "yes_bid_dollars": "0.3000",
+      "yes_bid_size_fp": "10.00",
+      "yes_sub_title": "Tampa Bay"
+    },
+    {
+      "can_close_early": true,
+      "close_time": "2026-09-15T17:00:00Z",
+      "created_time": "2026-05-15T16:59:54.343275Z",
+      "custom_strike": {
+        "football_team": "b007a1ab-bca6-42c7-8706-62607a605866"
+      },
+      "early_close_condition": "This market will close and expire after a winner is declared.",
+      "event_ticker": "KXNFLGAME-26SEP13TBCIN",
+      "expected_expiration_time": "2026-09-13T20:00:00Z",
+      "expiration_time": "2026-09-15T17:00:00Z",
+      "expiration_value": "",
+      "fractional_trading_enabled": true,
+      "last_price_dollars": "0.0000",
+      "latest_expiration_time": "2026-09-15T17:00:00Z",
+      "liquidity_dollars": "0.0000",
+      "market_type": "binary",
+      "no_ask_dollars": "0.7500",
+      "no_bid_dollars": "0.2800",
+      "no_sub_title": "Cincinnati",
+      "notional_value_dollars": "1.0000",
+      "occurrence_datetime": "2026-09-13T20:00:00Z",
+      "open_interest_fp": "0.00",
+      "open_time": "2026-05-15T17:04:00Z",
+      "previous_price_dollars": "0.0000",
+      "previous_yes_ask_dollars": "0.0000",
+      "previous_yes_bid_dollars": "0.0000",
+      "price_level_structure": "linear_cent",
+      "price_ranges": [
+        {
+          "end": "1.0000",
+          "start": "0.0000",
+          "step": "0.0100"
+        }
+      ],
+      "response_price_units": "usd_cent",
+      "result": "",
+      "rules_primary": "If Cincinnati wins the Tampa Bay vs Cincinnati professional football game originally scheduled for Sep 13, 2026, then the market resolves to Yes.",
+      "rules_secondary": "The following market refers to the team who wins the Tampa Bay vs Cincinnati professional football game originally scheduled for Sep 13, 2026. If the game ends in a tie, the market will resolve to $0.50 for each team. If the game is postponed but begins within 48 hours from its originally scheduled start time, the market will remain open and resolve based on the official final result. If the game is not started within 48 hours, the market will resolve to a fair market price.",
+      "settlement_timer_seconds": 60,
+      "status": "active",
+      "strike_type": "structured",
+      "ticker": "KXNFLGAME-26SEP13TBCIN-CIN",
+      "title": "Will Cincinnati win the Tampa Bay vs Cincinnati Pro Football game?",
+      "updated_time": "2026-05-15T17:04:00.836408Z",
+      "volume_24h_fp": "0.00",
+      "volume_fp": "0.00",
+      "yes_ask_dollars": "0.7200",
+      "yes_ask_size_fp": "8.00",
+      "yes_bid_dollars": "0.2500",
+      "yes_bid_size_fp": "500.00",
+      "yes_sub_title": "Cincinnati"
+    },
+    {
+      "can_close_early": true,
+      "close_time": "2026-09-15T17:00:00Z",
+      "created_time": "2026-05-15T16:59:53.656498Z",
+      "custom_strike": {
+        "football_team": "61a75ab7-eaf0-4601-b920-86b1e165007d"
+      },
+      "early_close_condition": "This market will close and expire after a winner is declared.",
+      "event_ticker": "KXNFLGAME-26SEP13CLEJAC",
+      "expected_expiration_time": "2026-09-13T20:00:00Z",
+      "expiration_time": "2026-09-15T17:00:00Z",
+      "expiration_value": "",
+      "fractional_trading_enabled": true,
+      "last_price_dollars": "0.0000",
+      "latest_expiration_time": "2026-09-15T17:00:00Z",
+      "liquidity_dollars": "0.0000",
+      "market_type": "binary",
+      "no_ask_dollars": "0.7000",
+      "no_bid_dollars": "0.2400",
+      "no_sub_title": "Jacksonville",
+      "notional_value_dollars": "1.0000",
+      "occurrence_datetime": "2026-09-13T20:00:00Z",
+      "open_interest_fp": "0.00",
+      "open_time": "2026-05-15T17:04:00Z",
+      "previous_price_dollars": "0.0000",
+      "previous_yes_ask_dollars": "0.0000",
+      "previous_yes_bid_dollars": "0.0000",
+      "price_level_structure": "linear_cent",
+      "price_ranges": [
+        {
+          "end": "1.0000",
+          "start": "0.0000",
+          "step": "0.0100"
+        }
+      ],
+      "response_price_units": "usd_cent",
+      "result": "",
+      "rules_primary": "If Jacksonville wins the Cleveland vs Jacksonville professional football game originally scheduled for Sep 13, 2026, then the market resolves to Yes.",
+      "rules_secondary": "The following market refers to the team who wins the Cleveland vs Jacksonville professional football game originally scheduled for Sep 13, 2026. If the game ends in a tie, the market will resolve to $0.50 for each team. If the game is postponed but begins within 48 hours from its originally scheduled start time, the market will remain open and resolve based on the official final result. If the game is not started within 48 hours, the market will resolve to a fair market price.",
+      "settlement_timer_seconds": 60,
+      "status": "active",
+      "strike_type": "structured",
+      "ticker": "KXNFLGAME-26SEP13CLEJAC-JAC",
+      "title": "Will Jacksonville win the Cleveland vs Jacksonville Pro Football game?",
+      "updated_time": "2026-05-15T17:04:00.836408Z",
+      "volume_24h_fp": "0.00",
+      "volume_fp": "0.00",
+      "yes_ask_dollars": "0.7600",
+      "yes_ask_size_fp": "16.00",
+      "yes_bid_dollars": "0.3000",
+      "yes_bid_size_fp": "500.00",
+      "yes_sub_title": "Jacksonville"
+    },
+    {
+      "can_close_early": true,
+      "close_time": "2026-09-15T17:00:00Z",
+      "created_time": "2026-05-15T16:59:53.656498Z",
+      "custom_strike": {
+        "football_team": "05cc62a4-bd74-4b2c-ab7b-1b177b9f6790"
+      },
+      "early_close_condition": "This market will close and expire after a winner is declared.",
+      "event_ticker": "KXNFLGAME-26SEP13CLEJAC",
+      "expected_expiration_time": "2026-09-13T20:00:00Z",
+      "expiration_time": "2026-09-15T17:00:00Z",
+      "expiration_value": "",
+      "fractional_trading_enabled": true,
+      "last_price_dollars": "0.6300",
+      "latest_expiration_time": "2026-09-15T17:00:00Z",
+      "liquidity_dollars": "0.0000",
+      "market_type": "binary",
+      "no_ask_dollars": "0.7700",
+      "no_bid_dollars": "0.3700",
+      "no_sub_title": "Cleveland",
+      "notional_value_dollars": "1.0000",
+      "occurrence_datetime": "2026-09-13T20:00:00Z",
+      "open_interest_fp": "3.23",
+      "open_time": "2026-05-15T17:04:00Z",
+      "previous_price_dollars": "0.0000",
+      "previous_yes_ask_dollars": "0.0000",
+      "previous_yes_bid_dollars": "0.0000",
+      "price_level_structure": "linear_cent",
+      "price_ranges": [
+        {
+          "end": "1.0000",
+          "start": "0.0000",
+          "step": "0.0100"
+        }
+      ],
+      "response_price_units": "usd_cent",
+      "result": "",
+      "rules_primary": "If Cleveland wins the Cleveland vs Jacksonville professional football game originally scheduled for Sep 13, 2026, then the market resolves to Yes.",
+      "rules_secondary": "The following market refers to the team who wins the Cleveland vs Jacksonville professional football game originally scheduled for Sep 13, 2026. If the game ends in a tie, the market will resolve to $0.50 for each team. If the game is postponed but begins within 48 hours from its originally scheduled start time, the market will remain open and resolve based on the official final result. If the game is not started within 48 hours, the market will resolve to a fair market price.",
+      "settlement_timer_seconds": 60,
+      "status": "active",
+      "strike_type": "structured",
+      "ticker": "KXNFLGAME-26SEP13CLEJAC-CLE",
+      "title": "Will Cleveland win the Cleveland vs Jacksonville Pro Football game?",
+      "updated_time": "2026-05-15T17:04:00.836408Z",
+      "volume_24h_fp": "3.23",
+      "volume_fp": "3.23",
+      "yes_ask_dollars": "0.6300",
+      "yes_ask_size_fp": "7.00",
+      "yes_bid_dollars": "0.2300",
+      "yes_bid_size_fp": "303.09",
+      "yes_sub_title": "Cleveland"
+    },
+    {
+      "can_close_early": true,
+      "close_time": "2026-09-15T17:00:00Z",
+      "created_time": "2026-05-15T16:59:52.82469Z",
+      "custom_strike": {
+        "football_team": "6aa76797-7833-45e1-85e3-96e0122801e1"
+      },
+      "early_close_condition": "This market will close and expire after a winner is declared.",
+      "event_ticker": "KXNFLGAME-26SEP13ATLPIT",
+      "expected_expiration_time": "2026-09-13T20:00:00Z",
+      "expiration_time": "2026-09-15T17:00:00Z",
+      "expiration_value": "",
+      "fractional_trading_enabled": true,
+      "last_price_dollars": "0.0000",
+      "latest_expiration_time": "2026-09-15T17:00:00Z",
+      "liquidity_dollars": "0.0000",
+      "market_type": "binary",
+      "no_ask_dollars": "0.6200",
+      "no_bid_dollars": "0.3600",
+      "no_sub_title": "Pittsburgh",
+      "notional_value_dollars": "1.0000",
+      "occurrence_datetime": "2026-09-13T20:00:00Z",
+      "open_interest_fp": "0.00",
+      "open_time": "2026-05-15T17:04:00Z",
+      "previous_price_dollars": "0.0000",
+      "previous_yes_ask_dollars": "0.0000",
+      "previous_yes_bid_dollars": "0.0000",
+      "price_level_structure": "linear_cent",
+      "price_ranges": [
+        {
+          "end": "1.0000",
+          "start": "0.0000",
+          "step": "0.0100"
+        }
+      ],
+      "response_price_units": "usd_cent",
+      "result": "",
+      "rules_primary": "If Pittsburgh wins the Atlanta vs Pittsburgh professional football game originally scheduled for Sep 13, 2026, then the market resolves to Yes.",
+      "rules_secondary": "The following market refers to the team who wins the Atlanta vs Pittsburgh professional football game originally scheduled for Sep 13, 2026. If the game ends in a tie, the market will resolve to $0.50 for each team. If the game is postponed but begins within 48 hours from its originally scheduled start time, the market will remain open and resolve based on the official final result. If the game is not started within 48 hours, the market will resolve to a fair market price.",
+      "settlement_timer_seconds": 60,
+      "status": "active",
+      "strike_type": "structured",
+      "ticker": "KXNFLGAME-26SEP13ATLPIT-PIT",
+      "title": "Will Pittsburgh win the Atlanta vs Pittsburgh Pro Football game?",
+      "updated_time": "2026-05-15T17:04:00.836408Z",
+      "volume_24h_fp": "0.00",
+      "volume_fp": "0.00",
+      "yes_ask_dollars": "0.6400",
+      "yes_ask_size_fp": "11.00",
+      "yes_bid_dollars": "0.3800",
+      "yes_bid_size_fp": "34.00",
+      "yes_sub_title": "Pittsburgh"
+    },
+    {
+      "can_close_early": true,
+      "close_time": "2026-09-15T17:00:00Z",
+      "created_time": "2026-05-15T16:59:52.82469Z",
+      "custom_strike": {
+        "football_team": "75685be6-4388-4bba-8bcb-d0b0c24feb50"
+      },
+      "early_close_condition": "This market will close and expire after a winner is declared.",
+      "event_ticker": "KXNFLGAME-26SEP13ATLPIT",
+      "expected_expiration_time": "2026-09-13T20:00:00Z",
+      "expiration_time": "2026-09-15T17:00:00Z",
+      "expiration_value": "",
+      "fractional_trading_enabled": true,
+      "last_price_dollars": "0.0000",
+      "latest_expiration_time": "2026-09-15T17:00:00Z",
+      "liquidity_dollars": "0.0000",
+      "market_type": "binary",
+      "no_ask_dollars": "0.7600",
+      "no_bid_dollars": "0.4900",
+      "no_sub_title": "Atlanta",
+      "notional_value_dollars": "1.0000",
+      "occurrence_datetime": "2026-09-13T20:00:00Z",
+      "open_interest_fp": "0.00",
+      "open_time": "2026-05-15T17:04:00Z",
+      "previous_price_dollars": "0.0000",
+      "previous_yes_ask_dollars": "0.0000",
+      "previous_yes_bid_dollars": "0.0000",
+      "price_level_structure": "linear_cent",
+      "price_ranges": [
+        {
+          "end": "1.0000",
+          "start": "0.0000",
+          "step": "0.0100"
+        }
+      ],
+      "response_price_units": "usd_cent",
+      "result": "",
+      "rules_primary": "If Atlanta wins the Atlanta vs Pittsburgh professional football game originally scheduled for Sep 13, 2026, then the market resolves to Yes.",
+      "rules_secondary": "The following market refers to the team who wins the Atlanta vs Pittsburgh professional football game originally scheduled for Sep 13, 2026. If the game ends in a tie, the market will resolve to $0.50 for each team. If the game is postponed but begins within 48 hours from its originally scheduled start time, the market will remain open and resolve based on the official final result. If the game is not started within 48 hours, the market will resolve to a fair market price.",
+      "settlement_timer_seconds": 60,
+      "status": "active",
+      "strike_type": "structured",
+      "ticker": "KXNFLGAME-26SEP13ATLPIT-ATL",
+      "title": "Will Atlanta win the Atlanta vs Pittsburgh Pro Football game?",
+      "updated_time": "2026-05-15T17:04:00.836408Z",
+      "volume_24h_fp": "0.00",
+      "volume_fp": "0.00",
+      "yes_ask_dollars": "0.5100",
+      "yes_ask_size_fp": "8.00",
+      "yes_bid_dollars": "0.2400",
+      "yes_bid_size_fp": "500.00",
+      "yes_sub_title": "Atlanta"
+    },
+    {
+      "can_close_early": true,
+      "close_time": "2026-09-15T17:00:00Z",
+      "created_time": "2026-05-15T16:59:52.010156Z",
+      "custom_strike": {
+        "football_team": "fe5f8219-fef4-4498-83d5-f6cc6f2cb7bf"
+      },
+      "early_close_condition": "This market will close and expire after a winner is declared.",
+      "event_ticker": "KXNFLGAME-26SEP13BALIND",
+      "expected_expiration_time": "2026-09-13T20:00:00Z",
+      "expiration_time": "2026-09-15T17:00:00Z",
+      "expiration_value": "",
+      "fractional_trading_enabled": true,
+      "last_price_dollars": "0.0000",
+      "latest_expiration_time": "2026-09-15T17:00:00Z",
+      "liquidity_dollars": "0.0000",
+      "market_type": "binary",
+      "no_ask_dollars": "0.7700",
+      "no_bid_dollars": "0.3500",
+      "no_sub_title": "Indianapolis",
+      "notional_value_dollars": "1.0000",
+      "occurrence_datetime": "2026-09-13T20:00:00Z",
+      "open_interest_fp": "0.00",
+      "open_time": "2026-05-15T17:04:00Z",
+      "previous_price_dollars": "0.0000",
+      "previous_yes_ask_dollars": "0.0000",
+      "previous_yes_bid_dollars": "0.0000",
+      "price_level_structure": "linear_cent",
+      "price_ranges": [
+        {
+          "end": "1.0000",
+          "start": "0.0000",
+          "step": "0.0100"
+        }
+      ],
+      "response_price_units": "usd_cent",
+      "result": "",
+      "rules_primary": "If Indianapolis wins the Baltimore vs Indianapolis professional football game originally scheduled for Sep 13, 2026, then the market resolves to Yes.",
+      "rules_secondary": "The following market refers to the team who wins the Baltimore vs Indianapolis professional football game originally scheduled for Sep 13, 2026. If the game ends in a tie, the market will resolve to $0.50 for each team. If the game is postponed but begins within 48 hours from its originally scheduled start time, the market will remain open and resolve based on the official final result. If the game is not started within 48 hours, the market will resolve to a fair market price.",
+      "settlement_timer_seconds": 60,
+      "status": "active",
+      "strike_type": "structured",
+      "ticker": "KXNFLGAME-26SEP13BALIND-IND",
+      "title": "Will Indianapolis win the Baltimore vs Indianapolis Pro Football game?",
+      "updated_time": "2026-05-15T17:04:00.836408Z",
+      "volume_24h_fp": "0.00",
+      "volume_fp": "0.00",
+      "yes_ask_dollars": "0.6500",
+      "yes_ask_size_fp": "11.00",
+      "yes_bid_dollars": "0.2300",
+      "yes_bid_size_fp": "300.00",
+      "yes_sub_title": "Indianapolis"
+    },
+    {
+      "can_close_early": true,
+      "close_time": "2026-09-15T17:00:00Z",
+      "created_time": "2026-05-15T16:59:52.010156Z",
+      "custom_strike": {
+        "football_team": "a69a57af-f1a1-4d44-ab62-e220ebaa2a5c"
+      },
+      "early_close_condition": "This market will close and expire after a winner is declared.",
+      "event_ticker": "KXNFLGAME-26SEP13BALIND",
+      "expected_expiration_time": "2026-09-13T20:00:00Z",
+      "expiration_time": "2026-09-15T17:00:00Z",
+      "expiration_value": "",
+      "fractional_trading_enabled": true,
+      "last_price_dollars": "0.7600",
+      "latest_expiration_time": "2026-09-15T17:00:00Z",
+      "liquidity_dollars": "0.0000",
+      "market_type": "binary",
+      "no_ask_dollars": "0.6700",
+      "no_bid_dollars": "0.2400",
+      "no_sub_title": "Baltimore",
+      "notional_value_dollars": "1.0000",
+      "occurrence_datetime": "2026-09-13T20:00:00Z",
+      "open_interest_fp": "13.06",
+      "open_time": "2026-05-15T17:04:00Z",
+      "previous_price_dollars": "0.0000",
+      "previous_yes_ask_dollars": "0.0000",
+      "previous_yes_bid_dollars": "0.0000",
+      "price_level_structure": "linear_cent",
+      "price_ranges": [
+        {
+          "end": "1.0000",
+          "start": "0.0000",
+          "step": "0.0100"
+        }
+      ],
+      "response_price_units": "usd_cent",
+      "result": "",
+      "rules_primary": "If Baltimore wins the Baltimore vs Indianapolis professional football game originally scheduled for Sep 13, 2026, then the market resolves to Yes.",
+      "rules_secondary": "The following market refers to the team who wins the Baltimore vs Indianapolis professional football game originally scheduled for Sep 13, 2026. If the game ends in a tie, the market will resolve to $0.50 for each team. If the game is postponed but begins within 48 hours from its originally scheduled start time, the market will remain open and resolve based on the official final result. If the game is not started within 48 hours, the market will resolve to a fair market price.",
+      "settlement_timer_seconds": 60,
+      "status": "active",
+      "strike_type": "structured",
+      "ticker": "KXNFLGAME-26SEP13BALIND-BAL",
+      "title": "Will Baltimore win the Baltimore vs Indianapolis Pro Football game?",
+      "updated_time": "2026-05-15T17:04:00.836408Z",
+      "volume_24h_fp": "13.06",
+      "volume_fp": "13.06",
+      "yes_ask_dollars": "0.7600",
+      "yes_ask_size_fp": "3.00",
+      "yes_bid_dollars": "0.3300",
+      "yes_bid_size_fp": "513.06",
+      "yes_sub_title": "Baltimore"
+    },
+    {
+      "can_close_early": true,
+      "close_time": "2026-09-15T17:00:00Z",
+      "created_time": "2026-05-15T16:59:51.421099Z",
+      "custom_strike": {
+        "football_team": "9a77500a-1945-495e-b6f5-5c35bedaa8b9"
+      },
+      "early_close_condition": "This market will close and expire after a winner is declared.",
+      "event_ticker": "KXNFLGAME-26SEP13CHICAR",
+      "expected_expiration_time": "2026-09-13T20:00:00Z",
+      "expiration_time": "2026-09-15T17:00:00Z",
+      "expiration_value": "",
+      "fractional_trading_enabled": true,
+      "last_price_dollars": "0.6400",
+      "latest_expiration_time": "2026-09-15T17:00:00Z",
+      "liquidity_dollars": "0.0000",
+      "market_type": "binary",
+      "no_ask_dollars": "0.6900",
+      "no_bid_dollars": "0.3700",
+      "no_sub_title": "Chicago",
+      "notional_value_dollars": "1.0000",
+      "occurrence_datetime": "2026-09-13T20:00:00Z",
+      "open_interest_fp": "105.70",
+      "open_time": "2026-05-15T17:04:00Z",
+      "previous_price_dollars": "0.0000",
+      "previous_yes_ask_dollars": "0.0000",
+      "previous_yes_bid_dollars": "0.0000",
+      "price_level_structure": "linear_cent",
+      "price_ranges": [
+        {
+          "end": "1.0000",
+          "start": "0.0000",
+          "step": "0.0100"
+        }
+      ],
+      "response_price_units": "usd_cent",
+      "result": "",
+      "rules_primary": "If Chicago wins the Chicago vs Carolina professional football game originally scheduled for Sep 13, 2026, then the market resolves to Yes.",
+      "rules_secondary": "The following market refers to the team who wins the Chicago vs Carolina professional football game originally scheduled for Sep 13, 2026. If the game ends in a tie, the market will resolve to $0.50 for each team. If the game is postponed but begins within 48 hours from its originally scheduled start time, the market will remain open and resolve based on the official final result. If the game is not started within 48 hours, the market will resolve to a fair market price.",
+      "settlement_timer_seconds": 60,
+      "status": "active",
+      "strike_type": "structured",
+      "ticker": "KXNFLGAME-26SEP13CHICAR-CHI",
+      "title": "Will Chicago win the Chicago vs Carolina Pro Football game?",
+      "updated_time": "2026-05-15T17:04:00.836408Z",
+      "volume_24h_fp": "105.70",
+      "volume_fp": "105.70",
+      "yes_ask_dollars": "0.6300",
+      "yes_ask_size_fp": "23.00",
+      "yes_bid_dollars": "0.3100",
+      "yes_bid_size_fp": "105.70",
+      "yes_sub_title": "Chicago"
+    },
+    {
+      "can_close_early": true,
+      "close_time": "2026-09-15T17:00:00Z",
+      "created_time": "2026-05-15T16:59:51.421099Z",
+      "custom_strike": {
+        "football_team": "e37050ce-354f-4dd0-b2d8-0bd1e9650eb7"
+      },
+      "early_close_condition": "This market will close and expire after a winner is declared.",
+      "event_ticker": "KXNFLGAME-26SEP13CHICAR",
+      "expected_expiration_time": "2026-09-13T20:00:00Z",
+      "expiration_time": "2026-09-15T17:00:00Z",
+      "expiration_value": "",
+      "fractional_trading_enabled": true,
+      "last_price_dollars": "0.0000",
+      "latest_expiration_time": "2026-09-15T17:00:00Z",
+      "liquidity_dollars": "0.0000",
+      "market_type": "binary",
+      "no_ask_dollars": "0.7700",
+      "no_bid_dollars": "0.4400",
+      "no_sub_title": "Carolina",
+      "notional_value_dollars": "1.0000",
+      "occurrence_datetime": "2026-09-13T20:00:00Z",
+      "open_interest_fp": "0.00",
+      "open_time": "2026-05-15T17:04:00Z",
+      "previous_price_dollars": "0.0000",
+      "previous_yes_ask_dollars": "0.0000",
+      "previous_yes_bid_dollars": "0.0000",
+      "price_level_structure": "linear_cent",
+      "price_ranges": [
+        {
+          "end": "1.0000",
+          "start": "0.0000",
+          "step": "0.0100"
+        }
+      ],
+      "response_price_units": "usd_cent",
+      "result": "",
+      "rules_primary": "If Carolina wins the Chicago vs Carolina professional football game originally scheduled for Sep 13, 2026, then the market resolves to Yes.",
+      "rules_secondary": "The following market refers to the team who wins the Chicago vs Carolina professional football game originally scheduled for Sep 13, 2026. If the game ends in a tie, the market will resolve to $0.50 for each team. If the game is postponed but begins within 48 hours from its originally scheduled start time, the market will remain open and resolve based on the official final result. If the game is not started within 48 hours, the market will resolve to a fair market price.",
+      "settlement_timer_seconds": 60,
+      "status": "active",
+      "strike_type": "structured",
+      "ticker": "KXNFLGAME-26SEP13CHICAR-CAR",
+      "title": "Will Carolina win the Chicago vs Carolina Pro Football game?",
+      "updated_time": "2026-05-15T17:04:00.836408Z",
+      "volume_24h_fp": "0.00",
+      "volume_fp": "0.00",
+      "yes_ask_dollars": "0.5600",
+      "yes_ask_size_fp": "5.00",
+      "yes_bid_dollars": "0.2300",
+      "yes_bid_size_fp": "300.00",
+      "yes_sub_title": "Carolina"
+    },
+    {
+      "can_close_early": true,
+      "close_time": "2026-09-13T00:35:00Z",
+      "created_time": "2026-05-15T16:59:50.772957Z",
+      "custom_strike": {
+        "football_team": "bfaa7639-8bdf-47b2-8d28-98d2cdbefbcb"
+      },
+      "early_close_condition": "This market will close and expire after a winner is declared.",
+      "event_ticker": "KXNFLGAME-26SEP10SFLAR",
+      "expected_expiration_time": "2026-09-11T03:35:00Z",
+      "expiration_time": "2026-09-13T00:35:00Z",
+      "expiration_value": "",
+      "fractional_trading_enabled": true,
+      "last_price_dollars": "0.6000",
+      "latest_expiration_time": "2026-09-13T00:35:00Z",
+      "liquidity_dollars": "0.0000",
+      "market_type": "binary",
+      "no_ask_dollars": "0.5600",
+      "no_bid_dollars": "0.4000",
+      "no_sub_title": "San Francisco",
+      "notional_value_dollars": "1.0000",
+      "occurrence_datetime": "2026-09-11T03:35:00Z",
+      "open_interest_fp": "43.54",
+      "open_time": "2026-05-15T17:04:00Z",
+      "previous_price_dollars": "0.0000",
+      "previous_yes_ask_dollars": "0.0000",
+      "previous_yes_bid_dollars": "0.0000",
+      "price_level_structure": "linear_cent",
+      "price_ranges": [
+        {
+          "end": "1.0000",
+          "start": "0.0000",
+          "step": "0.0100"
+        }
+      ],
+      "response_price_units": "usd_cent",
+      "result": "",
+      "rules_primary": "If San Francisco wins the San Francisco vs Los Angeles R professional football game originally scheduled for Sep 10, 2026, then the market resolves to Yes.",
+      "rules_secondary": "The following market refers to the team who wins the San Francisco vs Los Angeles R professional football game originally scheduled for Sep 10, 2026. If the game ends in a tie, the market will resolve to $0.50 for each team. If the game is postponed but begins within 48 hours from its originally scheduled start time, the market will remain open and resolve based on the official final result. If the game is not started within 48 hours, the market will resolve to a fair market price.",
+      "settlement_timer_seconds": 60,
+      "status": "active",
+      "strike_type": "structured",
+      "ticker": "KXNFLGAME-26SEP10SFLAR-SF",
+      "title": "Will San Francisco win the San Francisco vs Los Angeles R Pro Football game?",
+      "updated_time": "2026-05-15T17:04:00.836408Z",
+      "volume_24h_fp": "43.54",
+      "volume_fp": "43.54",
+      "yes_ask_dollars": "0.6000",
+      "yes_ask_size_fp": "466.37",
+      "yes_bid_dollars": "0.4400",
+      "yes_bid_size_fp": "1.00",
+      "yes_sub_title": "San Francisco"
+    },
+    {
+      "can_close_early": true,
+      "close_time": "2026-09-13T00:35:00Z",
+      "created_time": "2026-05-15T16:59:50.772957Z",
+      "custom_strike": {
+        "football_team": "422d5fd7-ad18-4c96-902d-6f7c50e4660f"
+      },
+      "early_close_condition": "This market will close and expire after a winner is declared.",
+      "event_ticker": "KXNFLGAME-26SEP10SFLAR",
+      "expected_expiration_time": "2026-09-11T03:35:00Z",
+      "expiration_time": "2026-09-13T00:35:00Z",
+      "expiration_value": "",
+      "fractional_trading_enabled": true,
+      "last_price_dollars": "0.6900",
+      "latest_expiration_time": "2026-09-13T00:35:00Z",
+      "liquidity_dollars": "0.0000",
+      "market_type": "binary",
+      "no_ask_dollars": "0.5000",
+      "no_bid_dollars": "0.3500",
+      "no_sub_title": "Los Angeles R",
+      "notional_value_dollars": "1.0000",
+      "occurrence_datetime": "2026-09-11T03:35:00Z",
+      "open_interest_fp": "126.14",
+      "open_time": "2026-05-15T17:04:00Z",
+      "previous_price_dollars": "0.0000",
+      "previous_yes_ask_dollars": "0.0000",
+      "previous_yes_bid_dollars": "0.0000",
+      "price_level_structure": "linear_cent",
+      "price_ranges": [
+        {
+          "end": "1.0000",
+          "start": "0.0000",
+          "step": "0.0100"
+        }
+      ],
+      "response_price_units": "usd_cent",
+      "result": "",
+      "rules_primary": "If Los Angeles R wins the San Francisco vs Los Angeles R professional football game originally scheduled for Sep 10, 2026, then the market resolves to Yes.",
+      "rules_secondary": "The following market refers to the team who wins the San Francisco vs Los Angeles R professional football game originally scheduled for Sep 10, 2026. If the game ends in a tie, the market will resolve to $0.50 for each team. If the game is postponed but begins within 48 hours from its originally scheduled start time, the market will remain open and resolve based on the official final result. If the game is not started within 48 hours, the market will resolve to a fair market price.",
+      "settlement_timer_seconds": 60,
+      "status": "active",
+      "strike_type": "structured",
+      "ticker": "KXNFLGAME-26SEP10SFLAR-LAR",
+      "title": "Will Los Angeles R win the San Francisco vs Los Angeles R Pro Football game?",
+      "updated_time": "2026-05-15T17:04:00.836408Z",
+      "volume_24h_fp": "126.14",
+      "volume_fp": "126.14",
+      "yes_ask_dollars": "0.6500",
+      "yes_ask_size_fp": "433.00",
+      "yes_bid_dollars": "0.5000",
+      "yes_bid_size_fp": "1.00",
+      "yes_sub_title": "Los Angeles R"
+    },
+    {
+      "can_close_early": true,
+      "close_time": "2026-09-12T00:20:00Z",
+      "created_time": "2026-05-15T16:59:49.957997Z",
+      "custom_strike": {
+        "football_team": "8e52cc75-cba8-4373-9b62-b535b53b3be8"
+      },
+      "early_close_condition": "This market will close and expire after a winner is declared.",
+      "event_ticker": "KXNFLGAME-26SEP09NESEA",
+      "expected_expiration_time": "2026-09-10T03:20:00Z",
+      "expiration_time": "2026-09-12T00:20:00Z",
+      "expiration_value": "",
+      "fractional_trading_enabled": true,
+      "last_price_dollars": "0.7000",
+      "latest_expiration_time": "2026-09-12T00:20:00Z",
+      "liquidity_dollars": "0.0000",
+      "market_type": "binary",
+      "no_ask_dollars": "0.3900",
+      "no_bid_dollars": "0.3000",
+      "no_sub_title": "Seattle",
+      "notional_value_dollars": "1.0000",
+      "occurrence_datetime": "2026-09-10T03:20:00Z",
+      "open_interest_fp": "401.75",
+      "open_time": "2026-05-15T17:04:00Z",
+      "previous_price_dollars": "0.0000",
+      "previous_yes_ask_dollars": "0.0000",
+      "previous_yes_bid_dollars": "0.0000",
+      "price_level_structure": "linear_cent",
+      "price_ranges": [
+        {
+          "end": "1.0000",
+          "start": "0.0000",
+          "step": "0.0100"
+        }
+      ],
+      "response_price_units": "usd_cent",
+      "result": "",
+      "rules_primary": "If Seattle wins the New England vs Seattle professional football game originally scheduled for Sep 9, 2026, then the market resolves to Yes.",
+      "rules_secondary": "The following market refers to the team who wins the New England vs Seattle professional football game originally scheduled for Sep 9, 2026. If the game ends in a tie, the market will resolve to $0.50 for each team. If the game is postponed but begins within 48 hours from its originally scheduled start time, the market will remain open and resolve based on the official final result. If the game is not started within 48 hours, the market will resolve to a fair market price.",
+      "settlement_timer_seconds": 60,
+      "status": "active",
+      "strike_type": "structured",
+      "ticker": "KXNFLGAME-26SEP09NESEA-SEA",
+      "title": "Will Seattle win the New England vs Seattle Pro Football game?",
+      "updated_time": "2026-05-15T17:04:00.836408Z",
+      "volume_24h_fp": "401.75",
+      "volume_fp": "401.75",
+      "yes_ask_dollars": "0.7000",
+      "yes_ask_size_fp": "142.27",
+      "yes_bid_dollars": "0.6100",
+      "yes_bid_size_fp": "247.00",
+      "yes_sub_title": "Seattle"
+    },
+    {
+      "can_close_early": true,
+      "close_time": "2026-09-12T00:20:00Z",
+      "created_time": "2026-05-15T16:59:49.957997Z",
+      "custom_strike": {
+        "football_team": "d1d64188-5cd5-4feb-97ff-8542c9dbeb43"
+      },
+      "early_close_condition": "This market will close and expire after a winner is declared.",
+      "event_ticker": "KXNFLGAME-26SEP09NESEA",
+      "expected_expiration_time": "2026-09-10T03:20:00Z",
+      "expiration_time": "2026-09-12T00:20:00Z",
+      "expiration_value": "",
+      "fractional_trading_enabled": true,
+      "last_price_dollars": "0.3600",
+      "latest_expiration_time": "2026-09-12T00:20:00Z",
+      "liquidity_dollars": "0.0000",
+      "market_type": "binary",
+      "no_ask_dollars": "0.7000",
+      "no_bid_dollars": "0.6400",
+      "no_sub_title": "New England",
+      "notional_value_dollars": "1.0000",
+      "occurrence_datetime": "2026-09-10T03:20:00Z",
+      "open_interest_fp": "26.72",
+      "open_time": "2026-05-15T17:04:00Z",
+      "previous_price_dollars": "0.0000",
+      "previous_yes_ask_dollars": "0.0000",
+      "previous_yes_bid_dollars": "0.0000",
+      "price_level_structure": "linear_cent",
+      "price_ranges": [
+        {
+          "end": "1.0000",
+          "start": "0.0000",
+          "step": "0.0100"
+        }
+      ],
+      "response_price_units": "usd_cent",
+      "result": "",
+      "rules_primary": "If New England wins the New England vs Seattle professional football game originally scheduled for Sep 9, 2026, then the market resolves to Yes.",
+      "rules_secondary": "The following market refers to the team who wins the New England vs Seattle professional football game originally scheduled for Sep 9, 2026. If the game ends in a tie, the market will resolve to $0.50 for each team. If the game is postponed but begins within 48 hours from its originally scheduled start time, the market will remain open and resolve based on the official final result. If the game is not started within 48 hours, the market will resolve to a fair market price.",
+      "settlement_timer_seconds": 60,
+      "status": "active",
+      "strike_type": "structured",
+      "ticker": "KXNFLGAME-26SEP09NESEA-NE",
+      "title": "Will New England win the New England vs Seattle Pro Football game?",
+      "updated_time": "2026-05-15T17:04:00.836408Z",
+      "volume_24h_fp": "37.51",
+      "volume_fp": "37.51",
+      "yes_ask_dollars": "0.3600",
+      "yes_ask_size_fp": "3079.74",
+      "yes_bid_dollars": "0.3000",
+      "yes_bid_size_fp": "28.65",
+      "yes_sub_title": "New England"
+    },
+    {
+      "can_close_early": true,
+      "close_time": "2026-05-30T08:00:00Z",
+      "created_time": "2026-05-16T09:20:43.202168Z",
+      "custom_strike": {
+        "Associated Events": "KXATPMATCH-26MAY16DUCDAM,KXATPMATCH-26MAY16OFNFEL,KXBUNDESLIGAGAME-26MAY16STPWOB,KXEPLGAME-26MAY17MUNNFO,KXIPLGAME-26MAY16GTKKR,KXNHLGAME-26MAY16BUFMTL,KXNHLTOTAL-26MAY16BUFMTL,KXPGATOUR-PGC26,KXUFCFIGHT-26MAY16DOSDES,KXUFCFIGHT-26MAY16MGOMOR,KXUFCFIGHT-26MAY16NGALIN,KXUFCFIGHT-26MAY16PERMAS,KXUFCFIGHT-26MAY16ROUCAR,KXUFCFIGHT-26MAY16SALCRO",
+        "Associated Market Sides": "yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes",
+        "Associated Markets": "KXATPMATCH-26MAY16DUCDAM-DUC,KXATPMATCH-26MAY16OFNFEL-OFN,KXBUNDESLIGAGAME-26MAY16STPWOB-WOB,KXEPLGAME-26MAY17MUNNFO-MUN,KXIPLGAME-26MAY16GTKKR-GT,KXNHLGAME-26MAY16BUFMTL-MTL,KXNHLTOTAL-26MAY16BUFMTL-2,KXPGATOUR-PGC26-SSCH,KXUFCFIGHT-26MAY16DOSDES-DES,KXUFCFIGHT-26MAY16MGOMOR-MGO,KXUFCFIGHT-26MAY16NGALIN-NGA,KXUFCFIGHT-26MAY16PERMAS-PER,KXUFCFIGHT-26MAY16ROUCAR-ROU,KXUFCFIGHT-26MAY16SALCRO-SAL",
+        "Multivariate Event Ticker": "KXMVESPORTSMULTIGAMEEXTENDED-S202600C711C0693"
+      },
+      "event_ticker": "KXMVESPORTSMULTIGAMEEXTENDED-S202600C711C0693",
+      "expected_expiration_time": "2026-05-17T14:30:00Z",
+      "expiration_time": "2026-05-30T08:00:00Z",
+      "expiration_value": "",
+      "fractional_trading_enabled": true,
+      "is_provisional": true,
+      "last_price_dollars": "0.0000",
+      "latest_expiration_time": "2026-05-30T08:00:00Z",
+      "liquidity_dollars": "0.0000",
+      "market_type": "binary",
+      "mve_collection_ticker": "KXMVESPORTSMULTIGAMEEXTENDED-R",
+      "mve_selected_legs": [
+        {
+          "event_ticker": "KXATPMATCH-26MAY16DUCDAM",
+          "market_ticker": "KXATPMATCH-26MAY16DUCDAM-DUC",
+          "side": "yes"
+        },
+        {
+          "event_ticker": "KXATPMATCH-26MAY16OFNFEL",
+          "market_ticker": "KXATPMATCH-26MAY16OFNFEL-OFN",
+          "side": "yes"
+        },
+        {
+          "event_ticker": "KXBUNDESLIGAGAME-26MAY16STPWOB",
+          "market_ticker": "KXBUNDESLIGAGAME-26MAY16STPWOB-WOB",
+          "side": "yes"
+        },
+        {
+          "event_ticker": "KXEPLGAME-26MAY17MUNNFO",
+          "market_ticker": "KXEPLGAME-26MAY17MUNNFO-MUN",
+          "side": "yes"
+        },
+        {
+          "event_ticker": "KXIPLGAME-26MAY16GTKKR",
+          "market_ticker": "KXIPLGAME-26MAY16GTKKR-GT",
+          "side": "yes"
+        },
+        {
+          "event_ticker": "KXNHLGAME-26MAY16BUFMTL",
+          "market_ticker": "KXNHLGAME-26MAY16BUFMTL-MTL",
+          "side": "yes"
+        },
+        {
+          "event_ticker": "KXNHLTOTAL-26MAY16BUFMTL",
+          "market_ticker": "KXNHLTOTAL-26MAY16BUFMTL-2",
+          "side": "yes"
+        },
+        {
+          "event_ticker": "KXPGATOUR-PGC26",
+          "market_ticker": "KXPGATOUR-PGC26-SSCH",
+          "side": "yes"
+        },
+        {
+          "event_ticker": "KXUFCFIGHT-26MAY16DOSDES",
+          "market_ticker": "KXUFCFIGHT-26MAY16DOSDES-DES",
+          "side": "yes"
+        },
+        {
+          "event_ticker": "KXUFCFIGHT-26MAY16MGOMOR",
+          "market_ticker": "KXUFCFIGHT-26MAY16MGOMOR-MGO",
+          "side": "yes"
+        },
+        {
+          "event_ticker": "KXUFCFIGHT-26MAY16NGALIN",
+          "market_ticker": "KXUFCFIGHT-26MAY16NGALIN-NGA",
+          "side": "yes"
+        },
+        {
+          "event_ticker": "KXUFCFIGHT-26MAY16PERMAS",
+          "market_ticker": "KXUFCFIGHT-26MAY16PERMAS-PER",
+          "side": "yes"
+        },
+        {
+          "event_ticker": "KXUFCFIGHT-26MAY16ROUCAR",
+          "market_ticker": "KXUFCFIGHT-26MAY16ROUCAR-ROU",
+          "side": "yes"
+        },
+        {
+          "event_ticker": "KXUFCFIGHT-26MAY16SALCRO",
+          "market_ticker": "KXUFCFIGHT-26MAY16SALCRO-SAL",
+          "side": "yes"
+        }
+      ],
+      "no_ask_dollars": "1.0000",
+      "no_bid_dollars": "1.0000",
+      "no_sub_title": "yes James Duckworth,yes Sebastian Ofner,yes Wolfsburg,yes Manchester United,yes Gujarat Titans,yes MTL Canadiens,yes Over 2.5 goals scored,yes Scottie Scheffler,yes Robelis Despaigne,yes David Mgoyan,yes Francis Ngannou,yes Aline Pereira,yes Ronda Rousey,yes Parnasse Salahdine",
+      "notional_value_dollars": "1.0000",
+      "open_interest_fp": "0.00",
+      "open_time": "2026-05-16T09:20:43Z",
+      "previous_price_dollars": "0.0000",
+      "previous_yes_ask_dollars": "0.0000",
+      "previous_yes_bid_dollars": "0.0000",
+      "price_level_structure": "deci_cent",
+      "price_ranges": [
+        {
+          "end": "1.0000",
+          "start": "0.0000",
+          "step": "0.0010"
+        }
+      ],
+      "response_price_units": "usd_cent",
+      "result": "",
+      "rules_primary": "",
+      "rules_secondary": "",
+      "settlement_timer_seconds": 5,
+      "status": "active",
+      "strike_type": "custom",
+      "ticker": "KXMVESPORTSMULTIGAMEEXTENDED-S202600C711C0693-1AD1BF83758",
+      "title": "yes James Duckworth,yes Sebastian Ofner,yes Wolfsburg,yes Manchester United,yes Gujarat Titans,yes MTL Canadiens,yes Over 2.5 goals scored,yes Scottie Scheffler,yes Robelis Despaigne,yes David Mgoyan,yes Francis Ngannou,yes Aline Pereira,yes Ronda Rousey,yes Parnasse Salahdine",
+      "updated_time": "2026-05-16T09:20:43.834506Z",
+      "volume_24h_fp": "0.00",
+      "volume_fp": "0.00",
+      "yes_ask_dollars": "0.0000",
+      "yes_ask_size_fp": "0.00",
+      "yes_bid_dollars": "0.0000",
+      "yes_bid_size_fp": "0.00",
+      "yes_sub_title": "yes James Duckworth,yes Sebastian Ofner,yes Wolfsburg,yes Manchester United,yes Gujarat Titans,yes MTL Canadiens,yes Over 2.5 goals scored,yes Scottie Scheffler,yes Robelis Despaigne,yes David Mgoyan,yes Francis Ngannou,yes Aline Pereira,yes Ronda Rousey,yes Parnasse Salahdine"
+    },
+    {
+      "can_close_early": true,
+      "close_time": "2026-05-30T08:00:00Z",
+      "created_time": "2026-05-16T09:20:29.212073Z",
+      "custom_strike": {
+        "Associated Events": "KXATPMATCH-26MAY16DUCDAM,KXATPMATCH-26MAY16OFNFEL,KXBUNDESLIGAGAME-26MAY16STPWOB,KXEPLGAME-26MAY17MUNNFO,KXIPLGAME-26MAY16GTKKR,KXNHLGAME-26MAY16BUFMTL,KXPGATOUR-PGC26,KXUFCFIGHT-26MAY16DOSDES,KXUFCFIGHT-26MAY16MGOMOR,KXUFCFIGHT-26MAY16NGALIN,KXUFCFIGHT-26MAY16PERMAS,KXUFCFIGHT-26MAY16ROUCAR,KXUFCFIGHT-26MAY16SALCRO",
+        "Associated Market Sides": "yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes",
+        "Associated Markets": "KXATPMATCH-26MAY16DUCDAM-DUC,KXATPMATCH-26MAY16OFNFEL-OFN,KXBUNDESLIGAGAME-26MAY16STPWOB-WOB,KXEPLGAME-26MAY17MUNNFO-MUN,KXIPLGAME-26MAY16GTKKR-GT,KXNHLGAME-26MAY16BUFMTL-MTL,KXPGATOUR-PGC26-SSCH,KXUFCFIGHT-26MAY16DOSDES-DES,KXUFCFIGHT-26MAY16MGOMOR-MGO,KXUFCFIGHT-26MAY16NGALIN-NGA,KXUFCFIGHT-26MAY16PERMAS-PER,KXUFCFIGHT-26MAY16ROUCAR-ROU,KXUFCFIGHT-26MAY16SALCRO-SAL",
+        "Multivariate Event Ticker": "KXMVESPORTSMULTIGAMEEXTENDED-S2026FDCD15E26EE"
+      },
+      "event_ticker": "KXMVESPORTSMULTIGAMEEXTENDED-S2026FDCD15E26EE",
+      "expected_expiration_time": "2026-05-17T14:30:00Z",
+      "expiration_time": "2026-05-30T08:00:00Z",
+      "expiration_value": "",
+      "fractional_trading_enabled": true,
+      "is_provisional": true,
+      "last_price_dollars": "0.0000",
+      "latest_expiration_time": "2026-05-30T08:00:00Z",
+      "liquidity_dollars": "0.0000",
+      "market_type": "binary",
+      "mve_collection_ticker": "KXMVESPORTSMULTIGAMEEXTENDED-R",
+      "mve_selected_legs": [
+        {
+          "event_ticker": "KXATPMATCH-26MAY16DUCDAM",
+          "market_ticker": "KXATPMATCH-26MAY16DUCDAM-DUC",
+          "side": "yes"
+        },
+        {
+          "event_ticker": "KXATPMATCH-26MAY16OFNFEL",
+          "market_ticker": "KXATPMATCH-26MAY16OFNFEL-OFN",
+          "side": "yes"
+        },
+        {
+          "event_ticker": "KXBUNDESLIGAGAME-26MAY16STPWOB",
+          "market_ticker": "KXBUNDESLIGAGAME-26MAY16STPWOB-WOB",
+          "side": "yes"
+        },
+        {
+          "event_ticker": "KXEPLGAME-26MAY17MUNNFO",
+          "market_ticker": "KXEPLGAME-26MAY17MUNNFO-MUN",
+          "side": "yes"
+        },
+        {
+          "event_ticker": "KXIPLGAME-26MAY16GTKKR",
+          "market_ticker": "KXIPLGAME-26MAY16GTKKR-GT",
+          "side": "yes"
+        },
+        {
+          "event_ticker": "KXNHLGAME-26MAY16BUFMTL",
+          "market_ticker": "KXNHLGAME-26MAY16BUFMTL-MTL",
+          "side": "yes"
+        },
+        {
+          "event_ticker": "KXPGATOUR-PGC26",
+          "market_ticker": "KXPGATOUR-PGC26-SSCH",
+          "side": "yes"
+        },
+        {
+          "event_ticker": "KXUFCFIGHT-26MAY16DOSDES",
+          "market_ticker": "KXUFCFIGHT-26MAY16DOSDES-DES",
+          "side": "yes"
+        },
+        {
+          "event_ticker": "KXUFCFIGHT-26MAY16MGOMOR",
+          "market_ticker": "KXUFCFIGHT-26MAY16MGOMOR-MGO",
+          "side": "yes"
+        },
+        {
+          "event_ticker": "KXUFCFIGHT-26MAY16NGALIN",
+          "market_ticker": "KXUFCFIGHT-26MAY16NGALIN-NGA",
+          "side": "yes"
+        },
+        {
+          "event_ticker": "KXUFCFIGHT-26MAY16PERMAS",
+          "market_ticker": "KXUFCFIGHT-26MAY16PERMAS-PER",
+          "side": "yes"
+        },
+        {
+          "event_ticker": "KXUFCFIGHT-26MAY16ROUCAR",
+          "market_ticker": "KXUFCFIGHT-26MAY16ROUCAR-ROU",
+          "side": "yes"
+        },
+        {
+          "event_ticker": "KXUFCFIGHT-26MAY16SALCRO",
+          "market_ticker": "KXUFCFIGHT-26MAY16SALCRO-SAL",
+          "side": "yes"
+        }
+      ],
+      "no_ask_dollars": "1.0000",
+      "no_bid_dollars": "1.0000",
+      "no_sub_title": "yes James Duckworth,yes Sebastian Ofner,yes Wolfsburg,yes Manchester United,yes Gujarat Titans,yes MTL Canadiens,yes Scottie Scheffler,yes Robelis Despaigne,yes David Mgoyan,yes Francis Ngannou,yes Aline Pereira,yes Ronda Rousey,yes Parnasse Salahdine",
+      "notional_value_dollars": "1.0000",
+      "open_interest_fp": "0.00",
+      "open_time": "2026-05-16T09:20:29Z",
+      "previous_price_dollars": "0.0000",
+      "previous_yes_ask_dollars": "0.0000",
+      "previous_yes_bid_dollars": "0.0000",
+      "price_level_structure": "deci_cent",
+      "price_ranges": [
+        {
+          "end": "1.0000",
+          "start": "0.0000",
+          "step": "0.0010"
+        }
+      ],
+      "response_price_units": "usd_cent",
+      "result": "",
+      "rules_primary": "",
+      "rules_secondary": "",
+      "settlement_timer_seconds": 5,
+      "status": "active",
+      "strike_type": "custom",
+      "ticker": "KXMVESPORTSMULTIGAMEEXTENDED-S2026FDCD15E26EE-1A538AB42CA",
+      "title": "yes James Duckworth,yes Sebastian Ofner,yes Wolfsburg,yes Manchester United,yes Gujarat Titans,yes MTL Canadiens,yes Scottie Scheffler,yes Robelis Despaigne,yes David Mgoyan,yes Francis Ngannou,yes Aline Pereira,yes Ronda Rousey,yes Parnasse Salahdine",
+      "updated_time": "2026-05-16T09:20:29.834914Z",
+      "volume_24h_fp": "0.00",
+      "volume_fp": "0.00",
+      "yes_ask_dollars": "0.0000",
+      "yes_ask_size_fp": "0.00",
+      "yes_bid_dollars": "0.0000",
+      "yes_bid_size_fp": "0.00",
+      "yes_sub_title": "yes James Duckworth,yes Sebastian Ofner,yes Wolfsburg,yes Manchester United,yes Gujarat Titans,yes MTL Canadiens,yes Scottie Scheffler,yes Robelis Despaigne,yes David Mgoyan,yes Francis Ngannou,yes Aline Pereira,yes Ronda Rousey,yes Parnasse Salahdine"
+    },
+    {
+      "can_close_early": true,
+      "close_time": "2026-05-30T08:00:00Z",
+      "created_time": "2026-05-16T09:20:08.956042Z",
+      "custom_strike": {
+        "Associated Events": "KXATPMATCH-26MAY16DUCDAM,KXATPMATCH-26MAY16OFNFEL,KXBUNDESLIGAGAME-26MAY16STPWOB,KXEPLGAME-26MAY17MUNNFO,KXIPLGAME-26MAY16GTKKR,KXPGATOUR-PGC26,KXUFCFIGHT-26MAY16DOSDES,KXUFCFIGHT-26MAY16MGOMOR,KXUFCFIGHT-26MAY16NGALIN,KXUFCFIGHT-26MAY16PERMAS,KXUFCFIGHT-26MAY16ROUCAR,KXUFCFIGHT-26MAY16SALCRO",
+        "Associated Market Sides": "yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes",
+        "Associated Markets": "KXATPMATCH-26MAY16DUCDAM-DUC,KXATPMATCH-26MAY16OFNFEL-OFN,KXBUNDESLIGAGAME-26MAY16STPWOB-WOB,KXEPLGAME-26MAY17MUNNFO-MUN,KXIPLGAME-26MAY16GTKKR-GT,KXPGATOUR-PGC26-SSCH,KXUFCFIGHT-26MAY16DOSDES-DES,KXUFCFIGHT-26MAY16MGOMOR-MGO,KXUFCFIGHT-26MAY16NGALIN-NGA,KXUFCFIGHT-26MAY16PERMAS-PER,KXUFCFIGHT-26MAY16ROUCAR-ROU,KXUFCFIGHT-26MAY16SALCRO-SAL",
+        "Multivariate Event Ticker": "KXMVESPORTSMULTIGAMEEXTENDED-S20267042BD3F8D2"
+      },
+      "event_ticker": "KXMVESPORTSMULTIGAMEEXTENDED-S20267042BD3F8D2",
+      "expected_expiration_time": "2026-05-17T14:30:00Z",
+      "expiration_time": "2026-05-30T08:00:00Z",
+      "expiration_value": "",
+      "fractional_trading_enabled": true,
+      "is_provisional": true,
+      "last_price_dollars": "0.0000",
+      "latest_expiration_time": "2026-05-30T08:00:00Z",
+      "liquidity_dollars": "0.0000",
+      "market_type": "binary",
+      "mve_collection_ticker": "KXMVESPORTSMULTIGAMEEXTENDED-R",
+      "mve_selected_legs": [
+        {
+          "event_ticker": "KXATPMATCH-26MAY16DUCDAM",
+          "market_ticker": "KXATPMATCH-26MAY16DUCDAM-DUC",
+          "side": "yes"
+        },
+        {
+          "event_ticker": "KXATPMATCH-26MAY16OFNFEL",
+          "market_ticker": "KXATPMATCH-26MAY16OFNFEL-OFN",
+          "side": "yes"
+        },
+        {
+          "event_ticker": "KXBUNDESLIGAGAME-26MAY16STPWOB",
+          "market_ticker": "KXBUNDESLIGAGAME-26MAY16STPWOB-WOB",
+          "side": "yes"
+        },
+        {
+          "event_ticker": "KXEPLGAME-26MAY17MUNNFO",
+          "market_ticker": "KXEPLGAME-26MAY17MUNNFO-MUN",
+          "side": "yes"
+        },
+        {
+          "event_ticker": "KXIPLGAME-26MAY16GTKKR",
+          "market_ticker": "KXIPLGAME-26MAY16GTKKR-GT",
+          "side": "yes"
+        },
+        {
+          "event_ticker": "KXPGATOUR-PGC26",
+          "market_ticker": "KXPGATOUR-PGC26-SSCH",
+          "side": "yes"
+        },
+        {
+          "event_ticker": "KXUFCFIGHT-26MAY16DOSDES",
+          "market_ticker": "KXUFCFIGHT-26MAY16DOSDES-DES",
+          "side": "yes"
+        },
+        {
+          "event_ticker": "KXUFCFIGHT-26MAY16MGOMOR",
+          "market_ticker": "KXUFCFIGHT-26MAY16MGOMOR-MGO",
+          "side": "yes"
+        },
+        {
+          "event_ticker": "KXUFCFIGHT-26MAY16NGALIN",
+          "market_ticker": "KXUFCFIGHT-26MAY16NGALIN-NGA",
+          "side": "yes"
+        },
+        {
+          "event_ticker": "KXUFCFIGHT-26MAY16PERMAS",
+          "market_ticker": "KXUFCFIGHT-26MAY16PERMAS-PER",
+          "side": "yes"
+        },
+        {
+          "event_ticker": "KXUFCFIGHT-26MAY16ROUCAR",
+          "market_ticker": "KXUFCFIGHT-26MAY16ROUCAR-ROU",
+          "side": "yes"
+        },
+        {
+          "event_ticker": "KXUFCFIGHT-26MAY16SALCRO",
+          "market_ticker": "KXUFCFIGHT-26MAY16SALCRO-SAL",
+          "side": "yes"
+        }
+      ],
+      "no_ask_dollars": "1.0000",
+      "no_bid_dollars": "1.0000",
+      "no_sub_title": "yes James Duckworth,yes Sebastian Ofner,yes Wolfsburg,yes Manchester United,yes Gujarat Titans,yes Scottie Scheffler,yes Robelis Despaigne,yes David Mgoyan,yes Francis Ngannou,yes Aline Pereira,yes Ronda Rousey,yes Parnasse Salahdine",
+      "notional_value_dollars": "1.0000",
+      "open_interest_fp": "0.00",
+      "open_time": "2026-05-16T09:20:08Z",
+      "previous_price_dollars": "0.0000",
+      "previous_yes_ask_dollars": "0.0000",
+      "previous_yes_bid_dollars": "0.0000",
+      "price_level_structure": "deci_cent",
+      "price_ranges": [
+        {
+          "end": "1.0000",
+          "start": "0.0000",
+          "step": "0.0010"
+        }
+      ],
+      "response_price_units": "usd_cent",
+      "result": "",
+      "rules_primary": "",
+      "rules_secondary": "",
+      "settlement_timer_seconds": 5,
+      "status": "active",
+      "strike_type": "custom",
+      "ticker": "KXMVESPORTSMULTIGAMEEXTENDED-S20267042BD3F8D2-15F1ACDCC42",
+      "title": "yes James Duckworth,yes Sebastian Ofner,yes Wolfsburg,yes Manchester United,yes Gujarat Titans,yes Scottie Scheffler,yes Robelis Despaigne,yes David Mgoyan,yes Francis Ngannou,yes Aline Pereira,yes Ronda Rousey,yes Parnasse Salahdine",
+      "updated_time": "2026-05-16T09:20:09.835156Z",
+      "volume_24h_fp": "0.00",
+      "volume_fp": "0.00",
+      "yes_ask_dollars": "0.0000",
+      "yes_ask_size_fp": "0.00",
+      "yes_bid_dollars": "0.0000",
+      "yes_bid_size_fp": "0.00",
+      "yes_sub_title": "yes James Duckworth,yes Sebastian Ofner,yes Wolfsburg,yes Manchester United,yes Gujarat Titans,yes Scottie Scheffler,yes Robelis Despaigne,yes David Mgoyan,yes Francis Ngannou,yes Aline Pereira,yes Ronda Rousey,yes Parnasse Salahdine"
+    },
+    {
+      "can_close_early": true,
+      "close_time": "2026-05-30T08:00:00Z",
+      "created_time": "2026-05-16T09:19:54.85426Z",
+      "custom_strike": {
+        "Associated Events": "KXATPMATCH-26MAY16DUCDAM,KXATPMATCH-26MAY16OFNFEL,KXEPLGAME-26MAY17MUNNFO,KXIPLGAME-26MAY16GTKKR,KXPGATOUR-PGC26,KXUFCFIGHT-26MAY16DOSDES,KXUFCFIGHT-26MAY16MGOMOR,KXUFCFIGHT-26MAY16NGALIN,KXUFCFIGHT-26MAY16PERMAS,KXUFCFIGHT-26MAY16ROUCAR,KXUFCFIGHT-26MAY16SALCRO",
         "Associated Market Sides": "yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes",
-        "Associated Markets": "KXATPMATCH-26MAY15RUUDAR-RUU,KXIPLGAME-26MAY15CSKLSG-CSK,KXMLBGAME-26MAY151840PHIPIT-PHI,KXMLBGAME-26MAY151845TORDET-TOR,KXMLBGAME-26MAY151940CHCCWS-CHC,KXMLBGAME-26MAY152138LADLAA-LAD,KXMLBTOTAL-26MAY152040AZCOL-6,KXNBAGAME-26MAY15DETCLE-CLE,KXNBAGAME-26MAY15SASMIN-MIN,KXWNBAGAME-26MAY15LVCONN-LV,KXWNBAGAME-26MAY15WSHIND-IND",
-        "Multivariate Event Ticker": "KXMVESPORTSMULTIGAMEEXTENDED-S2026A5176064929"
+        "Associated Markets": "KXATPMATCH-26MAY16DUCDAM-DUC,KXATPMATCH-26MAY16OFNFEL-OFN,KXEPLGAME-26MAY17MUNNFO-MUN,KXIPLGAME-26MAY16GTKKR-GT,KXPGATOUR-PGC26-SSCH,KXUFCFIGHT-26MAY16DOSDES-DES,KXUFCFIGHT-26MAY16MGOMOR-MGO,KXUFCFIGHT-26MAY16NGALIN-NGA,KXUFCFIGHT-26MAY16PERMAS-PER,KXUFCFIGHT-26MAY16ROUCAR-ROU,KXUFCFIGHT-26MAY16SALCRO-SAL",
+        "Multivariate Event Ticker": "KXMVESPORTSMULTIGAMEEXTENDED-S202681001E496C7"
       },
-      "event_ticker": "KXMVESPORTSMULTIGAMEEXTENDED-S2026A5176064929",
-      "expected_expiration_time": "2026-05-16T04:38:00Z",
-      "expiration_time": "2026-05-29T11:30:00Z",
+      "event_ticker": "KXMVESPORTSMULTIGAMEEXTENDED-S202681001E496C7",
+      "expected_expiration_time": "2026-05-17T14:30:00Z",
+      "expiration_time": "2026-05-30T08:00:00Z",
       "expiration_value": "",
       "fractional_trading_enabled": true,
       "is_provisional": true,
       "last_price_dollars": "0.0000",
-      "latest_expiration_time": "2026-05-29T11:30:00Z",
+      "latest_expiration_time": "2026-05-30T08:00:00Z",
       "liquidity_dollars": "0.0000",
       "market_type": "binary",
       "mve_collection_ticker": "KXMVESPORTSMULTIGAMEEXTENDED-R",
       "mve_selected_legs": [
         {
-          "event_ticker": "KXATPMATCH-26MAY15RUUDAR",
-          "market_ticker": "KXATPMATCH-26MAY15RUUDAR-RUU",
+          "event_ticker": "KXATPMATCH-26MAY16DUCDAM",
+          "market_ticker": "KXATPMATCH-26MAY16DUCDAM-DUC",
           "side": "yes"
         },
         {
-          "event_ticker": "KXIPLGAME-26MAY15CSKLSG",
-          "market_ticker": "KXIPLGAME-26MAY15CSKLSG-CSK",
+          "event_ticker": "KXATPMATCH-26MAY16OFNFEL",
+          "market_ticker": "KXATPMATCH-26MAY16OFNFEL-OFN",
           "side": "yes"
         },
         {
-          "event_ticker": "KXMLBGAME-26MAY151840PHIPIT",
-          "market_ticker": "KXMLBGAME-26MAY151840PHIPIT-PHI",
+          "event_ticker": "KXEPLGAME-26MAY17MUNNFO",
+          "market_ticker": "KXEPLGAME-26MAY17MUNNFO-MUN",
           "side": "yes"
         },
         {
-          "event_ticker": "KXMLBGAME-26MAY151845TORDET",
-          "market_ticker": "KXMLBGAME-26MAY151845TORDET-TOR",
+          "event_ticker": "KXIPLGAME-26MAY16GTKKR",
+          "market_ticker": "KXIPLGAME-26MAY16GTKKR-GT",
           "side": "yes"
         },
         {
-          "event_ticker": "KXMLBGAME-26MAY151940CHCCWS",
-          "market_ticker": "KXMLBGAME-26MAY151940CHCCWS-CHC",
+          "event_ticker": "KXPGATOUR-PGC26",
+          "market_ticker": "KXPGATOUR-PGC26-SSCH",
           "side": "yes"
         },
         {
-          "event_ticker": "KXMLBGAME-26MAY152138LADLAA",
-          "market_ticker": "KXMLBGAME-26MAY152138LADLAA-LAD",
+          "event_ticker": "KXUFCFIGHT-26MAY16DOSDES",
+          "market_ticker": "KXUFCFIGHT-26MAY16DOSDES-DES",
           "side": "yes"
         },
         {
-          "event_ticker": "KXMLBTOTAL-26MAY152040AZCOL",
-          "market_ticker": "KXMLBTOTAL-26MAY152040AZCOL-6",
+          "event_ticker": "KXUFCFIGHT-26MAY16MGOMOR",
+          "market_ticker": "KXUFCFIGHT-26MAY16MGOMOR-MGO",
           "side": "yes"
         },
         {
-          "event_ticker": "KXNBAGAME-26MAY15DETCLE",
-          "market_ticker": "KXNBAGAME-26MAY15DETCLE-CLE",
+          "event_ticker": "KXUFCFIGHT-26MAY16NGALIN",
+          "market_ticker": "KXUFCFIGHT-26MAY16NGALIN-NGA",
           "side": "yes"
         },
         {
-          "event_ticker": "KXNBAGAME-26MAY15SASMIN",
-          "market_ticker": "KXNBAGAME-26MAY15SASMIN-MIN",
+          "event_ticker": "KXUFCFIGHT-26MAY16PERMAS",
+          "market_ticker": "KXUFCFIGHT-26MAY16PERMAS-PER",
           "side": "yes"
         },
         {
-          "event_ticker": "KXWNBAGAME-26MAY15LVCONN",
-          "market_ticker": "KXWNBAGAME-26MAY15LVCONN-LV",
+          "event_ticker": "KXUFCFIGHT-26MAY16ROUCAR",
+          "market_ticker": "KXUFCFIGHT-26MAY16ROUCAR-ROU",
           "side": "yes"
         },
         {
-          "event_ticker": "KXWNBAGAME-26MAY15WSHIND",
-          "market_ticker": "KXWNBAGAME-26MAY15WSHIND-IND",
-          "side": "yes"
-        }
-      ],
-      "no_ask_dollars": "1.0000",
-      "no_bid_dollars": "1.0000",
-      "no_sub_title": "yes Casper Ruud,yes Chennai Super Kings,yes Philadelphia,yes Toronto,yes Chicago C,yes Los Angeles D,yes Over 5.5 runs scored,yes Cleveland,yes Minnesota,yes Las Vegas,yes Indiana",
-      "notional_value_dollars": "1.0000",
-      "open_interest_fp": "0.00",
-      "open_time": "2026-05-15T11:10:11Z",
-      "previous_price_dollars": "0.0000",
-      "previous_yes_ask_dollars": "0.0000",
-      "previous_yes_bid_dollars": "0.0000",
-      "price_level_structure": "deci_cent",
-      "price_ranges": [
-        {
-          "end": "1.0000",
-          "start": "0.0000",
-          "step": "0.0010"
-        }
-      ],
-      "response_price_units": "usd_cent",
-      "result": "",
-      "rules_primary": "",
-      "rules_secondary": "",
-      "settlement_timer_seconds": 5,
-      "status": "active",
-      "strike_type": "custom",
-      "ticker": "KXMVESPORTSMULTIGAMEEXTENDED-S2026A5176064929-92120CD4CCC",
-      "title": "yes Casper Ruud,yes Chennai Super Kings,yes Philadelphia,yes Toronto,yes Chicago C,yes Los Angeles D,yes Over 5.5 runs scored,yes Cleveland,yes Minnesota,yes Las Vegas,yes Indiana",
-      "updated_time": "2026-05-15T11:10:12.834675Z",
-      "volume_24h_fp": "0.00",
-      "volume_fp": "0.00",
-      "yes_ask_dollars": "0.0000",
-      "yes_ask_size_fp": "0.00",
-      "yes_bid_dollars": "0.0000",
-      "yes_bid_size_fp": "0.00",
-      "yes_sub_title": "yes Casper Ruud,yes Chennai Super Kings,yes Philadelphia,yes Toronto,yes Chicago C,yes Los Angeles D,yes Over 5.5 runs scored,yes Cleveland,yes Minnesota,yes Las Vegas,yes Indiana"
-    },
-    {
-      "can_close_early": true,
-      "close_time": "2026-05-29T11:30:00Z",
-      "created_time": "2026-05-15T11:10:09.990779Z",
-      "custom_strike": {
-        "Associated Events": "KXATPMATCH-26MAY15RUUDAR,KXIPLGAME-26MAY15CSKLSG,KXMLBGAME-26MAY151840PHIPIT,KXMLBGAME-26MAY151845TORDET,KXMLBGAME-26MAY151940CHCCWS,KXMLBGAME-26MAY152138LADLAA,KXMLBTOTAL-26MAY152040AZCOL,KXNBAGAME-26MAY15DETCLE,KXNBAGAME-26MAY15SASMIN,KXWNBAGAME-26MAY15LVCONN,KXWNBAGAME-26MAY15WSHIND",
-        "Associated Market Sides": "yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes",
-        "Associated Markets": "KXATPMATCH-26MAY15RUUDAR-RUU,KXIPLGAME-26MAY15CSKLSG-CSK,KXMLBGAME-26MAY151840PHIPIT-PIT,KXMLBGAME-26MAY151845TORDET-TOR,KXMLBGAME-26MAY151940CHCCWS-CHC,KXMLBGAME-26MAY152138LADLAA-LAD,KXMLBTOTAL-26MAY152040AZCOL-6,KXNBAGAME-26MAY15DETCLE-CLE,KXNBAGAME-26MAY15SASMIN-MIN,KXWNBAGAME-26MAY15LVCONN-LV,KXWNBAGAME-26MAY15WSHIND-IND",
-        "Multivariate Event Ticker": "KXMVESPORTSMULTIGAMEEXTENDED-S2026A5176064929"
-      },
-      "event_ticker": "KXMVESPORTSMULTIGAMEEXTENDED-S2026A5176064929",
-      "expected_expiration_time": "2026-05-16T04:38:00Z",
-      "expiration_time": "2026-05-29T11:30:00Z",
-      "expiration_value": "",
-      "fractional_trading_enabled": true,
-      "is_provisional": true,
-      "last_price_dollars": "0.0000",
-      "latest_expiration_time": "2026-05-29T11:30:00Z",
-      "liquidity_dollars": "0.0000",
-      "market_type": "binary",
-      "mve_collection_ticker": "KXMVESPORTSMULTIGAMEEXTENDED-R",
-      "mve_selected_legs": [
-        {
-          "event_ticker": "KXATPMATCH-26MAY15RUUDAR",
-          "market_ticker": "KXATPMATCH-26MAY15RUUDAR-RUU",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXIPLGAME-26MAY15CSKLSG",
-          "market_ticker": "KXIPLGAME-26MAY15CSKLSG-CSK",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBGAME-26MAY151840PHIPIT",
-          "market_ticker": "KXMLBGAME-26MAY151840PHIPIT-PIT",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBGAME-26MAY151845TORDET",
-          "market_ticker": "KXMLBGAME-26MAY151845TORDET-TOR",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBGAME-26MAY151940CHCCWS",
-          "market_ticker": "KXMLBGAME-26MAY151940CHCCWS-CHC",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBGAME-26MAY152138LADLAA",
-          "market_ticker": "KXMLBGAME-26MAY152138LADLAA-LAD",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBTOTAL-26MAY152040AZCOL",
-          "market_ticker": "KXMLBTOTAL-26MAY152040AZCOL-6",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXNBAGAME-26MAY15DETCLE",
-          "market_ticker": "KXNBAGAME-26MAY15DETCLE-CLE",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXNBAGAME-26MAY15SASMIN",
-          "market_ticker": "KXNBAGAME-26MAY15SASMIN-MIN",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXWNBAGAME-26MAY15LVCONN",
-          "market_ticker": "KXWNBAGAME-26MAY15LVCONN-LV",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXWNBAGAME-26MAY15WSHIND",
-          "market_ticker": "KXWNBAGAME-26MAY15WSHIND-IND",
-          "side": "yes"
-        }
-      ],
-      "no_ask_dollars": "1.0000",
-      "no_bid_dollars": "1.0000",
-      "no_sub_title": "yes Casper Ruud,yes Chennai Super Kings,yes Pittsburgh,yes Toronto,yes Chicago C,yes Los Angeles D,yes Over 5.5 runs scored,yes Cleveland,yes Minnesota,yes Las Vegas,yes Indiana",
-      "notional_value_dollars": "1.0000",
-      "open_interest_fp": "0.00",
-      "open_time": "2026-05-15T11:10:09Z",
-      "previous_price_dollars": "0.0000",
-      "previous_yes_ask_dollars": "0.0000",
-      "previous_yes_bid_dollars": "0.0000",
-      "price_level_structure": "deci_cent",
-      "price_ranges": [
-        {
-          "end": "1.0000",
-          "start": "0.0000",
-          "step": "0.0010"
-        }
-      ],
-      "response_price_units": "usd_cent",
-      "result": "",
-      "rules_primary": "",
-      "rules_secondary": "",
-      "settlement_timer_seconds": 5,
-      "status": "active",
-      "strike_type": "custom",
-      "ticker": "KXMVESPORTSMULTIGAMEEXTENDED-S2026A5176064929-7934C42E88C",
-      "title": "yes Casper Ruud,yes Chennai Super Kings,yes Pittsburgh,yes Toronto,yes Chicago C,yes Los Angeles D,yes Over 5.5 runs scored,yes Cleveland,yes Minnesota,yes Las Vegas,yes Indiana",
-      "updated_time": "2026-05-15T11:10:10.834435Z",
-      "volume_24h_fp": "0.00",
-      "volume_fp": "0.00",
-      "yes_ask_dollars": "0.0000",
-      "yes_ask_size_fp": "0.00",
-      "yes_bid_dollars": "0.0000",
-      "yes_bid_size_fp": "0.00",
-      "yes_sub_title": "yes Casper Ruud,yes Chennai Super Kings,yes Pittsburgh,yes Toronto,yes Chicago C,yes Los Angeles D,yes Over 5.5 runs scored,yes Cleveland,yes Minnesota,yes Las Vegas,yes Indiana"
-    },
-    {
-      "can_close_early": true,
-      "close_time": "2026-05-29T11:30:00Z",
-      "created_time": "2026-05-15T11:10:07.646637Z",
-      "custom_strike": {
-        "Associated Events": "KXATPMATCH-26MAY15RUUDAR,KXIPLGAME-26MAY15CSKLSG,KXMLBGAME-26MAY151845TORDET,KXMLBGAME-26MAY151940CHCCWS,KXMLBGAME-26MAY152138LADLAA,KXMLBTOTAL-26MAY152040AZCOL,KXNBAGAME-26MAY15DETCLE,KXNBAGAME-26MAY15SASMIN,KXWNBAGAME-26MAY15LVCONN,KXWNBAGAME-26MAY15WSHIND",
-        "Associated Market Sides": "yes,yes,yes,yes,yes,yes,yes,yes,yes,yes",
-        "Associated Markets": "KXATPMATCH-26MAY15RUUDAR-RUU,KXIPLGAME-26MAY15CSKLSG-CSK,KXMLBGAME-26MAY151845TORDET-TOR,KXMLBGAME-26MAY151940CHCCWS-CHC,KXMLBGAME-26MAY152138LADLAA-LAD,KXMLBTOTAL-26MAY152040AZCOL-6,KXNBAGAME-26MAY15DETCLE-CLE,KXNBAGAME-26MAY15SASMIN-MIN,KXWNBAGAME-26MAY15LVCONN-LV,KXWNBAGAME-26MAY15WSHIND-IND",
-        "Multivariate Event Ticker": "KXMVESPORTSMULTIGAMEEXTENDED-S2026E955868D774"
-      },
-      "event_ticker": "KXMVESPORTSMULTIGAMEEXTENDED-S2026E955868D774",
-      "expected_expiration_time": "2026-05-16T04:38:00Z",
-      "expiration_time": "2026-05-29T11:30:00Z",
-      "expiration_value": "",
-      "fractional_trading_enabled": true,
-      "is_provisional": true,
-      "last_price_dollars": "0.0000",
-      "latest_expiration_time": "2026-05-29T11:30:00Z",
-      "liquidity_dollars": "0.0000",
-      "market_type": "binary",
-      "mve_collection_ticker": "KXMVESPORTSMULTIGAMEEXTENDED-R",
-      "mve_selected_legs": [
-        {
-          "event_ticker": "KXATPMATCH-26MAY15RUUDAR",
-          "market_ticker": "KXATPMATCH-26MAY15RUUDAR-RUU",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXIPLGAME-26MAY15CSKLSG",
-          "market_ticker": "KXIPLGAME-26MAY15CSKLSG-CSK",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBGAME-26MAY151845TORDET",
-          "market_ticker": "KXMLBGAME-26MAY151845TORDET-TOR",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBGAME-26MAY151940CHCCWS",
-          "market_ticker": "KXMLBGAME-26MAY151940CHCCWS-CHC",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBGAME-26MAY152138LADLAA",
-          "market_ticker": "KXMLBGAME-26MAY152138LADLAA-LAD",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBTOTAL-26MAY152040AZCOL",
-          "market_ticker": "KXMLBTOTAL-26MAY152040AZCOL-6",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXNBAGAME-26MAY15DETCLE",
-          "market_ticker": "KXNBAGAME-26MAY15DETCLE-CLE",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXNBAGAME-26MAY15SASMIN",
-          "market_ticker": "KXNBAGAME-26MAY15SASMIN-MIN",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXWNBAGAME-26MAY15LVCONN",
-          "market_ticker": "KXWNBAGAME-26MAY15LVCONN-LV",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXWNBAGAME-26MAY15WSHIND",
-          "market_ticker": "KXWNBAGAME-26MAY15WSHIND-IND",
-          "side": "yes"
-        }
-      ],
-      "no_ask_dollars": "1.0000",
-      "no_bid_dollars": "1.0000",
-      "no_sub_title": "yes Casper Ruud,yes Chennai Super Kings,yes Toronto,yes Chicago C,yes Los Angeles D,yes Over 5.5 runs scored,yes Cleveland,yes Minnesota,yes Las Vegas,yes Indiana",
-      "notional_value_dollars": "1.0000",
-      "open_interest_fp": "0.00",
-      "open_time": "2026-05-15T11:10:07Z",
-      "previous_price_dollars": "0.0000",
-      "previous_yes_ask_dollars": "0.0000",
-      "previous_yes_bid_dollars": "0.0000",
-      "price_level_structure": "deci_cent",
-      "price_ranges": [
-        {
-          "end": "1.0000",
-          "start": "0.0000",
-          "step": "0.0010"
-        }
-      ],
-      "response_price_units": "usd_cent",
-      "result": "",
-      "rules_primary": "",
-      "rules_secondary": "",
-      "settlement_timer_seconds": 5,
-      "status": "active",
-      "strike_type": "custom",
-      "ticker": "KXMVESPORTSMULTIGAMEEXTENDED-S2026E955868D774-BA9F9EDC5A2",
-      "title": "yes Casper Ruud,yes Chennai Super Kings,yes Toronto,yes Chicago C,yes Los Angeles D,yes Over 5.5 runs scored,yes Cleveland,yes Minnesota,yes Las Vegas,yes Indiana",
-      "updated_time": "2026-05-15T11:10:07.834481Z",
-      "volume_24h_fp": "0.00",
-      "volume_fp": "0.00",
-      "yes_ask_dollars": "0.0000",
-      "yes_ask_size_fp": "0.00",
-      "yes_bid_dollars": "0.0000",
-      "yes_bid_size_fp": "0.00",
-      "yes_sub_title": "yes Casper Ruud,yes Chennai Super Kings,yes Toronto,yes Chicago C,yes Los Angeles D,yes Over 5.5 runs scored,yes Cleveland,yes Minnesota,yes Las Vegas,yes Indiana"
-    },
-    {
-      "can_close_early": true,
-      "close_time": "2026-05-29T11:30:00Z",
-      "created_time": "2026-05-15T11:10:06.136724Z",
-      "custom_strike": {
-        "Associated Events": "KXATPMATCH-26MAY15RUUDAR,KXIPLGAME-26MAY15CSKLSG,KXMLBGAME-26MAY151845TORDET,KXMLBGAME-26MAY151940CHCCWS,KXMLBGAME-26MAY152138LADLAA,KXMLBTOTAL-26MAY152040AZCOL,KXNBAGAME-26MAY15DETCLE,KXNBAGAME-26MAY15SASMIN,KXWNBAGAME-26MAY15LVCONN,KXWNBAGAME-26MAY15WSHIND",
-        "Associated Market Sides": "yes,yes,yes,yes,yes,yes,yes,yes,yes,yes",
-        "Associated Markets": "KXATPMATCH-26MAY15RUUDAR-RUU,KXIPLGAME-26MAY15CSKLSG-CSK,KXMLBGAME-26MAY151845TORDET-TOR,KXMLBGAME-26MAY151940CHCCWS-CHC,KXMLBGAME-26MAY152138LADLAA-LAD,KXMLBTOTAL-26MAY152040AZCOL-6,KXNBAGAME-26MAY15DETCLE-DET,KXNBAGAME-26MAY15SASMIN-MIN,KXWNBAGAME-26MAY15LVCONN-LV,KXWNBAGAME-26MAY15WSHIND-IND",
-        "Multivariate Event Ticker": "KXMVESPORTSMULTIGAMEEXTENDED-S2026E955868D774"
-      },
-      "event_ticker": "KXMVESPORTSMULTIGAMEEXTENDED-S2026E955868D774",
-      "expected_expiration_time": "2026-05-16T04:38:00Z",
-      "expiration_time": "2026-05-29T11:30:00Z",
-      "expiration_value": "",
-      "fractional_trading_enabled": true,
-      "is_provisional": true,
-      "last_price_dollars": "0.0000",
-      "latest_expiration_time": "2026-05-29T11:30:00Z",
-      "liquidity_dollars": "0.0000",
-      "market_type": "binary",
-      "mve_collection_ticker": "KXMVESPORTSMULTIGAMEEXTENDED-R",
-      "mve_selected_legs": [
-        {
-          "event_ticker": "KXATPMATCH-26MAY15RUUDAR",
-          "market_ticker": "KXATPMATCH-26MAY15RUUDAR-RUU",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXIPLGAME-26MAY15CSKLSG",
-          "market_ticker": "KXIPLGAME-26MAY15CSKLSG-CSK",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBGAME-26MAY151845TORDET",
-          "market_ticker": "KXMLBGAME-26MAY151845TORDET-TOR",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBGAME-26MAY151940CHCCWS",
-          "market_ticker": "KXMLBGAME-26MAY151940CHCCWS-CHC",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBGAME-26MAY152138LADLAA",
-          "market_ticker": "KXMLBGAME-26MAY152138LADLAA-LAD",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBTOTAL-26MAY152040AZCOL",
-          "market_ticker": "KXMLBTOTAL-26MAY152040AZCOL-6",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXNBAGAME-26MAY15DETCLE",
-          "market_ticker": "KXNBAGAME-26MAY15DETCLE-DET",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXNBAGAME-26MAY15SASMIN",
-          "market_ticker": "KXNBAGAME-26MAY15SASMIN-MIN",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXWNBAGAME-26MAY15LVCONN",
-          "market_ticker": "KXWNBAGAME-26MAY15LVCONN-LV",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXWNBAGAME-26MAY15WSHIND",
-          "market_ticker": "KXWNBAGAME-26MAY15WSHIND-IND",
-          "side": "yes"
-        }
-      ],
-      "no_ask_dollars": "1.0000",
-      "no_bid_dollars": "1.0000",
-      "no_sub_title": "yes Casper Ruud,yes Chennai Super Kings,yes Toronto,yes Chicago C,yes Los Angeles D,yes Over 5.5 runs scored,yes Detroit,yes Minnesota,yes Las Vegas,yes Indiana",
-      "notional_value_dollars": "1.0000",
-      "open_interest_fp": "0.00",
-      "open_time": "2026-05-15T11:10:06Z",
-      "previous_price_dollars": "0.0000",
-      "previous_yes_ask_dollars": "0.0000",
-      "previous_yes_bid_dollars": "0.0000",
-      "price_level_structure": "deci_cent",
-      "price_ranges": [
-        {
-          "end": "1.0000",
-          "start": "0.0000",
-          "step": "0.0010"
-        }
-      ],
-      "response_price_units": "usd_cent",
-      "result": "",
-      "rules_primary": "",
-      "rules_secondary": "",
-      "settlement_timer_seconds": 5,
-      "status": "active",
-      "strike_type": "custom",
-      "ticker": "KXMVESPORTSMULTIGAMEEXTENDED-S2026E955868D774-2C3971E0F97",
-      "title": "yes Casper Ruud,yes Chennai Super Kings,yes Toronto,yes Chicago C,yes Los Angeles D,yes Over 5.5 runs scored,yes Detroit,yes Minnesota,yes Las Vegas,yes Indiana",
-      "updated_time": "2026-05-15T11:10:06.834726Z",
-      "volume_24h_fp": "0.00",
-      "volume_fp": "0.00",
-      "yes_ask_dollars": "0.0000",
-      "yes_ask_size_fp": "0.00",
-      "yes_bid_dollars": "0.0000",
-      "yes_bid_size_fp": "0.00",
-      "yes_sub_title": "yes Casper Ruud,yes Chennai Super Kings,yes Toronto,yes Chicago C,yes Los Angeles D,yes Over 5.5 runs scored,yes Detroit,yes Minnesota,yes Las Vegas,yes Indiana"
-    },
-    {
-      "can_close_early": true,
-      "close_time": "2026-05-18T14:00:00Z",
-      "created_time": "2026-05-15T11:07:48.907873Z",
-      "custom_strike": {
-        "Associated Events": "KXIPLGAME-26MAY15CSKLSG,KXMLBGAME-26MAY151915NYYNYM,KXMLBGAME-26MAY152138LADLAA,KXMLBGAME-26MAY152140SFATH,KXNBASPREAD-26MAY15SASMIN",
-        "Associated Market Sides": "yes,yes,yes,yes,yes",
-        "Associated Markets": "KXIPLGAME-26MAY15CSKLSG-CSK,KXMLBGAME-26MAY151915NYYNYM-NYY,KXMLBGAME-26MAY152138LADLAA-LAD,KXMLBGAME-26MAY152140SFATH-ATH,KXNBASPREAD-26MAY15SASMIN-SAS1",
-        "Multivariate Event Ticker": "KXMVESPORTSMULTIGAMEEXTENDED-S2026E06083C2F27"
-      },
-      "event_ticker": "KXMVESPORTSMULTIGAMEEXTENDED-S2026E06083C2F27",
-      "expected_expiration_time": "2026-05-16T04:40:00Z",
-      "expiration_time": "2026-05-18T14:00:00Z",
-      "expiration_value": "",
-      "fractional_trading_enabled": true,
-      "is_provisional": true,
-      "last_price_dollars": "0.0000",
-      "latest_expiration_time": "2026-05-18T14:00:00Z",
-      "liquidity_dollars": "0.0000",
-      "market_type": "binary",
-      "mve_collection_ticker": "KXMVESPORTSMULTIGAMEEXTENDED-R",
-      "mve_selected_legs": [
-        {
-          "event_ticker": "KXIPLGAME-26MAY15CSKLSG",
-          "market_ticker": "KXIPLGAME-26MAY15CSKLSG-CSK",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBGAME-26MAY151915NYYNYM",
-          "market_ticker": "KXMLBGAME-26MAY151915NYYNYM-NYY",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBGAME-26MAY152138LADLAA",
-          "market_ticker": "KXMLBGAME-26MAY152138LADLAA-LAD",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXMLBGAME-26MAY152140SFATH",
-          "market_ticker": "KXMLBGAME-26MAY152140SFATH-ATH",
-          "side": "yes"
-        },
-        {
-          "event_ticker": "KXNBASPREAD-26MAY15SASMIN",
-          "market_ticker": "KXNBASPREAD-26MAY15SASMIN-SAS1",
+          "event_ticker": "KXUFCFIGHT-26MAY16SALCRO",
+          "market_ticker": "KXUFCFIGHT-26MAY16SALCRO-SAL",
           "side": "yes"
         }
       ],
       "no_ask_dollars": "1.0000",
       "no_bid_dollars": "0.0000",
-      "no_sub_title": "yes Chennai Super Kings,yes New York Y,yes Los Angeles D,yes A's,yes San Antonio wins by over 1.5 points",
+      "no_sub_title": "yes James Duckworth,yes Sebastian Ofner,yes Manchester United,yes Gujarat Titans,yes Scottie Scheffler,yes Robelis Despaigne,yes David Mgoyan,yes Francis Ngannou,yes Aline Pereira,yes Ronda Rousey,yes Parnasse Salahdine",
       "notional_value_dollars": "1.0000",
       "open_interest_fp": "0.00",
-      "open_time": "2026-05-15T11:07:48Z",
+      "open_time": "2026-05-16T09:19:54Z",
       "previous_price_dollars": "0.0000",
       "previous_yes_ask_dollars": "0.0000",
       "previous_yes_bid_dollars": "0.0000",
@@ -728,85 +2169,297 @@
       "settlement_timer_seconds": 5,
       "status": "active",
       "strike_type": "custom",
-      "ticker": "KXMVESPORTSMULTIGAMEEXTENDED-S2026E06083C2F27-284EAF44287",
-      "title": "yes Chennai Super Kings,yes New York Y,yes Los Angeles D,yes A's,yes San Antonio wins by over 1.5 points",
-      "updated_time": "2026-05-15T11:07:49.834864Z",
+      "ticker": "KXMVESPORTSMULTIGAMEEXTENDED-S202681001E496C7-924073DD01B",
+      "title": "yes James Duckworth,yes Sebastian Ofner,yes Manchester United,yes Gujarat Titans,yes Scottie Scheffler,yes Robelis Despaigne,yes David Mgoyan,yes Francis Ngannou,yes Aline Pereira,yes Ronda Rousey,yes Parnasse Salahdine",
+      "updated_time": "2026-05-16T09:19:55.83487Z",
       "volume_24h_fp": "0.00",
       "volume_fp": "0.00",
       "yes_ask_dollars": "1.0000",
       "yes_ask_size_fp": "0.00",
       "yes_bid_dollars": "0.0000",
       "yes_bid_size_fp": "0.00",
-      "yes_sub_title": "yes Chennai Super Kings,yes New York Y,yes Los Angeles D,yes A's,yes San Antonio wins by over 1.5 points"
+      "yes_sub_title": "yes James Duckworth,yes Sebastian Ofner,yes Manchester United,yes Gujarat Titans,yes Scottie Scheffler,yes Robelis Despaigne,yes David Mgoyan,yes Francis Ngannou,yes Aline Pereira,yes Ronda Rousey,yes Parnasse Salahdine"
     },
     {
       "can_close_early": true,
-      "close_time": "2026-05-31T11:30:00Z",
-      "created_time": "2026-05-15T11:06:54.738392Z",
+      "close_time": "2026-05-30T08:00:00Z",
+      "created_time": "2026-05-16T09:19:32.223468Z",
       "custom_strike": {
-        "Associated Events": "KXEPLGAME-26MAY17AVLLFC,KXIPLGAME-26MAY15CSKLSG,KXMLBGAME-26MAY151910CINCLE,KXMLBGAME-26MAY151910MIATB,KXNBAGAME-26MAY15DETCLE,KXNBAGAME-26MAY15SASMIN,KXWNBAGAME-26MAY15LVCONN,KXWNBAGAME-26MAY15WSHIND",
+        "Associated Events": "KXATPMATCH-26MAY16DUCDAM,KXATPMATCH-26MAY16OFNFEL,KXIPLGAME-26MAY16GTKKR,KXPGATOUR-PGC26,KXUFCFIGHT-26MAY16DOSDES,KXUFCFIGHT-26MAY16MGOMOR,KXUFCFIGHT-26MAY16NGALIN,KXUFCFIGHT-26MAY16PERMAS,KXUFCFIGHT-26MAY16ROUCAR,KXUFCFIGHT-26MAY16SALCRO",
+        "Associated Market Sides": "yes,yes,yes,yes,yes,yes,yes,yes,yes,yes",
+        "Associated Markets": "KXATPMATCH-26MAY16DUCDAM-DUC,KXATPMATCH-26MAY16OFNFEL-OFN,KXIPLGAME-26MAY16GTKKR-GT,KXPGATOUR-PGC26-SSCH,KXUFCFIGHT-26MAY16DOSDES-DES,KXUFCFIGHT-26MAY16MGOMOR-MGO,KXUFCFIGHT-26MAY16NGALIN-NGA,KXUFCFIGHT-26MAY16PERMAS-PER,KXUFCFIGHT-26MAY16ROUCAR-ROU,KXUFCFIGHT-26MAY16SALCRO-SAL",
+        "Multivariate Event Ticker": "KXMVESPORTSMULTIGAMEEXTENDED-S20261D53251684A"
+      },
+      "event_ticker": "KXMVESPORTSMULTIGAMEEXTENDED-S20261D53251684A",
+      "expected_expiration_time": "2026-05-17T04:40:00Z",
+      "expiration_time": "2026-05-30T08:00:00Z",
+      "expiration_value": "",
+      "fractional_trading_enabled": true,
+      "is_provisional": true,
+      "last_price_dollars": "0.0000",
+      "latest_expiration_time": "2026-05-30T08:00:00Z",
+      "liquidity_dollars": "0.0000",
+      "market_type": "binary",
+      "mve_collection_ticker": "KXMVESPORTSMULTIGAMEEXTENDED-R",
+      "mve_selected_legs": [
+        {
+          "event_ticker": "KXATPMATCH-26MAY16DUCDAM",
+          "market_ticker": "KXATPMATCH-26MAY16DUCDAM-DUC",
+          "side": "yes"
+        },
+        {
+          "event_ticker": "KXATPMATCH-26MAY16OFNFEL",
+          "market_ticker": "KXATPMATCH-26MAY16OFNFEL-OFN",
+          "side": "yes"
+        },
+        {
+          "event_ticker": "KXIPLGAME-26MAY16GTKKR",
+          "market_ticker": "KXIPLGAME-26MAY16GTKKR-GT",
+          "side": "yes"
+        },
+        {
+          "event_ticker": "KXPGATOUR-PGC26",
+          "market_ticker": "KXPGATOUR-PGC26-SSCH",
+          "side": "yes"
+        },
+        {
+          "event_ticker": "KXUFCFIGHT-26MAY16DOSDES",
+          "market_ticker": "KXUFCFIGHT-26MAY16DOSDES-DES",
+          "side": "yes"
+        },
+        {
+          "event_ticker": "KXUFCFIGHT-26MAY16MGOMOR",
+          "market_ticker": "KXUFCFIGHT-26MAY16MGOMOR-MGO",
+          "side": "yes"
+        },
+        {
+          "event_ticker": "KXUFCFIGHT-26MAY16NGALIN",
+          "market_ticker": "KXUFCFIGHT-26MAY16NGALIN-NGA",
+          "side": "yes"
+        },
+        {
+          "event_ticker": "KXUFCFIGHT-26MAY16PERMAS",
+          "market_ticker": "KXUFCFIGHT-26MAY16PERMAS-PER",
+          "side": "yes"
+        },
+        {
+          "event_ticker": "KXUFCFIGHT-26MAY16ROUCAR",
+          "market_ticker": "KXUFCFIGHT-26MAY16ROUCAR-ROU",
+          "side": "yes"
+        },
+        {
+          "event_ticker": "KXUFCFIGHT-26MAY16SALCRO",
+          "market_ticker": "KXUFCFIGHT-26MAY16SALCRO-SAL",
+          "side": "yes"
+        }
+      ],
+      "no_ask_dollars": "1.0000",
+      "no_bid_dollars": "1.0000",
+      "no_sub_title": "yes James Duckworth,yes Sebastian Ofner,yes Gujarat Titans,yes Scottie Scheffler,yes Robelis Despaigne,yes David Mgoyan,yes Francis Ngannou,yes Aline Pereira,yes Ronda Rousey,yes Parnasse Salahdine",
+      "notional_value_dollars": "1.0000",
+      "open_interest_fp": "0.00",
+      "open_time": "2026-05-16T09:19:32Z",
+      "previous_price_dollars": "0.0000",
+      "previous_yes_ask_dollars": "0.0000",
+      "previous_yes_bid_dollars": "0.0000",
+      "price_level_structure": "deci_cent",
+      "price_ranges": [
+        {
+          "end": "1.0000",
+          "start": "0.0000",
+          "step": "0.0010"
+        }
+      ],
+      "response_price_units": "usd_cent",
+      "result": "",
+      "rules_primary": "",
+      "rules_secondary": "",
+      "settlement_timer_seconds": 5,
+      "status": "active",
+      "strike_type": "custom",
+      "ticker": "KXMVESPORTSMULTIGAMEEXTENDED-S20261D53251684A-A4847CEFECF",
+      "title": "yes James Duckworth,yes Sebastian Ofner,yes Gujarat Titans,yes Scottie Scheffler,yes Robelis Despaigne,yes David Mgoyan,yes Francis Ngannou,yes Aline Pereira,yes Ronda Rousey,yes Parnasse Salahdine",
+      "updated_time": "2026-05-16T09:19:32.8351Z",
+      "volume_24h_fp": "0.00",
+      "volume_fp": "0.00",
+      "yes_ask_dollars": "0.0000",
+      "yes_ask_size_fp": "0.00",
+      "yes_bid_dollars": "0.0000",
+      "yes_bid_size_fp": "0.00",
+      "yes_sub_title": "yes James Duckworth,yes Sebastian Ofner,yes Gujarat Titans,yes Scottie Scheffler,yes Robelis Despaigne,yes David Mgoyan,yes Francis Ngannou,yes Aline Pereira,yes Ronda Rousey,yes Parnasse Salahdine"
+    },
+    {
+      "can_close_early": true,
+      "close_time": "2026-05-19T14:00:00Z",
+      "created_time": "2026-05-16T09:18:41.826428Z",
+      "custom_strike": {
+        "Associated Events": "KXIPLGAME-26MAY16GTKKR,KXIPLGAME-26MAY17RCBPBKS,KXIPLGAME-26MAY17RRDC,KXIPLGAME-26MAY18SRHCSK,KXMLBGAME-26MAY161915NYYNYM,KXMLBGAME-26MAY162138LADLAA,KXNHLTOTAL-26MAY16BUFMTL,KXWTAMATCH-26MAY16CHEZVO,KXWTAMATCH-26MAY16TEIHEN",
+        "Associated Market Sides": "yes,yes,yes,yes,yes,yes,yes,yes,yes",
+        "Associated Markets": "KXIPLGAME-26MAY16GTKKR-GT,KXIPLGAME-26MAY17RCBPBKS-RCB,KXIPLGAME-26MAY17RRDC-DC,KXIPLGAME-26MAY18SRHCSK-SRH,KXMLBGAME-26MAY161915NYYNYM-NYY,KXMLBGAME-26MAY162138LADLAA-LAD,KXNHLTOTAL-26MAY16BUFMTL-2,KXWTAMATCH-26MAY16CHEZVO-ZVO,KXWTAMATCH-26MAY16TEIHEN-HEN",
+        "Multivariate Event Ticker": "KXMVECROSSCATEGORY-S2026C2A19D76211"
+      },
+      "event_ticker": "KXMVECROSSCATEGORY-S2026C2A19D76211",
+      "expected_expiration_time": "2026-05-18T17:00:00Z",
+      "expiration_time": "2026-05-19T14:00:00Z",
+      "expiration_value": "",
+      "fractional_trading_enabled": true,
+      "is_provisional": true,
+      "last_price_dollars": "0.0000",
+      "latest_expiration_time": "2026-05-19T14:00:00Z",
+      "liquidity_dollars": "0.0000",
+      "market_type": "binary",
+      "mve_collection_ticker": "KXMVECROSSCATEGORY-R",
+      "mve_selected_legs": [
+        {
+          "event_ticker": "KXIPLGAME-26MAY16GTKKR",
+          "market_ticker": "KXIPLGAME-26MAY16GTKKR-GT",
+          "side": "yes"
+        },
+        {
+          "event_ticker": "KXIPLGAME-26MAY17RCBPBKS",
+          "market_ticker": "KXIPLGAME-26MAY17RCBPBKS-RCB",
+          "side": "yes"
+        },
+        {
+          "event_ticker": "KXIPLGAME-26MAY17RRDC",
+          "market_ticker": "KXIPLGAME-26MAY17RRDC-DC",
+          "side": "yes"
+        },
+        {
+          "event_ticker": "KXIPLGAME-26MAY18SRHCSK",
+          "market_ticker": "KXIPLGAME-26MAY18SRHCSK-SRH",
+          "side": "yes"
+        },
+        {
+          "event_ticker": "KXMLBGAME-26MAY161915NYYNYM",
+          "market_ticker": "KXMLBGAME-26MAY161915NYYNYM-NYY",
+          "side": "yes"
+        },
+        {
+          "event_ticker": "KXMLBGAME-26MAY162138LADLAA",
+          "market_ticker": "KXMLBGAME-26MAY162138LADLAA-LAD",
+          "side": "yes"
+        },
+        {
+          "event_ticker": "KXNHLTOTAL-26MAY16BUFMTL",
+          "market_ticker": "KXNHLTOTAL-26MAY16BUFMTL-2",
+          "side": "yes"
+        },
+        {
+          "event_ticker": "KXWTAMATCH-26MAY16CHEZVO",
+          "market_ticker": "KXWTAMATCH-26MAY16CHEZVO-ZVO",
+          "side": "yes"
+        },
+        {
+          "event_ticker": "KXWTAMATCH-26MAY16TEIHEN",
+          "market_ticker": "KXWTAMATCH-26MAY16TEIHEN-HEN",
+          "side": "yes"
+        }
+      ],
+      "no_ask_dollars": "1.0000",
+      "no_bid_dollars": "0.0000",
+      "no_sub_title": "yes Gujarat Titans,yes Royal Challengers Bengaluru,yes Delhi Capitals,yes Sunrisers Hyderabad,yes New York Y,yes Los Angeles D,yes Over 2.5 goals scored,yes Vera Zvonareva,yes Caijsa Wilda Hennemann",
+      "notional_value_dollars": "1.0000",
+      "open_interest_fp": "0.00",
+      "open_time": "2026-05-16T09:18:41Z",
+      "previous_price_dollars": "0.0000",
+      "previous_yes_ask_dollars": "0.0000",
+      "previous_yes_bid_dollars": "0.0000",
+      "price_level_structure": "deci_cent",
+      "price_ranges": [
+        {
+          "end": "1.0000",
+          "start": "0.0000",
+          "step": "0.0010"
+        }
+      ],
+      "response_price_units": "usd_cent",
+      "result": "",
+      "rules_primary": "",
+      "rules_secondary": "",
+      "settlement_timer_seconds": 5,
+      "status": "active",
+      "strike_type": "custom",
+      "ticker": "KXMVECROSSCATEGORY-S2026C2A19D76211-B2C2D61816A",
+      "title": "yes Gujarat Titans,yes Royal Challengers Bengaluru,yes Delhi Capitals,yes Sunrisers Hyderabad,yes New York Y,yes Los Angeles D,yes Over 2.5 goals scored,yes Vera Zvonareva,yes Caijsa Wilda Hennemann",
+      "updated_time": "2026-05-16T09:18:42.834355Z",
+      "volume_24h_fp": "0.00",
+      "volume_fp": "0.00",
+      "yes_ask_dollars": "1.0000",
+      "yes_ask_size_fp": "0.00",
+      "yes_bid_dollars": "0.0000",
+      "yes_bid_size_fp": "0.00",
+      "yes_sub_title": "yes Gujarat Titans,yes Royal Challengers Bengaluru,yes Delhi Capitals,yes Sunrisers Hyderabad,yes New York Y,yes Los Angeles D,yes Over 2.5 goals scored,yes Vera Zvonareva,yes Caijsa Wilda Hennemann"
+    },
+    {
+      "can_close_early": true,
+      "close_time": "2026-05-19T14:00:00Z",
+      "created_time": "2026-05-16T09:18:34.45769Z",
+      "custom_strike": {
+        "Associated Events": "KXIPLGAME-26MAY16GTKKR,KXIPLGAME-26MAY17RCBPBKS,KXIPLGAME-26MAY17RRDC,KXIPLGAME-26MAY18SRHCSK,KXMLBGAME-26MAY161915NYYNYM,KXMLBGAME-26MAY162138LADLAA,KXWTAMATCH-26MAY16CHEZVO,KXWTAMATCH-26MAY16TEIHEN",
         "Associated Market Sides": "yes,yes,yes,yes,yes,yes,yes,yes",
-        "Associated Markets": "KXEPLGAME-26MAY17AVLLFC-AVL,KXIPLGAME-26MAY15CSKLSG-CSK,KXMLBGAME-26MAY151910CINCLE-CIN,KXMLBGAME-26MAY151910MIATB-TB,KXNBAGAME-26MAY15DETCLE-CLE,KXNBAGAME-26MAY15SASMIN-SAS,KXWNBAGAME-26MAY15LVCONN-LV,KXWNBAGAME-26MAY15WSHIND-IND",
-        "Multivariate Event Ticker": "KXMVECROSSCATEGORY-S20265CD93D6AD85"
+        "Associated Markets": "KXIPLGAME-26MAY16GTKKR-GT,KXIPLGAME-26MAY17RCBPBKS-RCB,KXIPLGAME-26MAY17RRDC-DC,KXIPLGAME-26MAY18SRHCSK-SRH,KXMLBGAME-26MAY161915NYYNYM-NYY,KXMLBGAME-26MAY162138LADLAA-LAD,KXWTAMATCH-26MAY16CHEZVO-ZVO,KXWTAMATCH-26MAY16TEIHEN-HEN",
+        "Multivariate Event Ticker": "KXMVECROSSCATEGORY-S2026B93C30706AA"
       },
-      "event_ticker": "KXMVECROSSCATEGORY-S20265CD93D6AD85",
-      "expected_expiration_time": "2026-05-17T14:30:00Z",
-      "expiration_time": "2026-05-31T11:30:00Z",
+      "event_ticker": "KXMVECROSSCATEGORY-S2026B93C30706AA",
+      "expected_expiration_time": "2026-05-18T17:00:00Z",
+      "expiration_time": "2026-05-19T14:00:00Z",
       "expiration_value": "",
       "fractional_trading_enabled": true,
-      "last_price_dollars": "0.0150",
-      "latest_expiration_time": "2026-05-31T11:30:00Z",
+      "is_provisional": true,
+      "last_price_dollars": "0.0000",
+      "latest_expiration_time": "2026-05-19T14:00:00Z",
       "liquidity_dollars": "0.0000",
       "market_type": "binary",
       "mve_collection_ticker": "KXMVECROSSCATEGORY-R",
       "mve_selected_legs": [
         {
-          "event_ticker": "KXEPLGAME-26MAY17AVLLFC",
-          "market_ticker": "KXEPLGAME-26MAY17AVLLFC-AVL",
+          "event_ticker": "KXIPLGAME-26MAY16GTKKR",
+          "market_ticker": "KXIPLGAME-26MAY16GTKKR-GT",
           "side": "yes"
         },
         {
-          "event_ticker": "KXIPLGAME-26MAY15CSKLSG",
-          "market_ticker": "KXIPLGAME-26MAY15CSKLSG-CSK",
+          "event_ticker": "KXIPLGAME-26MAY17RCBPBKS",
+          "market_ticker": "KXIPLGAME-26MAY17RCBPBKS-RCB",
           "side": "yes"
         },
         {
-          "event_ticker": "KXMLBGAME-26MAY151910CINCLE",
-          "market_ticker": "KXMLBGAME-26MAY151910CINCLE-CIN",
+          "event_ticker": "KXIPLGAME-26MAY17RRDC",
+          "market_ticker": "KXIPLGAME-26MAY17RRDC-DC",
           "side": "yes"
         },
         {
-          "event_ticker": "KXMLBGAME-26MAY151910MIATB",
-          "market_ticker": "KXMLBGAME-26MAY151910MIATB-TB",
+          "event_ticker": "KXIPLGAME-26MAY18SRHCSK",
+          "market_ticker": "KXIPLGAME-26MAY18SRHCSK-SRH",
           "side": "yes"
         },
         {
-          "event_ticker": "KXNBAGAME-26MAY15DETCLE",
-          "market_ticker": "KXNBAGAME-26MAY15DETCLE-CLE",
+          "event_ticker": "KXMLBGAME-26MAY161915NYYNYM",
+          "market_ticker": "KXMLBGAME-26MAY161915NYYNYM-NYY",
           "side": "yes"
         },
         {
-          "event_ticker": "KXNBAGAME-26MAY15SASMIN",
-          "market_ticker": "KXNBAGAME-26MAY15SASMIN-SAS",
+          "event_ticker": "KXMLBGAME-26MAY162138LADLAA",
+          "market_ticker": "KXMLBGAME-26MAY162138LADLAA-LAD",
           "side": "yes"
         },
         {
-          "event_ticker": "KXWNBAGAME-26MAY15LVCONN",
-          "market_ticker": "KXWNBAGAME-26MAY15LVCONN-LV",
+          "event_ticker": "KXWTAMATCH-26MAY16CHEZVO",
+          "market_ticker": "KXWTAMATCH-26MAY16CHEZVO-ZVO",
           "side": "yes"
         },
         {
-          "event_ticker": "KXWNBAGAME-26MAY15WSHIND",
-          "market_ticker": "KXWNBAGAME-26MAY15WSHIND-IND",
+          "event_ticker": "KXWTAMATCH-26MAY16TEIHEN",
+          "market_ticker": "KXWTAMATCH-26MAY16TEIHEN-HEN",
           "side": "yes"
         }
       ],
       "no_ask_dollars": "1.0000",
       "no_bid_dollars": "0.0000",
-      "no_sub_title": "yes Aston Villa,yes Chennai Super Kings,yes Cincinnati,yes Tampa Bay,yes Cleveland,yes San Antonio,yes Las Vegas,yes Indiana",
+      "no_sub_title": "yes Gujarat Titans,yes Royal Challengers Bengaluru,yes Delhi Capitals,yes Sunrisers Hyderabad,yes New York Y,yes Los Angeles D,yes Vera Zvonareva,yes Caijsa Wilda Hennemann",
       "notional_value_dollars": "1.0000",
-      "open_interest_fp": "1142.00",
-      "open_time": "2026-05-15T11:06:54Z",
+      "open_interest_fp": "0.00",
+      "open_time": "2026-05-16T09:18:34Z",
       "previous_price_dollars": "0.0000",
       "previous_yes_ask_dollars": "0.0000",
       "previous_yes_bid_dollars": "0.0000",
@@ -825,81 +2478,81 @@
       "settlement_timer_seconds": 5,
       "status": "active",
       "strike_type": "custom",
-      "ticker": "KXMVECROSSCATEGORY-S20265CD93D6AD85-B2F3F0860CD",
-      "title": "yes Aston Villa,yes Chennai Super Kings,yes Cincinnati,yes Tampa Bay,yes Cleveland,yes San Antonio,yes Las Vegas,yes Indiana",
-      "updated_time": "2026-05-15T11:06:54.834816Z",
+      "ticker": "KXMVECROSSCATEGORY-S2026B93C30706AA-5DA71A3729C",
+      "title": "yes Gujarat Titans,yes Royal Challengers Bengaluru,yes Delhi Capitals,yes Sunrisers Hyderabad,yes New York Y,yes Los Angeles D,yes Vera Zvonareva,yes Caijsa Wilda Hennemann",
+      "updated_time": "2026-05-16T09:18:34.834629Z",
       "volume_24h_fp": "0.00",
-      "volume_fp": "1142.00",
+      "volume_fp": "0.00",
       "yes_ask_dollars": "1.0000",
       "yes_ask_size_fp": "0.00",
       "yes_bid_dollars": "0.0000",
       "yes_bid_size_fp": "0.00",
-      "yes_sub_title": "yes Aston Villa,yes Chennai Super Kings,yes Cincinnati,yes Tampa Bay,yes Cleveland,yes San Antonio,yes Las Vegas,yes Indiana"
+      "yes_sub_title": "yes Gujarat Titans,yes Royal Challengers Bengaluru,yes Delhi Capitals,yes Sunrisers Hyderabad,yes New York Y,yes Los Angeles D,yes Vera Zvonareva,yes Caijsa Wilda Hennemann"
     },
     {
       "can_close_early": true,
-      "close_time": "2026-05-31T11:30:00Z",
-      "created_time": "2026-05-15T11:06:53.495321Z",
+      "close_time": "2026-05-19T14:00:00Z",
+      "created_time": "2026-05-16T09:18:28.559686Z",
       "custom_strike": {
-        "Associated Events": "KXEPLGAME-26MAY17AVLLFC,KXIPLGAME-26MAY15CSKLSG,KXMLBGAME-26MAY151910CINCLE,KXMLBGAME-26MAY151910MIATB,KXNBAGAME-26MAY15DETCLE,KXNBAGAME-26MAY15SASMIN,KXWNBAGAME-26MAY15WSHIND",
+        "Associated Events": "KXIPLGAME-26MAY16GTKKR,KXIPLGAME-26MAY17RCBPBKS,KXIPLGAME-26MAY17RRDC,KXIPLGAME-26MAY18SRHCSK,KXMLBGAME-26MAY161915NYYNYM,KXMLBGAME-26MAY162138LADLAA,KXWTAMATCH-26MAY16CHEZVO",
         "Associated Market Sides": "yes,yes,yes,yes,yes,yes,yes",
-        "Associated Markets": "KXEPLGAME-26MAY17AVLLFC-AVL,KXIPLGAME-26MAY15CSKLSG-CSK,KXMLBGAME-26MAY151910CINCLE-CIN,KXMLBGAME-26MAY151910MIATB-TB,KXNBAGAME-26MAY15DETCLE-CLE,KXNBAGAME-26MAY15SASMIN-SAS,KXWNBAGAME-26MAY15WSHIND-IND",
-        "Multivariate Event Ticker": "KXMVECROSSCATEGORY-S202657E57BEF485"
+        "Associated Markets": "KXIPLGAME-26MAY16GTKKR-GT,KXIPLGAME-26MAY17RCBPBKS-RCB,KXIPLGAME-26MAY17RRDC-DC,KXIPLGAME-26MAY18SRHCSK-SRH,KXMLBGAME-26MAY161915NYYNYM-NYY,KXMLBGAME-26MAY162138LADLAA-LAD,KXWTAMATCH-26MAY16CHEZVO-ZVO",
+        "Multivariate Event Ticker": "KXMVECROSSCATEGORY-S2026CBF10730DEC"
       },
-      "event_ticker": "KXMVECROSSCATEGORY-S202657E57BEF485",
-      "expected_expiration_time": "2026-05-17T14:30:00Z",
-      "expiration_time": "2026-05-31T11:30:00Z",
+      "event_ticker": "KXMVECROSSCATEGORY-S2026CBF10730DEC",
+      "expected_expiration_time": "2026-05-18T17:00:00Z",
+      "expiration_time": "2026-05-19T14:00:00Z",
       "expiration_value": "",
       "fractional_trading_enabled": true,
       "is_provisional": true,
       "last_price_dollars": "0.0000",
-      "latest_expiration_time": "2026-05-31T11:30:00Z",
+      "latest_expiration_time": "2026-05-19T14:00:00Z",
       "liquidity_dollars": "0.0000",
       "market_type": "binary",
       "mve_collection_ticker": "KXMVECROSSCATEGORY-R",
       "mve_selected_legs": [
         {
-          "event_ticker": "KXEPLGAME-26MAY17AVLLFC",
-          "market_ticker": "KXEPLGAME-26MAY17AVLLFC-AVL",
+          "event_ticker": "KXIPLGAME-26MAY16GTKKR",
+          "market_ticker": "KXIPLGAME-26MAY16GTKKR-GT",
           "side": "yes"
         },
         {
-          "event_ticker": "KXIPLGAME-26MAY15CSKLSG",
-          "market_ticker": "KXIPLGAME-26MAY15CSKLSG-CSK",
+          "event_ticker": "KXIPLGAME-26MAY17RCBPBKS",
+          "market_ticker": "KXIPLGAME-26MAY17RCBPBKS-RCB",
           "side": "yes"
         },
         {
-          "event_ticker": "KXMLBGAME-26MAY151910CINCLE",
-          "market_ticker": "KXMLBGAME-26MAY151910CINCLE-CIN",
+          "event_ticker": "KXIPLGAME-26MAY17RRDC",
+          "market_ticker": "KXIPLGAME-26MAY17RRDC-DC",
           "side": "yes"
         },
         {
-          "event_ticker": "KXMLBGAME-26MAY151910MIATB",
-          "market_ticker": "KXMLBGAME-26MAY151910MIATB-TB",
+          "event_ticker": "KXIPLGAME-26MAY18SRHCSK",
+          "market_ticker": "KXIPLGAME-26MAY18SRHCSK-SRH",
           "side": "yes"
         },
         {
-          "event_ticker": "KXNBAGAME-26MAY15DETCLE",
-          "market_ticker": "KXNBAGAME-26MAY15DETCLE-CLE",
+          "event_ticker": "KXMLBGAME-26MAY161915NYYNYM",
+          "market_ticker": "KXMLBGAME-26MAY161915NYYNYM-NYY",
           "side": "yes"
         },
         {
-          "event_ticker": "KXNBAGAME-26MAY15SASMIN",
-          "market_ticker": "KXNBAGAME-26MAY15SASMIN-SAS",
+          "event_ticker": "KXMLBGAME-26MAY162138LADLAA",
+          "market_ticker": "KXMLBGAME-26MAY162138LADLAA-LAD",
           "side": "yes"
         },
         {
-          "event_ticker": "KXWNBAGAME-26MAY15WSHIND",
-          "market_ticker": "KXWNBAGAME-26MAY15WSHIND-IND",
+          "event_ticker": "KXWTAMATCH-26MAY16CHEZVO",
+          "market_ticker": "KXWTAMATCH-26MAY16CHEZVO-ZVO",
           "side": "yes"
         }
       ],
       "no_ask_dollars": "1.0000",
       "no_bid_dollars": "0.0000",
-      "no_sub_title": "yes Aston Villa,yes Chennai Super Kings,yes Cincinnati,yes Tampa Bay,yes Cleveland,yes San Antonio,yes Indiana",
+      "no_sub_title": "yes Gujarat Titans,yes Royal Challengers Bengaluru,yes Delhi Capitals,yes Sunrisers Hyderabad,yes New York Y,yes Los Angeles D,yes Vera Zvonareva",
       "notional_value_dollars": "1.0000",
       "open_interest_fp": "0.00",
-      "open_time": "2026-05-15T11:06:53Z",
+      "open_time": "2026-05-16T09:18:28Z",
       "previous_price_dollars": "0.0000",
       "previous_yes_ask_dollars": "0.0000",
       "previous_yes_bid_dollars": "0.0000",
@@ -918,76 +2571,95 @@
       "settlement_timer_seconds": 5,
       "status": "active",
       "strike_type": "custom",
-      "ticker": "KXMVECROSSCATEGORY-S202657E57BEF485-5B8E45DAF01",
-      "title": "yes Aston Villa,yes Chennai Super Kings,yes Cincinnati,yes Tampa Bay,yes Cleveland,yes San Antonio,yes Indiana",
-      "updated_time": "2026-05-15T11:06:53.834363Z",
+      "ticker": "KXMVECROSSCATEGORY-S2026CBF10730DEC-7B02350DACE",
+      "title": "yes Gujarat Titans,yes Royal Challengers Bengaluru,yes Delhi Capitals,yes Sunrisers Hyderabad,yes New York Y,yes Los Angeles D,yes Vera Zvonareva",
+      "updated_time": "2026-05-16T09:18:28.834362Z",
       "volume_24h_fp": "0.00",
       "volume_fp": "0.00",
       "yes_ask_dollars": "1.0000",
       "yes_ask_size_fp": "0.00",
       "yes_bid_dollars": "0.0000",
       "yes_bid_size_fp": "0.00",
-      "yes_sub_title": "yes Aston Villa,yes Chennai Super Kings,yes Cincinnati,yes Tampa Bay,yes Cleveland,yes San Antonio,yes Indiana"
+      "yes_sub_title": "yes Gujarat Titans,yes Royal Challengers Bengaluru,yes Delhi Capitals,yes Sunrisers Hyderabad,yes New York Y,yes Los Angeles D,yes Vera Zvonareva"
     },
     {
       "can_close_early": true,
-      "close_time": "2026-05-31T11:30:00Z",
-      "created_time": "2026-05-15T11:06:49.25254Z",
+      "close_time": "2026-05-19T17:10:00Z",
+      "created_time": "2026-05-16T09:18:21.586955Z",
       "custom_strike": {
-        "Associated Events": "KXEPLGAME-26MAY17AVLLFC,KXIPLGAME-26MAY15CSKLSG,KXMLBGAME-26MAY151910CINCLE,KXMLBGAME-26MAY151910MIATB,KXNBAGAME-26MAY15DETCLE,KXNBAGAME-26MAY15SASMIN",
-        "Associated Market Sides": "yes,yes,yes,yes,yes,yes",
-        "Associated Markets": "KXEPLGAME-26MAY17AVLLFC-AVL,KXIPLGAME-26MAY15CSKLSG-CSK,KXMLBGAME-26MAY151910CINCLE-CIN,KXMLBGAME-26MAY151910MIATB-TB,KXNBAGAME-26MAY15DETCLE-CLE,KXNBAGAME-26MAY15SASMIN-SAS",
-        "Multivariate Event Ticker": "KXMVECROSSCATEGORY-S2026E71A3AC7EED"
+        "Associated Events": "KXMLBHRR-26MAY161310TORDET,KXMLBHRR-26MAY161415KCSTL,KXMLBHRR-26MAY161510AZCOL,KXMLBHRR-26MAY161605BALWSH,KXMLBHRR-26MAY161605PHIPIT,KXMLBHRR-26MAY161810CINCLE,KXMLBHRR-26MAY161910CHCCWS,KXMLBHRR-26MAY161910TEXHOU,KXMLBHRR-26MAY161910TEXHOU,KXMLBHRR-26MAY162138LADLAA",
+        "Associated Market Sides": "yes,yes,yes,yes,yes,yes,yes,yes,yes,yes",
+        "Associated Markets": "KXMLBHRR-26MAY161310TORDET-TORVGUERRERO27-1,KXMLBHRR-26MAY161415KCSTL-KCBWITT7-1,KXMLBHRR-26MAY161510AZCOL-AZCCARROLL7-2,KXMLBHRR-26MAY161605BALWSH-WSHCABRAMS5-1,KXMLBHRR-26MAY161605PHIPIT-PHIKSCHWARBER12-1,KXMLBHRR-26MAY161810CINCLE-CLESKWAN38-1,KXMLBHRR-26MAY161910CHCCWS-CHCABREGMAN3-1,KXMLBHRR-26MAY161910TEXHOU-HOUYALVAREZ44-1,KXMLBHRR-26MAY161910TEXHOU-TEXBNIMMO24-1,KXMLBHRR-26MAY162138LADLAA-LADMBETTS50-1",
+        "Multivariate Event Ticker": "KXMVESPORTSMULTIGAMEEXTENDED-S20265390C3CA695"
       },
-      "event_ticker": "KXMVECROSSCATEGORY-S2026E71A3AC7EED",
-      "expected_expiration_time": "2026-05-17T14:30:00Z",
-      "expiration_time": "2026-05-31T11:30:00Z",
+      "event_ticker": "KXMVESPORTSMULTIGAMEEXTENDED-S20265390C3CA695",
+      "expected_expiration_time": "2026-05-17T04:38:00Z",
+      "expiration_time": "2026-05-19T17:10:00Z",
       "expiration_value": "",
       "fractional_trading_enabled": true,
-      "is_provisional": true,
-      "last_price_dollars": "0.0000",
-      "latest_expiration_time": "2026-05-31T11:30:00Z",
+      "last_price_dollars": "0.0600",
+      "latest_expiration_time": "2026-05-19T17:10:00Z",
       "liquidity_dollars": "0.0000",
       "market_type": "binary",
-      "mve_collection_ticker": "KXMVECROSSCATEGORY-R",
+      "mve_collection_ticker": "KXMVESPORTSMULTIGAMEEXTENDED-R",
       "mve_selected_legs": [
         {
-          "event_ticker": "KXEPLGAME-26MAY17AVLLFC",
-          "market_ticker": "KXEPLGAME-26MAY17AVLLFC-AVL",
+          "event_ticker": "KXMLBHRR-26MAY161310TORDET",
+          "market_ticker": "KXMLBHRR-26MAY161310TORDET-TORVGUERRERO27-1",
           "side": "yes"
         },
         {
-          "event_ticker": "KXIPLGAME-26MAY15CSKLSG",
-          "market_ticker": "KXIPLGAME-26MAY15CSKLSG-CSK",
+          "event_ticker": "KXMLBHRR-26MAY161415KCSTL",
+          "market_ticker": "KXMLBHRR-26MAY161415KCSTL-KCBWITT7-1",
           "side": "yes"
         },
         {
-          "event_ticker": "KXMLBGAME-26MAY151910CINCLE",
-          "market_ticker": "KXMLBGAME-26MAY151910CINCLE-CIN",
+          "event_ticker": "KXMLBHRR-26MAY161510AZCOL",
+          "market_ticker": "KXMLBHRR-26MAY161510AZCOL-AZCCARROLL7-2",
           "side": "yes"
         },
         {
-          "event_ticker": "KXMLBGAME-26MAY151910MIATB",
-          "market_ticker": "KXMLBGAME-26MAY151910MIATB-TB",
+          "event_ticker": "KXMLBHRR-26MAY161605BALWSH",
+          "market_ticker": "KXMLBHRR-26MAY161605BALWSH-WSHCABRAMS5-1",
           "side": "yes"
         },
         {
-          "event_ticker": "KXNBAGAME-26MAY15DETCLE",
-          "market_ticker": "KXNBAGAME-26MAY15DETCLE-CLE",
+          "event_ticker": "KXMLBHRR-26MAY161605PHIPIT",
+          "market_ticker": "KXMLBHRR-26MAY161605PHIPIT-PHIKSCHWARBER12-1",
           "side": "yes"
         },
         {
-          "event_ticker": "KXNBAGAME-26MAY15SASMIN",
-          "market_ticker": "KXNBAGAME-26MAY15SASMIN-SAS",
+          "event_ticker": "KXMLBHRR-26MAY161810CINCLE",
+          "market_ticker": "KXMLBHRR-26MAY161810CINCLE-CLESKWAN38-1",
+          "side": "yes"
+        },
+        {
+          "event_ticker": "KXMLBHRR-26MAY161910CHCCWS",
+          "market_ticker": "KXMLBHRR-26MAY161910CHCCWS-CHCABREGMAN3-1",
+          "side": "yes"
+        },
+        {
+          "event_ticker": "KXMLBHRR-26MAY161910TEXHOU",
+          "market_ticker": "KXMLBHRR-26MAY161910TEXHOU-HOUYALVAREZ44-1",
+          "side": "yes"
+        },
+        {
+          "event_ticker": "KXMLBHRR-26MAY161910TEXHOU",
+          "market_ticker": "KXMLBHRR-26MAY161910TEXHOU-TEXBNIMMO24-1",
+          "side": "yes"
+        },
+        {
+          "event_ticker": "KXMLBHRR-26MAY162138LADLAA",
+          "market_ticker": "KXMLBHRR-26MAY162138LADLAA-LADMBETTS50-1",
           "side": "yes"
         }
       ],
       "no_ask_dollars": "1.0000",
       "no_bid_dollars": "0.0000",
-      "no_sub_title": "yes Aston Villa,yes Chennai Super Kings,yes Cincinnati,yes Tampa Bay,yes Cleveland,yes San Antonio",
+      "no_sub_title": "yes Vladimir Guerrero Jr.: 1+,yes Bobby Witt Jr.: 1+,yes Corbin Carroll: 2+,yes CJ Abrams: 1+,yes Kyle Schwarber: 1+,yes Steven Kwan: 1+,yes Alex Bregman: 1+,yes Yordan Alvarez: 1+,yes Brandon Nimmo: 1+,yes Mookie Betts: 1+",
       "notional_value_dollars": "1.0000",
-      "open_interest_fp": "0.00",
-      "open_time": "2026-05-15T11:06:49Z",
+      "open_interest_fp": "78.00",
+      "open_time": "2026-05-16T09:18:21Z",
       "previous_price_dollars": "0.0000",
       "previous_yes_ask_dollars": "0.0000",
       "previous_yes_bid_dollars": "0.0000",
@@ -1006,16 +2678,372 @@
       "settlement_timer_seconds": 5,
       "status": "active",
       "strike_type": "custom",
-      "ticker": "KXMVECROSSCATEGORY-S2026E71A3AC7EED-5DDD4F84343",
-      "title": "yes Aston Villa,yes Chennai Super Kings,yes Cincinnati,yes Tampa Bay,yes Cleveland,yes San Antonio",
-      "updated_time": "2026-05-15T11:06:49.834605Z",
+      "ticker": "KXMVESPORTSMULTIGAMEEXTENDED-S20265390C3CA695-707D30CEFFA",
+      "title": "yes Vladimir Guerrero Jr.: 1+,yes Bobby Witt Jr.: 1+,yes Corbin Carroll: 2+,yes CJ Abrams: 1+,yes Kyle Schwarber: 1+,yes Steven Kwan: 1+,yes Alex Bregman: 1+,yes Yordan Alvarez: 1+,yes Brandon Nimmo: 1+,yes Mookie Betts: 1+",
+      "updated_time": "2026-05-16T09:18:21.834394Z",
+      "volume_24h_fp": "0.00",
+      "volume_fp": "78.00",
+      "yes_ask_dollars": "1.0000",
+      "yes_ask_size_fp": "0.00",
+      "yes_bid_dollars": "0.0000",
+      "yes_bid_size_fp": "0.00",
+      "yes_sub_title": "yes Vladimir Guerrero Jr.: 1+,yes Bobby Witt Jr.: 1+,yes Corbin Carroll: 2+,yes CJ Abrams: 1+,yes Kyle Schwarber: 1+,yes Steven Kwan: 1+,yes Alex Bregman: 1+,yes Yordan Alvarez: 1+,yes Brandon Nimmo: 1+,yes Mookie Betts: 1+"
+    },
+    {
+      "can_close_early": true,
+      "close_time": "2026-05-19T14:00:00Z",
+      "created_time": "2026-05-16T09:18:20.848594Z",
+      "custom_strike": {
+        "Associated Events": "KXIPLGAME-26MAY16GTKKR,KXIPLGAME-26MAY17RCBPBKS,KXIPLGAME-26MAY17RRDC,KXIPLGAME-26MAY18SRHCSK,KXMLBGAME-26MAY161915NYYNYM,KXMLBGAME-26MAY162138LADLAA",
+        "Associated Market Sides": "yes,yes,yes,yes,yes,yes",
+        "Associated Markets": "KXIPLGAME-26MAY16GTKKR-GT,KXIPLGAME-26MAY17RCBPBKS-RCB,KXIPLGAME-26MAY17RRDC-DC,KXIPLGAME-26MAY18SRHCSK-SRH,KXMLBGAME-26MAY161915NYYNYM-NYY,KXMLBGAME-26MAY162138LADLAA-LAD",
+        "Multivariate Event Ticker": "KXMVECROSSCATEGORY-S20265E9EA488416"
+      },
+      "event_ticker": "KXMVECROSSCATEGORY-S20265E9EA488416",
+      "expected_expiration_time": "2026-05-18T17:00:00Z",
+      "expiration_time": "2026-05-19T14:00:00Z",
+      "expiration_value": "",
+      "fractional_trading_enabled": true,
+      "is_provisional": true,
+      "last_price_dollars": "0.0000",
+      "latest_expiration_time": "2026-05-19T14:00:00Z",
+      "liquidity_dollars": "0.0000",
+      "market_type": "binary",
+      "mve_collection_ticker": "KXMVECROSSCATEGORY-R",
+      "mve_selected_legs": [
+        {
+          "event_ticker": "KXIPLGAME-26MAY16GTKKR",
+          "market_ticker": "KXIPLGAME-26MAY16GTKKR-GT",
+          "side": "yes"
+        },
+        {
+          "event_ticker": "KXIPLGAME-26MAY17RCBPBKS",
+          "market_ticker": "KXIPLGAME-26MAY17RCBPBKS-RCB",
+          "side": "yes"
+        },
+        {
+          "event_ticker": "KXIPLGAME-26MAY17RRDC",
+          "market_ticker": "KXIPLGAME-26MAY17RRDC-DC",
+          "side": "yes"
+        },
+        {
+          "event_ticker": "KXIPLGAME-26MAY18SRHCSK",
+          "market_ticker": "KXIPLGAME-26MAY18SRHCSK-SRH",
+          "side": "yes"
+        },
+        {
+          "event_ticker": "KXMLBGAME-26MAY161915NYYNYM",
+          "market_ticker": "KXMLBGAME-26MAY161915NYYNYM-NYY",
+          "side": "yes"
+        },
+        {
+          "event_ticker": "KXMLBGAME-26MAY162138LADLAA",
+          "market_ticker": "KXMLBGAME-26MAY162138LADLAA-LAD",
+          "side": "yes"
+        }
+      ],
+      "no_ask_dollars": "1.0000",
+      "no_bid_dollars": "0.0000",
+      "no_sub_title": "yes Gujarat Titans,yes Royal Challengers Bengaluru,yes Delhi Capitals,yes Sunrisers Hyderabad,yes New York Y,yes Los Angeles D",
+      "notional_value_dollars": "1.0000",
+      "open_interest_fp": "0.00",
+      "open_time": "2026-05-16T09:18:20Z",
+      "previous_price_dollars": "0.0000",
+      "previous_yes_ask_dollars": "0.0000",
+      "previous_yes_bid_dollars": "0.0000",
+      "price_level_structure": "deci_cent",
+      "price_ranges": [
+        {
+          "end": "1.0000",
+          "start": "0.0000",
+          "step": "0.0010"
+        }
+      ],
+      "response_price_units": "usd_cent",
+      "result": "",
+      "rules_primary": "",
+      "rules_secondary": "",
+      "settlement_timer_seconds": 5,
+      "status": "active",
+      "strike_type": "custom",
+      "ticker": "KXMVECROSSCATEGORY-S20265E9EA488416-8FD391A36A7",
+      "title": "yes Gujarat Titans,yes Royal Challengers Bengaluru,yes Delhi Capitals,yes Sunrisers Hyderabad,yes New York Y,yes Los Angeles D",
+      "updated_time": "2026-05-16T09:18:21.834394Z",
       "volume_24h_fp": "0.00",
       "volume_fp": "0.00",
       "yes_ask_dollars": "1.0000",
       "yes_ask_size_fp": "0.00",
       "yes_bid_dollars": "0.0000",
       "yes_bid_size_fp": "0.00",
-      "yes_sub_title": "yes Aston Villa,yes Chennai Super Kings,yes Cincinnati,yes Tampa Bay,yes Cleveland,yes San Antonio"
+      "yes_sub_title": "yes Gujarat Titans,yes Royal Challengers Bengaluru,yes Delhi Capitals,yes Sunrisers Hyderabad,yes New York Y,yes Los Angeles D"
+    },
+    {
+      "can_close_early": true,
+      "close_time": "2026-05-19T14:00:00Z",
+      "created_time": "2026-05-16T09:18:18.861373Z",
+      "custom_strike": {
+        "Associated Events": "KXIPLGAME-26MAY16GTKKR,KXIPLGAME-26MAY17RCBPBKS,KXIPLGAME-26MAY17RRDC,KXIPLGAME-26MAY18SRHCSK,KXMLBGAME-26MAY161915NYYNYM",
+        "Associated Market Sides": "yes,yes,yes,yes,yes",
+        "Associated Markets": "KXIPLGAME-26MAY16GTKKR-GT,KXIPLGAME-26MAY17RCBPBKS-RCB,KXIPLGAME-26MAY17RRDC-DC,KXIPLGAME-26MAY18SRHCSK-SRH,KXMLBGAME-26MAY161915NYYNYM-NYY",
+        "Multivariate Event Ticker": "KXMVECROSSCATEGORY-S20267CB68E4E98A"
+      },
+      "event_ticker": "KXMVECROSSCATEGORY-S20267CB68E4E98A",
+      "expected_expiration_time": "2026-05-18T17:00:00Z",
+      "expiration_time": "2026-05-19T14:00:00Z",
+      "expiration_value": "",
+      "fractional_trading_enabled": true,
+      "is_provisional": true,
+      "last_price_dollars": "0.0000",
+      "latest_expiration_time": "2026-05-19T14:00:00Z",
+      "liquidity_dollars": "0.0000",
+      "market_type": "binary",
+      "mve_collection_ticker": "KXMVECROSSCATEGORY-R",
+      "mve_selected_legs": [
+        {
+          "event_ticker": "KXIPLGAME-26MAY16GTKKR",
+          "market_ticker": "KXIPLGAME-26MAY16GTKKR-GT",
+          "side": "yes"
+        },
+        {
+          "event_ticker": "KXIPLGAME-26MAY17RCBPBKS",
+          "market_ticker": "KXIPLGAME-26MAY17RCBPBKS-RCB",
+          "side": "yes"
+        },
+        {
+          "event_ticker": "KXIPLGAME-26MAY17RRDC",
+          "market_ticker": "KXIPLGAME-26MAY17RRDC-DC",
+          "side": "yes"
+        },
+        {
+          "event_ticker": "KXIPLGAME-26MAY18SRHCSK",
+          "market_ticker": "KXIPLGAME-26MAY18SRHCSK-SRH",
+          "side": "yes"
+        },
+        {
+          "event_ticker": "KXMLBGAME-26MAY161915NYYNYM",
+          "market_ticker": "KXMLBGAME-26MAY161915NYYNYM-NYY",
+          "side": "yes"
+        }
+      ],
+      "no_ask_dollars": "1.0000",
+      "no_bid_dollars": "0.0000",
+      "no_sub_title": "yes Gujarat Titans,yes Royal Challengers Bengaluru,yes Delhi Capitals,yes Sunrisers Hyderabad,yes New York Y",
+      "notional_value_dollars": "1.0000",
+      "open_interest_fp": "0.00",
+      "open_time": "2026-05-16T09:18:18Z",
+      "previous_price_dollars": "0.0000",
+      "previous_yes_ask_dollars": "0.0000",
+      "previous_yes_bid_dollars": "0.0000",
+      "price_level_structure": "deci_cent",
+      "price_ranges": [
+        {
+          "end": "1.0000",
+          "start": "0.0000",
+          "step": "0.0010"
+        }
+      ],
+      "response_price_units": "usd_cent",
+      "result": "",
+      "rules_primary": "",
+      "rules_secondary": "",
+      "settlement_timer_seconds": 5,
+      "status": "active",
+      "strike_type": "custom",
+      "ticker": "KXMVECROSSCATEGORY-S20267CB68E4E98A-0715D8431DE",
+      "title": "yes Gujarat Titans,yes Royal Challengers Bengaluru,yes Delhi Capitals,yes Sunrisers Hyderabad,yes New York Y",
+      "updated_time": "2026-05-16T09:18:19.834216Z",
+      "volume_24h_fp": "0.00",
+      "volume_fp": "0.00",
+      "yes_ask_dollars": "1.0000",
+      "yes_ask_size_fp": "0.00",
+      "yes_bid_dollars": "0.0000",
+      "yes_bid_size_fp": "0.00",
+      "yes_sub_title": "yes Gujarat Titans,yes Royal Challengers Bengaluru,yes Delhi Capitals,yes Sunrisers Hyderabad,yes New York Y"
+    },
+    {
+      "can_close_early": true,
+      "close_time": "2026-05-19T17:10:00Z",
+      "created_time": "2026-05-16T09:17:22.431792Z",
+      "custom_strike": {
+        "Associated Events": "KXMLBHRR-26MAY161310TORDET,KXMLBHRR-26MAY161415KCSTL,KXMLBHRR-26MAY161510AZCOL,KXMLBHRR-26MAY161605BALWSH,KXMLBHRR-26MAY161605PHIPIT,KXMLBHRR-26MAY161610MIATB,KXMLBHRR-26MAY161810CINCLE,KXMLBHRR-26MAY161910CHCCWS,KXMLBHRR-26MAY161910TEXHOU,KXMLBHRR-26MAY162138LADLAA",
+        "Associated Market Sides": "yes,yes,yes,yes,yes,yes,yes,yes,yes,yes",
+        "Associated Markets": "KXMLBHRR-26MAY161310TORDET-TORVGUERRERO27-1,KXMLBHRR-26MAY161415KCSTL-KCBWITT7-1,KXMLBHRR-26MAY161510AZCOL-AZCCARROLL7-2,KXMLBHRR-26MAY161605BALWSH-WSHCABRAMS5-1,KXMLBHRR-26MAY161605PHIPIT-PHIKSCHWARBER12-1,KXMLBHRR-26MAY161610MIATB-TBJCAMINERO13-1,KXMLBHRR-26MAY161810CINCLE-CLESKWAN38-1,KXMLBHRR-26MAY161910CHCCWS-CHCABREGMAN3-1,KXMLBHRR-26MAY161910TEXHOU-HOUYALVAREZ44-1,KXMLBHRR-26MAY162138LADLAA-LADMBETTS50-1",
+        "Multivariate Event Ticker": "KXMVESPORTSMULTIGAMEEXTENDED-S2026143D2E091E0"
+      },
+      "event_ticker": "KXMVESPORTSMULTIGAMEEXTENDED-S2026143D2E091E0",
+      "expected_expiration_time": "2026-05-17T04:38:00Z",
+      "expiration_time": "2026-05-19T17:10:00Z",
+      "expiration_value": "",
+      "fractional_trading_enabled": true,
+      "is_provisional": true,
+      "last_price_dollars": "0.0000",
+      "latest_expiration_time": "2026-05-19T17:10:00Z",
+      "liquidity_dollars": "0.0000",
+      "market_type": "binary",
+      "mve_collection_ticker": "KXMVESPORTSMULTIGAMEEXTENDED-R",
+      "mve_selected_legs": [
+        {
+          "event_ticker": "KXMLBHRR-26MAY161310TORDET",
+          "market_ticker": "KXMLBHRR-26MAY161310TORDET-TORVGUERRERO27-1",
+          "side": "yes"
+        },
+        {
+          "event_ticker": "KXMLBHRR-26MAY161415KCSTL",
+          "market_ticker": "KXMLBHRR-26MAY161415KCSTL-KCBWITT7-1",
+          "side": "yes"
+        },
+        {
+          "event_ticker": "KXMLBHRR-26MAY161510AZCOL",
+          "market_ticker": "KXMLBHRR-26MAY161510AZCOL-AZCCARROLL7-2",
+          "side": "yes"
+        },
+        {
+          "event_ticker": "KXMLBHRR-26MAY161605BALWSH",
+          "market_ticker": "KXMLBHRR-26MAY161605BALWSH-WSHCABRAMS5-1",
+          "side": "yes"
+        },
+        {
+          "event_ticker": "KXMLBHRR-26MAY161605PHIPIT",
+          "market_ticker": "KXMLBHRR-26MAY161605PHIPIT-PHIKSCHWARBER12-1",
+          "side": "yes"
+        },
+        {
+          "event_ticker": "KXMLBHRR-26MAY161610MIATB",
+          "market_ticker": "KXMLBHRR-26MAY161610MIATB-TBJCAMINERO13-1",
+          "side": "yes"
+        },
+        {
+          "event_ticker": "KXMLBHRR-26MAY161810CINCLE",
+          "market_ticker": "KXMLBHRR-26MAY161810CINCLE-CLESKWAN38-1",
+          "side": "yes"
+        },
+        {
+          "event_ticker": "KXMLBHRR-26MAY161910CHCCWS",
+          "market_ticker": "KXMLBHRR-26MAY161910CHCCWS-CHCABREGMAN3-1",
+          "side": "yes"
+        },
+        {
+          "event_ticker": "KXMLBHRR-26MAY161910TEXHOU",
+          "market_ticker": "KXMLBHRR-26MAY161910TEXHOU-HOUYALVAREZ44-1",
+          "side": "yes"
+        },
+        {
+          "event_ticker": "KXMLBHRR-26MAY162138LADLAA",
+          "market_ticker": "KXMLBHRR-26MAY162138LADLAA-LADMBETTS50-1",
+          "side": "yes"
+        }
+      ],
+      "no_ask_dollars": "1.0000",
+      "no_bid_dollars": "1.0000",
+      "no_sub_title": "yes Vladimir Guerrero Jr.: 1+,yes Bobby Witt Jr.: 1+,yes Corbin Carroll: 2+,yes CJ Abrams: 1+,yes Kyle Schwarber: 1+,yes Junior Caminero: 1+,yes Steven Kwan: 1+,yes Alex Bregman: 1+,yes Yordan Alvarez: 1+,yes Mookie Betts: 1+",
+      "notional_value_dollars": "1.0000",
+      "open_interest_fp": "0.00",
+      "open_time": "2026-05-16T09:17:22Z",
+      "previous_price_dollars": "0.0000",
+      "previous_yes_ask_dollars": "0.0000",
+      "previous_yes_bid_dollars": "0.0000",
+      "price_level_structure": "deci_cent",
+      "price_ranges": [
+        {
+          "end": "1.0000",
+          "start": "0.0000",
+          "step": "0.0010"
+        }
+      ],
+      "response_price_units": "usd_cent",
+      "result": "",
+      "rules_primary": "",
+      "rules_secondary": "",
+      "settlement_timer_seconds": 5,
+      "status": "active",
+      "strike_type": "custom",
+      "ticker": "KXMVESPORTSMULTIGAMEEXTENDED-S2026143D2E091E0-53195AE3D51",
+      "title": "yes Vladimir Guerrero Jr.: 1+,yes Bobby Witt Jr.: 1+,yes Corbin Carroll: 2+,yes CJ Abrams: 1+,yes Kyle Schwarber: 1+,yes Junior Caminero: 1+,yes Steven Kwan: 1+,yes Alex Bregman: 1+,yes Yordan Alvarez: 1+,yes Mookie Betts: 1+",
+      "updated_time": "2026-05-16T09:17:22.834319Z",
+      "volume_24h_fp": "0.00",
+      "volume_fp": "0.00",
+      "yes_ask_dollars": "0.0000",
+      "yes_ask_size_fp": "0.00",
+      "yes_bid_dollars": "0.0000",
+      "yes_bid_size_fp": "0.00",
+      "yes_sub_title": "yes Vladimir Guerrero Jr.: 1+,yes Bobby Witt Jr.: 1+,yes Corbin Carroll: 2+,yes CJ Abrams: 1+,yes Kyle Schwarber: 1+,yes Junior Caminero: 1+,yes Steven Kwan: 1+,yes Alex Bregman: 1+,yes Yordan Alvarez: 1+,yes Mookie Betts: 1+"
+    },
+    {
+      "can_close_early": true,
+      "close_time": "2026-05-19T18:15:00Z",
+      "created_time": "2026-05-16T09:16:28.610233Z",
+      "custom_strike": {
+        "Associated Events": "KXMLBHR-26MAY161415KCSTL,KXMLBHR-26MAY161605BALWSH,KXMLBHR-26MAY161610MIATB,KXMLBHR-26MAY161910TEXHOU",
+        "Associated Market Sides": "yes,yes,yes,yes",
+        "Associated Markets": "KXMLBHR-26MAY161415KCSTL-KCBWITT7-1,KXMLBHR-26MAY161605BALWSH-WSHCABRAMS5-1,KXMLBHR-26MAY161610MIATB-TBJCAMINERO13-1,KXMLBHR-26MAY161910TEXHOU-TEXCSEAGER5-1",
+        "Multivariate Event Ticker": "KXMVESPORTSMULTIGAMEEXTENDED-S20264E94F6F8CE1"
+      },
+      "event_ticker": "KXMVESPORTSMULTIGAMEEXTENDED-S20264E94F6F8CE1",
+      "expected_expiration_time": "2026-05-17T02:10:00Z",
+      "expiration_time": "2026-05-19T18:15:00Z",
+      "expiration_value": "",
+      "fractional_trading_enabled": true,
+      "last_price_dollars": "0.0020",
+      "latest_expiration_time": "2026-05-19T18:15:00Z",
+      "liquidity_dollars": "0.0000",
+      "market_type": "binary",
+      "mve_collection_ticker": "KXMVESPORTSMULTIGAMEEXTENDED-R",
+      "mve_selected_legs": [
+        {
+          "event_ticker": "KXMLBHR-26MAY161415KCSTL",
+          "market_ticker": "KXMLBHR-26MAY161415KCSTL-KCBWITT7-1",
+          "side": "yes"
+        },
+        {
+          "event_ticker": "KXMLBHR-26MAY161605BALWSH",
+          "market_ticker": "KXMLBHR-26MAY161605BALWSH-WSHCABRAMS5-1",
+          "side": "yes"
+        },
+        {
+          "event_ticker": "KXMLBHR-26MAY161610MIATB",
+          "market_ticker": "KXMLBHR-26MAY161610MIATB-TBJCAMINERO13-1",
+          "side": "yes"
+        },
+        {
+          "event_ticker": "KXMLBHR-26MAY161910TEXHOU",
+          "market_ticker": "KXMLBHR-26MAY161910TEXHOU-TEXCSEAGER5-1",
+          "side": "yes"
+        }
+      ],
+      "no_ask_dollars": "1.0000",
+      "no_bid_dollars": "0.0000",
+      "no_sub_title": "yes Bobby Witt Jr.: 1+,yes CJ Abrams: 1+,yes Junior Caminero: 1+,yes Corey Seager: 1+",
+      "notional_value_dollars": "1.0000",
+      "open_interest_fp": "454.00",
+      "open_time": "2026-05-16T09:16:28Z",
+      "previous_price_dollars": "0.0000",
+      "previous_yes_ask_dollars": "0.0000",
+      "previous_yes_bid_dollars": "0.0000",
+      "price_level_structure": "deci_cent",
+      "price_ranges": [
+        {
+          "end": "1.0000",
+          "start": "0.0000",
+          "step": "0.0010"
+        }
+      ],
+      "response_price_units": "usd_cent",
+      "result": "",
+      "rules_primary": "",
+      "rules_secondary": "",
+      "settlement_timer_seconds": 5,
+      "status": "active",
+      "strike_type": "custom",
+      "ticker": "KXMVESPORTSMULTIGAMEEXTENDED-S20264E94F6F8CE1-A085186A1F4",
+      "title": "yes Bobby Witt Jr.: 1+,yes CJ Abrams: 1+,yes Junior Caminero: 1+,yes Corey Seager: 1+",
+      "updated_time": "2026-05-16T09:16:28.834342Z",
+      "volume_24h_fp": "0.00",
+      "volume_fp": "454.00",
+      "yes_ask_dollars": "1.0000",
+      "yes_ask_size_fp": "0.00",
+      "yes_bid_dollars": "0.0000",
+      "yes_bid_size_fp": "0.00",
+      "yes_sub_title": "yes Bobby Witt Jr.: 1+,yes CJ Abrams: 1+,yes Junior Caminero: 1+,yes Corey Seager: 1+"
     }
   ]
 }
