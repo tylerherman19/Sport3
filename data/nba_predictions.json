@@ -1,210 +1,14 @@
 {
-  "updated": "2026-05-19T11:50:53.577124+00:00",
+  "updated": "2026-05-20T11:39:16.858092+00:00",
   "season": 2026,
   "league": "nba",
   "is_offseason": false,
   "games": [
     {
-      "game_id": "401873341",
-      "game_time": "2026-05-20T00:00Z",
-      "status": "STATUS_SCHEDULED",
-      "is_future": false,
-      "home_team": "NYK",
-      "away_team": "CLE",
-      "home_name": "New York Knicks",
-      "away_name": "Cleveland Cavaliers",
-      "home_logo": "https://a.espncdn.com/i/teamlogos/nba/500/ny.png",
-      "away_logo": "https://a.espncdn.com/i/teamlogos/nba/500/cle.png",
-      "neutral": false,
-      "home_score": 0,
-      "away_score": 0,
-      "predictions": {
-        "ensemble_prob": 0.6337,
-        "logistic_prob": 0.5485,
-        "elo_prob": 0.6885,
-        "xgb_prob": 0.5566,
-        "pyth_prob": 0.6338,
-        "eff_prob": 0.6691,
-        "bayesian_prob": 0.9627
-      },
-      "market": {
-        "home_prob": null,
-        "edge": null,
-        "kelly_pct": null,
-        "home_american": null,
-        "away_american": null
-      },
-      "monte_carlo": {
-        "win_prob": 0.6315,
-        "exp_margin": 3.91,
-        "prob_7plus": 0.3944,
-        "prob_14plus": 0.1923,
-        "prob_21plus": 0.0704,
-        "margin_percentiles": [
-          -15.2,
-          -10.9,
-          -3.8,
-          3.8,
-          11.7,
-          19.0,
-          23.1
-        ]
-      },
-      "adjustments": {
-        "rest_home": 7,
-        "rest_away": 7,
-        "rest_diff": 0,
-        "travel_dist_miles": 404.0,
-        "b2b_home": false,
-        "b2b_away": false,
-        "home_elo_bonus": 100
-      },
-      "h2h": {
-        "home_wins": 11,
-        "away_wins": 11,
-        "total_meetings": 22,
-        "last_n": [
-          {
-            "date": "2023-10-31",
-            "winner": "NYK",
-            "margin": 18
-          },
-          {
-            "date": "2023-11-01",
-            "winner": "CLE",
-            "margin": 6
-          },
-          {
-            "date": "2024-03-04",
-            "winner": "NYK",
-            "margin": 9
-          },
-          {
-            "date": "2024-10-28",
-            "winner": "CLE",
-            "margin": 6
-          },
-          {
-            "date": "2025-02-22",
-            "winner": "CLE",
-            "margin": 37
-          },
-          {
-            "date": "2025-04-02",
-            "winner": "CLE",
-            "margin": 19
-          },
-          {
-            "date": "2025-04-11",
-            "winner": "CLE",
-            "margin": 6
-          },
-          {
-            "date": "2025-10-22",
-            "winner": "NYK",
-            "margin": 8
-          },
-          {
-            "date": "2025-12-25",
-            "winner": "NYK",
-            "margin": 2
-          },
-          {
-            "date": "2026-02-25",
-            "winner": "CLE",
-            "margin": 15
-          }
-        ]
-      },
-      "elo": {
-        "home": 1758.6,
-        "away": 1676.7,
-        "diff": 81.8
-      },
-      "bayesian": {
-        "home_mu": 1799.7,
-        "home_sigma": 40.0,
-        "away_mu": 1798.9,
-        "away_sigma": 40.0,
-        "home_band": [
-          1759.7,
-          1839.7
-        ],
-        "away_band": [
-          1758.9,
-          1838.9
-        ]
-      },
-      "efficiency": {
-        "home_off_rating": 116.45122,
-        "home_def_rating": 110.12195,
-        "home_net_rating": 6.329270000000008,
-        "away_off_rating": 119.51219,
-        "away_def_rating": 115.414635,
-        "away_net_rating": 4.097555,
-        "home_pace": 100.0,
-        "away_pace": 100.0
-      },
-      "injuries": {
-        "home": [
-          {
-            "player": "OG Anunoby",
-            "status": "Out",
-            "position": "F",
-            "injury_description": "Anunoby missed the final two games of the Eastern Conference Semifinals against the 76ers due to a right hamstring strain, though he was a full participant in Monday's practice and is expected to play Tuesday. Over eight playoff appearances in 2026, the 28-year-old forward has averaged 21.4 points, 7.5 rebounds, 1.9 steals, 1.3 assists and 1.1 blocks across 35.3 minutes per contest. He's also shooting 61.9 percent from the field and 53.8 percent from three-point range this postseason.",
-            "value_tier": "rotation"
-          }
-        ],
-        "away": [
-          {
-            "player": "Larry Nance Jr.",
-            "status": "Day-To-Day",
-            "position": "F",
-            "injury_description": "Nance, who has been sidelined for back-to-back contests due to an illness, has a chance to be available off the bench for Game 1 on Tuesday. The veteran big man has made just two brief appearances during garbage time this postseason, so his presence wouldn't figure to have a noticeable impact on the Cleveland rotation.",
-            "value_tier": "rotation"
-          }
-        ]
-      },
-      "injury_impact": {
-        "home_elo_penalty": 4.2,
-        "away_elo_penalty": 2.1,
-        "home_key_players_out": [
-          {
-            "player": "OG Anunoby",
-            "position": "F",
-            "status": "Out",
-            "elo_impact": 4.2,
-            "value_tier": "rotation"
-          }
-        ],
-        "away_key_players_out": [
-          {
-            "player": "Larry Nance Jr.",
-            "position": "F",
-            "status": "Day-To-Day",
-            "elo_impact": 2.1,
-            "value_tier": "rotation"
-          }
-        ],
-        "home_star_count": 0,
-        "away_star_count": 0,
-        "home_star_stack_multiplier": 1.0,
-        "away_star_stack_multiplier": 1.0
-      },
-      "prediction_drivers": [
-        "ELO advantage: NYK +82 rating points",
-        "OG Anunoby (NYK) [Rotation] OUT \u2014 \u22124 ELO",
-        "Larry Nance Jr. (CLE) [Rotation] DAY-TO-DAY \u2014 \u22122 ELO",
-        "Offensive rating: CLE leads by 3.1 pts/100",
-        "Home court: NYK +100 ELO advantage"
-      ],
-      "explanation": "The model gives New York Knicks a 63.4% win probability \u2014 a moderate favorite over Cleveland Cavaliers. New York Knicks net rating: +6.3. Home court +100 ELO for New York Knicks."
-    },
-    {
       "game_id": "401873198",
       "game_time": "2026-05-21T00:30Z",
       "status": "STATUS_SCHEDULED",
-      "is_future": true,
+      "is_future": false,
       "home_team": "OKC",
       "away_team": "SAS",
       "home_name": "Oklahoma City Thunder",
@@ -216,9 +20,9 @@
       "away_score": 0,
       "predictions": {
         "ensemble_prob": 0.5941,
-        "logistic_prob": 0.6711,
+        "logistic_prob": 0.6681,
         "elo_prob": 0.5578,
-        "xgb_prob": 0.6108,
+        "xgb_prob": 0.616,
         "pyth_prob": 0.7341,
         "eff_prob": 0.6768,
         "bayesian_prob": 0.9576
@@ -231,19 +35,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6304,
-        "exp_margin": 3.85,
-        "prob_7plus": 0.3955,
-        "prob_14plus": 0.1917,
-        "prob_21plus": 0.0732,
+        "win_prob": 0.6317,
+        "exp_margin": 3.94,
+        "prob_7plus": 0.3927,
+        "prob_14plus": 0.1939,
+        "prob_21plus": 0.0699,
         "margin_percentiles": [
-          -15.6,
-          -11.3,
-          -4.1,
+          -15.1,
+          -10.9,
+          -3.9,
           3.9,
-          11.7,
-          18.8,
-          23.6
+          11.8,
+          18.9,
+          23.2
         ]
       },
       "adjustments": {
@@ -356,7 +160,7 @@
             "player": "De'Aaron Fox",
             "status": "Day-To-Day",
             "position": "G",
-            "injury_description": "Although head coach Mitch Johnson said earlier that the expectation was for Fox to play, he has now been ruled out for the opening matchup of the Western Conference Finals. His next chance to play will come in Game 2 on Wednesday. With the star guard sidelined, Dylan Harper and Keldon Johnson will likely take on expanded roles.",
+            "injury_description": "Per Tom Orsborn of the San Antonio Express-News, head coach Mitch Johnson indicated Tuesday that Fox will be a game-time call for Game 2, so he'll presumably go through pregame warmups before a final decision is made. The star guard has been dealing with lingering right ankle soreness and was unable to suit up in Monday's double-overtime win in Game 1, during which Dylan Harper got the starting nod and recorded 24 points, 11 rebounds, seven steals and six assists across 47 minutes. Harper is expected to remain in the starting lineup if Fox isn't cleared to play.",
             "value_tier": "all-star"
           },
           {
@@ -424,13 +228,13 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.6337,
-        "logistic_prob": 0.5485,
-        "elo_prob": 0.6885,
-        "xgb_prob": 0.5566,
-        "pyth_prob": 0.6338,
+        "ensemble_prob": 0.6477,
+        "logistic_prob": 0.5476,
+        "elo_prob": 0.7132,
+        "xgb_prob": 0.5522,
+        "pyth_prob": 0.6354,
         "eff_prob": 0.6691,
-        "bayesian_prob": 0.9627
+        "bayesian_prob": 0.9626
       },
       "market": {
         "home_prob": null,
@@ -440,19 +244,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.636,
-        "exp_margin": 3.98,
-        "prob_7plus": 0.3981,
-        "prob_14plus": 0.1993,
-        "prob_21plus": 0.0738,
+        "win_prob": 0.633,
+        "exp_margin": 3.91,
+        "prob_7plus": 0.394,
+        "prob_14plus": 0.1972,
+        "prob_21plus": 0.0709,
         "margin_percentiles": [
-          -15.2,
-          -11.2,
-          -3.9,
+          -15.3,
+          -11.1,
+          -4.1,
           3.9,
-          11.9,
-          19.2,
-          23.3
+          12.1,
+          18.9,
+          23.2
         ]
       },
       "adjustments": {
@@ -465,15 +269,10 @@
         "home_elo_bonus": 100
       },
       "h2h": {
-        "home_wins": 11,
+        "home_wins": 12,
         "away_wins": 11,
-        "total_meetings": 22,
+        "total_meetings": 23,
         "last_n": [
-          {
-            "date": "2023-10-31",
-            "winner": "NYK",
-            "margin": 18
-          },
           {
             "date": "2023-11-01",
             "winner": "CLE",
@@ -518,26 +317,31 @@
             "date": "2026-02-25",
             "winner": "CLE",
             "margin": 15
+          },
+          {
+            "date": "2026-05-20",
+            "winner": "NYK",
+            "margin": 11
           }
         ]
       },
       "elo": {
-        "home": 1758.6,
-        "away": 1676.7,
-        "diff": 81.8
+        "home": 1767.6,
+        "away": 1667.4,
+        "diff": 100.2
       },
       "bayesian": {
-        "home_mu": 1799.7,
+        "home_mu": 1799.8,
         "home_sigma": 40.0,
-        "away_mu": 1798.9,
+        "away_mu": 1799.0,
         "away_sigma": 40.0,
         "home_band": [
-          1759.7,
-          1839.7
+          1759.8,
+          1839.8
         ],
         "away_band": [
-          1758.9,
-          1838.9
+          1759.0,
+          1839.0
         ]
       },
       "efficiency": {
@@ -551,59 +355,25 @@
         "away_pace": 100.0
       },
       "injuries": {
-        "home": [
-          {
-            "player": "OG Anunoby",
-            "status": "Out",
-            "position": "F",
-            "injury_description": "Anunoby missed the final two games of the Eastern Conference Semifinals against the 76ers due to a right hamstring strain, though he was a full participant in Monday's practice and is expected to play Tuesday. Over eight playoff appearances in 2026, the 28-year-old forward has averaged 21.4 points, 7.5 rebounds, 1.9 steals, 1.3 assists and 1.1 blocks across 35.3 minutes per contest. He's also shooting 61.9 percent from the field and 53.8 percent from three-point range this postseason.",
-            "value_tier": "rotation"
-          }
-        ],
-        "away": [
-          {
-            "player": "Larry Nance Jr.",
-            "status": "Day-To-Day",
-            "position": "F",
-            "injury_description": "Nance, who has been sidelined for back-to-back contests due to an illness, has a chance to be available off the bench for Game 1 on Tuesday. The veteran big man has made just two brief appearances during garbage time this postseason, so his presence wouldn't figure to have a noticeable impact on the Cleveland rotation.",
-            "value_tier": "rotation"
-          }
-        ]
+        "home": [],
+        "away": []
       },
       "injury_impact": {
-        "home_elo_penalty": 4.2,
-        "away_elo_penalty": 2.1,
-        "home_key_players_out": [
-          {
-            "player": "OG Anunoby",
-            "position": "F",
-            "status": "Out",
-            "elo_impact": 4.2,
-            "value_tier": "rotation"
-          }
-        ],
-        "away_key_players_out": [
-          {
-            "player": "Larry Nance Jr.",
-            "position": "F",
-            "status": "Day-To-Day",
-            "elo_impact": 2.1,
-            "value_tier": "rotation"
-          }
-        ],
+        "home_elo_penalty": 0.0,
+        "away_elo_penalty": 0.0,
+        "home_key_players_out": [],
+        "away_key_players_out": [],
         "home_star_count": 0,
         "away_star_count": 0,
         "home_star_stack_multiplier": 1.0,
         "away_star_stack_multiplier": 1.0
       },
       "prediction_drivers": [
-        "ELO advantage: NYK +82 rating points",
-        "OG Anunoby (NYK) [Rotation] OUT \u2014 \u22124 ELO",
-        "Larry Nance Jr. (CLE) [Rotation] DAY-TO-DAY \u2014 \u22122 ELO",
+        "ELO advantage: NYK +100 rating points",
         "Offensive rating: CLE leads by 3.1 pts/100",
         "Home court: NYK +100 ELO advantage"
       ],
-      "explanation": "The model gives New York Knicks a 63.4% win probability \u2014 a moderate favorite over Cleveland Cavaliers. New York Knicks net rating: +6.3. Home court +100 ELO for New York Knicks."
+      "explanation": "The model gives New York Knicks a 64.8% win probability \u2014 a moderate favorite over Cleveland Cavaliers. New York Knicks net rating: +6.3. Home court +100 ELO for New York Knicks."
     },
     {
       "game_id": "401873199",
@@ -620,10 +390,10 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.5554,
-        "logistic_prob": 0.4361,
+        "ensemble_prob": 0.5556,
+        "logistic_prob": 0.4358,
         "elo_prob": 0.6084,
-        "xgb_prob": 0.5425,
+        "xgb_prob": 0.5438,
         "pyth_prob": 0.5339,
         "eff_prob": 0.6016,
         "bayesian_prob": 0.965
@@ -636,423 +406,18 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6298,
-        "exp_margin": 3.99,
-        "prob_7plus": 0.3969,
-        "prob_14plus": 0.1968,
-        "prob_21plus": 0.0762,
-        "margin_percentiles": [
-          -15.3,
-          -10.9,
-          -4.0,
-          4.0,
-          12.1,
-          19.3,
-          23.5
-        ]
-      },
-      "adjustments": {
-        "rest_home": 7,
-        "rest_away": 7,
-        "rest_diff": 0,
-        "travel_dist_miles": 421.0,
-        "b2b_home": false,
-        "b2b_away": false,
-        "home_elo_bonus": 100
-      },
-      "h2h": {
-        "home_wins": 10,
-        "away_wins": 13,
-        "total_meetings": 23,
-        "last_n": [
-          {
-            "date": "2024-10-08",
-            "winner": "OKC",
-            "margin": 5
-          },
-          {
-            "date": "2024-10-31",
-            "winner": "OKC",
-            "margin": 12
-          },
-          {
-            "date": "2024-11-20",
-            "winner": "SAS",
-            "margin": 6
-          },
-          {
-            "date": "2025-03-03",
-            "winner": "OKC",
-            "margin": 14
-          },
-          {
-            "date": "2025-12-14",
-            "winner": "SAS",
-            "margin": 2
-          },
-          {
-            "date": "2025-12-24",
-            "winner": "SAS",
-            "margin": 20
-          },
-          {
-            "date": "2025-12-25",
-            "winner": "SAS",
-            "margin": 15
-          },
-          {
-            "date": "2026-01-14",
-            "winner": "OKC",
-            "margin": 21
-          },
-          {
-            "date": "2026-02-05",
-            "winner": "SAS",
-            "margin": 10
-          },
-          {
-            "date": "2026-05-19",
-            "winner": "SAS",
-            "margin": 7
-          }
-        ]
-      },
-      "elo": {
-        "home": 1848.6,
-        "away": 1819.8,
-        "diff": 28.7
-      },
-      "bayesian": {
-        "home_mu": 1799.8,
-        "home_sigma": 40.0,
-        "away_mu": 1797.4,
-        "away_sigma": 40.0,
-        "home_band": [
-          1759.8,
-          1839.8
-        ],
-        "away_band": [
-          1757.4,
-          1837.4
-        ]
-      },
-      "efficiency": {
-        "home_off_rating": 119.82927,
-        "home_def_rating": 111.52439,
-        "home_net_rating": 8.304879999999997,
-        "away_off_rating": 119.02439,
-        "away_def_rating": 107.87805,
-        "away_net_rating": 11.146339999999995,
-        "home_pace": 100.0,
-        "away_pace": 100.0
-      },
-      "injuries": {
-        "home": [
-          {
-            "player": "De'Aaron Fox",
-            "status": "Day-To-Day",
-            "position": "G",
-            "injury_description": "Although head coach Mitch Johnson said earlier that the expectation was for Fox to play, he has now been ruled out for the opening matchup of the Western Conference Finals. His next chance to play will come in Game 2 on Wednesday. With the star guard sidelined, Dylan Harper and Keldon Johnson will likely take on expanded roles.",
-            "value_tier": "all-star"
-          },
-          {
-            "player": "David Jones Garcia",
-            "status": "Out",
-            "position": "F",
-            "injury_description": "Jones Garcia only managed to make 11 appearances for the Spurs in his introductory season, finishing with averages of 2.9 points and 1.6 assists per game. The 24-year-old rookie was on a one-year, two-way deal with the Spurs, so he'll be a free agent this summer.",
-            "value_tier": "starter"
-          }
-        ],
-        "away": [
-          {
-            "player": "Thomas Sorber",
-            "status": "Out",
-            "position": "C",
-            "injury_description": "Sorber was selected No. 15 overall in the 2025 NBA Draft out of Georgetown by the reigning NBA champions. The rookie center was already dealing with a foot injury that cut his season with the Hoyas short and kept him out of the Summer League. Now he'll likely have to wait until the 2026-27 campaign to make his debut on the professional level.",
-            "value_tier": "starter"
-          }
-        ]
-      },
-      "injury_impact": {
-        "home_elo_penalty": 26.67,
-        "away_elo_penalty": 16.0,
-        "home_key_players_out": [
-          {
-            "player": "De'Aaron Fox",
-            "position": "G",
-            "status": "Day-To-Day",
-            "elo_impact": 11.2,
-            "value_tier": "all-star"
-          },
-          {
-            "player": "David Jones Garcia",
-            "position": "F",
-            "status": "Out",
-            "elo_impact": 14.0,
-            "value_tier": "starter"
-          }
-        ],
-        "away_key_players_out": [
-          {
-            "player": "Thomas Sorber",
-            "position": "C",
-            "status": "Out",
-            "elo_impact": 16.0,
-            "value_tier": "starter"
-          }
-        ],
-        "home_star_count": 1,
-        "away_star_count": 0,
-        "home_star_stack_multiplier": 1.0562,
-        "away_star_stack_multiplier": 1.0
-      },
-      "prediction_drivers": [
-        "De'Aaron Fox (SAS) [All-Star] DAY-TO-DAY \u2014 \u221211 ELO",
-        "David Jones Garcia (SAS) [Starter] OUT \u2014 \u221214 ELO",
-        "Thomas Sorber (OKC) [Starter] OUT \u2014 \u221216 ELO",
-        "Home court: SAS +100 ELO advantage"
-      ],
-      "explanation": "The model gives San Antonio Spurs a 55.5% win probability \u2014 a slight favorite over Oklahoma City Thunder. San Antonio Spurs net rating: +8.3. Home court +100 ELO for San Antonio Spurs."
-    },
-    {
-      "game_id": "401873343",
-      "game_time": "2026-05-24T00:00Z",
-      "status": "STATUS_SCHEDULED",
-      "is_future": true,
-      "home_team": "CLE",
-      "away_team": "NYK",
-      "home_name": "Cleveland Cavaliers",
-      "away_name": "New York Knicks",
-      "home_logo": "https://a.espncdn.com/i/teamlogos/nba/500/cle.png",
-      "away_logo": "https://a.espncdn.com/i/teamlogos/nba/500/ny.png",
-      "neutral": false,
-      "home_score": 0,
-      "away_score": 0,
-      "predictions": {
-        "ensemble_prob": 0.5097,
-        "logistic_prob": 0.5781,
-        "elo_prob": 0.4688,
-        "xgb_prob": 0.559,
-        "pyth_prob": 0.6462,
-        "eff_prob": 0.61,
-        "bayesian_prob": 0.9602
-      },
-      "market": {
-        "home_prob": null,
-        "edge": null,
-        "kelly_pct": null,
-        "home_american": null,
-        "away_american": null
-      },
-      "monte_carlo": {
-        "win_prob": 0.6269,
-        "exp_margin": 3.73,
-        "prob_7plus": 0.3919,
-        "prob_14plus": 0.1895,
-        "prob_21plus": 0.0683,
-        "margin_percentiles": [
-          -15.8,
-          -11.2,
-          -3.9,
-          3.7,
-          11.7,
-          18.7,
-          22.9
-        ]
-      },
-      "adjustments": {
-        "rest_home": 7,
-        "rest_away": 7,
-        "rest_diff": 0,
-        "travel_dist_miles": 404.0,
-        "b2b_home": false,
-        "b2b_away": false,
-        "home_elo_bonus": 100
-      },
-      "h2h": {
-        "home_wins": 11,
-        "away_wins": 11,
-        "total_meetings": 22,
-        "last_n": [
-          {
-            "date": "2023-10-31",
-            "winner": "NYK",
-            "margin": 18
-          },
-          {
-            "date": "2023-11-01",
-            "winner": "CLE",
-            "margin": 6
-          },
-          {
-            "date": "2024-03-04",
-            "winner": "NYK",
-            "margin": 9
-          },
-          {
-            "date": "2024-10-28",
-            "winner": "CLE",
-            "margin": 6
-          },
-          {
-            "date": "2025-02-22",
-            "winner": "CLE",
-            "margin": 37
-          },
-          {
-            "date": "2025-04-02",
-            "winner": "CLE",
-            "margin": 19
-          },
-          {
-            "date": "2025-04-11",
-            "winner": "CLE",
-            "margin": 6
-          },
-          {
-            "date": "2025-10-22",
-            "winner": "NYK",
-            "margin": 8
-          },
-          {
-            "date": "2025-12-25",
-            "winner": "NYK",
-            "margin": 2
-          },
-          {
-            "date": "2026-02-25",
-            "winner": "CLE",
-            "margin": 15
-          }
-        ]
-      },
-      "elo": {
-        "home": 1676.7,
-        "away": 1758.6,
-        "diff": -81.8
-      },
-      "bayesian": {
-        "home_mu": 1798.9,
-        "home_sigma": 40.0,
-        "away_mu": 1799.7,
-        "away_sigma": 40.0,
-        "home_band": [
-          1758.9,
-          1838.9
-        ],
-        "away_band": [
-          1759.7,
-          1839.7
-        ]
-      },
-      "efficiency": {
-        "home_off_rating": 119.51219,
-        "home_def_rating": 115.414635,
-        "home_net_rating": 4.097555,
-        "away_off_rating": 116.45122,
-        "away_def_rating": 110.12195,
-        "away_net_rating": 6.329270000000008,
-        "home_pace": 100.0,
-        "away_pace": 100.0
-      },
-      "injuries": {
-        "home": [
-          {
-            "player": "Larry Nance Jr.",
-            "status": "Day-To-Day",
-            "position": "F",
-            "injury_description": "Nance, who has been sidelined for back-to-back contests due to an illness, has a chance to be available off the bench for Game 1 on Tuesday. The veteran big man has made just two brief appearances during garbage time this postseason, so his presence wouldn't figure to have a noticeable impact on the Cleveland rotation.",
-            "value_tier": "rotation"
-          }
-        ],
-        "away": [
-          {
-            "player": "OG Anunoby",
-            "status": "Out",
-            "position": "F",
-            "injury_description": "Anunoby missed the final two games of the Eastern Conference Semifinals against the 76ers due to a right hamstring strain, though he was a full participant in Monday's practice and is expected to play Tuesday. Over eight playoff appearances in 2026, the 28-year-old forward has averaged 21.4 points, 7.5 rebounds, 1.9 steals, 1.3 assists and 1.1 blocks across 35.3 minutes per contest. He's also shooting 61.9 percent from the field and 53.8 percent from three-point range this postseason.",
-            "value_tier": "rotation"
-          }
-        ]
-      },
-      "injury_impact": {
-        "home_elo_penalty": 2.1,
-        "away_elo_penalty": 4.2,
-        "home_key_players_out": [
-          {
-            "player": "Larry Nance Jr.",
-            "position": "F",
-            "status": "Day-To-Day",
-            "elo_impact": 2.1,
-            "value_tier": "rotation"
-          }
-        ],
-        "away_key_players_out": [
-          {
-            "player": "OG Anunoby",
-            "position": "F",
-            "status": "Out",
-            "elo_impact": 4.2,
-            "value_tier": "rotation"
-          }
-        ],
-        "home_star_count": 0,
-        "away_star_count": 0,
-        "home_star_stack_multiplier": 1.0,
-        "away_star_stack_multiplier": 1.0
-      },
-      "prediction_drivers": [
-        "ELO advantage: NYK +82 rating points",
-        "Larry Nance Jr. (CLE) [Rotation] DAY-TO-DAY \u2014 \u22122 ELO",
-        "OG Anunoby (NYK) [Rotation] OUT \u2014 \u22124 ELO",
-        "Offensive rating: CLE leads by 3.1 pts/100",
-        "Home court: CLE +100 ELO advantage"
-      ],
-      "explanation": "The model gives Cleveland Cavaliers a 51.0% win probability \u2014 a slight favorite over New York Knicks. Cleveland Cavaliers net rating: +4.1. Home court +100 ELO for Cleveland Cavaliers."
-    },
-    {
-      "game_id": "401873200",
-      "game_time": "2026-05-25T00:00Z",
-      "status": "STATUS_SCHEDULED",
-      "is_future": true,
-      "home_team": "SAS",
-      "away_team": "OKC",
-      "home_name": "San Antonio Spurs",
-      "away_name": "Oklahoma City Thunder",
-      "home_logo": "https://a.espncdn.com/i/teamlogos/nba/500/sa.png",
-      "away_logo": "https://a.espncdn.com/i/teamlogos/nba/500/okc.png",
-      "neutral": false,
-      "home_score": 0,
-      "away_score": 0,
-      "predictions": {
-        "ensemble_prob": 0.5554,
-        "logistic_prob": 0.4361,
-        "elo_prob": 0.6084,
-        "xgb_prob": 0.5425,
-        "pyth_prob": 0.5339,
-        "eff_prob": 0.6016,
-        "bayesian_prob": 0.965
-      },
-      "market": {
-        "home_prob": null,
-        "edge": null,
-        "kelly_pct": null,
-        "home_american": null,
-        "away_american": null
-      },
-      "monte_carlo": {
-        "win_prob": 0.631,
-        "exp_margin": 3.89,
-        "prob_7plus": 0.3955,
-        "prob_14plus": 0.191,
-        "prob_21plus": 0.0699,
+        "win_prob": 0.643,
+        "exp_margin": 4.23,
+        "prob_7plus": 0.407,
+        "prob_14plus": 0.1984,
+        "prob_21plus": 0.0691,
         "margin_percentiles": [
           -14.8,
           -10.8,
-          -4.0,
-          3.9,
-          11.7,
-          18.7,
+          -3.5,
+          4.4,
+          12.0,
+          18.8,
           23.0
         ]
       },
@@ -1157,7 +522,7 @@
             "player": "De'Aaron Fox",
             "status": "Day-To-Day",
             "position": "G",
-            "injury_description": "Although head coach Mitch Johnson said earlier that the expectation was for Fox to play, he has now been ruled out for the opening matchup of the Western Conference Finals. His next chance to play will come in Game 2 on Wednesday. With the star guard sidelined, Dylan Harper and Keldon Johnson will likely take on expanded roles.",
+            "injury_description": "Per Tom Orsborn of the San Antonio Express-News, head coach Mitch Johnson indicated Tuesday that Fox will be a game-time call for Game 2, so he'll presumably go through pregame warmups before a final decision is made. The star guard has been dealing with lingering right ankle soreness and was unable to suit up in Monday's double-overtime win in Game 1, during which Dylan Harper got the starting nod and recorded 24 points, 11 rebounds, seven steals and six assists across 47 minutes. Harper is expected to remain in the starting lineup if Fox isn't cleared to play.",
             "value_tier": "all-star"
           },
           {
@@ -1217,11 +582,11 @@
         "Thomas Sorber (OKC) [Starter] OUT \u2014 \u221216 ELO",
         "Home court: SAS +100 ELO advantage"
       ],
-      "explanation": "The model gives San Antonio Spurs a 55.5% win probability \u2014 a slight favorite over Oklahoma City Thunder. San Antonio Spurs net rating: +8.3. Home court +100 ELO for San Antonio Spurs."
+      "explanation": "The model gives San Antonio Spurs a 55.6% win probability \u2014 a slight favorite over Oklahoma City Thunder. San Antonio Spurs net rating: +8.3. Home court +100 ELO for San Antonio Spurs."
     },
     {
-      "game_id": "401873344",
-      "game_time": "2026-05-26T00:00Z",
+      "game_id": "401873343",
+      "game_time": "2026-05-24T00:00Z",
       "status": "STATUS_SCHEDULED",
       "is_future": true,
       "home_team": "CLE",
@@ -1234,13 +599,13 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.5097,
-        "logistic_prob": 0.5781,
-        "elo_prob": 0.4688,
-        "xgb_prob": 0.559,
-        "pyth_prob": 0.6462,
+        "ensemble_prob": 0.4944,
+        "logistic_prob": 0.5791,
+        "elo_prob": 0.4397,
+        "xgb_prob": 0.5719,
+        "pyth_prob": 0.6447,
         "eff_prob": 0.61,
-        "bayesian_prob": 0.9602
+        "bayesian_prob": 0.9603
       },
       "market": {
         "home_prob": null,
@@ -1250,19 +615,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6225,
-        "exp_margin": 3.67,
-        "prob_7plus": 0.3834,
-        "prob_14plus": 0.1835,
-        "prob_21plus": 0.0741,
+        "win_prob": 0.637,
+        "exp_margin": 4.16,
+        "prob_7plus": 0.402,
+        "prob_14plus": 0.2024,
+        "prob_21plus": 0.0773,
         "margin_percentiles": [
-          -15.7,
-          -11.3,
-          -4.2,
-          3.5,
-          11.5,
-          19.0,
-          23.5
+          -15.0,
+          -10.9,
+          -3.7,
+          4.1,
+          12.0,
+          19.4,
+          23.6
         ]
       },
       "adjustments": {
@@ -1276,14 +641,9 @@
       },
       "h2h": {
         "home_wins": 11,
-        "away_wins": 11,
-        "total_meetings": 22,
+        "away_wins": 12,
+        "total_meetings": 23,
         "last_n": [
-          {
-            "date": "2023-10-31",
-            "winner": "NYK",
-            "margin": 18
-          },
           {
             "date": "2023-11-01",
             "winner": "CLE",
@@ -1328,26 +688,31 @@
             "date": "2026-02-25",
             "winner": "CLE",
             "margin": 15
+          },
+          {
+            "date": "2026-05-20",
+            "winner": "NYK",
+            "margin": 11
           }
         ]
       },
       "elo": {
-        "home": 1676.7,
-        "away": 1758.6,
-        "diff": -81.8
+        "home": 1667.4,
+        "away": 1767.6,
+        "diff": -100.2
       },
       "bayesian": {
-        "home_mu": 1798.9,
+        "home_mu": 1799.0,
         "home_sigma": 40.0,
-        "away_mu": 1799.7,
+        "away_mu": 1799.8,
         "away_sigma": 40.0,
         "home_band": [
-          1758.9,
-          1838.9
+          1759.0,
+          1839.0
         ],
         "away_band": [
-          1759.7,
-          1839.7
+          1759.8,
+          1839.8
         ]
       },
       "efficiency": {
@@ -1361,468 +726,29 @@
         "away_pace": 100.0
       },
       "injuries": {
-        "home": [
-          {
-            "player": "Larry Nance Jr.",
-            "status": "Day-To-Day",
-            "position": "F",
-            "injury_description": "Nance, who has been sidelined for back-to-back contests due to an illness, has a chance to be available off the bench for Game 1 on Tuesday. The veteran big man has made just two brief appearances during garbage time this postseason, so his presence wouldn't figure to have a noticeable impact on the Cleveland rotation.",
-            "value_tier": "rotation"
-          }
-        ],
-        "away": [
-          {
-            "player": "OG Anunoby",
-            "status": "Out",
-            "position": "F",
-            "injury_description": "Anunoby missed the final two games of the Eastern Conference Semifinals against the 76ers due to a right hamstring strain, though he was a full participant in Monday's practice and is expected to play Tuesday. Over eight playoff appearances in 2026, the 28-year-old forward has averaged 21.4 points, 7.5 rebounds, 1.9 steals, 1.3 assists and 1.1 blocks across 35.3 minutes per contest. He's also shooting 61.9 percent from the field and 53.8 percent from three-point range this postseason.",
-            "value_tier": "rotation"
-          }
-        ]
+        "home": [],
+        "away": []
       },
       "injury_impact": {
-        "home_elo_penalty": 2.1,
-        "away_elo_penalty": 4.2,
-        "home_key_players_out": [
-          {
-            "player": "Larry Nance Jr.",
-            "position": "F",
-            "status": "Day-To-Day",
-            "elo_impact": 2.1,
-            "value_tier": "rotation"
-          }
-        ],
-        "away_key_players_out": [
-          {
-            "player": "OG Anunoby",
-            "position": "F",
-            "status": "Out",
-            "elo_impact": 4.2,
-            "value_tier": "rotation"
-          }
-        ],
+        "home_elo_penalty": 0.0,
+        "away_elo_penalty": 0.0,
+        "home_key_players_out": [],
+        "away_key_players_out": [],
         "home_star_count": 0,
         "away_star_count": 0,
         "home_star_stack_multiplier": 1.0,
         "away_star_stack_multiplier": 1.0
       },
       "prediction_drivers": [
-        "ELO advantage: NYK +82 rating points",
-        "Larry Nance Jr. (CLE) [Rotation] DAY-TO-DAY \u2014 \u22122 ELO",
-        "OG Anunoby (NYK) [Rotation] OUT \u2014 \u22124 ELO",
+        "ELO advantage: NYK +100 rating points",
         "Offensive rating: CLE leads by 3.1 pts/100",
         "Home court: CLE +100 ELO advantage"
       ],
-      "explanation": "The model gives Cleveland Cavaliers a 51.0% win probability \u2014 a slight favorite over New York Knicks. Cleveland Cavaliers net rating: +4.1. Home court +100 ELO for Cleveland Cavaliers."
+      "explanation": "The model gives New York Knicks a 50.6% win probability \u2014 a slight favorite over Cleveland Cavaliers. New York Knicks net rating: +6.3. Home court +100 ELO for Cleveland Cavaliers."
     },
     {
-      "game_id": "401873201",
-      "game_time": "2026-05-27T00:30Z",
-      "status": "STATUS_SCHEDULED",
-      "is_future": true,
-      "home_team": "OKC",
-      "away_team": "SAS",
-      "home_name": "Oklahoma City Thunder",
-      "away_name": "San Antonio Spurs",
-      "home_logo": "https://a.espncdn.com/i/teamlogos/nba/500/okc.png",
-      "away_logo": "https://a.espncdn.com/i/teamlogos/nba/500/sa.png",
-      "neutral": false,
-      "home_score": 0,
-      "away_score": 0,
-      "predictions": {
-        "ensemble_prob": 0.5941,
-        "logistic_prob": 0.6711,
-        "elo_prob": 0.5578,
-        "xgb_prob": 0.6108,
-        "pyth_prob": 0.7341,
-        "eff_prob": 0.6768,
-        "bayesian_prob": 0.9576
-      },
-      "market": {
-        "home_prob": null,
-        "edge": null,
-        "kelly_pct": null,
-        "home_american": null,
-        "away_american": null
-      },
-      "monte_carlo": {
-        "win_prob": 0.6266,
-        "exp_margin": 3.98,
-        "prob_7plus": 0.3946,
-        "prob_14plus": 0.1935,
-        "prob_21plus": 0.0772,
-        "margin_percentiles": [
-          -15.1,
-          -10.9,
-          -3.9,
-          3.8,
-          11.9,
-          19.1,
-          23.5
-        ]
-      },
-      "adjustments": {
-        "rest_home": 7,
-        "rest_away": 7,
-        "rest_diff": 0,
-        "travel_dist_miles": 421.0,
-        "b2b_home": false,
-        "b2b_away": false,
-        "home_elo_bonus": 100
-      },
-      "h2h": {
-        "home_wins": 13,
-        "away_wins": 10,
-        "total_meetings": 23,
-        "last_n": [
-          {
-            "date": "2024-10-08",
-            "winner": "OKC",
-            "margin": 5
-          },
-          {
-            "date": "2024-10-31",
-            "winner": "OKC",
-            "margin": 12
-          },
-          {
-            "date": "2024-11-20",
-            "winner": "SAS",
-            "margin": 6
-          },
-          {
-            "date": "2025-03-03",
-            "winner": "OKC",
-            "margin": 14
-          },
-          {
-            "date": "2025-12-14",
-            "winner": "SAS",
-            "margin": 2
-          },
-          {
-            "date": "2025-12-24",
-            "winner": "SAS",
-            "margin": 20
-          },
-          {
-            "date": "2025-12-25",
-            "winner": "SAS",
-            "margin": 15
-          },
-          {
-            "date": "2026-01-14",
-            "winner": "OKC",
-            "margin": 21
-          },
-          {
-            "date": "2026-02-05",
-            "winner": "SAS",
-            "margin": 10
-          },
-          {
-            "date": "2026-05-19",
-            "winner": "SAS",
-            "margin": 7
-          }
-        ]
-      },
-      "elo": {
-        "home": 1819.8,
-        "away": 1848.6,
-        "diff": -28.7
-      },
-      "bayesian": {
-        "home_mu": 1797.4,
-        "home_sigma": 40.0,
-        "away_mu": 1799.8,
-        "away_sigma": 40.0,
-        "home_band": [
-          1757.4,
-          1837.4
-        ],
-        "away_band": [
-          1759.8,
-          1839.8
-        ]
-      },
-      "efficiency": {
-        "home_off_rating": 119.02439,
-        "home_def_rating": 107.87805,
-        "home_net_rating": 11.146339999999995,
-        "away_off_rating": 119.82927,
-        "away_def_rating": 111.52439,
-        "away_net_rating": 8.304879999999997,
-        "home_pace": 100.0,
-        "away_pace": 100.0
-      },
-      "injuries": {
-        "home": [
-          {
-            "player": "Thomas Sorber",
-            "status": "Out",
-            "position": "C",
-            "injury_description": "Sorber was selected No. 15 overall in the 2025 NBA Draft out of Georgetown by the reigning NBA champions. The rookie center was already dealing with a foot injury that cut his season with the Hoyas short and kept him out of the Summer League. Now he'll likely have to wait until the 2026-27 campaign to make his debut on the professional level.",
-            "value_tier": "starter"
-          }
-        ],
-        "away": [
-          {
-            "player": "De'Aaron Fox",
-            "status": "Day-To-Day",
-            "position": "G",
-            "injury_description": "Although head coach Mitch Johnson said earlier that the expectation was for Fox to play, he has now been ruled out for the opening matchup of the Western Conference Finals. His next chance to play will come in Game 2 on Wednesday. With the star guard sidelined, Dylan Harper and Keldon Johnson will likely take on expanded roles.",
-            "value_tier": "all-star"
-          },
-          {
-            "player": "David Jones Garcia",
-            "status": "Out",
-            "position": "F",
-            "injury_description": "Jones Garcia only managed to make 11 appearances for the Spurs in his introductory season, finishing with averages of 2.9 points and 1.6 assists per game. The 24-year-old rookie was on a one-year, two-way deal with the Spurs, so he'll be a free agent this summer.",
-            "value_tier": "starter"
-          }
-        ]
-      },
-      "injury_impact": {
-        "home_elo_penalty": 16.0,
-        "away_elo_penalty": 26.67,
-        "home_key_players_out": [
-          {
-            "player": "Thomas Sorber",
-            "position": "C",
-            "status": "Out",
-            "elo_impact": 16.0,
-            "value_tier": "starter"
-          }
-        ],
-        "away_key_players_out": [
-          {
-            "player": "De'Aaron Fox",
-            "position": "G",
-            "status": "Day-To-Day",
-            "elo_impact": 11.2,
-            "value_tier": "all-star"
-          },
-          {
-            "player": "David Jones Garcia",
-            "position": "F",
-            "status": "Out",
-            "elo_impact": 14.0,
-            "value_tier": "starter"
-          }
-        ],
-        "home_star_count": 0,
-        "away_star_count": 1,
-        "home_star_stack_multiplier": 1.0,
-        "away_star_stack_multiplier": 1.0562
-      },
-      "prediction_drivers": [
-        "Thomas Sorber (OKC) [Starter] OUT \u2014 \u221216 ELO",
-        "De'Aaron Fox (SAS) [All-Star] DAY-TO-DAY \u2014 \u221211 ELO",
-        "David Jones Garcia (SAS) [Starter] OUT \u2014 \u221214 ELO",
-        "Home court: OKC +100 ELO advantage"
-      ],
-      "explanation": "The model gives Oklahoma City Thunder a 59.4% win probability \u2014 a slight favorite over San Antonio Spurs. Oklahoma City Thunder net rating: +11.1. Home court +100 ELO for Oklahoma City Thunder."
-    },
-    {
-      "game_id": "401873345",
-      "game_time": "2026-05-28T00:00Z",
-      "status": "STATUS_SCHEDULED",
-      "is_future": true,
-      "home_team": "NYK",
-      "away_team": "CLE",
-      "home_name": "New York Knicks",
-      "away_name": "Cleveland Cavaliers",
-      "home_logo": "https://a.espncdn.com/i/teamlogos/nba/500/ny.png",
-      "away_logo": "https://a.espncdn.com/i/teamlogos/nba/500/cle.png",
-      "neutral": false,
-      "home_score": 0,
-      "away_score": 0,
-      "predictions": {
-        "ensemble_prob": 0.6337,
-        "logistic_prob": 0.5485,
-        "elo_prob": 0.6885,
-        "xgb_prob": 0.5566,
-        "pyth_prob": 0.6338,
-        "eff_prob": 0.6691,
-        "bayesian_prob": 0.9627
-      },
-      "market": {
-        "home_prob": null,
-        "edge": null,
-        "kelly_pct": null,
-        "home_american": null,
-        "away_american": null
-      },
-      "monte_carlo": {
-        "win_prob": 0.6308,
-        "exp_margin": 4.09,
-        "prob_7plus": 0.3995,
-        "prob_14plus": 0.1983,
-        "prob_21plus": 0.0741,
-        "margin_percentiles": [
-          -14.7,
-          -10.9,
-          -4.0,
-          4.1,
-          12.0,
-          19.1,
-          23.4
-        ]
-      },
-      "adjustments": {
-        "rest_home": 7,
-        "rest_away": 7,
-        "rest_diff": 0,
-        "travel_dist_miles": 404.0,
-        "b2b_home": false,
-        "b2b_away": false,
-        "home_elo_bonus": 100
-      },
-      "h2h": {
-        "home_wins": 11,
-        "away_wins": 11,
-        "total_meetings": 22,
-        "last_n": [
-          {
-            "date": "2023-10-31",
-            "winner": "NYK",
-            "margin": 18
-          },
-          {
-            "date": "2023-11-01",
-            "winner": "CLE",
-            "margin": 6
-          },
-          {
-            "date": "2024-03-04",
-            "winner": "NYK",
-            "margin": 9
-          },
-          {
-            "date": "2024-10-28",
-            "winner": "CLE",
-            "margin": 6
-          },
-          {
-            "date": "2025-02-22",
-            "winner": "CLE",
-            "margin": 37
-          },
-          {
-            "date": "2025-04-02",
-            "winner": "CLE",
-            "margin": 19
-          },
-          {
-            "date": "2025-04-11",
-            "winner": "CLE",
-            "margin": 6
-          },
-          {
-            "date": "2025-10-22",
-            "winner": "NYK",
-            "margin": 8
-          },
-          {
-            "date": "2025-12-25",
-            "winner": "NYK",
-            "margin": 2
-          },
-          {
-            "date": "2026-02-25",
-            "winner": "CLE",
-            "margin": 15
-          }
-        ]
-      },
-      "elo": {
-        "home": 1758.6,
-        "away": 1676.7,
-        "diff": 81.8
-      },
-      "bayesian": {
-        "home_mu": 1799.7,
-        "home_sigma": 40.0,
-        "away_mu": 1798.9,
-        "away_sigma": 40.0,
-        "home_band": [
-          1759.7,
-          1839.7
-        ],
-        "away_band": [
-          1758.9,
-          1838.9
-        ]
-      },
-      "efficiency": {
-        "home_off_rating": 116.45122,
-        "home_def_rating": 110.12195,
-        "home_net_rating": 6.329270000000008,
-        "away_off_rating": 119.51219,
-        "away_def_rating": 115.414635,
-        "away_net_rating": 4.097555,
-        "home_pace": 100.0,
-        "away_pace": 100.0
-      },
-      "injuries": {
-        "home": [
-          {
-            "player": "OG Anunoby",
-            "status": "Out",
-            "position": "F",
-            "injury_description": "Anunoby missed the final two games of the Eastern Conference Semifinals against the 76ers due to a right hamstring strain, though he was a full participant in Monday's practice and is expected to play Tuesday. Over eight playoff appearances in 2026, the 28-year-old forward has averaged 21.4 points, 7.5 rebounds, 1.9 steals, 1.3 assists and 1.1 blocks across 35.3 minutes per contest. He's also shooting 61.9 percent from the field and 53.8 percent from three-point range this postseason.",
-            "value_tier": "rotation"
-          }
-        ],
-        "away": [
-          {
-            "player": "Larry Nance Jr.",
-            "status": "Day-To-Day",
-            "position": "F",
-            "injury_description": "Nance, who has been sidelined for back-to-back contests due to an illness, has a chance to be available off the bench for Game 1 on Tuesday. The veteran big man has made just two brief appearances during garbage time this postseason, so his presence wouldn't figure to have a noticeable impact on the Cleveland rotation.",
-            "value_tier": "rotation"
-          }
-        ]
-      },
-      "injury_impact": {
-        "home_elo_penalty": 4.2,
-        "away_elo_penalty": 2.1,
-        "home_key_players_out": [
-          {
-            "player": "OG Anunoby",
-            "position": "F",
-            "status": "Out",
-            "elo_impact": 4.2,
-            "value_tier": "rotation"
-          }
-        ],
-        "away_key_players_out": [
-          {
-            "player": "Larry Nance Jr.",
-            "position": "F",
-            "status": "Day-To-Day",
-            "elo_impact": 2.1,
-            "value_tier": "rotation"
-          }
-        ],
-        "home_star_count": 0,
-        "away_star_count": 0,
-        "home_star_stack_multiplier": 1.0,
-        "away_star_stack_multiplier": 1.0
-      },
-      "prediction_drivers": [
-        "ELO advantage: NYK +82 rating points",
-        "OG Anunoby (NYK) [Rotation] OUT \u2014 \u22124 ELO",
-        "Larry Nance Jr. (CLE) [Rotation] DAY-TO-DAY \u2014 \u22122 ELO",
-        "Offensive rating: CLE leads by 3.1 pts/100",
-        "Home court: NYK +100 ELO advantage"
-      ],
-      "explanation": "The model gives New York Knicks a 63.4% win probability \u2014 a moderate favorite over Cleveland Cavaliers. New York Knicks net rating: +6.3. Home court +100 ELO for New York Knicks."
-    },
-    {
-      "game_id": "401873202",
-      "game_time": "2026-05-29T00:30Z",
+      "game_id": "401873200",
+      "game_time": "2026-05-25T00:00Z",
       "status": "STATUS_SCHEDULED",
       "is_future": true,
       "home_team": "SAS",
@@ -1835,10 +761,10 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.5554,
-        "logistic_prob": 0.4361,
+        "ensemble_prob": 0.5556,
+        "logistic_prob": 0.4358,
         "elo_prob": 0.6084,
-        "xgb_prob": 0.5425,
+        "xgb_prob": 0.5438,
         "pyth_prob": 0.5339,
         "eff_prob": 0.6016,
         "bayesian_prob": 0.965
@@ -1851,19 +777,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6396,
-        "exp_margin": 4.17,
-        "prob_7plus": 0.4061,
-        "prob_14plus": 0.1993,
-        "prob_21plus": 0.0735,
+        "win_prob": 0.6412,
+        "exp_margin": 4.14,
+        "prob_7plus": 0.407,
+        "prob_14plus": 0.2032,
+        "prob_21plus": 0.0759,
         "margin_percentiles": [
-          -15.0,
-          -10.8,
-          -3.7,
+          -15.3,
+          -11.2,
+          -3.8,
           4.1,
-          12.0,
-          19.0,
-          23.4
+          12.1,
+          19.3,
+          23.3
         ]
       },
       "adjustments": {
@@ -1967,7 +893,7 @@
             "player": "De'Aaron Fox",
             "status": "Day-To-Day",
             "position": "G",
-            "injury_description": "Although head coach Mitch Johnson said earlier that the expectation was for Fox to play, he has now been ruled out for the opening matchup of the Western Conference Finals. His next chance to play will come in Game 2 on Wednesday. With the star guard sidelined, Dylan Harper and Keldon Johnson will likely take on expanded roles.",
+            "injury_description": "Per Tom Orsborn of the San Antonio Express-News, head coach Mitch Johnson indicated Tuesday that Fox will be a game-time call for Game 2, so he'll presumably go through pregame warmups before a final decision is made. The star guard has been dealing with lingering right ankle soreness and was unable to suit up in Monday's double-overtime win in Game 1, during which Dylan Harper got the starting nod and recorded 24 points, 11 rebounds, seven steals and six assists across 47 minutes. Harper is expected to remain in the starting lineup if Fox isn't cleared to play.",
             "value_tier": "all-star"
           },
           {
@@ -2027,11 +953,11 @@
         "Thomas Sorber (OKC) [Starter] OUT \u2014 \u221216 ELO",
         "Home court: SAS +100 ELO advantage"
       ],
-      "explanation": "The model gives San Antonio Spurs a 55.5% win probability \u2014 a slight favorite over Oklahoma City Thunder. San Antonio Spurs net rating: +8.3. Home court +100 ELO for San Antonio Spurs."
+      "explanation": "The model gives San Antonio Spurs a 55.6% win probability \u2014 a slight favorite over Oklahoma City Thunder. San Antonio Spurs net rating: +8.3. Home court +100 ELO for San Antonio Spurs."
     },
     {
-      "game_id": "401873346",
-      "game_time": "2026-05-30T00:00Z",
+      "game_id": "401873344",
+      "game_time": "2026-05-26T00:00Z",
       "status": "STATUS_SCHEDULED",
       "is_future": true,
       "home_team": "CLE",
@@ -2044,13 +970,13 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.5097,
-        "logistic_prob": 0.5781,
-        "elo_prob": 0.4688,
-        "xgb_prob": 0.559,
-        "pyth_prob": 0.6462,
+        "ensemble_prob": 0.4944,
+        "logistic_prob": 0.5791,
+        "elo_prob": 0.4397,
+        "xgb_prob": 0.5719,
+        "pyth_prob": 0.6447,
         "eff_prob": 0.61,
-        "bayesian_prob": 0.9602
+        "bayesian_prob": 0.9603
       },
       "market": {
         "home_prob": null,
@@ -2060,19 +986,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.636,
-        "exp_margin": 3.87,
-        "prob_7plus": 0.389,
-        "prob_14plus": 0.1929,
-        "prob_21plus": 0.0668,
+        "win_prob": 0.6372,
+        "exp_margin": 4.19,
+        "prob_7plus": 0.4072,
+        "prob_14plus": 0.2035,
+        "prob_21plus": 0.0745,
         "margin_percentiles": [
-          -15.0,
-          -11.0,
-          -3.9,
-          3.9,
-          11.7,
-          18.6,
-          22.6
+          -15.1,
+          -10.8,
+          -3.7,
+          4.2,
+          12.3,
+          19.3,
+          23.2
         ]
       },
       "adjustments": {
@@ -2086,14 +1012,9 @@
       },
       "h2h": {
         "home_wins": 11,
-        "away_wins": 11,
-        "total_meetings": 22,
+        "away_wins": 12,
+        "total_meetings": 23,
         "last_n": [
-          {
-            "date": "2023-10-31",
-            "winner": "NYK",
-            "margin": 18
-          },
           {
             "date": "2023-11-01",
             "winner": "CLE",
@@ -2138,26 +1059,31 @@
             "date": "2026-02-25",
             "winner": "CLE",
             "margin": 15
+          },
+          {
+            "date": "2026-05-20",
+            "winner": "NYK",
+            "margin": 11
           }
         ]
       },
       "elo": {
-        "home": 1676.7,
-        "away": 1758.6,
-        "diff": -81.8
+        "home": 1667.4,
+        "away": 1767.6,
+        "diff": -100.2
       },
       "bayesian": {
-        "home_mu": 1798.9,
+        "home_mu": 1799.0,
         "home_sigma": 40.0,
-        "away_mu": 1799.7,
+        "away_mu": 1799.8,
         "away_sigma": 40.0,
         "home_band": [
-          1758.9,
-          1838.9
+          1759.0,
+          1839.0
         ],
         "away_band": [
-          1759.7,
-          1839.7
+          1759.8,
+          1839.8
         ]
       },
       "efficiency": {
@@ -2171,63 +1097,29 @@
         "away_pace": 100.0
       },
       "injuries": {
-        "home": [
-          {
-            "player": "Larry Nance Jr.",
-            "status": "Day-To-Day",
-            "position": "F",
-            "injury_description": "Nance, who has been sidelined for back-to-back contests due to an illness, has a chance to be available off the bench for Game 1 on Tuesday. The veteran big man has made just two brief appearances during garbage time this postseason, so his presence wouldn't figure to have a noticeable impact on the Cleveland rotation.",
-            "value_tier": "rotation"
-          }
-        ],
-        "away": [
-          {
-            "player": "OG Anunoby",
-            "status": "Out",
-            "position": "F",
-            "injury_description": "Anunoby missed the final two games of the Eastern Conference Semifinals against the 76ers due to a right hamstring strain, though he was a full participant in Monday's practice and is expected to play Tuesday. Over eight playoff appearances in 2026, the 28-year-old forward has averaged 21.4 points, 7.5 rebounds, 1.9 steals, 1.3 assists and 1.1 blocks across 35.3 minutes per contest. He's also shooting 61.9 percent from the field and 53.8 percent from three-point range this postseason.",
-            "value_tier": "rotation"
-          }
-        ]
+        "home": [],
+        "away": []
       },
       "injury_impact": {
-        "home_elo_penalty": 2.1,
-        "away_elo_penalty": 4.2,
-        "home_key_players_out": [
-          {
-            "player": "Larry Nance Jr.",
-            "position": "F",
-            "status": "Day-To-Day",
-            "elo_impact": 2.1,
-            "value_tier": "rotation"
-          }
-        ],
-        "away_key_players_out": [
-          {
-            "player": "OG Anunoby",
-            "position": "F",
-            "status": "Out",
-            "elo_impact": 4.2,
-            "value_tier": "rotation"
-          }
-        ],
+        "home_elo_penalty": 0.0,
+        "away_elo_penalty": 0.0,
+        "home_key_players_out": [],
+        "away_key_players_out": [],
         "home_star_count": 0,
         "away_star_count": 0,
         "home_star_stack_multiplier": 1.0,
         "away_star_stack_multiplier": 1.0
       },
       "prediction_drivers": [
-        "ELO advantage: NYK +82 rating points",
-        "Larry Nance Jr. (CLE) [Rotation] DAY-TO-DAY \u2014 \u22122 ELO",
-        "OG Anunoby (NYK) [Rotation] OUT \u2014 \u22124 ELO",
+        "ELO advantage: NYK +100 rating points",
         "Offensive rating: CLE leads by 3.1 pts/100",
         "Home court: CLE +100 ELO advantage"
       ],
-      "explanation": "The model gives Cleveland Cavaliers a 51.0% win probability \u2014 a slight favorite over New York Knicks. Cleveland Cavaliers net rating: +4.1. Home court +100 ELO for Cleveland Cavaliers."
+      "explanation": "The model gives New York Knicks a 50.6% win probability \u2014 a slight favorite over Cleveland Cavaliers. New York Knicks net rating: +6.3. Home court +100 ELO for Cleveland Cavaliers."
     },
     {
-      "game_id": "401873203",
-      "game_time": "2026-05-31T00:00Z",
+      "game_id": "401873201",
+      "game_time": "2026-05-27T00:30Z",
       "status": "STATUS_SCHEDULED",
       "is_future": true,
       "home_team": "OKC",
@@ -2241,9 +1133,9 @@
       "away_score": 0,
       "predictions": {
         "ensemble_prob": 0.5941,
-        "logistic_prob": 0.6711,
+        "logistic_prob": 0.6681,
         "elo_prob": 0.5578,
-        "xgb_prob": 0.6108,
+        "xgb_prob": 0.616,
         "pyth_prob": 0.7341,
         "eff_prob": 0.6768,
         "bayesian_prob": 0.9576
@@ -2256,19 +1148,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6344,
-        "exp_margin": 4.13,
-        "prob_7plus": 0.4044,
-        "prob_14plus": 0.2011,
-        "prob_21plus": 0.0751,
+        "win_prob": 0.629,
+        "exp_margin": 3.9,
+        "prob_7plus": 0.3923,
+        "prob_14plus": 0.1945,
+        "prob_21plus": 0.0712,
         "margin_percentiles": [
-          -15.3,
-          -11.1,
-          -3.7,
-          4.2,
-          12.1,
-          19.2,
-          23.3
+          -14.8,
+          -10.9,
+          -4.0,
+          3.8,
+          11.8,
+          18.8,
+          23.0
         ]
       },
       "adjustments": {
@@ -2381,7 +1273,749 @@
             "player": "De'Aaron Fox",
             "status": "Day-To-Day",
             "position": "G",
-            "injury_description": "Although head coach Mitch Johnson said earlier that the expectation was for Fox to play, he has now been ruled out for the opening matchup of the Western Conference Finals. His next chance to play will come in Game 2 on Wednesday. With the star guard sidelined, Dylan Harper and Keldon Johnson will likely take on expanded roles.",
+            "injury_description": "Per Tom Orsborn of the San Antonio Express-News, head coach Mitch Johnson indicated Tuesday that Fox will be a game-time call for Game 2, so he'll presumably go through pregame warmups before a final decision is made. The star guard has been dealing with lingering right ankle soreness and was unable to suit up in Monday's double-overtime win in Game 1, during which Dylan Harper got the starting nod and recorded 24 points, 11 rebounds, seven steals and six assists across 47 minutes. Harper is expected to remain in the starting lineup if Fox isn't cleared to play.",
+            "value_tier": "all-star"
+          },
+          {
+            "player": "David Jones Garcia",
+            "status": "Out",
+            "position": "F",
+            "injury_description": "Jones Garcia only managed to make 11 appearances for the Spurs in his introductory season, finishing with averages of 2.9 points and 1.6 assists per game. The 24-year-old rookie was on a one-year, two-way deal with the Spurs, so he'll be a free agent this summer.",
+            "value_tier": "starter"
+          }
+        ]
+      },
+      "injury_impact": {
+        "home_elo_penalty": 16.0,
+        "away_elo_penalty": 26.67,
+        "home_key_players_out": [
+          {
+            "player": "Thomas Sorber",
+            "position": "C",
+            "status": "Out",
+            "elo_impact": 16.0,
+            "value_tier": "starter"
+          }
+        ],
+        "away_key_players_out": [
+          {
+            "player": "De'Aaron Fox",
+            "position": "G",
+            "status": "Day-To-Day",
+            "elo_impact": 11.2,
+            "value_tier": "all-star"
+          },
+          {
+            "player": "David Jones Garcia",
+            "position": "F",
+            "status": "Out",
+            "elo_impact": 14.0,
+            "value_tier": "starter"
+          }
+        ],
+        "home_star_count": 0,
+        "away_star_count": 1,
+        "home_star_stack_multiplier": 1.0,
+        "away_star_stack_multiplier": 1.0562
+      },
+      "prediction_drivers": [
+        "Thomas Sorber (OKC) [Starter] OUT \u2014 \u221216 ELO",
+        "De'Aaron Fox (SAS) [All-Star] DAY-TO-DAY \u2014 \u221211 ELO",
+        "David Jones Garcia (SAS) [Starter] OUT \u2014 \u221214 ELO",
+        "Home court: OKC +100 ELO advantage"
+      ],
+      "explanation": "The model gives Oklahoma City Thunder a 59.4% win probability \u2014 a slight favorite over San Antonio Spurs. Oklahoma City Thunder net rating: +11.1. Home court +100 ELO for Oklahoma City Thunder."
+    },
+    {
+      "game_id": "401873345",
+      "game_time": "2026-05-28T00:00Z",
+      "status": "STATUS_SCHEDULED",
+      "is_future": true,
+      "home_team": "NYK",
+      "away_team": "CLE",
+      "home_name": "New York Knicks",
+      "away_name": "Cleveland Cavaliers",
+      "home_logo": "https://a.espncdn.com/i/teamlogos/nba/500/ny.png",
+      "away_logo": "https://a.espncdn.com/i/teamlogos/nba/500/cle.png",
+      "neutral": false,
+      "home_score": 0,
+      "away_score": 0,
+      "predictions": {
+        "ensemble_prob": 0.6477,
+        "logistic_prob": 0.5476,
+        "elo_prob": 0.7132,
+        "xgb_prob": 0.5522,
+        "pyth_prob": 0.6354,
+        "eff_prob": 0.6691,
+        "bayesian_prob": 0.9626
+      },
+      "market": {
+        "home_prob": null,
+        "edge": null,
+        "kelly_pct": null,
+        "home_american": null,
+        "away_american": null
+      },
+      "monte_carlo": {
+        "win_prob": 0.637,
+        "exp_margin": 3.94,
+        "prob_7plus": 0.393,
+        "prob_14plus": 0.1966,
+        "prob_21plus": 0.0701,
+        "margin_percentiles": [
+          -15.3,
+          -11.0,
+          -3.8,
+          4.0,
+          11.8,
+          18.8,
+          22.8
+        ]
+      },
+      "adjustments": {
+        "rest_home": 7,
+        "rest_away": 7,
+        "rest_diff": 0,
+        "travel_dist_miles": 404.0,
+        "b2b_home": false,
+        "b2b_away": false,
+        "home_elo_bonus": 100
+      },
+      "h2h": {
+        "home_wins": 12,
+        "away_wins": 11,
+        "total_meetings": 23,
+        "last_n": [
+          {
+            "date": "2023-11-01",
+            "winner": "CLE",
+            "margin": 6
+          },
+          {
+            "date": "2024-03-04",
+            "winner": "NYK",
+            "margin": 9
+          },
+          {
+            "date": "2024-10-28",
+            "winner": "CLE",
+            "margin": 6
+          },
+          {
+            "date": "2025-02-22",
+            "winner": "CLE",
+            "margin": 37
+          },
+          {
+            "date": "2025-04-02",
+            "winner": "CLE",
+            "margin": 19
+          },
+          {
+            "date": "2025-04-11",
+            "winner": "CLE",
+            "margin": 6
+          },
+          {
+            "date": "2025-10-22",
+            "winner": "NYK",
+            "margin": 8
+          },
+          {
+            "date": "2025-12-25",
+            "winner": "NYK",
+            "margin": 2
+          },
+          {
+            "date": "2026-02-25",
+            "winner": "CLE",
+            "margin": 15
+          },
+          {
+            "date": "2026-05-20",
+            "winner": "NYK",
+            "margin": 11
+          }
+        ]
+      },
+      "elo": {
+        "home": 1767.6,
+        "away": 1667.4,
+        "diff": 100.2
+      },
+      "bayesian": {
+        "home_mu": 1799.8,
+        "home_sigma": 40.0,
+        "away_mu": 1799.0,
+        "away_sigma": 40.0,
+        "home_band": [
+          1759.8,
+          1839.8
+        ],
+        "away_band": [
+          1759.0,
+          1839.0
+        ]
+      },
+      "efficiency": {
+        "home_off_rating": 116.45122,
+        "home_def_rating": 110.12195,
+        "home_net_rating": 6.329270000000008,
+        "away_off_rating": 119.51219,
+        "away_def_rating": 115.414635,
+        "away_net_rating": 4.097555,
+        "home_pace": 100.0,
+        "away_pace": 100.0
+      },
+      "injuries": {
+        "home": [],
+        "away": []
+      },
+      "injury_impact": {
+        "home_elo_penalty": 0.0,
+        "away_elo_penalty": 0.0,
+        "home_key_players_out": [],
+        "away_key_players_out": [],
+        "home_star_count": 0,
+        "away_star_count": 0,
+        "home_star_stack_multiplier": 1.0,
+        "away_star_stack_multiplier": 1.0
+      },
+      "prediction_drivers": [
+        "ELO advantage: NYK +100 rating points",
+        "Offensive rating: CLE leads by 3.1 pts/100",
+        "Home court: NYK +100 ELO advantage"
+      ],
+      "explanation": "The model gives New York Knicks a 64.8% win probability \u2014 a moderate favorite over Cleveland Cavaliers. New York Knicks net rating: +6.3. Home court +100 ELO for New York Knicks."
+    },
+    {
+      "game_id": "401873202",
+      "game_time": "2026-05-29T00:30Z",
+      "status": "STATUS_SCHEDULED",
+      "is_future": true,
+      "home_team": "SAS",
+      "away_team": "OKC",
+      "home_name": "San Antonio Spurs",
+      "away_name": "Oklahoma City Thunder",
+      "home_logo": "https://a.espncdn.com/i/teamlogos/nba/500/sa.png",
+      "away_logo": "https://a.espncdn.com/i/teamlogos/nba/500/okc.png",
+      "neutral": false,
+      "home_score": 0,
+      "away_score": 0,
+      "predictions": {
+        "ensemble_prob": 0.5556,
+        "logistic_prob": 0.4358,
+        "elo_prob": 0.6084,
+        "xgb_prob": 0.5438,
+        "pyth_prob": 0.5339,
+        "eff_prob": 0.6016,
+        "bayesian_prob": 0.965
+      },
+      "market": {
+        "home_prob": null,
+        "edge": null,
+        "kelly_pct": null,
+        "home_american": null,
+        "away_american": null
+      },
+      "monte_carlo": {
+        "win_prob": 0.6359,
+        "exp_margin": 4.04,
+        "prob_7plus": 0.4014,
+        "prob_14plus": 0.1972,
+        "prob_21plus": 0.0731,
+        "margin_percentiles": [
+          -15.3,
+          -11.0,
+          -3.9,
+          4.0,
+          12.0,
+          19.0,
+          23.3
+        ]
+      },
+      "adjustments": {
+        "rest_home": 7,
+        "rest_away": 7,
+        "rest_diff": 0,
+        "travel_dist_miles": 421.0,
+        "b2b_home": false,
+        "b2b_away": false,
+        "home_elo_bonus": 100
+      },
+      "h2h": {
+        "home_wins": 10,
+        "away_wins": 13,
+        "total_meetings": 23,
+        "last_n": [
+          {
+            "date": "2024-10-08",
+            "winner": "OKC",
+            "margin": 5
+          },
+          {
+            "date": "2024-10-31",
+            "winner": "OKC",
+            "margin": 12
+          },
+          {
+            "date": "2024-11-20",
+            "winner": "SAS",
+            "margin": 6
+          },
+          {
+            "date": "2025-03-03",
+            "winner": "OKC",
+            "margin": 14
+          },
+          {
+            "date": "2025-12-14",
+            "winner": "SAS",
+            "margin": 2
+          },
+          {
+            "date": "2025-12-24",
+            "winner": "SAS",
+            "margin": 20
+          },
+          {
+            "date": "2025-12-25",
+            "winner": "SAS",
+            "margin": 15
+          },
+          {
+            "date": "2026-01-14",
+            "winner": "OKC",
+            "margin": 21
+          },
+          {
+            "date": "2026-02-05",
+            "winner": "SAS",
+            "margin": 10
+          },
+          {
+            "date": "2026-05-19",
+            "winner": "SAS",
+            "margin": 7
+          }
+        ]
+      },
+      "elo": {
+        "home": 1848.6,
+        "away": 1819.8,
+        "diff": 28.7
+      },
+      "bayesian": {
+        "home_mu": 1799.8,
+        "home_sigma": 40.0,
+        "away_mu": 1797.4,
+        "away_sigma": 40.0,
+        "home_band": [
+          1759.8,
+          1839.8
+        ],
+        "away_band": [
+          1757.4,
+          1837.4
+        ]
+      },
+      "efficiency": {
+        "home_off_rating": 119.82927,
+        "home_def_rating": 111.52439,
+        "home_net_rating": 8.304879999999997,
+        "away_off_rating": 119.02439,
+        "away_def_rating": 107.87805,
+        "away_net_rating": 11.146339999999995,
+        "home_pace": 100.0,
+        "away_pace": 100.0
+      },
+      "injuries": {
+        "home": [
+          {
+            "player": "De'Aaron Fox",
+            "status": "Day-To-Day",
+            "position": "G",
+            "injury_description": "Per Tom Orsborn of the San Antonio Express-News, head coach Mitch Johnson indicated Tuesday that Fox will be a game-time call for Game 2, so he'll presumably go through pregame warmups before a final decision is made. The star guard has been dealing with lingering right ankle soreness and was unable to suit up in Monday's double-overtime win in Game 1, during which Dylan Harper got the starting nod and recorded 24 points, 11 rebounds, seven steals and six assists across 47 minutes. Harper is expected to remain in the starting lineup if Fox isn't cleared to play.",
+            "value_tier": "all-star"
+          },
+          {
+            "player": "David Jones Garcia",
+            "status": "Out",
+            "position": "F",
+            "injury_description": "Jones Garcia only managed to make 11 appearances for the Spurs in his introductory season, finishing with averages of 2.9 points and 1.6 assists per game. The 24-year-old rookie was on a one-year, two-way deal with the Spurs, so he'll be a free agent this summer.",
+            "value_tier": "starter"
+          }
+        ],
+        "away": [
+          {
+            "player": "Thomas Sorber",
+            "status": "Out",
+            "position": "C",
+            "injury_description": "Sorber was selected No. 15 overall in the 2025 NBA Draft out of Georgetown by the reigning NBA champions. The rookie center was already dealing with a foot injury that cut his season with the Hoyas short and kept him out of the Summer League. Now he'll likely have to wait until the 2026-27 campaign to make his debut on the professional level.",
+            "value_tier": "starter"
+          }
+        ]
+      },
+      "injury_impact": {
+        "home_elo_penalty": 26.67,
+        "away_elo_penalty": 16.0,
+        "home_key_players_out": [
+          {
+            "player": "De'Aaron Fox",
+            "position": "G",
+            "status": "Day-To-Day",
+            "elo_impact": 11.2,
+            "value_tier": "all-star"
+          },
+          {
+            "player": "David Jones Garcia",
+            "position": "F",
+            "status": "Out",
+            "elo_impact": 14.0,
+            "value_tier": "starter"
+          }
+        ],
+        "away_key_players_out": [
+          {
+            "player": "Thomas Sorber",
+            "position": "C",
+            "status": "Out",
+            "elo_impact": 16.0,
+            "value_tier": "starter"
+          }
+        ],
+        "home_star_count": 1,
+        "away_star_count": 0,
+        "home_star_stack_multiplier": 1.0562,
+        "away_star_stack_multiplier": 1.0
+      },
+      "prediction_drivers": [
+        "De'Aaron Fox (SAS) [All-Star] DAY-TO-DAY \u2014 \u221211 ELO",
+        "David Jones Garcia (SAS) [Starter] OUT \u2014 \u221214 ELO",
+        "Thomas Sorber (OKC) [Starter] OUT \u2014 \u221216 ELO",
+        "Home court: SAS +100 ELO advantage"
+      ],
+      "explanation": "The model gives San Antonio Spurs a 55.6% win probability \u2014 a slight favorite over Oklahoma City Thunder. San Antonio Spurs net rating: +8.3. Home court +100 ELO for San Antonio Spurs."
+    },
+    {
+      "game_id": "401873346",
+      "game_time": "2026-05-30T00:00Z",
+      "status": "STATUS_SCHEDULED",
+      "is_future": true,
+      "home_team": "CLE",
+      "away_team": "NYK",
+      "home_name": "Cleveland Cavaliers",
+      "away_name": "New York Knicks",
+      "home_logo": "https://a.espncdn.com/i/teamlogos/nba/500/cle.png",
+      "away_logo": "https://a.espncdn.com/i/teamlogos/nba/500/ny.png",
+      "neutral": false,
+      "home_score": 0,
+      "away_score": 0,
+      "predictions": {
+        "ensemble_prob": 0.4944,
+        "logistic_prob": 0.5791,
+        "elo_prob": 0.4397,
+        "xgb_prob": 0.5719,
+        "pyth_prob": 0.6447,
+        "eff_prob": 0.61,
+        "bayesian_prob": 0.9603
+      },
+      "market": {
+        "home_prob": null,
+        "edge": null,
+        "kelly_pct": null,
+        "home_american": null,
+        "away_american": null
+      },
+      "monte_carlo": {
+        "win_prob": 0.6284,
+        "exp_margin": 3.91,
+        "prob_7plus": 0.3946,
+        "prob_14plus": 0.1967,
+        "prob_21plus": 0.0718,
+        "margin_percentiles": [
+          -15.4,
+          -11.0,
+          -4.1,
+          4.0,
+          11.8,
+          18.9,
+          23.2
+        ]
+      },
+      "adjustments": {
+        "rest_home": 7,
+        "rest_away": 7,
+        "rest_diff": 0,
+        "travel_dist_miles": 404.0,
+        "b2b_home": false,
+        "b2b_away": false,
+        "home_elo_bonus": 100
+      },
+      "h2h": {
+        "home_wins": 11,
+        "away_wins": 12,
+        "total_meetings": 23,
+        "last_n": [
+          {
+            "date": "2023-11-01",
+            "winner": "CLE",
+            "margin": 6
+          },
+          {
+            "date": "2024-03-04",
+            "winner": "NYK",
+            "margin": 9
+          },
+          {
+            "date": "2024-10-28",
+            "winner": "CLE",
+            "margin": 6
+          },
+          {
+            "date": "2025-02-22",
+            "winner": "CLE",
+            "margin": 37
+          },
+          {
+            "date": "2025-04-02",
+            "winner": "CLE",
+            "margin": 19
+          },
+          {
+            "date": "2025-04-11",
+            "winner": "CLE",
+            "margin": 6
+          },
+          {
+            "date": "2025-10-22",
+            "winner": "NYK",
+            "margin": 8
+          },
+          {
+            "date": "2025-12-25",
+            "winner": "NYK",
+            "margin": 2
+          },
+          {
+            "date": "2026-02-25",
+            "winner": "CLE",
+            "margin": 15
+          },
+          {
+            "date": "2026-05-20",
+            "winner": "NYK",
+            "margin": 11
+          }
+        ]
+      },
+      "elo": {
+        "home": 1667.4,
+        "away": 1767.6,
+        "diff": -100.2
+      },
+      "bayesian": {
+        "home_mu": 1799.0,
+        "home_sigma": 40.0,
+        "away_mu": 1799.8,
+        "away_sigma": 40.0,
+        "home_band": [
+          1759.0,
+          1839.0
+        ],
+        "away_band": [
+          1759.8,
+          1839.8
+        ]
+      },
+      "efficiency": {
+        "home_off_rating": 119.51219,
+        "home_def_rating": 115.414635,
+        "home_net_rating": 4.097555,
+        "away_off_rating": 116.45122,
+        "away_def_rating": 110.12195,
+        "away_net_rating": 6.329270000000008,
+        "home_pace": 100.0,
+        "away_pace": 100.0
+      },
+      "injuries": {
+        "home": [],
+        "away": []
+      },
+      "injury_impact": {
+        "home_elo_penalty": 0.0,
+        "away_elo_penalty": 0.0,
+        "home_key_players_out": [],
+        "away_key_players_out": [],
+        "home_star_count": 0,
+        "away_star_count": 0,
+        "home_star_stack_multiplier": 1.0,
+        "away_star_stack_multiplier": 1.0
+      },
+      "prediction_drivers": [
+        "ELO advantage: NYK +100 rating points",
+        "Offensive rating: CLE leads by 3.1 pts/100",
+        "Home court: CLE +100 ELO advantage"
+      ],
+      "explanation": "The model gives New York Knicks a 50.6% win probability \u2014 a slight favorite over Cleveland Cavaliers. New York Knicks net rating: +6.3. Home court +100 ELO for Cleveland Cavaliers."
+    },
+    {
+      "game_id": "401873203",
+      "game_time": "2026-05-31T00:00Z",
+      "status": "STATUS_SCHEDULED",
+      "is_future": true,
+      "home_team": "OKC",
+      "away_team": "SAS",
+      "home_name": "Oklahoma City Thunder",
+      "away_name": "San Antonio Spurs",
+      "home_logo": "https://a.espncdn.com/i/teamlogos/nba/500/okc.png",
+      "away_logo": "https://a.espncdn.com/i/teamlogos/nba/500/sa.png",
+      "neutral": false,
+      "home_score": 0,
+      "away_score": 0,
+      "predictions": {
+        "ensemble_prob": 0.5941,
+        "logistic_prob": 0.6681,
+        "elo_prob": 0.5578,
+        "xgb_prob": 0.616,
+        "pyth_prob": 0.7341,
+        "eff_prob": 0.6768,
+        "bayesian_prob": 0.9576
+      },
+      "market": {
+        "home_prob": null,
+        "edge": null,
+        "kelly_pct": null,
+        "home_american": null,
+        "away_american": null
+      },
+      "monte_carlo": {
+        "win_prob": 0.6332,
+        "exp_margin": 4.04,
+        "prob_7plus": 0.4061,
+        "prob_14plus": 0.1958,
+        "prob_21plus": 0.0733,
+        "margin_percentiles": [
+          -15.3,
+          -10.9,
+          -3.8,
+          4.1,
+          11.9,
+          19.2,
+          23.2
+        ]
+      },
+      "adjustments": {
+        "rest_home": 7,
+        "rest_away": 7,
+        "rest_diff": 0,
+        "travel_dist_miles": 421.0,
+        "b2b_home": false,
+        "b2b_away": false,
+        "home_elo_bonus": 100
+      },
+      "h2h": {
+        "home_wins": 13,
+        "away_wins": 10,
+        "total_meetings": 23,
+        "last_n": [
+          {
+            "date": "2024-10-08",
+            "winner": "OKC",
+            "margin": 5
+          },
+          {
+            "date": "2024-10-31",
+            "winner": "OKC",
+            "margin": 12
+          },
+          {
+            "date": "2024-11-20",
+            "winner": "SAS",
+            "margin": 6
+          },
+          {
+            "date": "2025-03-03",
+            "winner": "OKC",
+            "margin": 14
+          },
+          {
+            "date": "2025-12-14",
+            "winner": "SAS",
+            "margin": 2
+          },
+          {
+            "date": "2025-12-24",
+            "winner": "SAS",
+            "margin": 20
+          },
+          {
+            "date": "2025-12-25",
+            "winner": "SAS",
+            "margin": 15
+          },
+          {
+            "date": "2026-01-14",
+            "winner": "OKC",
+            "margin": 21
+          },
+          {
+            "date": "2026-02-05",
+            "winner": "SAS",
+            "margin": 10
+          },
+          {
+            "date": "2026-05-19",
+            "winner": "SAS",
+            "margin": 7
+          }
+        ]
+      },
+      "elo": {
+        "home": 1819.8,
+        "away": 1848.6,
+        "diff": -28.7
+      },
+      "bayesian": {
+        "home_mu": 1797.4,
+        "home_sigma": 40.0,
+        "away_mu": 1799.8,
+        "away_sigma": 40.0,
+        "home_band": [
+          1757.4,
+          1837.4
+        ],
+        "away_band": [
+          1759.8,
+          1839.8
+        ]
+      },
+      "efficiency": {
+        "home_off_rating": 119.02439,
+        "home_def_rating": 107.87805,
+        "home_net_rating": 11.146339999999995,
+        "away_off_rating": 119.82927,
+        "away_def_rating": 111.52439,
+        "away_net_rating": 8.304879999999997,
+        "home_pace": 100.0,
+        "away_pace": 100.0
+      },
+      "injuries": {
+        "home": [
+          {
+            "player": "Thomas Sorber",
+            "status": "Out",
+            "position": "C",
+            "injury_description": "Sorber was selected No. 15 overall in the 2025 NBA Draft out of Georgetown by the reigning NBA champions. The rookie center was already dealing with a foot injury that cut his season with the Hoyas short and kept him out of the Summer League. Now he'll likely have to wait until the 2026-27 campaign to make his debut on the professional level.",
+            "value_tier": "starter"
+          }
+        ],
+        "away": [
+          {
+            "player": "De'Aaron Fox",
+            "status": "Day-To-Day",
+            "position": "G",
+            "injury_description": "Per Tom Orsborn of the San Antonio Express-News, head coach Mitch Johnson indicated Tuesday that Fox will be a game-time call for Game 2, so he'll presumably go through pregame warmups before a final decision is made. The star guard has been dealing with lingering right ankle soreness and was unable to suit up in Monday's double-overtime win in Game 1, during which Dylan Harper got the starting nod and recorded 24 points, 11 rebounds, seven steals and six assists across 47 minutes. Harper is expected to remain in the starting lineup if Fox isn't cleared to play.",
             "value_tier": "all-star"
           },
           {
@@ -2449,13 +2083,13 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.6337,
-        "logistic_prob": 0.5485,
-        "elo_prob": 0.6885,
-        "xgb_prob": 0.5566,
-        "pyth_prob": 0.6338,
+        "ensemble_prob": 0.6477,
+        "logistic_prob": 0.5476,
+        "elo_prob": 0.7132,
+        "xgb_prob": 0.5522,
+        "pyth_prob": 0.6354,
         "eff_prob": 0.6691,
-        "bayesian_prob": 0.9627
+        "bayesian_prob": 0.9626
       },
       "market": {
         "home_prob": null,
@@ -2465,19 +2099,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.647,
-        "exp_margin": 4.24,
-        "prob_7plus": 0.4131,
-        "prob_14plus": 0.2011,
+        "win_prob": 0.632,
+        "exp_margin": 4.03,
+        "prob_7plus": 0.4034,
+        "prob_14plus": 0.201,
         "prob_21plus": 0.075,
         "margin_percentiles": [
-          -15.3,
-          -10.6,
-          -3.6,
-          4.4,
+          -15.6,
+          -11.2,
+          -4.1,
+          4.1,
           12.1,
-          19.1,
-          23.3
+          19.2,
+          23.4
         ]
       },
       "adjustments": {
@@ -2490,15 +2124,10 @@
         "home_elo_bonus": 100
       },
       "h2h": {
-        "home_wins": 11,
+        "home_wins": 12,
         "away_wins": 11,
-        "total_meetings": 22,
+        "total_meetings": 23,
         "last_n": [
-          {
-            "date": "2023-10-31",
-            "winner": "NYK",
-            "margin": 18
-          },
           {
             "date": "2023-11-01",
             "winner": "CLE",
@@ -2543,26 +2172,31 @@
             "date": "2026-02-25",
             "winner": "CLE",
             "margin": 15
+          },
+          {
+            "date": "2026-05-20",
+            "winner": "NYK",
+            "margin": 11
           }
         ]
       },
       "elo": {
-        "home": 1758.6,
-        "away": 1676.7,
-        "diff": 81.8
+        "home": 1767.6,
+        "away": 1667.4,
+        "diff": 100.2
       },
       "bayesian": {
-        "home_mu": 1799.7,
+        "home_mu": 1799.8,
         "home_sigma": 40.0,
-        "away_mu": 1798.9,
+        "away_mu": 1799.0,
         "away_sigma": 40.0,
         "home_band": [
-          1759.7,
-          1839.7
+          1759.8,
+          1839.8
         ],
         "away_band": [
-          1758.9,
-          1838.9
+          1759.0,
+          1839.0
         ]
       },
       "efficiency": {
@@ -2576,59 +2210,134 @@
         "away_pace": 100.0
       },
       "injuries": {
-        "home": [
-          {
-            "player": "OG Anunoby",
-            "status": "Out",
-            "position": "F",
-            "injury_description": "Anunoby missed the final two games of the Eastern Conference Semifinals against the 76ers due to a right hamstring strain, though he was a full participant in Monday's practice and is expected to play Tuesday. Over eight playoff appearances in 2026, the 28-year-old forward has averaged 21.4 points, 7.5 rebounds, 1.9 steals, 1.3 assists and 1.1 blocks across 35.3 minutes per contest. He's also shooting 61.9 percent from the field and 53.8 percent from three-point range this postseason.",
-            "value_tier": "rotation"
-          }
-        ],
-        "away": [
-          {
-            "player": "Larry Nance Jr.",
-            "status": "Day-To-Day",
-            "position": "F",
-            "injury_description": "Nance, who has been sidelined for back-to-back contests due to an illness, has a chance to be available off the bench for Game 1 on Tuesday. The veteran big man has made just two brief appearances during garbage time this postseason, so his presence wouldn't figure to have a noticeable impact on the Cleveland rotation.",
-            "value_tier": "rotation"
-          }
-        ]
+        "home": [],
+        "away": []
       },
       "injury_impact": {
-        "home_elo_penalty": 4.2,
-        "away_elo_penalty": 2.1,
-        "home_key_players_out": [
-          {
-            "player": "OG Anunoby",
-            "position": "F",
-            "status": "Out",
-            "elo_impact": 4.2,
-            "value_tier": "rotation"
-          }
-        ],
-        "away_key_players_out": [
-          {
-            "player": "Larry Nance Jr.",
-            "position": "F",
-            "status": "Day-To-Day",
-            "elo_impact": 2.1,
-            "value_tier": "rotation"
-          }
-        ],
+        "home_elo_penalty": 0.0,
+        "away_elo_penalty": 0.0,
+        "home_key_players_out": [],
+        "away_key_players_out": [],
         "home_star_count": 0,
         "away_star_count": 0,
         "home_star_stack_multiplier": 1.0,
         "away_star_stack_multiplier": 1.0
       },
       "prediction_drivers": [
-        "ELO advantage: NYK +82 rating points",
-        "OG Anunoby (NYK) [Rotation] OUT \u2014 \u22124 ELO",
-        "Larry Nance Jr. (CLE) [Rotation] DAY-TO-DAY \u2014 \u22122 ELO",
+        "ELO advantage: NYK +100 rating points",
         "Offensive rating: CLE leads by 3.1 pts/100",
         "Home court: NYK +100 ELO advantage"
       ],
-      "explanation": "The model gives New York Knicks a 63.4% win probability \u2014 a moderate favorite over Cleveland Cavaliers. New York Knicks net rating: +6.3. Home court +100 ELO for New York Knicks."
+      "explanation": "The model gives New York Knicks a 64.8% win probability \u2014 a moderate favorite over Cleveland Cavaliers. New York Knicks net rating: +6.3. Home court +100 ELO for New York Knicks."
+    },
+    {
+      "game_id": "401859963",
+      "game_time": "2026-06-04T00:30Z",
+      "status": "STATUS_SCHEDULED",
+      "is_future": true,
+      "home_team": "TBD",
+      "away_team": "TBD",
+      "home_name": "TBD",
+      "away_name": "TBD",
+      "home_logo": "https://a.espncdn.com/i/teamlogos/nba/500/tbd.png",
+      "away_logo": "https://a.espncdn.com/i/teamlogos/nba/500/tbd.png",
+      "neutral": false,
+      "home_score": 0,
+      "away_score": 0,
+      "predictions": {
+        "ensemble_prob": 0.575,
+        "logistic_prob": 0.5791,
+        "elo_prob": 0.5715,
+        "xgb_prob": 0.5823,
+        "pyth_prob": 0.6401,
+        "eff_prob": 0.6401,
+        "bayesian_prob": 0.8271
+      },
+      "market": {
+        "home_prob": null,
+        "edge": null,
+        "kelly_pct": null,
+        "home_american": null,
+        "away_american": null
+      },
+      "monte_carlo": {
+        "win_prob": 0.6294,
+        "exp_margin": 4.09,
+        "prob_7plus": 0.4088,
+        "prob_14plus": 0.2159,
+        "prob_21plus": 0.0843,
+        "margin_percentiles": [
+          -16.2,
+          -11.9,
+          -4.3,
+          4.1,
+          12.5,
+          19.9,
+          24.3
+        ]
+      },
+      "adjustments": {
+        "rest_home": 7,
+        "rest_away": 7,
+        "rest_diff": 0,
+        "travel_dist_miles": 0.0,
+        "b2b_home": false,
+        "b2b_away": false,
+        "home_elo_bonus": 100
+      },
+      "h2h": {
+        "home_wins": 0,
+        "away_wins": 0,
+        "total_meetings": 0,
+        "last_n": []
+      },
+      "elo": {
+        "home": 1500.0,
+        "away": 1500.0,
+        "diff": 0.0
+      },
+      "bayesian": {
+        "home_mu": 1500.0,
+        "home_sigma": 75.0,
+        "away_mu": 1500.0,
+        "away_sigma": 75.0,
+        "home_band": [
+          1425.0,
+          1575.0
+        ],
+        "away_band": [
+          1425.0,
+          1575.0
+        ]
+      },
+      "efficiency": {
+        "home_off_rating": 110.0,
+        "home_def_rating": 110.0,
+        "home_net_rating": 0.0,
+        "away_off_rating": 110.0,
+        "away_def_rating": 110.0,
+        "away_net_rating": 0.0,
+        "home_pace": 100.0,
+        "away_pace": 100.0
+      },
+      "injuries": {
+        "home": [],
+        "away": []
+      },
+      "injury_impact": {
+        "home_elo_penalty": 0.0,
+        "away_elo_penalty": 0.0,
+        "home_key_players_out": [],
+        "away_key_players_out": [],
+        "home_star_count": 0,
+        "away_star_count": 0,
+        "home_star_stack_multiplier": 1.0,
+        "away_star_stack_multiplier": 1.0
+      },
+      "prediction_drivers": [
+        "Home court: TBD +100 ELO advantage"
+      ],
+      "explanation": "The model gives TBD a 57.5% win probability \u2014 a slight favorite over TBD. TBD net rating: +0.0. Home court +100 ELO for TBD."
     },
     {
       "game_id": "401871338",
@@ -2645,13 +2354,13 @@
       "home_score": 94,
       "away_score": 115,
       "predictions": {
-        "ensemble_prob": 0.5645,
-        "logistic_prob": 0.5781,
-        "elo_prob": 0.5449,
-        "xgb_prob": 0.6199,
-        "pyth_prob": 0.6587,
+        "ensemble_prob": 0.6452,
+        "logistic_prob": 0.6681,
+        "elo_prob": 0.6323,
+        "xgb_prob": 0.6584,
+        "pyth_prob": 0.6575,
         "eff_prob": 0.5846,
-        "bayesian_prob": 0.9667
+        "bayesian_prob": 0.9668
       },
       "market": {
         "home_prob": null,
@@ -2661,27 +2370,27 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6343,
-        "exp_margin": 4.08,
-        "prob_7plus": 0.3973,
-        "prob_14plus": 0.2007,
-        "prob_21plus": 0.0722,
+        "win_prob": 0.6285,
+        "exp_margin": 3.97,
+        "prob_7plus": 0.3975,
+        "prob_14plus": 0.1934,
+        "prob_21plus": 0.0726,
         "margin_percentiles": [
-          -14.9,
-          -10.8,
-          -3.8,
+          -15.0,
+          -11.2,
+          -3.9,
           4.0,
-          12.0,
-          19.0,
+          11.9,
+          18.8,
           23.3
         ]
       },
       "adjustments": {
-        "rest_home": 1,
+        "rest_home": 7,
         "rest_away": 1,
-        "rest_diff": 0,
+        "rest_diff": 6,
         "travel_dist_miles": 90.0,
-        "b2b_home": true,
+        "b2b_home": false,
         "b2b_away": true,
         "home_elo_bonus": 100
       },
@@ -2743,18 +2452,18 @@
         ]
       },
       "elo": {
-        "home": 1676.7,
-        "away": 1695.1,
-        "diff": -18.3
+        "home": 1667.4,
+        "away": 1695.0,
+        "diff": -27.6
       },
       "bayesian": {
-        "home_mu": 1798.9,
+        "home_mu": 1799.0,
         "home_sigma": 40.0,
         "away_mu": 1795.1,
         "away_sigma": 40.0,
         "home_band": [
-          1758.9,
-          1838.9
+          1759.0,
+          1839.0
         ],
         "away_band": [
           1755.1,
@@ -2772,29 +2481,13 @@
         "away_pace": 100.0
       },
       "injuries": {
-        "home": [
-          {
-            "player": "Larry Nance Jr.",
-            "status": "Day-To-Day",
-            "position": "F",
-            "injury_description": "Nance, who has been sidelined for back-to-back contests due to an illness, has a chance to be available off the bench for Game 1 on Tuesday. The veteran big man has made just two brief appearances during garbage time this postseason, so his presence wouldn't figure to have a noticeable impact on the Cleveland rotation.",
-            "value_tier": "rotation"
-          }
-        ],
+        "home": [],
         "away": []
       },
       "injury_impact": {
-        "home_elo_penalty": 2.1,
+        "home_elo_penalty": 0.0,
         "away_elo_penalty": 0.0,
-        "home_key_players_out": [
-          {
-            "player": "Larry Nance Jr.",
-            "position": "F",
-            "status": "Day-To-Day",
-            "elo_impact": 2.1,
-            "value_tier": "rotation"
-          }
-        ],
+        "home_key_players_out": [],
         "away_key_players_out": [],
         "home_star_count": 0,
         "away_star_count": 0,
@@ -2802,13 +2495,11 @@
         "away_star_stack_multiplier": 1.0
       },
       "prediction_drivers": [
-        "Larry Nance Jr. (CLE) [Rotation] DAY-TO-DAY \u2014 \u22122 ELO",
         "Net rating gap: CLE +4.1 vs DET +8.2",
-        "Back-to-back: CLE on zero days rest",
         "Back-to-back: DET on zero days rest",
         "Home court: CLE +100 ELO advantage"
       ],
-      "explanation": "The model gives Cleveland Cavaliers a 56.4% win probability \u2014 a slight favorite over Detroit Pistons. Cleveland Cavaliers net rating: +4.1. Cleveland Cavaliers on a back-to-back. Detroit Pistons on a back-to-back. Home court +100 ELO for Cleveland Cavaliers."
+      "explanation": "The model gives Cleveland Cavaliers a 64.5% win probability \u2014 a moderate favorite over Detroit Pistons. Cleveland Cavaliers net rating: +4.1. Detroit Pistons on a back-to-back. Home court +100 ELO for Cleveland Cavaliers."
     },
     {
       "game_id": "401871157",
@@ -2825,10 +2516,10 @@
       "home_score": 109,
       "away_score": 139,
       "predictions": {
-        "ensemble_prob": 0.4187,
-        "logistic_prob": 0.5781,
-        "elo_prob": 0.3081,
-        "xgb_prob": 0.5957,
+        "ensemble_prob": 0.418,
+        "logistic_prob": 0.5791,
+        "elo_prob": 0.3082,
+        "xgb_prob": 0.5887,
         "pyth_prob": 0.639,
         "eff_prob": 0.5722,
         "bayesian_prob": 0.9357
@@ -2841,19 +2532,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6183,
-        "exp_margin": 3.48,
-        "prob_7plus": 0.3838,
-        "prob_14plus": 0.1871,
-        "prob_21plus": 0.0672,
+        "win_prob": 0.6092,
+        "exp_margin": 3.44,
+        "prob_7plus": 0.3792,
+        "prob_14plus": 0.1857,
+        "prob_21plus": 0.0693,
         "margin_percentiles": [
           -16.1,
           -11.6,
-          -4.4,
-          3.5,
-          11.4,
-          18.6,
-          22.8
+          -4.5,
+          3.4,
+          11.5,
+          18.5,
+          22.9
         ]
       },
       "adjustments": {
@@ -2923,7 +2614,7 @@
         ]
       },
       "elo": {
-        "home": 1613.6,
+        "home": 1613.7,
         "away": 1848.6,
         "diff": -234.9
       },
@@ -2966,7 +2657,7 @@
             "player": "De'Aaron Fox",
             "status": "Day-To-Day",
             "position": "G",
-            "injury_description": "Although head coach Mitch Johnson said earlier that the expectation was for Fox to play, he has now been ruled out for the opening matchup of the Western Conference Finals. His next chance to play will come in Game 2 on Wednesday. With the star guard sidelined, Dylan Harper and Keldon Johnson will likely take on expanded roles.",
+            "injury_description": "Per Tom Orsborn of the San Antonio Express-News, head coach Mitch Johnson indicated Tuesday that Fox will be a game-time call for Game 2, so he'll presumably go through pregame warmups before a final decision is made. The star guard has been dealing with lingering right ankle soreness and was unable to suit up in Monday's double-overtime win in Game 1, during which Dylan Harper got the starting nod and recorded 24 points, 11 rebounds, seven steals and six assists across 47 minutes. Harper is expected to remain in the starting lineup if Fox isn't cleared to play.",
             "value_tier": "all-star"
           },
           {
@@ -3019,7 +2710,7 @@
         "Net rating gap: MIN +3.4 vs SAS +8.3",
         "Home court: MIN +100 ELO advantage"
       ],
-      "explanation": "The model gives San Antonio Spurs a 58.1% win probability \u2014 a slight favorite over Minnesota Timberwolves. San Antonio Spurs net rating: +8.3. Home court +100 ELO for Minnesota Timberwolves."
+      "explanation": "The model gives San Antonio Spurs a 58.2% win probability \u2014 a slight favorite over Minnesota Timberwolves. San Antonio Spurs net rating: +8.3. Home court +100 ELO for Minnesota Timberwolves."
     },
     {
       "game_id": "401871339",
@@ -3036,13 +2727,13 @@
       "home_score": 94,
       "away_score": 125,
       "predictions": {
-        "ensemble_prob": 0.5803,
-        "logistic_prob": 0.5485,
-        "elo_prob": 0.6026,
-        "xgb_prob": 0.5442,
-        "pyth_prob": 0.621,
+        "ensemble_prob": 0.5844,
+        "logistic_prob": 0.5476,
+        "elo_prob": 0.6124,
+        "xgb_prob": 0.5335,
+        "pyth_prob": 0.6222,
         "eff_prob": 0.692,
-        "bayesian_prob": 0.9555
+        "bayesian_prob": 0.9554
       },
       "market": {
         "home_prob": null,
@@ -3052,19 +2743,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6324,
-        "exp_margin": 3.97,
-        "prob_7plus": 0.3962,
-        "prob_14plus": 0.1947,
-        "prob_21plus": 0.0733,
+        "win_prob": 0.6352,
+        "exp_margin": 4.04,
+        "prob_7plus": 0.4018,
+        "prob_14plus": 0.205,
+        "prob_21plus": 0.0734,
         "margin_percentiles": [
-          -15.2,
-          -10.9,
-          -3.8,
-          4.0,
-          11.8,
-          18.9,
-          23.1
+          -15.4,
+          -11.2,
+          -4.1,
+          4.1,
+          12.3,
+          19.1,
+          23.2
         ]
       },
       "adjustments": {
@@ -3134,22 +2825,22 @@
         ]
       },
       "elo": {
-        "home": 1695.1,
-        "away": 1676.7,
-        "diff": 18.3
+        "home": 1695.0,
+        "away": 1667.4,
+        "diff": 27.6
       },
       "bayesian": {
         "home_mu": 1795.1,
         "home_sigma": 40.0,
-        "away_mu": 1798.9,
+        "away_mu": 1799.0,
         "away_sigma": 40.0,
         "home_band": [
           1755.1,
           1835.1
         ],
         "away_band": [
-          1758.9,
-          1838.9
+          1759.0,
+          1839.0
         ]
       },
       "efficiency": {
@@ -3164,40 +2855,23 @@
       },
       "injuries": {
         "home": [],
-        "away": [
-          {
-            "player": "Larry Nance Jr.",
-            "status": "Day-To-Day",
-            "position": "F",
-            "injury_description": "Nance, who has been sidelined for back-to-back contests due to an illness, has a chance to be available off the bench for Game 1 on Tuesday. The veteran big man has made just two brief appearances during garbage time this postseason, so his presence wouldn't figure to have a noticeable impact on the Cleveland rotation.",
-            "value_tier": "rotation"
-          }
-        ]
+        "away": []
       },
       "injury_impact": {
         "home_elo_penalty": 0.0,
-        "away_elo_penalty": 2.1,
+        "away_elo_penalty": 0.0,
         "home_key_players_out": [],
-        "away_key_players_out": [
-          {
-            "player": "Larry Nance Jr.",
-            "position": "F",
-            "status": "Day-To-Day",
-            "elo_impact": 2.1,
-            "value_tier": "rotation"
-          }
-        ],
+        "away_key_players_out": [],
         "home_star_count": 0,
         "away_star_count": 0,
         "home_star_stack_multiplier": 1.0,
         "away_star_stack_multiplier": 1.0
       },
       "prediction_drivers": [
-        "Larry Nance Jr. (CLE) [Rotation] DAY-TO-DAY \u2014 \u22122 ELO",
         "Net rating gap: DET +8.2 vs CLE +4.1",
         "Home court: DET +100 ELO advantage"
       ],
-      "explanation": "The model gives Detroit Pistons a 58.0% win probability \u2014 a slight favorite over Cleveland Cavaliers. Detroit Pistons net rating: +8.2. Home court +100 ELO for Detroit Pistons."
+      "explanation": "The model gives Detroit Pistons a 58.4% win probability \u2014 a slight favorite over Cleveland Cavaliers. Detroit Pistons net rating: +8.2. Home court +100 ELO for Detroit Pistons."
     },
     {
       "game_id": "401873197",
@@ -3215,9 +2889,9 @@
       "away_score": 122,
       "predictions": {
         "ensemble_prob": 0.5941,
-        "logistic_prob": 0.6711,
+        "logistic_prob": 0.6681,
         "elo_prob": 0.5578,
-        "xgb_prob": 0.6108,
+        "xgb_prob": 0.616,
         "pyth_prob": 0.7341,
         "eff_prob": 0.6768,
         "bayesian_prob": 0.9576
@@ -3230,19 +2904,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6378,
-        "exp_margin": 4.04,
-        "prob_7plus": 0.4012,
-        "prob_14plus": 0.1997,
-        "prob_21plus": 0.0782,
+        "win_prob": 0.6221,
+        "exp_margin": 3.77,
+        "prob_7plus": 0.3906,
+        "prob_14plus": 0.1912,
+        "prob_21plus": 0.0746,
         "margin_percentiles": [
-          -15.4,
-          -11.1,
-          -4.1,
-          4.1,
-          11.9,
-          19.2,
-          23.9
+          -15.5,
+          -11.2,
+          -4.2,
+          3.7,
+          11.7,
+          19.1,
+          23.2
         ]
       },
       "adjustments": {
@@ -3355,7 +3029,7 @@
             "player": "De'Aaron Fox",
             "status": "Day-To-Day",
             "position": "G",
-            "injury_description": "Although head coach Mitch Johnson said earlier that the expectation was for Fox to play, he has now been ruled out for the opening matchup of the Western Conference Finals. His next chance to play will come in Game 2 on Wednesday. With the star guard sidelined, Dylan Harper and Keldon Johnson will likely take on expanded roles.",
+            "injury_description": "Per Tom Orsborn of the San Antonio Express-News, head coach Mitch Johnson indicated Tuesday that Fox will be a game-time call for Game 2, so he'll presumably go through pregame warmups before a final decision is made. The star guard has been dealing with lingering right ankle soreness and was unable to suit up in Monday's double-overtime win in Game 1, during which Dylan Harper got the starting nod and recorded 24 points, 11 rebounds, seven steals and six assists across 47 minutes. Harper is expected to remain in the starting lineup if Fox isn't cleared to play.",
             "value_tier": "all-star"
           },
           {
@@ -3407,6 +3081,168 @@
         "Home court: OKC +100 ELO advantage"
       ],
       "explanation": "The model gives Oklahoma City Thunder a 59.4% win probability \u2014 a slight favorite over San Antonio Spurs. Oklahoma City Thunder net rating: +11.1. Home court +100 ELO for Oklahoma City Thunder."
+    },
+    {
+      "game_id": "401873341",
+      "game_time": "2026-05-20T00:00Z",
+      "status": "STATUS_FINAL",
+      "is_future": false,
+      "home_team": "NYK",
+      "away_team": "CLE",
+      "home_name": "New York Knicks",
+      "away_name": "Cleveland Cavaliers",
+      "home_logo": "https://a.espncdn.com/i/teamlogos/nba/500/ny.png",
+      "away_logo": "https://a.espncdn.com/i/teamlogos/nba/500/cle.png",
+      "neutral": false,
+      "home_score": 115,
+      "away_score": 104,
+      "predictions": {
+        "ensemble_prob": 0.6477,
+        "logistic_prob": 0.5476,
+        "elo_prob": 0.7132,
+        "xgb_prob": 0.5522,
+        "pyth_prob": 0.6354,
+        "eff_prob": 0.6691,
+        "bayesian_prob": 0.9626
+      },
+      "market": {
+        "home_prob": null,
+        "edge": null,
+        "kelly_pct": null,
+        "home_american": null,
+        "away_american": null
+      },
+      "monte_carlo": {
+        "win_prob": 0.6281,
+        "exp_margin": 3.93,
+        "prob_7plus": 0.3983,
+        "prob_14plus": 0.1972,
+        "prob_21plus": 0.0728,
+        "margin_percentiles": [
+          -15.5,
+          -11.1,
+          -4.0,
+          3.9,
+          11.8,
+          19.1,
+          23.5
+        ]
+      },
+      "adjustments": {
+        "rest_home": 7,
+        "rest_away": 7,
+        "rest_diff": 0,
+        "travel_dist_miles": 404.0,
+        "b2b_home": false,
+        "b2b_away": false,
+        "home_elo_bonus": 100
+      },
+      "h2h": {
+        "home_wins": 12,
+        "away_wins": 11,
+        "total_meetings": 23,
+        "last_n": [
+          {
+            "date": "2023-11-01",
+            "winner": "CLE",
+            "margin": 6
+          },
+          {
+            "date": "2024-03-04",
+            "winner": "NYK",
+            "margin": 9
+          },
+          {
+            "date": "2024-10-28",
+            "winner": "CLE",
+            "margin": 6
+          },
+          {
+            "date": "2025-02-22",
+            "winner": "CLE",
+            "margin": 37
+          },
+          {
+            "date": "2025-04-02",
+            "winner": "CLE",
+            "margin": 19
+          },
+          {
+            "date": "2025-04-11",
+            "winner": "CLE",
+            "margin": 6
+          },
+          {
+            "date": "2025-10-22",
+            "winner": "NYK",
+            "margin": 8
+          },
+          {
+            "date": "2025-12-25",
+            "winner": "NYK",
+            "margin": 2
+          },
+          {
+            "date": "2026-02-25",
+            "winner": "CLE",
+            "margin": 15
+          },
+          {
+            "date": "2026-05-20",
+            "winner": "NYK",
+            "margin": 11
+          }
+        ]
+      },
+      "elo": {
+        "home": 1767.6,
+        "away": 1667.4,
+        "diff": 100.2
+      },
+      "bayesian": {
+        "home_mu": 1799.8,
+        "home_sigma": 40.0,
+        "away_mu": 1799.0,
+        "away_sigma": 40.0,
+        "home_band": [
+          1759.8,
+          1839.8
+        ],
+        "away_band": [
+          1759.0,
+          1839.0
+        ]
+      },
+      "efficiency": {
+        "home_off_rating": 116.45122,
+        "home_def_rating": 110.12195,
+        "home_net_rating": 6.329270000000008,
+        "away_off_rating": 119.51219,
+        "away_def_rating": 115.414635,
+        "away_net_rating": 4.097555,
+        "home_pace": 100.0,
+        "away_pace": 100.0
+      },
+      "injuries": {
+        "home": [],
+        "away": []
+      },
+      "injury_impact": {
+        "home_elo_penalty": 0.0,
+        "away_elo_penalty": 0.0,
+        "home_key_players_out": [],
+        "away_key_players_out": [],
+        "home_star_count": 0,
+        "away_star_count": 0,
+        "home_star_stack_multiplier": 1.0,
+        "away_star_stack_multiplier": 1.0
+      },
+      "prediction_drivers": [
+        "ELO advantage: NYK +100 rating points",
+        "Offensive rating: CLE leads by 3.1 pts/100",
+        "Home court: NYK +100 ELO advantage"
+      ],
+      "explanation": "The model gives New York Knicks a 64.8% win probability \u2014 a moderate favorite over Cleveland Cavaliers. New York Knicks net rating: +6.3. Home court +100 ELO for New York Knicks."
     }
   ]
 }
