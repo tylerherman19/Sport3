@@ -1,176 +1,14 @@
 {
-  "updated": "2026-05-23T10:18:30.984105+00:00",
+  "updated": "2026-05-24T10:23:59.261582+00:00",
   "season": 2026,
   "league": "nba",
   "is_offseason": false,
   "games": [
     {
-      "game_id": "401873343",
-      "game_time": "2026-05-24T00:00Z",
-      "status": "STATUS_SCHEDULED",
-      "is_future": false,
-      "home_team": "CLE",
-      "away_team": "NYK",
-      "home_name": "Cleveland Cavaliers",
-      "away_name": "New York Knicks",
-      "home_logo": "https://a.espncdn.com/i/teamlogos/nba/500/cle.png",
-      "away_logo": "https://a.espncdn.com/i/teamlogos/nba/500/ny.png",
-      "neutral": false,
-      "home_score": 0,
-      "away_score": 0,
-      "predictions": {
-        "ensemble_prob": 0.4816,
-        "logistic_prob": 0.5821,
-        "elo_prob": 0.4131,
-        "xgb_prob": 0.5878,
-        "pyth_prob": 0.6424,
-        "eff_prob": 0.61,
-        "bayesian_prob": 0.9604
-      },
-      "market": {
-        "home_prob": null,
-        "edge": null,
-        "kelly_pct": null,
-        "home_american": null,
-        "away_american": null
-      },
-      "monte_carlo": {
-        "win_prob": 0.6317,
-        "exp_margin": 3.95,
-        "prob_7plus": 0.394,
-        "prob_14plus": 0.1944,
-        "prob_21plus": 0.0705,
-        "margin_percentiles": [
-          -15.1,
-          -10.8,
-          -3.9,
-          3.9,
-          11.8,
-          18.6,
-          23.2
-        ]
-      },
-      "adjustments": {
-        "rest_home": 7,
-        "rest_away": 7,
-        "rest_diff": 0,
-        "travel_dist_miles": 404.0,
-        "b2b_home": false,
-        "b2b_away": false,
-        "home_elo_bonus": 100
-      },
-      "h2h": {
-        "home_wins": 11,
-        "away_wins": 13,
-        "total_meetings": 24,
-        "last_n": [
-          {
-            "date": "2024-03-04",
-            "winner": "NYK",
-            "margin": 9
-          },
-          {
-            "date": "2024-10-28",
-            "winner": "CLE",
-            "margin": 6
-          },
-          {
-            "date": "2025-02-22",
-            "winner": "CLE",
-            "margin": 37
-          },
-          {
-            "date": "2025-04-02",
-            "winner": "CLE",
-            "margin": 19
-          },
-          {
-            "date": "2025-04-11",
-            "winner": "CLE",
-            "margin": 6
-          },
-          {
-            "date": "2025-10-22",
-            "winner": "NYK",
-            "margin": 8
-          },
-          {
-            "date": "2025-12-25",
-            "winner": "NYK",
-            "margin": 2
-          },
-          {
-            "date": "2026-02-25",
-            "winner": "CLE",
-            "margin": 15
-          },
-          {
-            "date": "2026-05-20",
-            "winner": "NYK",
-            "margin": 11
-          },
-          {
-            "date": "2026-05-22",
-            "winner": "NYK",
-            "margin": 16
-          }
-        ]
-      },
-      "elo": {
-        "home": 1658.1,
-        "away": 1777.1,
-        "diff": -119.1
-      },
-      "bayesian": {
-        "home_mu": 1799.1,
-        "home_sigma": 40.0,
-        "away_mu": 1799.8,
-        "away_sigma": 40.0,
-        "home_band": [
-          1759.1,
-          1839.1
-        ],
-        "away_band": [
-          1759.8,
-          1839.8
-        ]
-      },
-      "efficiency": {
-        "home_off_rating": 119.51219,
-        "home_def_rating": 115.414635,
-        "home_net_rating": 4.097555,
-        "away_off_rating": 116.45122,
-        "away_def_rating": 110.12195,
-        "away_net_rating": 6.329270000000008,
-        "home_pace": 100.0,
-        "away_pace": 100.0
-      },
-      "injuries": {
-        "home": [],
-        "away": []
-      },
-      "injury_impact": {
-        "home_elo_penalty": 0.0,
-        "away_elo_penalty": 0.0,
-        "home_key_players_out": [],
-        "away_key_players_out": [],
-        "home_star_count": 0,
-        "away_star_count": 0,
-        "home_star_stack_multiplier": 1.0,
-        "away_star_stack_multiplier": 1.0
-      },
-      "prediction_drivers": [
-        "ELO advantage: NYK +119 rating points",
-        "Offensive rating: CLE leads by 3.1 pts/100",
-        "Home court: CLE +100 ELO advantage"
-      ],
-      "explanation": "The model gives New York Knicks a 51.8% win probability \u2014 a slight favorite over Cleveland Cavaliers. New York Knicks net rating: +6.3. Home court +100 ELO for Cleveland Cavaliers."
-    },
-    {
       "game_id": "401873200",
       "game_time": "2026-05-25T00:00Z",
       "status": "STATUS_SCHEDULED",
-      "is_future": true,
+      "is_future": false,
       "home_team": "SAS",
       "away_team": "OKC",
       "home_name": "San Antonio Spurs",
@@ -181,10 +19,10 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.5442,
-        "logistic_prob": 0.4401,
-        "elo_prob": 0.5868,
-        "xgb_prob": 0.5475,
+        "ensemble_prob": 0.5503,
+        "logistic_prob": 0.4378,
+        "elo_prob": 0.5987,
+        "xgb_prob": 0.5442,
         "pyth_prob": 0.5312,
         "eff_prob": 0.6016,
         "bayesian_prob": 0.9644
@@ -197,19 +35,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6328,
-        "exp_margin": 3.93,
-        "prob_7plus": 0.3956,
-        "prob_14plus": 0.1938,
-        "prob_21plus": 0.075,
+        "win_prob": 0.637,
+        "exp_margin": 4.11,
+        "prob_7plus": 0.4026,
+        "prob_14plus": 0.2016,
+        "prob_21plus": 0.0775,
         "margin_percentiles": [
-          -15.6,
-          -11.3,
-          -3.8,
-          3.9,
-          11.8,
-          18.9,
-          24.0
+          -15.3,
+          -11.2,
+          -3.9,
+          4.1,
+          12.2,
+          19.2,
+          23.8
         ]
       },
       "adjustments": {
@@ -322,14 +160,14 @@
             "player": "Jalen Williams",
             "status": "Day-To-Day",
             "position": "G",
-            "injury_description": "Williams was listed as questionable heading into this contest, although he wasn't expected to play. His next opportunity to get back on the floor will be when these clubs meet for Game 4 on Sunday. With Williams sidelined Friday, Ajay Mitchell and Cason Wallace might earn the start, with Jared McCain and Isaiah Joe in line to see more work from the bench.",
-            "value_tier": "superstar"
+            "injury_description": "Williams has been bothered by a left-hamstring issue. After missing time throughout the playoffs, he returned for Game 1 of the Western Conference Finals, logging 37 minutes. However, the 25-year-old re-aggravated the injury in Game 2 and wasn't available for Game 3. If Williams doesn't suit up for Sunday's clash with the Spurs, Cason Wallace, Jaylin Williams and Jared McCain should continue to see more action, considering Ajay Mitchell (calf), who started in Game 3, has already been ruled out.",
+            "value_tier": "starter"
           },
           {
             "player": "Ajay Mitchell",
-            "status": "Day-To-Day",
+            "status": "Out",
             "position": "G",
-            "injury_description": "Mitchell got into an altercation with Devin Vassell and was assessed a technical foul with 8:19 remaining in the third quarter before checking out of the game. He later headed to the locker room and was not seen on the bench during the fourth quarter. It's unclear exactly what he's dealing with, but if Mitchell is forced to miss Game 4 on Sunday, Jared McCain, Cason Wallace and Isaiah Joe would be candidates for increased playing time, especially if Jalen Williams (hamstring) remains sidelined.",
+            "injury_description": "Mitchell exited Friday's Game 3 win over the Spurs after tweaking his right calf, and now he will miss Game 4, which should result in more minutes for Isaiah Joe. Mitchell's next chance to play will come in Game 5 on Tuesday.",
             "value_tier": "superstar"
           },
           {
@@ -343,7 +181,7 @@
       },
       "injury_impact": {
         "home_elo_penalty": 14.0,
-        "away_elo_penalty": 52.9,
+        "away_elo_penalty": 61.52,
         "home_key_players_out": [
           {
             "player": "David Jones Garcia",
@@ -358,14 +196,14 @@
             "player": "Jalen Williams",
             "position": "G",
             "status": "Day-To-Day",
-            "elo_impact": 15.0,
-            "value_tier": "superstar"
+            "elo_impact": 7.5,
+            "value_tier": "starter"
           },
           {
             "player": "Ajay Mitchell",
             "position": "G",
-            "status": "Day-To-Day",
-            "elo_impact": 15.0,
+            "status": "Out",
+            "elo_impact": 30.0,
             "value_tier": "superstar"
           },
           {
@@ -377,19 +215,18 @@
           }
         ],
         "home_star_count": 0,
-        "away_star_count": 2,
+        "away_star_count": 1,
         "home_star_stack_multiplier": 1.0,
         "away_star_stack_multiplier": 1.15
       },
       "prediction_drivers": [
         "David Jones Garcia (SAS) [Starter] OUT \u2014 \u221214 ELO",
-        "Jalen Williams (OKC) [Superstar] DAY-TO-DAY \u2014 \u221215 ELO",
-        "Ajay Mitchell (OKC) [Superstar] DAY-TO-DAY \u2014 \u221215 ELO",
+        "Jalen Williams (OKC) [Starter] DAY-TO-DAY \u2014 \u22128 ELO",
+        "Ajay Mitchell (OKC) [Superstar] OUT \u2014 \u221230 ELO",
         "Thomas Sorber (OKC) [Starter] OUT \u2014 \u221216 ELO",
-        "OKC star stack: 2\u00d7 elite out \u2192 \u00d71.15 (\u221253 ELO)",
         "Home court: SAS +100 ELO advantage"
       ],
-      "explanation": "The model gives San Antonio Spurs a 54.4% win probability \u2014 a slight favorite over Oklahoma City Thunder. San Antonio Spurs net rating: +8.3. Home court +100 ELO for San Antonio Spurs."
+      "explanation": "The model gives San Antonio Spurs a 55.0% win probability \u2014 a slight favorite over Oklahoma City Thunder. San Antonio Spurs net rating: +8.3. Home court +100 ELO for San Antonio Spurs."
     },
     {
       "game_id": "401873344",
@@ -406,13 +243,13 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.4816,
-        "logistic_prob": 0.5821,
-        "elo_prob": 0.4131,
-        "xgb_prob": 0.5878,
-        "pyth_prob": 0.6424,
+        "ensemble_prob": 0.4569,
+        "logistic_prob": 0.5714,
+        "elo_prob": 0.378,
+        "xgb_prob": 0.5816,
+        "pyth_prob": 0.6405,
         "eff_prob": 0.61,
-        "bayesian_prob": 0.9604
+        "bayesian_prob": 0.9605
       },
       "market": {
         "home_prob": null,
@@ -422,18 +259,18 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6368,
-        "exp_margin": 4.12,
-        "prob_7plus": 0.4067,
-        "prob_14plus": 0.1978,
-        "prob_21plus": 0.0772,
+        "win_prob": 0.6414,
+        "exp_margin": 4.23,
+        "prob_7plus": 0.4083,
+        "prob_14plus": 0.2035,
+        "prob_21plus": 0.0755,
         "margin_percentiles": [
-          -15.5,
-          -11.0,
-          -3.9,
-          4.2,
-          12.0,
-          19.3,
+          -15.4,
+          -11.2,
+          -3.8,
+          4.4,
+          12.3,
+          19.4,
           23.7
         ]
       },
@@ -448,14 +285,9 @@
       },
       "h2h": {
         "home_wins": 11,
-        "away_wins": 13,
-        "total_meetings": 24,
+        "away_wins": 14,
+        "total_meetings": 25,
         "last_n": [
-          {
-            "date": "2024-03-04",
-            "winner": "NYK",
-            "margin": 9
-          },
           {
             "date": "2024-10-28",
             "winner": "CLE",
@@ -500,22 +332,27 @@
             "date": "2026-05-22",
             "winner": "NYK",
             "margin": 16
+          },
+          {
+            "date": "2026-05-24",
+            "winner": "NYK",
+            "margin": 13
           }
         ]
       },
       "elo": {
-        "home": 1658.1,
-        "away": 1777.1,
-        "diff": -119.1
+        "home": 1645.2,
+        "away": 1789.8,
+        "diff": -144.6
       },
       "bayesian": {
-        "home_mu": 1799.1,
+        "home_mu": 1799.2,
         "home_sigma": 40.0,
         "away_mu": 1799.8,
         "away_sigma": 40.0,
         "home_band": [
-          1759.1,
-          1839.1
+          1759.2,
+          1839.2
         ],
         "away_band": [
           1759.8,
@@ -547,11 +384,11 @@
         "away_star_stack_multiplier": 1.0
       },
       "prediction_drivers": [
-        "ELO advantage: NYK +119 rating points",
+        "ELO advantage: NYK +145 rating points",
         "Offensive rating: CLE leads by 3.1 pts/100",
         "Home court: CLE +100 ELO advantage"
       ],
-      "explanation": "The model gives New York Knicks a 51.8% win probability \u2014 a slight favorite over Cleveland Cavaliers. New York Knicks net rating: +6.3. Home court +100 ELO for Cleveland Cavaliers."
+      "explanation": "The model gives New York Knicks a 54.3% win probability \u2014 a slight favorite over Cleveland Cavaliers. New York Knicks net rating: +6.3. Home court +100 ELO for Cleveland Cavaliers."
     },
     {
       "game_id": "401873201",
@@ -568,10 +405,10 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.6062,
-        "logistic_prob": 0.6658,
-        "elo_prob": 0.5798,
-        "xgb_prob": 0.6125,
+        "ensemble_prob": 0.6,
+        "logistic_prob": 0.6667,
+        "elo_prob": 0.5676,
+        "xgb_prob": 0.6186,
         "pyth_prob": 0.7362,
         "eff_prob": 0.6768,
         "bayesian_prob": 0.9583
@@ -584,19 +421,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.636,
-        "exp_margin": 4.1,
-        "prob_7plus": 0.4057,
-        "prob_14plus": 0.2007,
-        "prob_21plus": 0.0753,
+        "win_prob": 0.6353,
+        "exp_margin": 3.98,
+        "prob_7plus": 0.4017,
+        "prob_14plus": 0.1949,
+        "prob_21plus": 0.0721,
         "margin_percentiles": [
-          -15.1,
+          -15.5,
           -11.0,
-          -3.9,
-          4.1,
-          12.1,
+          -3.8,
+          4.0,
+          11.9,
           19.0,
-          23.5
+          23.1
         ]
       },
       "adjustments": {
@@ -700,14 +537,14 @@
             "player": "Jalen Williams",
             "status": "Day-To-Day",
             "position": "G",
-            "injury_description": "Williams was listed as questionable heading into this contest, although he wasn't expected to play. His next opportunity to get back on the floor will be when these clubs meet for Game 4 on Sunday. With Williams sidelined Friday, Ajay Mitchell and Cason Wallace might earn the start, with Jared McCain and Isaiah Joe in line to see more work from the bench.",
-            "value_tier": "superstar"
+            "injury_description": "Williams has been bothered by a left-hamstring issue. After missing time throughout the playoffs, he returned for Game 1 of the Western Conference Finals, logging 37 minutes. However, the 25-year-old re-aggravated the injury in Game 2 and wasn't available for Game 3. If Williams doesn't suit up for Sunday's clash with the Spurs, Cason Wallace, Jaylin Williams and Jared McCain should continue to see more action, considering Ajay Mitchell (calf), who started in Game 3, has already been ruled out.",
+            "value_tier": "starter"
           },
           {
             "player": "Ajay Mitchell",
-            "status": "Day-To-Day",
+            "status": "Out",
             "position": "G",
-            "injury_description": "Mitchell got into an altercation with Devin Vassell and was assessed a technical foul with 8:19 remaining in the third quarter before checking out of the game. He later headed to the locker room and was not seen on the bench during the fourth quarter. It's unclear exactly what he's dealing with, but if Mitchell is forced to miss Game 4 on Sunday, Jared McCain, Cason Wallace and Isaiah Joe would be candidates for increased playing time, especially if Jalen Williams (hamstring) remains sidelined.",
+            "injury_description": "Mitchell exited Friday's Game 3 win over the Spurs after tweaking his right calf, and now he will miss Game 4, which should result in more minutes for Isaiah Joe. Mitchell's next chance to play will come in Game 5 on Tuesday.",
             "value_tier": "superstar"
           },
           {
@@ -729,21 +566,21 @@
         ]
       },
       "injury_impact": {
-        "home_elo_penalty": 52.9,
+        "home_elo_penalty": 61.52,
         "away_elo_penalty": 14.0,
         "home_key_players_out": [
           {
             "player": "Jalen Williams",
             "position": "G",
             "status": "Day-To-Day",
-            "elo_impact": 15.0,
-            "value_tier": "superstar"
+            "elo_impact": 7.5,
+            "value_tier": "starter"
           },
           {
             "player": "Ajay Mitchell",
             "position": "G",
-            "status": "Day-To-Day",
-            "elo_impact": 15.0,
+            "status": "Out",
+            "elo_impact": 30.0,
             "value_tier": "superstar"
           },
           {
@@ -763,20 +600,19 @@
             "value_tier": "starter"
           }
         ],
-        "home_star_count": 2,
+        "home_star_count": 1,
         "away_star_count": 0,
         "home_star_stack_multiplier": 1.15,
         "away_star_stack_multiplier": 1.0
       },
       "prediction_drivers": [
-        "Jalen Williams (OKC) [Superstar] DAY-TO-DAY \u2014 \u221215 ELO",
-        "Ajay Mitchell (OKC) [Superstar] DAY-TO-DAY \u2014 \u221215 ELO",
+        "Jalen Williams (OKC) [Starter] DAY-TO-DAY \u2014 \u22128 ELO",
+        "Ajay Mitchell (OKC) [Superstar] OUT \u2014 \u221230 ELO",
         "Thomas Sorber (OKC) [Starter] OUT \u2014 \u221216 ELO",
-        "OKC star stack: 2\u00d7 elite out \u2192 \u00d71.15 (\u221253 ELO)",
         "David Jones Garcia (SAS) [Starter] OUT \u2014 \u221214 ELO",
         "Home court: OKC +100 ELO advantage"
       ],
-      "explanation": "The model gives Oklahoma City Thunder a 60.6% win probability \u2014 a moderate favorite over San Antonio Spurs. Oklahoma City Thunder net rating: +11.1. Home court +100 ELO for Oklahoma City Thunder."
+      "explanation": "The model gives Oklahoma City Thunder a 60.0% win probability \u2014 a moderate favorite over San Antonio Spurs. Oklahoma City Thunder net rating: +11.1. Home court +100 ELO for Oklahoma City Thunder."
     },
     {
       "game_id": "401873345",
@@ -793,13 +629,13 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.6584,
-        "logistic_prob": 0.5439,
-        "elo_prob": 0.7349,
-        "xgb_prob": 0.5431,
-        "pyth_prob": 0.6377,
+        "ensemble_prob": 0.6747,
+        "logistic_prob": 0.544,
+        "elo_prob": 0.7625,
+        "xgb_prob": 0.5411,
+        "pyth_prob": 0.6396,
         "eff_prob": 0.6691,
-        "bayesian_prob": 0.9625
+        "bayesian_prob": 0.9624
       },
       "market": {
         "home_prob": null,
@@ -809,19 +645,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.633,
-        "exp_margin": 3.98,
-        "prob_7plus": 0.3974,
-        "prob_14plus": 0.1988,
-        "prob_21plus": 0.0722,
+        "win_prob": 0.6303,
+        "exp_margin": 3.87,
+        "prob_7plus": 0.3941,
+        "prob_14plus": 0.1948,
+        "prob_21plus": 0.0747,
         "margin_percentiles": [
-          -15.1,
-          -11.2,
-          -3.8,
-          3.9,
-          12.0,
-          18.8,
-          23.1
+          -15.7,
+          -11.3,
+          -4.1,
+          4.0,
+          11.8,
+          19.0,
+          23.4
         ]
       },
       "adjustments": {
@@ -834,15 +670,10 @@
         "home_elo_bonus": 100
       },
       "h2h": {
-        "home_wins": 13,
+        "home_wins": 14,
         "away_wins": 11,
-        "total_meetings": 24,
+        "total_meetings": 25,
         "last_n": [
-          {
-            "date": "2024-03-04",
-            "winner": "NYK",
-            "margin": 9
-          },
           {
             "date": "2024-10-28",
             "winner": "CLE",
@@ -887,26 +718,31 @@
             "date": "2026-05-22",
             "winner": "NYK",
             "margin": 16
+          },
+          {
+            "date": "2026-05-24",
+            "winner": "NYK",
+            "margin": 13
           }
         ]
       },
       "elo": {
-        "home": 1777.1,
-        "away": 1658.1,
-        "diff": 119.1
+        "home": 1789.8,
+        "away": 1645.2,
+        "diff": 144.6
       },
       "bayesian": {
         "home_mu": 1799.8,
         "home_sigma": 40.0,
-        "away_mu": 1799.1,
+        "away_mu": 1799.2,
         "away_sigma": 40.0,
         "home_band": [
           1759.8,
           1839.8
         ],
         "away_band": [
-          1759.1,
-          1839.1
+          1759.2,
+          1839.2
         ]
       },
       "efficiency": {
@@ -934,11 +770,11 @@
         "away_star_stack_multiplier": 1.0
       },
       "prediction_drivers": [
-        "ELO advantage: NYK +119 rating points",
+        "ELO advantage: NYK +145 rating points",
         "Offensive rating: CLE leads by 3.1 pts/100",
         "Home court: NYK +100 ELO advantage"
       ],
-      "explanation": "The model gives New York Knicks a 65.8% win probability \u2014 a moderate favorite over Cleveland Cavaliers. New York Knicks net rating: +6.3. Home court +100 ELO for New York Knicks."
+      "explanation": "The model gives New York Knicks a 67.5% win probability \u2014 a moderate favorite over Cleveland Cavaliers. New York Knicks net rating: +6.3. Home court +100 ELO for New York Knicks."
     },
     {
       "game_id": "401873202",
@@ -955,10 +791,10 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.5442,
-        "logistic_prob": 0.4401,
-        "elo_prob": 0.5868,
-        "xgb_prob": 0.5475,
+        "ensemble_prob": 0.5503,
+        "logistic_prob": 0.4378,
+        "elo_prob": 0.5987,
+        "xgb_prob": 0.5442,
         "pyth_prob": 0.5312,
         "eff_prob": 0.6016,
         "bayesian_prob": 0.9644
@@ -971,19 +807,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6314,
-        "exp_margin": 4.0,
-        "prob_7plus": 0.3927,
-        "prob_14plus": 0.1975,
-        "prob_21plus": 0.0718,
+        "win_prob": 0.6316,
+        "exp_margin": 4.18,
+        "prob_7plus": 0.4073,
+        "prob_14plus": 0.2062,
+        "prob_21plus": 0.0808,
         "margin_percentiles": [
           -15.3,
-          -10.8,
+          -10.9,
           -3.9,
-          3.9,
-          11.9,
-          18.9,
-          23.3
+          4.1,
+          12.3,
+          19.6,
+          23.7
         ]
       },
       "adjustments": {
@@ -1096,14 +932,14 @@
             "player": "Jalen Williams",
             "status": "Day-To-Day",
             "position": "G",
-            "injury_description": "Williams was listed as questionable heading into this contest, although he wasn't expected to play. His next opportunity to get back on the floor will be when these clubs meet for Game 4 on Sunday. With Williams sidelined Friday, Ajay Mitchell and Cason Wallace might earn the start, with Jared McCain and Isaiah Joe in line to see more work from the bench.",
-            "value_tier": "superstar"
+            "injury_description": "Williams has been bothered by a left-hamstring issue. After missing time throughout the playoffs, he returned for Game 1 of the Western Conference Finals, logging 37 minutes. However, the 25-year-old re-aggravated the injury in Game 2 and wasn't available for Game 3. If Williams doesn't suit up for Sunday's clash with the Spurs, Cason Wallace, Jaylin Williams and Jared McCain should continue to see more action, considering Ajay Mitchell (calf), who started in Game 3, has already been ruled out.",
+            "value_tier": "starter"
           },
           {
             "player": "Ajay Mitchell",
-            "status": "Day-To-Day",
+            "status": "Out",
             "position": "G",
-            "injury_description": "Mitchell got into an altercation with Devin Vassell and was assessed a technical foul with 8:19 remaining in the third quarter before checking out of the game. He later headed to the locker room and was not seen on the bench during the fourth quarter. It's unclear exactly what he's dealing with, but if Mitchell is forced to miss Game 4 on Sunday, Jared McCain, Cason Wallace and Isaiah Joe would be candidates for increased playing time, especially if Jalen Williams (hamstring) remains sidelined.",
+            "injury_description": "Mitchell exited Friday's Game 3 win over the Spurs after tweaking his right calf, and now he will miss Game 4, which should result in more minutes for Isaiah Joe. Mitchell's next chance to play will come in Game 5 on Tuesday.",
             "value_tier": "superstar"
           },
           {
@@ -1117,7 +953,7 @@
       },
       "injury_impact": {
         "home_elo_penalty": 14.0,
-        "away_elo_penalty": 52.9,
+        "away_elo_penalty": 61.52,
         "home_key_players_out": [
           {
             "player": "David Jones Garcia",
@@ -1132,14 +968,14 @@
             "player": "Jalen Williams",
             "position": "G",
             "status": "Day-To-Day",
-            "elo_impact": 15.0,
-            "value_tier": "superstar"
+            "elo_impact": 7.5,
+            "value_tier": "starter"
           },
           {
             "player": "Ajay Mitchell",
             "position": "G",
-            "status": "Day-To-Day",
-            "elo_impact": 15.0,
+            "status": "Out",
+            "elo_impact": 30.0,
             "value_tier": "superstar"
           },
           {
@@ -1151,19 +987,18 @@
           }
         ],
         "home_star_count": 0,
-        "away_star_count": 2,
+        "away_star_count": 1,
         "home_star_stack_multiplier": 1.0,
         "away_star_stack_multiplier": 1.15
       },
       "prediction_drivers": [
         "David Jones Garcia (SAS) [Starter] OUT \u2014 \u221214 ELO",
-        "Jalen Williams (OKC) [Superstar] DAY-TO-DAY \u2014 \u221215 ELO",
-        "Ajay Mitchell (OKC) [Superstar] DAY-TO-DAY \u2014 \u221215 ELO",
+        "Jalen Williams (OKC) [Starter] DAY-TO-DAY \u2014 \u22128 ELO",
+        "Ajay Mitchell (OKC) [Superstar] OUT \u2014 \u221230 ELO",
         "Thomas Sorber (OKC) [Starter] OUT \u2014 \u221216 ELO",
-        "OKC star stack: 2\u00d7 elite out \u2192 \u00d71.15 (\u221253 ELO)",
         "Home court: SAS +100 ELO advantage"
       ],
-      "explanation": "The model gives San Antonio Spurs a 54.4% win probability \u2014 a slight favorite over Oklahoma City Thunder. San Antonio Spurs net rating: +8.3. Home court +100 ELO for San Antonio Spurs."
+      "explanation": "The model gives San Antonio Spurs a 55.0% win probability \u2014 a slight favorite over Oklahoma City Thunder. San Antonio Spurs net rating: +8.3. Home court +100 ELO for San Antonio Spurs."
     },
     {
       "game_id": "401873346",
@@ -1180,13 +1015,13 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.4816,
-        "logistic_prob": 0.5821,
-        "elo_prob": 0.4131,
-        "xgb_prob": 0.5878,
-        "pyth_prob": 0.6424,
+        "ensemble_prob": 0.4569,
+        "logistic_prob": 0.5714,
+        "elo_prob": 0.378,
+        "xgb_prob": 0.5816,
+        "pyth_prob": 0.6405,
         "eff_prob": 0.61,
-        "bayesian_prob": 0.9604
+        "bayesian_prob": 0.9605
       },
       "market": {
         "home_prob": null,
@@ -1196,19 +1031,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6401,
-        "exp_margin": 4.22,
-        "prob_7plus": 0.407,
-        "prob_14plus": 0.1997,
-        "prob_21plus": 0.0744,
+        "win_prob": 0.6384,
+        "exp_margin": 4.02,
+        "prob_7plus": 0.3993,
+        "prob_14plus": 0.1965,
+        "prob_21plus": 0.0708,
         "margin_percentiles": [
-          -15.0,
-          -10.7,
+          -15.1,
+          -11.0,
           -3.8,
-          4.3,
-          12.1,
-          19.1,
-          23.2
+          4.0,
+          11.9,
+          18.8,
+          23.0
         ]
       },
       "adjustments": {
@@ -1222,14 +1057,9 @@
       },
       "h2h": {
         "home_wins": 11,
-        "away_wins": 13,
-        "total_meetings": 24,
+        "away_wins": 14,
+        "total_meetings": 25,
         "last_n": [
-          {
-            "date": "2024-03-04",
-            "winner": "NYK",
-            "margin": 9
-          },
           {
             "date": "2024-10-28",
             "winner": "CLE",
@@ -1274,22 +1104,27 @@
             "date": "2026-05-22",
             "winner": "NYK",
             "margin": 16
+          },
+          {
+            "date": "2026-05-24",
+            "winner": "NYK",
+            "margin": 13
           }
         ]
       },
       "elo": {
-        "home": 1658.1,
-        "away": 1777.1,
-        "diff": -119.1
+        "home": 1645.2,
+        "away": 1789.8,
+        "diff": -144.6
       },
       "bayesian": {
-        "home_mu": 1799.1,
+        "home_mu": 1799.2,
         "home_sigma": 40.0,
         "away_mu": 1799.8,
         "away_sigma": 40.0,
         "home_band": [
-          1759.1,
-          1839.1
+          1759.2,
+          1839.2
         ],
         "away_band": [
           1759.8,
@@ -1321,11 +1156,11 @@
         "away_star_stack_multiplier": 1.0
       },
       "prediction_drivers": [
-        "ELO advantage: NYK +119 rating points",
+        "ELO advantage: NYK +145 rating points",
         "Offensive rating: CLE leads by 3.1 pts/100",
         "Home court: CLE +100 ELO advantage"
       ],
-      "explanation": "The model gives New York Knicks a 51.8% win probability \u2014 a slight favorite over Cleveland Cavaliers. New York Knicks net rating: +6.3. Home court +100 ELO for Cleveland Cavaliers."
+      "explanation": "The model gives New York Knicks a 54.3% win probability \u2014 a slight favorite over Cleveland Cavaliers. New York Knicks net rating: +6.3. Home court +100 ELO for Cleveland Cavaliers."
     },
     {
       "game_id": "401873203",
@@ -1342,10 +1177,10 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.6062,
-        "logistic_prob": 0.6658,
-        "elo_prob": 0.5798,
-        "xgb_prob": 0.6125,
+        "ensemble_prob": 0.6,
+        "logistic_prob": 0.6667,
+        "elo_prob": 0.5676,
+        "xgb_prob": 0.6186,
         "pyth_prob": 0.7362,
         "eff_prob": 0.6768,
         "bayesian_prob": 0.9583
@@ -1358,19 +1193,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6297,
-        "exp_margin": 3.96,
-        "prob_7plus": 0.396,
-        "prob_14plus": 0.1943,
-        "prob_21plus": 0.0724,
+        "win_prob": 0.623,
+        "exp_margin": 3.83,
+        "prob_7plus": 0.3907,
+        "prob_14plus": 0.1985,
+        "prob_21plus": 0.0746,
         "margin_percentiles": [
-          -14.9,
-          -10.9,
-          -4.0,
-          4.0,
-          11.8,
-          19.0,
-          23.1
+          -15.2,
+          -11.0,
+          -4.3,
+          3.8,
+          11.9,
+          19.1,
+          23.2
         ]
       },
       "adjustments": {
@@ -1474,14 +1309,14 @@
             "player": "Jalen Williams",
             "status": "Day-To-Day",
             "position": "G",
-            "injury_description": "Williams was listed as questionable heading into this contest, although he wasn't expected to play. His next opportunity to get back on the floor will be when these clubs meet for Game 4 on Sunday. With Williams sidelined Friday, Ajay Mitchell and Cason Wallace might earn the start, with Jared McCain and Isaiah Joe in line to see more work from the bench.",
-            "value_tier": "superstar"
+            "injury_description": "Williams has been bothered by a left-hamstring issue. After missing time throughout the playoffs, he returned for Game 1 of the Western Conference Finals, logging 37 minutes. However, the 25-year-old re-aggravated the injury in Game 2 and wasn't available for Game 3. If Williams doesn't suit up for Sunday's clash with the Spurs, Cason Wallace, Jaylin Williams and Jared McCain should continue to see more action, considering Ajay Mitchell (calf), who started in Game 3, has already been ruled out.",
+            "value_tier": "starter"
           },
           {
             "player": "Ajay Mitchell",
-            "status": "Day-To-Day",
+            "status": "Out",
             "position": "G",
-            "injury_description": "Mitchell got into an altercation with Devin Vassell and was assessed a technical foul with 8:19 remaining in the third quarter before checking out of the game. He later headed to the locker room and was not seen on the bench during the fourth quarter. It's unclear exactly what he's dealing with, but if Mitchell is forced to miss Game 4 on Sunday, Jared McCain, Cason Wallace and Isaiah Joe would be candidates for increased playing time, especially if Jalen Williams (hamstring) remains sidelined.",
+            "injury_description": "Mitchell exited Friday's Game 3 win over the Spurs after tweaking his right calf, and now he will miss Game 4, which should result in more minutes for Isaiah Joe. Mitchell's next chance to play will come in Game 5 on Tuesday.",
             "value_tier": "superstar"
           },
           {
@@ -1503,21 +1338,21 @@
         ]
       },
       "injury_impact": {
-        "home_elo_penalty": 52.9,
+        "home_elo_penalty": 61.52,
         "away_elo_penalty": 14.0,
         "home_key_players_out": [
           {
             "player": "Jalen Williams",
             "position": "G",
             "status": "Day-To-Day",
-            "elo_impact": 15.0,
-            "value_tier": "superstar"
+            "elo_impact": 7.5,
+            "value_tier": "starter"
           },
           {
             "player": "Ajay Mitchell",
             "position": "G",
-            "status": "Day-To-Day",
-            "elo_impact": 15.0,
+            "status": "Out",
+            "elo_impact": 30.0,
             "value_tier": "superstar"
           },
           {
@@ -1537,20 +1372,19 @@
             "value_tier": "starter"
           }
         ],
-        "home_star_count": 2,
+        "home_star_count": 1,
         "away_star_count": 0,
         "home_star_stack_multiplier": 1.15,
         "away_star_stack_multiplier": 1.0
       },
       "prediction_drivers": [
-        "Jalen Williams (OKC) [Superstar] DAY-TO-DAY \u2014 \u221215 ELO",
-        "Ajay Mitchell (OKC) [Superstar] DAY-TO-DAY \u2014 \u221215 ELO",
+        "Jalen Williams (OKC) [Starter] DAY-TO-DAY \u2014 \u22128 ELO",
+        "Ajay Mitchell (OKC) [Superstar] OUT \u2014 \u221230 ELO",
         "Thomas Sorber (OKC) [Starter] OUT \u2014 \u221216 ELO",
-        "OKC star stack: 2\u00d7 elite out \u2192 \u00d71.15 (\u221253 ELO)",
         "David Jones Garcia (SAS) [Starter] OUT \u2014 \u221214 ELO",
         "Home court: OKC +100 ELO advantage"
       ],
-      "explanation": "The model gives Oklahoma City Thunder a 60.6% win probability \u2014 a moderate favorite over San Antonio Spurs. Oklahoma City Thunder net rating: +11.1. Home court +100 ELO for Oklahoma City Thunder."
+      "explanation": "The model gives Oklahoma City Thunder a 60.0% win probability \u2014 a moderate favorite over San Antonio Spurs. Oklahoma City Thunder net rating: +11.1. Home court +100 ELO for Oklahoma City Thunder."
     },
     {
       "game_id": "401873347",
@@ -1567,13 +1401,13 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.6584,
-        "logistic_prob": 0.5439,
-        "elo_prob": 0.7349,
-        "xgb_prob": 0.5431,
-        "pyth_prob": 0.6377,
+        "ensemble_prob": 0.6747,
+        "logistic_prob": 0.544,
+        "elo_prob": 0.7625,
+        "xgb_prob": 0.5411,
+        "pyth_prob": 0.6396,
         "eff_prob": 0.6691,
-        "bayesian_prob": 0.9625
+        "bayesian_prob": 0.9624
       },
       "market": {
         "home_prob": null,
@@ -1583,19 +1417,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6414,
+        "win_prob": 0.6365,
         "exp_margin": 4.06,
-        "prob_7plus": 0.3999,
-        "prob_14plus": 0.1958,
+        "prob_7plus": 0.3955,
+        "prob_14plus": 0.1985,
         "prob_21plus": 0.0744,
         "margin_percentiles": [
-          -15.3,
-          -10.8,
+          -15.2,
+          -11.0,
           -3.8,
-          4.2,
+          4.0,
           11.9,
-          18.9,
-          23.5
+          19.1,
+          23.4
         ]
       },
       "adjustments": {
@@ -1608,15 +1442,10 @@
         "home_elo_bonus": 100
       },
       "h2h": {
-        "home_wins": 13,
+        "home_wins": 14,
         "away_wins": 11,
-        "total_meetings": 24,
+        "total_meetings": 25,
         "last_n": [
-          {
-            "date": "2024-03-04",
-            "winner": "NYK",
-            "margin": 9
-          },
           {
             "date": "2024-10-28",
             "winner": "CLE",
@@ -1661,26 +1490,31 @@
             "date": "2026-05-22",
             "winner": "NYK",
             "margin": 16
+          },
+          {
+            "date": "2026-05-24",
+            "winner": "NYK",
+            "margin": 13
           }
         ]
       },
       "elo": {
-        "home": 1777.1,
-        "away": 1658.1,
-        "diff": 119.1
+        "home": 1789.8,
+        "away": 1645.2,
+        "diff": 144.6
       },
       "bayesian": {
         "home_mu": 1799.8,
         "home_sigma": 40.0,
-        "away_mu": 1799.1,
+        "away_mu": 1799.2,
         "away_sigma": 40.0,
         "home_band": [
           1759.8,
           1839.8
         ],
         "away_band": [
-          1759.1,
-          1839.1
+          1759.2,
+          1839.2
         ]
       },
       "efficiency": {
@@ -1708,11 +1542,11 @@
         "away_star_stack_multiplier": 1.0
       },
       "prediction_drivers": [
-        "ELO advantage: NYK +119 rating points",
+        "ELO advantage: NYK +145 rating points",
         "Offensive rating: CLE leads by 3.1 pts/100",
         "Home court: NYK +100 ELO advantage"
       ],
-      "explanation": "The model gives New York Knicks a 65.8% win probability \u2014 a moderate favorite over Cleveland Cavaliers. New York Knicks net rating: +6.3. Home court +100 ELO for New York Knicks."
+      "explanation": "The model gives New York Knicks a 67.5% win probability \u2014 a moderate favorite over Cleveland Cavaliers. New York Knicks net rating: +6.3. Home court +100 ELO for New York Knicks."
     },
     {
       "game_id": "401859963",
@@ -1729,10 +1563,10 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.5744,
-        "logistic_prob": 0.5716,
+        "ensemble_prob": 0.5748,
+        "logistic_prob": 0.5714,
         "elo_prob": 0.5715,
-        "xgb_prob": 0.5911,
+        "xgb_prob": 0.5935,
         "pyth_prob": 0.6401,
         "eff_prob": 0.6401,
         "bayesian_prob": 0.8271
@@ -1745,17 +1579,126 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6272,
-        "exp_margin": 3.99,
-        "prob_7plus": 0.4013,
-        "prob_14plus": 0.2061,
-        "prob_21plus": 0.0845,
+        "win_prob": 0.624,
+        "exp_margin": 4.06,
+        "prob_7plus": 0.4041,
+        "prob_14plus": 0.2127,
+        "prob_21plus": 0.0884,
+        "margin_percentiles": [
+          -16.6,
+          -11.8,
+          -4.5,
+          4.0,
+          12.5,
+          20.0,
+          24.6
+        ]
+      },
+      "adjustments": {
+        "rest_home": 7,
+        "rest_away": 7,
+        "rest_diff": 0,
+        "travel_dist_miles": 0.0,
+        "b2b_home": false,
+        "b2b_away": false,
+        "home_elo_bonus": 100
+      },
+      "h2h": {
+        "home_wins": 0,
+        "away_wins": 0,
+        "total_meetings": 0,
+        "last_n": []
+      },
+      "elo": {
+        "home": 1500.0,
+        "away": 1500.0,
+        "diff": 0.0
+      },
+      "bayesian": {
+        "home_mu": 1500.0,
+        "home_sigma": 75.0,
+        "away_mu": 1500.0,
+        "away_sigma": 75.0,
+        "home_band": [
+          1425.0,
+          1575.0
+        ],
+        "away_band": [
+          1425.0,
+          1575.0
+        ]
+      },
+      "efficiency": {
+        "home_off_rating": 110.0,
+        "home_def_rating": 110.0,
+        "home_net_rating": 0.0,
+        "away_off_rating": 110.0,
+        "away_def_rating": 110.0,
+        "away_net_rating": 0.0,
+        "home_pace": 100.0,
+        "away_pace": 100.0
+      },
+      "injuries": {
+        "home": [],
+        "away": []
+      },
+      "injury_impact": {
+        "home_elo_penalty": 0.0,
+        "away_elo_penalty": 0.0,
+        "home_key_players_out": [],
+        "away_key_players_out": [],
+        "home_star_count": 0,
+        "away_star_count": 0,
+        "home_star_stack_multiplier": 1.0,
+        "away_star_stack_multiplier": 1.0
+      },
+      "prediction_drivers": [
+        "Home court: TBD +100 ELO advantage"
+      ],
+      "explanation": "The model gives TBD a 57.5% win probability \u2014 a slight favorite over TBD. TBD net rating: +0.0. Home court +100 ELO for TBD."
+    },
+    {
+      "game_id": "401859964",
+      "game_time": "2026-06-06T00:30Z",
+      "status": "STATUS_SCHEDULED",
+      "is_future": true,
+      "home_team": "TBD",
+      "away_team": "TBD",
+      "home_name": "TBD",
+      "away_name": "TBD",
+      "home_logo": "https://a.espncdn.com/i/teamlogos/nba/500/tbd.png",
+      "away_logo": "https://a.espncdn.com/i/teamlogos/nba/500/tbd.png",
+      "neutral": false,
+      "home_score": 0,
+      "away_score": 0,
+      "predictions": {
+        "ensemble_prob": 0.5748,
+        "logistic_prob": 0.5714,
+        "elo_prob": 0.5715,
+        "xgb_prob": 0.5935,
+        "pyth_prob": 0.6401,
+        "eff_prob": 0.6401,
+        "bayesian_prob": 0.8271
+      },
+      "market": {
+        "home_prob": null,
+        "edge": null,
+        "kelly_pct": null,
+        "home_american": null,
+        "away_american": null
+      },
+      "monte_carlo": {
+        "win_prob": 0.6274,
+        "exp_margin": 4.07,
+        "prob_7plus": 0.4018,
+        "prob_14plus": 0.2129,
+        "prob_21plus": 0.0831,
         "margin_percentiles": [
           -16.0,
-          -11.7,
-          -4.2,
-          4.0,
-          12.1,
+          -11.6,
+          -4.3,
+          3.9,
+          12.5,
           19.8,
           24.2
         ]
@@ -1821,341 +1764,7 @@
       "prediction_drivers": [
         "Home court: TBD +100 ELO advantage"
       ],
-      "explanation": "The model gives TBD a 57.4% win probability \u2014 a slight favorite over TBD. TBD net rating: +0.0. Home court +100 ELO for TBD."
-    },
-    {
-      "game_id": "401859964",
-      "game_time": "2026-06-06T00:30Z",
-      "status": "STATUS_SCHEDULED",
-      "is_future": true,
-      "home_team": "TBD",
-      "away_team": "TBD",
-      "home_name": "TBD",
-      "away_name": "TBD",
-      "home_logo": "https://a.espncdn.com/i/teamlogos/nba/500/tbd.png",
-      "away_logo": "https://a.espncdn.com/i/teamlogos/nba/500/tbd.png",
-      "neutral": false,
-      "home_score": 0,
-      "away_score": 0,
-      "predictions": {
-        "ensemble_prob": 0.5744,
-        "logistic_prob": 0.5716,
-        "elo_prob": 0.5715,
-        "xgb_prob": 0.5911,
-        "pyth_prob": 0.6401,
-        "eff_prob": 0.6401,
-        "bayesian_prob": 0.8271
-      },
-      "market": {
-        "home_prob": null,
-        "edge": null,
-        "kelly_pct": null,
-        "home_american": null,
-        "away_american": null
-      },
-      "monte_carlo": {
-        "win_prob": 0.6427,
-        "exp_margin": 4.34,
-        "prob_7plus": 0.4114,
-        "prob_14plus": 0.2119,
-        "prob_21plus": 0.0888,
-        "margin_percentiles": [
-          -16.0,
-          -11.3,
-          -3.7,
-          4.3,
-          12.4,
-          20.2,
-          24.7
-        ]
-      },
-      "adjustments": {
-        "rest_home": 7,
-        "rest_away": 7,
-        "rest_diff": 0,
-        "travel_dist_miles": 0.0,
-        "b2b_home": false,
-        "b2b_away": false,
-        "home_elo_bonus": 100
-      },
-      "h2h": {
-        "home_wins": 0,
-        "away_wins": 0,
-        "total_meetings": 0,
-        "last_n": []
-      },
-      "elo": {
-        "home": 1500.0,
-        "away": 1500.0,
-        "diff": 0.0
-      },
-      "bayesian": {
-        "home_mu": 1500.0,
-        "home_sigma": 75.0,
-        "away_mu": 1500.0,
-        "away_sigma": 75.0,
-        "home_band": [
-          1425.0,
-          1575.0
-        ],
-        "away_band": [
-          1425.0,
-          1575.0
-        ]
-      },
-      "efficiency": {
-        "home_off_rating": 110.0,
-        "home_def_rating": 110.0,
-        "home_net_rating": 0.0,
-        "away_off_rating": 110.0,
-        "away_def_rating": 110.0,
-        "away_net_rating": 0.0,
-        "home_pace": 100.0,
-        "away_pace": 100.0
-      },
-      "injuries": {
-        "home": [],
-        "away": []
-      },
-      "injury_impact": {
-        "home_elo_penalty": 0.0,
-        "away_elo_penalty": 0.0,
-        "home_key_players_out": [],
-        "away_key_players_out": [],
-        "home_star_count": 0,
-        "away_star_count": 0,
-        "home_star_stack_multiplier": 1.0,
-        "away_star_stack_multiplier": 1.0
-      },
-      "prediction_drivers": [
-        "Home court: TBD +100 ELO advantage"
-      ],
-      "explanation": "The model gives TBD a 57.4% win probability \u2014 a slight favorite over TBD. TBD net rating: +0.0. Home court +100 ELO for TBD."
-    },
-    {
-      "game_id": "401873197",
-      "game_time": "2026-05-19T00:30Z",
-      "status": "STATUS_FINAL",
-      "is_future": false,
-      "home_team": "OKC",
-      "away_team": "SAS",
-      "home_name": "Oklahoma City Thunder",
-      "away_name": "San Antonio Spurs",
-      "home_logo": "https://a.espncdn.com/i/teamlogos/nba/500/okc.png",
-      "away_logo": "https://a.espncdn.com/i/teamlogos/nba/500/sa.png",
-      "neutral": false,
-      "home_score": 115,
-      "away_score": 122,
-      "predictions": {
-        "ensemble_prob": 0.6062,
-        "logistic_prob": 0.6658,
-        "elo_prob": 0.5798,
-        "xgb_prob": 0.6125,
-        "pyth_prob": 0.7362,
-        "eff_prob": 0.6768,
-        "bayesian_prob": 0.9583
-      },
-      "market": {
-        "home_prob": null,
-        "edge": null,
-        "kelly_pct": null,
-        "home_american": null,
-        "away_american": null
-      },
-      "monte_carlo": {
-        "win_prob": 0.6282,
-        "exp_margin": 4.02,
-        "prob_7plus": 0.3983,
-        "prob_14plus": 0.1967,
-        "prob_21plus": 0.0732,
-        "margin_percentiles": [
-          -15.0,
-          -11.0,
-          -3.8,
-          4.0,
-          12.0,
-          19.0,
-          23.4
-        ]
-      },
-      "adjustments": {
-        "rest_home": 7,
-        "rest_away": 7,
-        "rest_diff": 0,
-        "travel_dist_miles": 421.0,
-        "b2b_home": false,
-        "b2b_away": false,
-        "home_elo_bonus": 100
-      },
-      "h2h": {
-        "home_wins": 15,
-        "away_wins": 10,
-        "total_meetings": 25,
-        "last_n": [
-          {
-            "date": "2024-11-20",
-            "winner": "SAS",
-            "margin": 6
-          },
-          {
-            "date": "2025-03-03",
-            "winner": "OKC",
-            "margin": 14
-          },
-          {
-            "date": "2025-12-14",
-            "winner": "SAS",
-            "margin": 2
-          },
-          {
-            "date": "2025-12-24",
-            "winner": "SAS",
-            "margin": 20
-          },
-          {
-            "date": "2025-12-25",
-            "winner": "SAS",
-            "margin": 15
-          },
-          {
-            "date": "2026-01-14",
-            "winner": "OKC",
-            "margin": 21
-          },
-          {
-            "date": "2026-02-05",
-            "winner": "SAS",
-            "margin": 10
-          },
-          {
-            "date": "2026-05-19",
-            "winner": "SAS",
-            "margin": 7
-          },
-          {
-            "date": "2026-05-21",
-            "winner": "OKC",
-            "margin": 9
-          },
-          {
-            "date": "2026-05-23",
-            "winner": "OKC",
-            "margin": 15
-          }
-        ]
-      },
-      "elo": {
-        "home": 1852.4,
-        "away": 1816.0,
-        "diff": 36.4
-      },
-      "bayesian": {
-        "home_mu": 1797.8,
-        "home_sigma": 40.0,
-        "away_mu": 1799.9,
-        "away_sigma": 40.0,
-        "home_band": [
-          1757.8,
-          1837.8
-        ],
-        "away_band": [
-          1759.9,
-          1839.9
-        ]
-      },
-      "efficiency": {
-        "home_off_rating": 119.02439,
-        "home_def_rating": 107.87805,
-        "home_net_rating": 11.146339999999995,
-        "away_off_rating": 119.82927,
-        "away_def_rating": 111.52439,
-        "away_net_rating": 8.304879999999997,
-        "home_pace": 100.0,
-        "away_pace": 100.0
-      },
-      "injuries": {
-        "home": [
-          {
-            "player": "Jalen Williams",
-            "status": "Day-To-Day",
-            "position": "G",
-            "injury_description": "Williams was listed as questionable heading into this contest, although he wasn't expected to play. His next opportunity to get back on the floor will be when these clubs meet for Game 4 on Sunday. With Williams sidelined Friday, Ajay Mitchell and Cason Wallace might earn the start, with Jared McCain and Isaiah Joe in line to see more work from the bench.",
-            "value_tier": "superstar"
-          },
-          {
-            "player": "Ajay Mitchell",
-            "status": "Day-To-Day",
-            "position": "G",
-            "injury_description": "Mitchell got into an altercation with Devin Vassell and was assessed a technical foul with 8:19 remaining in the third quarter before checking out of the game. He later headed to the locker room and was not seen on the bench during the fourth quarter. It's unclear exactly what he's dealing with, but if Mitchell is forced to miss Game 4 on Sunday, Jared McCain, Cason Wallace and Isaiah Joe would be candidates for increased playing time, especially if Jalen Williams (hamstring) remains sidelined.",
-            "value_tier": "superstar"
-          },
-          {
-            "player": "Thomas Sorber",
-            "status": "Out",
-            "position": "C",
-            "injury_description": "Sorber was selected No. 15 overall in the 2025 NBA Draft out of Georgetown by the reigning NBA champions. The rookie center was already dealing with a foot injury that cut his season with the Hoyas short and kept him out of the Summer League. Now he'll likely have to wait until the 2026-27 campaign to make his debut on the professional level.",
-            "value_tier": "starter"
-          }
-        ],
-        "away": [
-          {
-            "player": "David Jones Garcia",
-            "status": "Out",
-            "position": "F",
-            "injury_description": "Jones Garcia only managed to make 11 appearances for the Spurs in his introductory season, finishing with averages of 2.9 points and 1.6 assists per game. The 24-year-old rookie was on a one-year, two-way deal with the Spurs, so he'll be a free agent this summer.",
-            "value_tier": "starter"
-          }
-        ]
-      },
-      "injury_impact": {
-        "home_elo_penalty": 52.9,
-        "away_elo_penalty": 14.0,
-        "home_key_players_out": [
-          {
-            "player": "Jalen Williams",
-            "position": "G",
-            "status": "Day-To-Day",
-            "elo_impact": 15.0,
-            "value_tier": "superstar"
-          },
-          {
-            "player": "Ajay Mitchell",
-            "position": "G",
-            "status": "Day-To-Day",
-            "elo_impact": 15.0,
-            "value_tier": "superstar"
-          },
-          {
-            "player": "Thomas Sorber",
-            "position": "C",
-            "status": "Out",
-            "elo_impact": 16.0,
-            "value_tier": "starter"
-          }
-        ],
-        "away_key_players_out": [
-          {
-            "player": "David Jones Garcia",
-            "position": "F",
-            "status": "Out",
-            "elo_impact": 14.0,
-            "value_tier": "starter"
-          }
-        ],
-        "home_star_count": 2,
-        "away_star_count": 0,
-        "home_star_stack_multiplier": 1.15,
-        "away_star_stack_multiplier": 1.0
-      },
-      "prediction_drivers": [
-        "Jalen Williams (OKC) [Superstar] DAY-TO-DAY \u2014 \u221215 ELO",
-        "Ajay Mitchell (OKC) [Superstar] DAY-TO-DAY \u2014 \u221215 ELO",
-        "Thomas Sorber (OKC) [Starter] OUT \u2014 \u221216 ELO",
-        "OKC star stack: 2\u00d7 elite out \u2192 \u00d71.15 (\u221253 ELO)",
-        "David Jones Garcia (SAS) [Starter] OUT \u2014 \u221214 ELO",
-        "Home court: OKC +100 ELO advantage"
-      ],
-      "explanation": "The model gives Oklahoma City Thunder a 60.6% win probability \u2014 a moderate favorite over San Antonio Spurs. Oklahoma City Thunder net rating: +11.1. Home court +100 ELO for Oklahoma City Thunder."
+      "explanation": "The model gives TBD a 57.5% win probability \u2014 a slight favorite over TBD. TBD net rating: +0.0. Home court +100 ELO for TBD."
     },
     {
       "game_id": "401873341",
@@ -2172,13 +1781,13 @@
       "home_score": 115,
       "away_score": 104,
       "predictions": {
-        "ensemble_prob": 0.6584,
-        "logistic_prob": 0.5439,
-        "elo_prob": 0.7349,
-        "xgb_prob": 0.5431,
-        "pyth_prob": 0.6377,
+        "ensemble_prob": 0.6747,
+        "logistic_prob": 0.544,
+        "elo_prob": 0.7625,
+        "xgb_prob": 0.5411,
+        "pyth_prob": 0.6396,
         "eff_prob": 0.6691,
-        "bayesian_prob": 0.9625
+        "bayesian_prob": 0.9624
       },
       "market": {
         "home_prob": null,
@@ -2188,19 +1797,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6393,
-        "exp_margin": 4.02,
-        "prob_7plus": 0.3997,
-        "prob_14plus": 0.2004,
-        "prob_21plus": 0.0733,
+        "win_prob": 0.641,
+        "exp_margin": 4.21,
+        "prob_7plus": 0.4053,
+        "prob_14plus": 0.201,
+        "prob_21plus": 0.0778,
         "margin_percentiles": [
-          -15.4,
-          -11.3,
-          -3.8,
-          4.0,
-          12.0,
-          19.1,
-          23.2
+          -15.3,
+          -10.9,
+          -3.6,
+          4.3,
+          12.1,
+          19.3,
+          23.7
         ]
       },
       "adjustments": {
@@ -2213,15 +1822,10 @@
         "home_elo_bonus": 100
       },
       "h2h": {
-        "home_wins": 13,
+        "home_wins": 14,
         "away_wins": 11,
-        "total_meetings": 24,
+        "total_meetings": 25,
         "last_n": [
-          {
-            "date": "2024-03-04",
-            "winner": "NYK",
-            "margin": 9
-          },
           {
             "date": "2024-10-28",
             "winner": "CLE",
@@ -2266,26 +1870,31 @@
             "date": "2026-05-22",
             "winner": "NYK",
             "margin": 16
+          },
+          {
+            "date": "2026-05-24",
+            "winner": "NYK",
+            "margin": 13
           }
         ]
       },
       "elo": {
-        "home": 1777.1,
-        "away": 1658.1,
-        "diff": 119.1
+        "home": 1789.8,
+        "away": 1645.2,
+        "diff": 144.6
       },
       "bayesian": {
         "home_mu": 1799.8,
         "home_sigma": 40.0,
-        "away_mu": 1799.1,
+        "away_mu": 1799.2,
         "away_sigma": 40.0,
         "home_band": [
           1759.8,
           1839.8
         ],
         "away_band": [
-          1759.1,
-          1839.1
+          1759.2,
+          1839.2
         ]
       },
       "efficiency": {
@@ -2313,11 +1922,11 @@
         "away_star_stack_multiplier": 1.0
       },
       "prediction_drivers": [
-        "ELO advantage: NYK +119 rating points",
+        "ELO advantage: NYK +145 rating points",
         "Offensive rating: CLE leads by 3.1 pts/100",
         "Home court: NYK +100 ELO advantage"
       ],
-      "explanation": "The model gives New York Knicks a 65.8% win probability \u2014 a moderate favorite over Cleveland Cavaliers. New York Knicks net rating: +6.3. Home court +100 ELO for New York Knicks."
+      "explanation": "The model gives New York Knicks a 67.5% win probability \u2014 a moderate favorite over Cleveland Cavaliers. New York Knicks net rating: +6.3. Home court +100 ELO for New York Knicks."
     },
     {
       "game_id": "401873198",
@@ -2334,10 +1943,10 @@
       "home_score": 122,
       "away_score": 113,
       "predictions": {
-        "ensemble_prob": 0.6062,
-        "logistic_prob": 0.6658,
-        "elo_prob": 0.5798,
-        "xgb_prob": 0.6125,
+        "ensemble_prob": 0.6,
+        "logistic_prob": 0.6667,
+        "elo_prob": 0.5676,
+        "xgb_prob": 0.6186,
         "pyth_prob": 0.7362,
         "eff_prob": 0.6768,
         "bayesian_prob": 0.9583
@@ -2350,19 +1959,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6295,
-        "exp_margin": 3.81,
-        "prob_7plus": 0.391,
-        "prob_14plus": 0.1925,
-        "prob_21plus": 0.0692,
+        "win_prob": 0.6266,
+        "exp_margin": 3.79,
+        "prob_7plus": 0.3924,
+        "prob_14plus": 0.1899,
+        "prob_21plus": 0.0726,
         "margin_percentiles": [
           -15.5,
-          -11.3,
-          -4.1,
-          3.7,
-          11.7,
-          18.9,
-          23.0
+          -11.2,
+          -4.0,
+          3.8,
+          11.6,
+          18.7,
+          23.2
         ]
       },
       "adjustments": {
@@ -2466,14 +2075,14 @@
             "player": "Jalen Williams",
             "status": "Day-To-Day",
             "position": "G",
-            "injury_description": "Williams was listed as questionable heading into this contest, although he wasn't expected to play. His next opportunity to get back on the floor will be when these clubs meet for Game 4 on Sunday. With Williams sidelined Friday, Ajay Mitchell and Cason Wallace might earn the start, with Jared McCain and Isaiah Joe in line to see more work from the bench.",
-            "value_tier": "superstar"
+            "injury_description": "Williams has been bothered by a left-hamstring issue. After missing time throughout the playoffs, he returned for Game 1 of the Western Conference Finals, logging 37 minutes. However, the 25-year-old re-aggravated the injury in Game 2 and wasn't available for Game 3. If Williams doesn't suit up for Sunday's clash with the Spurs, Cason Wallace, Jaylin Williams and Jared McCain should continue to see more action, considering Ajay Mitchell (calf), who started in Game 3, has already been ruled out.",
+            "value_tier": "starter"
           },
           {
             "player": "Ajay Mitchell",
-            "status": "Day-To-Day",
+            "status": "Out",
             "position": "G",
-            "injury_description": "Mitchell got into an altercation with Devin Vassell and was assessed a technical foul with 8:19 remaining in the third quarter before checking out of the game. He later headed to the locker room and was not seen on the bench during the fourth quarter. It's unclear exactly what he's dealing with, but if Mitchell is forced to miss Game 4 on Sunday, Jared McCain, Cason Wallace and Isaiah Joe would be candidates for increased playing time, especially if Jalen Williams (hamstring) remains sidelined.",
+            "injury_description": "Mitchell exited Friday's Game 3 win over the Spurs after tweaking his right calf, and now he will miss Game 4, which should result in more minutes for Isaiah Joe. Mitchell's next chance to play will come in Game 5 on Tuesday.",
             "value_tier": "superstar"
           },
           {
@@ -2495,21 +2104,21 @@
         ]
       },
       "injury_impact": {
-        "home_elo_penalty": 52.9,
+        "home_elo_penalty": 61.52,
         "away_elo_penalty": 14.0,
         "home_key_players_out": [
           {
             "player": "Jalen Williams",
             "position": "G",
             "status": "Day-To-Day",
-            "elo_impact": 15.0,
-            "value_tier": "superstar"
+            "elo_impact": 7.5,
+            "value_tier": "starter"
           },
           {
             "player": "Ajay Mitchell",
             "position": "G",
-            "status": "Day-To-Day",
-            "elo_impact": 15.0,
+            "status": "Out",
+            "elo_impact": 30.0,
             "value_tier": "superstar"
           },
           {
@@ -2529,20 +2138,19 @@
             "value_tier": "starter"
           }
         ],
-        "home_star_count": 2,
+        "home_star_count": 1,
         "away_star_count": 0,
         "home_star_stack_multiplier": 1.15,
         "away_star_stack_multiplier": 1.0
       },
       "prediction_drivers": [
-        "Jalen Williams (OKC) [Superstar] DAY-TO-DAY \u2014 \u221215 ELO",
-        "Ajay Mitchell (OKC) [Superstar] DAY-TO-DAY \u2014 \u221215 ELO",
+        "Jalen Williams (OKC) [Starter] DAY-TO-DAY \u2014 \u22128 ELO",
+        "Ajay Mitchell (OKC) [Superstar] OUT \u2014 \u221230 ELO",
         "Thomas Sorber (OKC) [Starter] OUT \u2014 \u221216 ELO",
-        "OKC star stack: 2\u00d7 elite out \u2192 \u00d71.15 (\u221253 ELO)",
         "David Jones Garcia (SAS) [Starter] OUT \u2014 \u221214 ELO",
         "Home court: OKC +100 ELO advantage"
       ],
-      "explanation": "The model gives Oklahoma City Thunder a 60.6% win probability \u2014 a moderate favorite over San Antonio Spurs. Oklahoma City Thunder net rating: +11.1. Home court +100 ELO for Oklahoma City Thunder."
+      "explanation": "The model gives Oklahoma City Thunder a 60.0% win probability \u2014 a moderate favorite over San Antonio Spurs. Oklahoma City Thunder net rating: +11.1. Home court +100 ELO for Oklahoma City Thunder."
     },
     {
       "game_id": "401873342",
@@ -2559,13 +2167,13 @@
       "home_score": 109,
       "away_score": 93,
       "predictions": {
-        "ensemble_prob": 0.6584,
-        "logistic_prob": 0.5439,
-        "elo_prob": 0.7349,
-        "xgb_prob": 0.5431,
-        "pyth_prob": 0.6377,
+        "ensemble_prob": 0.6747,
+        "logistic_prob": 0.544,
+        "elo_prob": 0.7625,
+        "xgb_prob": 0.5411,
+        "pyth_prob": 0.6396,
         "eff_prob": 0.6691,
-        "bayesian_prob": 0.9625
+        "bayesian_prob": 0.9624
       },
       "market": {
         "home_prob": null,
@@ -2575,19 +2183,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6354,
-        "exp_margin": 4.06,
-        "prob_7plus": 0.4052,
-        "prob_14plus": 0.1923,
-        "prob_21plus": 0.0724,
+        "win_prob": 0.6346,
+        "exp_margin": 4.02,
+        "prob_7plus": 0.4045,
+        "prob_14plus": 0.202,
+        "prob_21plus": 0.0721,
         "margin_percentiles": [
-          -15.1,
-          -10.9,
-          -3.7,
-          4.1,
-          11.9,
-          18.8,
-          23.2
+          -15.6,
+          -11.2,
+          -4.0,
+          4.0,
+          12.0,
+          19.0,
+          23.1
         ]
       },
       "adjustments": {
@@ -2600,15 +2208,10 @@
         "home_elo_bonus": 100
       },
       "h2h": {
-        "home_wins": 13,
+        "home_wins": 14,
         "away_wins": 11,
-        "total_meetings": 24,
+        "total_meetings": 25,
         "last_n": [
-          {
-            "date": "2024-03-04",
-            "winner": "NYK",
-            "margin": 9
-          },
           {
             "date": "2024-10-28",
             "winner": "CLE",
@@ -2653,26 +2256,31 @@
             "date": "2026-05-22",
             "winner": "NYK",
             "margin": 16
+          },
+          {
+            "date": "2026-05-24",
+            "winner": "NYK",
+            "margin": 13
           }
         ]
       },
       "elo": {
-        "home": 1777.1,
-        "away": 1658.1,
-        "diff": 119.1
+        "home": 1789.8,
+        "away": 1645.2,
+        "diff": 144.6
       },
       "bayesian": {
         "home_mu": 1799.8,
         "home_sigma": 40.0,
-        "away_mu": 1799.1,
+        "away_mu": 1799.2,
         "away_sigma": 40.0,
         "home_band": [
           1759.8,
           1839.8
         ],
         "away_band": [
-          1759.1,
-          1839.1
+          1759.2,
+          1839.2
         ]
       },
       "efficiency": {
@@ -2700,11 +2308,11 @@
         "away_star_stack_multiplier": 1.0
       },
       "prediction_drivers": [
-        "ELO advantage: NYK +119 rating points",
+        "ELO advantage: NYK +145 rating points",
         "Offensive rating: CLE leads by 3.1 pts/100",
         "Home court: NYK +100 ELO advantage"
       ],
-      "explanation": "The model gives New York Knicks a 65.8% win probability \u2014 a moderate favorite over Cleveland Cavaliers. New York Knicks net rating: +6.3. Home court +100 ELO for New York Knicks."
+      "explanation": "The model gives New York Knicks a 67.5% win probability \u2014 a moderate favorite over Cleveland Cavaliers. New York Knicks net rating: +6.3. Home court +100 ELO for New York Knicks."
     },
     {
       "game_id": "401873199",
@@ -2721,10 +2329,10 @@
       "home_score": 108,
       "away_score": 123,
       "predictions": {
-        "ensemble_prob": 0.5442,
-        "logistic_prob": 0.4401,
-        "elo_prob": 0.5868,
-        "xgb_prob": 0.5475,
+        "ensemble_prob": 0.5503,
+        "logistic_prob": 0.4378,
+        "elo_prob": 0.5987,
+        "xgb_prob": 0.5442,
         "pyth_prob": 0.5312,
         "eff_prob": 0.6016,
         "bayesian_prob": 0.9644
@@ -2737,19 +2345,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6334,
-        "exp_margin": 4.03,
-        "prob_7plus": 0.4023,
-        "prob_14plus": 0.2002,
-        "prob_21plus": 0.0724,
+        "win_prob": 0.6264,
+        "exp_margin": 3.94,
+        "prob_7plus": 0.3995,
+        "prob_14plus": 0.1996,
+        "prob_21plus": 0.0763,
         "margin_percentiles": [
-          -15.5,
+          -15.3,
           -11.1,
-          -4.0,
-          4.1,
-          12.0,
-          18.9,
-          23.4
+          -4.1,
+          3.9,
+          11.9,
+          19.1,
+          23.5
         ]
       },
       "adjustments": {
@@ -2862,14 +2470,14 @@
             "player": "Jalen Williams",
             "status": "Day-To-Day",
             "position": "G",
-            "injury_description": "Williams was listed as questionable heading into this contest, although he wasn't expected to play. His next opportunity to get back on the floor will be when these clubs meet for Game 4 on Sunday. With Williams sidelined Friday, Ajay Mitchell and Cason Wallace might earn the start, with Jared McCain and Isaiah Joe in line to see more work from the bench.",
-            "value_tier": "superstar"
+            "injury_description": "Williams has been bothered by a left-hamstring issue. After missing time throughout the playoffs, he returned for Game 1 of the Western Conference Finals, logging 37 minutes. However, the 25-year-old re-aggravated the injury in Game 2 and wasn't available for Game 3. If Williams doesn't suit up for Sunday's clash with the Spurs, Cason Wallace, Jaylin Williams and Jared McCain should continue to see more action, considering Ajay Mitchell (calf), who started in Game 3, has already been ruled out.",
+            "value_tier": "starter"
           },
           {
             "player": "Ajay Mitchell",
-            "status": "Day-To-Day",
+            "status": "Out",
             "position": "G",
-            "injury_description": "Mitchell got into an altercation with Devin Vassell and was assessed a technical foul with 8:19 remaining in the third quarter before checking out of the game. He later headed to the locker room and was not seen on the bench during the fourth quarter. It's unclear exactly what he's dealing with, but if Mitchell is forced to miss Game 4 on Sunday, Jared McCain, Cason Wallace and Isaiah Joe would be candidates for increased playing time, especially if Jalen Williams (hamstring) remains sidelined.",
+            "injury_description": "Mitchell exited Friday's Game 3 win over the Spurs after tweaking his right calf, and now he will miss Game 4, which should result in more minutes for Isaiah Joe. Mitchell's next chance to play will come in Game 5 on Tuesday.",
             "value_tier": "superstar"
           },
           {
@@ -2883,7 +2491,7 @@
       },
       "injury_impact": {
         "home_elo_penalty": 14.0,
-        "away_elo_penalty": 52.9,
+        "away_elo_penalty": 61.52,
         "home_key_players_out": [
           {
             "player": "David Jones Garcia",
@@ -2898,14 +2506,14 @@
             "player": "Jalen Williams",
             "position": "G",
             "status": "Day-To-Day",
-            "elo_impact": 15.0,
-            "value_tier": "superstar"
+            "elo_impact": 7.5,
+            "value_tier": "starter"
           },
           {
             "player": "Ajay Mitchell",
             "position": "G",
-            "status": "Day-To-Day",
-            "elo_impact": 15.0,
+            "status": "Out",
+            "elo_impact": 30.0,
             "value_tier": "superstar"
           },
           {
@@ -2917,19 +2525,180 @@
           }
         ],
         "home_star_count": 0,
-        "away_star_count": 2,
+        "away_star_count": 1,
         "home_star_stack_multiplier": 1.0,
         "away_star_stack_multiplier": 1.15
       },
       "prediction_drivers": [
         "David Jones Garcia (SAS) [Starter] OUT \u2014 \u221214 ELO",
-        "Jalen Williams (OKC) [Superstar] DAY-TO-DAY \u2014 \u221215 ELO",
-        "Ajay Mitchell (OKC) [Superstar] DAY-TO-DAY \u2014 \u221215 ELO",
+        "Jalen Williams (OKC) [Starter] DAY-TO-DAY \u2014 \u22128 ELO",
+        "Ajay Mitchell (OKC) [Superstar] OUT \u2014 \u221230 ELO",
         "Thomas Sorber (OKC) [Starter] OUT \u2014 \u221216 ELO",
-        "OKC star stack: 2\u00d7 elite out \u2192 \u00d71.15 (\u221253 ELO)",
         "Home court: SAS +100 ELO advantage"
       ],
-      "explanation": "The model gives San Antonio Spurs a 54.4% win probability \u2014 a slight favorite over Oklahoma City Thunder. San Antonio Spurs net rating: +8.3. Home court +100 ELO for San Antonio Spurs."
+      "explanation": "The model gives San Antonio Spurs a 55.0% win probability \u2014 a slight favorite over Oklahoma City Thunder. San Antonio Spurs net rating: +8.3. Home court +100 ELO for San Antonio Spurs."
+    },
+    {
+      "game_id": "401873343",
+      "game_time": "2026-05-24T00:00Z",
+      "status": "STATUS_FINAL",
+      "is_future": false,
+      "home_team": "CLE",
+      "away_team": "NYK",
+      "home_name": "Cleveland Cavaliers",
+      "away_name": "New York Knicks",
+      "home_logo": "https://a.espncdn.com/i/teamlogos/nba/500/cle.png",
+      "away_logo": "https://a.espncdn.com/i/teamlogos/nba/500/ny.png",
+      "neutral": false,
+      "home_score": 108,
+      "away_score": 121,
+      "predictions": {
+        "ensemble_prob": 0.4569,
+        "logistic_prob": 0.5714,
+        "elo_prob": 0.378,
+        "xgb_prob": 0.5816,
+        "pyth_prob": 0.6405,
+        "eff_prob": 0.61,
+        "bayesian_prob": 0.9605
+      },
+      "market": {
+        "home_prob": null,
+        "edge": null,
+        "kelly_pct": null,
+        "home_american": null,
+        "away_american": null
+      },
+      "monte_carlo": {
+        "win_prob": 0.6279,
+        "exp_margin": 3.82,
+        "prob_7plus": 0.3919,
+        "prob_14plus": 0.1905,
+        "prob_21plus": 0.0731,
+        "margin_percentiles": [
+          -15.5,
+          -11.2,
+          -4.1,
+          3.8,
+          11.6,
+          18.9,
+          23.3
+        ]
+      },
+      "adjustments": {
+        "rest_home": 7,
+        "rest_away": 7,
+        "rest_diff": 0,
+        "travel_dist_miles": 404.0,
+        "b2b_home": false,
+        "b2b_away": false,
+        "home_elo_bonus": 100
+      },
+      "h2h": {
+        "home_wins": 11,
+        "away_wins": 14,
+        "total_meetings": 25,
+        "last_n": [
+          {
+            "date": "2024-10-28",
+            "winner": "CLE",
+            "margin": 6
+          },
+          {
+            "date": "2025-02-22",
+            "winner": "CLE",
+            "margin": 37
+          },
+          {
+            "date": "2025-04-02",
+            "winner": "CLE",
+            "margin": 19
+          },
+          {
+            "date": "2025-04-11",
+            "winner": "CLE",
+            "margin": 6
+          },
+          {
+            "date": "2025-10-22",
+            "winner": "NYK",
+            "margin": 8
+          },
+          {
+            "date": "2025-12-25",
+            "winner": "NYK",
+            "margin": 2
+          },
+          {
+            "date": "2026-02-25",
+            "winner": "CLE",
+            "margin": 15
+          },
+          {
+            "date": "2026-05-20",
+            "winner": "NYK",
+            "margin": 11
+          },
+          {
+            "date": "2026-05-22",
+            "winner": "NYK",
+            "margin": 16
+          },
+          {
+            "date": "2026-05-24",
+            "winner": "NYK",
+            "margin": 13
+          }
+        ]
+      },
+      "elo": {
+        "home": 1645.2,
+        "away": 1789.8,
+        "diff": -144.6
+      },
+      "bayesian": {
+        "home_mu": 1799.2,
+        "home_sigma": 40.0,
+        "away_mu": 1799.8,
+        "away_sigma": 40.0,
+        "home_band": [
+          1759.2,
+          1839.2
+        ],
+        "away_band": [
+          1759.8,
+          1839.8
+        ]
+      },
+      "efficiency": {
+        "home_off_rating": 119.51219,
+        "home_def_rating": 115.414635,
+        "home_net_rating": 4.097555,
+        "away_off_rating": 116.45122,
+        "away_def_rating": 110.12195,
+        "away_net_rating": 6.329270000000008,
+        "home_pace": 100.0,
+        "away_pace": 100.0
+      },
+      "injuries": {
+        "home": [],
+        "away": []
+      },
+      "injury_impact": {
+        "home_elo_penalty": 0.0,
+        "away_elo_penalty": 0.0,
+        "home_key_players_out": [],
+        "away_key_players_out": [],
+        "home_star_count": 0,
+        "away_star_count": 0,
+        "home_star_stack_multiplier": 1.0,
+        "away_star_stack_multiplier": 1.0
+      },
+      "prediction_drivers": [
+        "ELO advantage: NYK +145 rating points",
+        "Offensive rating: CLE leads by 3.1 pts/100",
+        "Home court: CLE +100 ELO advantage"
+      ],
+      "explanation": "The model gives New York Knicks a 54.3% win probability \u2014 a slight favorite over Cleveland Cavaliers. New York Knicks net rating: +6.3. Home court +100 ELO for Cleveland Cavaliers."
     }
   ]
 }
