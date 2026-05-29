@@ -1,233 +1,9 @@
 {
-  "updated": "2026-05-28T12:16:38.403423+00:00",
+  "updated": "2026-05-29T11:59:44.009932+00:00",
   "season": 2026,
   "league": "nba",
   "is_offseason": false,
   "games": [
-    {
-      "game_id": "401873202",
-      "game_time": "2026-05-29T00:30Z",
-      "status": "STATUS_SCHEDULED",
-      "is_future": false,
-      "home_team": "SAS",
-      "away_team": "OKC",
-      "home_name": "San Antonio Spurs",
-      "away_name": "Oklahoma City Thunder",
-      "home_logo": "https://a.espncdn.com/i/teamlogos/nba/500/sa.png",
-      "away_logo": "https://a.espncdn.com/i/teamlogos/nba/500/okc.png",
-      "neutral": false,
-      "home_score": 0,
-      "away_score": 0,
-      "predictions": {
-        "ensemble_prob": 0.5431,
-        "logistic_prob": 0.4459,
-        "elo_prob": 0.5902,
-        "xgb_prob": 0.5162,
-        "pyth_prob": 0.5329,
-        "eff_prob": 0.6016,
-        "bayesian_prob": 0.9645
-      },
-      "market": {
-        "home_prob": null,
-        "edge": null,
-        "kelly_pct": null,
-        "home_american": null,
-        "away_american": null
-      },
-      "monte_carlo": {
-        "win_prob": 0.6372,
-        "exp_margin": 4.1,
-        "prob_7plus": 0.4034,
-        "prob_14plus": 0.1988,
-        "prob_21plus": 0.0737,
-        "margin_percentiles": [
-          -15.1,
-          -11.0,
-          -3.9,
-          4.2,
-          12.0,
-          19.1,
-          23.2
-        ]
-      },
-      "adjustments": {
-        "rest_home": 7,
-        "rest_away": 7,
-        "rest_diff": 0,
-        "travel_dist_miles": 421.0,
-        "b2b_home": false,
-        "b2b_away": false,
-        "home_elo_bonus": 100
-      },
-      "h2h": {
-        "home_wins": 11,
-        "away_wins": 16,
-        "total_meetings": 27,
-        "last_n": [
-          {
-            "date": "2025-12-14",
-            "winner": "SAS",
-            "margin": 2
-          },
-          {
-            "date": "2025-12-24",
-            "winner": "SAS",
-            "margin": 20
-          },
-          {
-            "date": "2025-12-25",
-            "winner": "SAS",
-            "margin": 15
-          },
-          {
-            "date": "2026-01-14",
-            "winner": "OKC",
-            "margin": 21
-          },
-          {
-            "date": "2026-02-05",
-            "winner": "SAS",
-            "margin": 10
-          },
-          {
-            "date": "2026-05-19",
-            "winner": "SAS",
-            "margin": 7
-          },
-          {
-            "date": "2026-05-21",
-            "winner": "OKC",
-            "margin": 9
-          },
-          {
-            "date": "2026-05-23",
-            "winner": "OKC",
-            "margin": 15
-          },
-          {
-            "date": "2026-05-25",
-            "winner": "SAS",
-            "margin": 21
-          },
-          {
-            "date": "2026-05-27",
-            "winner": "OKC",
-            "margin": 13
-          }
-        ]
-      },
-      "elo": {
-        "home": 1820.7,
-        "away": 1847.7,
-        "diff": -27.0
-      },
-      "bayesian": {
-        "home_mu": 1799.9,
-        "home_sigma": 40.0,
-        "away_mu": 1797.7,
-        "away_sigma": 40.0,
-        "home_band": [
-          1759.9,
-          1839.9
-        ],
-        "away_band": [
-          1757.7,
-          1837.7
-        ]
-      },
-      "efficiency": {
-        "home_off_rating": 119.82927,
-        "home_def_rating": 111.52439,
-        "home_net_rating": 8.304879999999997,
-        "away_off_rating": 119.02439,
-        "away_def_rating": 107.87805,
-        "away_net_rating": 11.146339999999995,
-        "home_pace": 100.0,
-        "away_pace": 100.0
-      },
-      "injuries": {
-        "home": [
-          {
-            "player": "David Jones Garcia",
-            "status": "Out",
-            "position": "F",
-            "injury_description": "Jones Garcia only managed to make 11 appearances for the Spurs in his introductory season, finishing with averages of 2.9 points and 1.6 assists per game. The 24-year-old rookie was on a one-year, two-way deal with the Spurs, so he'll be a free agent this summer.",
-            "value_tier": "starter"
-          }
-        ],
-        "away": [
-          {
-            "player": "Jalen Williams",
-            "status": "Out",
-            "position": "G",
-            "injury_description": "After getting injured in Game 2, Williams is in jeopardy of missing a fourth consecutive contest due to left hamstring strain management. With Ajay Mitchell (calf) already ruled out for Game 6, Jared McCain, Alex Caruso and Cason Wallace could all be needed to handle significant playing time Thursday.",
-            "value_tier": "starter"
-          },
-          {
-            "player": "Ajay Mitchell",
-            "status": "Out",
-            "position": "G",
-            "injury_description": "Mitchell is set to miss a third consecutive contest with a right calf strain. If the Thunder fall to the Spurs on Thursday, his next chance to play would come Saturday in Game 7 of the series. The likes of Jared McCain, Alex Caruso and Cason Wallace are all candidates to step up for Oklahoma City in Game 6.",
-            "value_tier": "starter"
-          },
-          {
-            "player": "Thomas Sorber",
-            "status": "Out",
-            "position": "C",
-            "injury_description": "Sorber was selected No. 15 overall in the 2025 NBA Draft out of Georgetown by the reigning NBA champions. The rookie center was already dealing with a foot injury that cut his season with the Hoyas short and kept him out of the Summer League. Now he'll likely have to wait until the 2026-27 campaign to make his debut on the professional level.",
-            "value_tier": "starter"
-          }
-        ]
-      },
-      "injury_impact": {
-        "home_elo_penalty": 14.0,
-        "away_elo_penalty": 46.0,
-        "home_key_players_out": [
-          {
-            "player": "David Jones Garcia",
-            "position": "F",
-            "status": "Out",
-            "elo_impact": 14.0,
-            "value_tier": "starter"
-          }
-        ],
-        "away_key_players_out": [
-          {
-            "player": "Jalen Williams",
-            "position": "G",
-            "status": "Out",
-            "elo_impact": 15.0,
-            "value_tier": "starter"
-          },
-          {
-            "player": "Ajay Mitchell",
-            "position": "G",
-            "status": "Out",
-            "elo_impact": 15.0,
-            "value_tier": "starter"
-          },
-          {
-            "player": "Thomas Sorber",
-            "position": "C",
-            "status": "Out",
-            "elo_impact": 16.0,
-            "value_tier": "starter"
-          }
-        ],
-        "home_star_count": 0,
-        "away_star_count": 0,
-        "home_star_stack_multiplier": 1.0,
-        "away_star_stack_multiplier": 1.0
-      },
-      "prediction_drivers": [
-        "David Jones Garcia (SAS) [Starter] OUT \u2014 \u221214 ELO",
-        "Jalen Williams (OKC) [Starter] OUT \u2014 \u221215 ELO",
-        "Ajay Mitchell (OKC) [Starter] OUT \u2014 \u221215 ELO",
-        "Thomas Sorber (OKC) [Starter] OUT \u2014 \u221216 ELO",
-        "Home court: SAS +100 ELO advantage"
-      ],
-      "explanation": "The model gives San Antonio Spurs a 54.3% win probability \u2014 a slight favorite over Oklahoma City Thunder. San Antonio Spurs net rating: +8.3. Home court +100 ELO for San Antonio Spurs."
-    },
     {
       "game_id": "401873203",
       "game_time": "2026-05-31T00:00Z",
@@ -243,13 +19,13 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.6026,
-        "logistic_prob": 0.6667,
-        "elo_prob": 0.5762,
-        "xgb_prob": 0.6014,
-        "pyth_prob": 0.7349,
+        "ensemble_prob": 0.587,
+        "logistic_prob": 0.6673,
+        "elo_prob": 0.5434,
+        "xgb_prob": 0.6278,
+        "pyth_prob": 0.7317,
         "eff_prob": 0.6768,
-        "bayesian_prob": 0.9582
+        "bayesian_prob": 0.9535
       },
       "market": {
         "home_prob": null,
@@ -259,19 +35,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6292,
-        "exp_margin": 3.93,
-        "prob_7plus": 0.3949,
-        "prob_14plus": 0.1964,
+        "win_prob": 0.631,
+        "exp_margin": 3.84,
+        "prob_7plus": 0.3967,
+        "prob_14plus": 0.1915,
         "prob_21plus": 0.0756,
         "margin_percentiles": [
-          -15.3,
-          -11.0,
-          -4.1,
+          -16.0,
+          -11.6,
+          -3.9,
           3.8,
           11.8,
-          19.0,
-          23.6
+          19.1,
+          23.4
         ]
       },
       "adjustments": {
@@ -285,14 +61,9 @@
       },
       "h2h": {
         "home_wins": 16,
-        "away_wins": 11,
-        "total_meetings": 27,
+        "away_wins": 12,
+        "total_meetings": 28,
         "last_n": [
-          {
-            "date": "2025-12-14",
-            "winner": "SAS",
-            "margin": 2
-          },
           {
             "date": "2025-12-24",
             "winner": "SAS",
@@ -337,22 +108,27 @@
             "date": "2026-05-27",
             "winner": "OKC",
             "margin": 13
+          },
+          {
+            "date": "2026-05-29",
+            "winner": "SAS",
+            "margin": 27
           }
         ]
       },
       "elo": {
-        "home": 1847.7,
-        "away": 1820.7,
-        "diff": 27.0
+        "home": 1828.6,
+        "away": 1839.9,
+        "diff": -11.3
       },
       "bayesian": {
-        "home_mu": 1797.7,
+        "home_mu": 1794.9,
         "home_sigma": 40.0,
         "away_mu": 1799.9,
         "away_sigma": 40.0,
         "home_band": [
-          1757.7,
-          1837.7
+          1754.9,
+          1834.9
         ],
         "away_band": [
           1759.9,
@@ -372,13 +148,6 @@
       "injuries": {
         "home": [
           {
-            "player": "Jalen Williams",
-            "status": "Out",
-            "position": "G",
-            "injury_description": "After getting injured in Game 2, Williams is in jeopardy of missing a fourth consecutive contest due to left hamstring strain management. With Ajay Mitchell (calf) already ruled out for Game 6, Jared McCain, Alex Caruso and Cason Wallace could all be needed to handle significant playing time Thursday.",
-            "value_tier": "starter"
-          },
-          {
             "player": "Ajay Mitchell",
             "status": "Out",
             "position": "G",
@@ -404,16 +173,9 @@
         ]
       },
       "injury_impact": {
-        "home_elo_penalty": 46.0,
+        "home_elo_penalty": 31.0,
         "away_elo_penalty": 14.0,
         "home_key_players_out": [
-          {
-            "player": "Jalen Williams",
-            "position": "G",
-            "status": "Out",
-            "elo_impact": 15.0,
-            "value_tier": "starter"
-          },
           {
             "player": "Ajay Mitchell",
             "position": "G",
@@ -444,13 +206,12 @@
         "away_star_stack_multiplier": 1.0
       },
       "prediction_drivers": [
-        "Jalen Williams (OKC) [Starter] OUT \u2014 \u221215 ELO",
         "Ajay Mitchell (OKC) [Starter] OUT \u2014 \u221215 ELO",
         "Thomas Sorber (OKC) [Starter] OUT \u2014 \u221216 ELO",
         "David Jones Garcia (SAS) [Starter] OUT \u2014 \u221214 ELO",
         "Home court: OKC +100 ELO advantage"
       ],
-      "explanation": "The model gives Oklahoma City Thunder a 60.3% win probability \u2014 a moderate favorite over San Antonio Spurs. Oklahoma City Thunder net rating: +11.1. Home court +100 ELO for Oklahoma City Thunder."
+      "explanation": "The model gives Oklahoma City Thunder a 58.7% win probability \u2014 a slight favorite over San Antonio Spurs. Oklahoma City Thunder net rating: +11.1. Home court +100 ELO for Oklahoma City Thunder."
     },
     {
       "game_id": "401859963",
@@ -467,10 +228,10 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.2913,
-        "logistic_prob": 0.3861,
-        "elo_prob": 0.1868,
-        "xgb_prob": 0.5512,
+        "ensemble_prob": 0.2925,
+        "logistic_prob": 0.3842,
+        "elo_prob": 0.1911,
+        "xgb_prob": 0.5455,
         "pyth_prob": 0.5458,
         "eff_prob": 0.5526,
         "bayesian_prob": 0.0094
@@ -483,19 +244,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.2509,
-        "exp_margin": -7.9,
-        "prob_7plus": 0.1103,
-        "prob_14plus": 0.0369,
-        "prob_21plus": 0.008,
+        "win_prob": 0.2488,
+        "exp_margin": -8.05,
+        "prob_7plus": 0.1049,
+        "prob_14plus": 0.0319,
+        "prob_21plus": 0.0074,
         "margin_percentiles": [
-          -27.8,
-          -23.3,
-          -16.0,
-          -8.0,
-          0.0,
-          7.6,
-          12.0
+          -28.1,
+          -23.6,
+          -16.2,
+          -7.9,
+          -0.0,
+          7.3,
+          11.6
         ]
       },
       "adjustments": {
@@ -544,13 +305,29 @@
       },
       "injuries": {
         "home": [],
-        "away": []
+        "away": [
+          {
+            "player": "Mitchell Robinson",
+            "status": "Out",
+            "position": "C",
+            "injury_description": "Robinson averaged 4.5 points, 5.8 rebounds, 0.3 assists, 0.8 steals and 0.3 blocks across 13.3 minutes during the Eastern Conference Finals versus Cleveland. It appears the door isn't shut regarding Robinson's potential return at some point during the NBA Finals, although the Knicks may be forced to play small-ball lineups or allow Ariel Hukporti to see some action.",
+            "value_tier": "rotation"
+          }
+        ]
       },
       "injury_impact": {
         "home_elo_penalty": 0.0,
-        "away_elo_penalty": 0.0,
+        "away_elo_penalty": 4.8,
         "home_key_players_out": [],
-        "away_key_players_out": [],
+        "away_key_players_out": [
+          {
+            "player": "Mitchell Robinson",
+            "position": "C",
+            "status": "Out",
+            "elo_impact": 4.8,
+            "value_tier": "rotation"
+          }
+        ],
         "home_star_count": 0,
         "away_star_count": 0,
         "home_star_stack_multiplier": 1.0,
@@ -558,11 +335,12 @@
       },
       "prediction_drivers": [
         "ELO advantage: NYK +306 rating points",
+        "Mitchell Robinson (NYK) [Rotation] OUT \u2014 \u22125 ELO",
         "Net rating gap: SPURS/THUNDER +0.0 vs NYK +6.3",
         "Offensive rating: NYK leads by 6.5 pts/100",
         "Home court: SPURS/THUNDER +100 ELO advantage"
       ],
-      "explanation": "The model gives New York Knicks a 70.9% win probability \u2014 a strong favorite over SPURS/THUNDER. New York Knicks net rating: +6.3. Home court +100 ELO for SPURS/THUNDER."
+      "explanation": "The model gives New York Knicks a 70.7% win probability \u2014 a strong favorite over SPURS/THUNDER. New York Knicks net rating: +6.3. Home court +100 ELO for SPURS/THUNDER."
     },
     {
       "game_id": "401859964",
@@ -579,10 +357,10 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.2913,
-        "logistic_prob": 0.3861,
-        "elo_prob": 0.1868,
-        "xgb_prob": 0.5512,
+        "ensemble_prob": 0.2925,
+        "logistic_prob": 0.3842,
+        "elo_prob": 0.1911,
+        "xgb_prob": 0.5455,
         "pyth_prob": 0.5458,
         "eff_prob": 0.5526,
         "bayesian_prob": 0.0094
@@ -595,19 +373,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.2489,
-        "exp_margin": -8.12,
-        "prob_7plus": 0.1005,
-        "prob_14plus": 0.0303,
-        "prob_21plus": 0.0078,
+        "win_prob": 0.2495,
+        "exp_margin": -8.07,
+        "prob_7plus": 0.1056,
+        "prob_14plus": 0.0363,
+        "prob_21plus": 0.0099,
         "margin_percentiles": [
-          -28.0,
-          -23.5,
-          -16.1,
-          -8.0,
-          -0.1,
-          7.0,
-          11.5
+          -27.8,
+          -23.6,
+          -16.2,
+          -8.1,
+          -0.0,
+          7.4,
+          11.9
         ]
       },
       "adjustments": {
@@ -656,13 +434,29 @@
       },
       "injuries": {
         "home": [],
-        "away": []
+        "away": [
+          {
+            "player": "Mitchell Robinson",
+            "status": "Out",
+            "position": "C",
+            "injury_description": "Robinson averaged 4.5 points, 5.8 rebounds, 0.3 assists, 0.8 steals and 0.3 blocks across 13.3 minutes during the Eastern Conference Finals versus Cleveland. It appears the door isn't shut regarding Robinson's potential return at some point during the NBA Finals, although the Knicks may be forced to play small-ball lineups or allow Ariel Hukporti to see some action.",
+            "value_tier": "rotation"
+          }
+        ]
       },
       "injury_impact": {
         "home_elo_penalty": 0.0,
-        "away_elo_penalty": 0.0,
+        "away_elo_penalty": 4.8,
         "home_key_players_out": [],
-        "away_key_players_out": [],
+        "away_key_players_out": [
+          {
+            "player": "Mitchell Robinson",
+            "position": "C",
+            "status": "Out",
+            "elo_impact": 4.8,
+            "value_tier": "rotation"
+          }
+        ],
         "home_star_count": 0,
         "away_star_count": 0,
         "home_star_stack_multiplier": 1.0,
@@ -670,11 +464,12 @@
       },
       "prediction_drivers": [
         "ELO advantage: NYK +306 rating points",
+        "Mitchell Robinson (NYK) [Rotation] OUT \u2014 \u22125 ELO",
         "Net rating gap: SPURS/THUNDER +0.0 vs NYK +6.3",
         "Offensive rating: NYK leads by 6.5 pts/100",
         "Home court: SPURS/THUNDER +100 ELO advantage"
       ],
-      "explanation": "The model gives New York Knicks a 70.9% win probability \u2014 a strong favorite over SPURS/THUNDER. New York Knicks net rating: +6.3. Home court +100 ELO for SPURS/THUNDER."
+      "explanation": "The model gives New York Knicks a 70.7% win probability \u2014 a strong favorite over SPURS/THUNDER. New York Knicks net rating: +6.3. Home court +100 ELO for SPURS/THUNDER."
     },
     {
       "game_id": "401859965",
@@ -691,10 +486,10 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.7868,
-        "logistic_prob": 0.6675,
-        "elo_prob": 0.8856,
-        "xgb_prob": 0.5903,
+        "ensemble_prob": 0.7898,
+        "logistic_prob": 0.6673,
+        "elo_prob": 0.8828,
+        "xgb_prob": 0.6219,
         "pyth_prob": 0.7246,
         "eff_prob": 0.7191,
         "bayesian_prob": 1.0
@@ -707,19 +502,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.907,
-        "exp_margin": 16.09,
-        "prob_7plus": 0.7719,
-        "prob_14plus": 0.5706,
-        "prob_21plus": 0.3473,
+        "win_prob": 0.9096,
+        "exp_margin": 15.99,
+        "prob_7plus": 0.7722,
+        "prob_14plus": 0.5663,
+        "prob_21plus": 0.3387,
         "margin_percentiles": [
           -3.7,
-          0.5,
-          8.0,
-          16.3,
+          0.7,
+          7.9,
+          16.1,
           24.1,
-          31.5,
-          35.7
+          31.4,
+          35.6
         ]
       },
       "adjustments": {
@@ -767,13 +562,29 @@
         "away_pace": 100.0
       },
       "injuries": {
-        "home": [],
+        "home": [
+          {
+            "player": "Mitchell Robinson",
+            "status": "Out",
+            "position": "C",
+            "injury_description": "Robinson averaged 4.5 points, 5.8 rebounds, 0.3 assists, 0.8 steals and 0.3 blocks across 13.3 minutes during the Eastern Conference Finals versus Cleveland. It appears the door isn't shut regarding Robinson's potential return at some point during the NBA Finals, although the Knicks may be forced to play small-ball lineups or allow Ariel Hukporti to see some action.",
+            "value_tier": "rotation"
+          }
+        ],
         "away": []
       },
       "injury_impact": {
-        "home_elo_penalty": 0.0,
+        "home_elo_penalty": 4.8,
         "away_elo_penalty": 0.0,
-        "home_key_players_out": [],
+        "home_key_players_out": [
+          {
+            "player": "Mitchell Robinson",
+            "position": "C",
+            "status": "Out",
+            "elo_impact": 4.8,
+            "value_tier": "rotation"
+          }
+        ],
         "away_key_players_out": [],
         "home_star_count": 0,
         "away_star_count": 0,
@@ -782,11 +593,12 @@
       },
       "prediction_drivers": [
         "ELO advantage: NYK +306 rating points",
+        "Mitchell Robinson (NYK) [Rotation] OUT \u2014 \u22125 ELO",
         "Net rating gap: NYK +6.3 vs SPURS/THUNDER +0.0",
         "Offensive rating: NYK leads by 6.5 pts/100",
         "Home court: NYK +100 ELO advantage"
       ],
-      "explanation": "The model gives New York Knicks a 78.7% win probability \u2014 a strong favorite over SPURS/THUNDER. New York Knicks net rating: +6.3. Home court +100 ELO for New York Knicks."
+      "explanation": "The model gives New York Knicks a 79.0% win probability \u2014 a strong favorite over SPURS/THUNDER. New York Knicks net rating: +6.3. Home court +100 ELO for New York Knicks."
     },
     {
       "game_id": "401859966",
@@ -803,10 +615,10 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.7868,
-        "logistic_prob": 0.6675,
-        "elo_prob": 0.8856,
-        "xgb_prob": 0.5903,
+        "ensemble_prob": 0.7898,
+        "logistic_prob": 0.6673,
+        "elo_prob": 0.8828,
+        "xgb_prob": 0.6219,
         "pyth_prob": 0.7246,
         "eff_prob": 0.7191,
         "bayesian_prob": 1.0
@@ -819,19 +631,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.9112,
-        "exp_margin": 16.13,
-        "prob_7plus": 0.7757,
-        "prob_14plus": 0.5692,
-        "prob_21plus": 0.3471,
+        "win_prob": 0.9133,
+        "exp_margin": 16.01,
+        "prob_7plus": 0.7703,
+        "prob_14plus": 0.5672,
+        "prob_21plus": 0.3398,
         "margin_percentiles": [
-          -3.5,
-          0.7,
-          8.0,
-          16.1,
+          -3.6,
+          0.8,
+          7.8,
+          16.0,
           24.2,
-          31.3,
-          35.9
+          31.4,
+          35.6
         ]
       },
       "adjustments": {
@@ -879,13 +691,29 @@
         "away_pace": 100.0
       },
       "injuries": {
-        "home": [],
+        "home": [
+          {
+            "player": "Mitchell Robinson",
+            "status": "Out",
+            "position": "C",
+            "injury_description": "Robinson averaged 4.5 points, 5.8 rebounds, 0.3 assists, 0.8 steals and 0.3 blocks across 13.3 minutes during the Eastern Conference Finals versus Cleveland. It appears the door isn't shut regarding Robinson's potential return at some point during the NBA Finals, although the Knicks may be forced to play small-ball lineups or allow Ariel Hukporti to see some action.",
+            "value_tier": "rotation"
+          }
+        ],
         "away": []
       },
       "injury_impact": {
-        "home_elo_penalty": 0.0,
+        "home_elo_penalty": 4.8,
         "away_elo_penalty": 0.0,
-        "home_key_players_out": [],
+        "home_key_players_out": [
+          {
+            "player": "Mitchell Robinson",
+            "position": "C",
+            "status": "Out",
+            "elo_impact": 4.8,
+            "value_tier": "rotation"
+          }
+        ],
         "away_key_players_out": [],
         "home_star_count": 0,
         "away_star_count": 0,
@@ -894,190 +722,12 @@
       },
       "prediction_drivers": [
         "ELO advantage: NYK +306 rating points",
+        "Mitchell Robinson (NYK) [Rotation] OUT \u2014 \u22125 ELO",
         "Net rating gap: NYK +6.3 vs SPURS/THUNDER +0.0",
         "Offensive rating: NYK leads by 6.5 pts/100",
         "Home court: NYK +100 ELO advantage"
       ],
-      "explanation": "The model gives New York Knicks a 78.7% win probability \u2014 a strong favorite over SPURS/THUNDER. New York Knicks net rating: +6.3. Home court +100 ELO for New York Knicks."
-    },
-    {
-      "game_id": "401873343",
-      "game_time": "2026-05-24T00:00Z",
-      "status": "STATUS_FINAL",
-      "is_future": false,
-      "home_team": "CLE",
-      "away_team": "NYK",
-      "home_name": "Cleveland Cavaliers",
-      "away_name": "New York Knicks",
-      "home_logo": "https://a.espncdn.com/i/teamlogos/nba/500/cle.png",
-      "away_logo": "https://a.espncdn.com/i/teamlogos/nba/500/ny.png",
-      "neutral": false,
-      "home_score": 108,
-      "away_score": 121,
-      "predictions": {
-        "ensemble_prob": 0.4246,
-        "logistic_prob": 0.5605,
-        "elo_prob": 0.3309,
-        "xgb_prob": 0.5727,
-        "pyth_prob": 0.6353,
-        "eff_prob": 0.61,
-        "bayesian_prob": 0.9482
-      },
-      "market": {
-        "home_prob": null,
-        "edge": null,
-        "kelly_pct": null,
-        "home_american": null,
-        "away_american": null
-      },
-      "monte_carlo": {
-        "win_prob": 0.6221,
-        "exp_margin": 3.67,
-        "prob_7plus": 0.385,
-        "prob_14plus": 0.1846,
-        "prob_21plus": 0.067,
-        "margin_percentiles": [
-          -15.1,
-          -10.9,
-          -4.2,
-          3.6,
-          11.4,
-          18.6,
-          22.9
-        ]
-      },
-      "adjustments": {
-        "rest_home": 7,
-        "rest_away": 7,
-        "rest_diff": 0,
-        "travel_dist_miles": 404.0,
-        "b2b_home": false,
-        "b2b_away": false,
-        "home_elo_bonus": 100
-      },
-      "h2h": {
-        "home_wins": 11,
-        "away_wins": 15,
-        "total_meetings": 26,
-        "last_n": [
-          {
-            "date": "2025-02-22",
-            "winner": "CLE",
-            "margin": 37
-          },
-          {
-            "date": "2025-04-02",
-            "winner": "CLE",
-            "margin": 19
-          },
-          {
-            "date": "2025-04-11",
-            "winner": "CLE",
-            "margin": 6
-          },
-          {
-            "date": "2025-10-22",
-            "winner": "NYK",
-            "margin": 8
-          },
-          {
-            "date": "2025-12-25",
-            "winner": "NYK",
-            "margin": 2
-          },
-          {
-            "date": "2026-02-25",
-            "winner": "CLE",
-            "margin": 15
-          },
-          {
-            "date": "2026-05-20",
-            "winner": "NYK",
-            "margin": 11
-          },
-          {
-            "date": "2026-05-22",
-            "winner": "NYK",
-            "margin": 16
-          },
-          {
-            "date": "2026-05-24",
-            "winner": "NYK",
-            "margin": 13
-          },
-          {
-            "date": "2026-05-26",
-            "winner": "NYK",
-            "margin": 37
-          }
-        ]
-      },
-      "elo": {
-        "home": 1629.7,
-        "away": 1805.5,
-        "diff": -175.8
-      },
-      "bayesian": {
-        "home_mu": 1791.9,
-        "home_sigma": 40.0,
-        "away_mu": 1799.8,
-        "away_sigma": 40.0,
-        "home_band": [
-          1751.9,
-          1831.9
-        ],
-        "away_band": [
-          1759.8,
-          1839.8
-        ]
-      },
-      "efficiency": {
-        "home_off_rating": 119.51219,
-        "home_def_rating": 115.414635,
-        "home_net_rating": 4.097555,
-        "away_off_rating": 116.45122,
-        "away_def_rating": 110.12195,
-        "away_net_rating": 6.329270000000008,
-        "home_pace": 100.0,
-        "away_pace": 100.0
-      },
-      "injuries": {
-        "home": [
-          {
-            "player": "Dennis Schroder",
-            "status": "Out",
-            "position": "G",
-            "injury_description": "Schroder was added to the injury report hours before tipoff due to an illness, and he's since been listed as out. He's averaged 15.0 minutes through the first three games of the series, so Craig Porter and Keon Ellis could be asked to fill that void Monday in Schroder's absence.",
-            "value_tier": "rotation"
-          }
-        ],
-        "away": []
-      },
-      "injury_impact": {
-        "home_elo_penalty": 4.5,
-        "away_elo_penalty": 0.0,
-        "home_key_players_out": [
-          {
-            "player": "Dennis Schroder",
-            "position": "G",
-            "status": "Out",
-            "elo_impact": 4.5,
-            "value_tier": "rotation"
-          }
-        ],
-        "away_key_players_out": [],
-        "home_star_count": 0,
-        "away_star_count": 0,
-        "home_star_stack_multiplier": 1.0,
-        "away_star_stack_multiplier": 1.0
-      },
-      "prediction_drivers": [
-        "ELO advantage: NYK +176 rating points",
-        "Dennis Schroder (CLE) [Rotation] OUT \u2014 \u22124 ELO",
-        "Offensive rating: CLE leads by 3.1 pts/100",
-        "Home court: CLE +100 ELO advantage"
-      ],
-      "explanation": "The model gives New York Knicks a 57.5% win probability \u2014 a slight favorite over Cleveland Cavaliers. New York Knicks net rating: +6.3. Home court +100 ELO for Cleveland Cavaliers."
+      "explanation": "The model gives New York Knicks a 79.0% win probability \u2014 a strong favorite over SPURS/THUNDER. New York Knicks net rating: +6.3. Home court +100 ELO for New York Knicks."
     },
     {
       "game_id": "401873200",
@@ -1094,13 +744,13 @@
       "home_score": 103,
       "away_score": 82,
       "predictions": {
-        "ensemble_prob": 0.5431,
-        "logistic_prob": 0.4459,
-        "elo_prob": 0.5902,
-        "xgb_prob": 0.5162,
-        "pyth_prob": 0.5329,
+        "ensemble_prob": 0.5628,
+        "logistic_prob": 0.45,
+        "elo_prob": 0.6222,
+        "xgb_prob": 0.5131,
+        "pyth_prob": 0.5369,
         "eff_prob": 0.6016,
-        "bayesian_prob": 0.9645
+        "bayesian_prob": 0.9683
       },
       "market": {
         "home_prob": null,
@@ -1110,19 +760,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6487,
+        "win_prob": 0.6476,
         "exp_margin": 4.28,
-        "prob_7plus": 0.4079,
-        "prob_14plus": 0.2018,
-        "prob_21plus": 0.0803,
+        "prob_7plus": 0.406,
+        "prob_14plus": 0.1991,
+        "prob_21plus": 0.0755,
         "margin_percentiles": [
-          -15.4,
-          -10.8,
-          -3.6,
-          4.4,
+          -15.0,
+          -10.7,
+          -3.4,
+          4.2,
           12.1,
-          19.4,
-          23.6
+          19.1,
+          23.3
         ]
       },
       "adjustments": {
@@ -1135,15 +785,10 @@
         "home_elo_bonus": 100
       },
       "h2h": {
-        "home_wins": 11,
+        "home_wins": 12,
         "away_wins": 16,
-        "total_meetings": 27,
+        "total_meetings": 28,
         "last_n": [
-          {
-            "date": "2025-12-14",
-            "winner": "SAS",
-            "margin": 2
-          },
           {
             "date": "2025-12-24",
             "winner": "SAS",
@@ -1188,26 +833,31 @@
             "date": "2026-05-27",
             "winner": "OKC",
             "margin": 13
+          },
+          {
+            "date": "2026-05-29",
+            "winner": "SAS",
+            "margin": 27
           }
         ]
       },
       "elo": {
-        "home": 1820.7,
-        "away": 1847.7,
-        "diff": -27.0
+        "home": 1839.9,
+        "away": 1828.6,
+        "diff": 11.3
       },
       "bayesian": {
         "home_mu": 1799.9,
         "home_sigma": 40.0,
-        "away_mu": 1797.7,
+        "away_mu": 1794.9,
         "away_sigma": 40.0,
         "home_band": [
           1759.9,
           1839.9
         ],
         "away_band": [
-          1757.7,
-          1837.7
+          1754.9,
+          1834.9
         ]
       },
       "efficiency": {
@@ -1232,13 +882,6 @@
         ],
         "away": [
           {
-            "player": "Jalen Williams",
-            "status": "Out",
-            "position": "G",
-            "injury_description": "After getting injured in Game 2, Williams is in jeopardy of missing a fourth consecutive contest due to left hamstring strain management. With Ajay Mitchell (calf) already ruled out for Game 6, Jared McCain, Alex Caruso and Cason Wallace could all be needed to handle significant playing time Thursday.",
-            "value_tier": "starter"
-          },
-          {
             "player": "Ajay Mitchell",
             "status": "Out",
             "position": "G",
@@ -1256,7 +899,7 @@
       },
       "injury_impact": {
         "home_elo_penalty": 14.0,
-        "away_elo_penalty": 46.0,
+        "away_elo_penalty": 31.0,
         "home_key_players_out": [
           {
             "player": "David Jones Garcia",
@@ -1267,13 +910,6 @@
           }
         ],
         "away_key_players_out": [
-          {
-            "player": "Jalen Williams",
-            "position": "G",
-            "status": "Out",
-            "elo_impact": 15.0,
-            "value_tier": "starter"
-          },
           {
             "player": "Ajay Mitchell",
             "position": "G",
@@ -1296,12 +932,11 @@
       },
       "prediction_drivers": [
         "David Jones Garcia (SAS) [Starter] OUT \u2014 \u221214 ELO",
-        "Jalen Williams (OKC) [Starter] OUT \u2014 \u221215 ELO",
         "Ajay Mitchell (OKC) [Starter] OUT \u2014 \u221215 ELO",
         "Thomas Sorber (OKC) [Starter] OUT \u2014 \u221216 ELO",
         "Home court: SAS +100 ELO advantage"
       ],
-      "explanation": "The model gives San Antonio Spurs a 54.3% win probability \u2014 a slight favorite over Oklahoma City Thunder. San Antonio Spurs net rating: +8.3. Home court +100 ELO for San Antonio Spurs."
+      "explanation": "The model gives San Antonio Spurs a 56.3% win probability \u2014 a slight favorite over Oklahoma City Thunder. San Antonio Spurs net rating: +8.3. Home court +100 ELO for San Antonio Spurs."
     },
     {
       "game_id": "401873344",
@@ -1318,10 +953,10 @@
       "home_score": 93,
       "away_score": 130,
       "predictions": {
-        "ensemble_prob": 0.4246,
-        "logistic_prob": 0.5605,
-        "elo_prob": 0.3309,
-        "xgb_prob": 0.5727,
+        "ensemble_prob": 0.4318,
+        "logistic_prob": 0.5654,
+        "elo_prob": 0.3371,
+        "xgb_prob": 0.5881,
         "pyth_prob": 0.6353,
         "eff_prob": 0.61,
         "bayesian_prob": 0.9482
@@ -1334,19 +969,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6245,
-        "exp_margin": 3.8,
-        "prob_7plus": 0.3888,
-        "prob_14plus": 0.1951,
-        "prob_21plus": 0.0747,
+        "win_prob": 0.6258,
+        "exp_margin": 3.75,
+        "prob_7plus": 0.3899,
+        "prob_14plus": 0.1879,
+        "prob_21plus": 0.0688,
         "margin_percentiles": [
-          -15.7,
-          -11.0,
-          -4.2,
-          3.8,
-          11.8,
-          19.2,
-          23.1
+          -15.3,
+          -11.1,
+          -3.9,
+          3.7,
+          11.5,
+          18.7,
+          22.7
         ]
       },
       "adjustments": {
@@ -1454,11 +1089,19 @@
             "value_tier": "rotation"
           }
         ],
-        "away": []
+        "away": [
+          {
+            "player": "Mitchell Robinson",
+            "status": "Out",
+            "position": "C",
+            "injury_description": "Robinson averaged 4.5 points, 5.8 rebounds, 0.3 assists, 0.8 steals and 0.3 blocks across 13.3 minutes during the Eastern Conference Finals versus Cleveland. It appears the door isn't shut regarding Robinson's potential return at some point during the NBA Finals, although the Knicks may be forced to play small-ball lineups or allow Ariel Hukporti to see some action.",
+            "value_tier": "rotation"
+          }
+        ]
       },
       "injury_impact": {
         "home_elo_penalty": 4.5,
-        "away_elo_penalty": 0.0,
+        "away_elo_penalty": 4.8,
         "home_key_players_out": [
           {
             "player": "Dennis Schroder",
@@ -1468,7 +1111,15 @@
             "value_tier": "rotation"
           }
         ],
-        "away_key_players_out": [],
+        "away_key_players_out": [
+          {
+            "player": "Mitchell Robinson",
+            "position": "C",
+            "status": "Out",
+            "elo_impact": 4.8,
+            "value_tier": "rotation"
+          }
+        ],
         "home_star_count": 0,
         "away_star_count": 0,
         "home_star_stack_multiplier": 1.0,
@@ -1477,10 +1128,11 @@
       "prediction_drivers": [
         "ELO advantage: NYK +176 rating points",
         "Dennis Schroder (CLE) [Rotation] OUT \u2014 \u22124 ELO",
+        "Mitchell Robinson (NYK) [Rotation] OUT \u2014 \u22125 ELO",
         "Offensive rating: CLE leads by 3.1 pts/100",
         "Home court: CLE +100 ELO advantage"
       ],
-      "explanation": "The model gives New York Knicks a 57.5% win probability \u2014 a slight favorite over Cleveland Cavaliers. New York Knicks net rating: +6.3. Home court +100 ELO for Cleveland Cavaliers."
+      "explanation": "The model gives New York Knicks a 56.8% win probability \u2014 a slight favorite over Cleveland Cavaliers. New York Knicks net rating: +6.3. Home court +100 ELO for Cleveland Cavaliers."
     },
     {
       "game_id": "401873201",
@@ -1497,13 +1149,13 @@
       "home_score": 127,
       "away_score": 114,
       "predictions": {
-        "ensemble_prob": 0.6026,
-        "logistic_prob": 0.6667,
-        "elo_prob": 0.5762,
-        "xgb_prob": 0.6014,
-        "pyth_prob": 0.7349,
+        "ensemble_prob": 0.587,
+        "logistic_prob": 0.6673,
+        "elo_prob": 0.5434,
+        "xgb_prob": 0.6278,
+        "pyth_prob": 0.7317,
         "eff_prob": 0.6768,
-        "bayesian_prob": 0.9582
+        "bayesian_prob": 0.9535
       },
       "market": {
         "home_prob": null,
@@ -1513,19 +1165,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6321,
-        "exp_margin": 3.93,
-        "prob_7plus": 0.3955,
-        "prob_14plus": 0.1941,
-        "prob_21plus": 0.0703,
+        "win_prob": 0.631,
+        "exp_margin": 3.97,
+        "prob_7plus": 0.3974,
+        "prob_14plus": 0.1953,
+        "prob_21plus": 0.0742,
         "margin_percentiles": [
-          -15.2,
-          -11.0,
+          -15.3,
+          -10.9,
           -4.0,
           3.9,
-          11.9,
-          18.8,
-          23.1
+          11.8,
+          19.0,
+          23.4
         ]
       },
       "adjustments": {
@@ -1539,14 +1191,9 @@
       },
       "h2h": {
         "home_wins": 16,
-        "away_wins": 11,
-        "total_meetings": 27,
+        "away_wins": 12,
+        "total_meetings": 28,
         "last_n": [
-          {
-            "date": "2025-12-14",
-            "winner": "SAS",
-            "margin": 2
-          },
           {
             "date": "2025-12-24",
             "winner": "SAS",
@@ -1591,22 +1238,27 @@
             "date": "2026-05-27",
             "winner": "OKC",
             "margin": 13
+          },
+          {
+            "date": "2026-05-29",
+            "winner": "SAS",
+            "margin": 27
           }
         ]
       },
       "elo": {
-        "home": 1847.7,
-        "away": 1820.7,
-        "diff": 27.0
+        "home": 1828.6,
+        "away": 1839.9,
+        "diff": -11.3
       },
       "bayesian": {
-        "home_mu": 1797.7,
+        "home_mu": 1794.9,
         "home_sigma": 40.0,
         "away_mu": 1799.9,
         "away_sigma": 40.0,
         "home_band": [
-          1757.7,
-          1837.7
+          1754.9,
+          1834.9
         ],
         "away_band": [
           1759.9,
@@ -1625,13 +1277,6 @@
       },
       "injuries": {
         "home": [
-          {
-            "player": "Jalen Williams",
-            "status": "Out",
-            "position": "G",
-            "injury_description": "After getting injured in Game 2, Williams is in jeopardy of missing a fourth consecutive contest due to left hamstring strain management. With Ajay Mitchell (calf) already ruled out for Game 6, Jared McCain, Alex Caruso and Cason Wallace could all be needed to handle significant playing time Thursday.",
-            "value_tier": "starter"
-          },
           {
             "player": "Ajay Mitchell",
             "status": "Out",
@@ -1658,16 +1303,9 @@
         ]
       },
       "injury_impact": {
-        "home_elo_penalty": 46.0,
+        "home_elo_penalty": 31.0,
         "away_elo_penalty": 14.0,
         "home_key_players_out": [
-          {
-            "player": "Jalen Williams",
-            "position": "G",
-            "status": "Out",
-            "elo_impact": 15.0,
-            "value_tier": "starter"
-          },
           {
             "player": "Ajay Mitchell",
             "position": "G",
@@ -1698,13 +1336,221 @@
         "away_star_stack_multiplier": 1.0
       },
       "prediction_drivers": [
-        "Jalen Williams (OKC) [Starter] OUT \u2014 \u221215 ELO",
         "Ajay Mitchell (OKC) [Starter] OUT \u2014 \u221215 ELO",
         "Thomas Sorber (OKC) [Starter] OUT \u2014 \u221216 ELO",
         "David Jones Garcia (SAS) [Starter] OUT \u2014 \u221214 ELO",
         "Home court: OKC +100 ELO advantage"
       ],
-      "explanation": "The model gives Oklahoma City Thunder a 60.3% win probability \u2014 a moderate favorite over San Antonio Spurs. Oklahoma City Thunder net rating: +11.1. Home court +100 ELO for Oklahoma City Thunder."
+      "explanation": "The model gives Oklahoma City Thunder a 58.7% win probability \u2014 a slight favorite over San Antonio Spurs. Oklahoma City Thunder net rating: +11.1. Home court +100 ELO for Oklahoma City Thunder."
+    },
+    {
+      "game_id": "401873202",
+      "game_time": "2026-05-29T00:30Z",
+      "status": "STATUS_FINAL",
+      "is_future": false,
+      "home_team": "SAS",
+      "away_team": "OKC",
+      "home_name": "San Antonio Spurs",
+      "away_name": "Oklahoma City Thunder",
+      "home_logo": "https://a.espncdn.com/i/teamlogos/nba/500/sa.png",
+      "away_logo": "https://a.espncdn.com/i/teamlogos/nba/500/okc.png",
+      "neutral": false,
+      "home_score": 118,
+      "away_score": 91,
+      "predictions": {
+        "ensemble_prob": 0.5628,
+        "logistic_prob": 0.45,
+        "elo_prob": 0.6222,
+        "xgb_prob": 0.5131,
+        "pyth_prob": 0.5369,
+        "eff_prob": 0.6016,
+        "bayesian_prob": 0.9683
+      },
+      "market": {
+        "home_prob": null,
+        "edge": null,
+        "kelly_pct": null,
+        "home_american": null,
+        "away_american": null
+      },
+      "monte_carlo": {
+        "win_prob": 0.6429,
+        "exp_margin": 4.29,
+        "prob_7plus": 0.4115,
+        "prob_14plus": 0.2038,
+        "prob_21plus": 0.0728,
+        "margin_percentiles": [
+          -15.0,
+          -10.9,
+          -3.6,
+          4.4,
+          12.2,
+          19.2,
+          23.2
+        ]
+      },
+      "adjustments": {
+        "rest_home": 7,
+        "rest_away": 7,
+        "rest_diff": 0,
+        "travel_dist_miles": 421.0,
+        "b2b_home": false,
+        "b2b_away": false,
+        "home_elo_bonus": 100
+      },
+      "h2h": {
+        "home_wins": 12,
+        "away_wins": 16,
+        "total_meetings": 28,
+        "last_n": [
+          {
+            "date": "2025-12-24",
+            "winner": "SAS",
+            "margin": 20
+          },
+          {
+            "date": "2025-12-25",
+            "winner": "SAS",
+            "margin": 15
+          },
+          {
+            "date": "2026-01-14",
+            "winner": "OKC",
+            "margin": 21
+          },
+          {
+            "date": "2026-02-05",
+            "winner": "SAS",
+            "margin": 10
+          },
+          {
+            "date": "2026-05-19",
+            "winner": "SAS",
+            "margin": 7
+          },
+          {
+            "date": "2026-05-21",
+            "winner": "OKC",
+            "margin": 9
+          },
+          {
+            "date": "2026-05-23",
+            "winner": "OKC",
+            "margin": 15
+          },
+          {
+            "date": "2026-05-25",
+            "winner": "SAS",
+            "margin": 21
+          },
+          {
+            "date": "2026-05-27",
+            "winner": "OKC",
+            "margin": 13
+          },
+          {
+            "date": "2026-05-29",
+            "winner": "SAS",
+            "margin": 27
+          }
+        ]
+      },
+      "elo": {
+        "home": 1839.9,
+        "away": 1828.6,
+        "diff": 11.3
+      },
+      "bayesian": {
+        "home_mu": 1799.9,
+        "home_sigma": 40.0,
+        "away_mu": 1794.9,
+        "away_sigma": 40.0,
+        "home_band": [
+          1759.9,
+          1839.9
+        ],
+        "away_band": [
+          1754.9,
+          1834.9
+        ]
+      },
+      "efficiency": {
+        "home_off_rating": 119.82927,
+        "home_def_rating": 111.52439,
+        "home_net_rating": 8.304879999999997,
+        "away_off_rating": 119.02439,
+        "away_def_rating": 107.87805,
+        "away_net_rating": 11.146339999999995,
+        "home_pace": 100.0,
+        "away_pace": 100.0
+      },
+      "injuries": {
+        "home": [
+          {
+            "player": "David Jones Garcia",
+            "status": "Out",
+            "position": "F",
+            "injury_description": "Jones Garcia only managed to make 11 appearances for the Spurs in his introductory season, finishing with averages of 2.9 points and 1.6 assists per game. The 24-year-old rookie was on a one-year, two-way deal with the Spurs, so he'll be a free agent this summer.",
+            "value_tier": "starter"
+          }
+        ],
+        "away": [
+          {
+            "player": "Ajay Mitchell",
+            "status": "Out",
+            "position": "G",
+            "injury_description": "Mitchell is set to miss a third consecutive contest with a right calf strain. If the Thunder fall to the Spurs on Thursday, his next chance to play would come Saturday in Game 7 of the series. The likes of Jared McCain, Alex Caruso and Cason Wallace are all candidates to step up for Oklahoma City in Game 6.",
+            "value_tier": "starter"
+          },
+          {
+            "player": "Thomas Sorber",
+            "status": "Out",
+            "position": "C",
+            "injury_description": "Sorber was selected No. 15 overall in the 2025 NBA Draft out of Georgetown by the reigning NBA champions. The rookie center was already dealing with a foot injury that cut his season with the Hoyas short and kept him out of the Summer League. Now he'll likely have to wait until the 2026-27 campaign to make his debut on the professional level.",
+            "value_tier": "starter"
+          }
+        ]
+      },
+      "injury_impact": {
+        "home_elo_penalty": 14.0,
+        "away_elo_penalty": 31.0,
+        "home_key_players_out": [
+          {
+            "player": "David Jones Garcia",
+            "position": "F",
+            "status": "Out",
+            "elo_impact": 14.0,
+            "value_tier": "starter"
+          }
+        ],
+        "away_key_players_out": [
+          {
+            "player": "Ajay Mitchell",
+            "position": "G",
+            "status": "Out",
+            "elo_impact": 15.0,
+            "value_tier": "starter"
+          },
+          {
+            "player": "Thomas Sorber",
+            "position": "C",
+            "status": "Out",
+            "elo_impact": 16.0,
+            "value_tier": "starter"
+          }
+        ],
+        "home_star_count": 0,
+        "away_star_count": 0,
+        "home_star_stack_multiplier": 1.0,
+        "away_star_stack_multiplier": 1.0
+      },
+      "prediction_drivers": [
+        "David Jones Garcia (SAS) [Starter] OUT \u2014 \u221214 ELO",
+        "Ajay Mitchell (OKC) [Starter] OUT \u2014 \u221215 ELO",
+        "Thomas Sorber (OKC) [Starter] OUT \u2014 \u221216 ELO",
+        "Home court: SAS +100 ELO advantage"
+      ],
+      "explanation": "The model gives San Antonio Spurs a 56.3% win probability \u2014 a slight favorite over Oklahoma City Thunder. San Antonio Spurs net rating: +8.3. Home court +100 ELO for San Antonio Spurs."
     }
   ]
 }
