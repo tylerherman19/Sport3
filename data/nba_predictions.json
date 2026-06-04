@@ -1,205 +1,9 @@
 {
-  "updated": "2026-06-03T13:02:37.272898+00:00",
+  "updated": "2026-06-04T11:42:06.490005+00:00",
   "season": 2026,
   "league": "nba",
   "is_offseason": false,
   "games": [
-    {
-      "game_id": "401859963",
-      "game_time": "2026-06-04T00:30Z",
-      "status": "STATUS_SCHEDULED",
-      "is_future": false,
-      "home_team": "SAS",
-      "away_team": "NYK",
-      "home_name": "San Antonio Spurs",
-      "away_name": "New York Knicks",
-      "home_logo": "https://a.espncdn.com/i/teamlogos/nba/500/sa.png",
-      "away_logo": "https://a.espncdn.com/i/teamlogos/nba/500/ny.png",
-      "neutral": false,
-      "home_score": 0,
-      "away_score": 0,
-      "predictions": {
-        "ensemble_prob": 0.6084,
-        "logistic_prob": 0.5167,
-        "elo_prob": 0.6651,
-        "xgb_prob": 0.5346,
-        "pyth_prob": 0.6065,
-        "eff_prob": 0.6658,
-        "bayesian_prob": 0.9616
-      },
-      "market": {
-        "home_prob": null,
-        "edge": null,
-        "kelly_pct": null,
-        "home_american": null,
-        "away_american": null
-      },
-      "monte_carlo": {
-        "win_prob": 0.6288,
-        "exp_margin": 3.93,
-        "prob_7plus": 0.3946,
-        "prob_14plus": 0.1934,
-        "prob_21plus": 0.0696,
-        "margin_percentiles": [
-          -14.9,
-          -10.9,
-          -4.0,
-          3.9,
-          11.9,
-          18.7,
-          23.2
-        ]
-      },
-      "adjustments": {
-        "rest_home": 7,
-        "rest_away": 7,
-        "rest_diff": 0,
-        "travel_dist_miles": 1583.0,
-        "b2b_home": false,
-        "b2b_away": false,
-        "home_elo_bonus": 100
-      },
-      "h2h": {
-        "home_wins": 4,
-        "away_wins": 7,
-        "total_meetings": 11,
-        "last_n": [
-          {
-            "date": "2022-01-11",
-            "winner": "NYK",
-            "margin": 15
-          },
-          {
-            "date": "2022-12-30",
-            "winner": "SAS",
-            "margin": 7
-          },
-          {
-            "date": "2023-01-05",
-            "winner": "NYK",
-            "margin": 3
-          },
-          {
-            "date": "2023-11-09",
-            "winner": "NYK",
-            "margin": 21
-          },
-          {
-            "date": "2024-03-30",
-            "winner": "SAS",
-            "margin": 4
-          },
-          {
-            "date": "2024-12-25",
-            "winner": "NYK",
-            "margin": 3
-          },
-          {
-            "date": "2025-03-20",
-            "winner": "SAS",
-            "margin": 15
-          },
-          {
-            "date": "2025-12-17",
-            "winner": "NYK",
-            "margin": 11
-          },
-          {
-            "date": "2026-01-01",
-            "winner": "SAS",
-            "margin": 2
-          },
-          {
-            "date": "2026-03-01",
-            "winner": "NYK",
-            "margin": 25
-          }
-        ]
-      },
-      "elo": {
-        "home": 1854.7,
-        "away": 1805.6,
-        "diff": 49.1
-      },
-      "bayesian": {
-        "home_mu": 1799.9,
-        "home_sigma": 40.0,
-        "away_mu": 1799.8,
-        "away_sigma": 40.0,
-        "home_band": [
-          1759.9,
-          1839.9
-        ],
-        "away_band": [
-          1759.8,
-          1839.8
-        ]
-      },
-      "efficiency": {
-        "home_off_rating": 119.82927,
-        "home_def_rating": 111.52439,
-        "home_net_rating": 8.304879999999997,
-        "away_off_rating": 116.45122,
-        "away_def_rating": 110.12195,
-        "away_net_rating": 6.329270000000008,
-        "home_pace": 100.0,
-        "away_pace": 100.0
-      },
-      "injuries": {
-        "home": [
-          {
-            "player": "David Jones Garcia",
-            "status": "Out",
-            "position": "F",
-            "injury_description": "Jones Garcia only managed to make 11 appearances for the Spurs in his introductory season, finishing with averages of 2.9 points and 1.6 assists per game. The 24-year-old rookie was on a one-year, two-way deal with the Spurs, so he'll be a free agent this summer.",
-            "value_tier": "starter"
-          }
-        ],
-        "away": [
-          {
-            "player": "Mitchell Robinson",
-            "status": "Day-To-Day",
-            "position": "C",
-            "injury_description": "Robinson sustained a broken right pinky finger Thursday and underwent surgery, though he participated in Tuesday's practice and was seen shooting with the injured hand, according to Joe Vardon of The Athletic. Shams Charania of ESPN reported Friday that the big man is pushing to play in Game 1, and the Knicks will likely evaluate him closer to tipoff before making a final decision on his status. If Robinson is unable to suit up, Ariel Hukporti and Mohamed Diawara would be candidates to enter the rotation behind Karl-Anthony Towns.",
-            "value_tier": "rotation"
-          }
-        ]
-      },
-      "injury_impact": {
-        "home_elo_penalty": 14.0,
-        "away_elo_penalty": 2.4,
-        "home_key_players_out": [
-          {
-            "player": "David Jones Garcia",
-            "position": "F",
-            "status": "Out",
-            "elo_impact": 14.0,
-            "value_tier": "starter"
-          }
-        ],
-        "away_key_players_out": [
-          {
-            "player": "Mitchell Robinson",
-            "position": "C",
-            "status": "Day-To-Day",
-            "elo_impact": 2.4,
-            "value_tier": "rotation"
-          }
-        ],
-        "home_star_count": 0,
-        "away_star_count": 0,
-        "home_star_stack_multiplier": 1.0,
-        "away_star_stack_multiplier": 1.0
-      },
-      "prediction_drivers": [
-        "David Jones Garcia (SAS) [Starter] OUT \u2014 \u221214 ELO",
-        "Mitchell Robinson (NYK) [Rotation] DAY-TO-DAY \u2014 \u22122 ELO",
-        "Offensive rating: SAS leads by 3.4 pts/100",
-        "Travel: away travels 1583 miles",
-        "Home court: SAS +100 ELO advantage"
-      ],
-      "explanation": "The model gives San Antonio Spurs a 60.8% win probability \u2014 a moderate favorite over New York Knicks. San Antonio Spurs net rating: +8.3. Home court +100 ELO for San Antonio Spurs."
-    },
     {
       "game_id": "401859964",
       "game_time": "2026-06-06T00:30Z",
@@ -215,11 +19,11 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.6084,
-        "logistic_prob": 0.5167,
-        "elo_prob": 0.6651,
-        "xgb_prob": 0.5346,
-        "pyth_prob": 0.6065,
+        "ensemble_prob": 0.5762,
+        "logistic_prob": 0.5115,
+        "elo_prob": 0.6144,
+        "xgb_prob": 0.5314,
+        "pyth_prob": 0.605,
         "eff_prob": 0.6658,
         "bayesian_prob": 0.9616
       },
@@ -231,19 +35,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6289,
-        "exp_margin": 3.93,
-        "prob_7plus": 0.4003,
-        "prob_14plus": 0.1946,
-        "prob_21plus": 0.0707,
+        "win_prob": 0.6363,
+        "exp_margin": 4.05,
+        "prob_7plus": 0.3996,
+        "prob_14plus": 0.1959,
+        "prob_21plus": 0.0723,
         "margin_percentiles": [
-          -15.6,
-          -11.1,
+          -15.3,
+          -11.0,
           -3.9,
-          4.0,
+          4.1,
           11.9,
-          18.7,
-          23.1
+          18.9,
+          23.2
         ]
       },
       "adjustments": {
@@ -257,14 +61,9 @@
       },
       "h2h": {
         "home_wins": 4,
-        "away_wins": 7,
-        "total_meetings": 11,
+        "away_wins": 8,
+        "total_meetings": 12,
         "last_n": [
-          {
-            "date": "2022-01-11",
-            "winner": "NYK",
-            "margin": 15
-          },
           {
             "date": "2022-12-30",
             "winner": "SAS",
@@ -309,13 +108,18 @@
             "date": "2026-03-01",
             "winner": "NYK",
             "margin": 25
+          },
+          {
+            "date": "2026-06-04",
+            "winner": "NYK",
+            "margin": 10
           }
         ]
       },
       "elo": {
-        "home": 1854.7,
-        "away": 1805.6,
-        "diff": 49.1
+        "home": 1836.8,
+        "away": 1823.6,
+        "diff": 13.2
       },
       "bayesian": {
         "home_mu": 1799.9,
@@ -351,19 +155,11 @@
             "value_tier": "starter"
           }
         ],
-        "away": [
-          {
-            "player": "Mitchell Robinson",
-            "status": "Day-To-Day",
-            "position": "C",
-            "injury_description": "Robinson sustained a broken right pinky finger Thursday and underwent surgery, though he participated in Tuesday's practice and was seen shooting with the injured hand, according to Joe Vardon of The Athletic. Shams Charania of ESPN reported Friday that the big man is pushing to play in Game 1, and the Knicks will likely evaluate him closer to tipoff before making a final decision on his status. If Robinson is unable to suit up, Ariel Hukporti and Mohamed Diawara would be candidates to enter the rotation behind Karl-Anthony Towns.",
-            "value_tier": "rotation"
-          }
-        ]
+        "away": []
       },
       "injury_impact": {
         "home_elo_penalty": 14.0,
-        "away_elo_penalty": 2.4,
+        "away_elo_penalty": 0.0,
         "home_key_players_out": [
           {
             "player": "David Jones Garcia",
@@ -373,15 +169,7 @@
             "value_tier": "starter"
           }
         ],
-        "away_key_players_out": [
-          {
-            "player": "Mitchell Robinson",
-            "position": "C",
-            "status": "Day-To-Day",
-            "elo_impact": 2.4,
-            "value_tier": "rotation"
-          }
-        ],
+        "away_key_players_out": [],
         "home_star_count": 0,
         "away_star_count": 0,
         "home_star_stack_multiplier": 1.0,
@@ -389,12 +177,11 @@
       },
       "prediction_drivers": [
         "David Jones Garcia (SAS) [Starter] OUT \u2014 \u221214 ELO",
-        "Mitchell Robinson (NYK) [Rotation] DAY-TO-DAY \u2014 \u22122 ELO",
         "Offensive rating: SAS leads by 3.4 pts/100",
         "Travel: away travels 1583 miles",
         "Home court: SAS +100 ELO advantage"
       ],
-      "explanation": "The model gives San Antonio Spurs a 60.8% win probability \u2014 a moderate favorite over New York Knicks. San Antonio Spurs net rating: +8.3. Home court +100 ELO for San Antonio Spurs."
+      "explanation": "The model gives San Antonio Spurs a 57.6% win probability \u2014 a slight favorite over New York Knicks. San Antonio Spurs net rating: +8.3. Home court +100 ELO for San Antonio Spurs."
     },
     {
       "game_id": "401859965",
@@ -411,11 +198,11 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.5771,
-        "logistic_prob": 0.5823,
-        "elo_prob": 0.5631,
-        "xgb_prob": 0.6241,
-        "pyth_prob": 0.6724,
+        "ensemble_prob": 0.6093,
+        "logistic_prob": 0.5833,
+        "elo_prob": 0.6165,
+        "xgb_prob": 0.6236,
+        "pyth_prob": 0.6737,
         "eff_prob": 0.6135,
         "bayesian_prob": 0.9613
       },
@@ -427,19 +214,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6323,
-        "exp_margin": 4.01,
-        "prob_7plus": 0.3987,
-        "prob_14plus": 0.1954,
-        "prob_21plus": 0.0694,
+        "win_prob": 0.631,
+        "exp_margin": 4.06,
+        "prob_7plus": 0.4012,
+        "prob_14plus": 0.1979,
+        "prob_21plus": 0.0777,
         "margin_percentiles": [
-          -15.2,
-          -10.8,
-          -3.9,
+          -15.4,
+          -11.1,
+          -4.1,
           4.1,
           12.0,
-          18.8,
-          23.2
+          19.3,
+          23.7
         ]
       },
       "adjustments": {
@@ -452,15 +239,10 @@
         "home_elo_bonus": 100
       },
       "h2h": {
-        "home_wins": 7,
+        "home_wins": 8,
         "away_wins": 4,
-        "total_meetings": 11,
+        "total_meetings": 12,
         "last_n": [
-          {
-            "date": "2022-01-11",
-            "winner": "NYK",
-            "margin": 15
-          },
           {
             "date": "2022-12-30",
             "winner": "SAS",
@@ -505,13 +287,18 @@
             "date": "2026-03-01",
             "winner": "NYK",
             "margin": 25
+          },
+          {
+            "date": "2026-06-04",
+            "winner": "NYK",
+            "margin": 10
           }
         ]
       },
       "elo": {
-        "home": 1805.6,
-        "away": 1854.7,
-        "diff": -49.1
+        "home": 1823.6,
+        "away": 1836.8,
+        "diff": -13.2
       },
       "bayesian": {
         "home_mu": 1799.8,
@@ -538,15 +325,7 @@
         "away_pace": 100.0
       },
       "injuries": {
-        "home": [
-          {
-            "player": "Mitchell Robinson",
-            "status": "Day-To-Day",
-            "position": "C",
-            "injury_description": "Robinson sustained a broken right pinky finger Thursday and underwent surgery, though he participated in Tuesday's practice and was seen shooting with the injured hand, according to Joe Vardon of The Athletic. Shams Charania of ESPN reported Friday that the big man is pushing to play in Game 1, and the Knicks will likely evaluate him closer to tipoff before making a final decision on his status. If Robinson is unable to suit up, Ariel Hukporti and Mohamed Diawara would be candidates to enter the rotation behind Karl-Anthony Towns.",
-            "value_tier": "rotation"
-          }
-        ],
+        "home": [],
         "away": [
           {
             "player": "David Jones Garcia",
@@ -558,17 +337,9 @@
         ]
       },
       "injury_impact": {
-        "home_elo_penalty": 2.4,
+        "home_elo_penalty": 0.0,
         "away_elo_penalty": 14.0,
-        "home_key_players_out": [
-          {
-            "player": "Mitchell Robinson",
-            "position": "C",
-            "status": "Day-To-Day",
-            "elo_impact": 2.4,
-            "value_tier": "rotation"
-          }
-        ],
+        "home_key_players_out": [],
         "away_key_players_out": [
           {
             "player": "David Jones Garcia",
@@ -584,13 +355,12 @@
         "away_star_stack_multiplier": 1.0
       },
       "prediction_drivers": [
-        "Mitchell Robinson (NYK) [Rotation] DAY-TO-DAY \u2014 \u22122 ELO",
         "David Jones Garcia (SAS) [Starter] OUT \u2014 \u221214 ELO",
         "Offensive rating: SAS leads by 3.4 pts/100",
         "Travel: away travels 1583 miles",
         "Home court: NYK +100 ELO advantage"
       ],
-      "explanation": "The model gives New York Knicks a 57.7% win probability \u2014 a slight favorite over San Antonio Spurs. New York Knicks net rating: +6.3. Home court +100 ELO for New York Knicks."
+      "explanation": "The model gives New York Knicks a 60.9% win probability \u2014 a moderate favorite over San Antonio Spurs. New York Knicks net rating: +6.3. Home court +100 ELO for New York Knicks."
     },
     {
       "game_id": "401859966",
@@ -607,11 +377,11 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.5771,
-        "logistic_prob": 0.5823,
-        "elo_prob": 0.5631,
-        "xgb_prob": 0.6241,
-        "pyth_prob": 0.6724,
+        "ensemble_prob": 0.6093,
+        "logistic_prob": 0.5833,
+        "elo_prob": 0.6165,
+        "xgb_prob": 0.6236,
+        "pyth_prob": 0.6737,
         "eff_prob": 0.6135,
         "bayesian_prob": 0.9613
       },
@@ -623,19 +393,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6382,
-        "exp_margin": 4.12,
-        "prob_7plus": 0.4007,
-        "prob_14plus": 0.1976,
-        "prob_21plus": 0.0762,
+        "win_prob": 0.6312,
+        "exp_margin": 3.89,
+        "prob_7plus": 0.3923,
+        "prob_14plus": 0.2006,
+        "prob_21plus": 0.0755,
         "margin_percentiles": [
-          -15.1,
-          -10.9,
-          -3.6,
-          4.0,
+          -15.3,
+          -11.2,
+          -4.1,
+          3.7,
           11.9,
-          19.1,
-          23.8
+          19.2,
+          23.4
         ]
       },
       "adjustments": {
@@ -648,15 +418,10 @@
         "home_elo_bonus": 100
       },
       "h2h": {
-        "home_wins": 7,
+        "home_wins": 8,
         "away_wins": 4,
-        "total_meetings": 11,
+        "total_meetings": 12,
         "last_n": [
-          {
-            "date": "2022-01-11",
-            "winner": "NYK",
-            "margin": 15
-          },
           {
             "date": "2022-12-30",
             "winner": "SAS",
@@ -701,13 +466,18 @@
             "date": "2026-03-01",
             "winner": "NYK",
             "margin": 25
+          },
+          {
+            "date": "2026-06-04",
+            "winner": "NYK",
+            "margin": 10
           }
         ]
       },
       "elo": {
-        "home": 1805.6,
-        "away": 1854.7,
-        "diff": -49.1
+        "home": 1823.6,
+        "away": 1836.8,
+        "diff": -13.2
       },
       "bayesian": {
         "home_mu": 1799.8,
@@ -734,15 +504,7 @@
         "away_pace": 100.0
       },
       "injuries": {
-        "home": [
-          {
-            "player": "Mitchell Robinson",
-            "status": "Day-To-Day",
-            "position": "C",
-            "injury_description": "Robinson sustained a broken right pinky finger Thursday and underwent surgery, though he participated in Tuesday's practice and was seen shooting with the injured hand, according to Joe Vardon of The Athletic. Shams Charania of ESPN reported Friday that the big man is pushing to play in Game 1, and the Knicks will likely evaluate him closer to tipoff before making a final decision on his status. If Robinson is unable to suit up, Ariel Hukporti and Mohamed Diawara would be candidates to enter the rotation behind Karl-Anthony Towns.",
-            "value_tier": "rotation"
-          }
-        ],
+        "home": [],
         "away": [
           {
             "player": "David Jones Garcia",
@@ -754,17 +516,9 @@
         ]
       },
       "injury_impact": {
-        "home_elo_penalty": 2.4,
+        "home_elo_penalty": 0.0,
         "away_elo_penalty": 14.0,
-        "home_key_players_out": [
-          {
-            "player": "Mitchell Robinson",
-            "position": "C",
-            "status": "Day-To-Day",
-            "elo_impact": 2.4,
-            "value_tier": "rotation"
-          }
-        ],
+        "home_key_players_out": [],
         "away_key_players_out": [
           {
             "player": "David Jones Garcia",
@@ -780,13 +534,12 @@
         "away_star_stack_multiplier": 1.0
       },
       "prediction_drivers": [
-        "Mitchell Robinson (NYK) [Rotation] DAY-TO-DAY \u2014 \u22122 ELO",
         "David Jones Garcia (SAS) [Starter] OUT \u2014 \u221214 ELO",
         "Offensive rating: SAS leads by 3.4 pts/100",
         "Travel: away travels 1583 miles",
         "Home court: NYK +100 ELO advantage"
       ],
-      "explanation": "The model gives New York Knicks a 57.7% win probability \u2014 a slight favorite over San Antonio Spurs. New York Knicks net rating: +6.3. Home court +100 ELO for New York Knicks."
+      "explanation": "The model gives New York Knicks a 60.9% win probability \u2014 a moderate favorite over San Antonio Spurs. New York Knicks net rating: +6.3. Home court +100 ELO for New York Knicks."
     },
     {
       "game_id": "401859967",
@@ -803,11 +556,11 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.6084,
-        "logistic_prob": 0.5167,
-        "elo_prob": 0.6651,
-        "xgb_prob": 0.5346,
-        "pyth_prob": 0.6065,
+        "ensemble_prob": 0.5762,
+        "logistic_prob": 0.5115,
+        "elo_prob": 0.6144,
+        "xgb_prob": 0.5314,
+        "pyth_prob": 0.605,
         "eff_prob": 0.6658,
         "bayesian_prob": 0.9616
       },
@@ -819,18 +572,18 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6382,
-        "exp_margin": 4.11,
-        "prob_7plus": 0.3999,
-        "prob_14plus": 0.1962,
-        "prob_21plus": 0.0747,
+        "win_prob": 0.6358,
+        "exp_margin": 4.07,
+        "prob_7plus": 0.3957,
+        "prob_14plus": 0.1977,
+        "prob_21plus": 0.0739,
         "margin_percentiles": [
-          -15.2,
+          -14.8,
           -10.8,
           -3.8,
           4.0,
-          11.8,
-          19.1,
+          11.9,
+          18.9,
           23.6
         ]
       },
@@ -845,14 +598,9 @@
       },
       "h2h": {
         "home_wins": 4,
-        "away_wins": 7,
-        "total_meetings": 11,
+        "away_wins": 8,
+        "total_meetings": 12,
         "last_n": [
-          {
-            "date": "2022-01-11",
-            "winner": "NYK",
-            "margin": 15
-          },
           {
             "date": "2022-12-30",
             "winner": "SAS",
@@ -897,13 +645,18 @@
             "date": "2026-03-01",
             "winner": "NYK",
             "margin": 25
+          },
+          {
+            "date": "2026-06-04",
+            "winner": "NYK",
+            "margin": 10
           }
         ]
       },
       "elo": {
-        "home": 1854.7,
-        "away": 1805.6,
-        "diff": 49.1
+        "home": 1836.8,
+        "away": 1823.6,
+        "diff": 13.2
       },
       "bayesian": {
         "home_mu": 1799.9,
@@ -939,19 +692,11 @@
             "value_tier": "starter"
           }
         ],
-        "away": [
-          {
-            "player": "Mitchell Robinson",
-            "status": "Day-To-Day",
-            "position": "C",
-            "injury_description": "Robinson sustained a broken right pinky finger Thursday and underwent surgery, though he participated in Tuesday's practice and was seen shooting with the injured hand, according to Joe Vardon of The Athletic. Shams Charania of ESPN reported Friday that the big man is pushing to play in Game 1, and the Knicks will likely evaluate him closer to tipoff before making a final decision on his status. If Robinson is unable to suit up, Ariel Hukporti and Mohamed Diawara would be candidates to enter the rotation behind Karl-Anthony Towns.",
-            "value_tier": "rotation"
-          }
-        ]
+        "away": []
       },
       "injury_impact": {
         "home_elo_penalty": 14.0,
-        "away_elo_penalty": 2.4,
+        "away_elo_penalty": 0.0,
         "home_key_players_out": [
           {
             "player": "David Jones Garcia",
@@ -961,15 +706,7 @@
             "value_tier": "starter"
           }
         ],
-        "away_key_players_out": [
-          {
-            "player": "Mitchell Robinson",
-            "position": "C",
-            "status": "Day-To-Day",
-            "elo_impact": 2.4,
-            "value_tier": "rotation"
-          }
-        ],
+        "away_key_players_out": [],
         "home_star_count": 0,
         "away_star_count": 0,
         "home_star_stack_multiplier": 1.0,
@@ -977,12 +714,11 @@
       },
       "prediction_drivers": [
         "David Jones Garcia (SAS) [Starter] OUT \u2014 \u221214 ELO",
-        "Mitchell Robinson (NYK) [Rotation] DAY-TO-DAY \u2014 \u22122 ELO",
         "Offensive rating: SAS leads by 3.4 pts/100",
         "Travel: away travels 1583 miles",
         "Home court: SAS +100 ELO advantage"
       ],
-      "explanation": "The model gives San Antonio Spurs a 60.8% win probability \u2014 a moderate favorite over New York Knicks. San Antonio Spurs net rating: +8.3. Home court +100 ELO for San Antonio Spurs."
+      "explanation": "The model gives San Antonio Spurs a 57.6% win probability \u2014 a slight favorite over New York Knicks. San Antonio Spurs net rating: +8.3. Home court +100 ELO for San Antonio Spurs."
     },
     {
       "game_id": "401859968",
@@ -999,11 +735,11 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.5771,
-        "logistic_prob": 0.5823,
-        "elo_prob": 0.5631,
-        "xgb_prob": 0.6241,
-        "pyth_prob": 0.6724,
+        "ensemble_prob": 0.6093,
+        "logistic_prob": 0.5833,
+        "elo_prob": 0.6165,
+        "xgb_prob": 0.6236,
+        "pyth_prob": 0.6737,
         "eff_prob": 0.6135,
         "bayesian_prob": 0.9613
       },
@@ -1015,19 +751,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6434,
-        "exp_margin": 4.21,
-        "prob_7plus": 0.4079,
-        "prob_14plus": 0.2019,
-        "prob_21plus": 0.0725,
+        "win_prob": 0.6272,
+        "exp_margin": 3.89,
+        "prob_7plus": 0.3985,
+        "prob_14plus": 0.1964,
+        "prob_21plus": 0.071,
         "margin_percentiles": [
-          -15.0,
-          -10.7,
-          -3.7,
-          4.1,
-          12.1,
-          19.0,
-          23.2
+          -15.7,
+          -11.3,
+          -4.1,
+          4.0,
+          11.9,
+          18.9,
+          23.1
         ]
       },
       "adjustments": {
@@ -1040,15 +776,10 @@
         "home_elo_bonus": 100
       },
       "h2h": {
-        "home_wins": 7,
+        "home_wins": 8,
         "away_wins": 4,
-        "total_meetings": 11,
+        "total_meetings": 12,
         "last_n": [
-          {
-            "date": "2022-01-11",
-            "winner": "NYK",
-            "margin": 15
-          },
           {
             "date": "2022-12-30",
             "winner": "SAS",
@@ -1093,13 +824,18 @@
             "date": "2026-03-01",
             "winner": "NYK",
             "margin": 25
+          },
+          {
+            "date": "2026-06-04",
+            "winner": "NYK",
+            "margin": 10
           }
         ]
       },
       "elo": {
-        "home": 1805.6,
-        "away": 1854.7,
-        "diff": -49.1
+        "home": 1823.6,
+        "away": 1836.8,
+        "diff": -13.2
       },
       "bayesian": {
         "home_mu": 1799.8,
@@ -1126,15 +862,7 @@
         "away_pace": 100.0
       },
       "injuries": {
-        "home": [
-          {
-            "player": "Mitchell Robinson",
-            "status": "Day-To-Day",
-            "position": "C",
-            "injury_description": "Robinson sustained a broken right pinky finger Thursday and underwent surgery, though he participated in Tuesday's practice and was seen shooting with the injured hand, according to Joe Vardon of The Athletic. Shams Charania of ESPN reported Friday that the big man is pushing to play in Game 1, and the Knicks will likely evaluate him closer to tipoff before making a final decision on his status. If Robinson is unable to suit up, Ariel Hukporti and Mohamed Diawara would be candidates to enter the rotation behind Karl-Anthony Towns.",
-            "value_tier": "rotation"
-          }
-        ],
+        "home": [],
         "away": [
           {
             "player": "David Jones Garcia",
@@ -1146,17 +874,9 @@
         ]
       },
       "injury_impact": {
-        "home_elo_penalty": 2.4,
+        "home_elo_penalty": 0.0,
         "away_elo_penalty": 14.0,
-        "home_key_players_out": [
-          {
-            "player": "Mitchell Robinson",
-            "position": "C",
-            "status": "Day-To-Day",
-            "elo_impact": 2.4,
-            "value_tier": "rotation"
-          }
-        ],
+        "home_key_players_out": [],
         "away_key_players_out": [
           {
             "player": "David Jones Garcia",
@@ -1172,13 +892,12 @@
         "away_star_stack_multiplier": 1.0
       },
       "prediction_drivers": [
-        "Mitchell Robinson (NYK) [Rotation] DAY-TO-DAY \u2014 \u22122 ELO",
         "David Jones Garcia (SAS) [Starter] OUT \u2014 \u221214 ELO",
         "Offensive rating: SAS leads by 3.4 pts/100",
         "Travel: away travels 1583 miles",
         "Home court: NYK +100 ELO advantage"
       ],
-      "explanation": "The model gives New York Knicks a 57.7% win probability \u2014 a slight favorite over San Antonio Spurs. New York Knicks net rating: +6.3. Home court +100 ELO for New York Knicks."
+      "explanation": "The model gives New York Knicks a 60.9% win probability \u2014 a moderate favorite over San Antonio Spurs. New York Knicks net rating: +6.3. Home court +100 ELO for New York Knicks."
     },
     {
       "game_id": "401873203",
@@ -1195,11 +914,11 @@
       "home_score": 103,
       "away_score": 111,
       "predictions": {
-        "ensemble_prob": 0.5453,
+        "ensemble_prob": 0.5623,
         "logistic_prob": 0.6673,
-        "elo_prob": 0.479,
-        "xgb_prob": 0.6074,
-        "pyth_prob": 0.7306,
+        "elo_prob": 0.5049,
+        "xgb_prob": 0.617,
+        "pyth_prob": 0.7315,
         "eff_prob": 0.6768,
         "bayesian_prob": 0.9542
       },
@@ -1211,17 +930,17 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6274,
-        "exp_margin": 3.75,
-        "prob_7plus": 0.3935,
-        "prob_14plus": 0.1937,
-        "prob_21plus": 0.0711,
+        "win_prob": 0.6292,
+        "exp_margin": 3.84,
+        "prob_7plus": 0.3961,
+        "prob_14plus": 0.1918,
+        "prob_21plus": 0.0725,
         "margin_percentiles": [
           -15.6,
-          -11.5,
-          -4.3,
-          3.7,
-          11.8,
+          -11.2,
+          -4.0,
+          3.8,
+          11.7,
           19.0,
           23.2
         ]
@@ -1294,8 +1013,8 @@
       },
       "elo": {
         "home": 1813.7,
-        "away": 1854.7,
-        "diff": -41.0
+        "away": 1836.8,
+        "diff": -23.1
       },
       "bayesian": {
         "home_mu": 1795.3,
@@ -1402,7 +1121,186 @@
         "David Jones Garcia (SAS) [Starter] OUT \u2014 \u221214 ELO",
         "Home court: OKC +100 ELO advantage"
       ],
-      "explanation": "The model gives Oklahoma City Thunder a 54.5% win probability \u2014 a slight favorite over San Antonio Spurs. Oklahoma City Thunder net rating: +11.1. Home court +100 ELO for Oklahoma City Thunder."
+      "explanation": "The model gives Oklahoma City Thunder a 56.2% win probability \u2014 a slight favorite over San Antonio Spurs. Oklahoma City Thunder net rating: +11.1. Home court +100 ELO for Oklahoma City Thunder."
+    },
+    {
+      "game_id": "401859963",
+      "game_time": "2026-06-04T00:30Z",
+      "status": "STATUS_FINAL",
+      "is_future": false,
+      "home_team": "SAS",
+      "away_team": "NYK",
+      "home_name": "San Antonio Spurs",
+      "away_name": "New York Knicks",
+      "home_logo": "https://a.espncdn.com/i/teamlogos/nba/500/sa.png",
+      "away_logo": "https://a.espncdn.com/i/teamlogos/nba/500/ny.png",
+      "neutral": false,
+      "home_score": 95,
+      "away_score": 105,
+      "predictions": {
+        "ensemble_prob": 0.5762,
+        "logistic_prob": 0.5115,
+        "elo_prob": 0.6144,
+        "xgb_prob": 0.5314,
+        "pyth_prob": 0.605,
+        "eff_prob": 0.6658,
+        "bayesian_prob": 0.9616
+      },
+      "market": {
+        "home_prob": null,
+        "edge": null,
+        "kelly_pct": null,
+        "home_american": null,
+        "away_american": null
+      },
+      "monte_carlo": {
+        "win_prob": 0.6338,
+        "exp_margin": 3.96,
+        "prob_7plus": 0.4025,
+        "prob_14plus": 0.1984,
+        "prob_21plus": 0.0733,
+        "margin_percentiles": [
+          -15.7,
+          -11.3,
+          -4.0,
+          4.1,
+          12.0,
+          19.0,
+          23.1
+        ]
+      },
+      "adjustments": {
+        "rest_home": 7,
+        "rest_away": 7,
+        "rest_diff": 0,
+        "travel_dist_miles": 1583.0,
+        "b2b_home": false,
+        "b2b_away": false,
+        "home_elo_bonus": 100
+      },
+      "h2h": {
+        "home_wins": 4,
+        "away_wins": 8,
+        "total_meetings": 12,
+        "last_n": [
+          {
+            "date": "2022-12-30",
+            "winner": "SAS",
+            "margin": 7
+          },
+          {
+            "date": "2023-01-05",
+            "winner": "NYK",
+            "margin": 3
+          },
+          {
+            "date": "2023-11-09",
+            "winner": "NYK",
+            "margin": 21
+          },
+          {
+            "date": "2024-03-30",
+            "winner": "SAS",
+            "margin": 4
+          },
+          {
+            "date": "2024-12-25",
+            "winner": "NYK",
+            "margin": 3
+          },
+          {
+            "date": "2025-03-20",
+            "winner": "SAS",
+            "margin": 15
+          },
+          {
+            "date": "2025-12-17",
+            "winner": "NYK",
+            "margin": 11
+          },
+          {
+            "date": "2026-01-01",
+            "winner": "SAS",
+            "margin": 2
+          },
+          {
+            "date": "2026-03-01",
+            "winner": "NYK",
+            "margin": 25
+          },
+          {
+            "date": "2026-06-04",
+            "winner": "NYK",
+            "margin": 10
+          }
+        ]
+      },
+      "elo": {
+        "home": 1836.8,
+        "away": 1823.6,
+        "diff": 13.2
+      },
+      "bayesian": {
+        "home_mu": 1799.9,
+        "home_sigma": 40.0,
+        "away_mu": 1799.8,
+        "away_sigma": 40.0,
+        "home_band": [
+          1759.9,
+          1839.9
+        ],
+        "away_band": [
+          1759.8,
+          1839.8
+        ]
+      },
+      "efficiency": {
+        "home_off_rating": 119.82927,
+        "home_def_rating": 111.52439,
+        "home_net_rating": 8.304879999999997,
+        "away_off_rating": 116.45122,
+        "away_def_rating": 110.12195,
+        "away_net_rating": 6.329270000000008,
+        "home_pace": 100.0,
+        "away_pace": 100.0
+      },
+      "injuries": {
+        "home": [
+          {
+            "player": "David Jones Garcia",
+            "status": "Out",
+            "position": "F",
+            "injury_description": "Jones Garcia only managed to make 11 appearances for the Spurs in his introductory season, finishing with averages of 2.9 points and 1.6 assists per game. The 24-year-old rookie was on a one-year, two-way deal with the Spurs, so he'll be a free agent this summer.",
+            "value_tier": "starter"
+          }
+        ],
+        "away": []
+      },
+      "injury_impact": {
+        "home_elo_penalty": 14.0,
+        "away_elo_penalty": 0.0,
+        "home_key_players_out": [
+          {
+            "player": "David Jones Garcia",
+            "position": "F",
+            "status": "Out",
+            "elo_impact": 14.0,
+            "value_tier": "starter"
+          }
+        ],
+        "away_key_players_out": [],
+        "home_star_count": 0,
+        "away_star_count": 0,
+        "home_star_stack_multiplier": 1.0,
+        "away_star_stack_multiplier": 1.0
+      },
+      "prediction_drivers": [
+        "David Jones Garcia (SAS) [Starter] OUT \u2014 \u221214 ELO",
+        "Offensive rating: SAS leads by 3.4 pts/100",
+        "Travel: away travels 1583 miles",
+        "Home court: SAS +100 ELO advantage"
+      ],
+      "explanation": "The model gives San Antonio Spurs a 57.6% win probability \u2014 a slight favorite over New York Knicks. San Antonio Spurs net rating: +8.3. Home court +100 ELO for San Antonio Spurs."
     }
   ]
 }
