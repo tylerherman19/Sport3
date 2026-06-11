@@ -1,188 +1,9 @@
 {
-  "updated": "2026-06-10T12:10:37.053686+00:00",
+  "updated": "2026-06-11T12:34:01.684576+00:00",
   "season": 2026,
   "league": "nba",
   "is_offseason": false,
   "games": [
-    {
-      "game_id": "401859966",
-      "game_time": "2026-06-11T00:30Z",
-      "status": "STATUS_SCHEDULED",
-      "is_future": false,
-      "home_team": "NYK",
-      "away_team": "SAS",
-      "home_name": "New York Knicks",
-      "away_name": "San Antonio Spurs",
-      "home_logo": "https://a.espncdn.com/i/teamlogos/nba/500/ny.png",
-      "away_logo": "https://a.espncdn.com/i/teamlogos/nba/500/sa.png",
-      "neutral": false,
-      "home_score": 0,
-      "away_score": 0,
-      "predictions": {
-        "ensemble_prob": 0.5971,
-        "logistic_prob": 0.5813,
-        "elo_prob": 0.5997,
-        "xgb_prob": 0.6134,
-        "pyth_prob": 0.673,
-        "eff_prob": 0.6135,
-        "bayesian_prob": 0.9613
-      },
-      "market": {
-        "home_prob": null,
-        "edge": null,
-        "kelly_pct": null,
-        "home_american": null,
-        "away_american": null
-      },
-      "monte_carlo": {
-        "win_prob": 0.6337,
-        "exp_margin": 4.03,
-        "prob_7plus": 0.3989,
-        "prob_14plus": 0.1991,
-        "prob_21plus": 0.0708,
-        "margin_percentiles": [
-          -15.0,
-          -11.0,
-          -3.8,
-          4.1,
-          12.0,
-          18.9,
-          23.0
-        ]
-      },
-      "adjustments": {
-        "rest_home": 7,
-        "rest_away": 7,
-        "rest_diff": 0,
-        "travel_dist_miles": 1583.0,
-        "b2b_home": false,
-        "b2b_away": false,
-        "home_elo_bonus": 100
-      },
-      "h2h": {
-        "home_wins": 9,
-        "away_wins": 5,
-        "total_meetings": 14,
-        "last_n": [
-          {
-            "date": "2023-11-09",
-            "winner": "NYK",
-            "margin": 21
-          },
-          {
-            "date": "2024-03-30",
-            "winner": "SAS",
-            "margin": 4
-          },
-          {
-            "date": "2024-12-25",
-            "winner": "NYK",
-            "margin": 3
-          },
-          {
-            "date": "2025-03-20",
-            "winner": "SAS",
-            "margin": 15
-          },
-          {
-            "date": "2025-12-17",
-            "winner": "NYK",
-            "margin": 11
-          },
-          {
-            "date": "2026-01-01",
-            "winner": "SAS",
-            "margin": 2
-          },
-          {
-            "date": "2026-03-01",
-            "winner": "NYK",
-            "margin": 25
-          },
-          {
-            "date": "2026-06-04",
-            "winner": "NYK",
-            "margin": 10
-          },
-          {
-            "date": "2026-06-06",
-            "winner": "NYK",
-            "margin": 1
-          },
-          {
-            "date": "2026-06-09",
-            "winner": "SAS",
-            "margin": 4
-          }
-        ]
-      },
-      "elo": {
-        "home": 1817.4,
-        "away": 1842.9,
-        "diff": -25.5
-      },
-      "bayesian": {
-        "home_mu": 1799.9,
-        "home_sigma": 40.0,
-        "away_mu": 1799.9,
-        "away_sigma": 40.0,
-        "home_band": [
-          1759.9,
-          1839.9
-        ],
-        "away_band": [
-          1759.9,
-          1839.9
-        ]
-      },
-      "efficiency": {
-        "home_off_rating": 116.45122,
-        "home_def_rating": 110.12195,
-        "home_net_rating": 6.329270000000008,
-        "away_off_rating": 119.82927,
-        "away_def_rating": 111.52439,
-        "away_net_rating": 8.304879999999997,
-        "home_pace": 100.0,
-        "away_pace": 100.0
-      },
-      "injuries": {
-        "home": [],
-        "away": [
-          {
-            "player": "David Jones Garcia",
-            "status": "Out",
-            "position": "F",
-            "injury_description": "Jones Garcia only managed to make 11 appearances for the Spurs in his introductory season, finishing with averages of 2.9 points and 1.6 assists per game. The 24-year-old rookie was on a one-year, two-way deal with the Spurs, so he'll be a free agent this summer.",
-            "value_tier": "starter"
-          }
-        ]
-      },
-      "injury_impact": {
-        "home_elo_penalty": 0.0,
-        "away_elo_penalty": 14.0,
-        "home_key_players_out": [],
-        "away_key_players_out": [
-          {
-            "player": "David Jones Garcia",
-            "position": "F",
-            "status": "Out",
-            "elo_impact": 14.0,
-            "value_tier": "starter"
-          }
-        ],
-        "home_star_count": 0,
-        "away_star_count": 0,
-        "home_star_stack_multiplier": 1.0,
-        "away_star_stack_multiplier": 1.0
-      },
-      "prediction_drivers": [
-        "David Jones Garcia (SAS) [Starter] OUT \u2014 \u221214 ELO",
-        "Offensive rating: SAS leads by 3.4 pts/100",
-        "Travel: away travels 1583 miles",
-        "Home court: NYK +100 ELO advantage"
-      ],
-      "explanation": "The model gives New York Knicks a 59.7% win probability \u2014 a slight favorite over San Antonio Spurs. New York Knicks net rating: +6.3. Home court +100 ELO for New York Knicks."
-    },
     {
       "game_id": "401859967",
       "game_time": "2026-06-14T00:30Z",
@@ -198,13 +19,13 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.5847,
-        "logistic_prob": 0.5079,
-        "elo_prob": 0.6309,
-        "xgb_prob": 0.5279,
-        "pyth_prob": 0.6057,
+        "ensemble_prob": 0.581,
+        "logistic_prob": 0.5152,
+        "elo_prob": 0.6202,
+        "xgb_prob": 0.5338,
+        "pyth_prob": 0.6056,
         "eff_prob": 0.6658,
-        "bayesian_prob": 0.9616
+        "bayesian_prob": 0.9615
       },
       "market": {
         "home_prob": null,
@@ -214,19 +35,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.636,
-        "exp_margin": 3.93,
-        "prob_7plus": 0.3942,
-        "prob_14plus": 0.1924,
-        "prob_21plus": 0.0718,
+        "win_prob": 0.6356,
+        "exp_margin": 4.12,
+        "prob_7plus": 0.4073,
+        "prob_14plus": 0.2019,
+        "prob_21plus": 0.0741,
         "margin_percentiles": [
-          -15.4,
-          -11.0,
-          -4.0,
+          -15.3,
+          -10.6,
+          -3.9,
           4.1,
-          11.7,
-          18.9,
-          23.1
+          12.1,
+          19.2,
+          23.3
         ]
       },
       "adjustments": {
@@ -240,14 +61,9 @@
       },
       "h2h": {
         "home_wins": 5,
-        "away_wins": 9,
-        "total_meetings": 14,
+        "away_wins": 10,
+        "total_meetings": 15,
         "last_n": [
-          {
-            "date": "2023-11-09",
-            "winner": "NYK",
-            "margin": 21
-          },
           {
             "date": "2024-03-30",
             "winner": "SAS",
@@ -292,13 +108,18 @@
             "date": "2026-06-09",
             "winner": "SAS",
             "margin": 4
+          },
+          {
+            "date": "2026-06-11",
+            "winner": "NYK",
+            "margin": 1
           }
         ]
       },
       "elo": {
-        "home": 1842.9,
-        "away": 1817.4,
-        "diff": 25.5
+        "home": 1838.9,
+        "away": 1821.3,
+        "diff": 17.6
       },
       "bayesian": {
         "home_mu": 1799.9,
@@ -360,7 +181,7 @@
         "Travel: away travels 1583 miles",
         "Home court: SAS +100 ELO advantage"
       ],
-      "explanation": "The model gives San Antonio Spurs a 58.5% win probability \u2014 a slight favorite over New York Knicks. San Antonio Spurs net rating: +8.3. Home court +100 ELO for San Antonio Spurs."
+      "explanation": "The model gives San Antonio Spurs a 58.1% win probability \u2014 a slight favorite over New York Knicks. San Antonio Spurs net rating: +8.3. Home court +100 ELO for San Antonio Spurs."
     },
     {
       "game_id": "401859968",
@@ -377,13 +198,13 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.5971,
-        "logistic_prob": 0.5813,
-        "elo_prob": 0.5997,
-        "xgb_prob": 0.6134,
-        "pyth_prob": 0.673,
+        "ensemble_prob": 0.6051,
+        "logistic_prob": 0.5843,
+        "elo_prob": 0.6104,
+        "xgb_prob": 0.6188,
+        "pyth_prob": 0.6731,
         "eff_prob": 0.6135,
-        "bayesian_prob": 0.9613
+        "bayesian_prob": 0.9614
       },
       "market": {
         "home_prob": null,
@@ -393,19 +214,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6287,
-        "exp_margin": 3.84,
-        "prob_7plus": 0.3925,
-        "prob_14plus": 0.1963,
-        "prob_21plus": 0.073,
+        "win_prob": 0.6455,
+        "exp_margin": 4.32,
+        "prob_7plus": 0.4067,
+        "prob_14plus": 0.2028,
+        "prob_21plus": 0.0747,
         "margin_percentiles": [
-          -15.8,
-          -11.4,
-          -4.2,
-          3.9,
-          11.8,
-          18.9,
-          23.2
+          -14.4,
+          -10.4,
+          -3.4,
+          4.2,
+          12.1,
+          19.1,
+          23.4
         ]
       },
       "adjustments": {
@@ -418,15 +239,10 @@
         "home_elo_bonus": 100
       },
       "h2h": {
-        "home_wins": 9,
+        "home_wins": 10,
         "away_wins": 5,
-        "total_meetings": 14,
+        "total_meetings": 15,
         "last_n": [
-          {
-            "date": "2023-11-09",
-            "winner": "NYK",
-            "margin": 21
-          },
           {
             "date": "2024-03-30",
             "winner": "SAS",
@@ -471,13 +287,18 @@
             "date": "2026-06-09",
             "winner": "SAS",
             "margin": 4
+          },
+          {
+            "date": "2026-06-11",
+            "winner": "NYK",
+            "margin": 1
           }
         ]
       },
       "elo": {
-        "home": 1817.4,
-        "away": 1842.9,
-        "diff": -25.5
+        "home": 1821.3,
+        "away": 1838.9,
+        "diff": -17.6
       },
       "bayesian": {
         "home_mu": 1799.9,
@@ -539,7 +360,7 @@
         "Travel: away travels 1583 miles",
         "Home court: NYK +100 ELO advantage"
       ],
-      "explanation": "The model gives New York Knicks a 59.7% win probability \u2014 a slight favorite over San Antonio Spurs. New York Knicks net rating: +6.3. Home court +100 ELO for New York Knicks."
+      "explanation": "The model gives New York Knicks a 60.5% win probability \u2014 a moderate favorite over San Antonio Spurs. New York Knicks net rating: +6.3. Home court +100 ELO for New York Knicks."
     },
     {
       "game_id": "401859969",
@@ -556,13 +377,13 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.5847,
-        "logistic_prob": 0.5079,
-        "elo_prob": 0.6309,
-        "xgb_prob": 0.5279,
-        "pyth_prob": 0.6057,
+        "ensemble_prob": 0.581,
+        "logistic_prob": 0.5152,
+        "elo_prob": 0.6202,
+        "xgb_prob": 0.5338,
+        "pyth_prob": 0.6056,
         "eff_prob": 0.6658,
-        "bayesian_prob": 0.9616
+        "bayesian_prob": 0.9615
       },
       "market": {
         "home_prob": null,
@@ -572,19 +393,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6272,
-        "exp_margin": 3.91,
-        "prob_7plus": 0.3929,
-        "prob_14plus": 0.1977,
-        "prob_21plus": 0.0752,
+        "win_prob": 0.634,
+        "exp_margin": 4.13,
+        "prob_7plus": 0.4052,
+        "prob_14plus": 0.2052,
+        "prob_21plus": 0.0742,
         "margin_percentiles": [
-          -15.7,
-          -11.1,
+          -15.2,
+          -11.0,
           -3.9,
-          3.8,
-          12.1,
-          19.1,
-          23.3
+          4.1,
+          12.2,
+          19.3,
+          23.4
         ]
       },
       "adjustments": {
@@ -598,14 +419,9 @@
       },
       "h2h": {
         "home_wins": 5,
-        "away_wins": 9,
-        "total_meetings": 14,
+        "away_wins": 10,
+        "total_meetings": 15,
         "last_n": [
-          {
-            "date": "2023-11-09",
-            "winner": "NYK",
-            "margin": 21
-          },
           {
             "date": "2024-03-30",
             "winner": "SAS",
@@ -650,13 +466,18 @@
             "date": "2026-06-09",
             "winner": "SAS",
             "margin": 4
+          },
+          {
+            "date": "2026-06-11",
+            "winner": "NYK",
+            "margin": 1
           }
         ]
       },
       "elo": {
-        "home": 1842.9,
-        "away": 1817.4,
-        "diff": 25.5
+        "home": 1838.9,
+        "away": 1821.3,
+        "diff": 17.6
       },
       "bayesian": {
         "home_mu": 1799.9,
@@ -718,186 +539,7 @@
         "Travel: away travels 1583 miles",
         "Home court: SAS +100 ELO advantage"
       ],
-      "explanation": "The model gives San Antonio Spurs a 58.5% win probability \u2014 a slight favorite over New York Knicks. San Antonio Spurs net rating: +8.3. Home court +100 ELO for San Antonio Spurs."
-    },
-    {
-      "game_id": "401859964",
-      "game_time": "2026-06-06T00:30Z",
-      "status": "STATUS_FINAL",
-      "is_future": false,
-      "home_team": "SAS",
-      "away_team": "NYK",
-      "home_name": "San Antonio Spurs",
-      "away_name": "New York Knicks",
-      "home_logo": "https://a.espncdn.com/i/teamlogos/nba/500/sa.png",
-      "away_logo": "https://a.espncdn.com/i/teamlogos/nba/500/ny.png",
-      "neutral": false,
-      "home_score": 104,
-      "away_score": 105,
-      "predictions": {
-        "ensemble_prob": 0.5847,
-        "logistic_prob": 0.5079,
-        "elo_prob": 0.6309,
-        "xgb_prob": 0.5279,
-        "pyth_prob": 0.6057,
-        "eff_prob": 0.6658,
-        "bayesian_prob": 0.9616
-      },
-      "market": {
-        "home_prob": null,
-        "edge": null,
-        "kelly_pct": null,
-        "home_american": null,
-        "away_american": null
-      },
-      "monte_carlo": {
-        "win_prob": 0.6299,
-        "exp_margin": 3.95,
-        "prob_7plus": 0.3964,
-        "prob_14plus": 0.1982,
-        "prob_21plus": 0.0754,
-        "margin_percentiles": [
-          -15.3,
-          -11.1,
-          -4.1,
-          3.8,
-          12.0,
-          19.1,
-          23.3
-        ]
-      },
-      "adjustments": {
-        "rest_home": 7,
-        "rest_away": 7,
-        "rest_diff": 0,
-        "travel_dist_miles": 1583.0,
-        "b2b_home": false,
-        "b2b_away": false,
-        "home_elo_bonus": 100
-      },
-      "h2h": {
-        "home_wins": 5,
-        "away_wins": 9,
-        "total_meetings": 14,
-        "last_n": [
-          {
-            "date": "2023-11-09",
-            "winner": "NYK",
-            "margin": 21
-          },
-          {
-            "date": "2024-03-30",
-            "winner": "SAS",
-            "margin": 4
-          },
-          {
-            "date": "2024-12-25",
-            "winner": "NYK",
-            "margin": 3
-          },
-          {
-            "date": "2025-03-20",
-            "winner": "SAS",
-            "margin": 15
-          },
-          {
-            "date": "2025-12-17",
-            "winner": "NYK",
-            "margin": 11
-          },
-          {
-            "date": "2026-01-01",
-            "winner": "SAS",
-            "margin": 2
-          },
-          {
-            "date": "2026-03-01",
-            "winner": "NYK",
-            "margin": 25
-          },
-          {
-            "date": "2026-06-04",
-            "winner": "NYK",
-            "margin": 10
-          },
-          {
-            "date": "2026-06-06",
-            "winner": "NYK",
-            "margin": 1
-          },
-          {
-            "date": "2026-06-09",
-            "winner": "SAS",
-            "margin": 4
-          }
-        ]
-      },
-      "elo": {
-        "home": 1842.9,
-        "away": 1817.4,
-        "diff": 25.5
-      },
-      "bayesian": {
-        "home_mu": 1799.9,
-        "home_sigma": 40.0,
-        "away_mu": 1799.9,
-        "away_sigma": 40.0,
-        "home_band": [
-          1759.9,
-          1839.9
-        ],
-        "away_band": [
-          1759.9,
-          1839.9
-        ]
-      },
-      "efficiency": {
-        "home_off_rating": 119.82927,
-        "home_def_rating": 111.52439,
-        "home_net_rating": 8.304879999999997,
-        "away_off_rating": 116.45122,
-        "away_def_rating": 110.12195,
-        "away_net_rating": 6.329270000000008,
-        "home_pace": 100.0,
-        "away_pace": 100.0
-      },
-      "injuries": {
-        "home": [
-          {
-            "player": "David Jones Garcia",
-            "status": "Out",
-            "position": "F",
-            "injury_description": "Jones Garcia only managed to make 11 appearances for the Spurs in his introductory season, finishing with averages of 2.9 points and 1.6 assists per game. The 24-year-old rookie was on a one-year, two-way deal with the Spurs, so he'll be a free agent this summer.",
-            "value_tier": "starter"
-          }
-        ],
-        "away": []
-      },
-      "injury_impact": {
-        "home_elo_penalty": 14.0,
-        "away_elo_penalty": 0.0,
-        "home_key_players_out": [
-          {
-            "player": "David Jones Garcia",
-            "position": "F",
-            "status": "Out",
-            "elo_impact": 14.0,
-            "value_tier": "starter"
-          }
-        ],
-        "away_key_players_out": [],
-        "home_star_count": 0,
-        "away_star_count": 0,
-        "home_star_stack_multiplier": 1.0,
-        "away_star_stack_multiplier": 1.0
-      },
-      "prediction_drivers": [
-        "David Jones Garcia (SAS) [Starter] OUT \u2014 \u221214 ELO",
-        "Offensive rating: SAS leads by 3.4 pts/100",
-        "Travel: away travels 1583 miles",
-        "Home court: SAS +100 ELO advantage"
-      ],
-      "explanation": "The model gives San Antonio Spurs a 58.5% win probability \u2014 a slight favorite over New York Knicks. San Antonio Spurs net rating: +8.3. Home court +100 ELO for San Antonio Spurs."
+      "explanation": "The model gives San Antonio Spurs a 58.1% win probability \u2014 a slight favorite over New York Knicks. San Antonio Spurs net rating: +8.3. Home court +100 ELO for San Antonio Spurs."
     },
     {
       "game_id": "401859965",
@@ -914,13 +556,13 @@
       "home_score": 111,
       "away_score": 115,
       "predictions": {
-        "ensemble_prob": 0.5971,
-        "logistic_prob": 0.5813,
-        "elo_prob": 0.5997,
-        "xgb_prob": 0.6134,
-        "pyth_prob": 0.673,
+        "ensemble_prob": 0.6051,
+        "logistic_prob": 0.5843,
+        "elo_prob": 0.6104,
+        "xgb_prob": 0.6188,
+        "pyth_prob": 0.6731,
         "eff_prob": 0.6135,
-        "bayesian_prob": 0.9613
+        "bayesian_prob": 0.9614
       },
       "market": {
         "home_prob": null,
@@ -930,19 +572,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6322,
-        "exp_margin": 3.99,
-        "prob_7plus": 0.4024,
-        "prob_14plus": 0.2005,
-        "prob_21plus": 0.0753,
+        "win_prob": 0.6374,
+        "exp_margin": 3.96,
+        "prob_7plus": 0.401,
+        "prob_14plus": 0.1994,
+        "prob_21plus": 0.0736,
         "margin_percentiles": [
-          -15.2,
-          -11.3,
-          -4.1,
+          -15.6,
+          -11.2,
+          -3.9,
           4.0,
-          12.1,
+          11.9,
           19.0,
-          23.5
+          23.4
         ]
       },
       "adjustments": {
@@ -955,15 +597,10 @@
         "home_elo_bonus": 100
       },
       "h2h": {
-        "home_wins": 9,
+        "home_wins": 10,
         "away_wins": 5,
-        "total_meetings": 14,
+        "total_meetings": 15,
         "last_n": [
-          {
-            "date": "2023-11-09",
-            "winner": "NYK",
-            "margin": 21
-          },
           {
             "date": "2024-03-30",
             "winner": "SAS",
@@ -1008,13 +645,18 @@
             "date": "2026-06-09",
             "winner": "SAS",
             "margin": 4
+          },
+          {
+            "date": "2026-06-11",
+            "winner": "NYK",
+            "margin": 1
           }
         ]
       },
       "elo": {
-        "home": 1817.4,
-        "away": 1842.9,
-        "diff": -25.5
+        "home": 1821.3,
+        "away": 1838.9,
+        "diff": -17.6
       },
       "bayesian": {
         "home_mu": 1799.9,
@@ -1076,7 +718,186 @@
         "Travel: away travels 1583 miles",
         "Home court: NYK +100 ELO advantage"
       ],
-      "explanation": "The model gives New York Knicks a 59.7% win probability \u2014 a slight favorite over San Antonio Spurs. New York Knicks net rating: +6.3. Home court +100 ELO for New York Knicks."
+      "explanation": "The model gives New York Knicks a 60.5% win probability \u2014 a moderate favorite over San Antonio Spurs. New York Knicks net rating: +6.3. Home court +100 ELO for New York Knicks."
+    },
+    {
+      "game_id": "401859966",
+      "game_time": "2026-06-11T00:30Z",
+      "status": "STATUS_FINAL",
+      "is_future": false,
+      "home_team": "NYK",
+      "away_team": "SAS",
+      "home_name": "New York Knicks",
+      "away_name": "San Antonio Spurs",
+      "home_logo": "https://a.espncdn.com/i/teamlogos/nba/500/ny.png",
+      "away_logo": "https://a.espncdn.com/i/teamlogos/nba/500/sa.png",
+      "neutral": false,
+      "home_score": 107,
+      "away_score": 106,
+      "predictions": {
+        "ensemble_prob": 0.6051,
+        "logistic_prob": 0.5843,
+        "elo_prob": 0.6104,
+        "xgb_prob": 0.6188,
+        "pyth_prob": 0.6731,
+        "eff_prob": 0.6135,
+        "bayesian_prob": 0.9614
+      },
+      "market": {
+        "home_prob": null,
+        "edge": null,
+        "kelly_pct": null,
+        "home_american": null,
+        "away_american": null
+      },
+      "monte_carlo": {
+        "win_prob": 0.6237,
+        "exp_margin": 3.81,
+        "prob_7plus": 0.396,
+        "prob_14plus": 0.1912,
+        "prob_21plus": 0.0698,
+        "margin_percentiles": [
+          -15.3,
+          -11.2,
+          -4.2,
+          3.9,
+          11.8,
+          18.7,
+          23.3
+        ]
+      },
+      "adjustments": {
+        "rest_home": 7,
+        "rest_away": 7,
+        "rest_diff": 0,
+        "travel_dist_miles": 1583.0,
+        "b2b_home": false,
+        "b2b_away": false,
+        "home_elo_bonus": 100
+      },
+      "h2h": {
+        "home_wins": 10,
+        "away_wins": 5,
+        "total_meetings": 15,
+        "last_n": [
+          {
+            "date": "2024-03-30",
+            "winner": "SAS",
+            "margin": 4
+          },
+          {
+            "date": "2024-12-25",
+            "winner": "NYK",
+            "margin": 3
+          },
+          {
+            "date": "2025-03-20",
+            "winner": "SAS",
+            "margin": 15
+          },
+          {
+            "date": "2025-12-17",
+            "winner": "NYK",
+            "margin": 11
+          },
+          {
+            "date": "2026-01-01",
+            "winner": "SAS",
+            "margin": 2
+          },
+          {
+            "date": "2026-03-01",
+            "winner": "NYK",
+            "margin": 25
+          },
+          {
+            "date": "2026-06-04",
+            "winner": "NYK",
+            "margin": 10
+          },
+          {
+            "date": "2026-06-06",
+            "winner": "NYK",
+            "margin": 1
+          },
+          {
+            "date": "2026-06-09",
+            "winner": "SAS",
+            "margin": 4
+          },
+          {
+            "date": "2026-06-11",
+            "winner": "NYK",
+            "margin": 1
+          }
+        ]
+      },
+      "elo": {
+        "home": 1821.3,
+        "away": 1838.9,
+        "diff": -17.6
+      },
+      "bayesian": {
+        "home_mu": 1799.9,
+        "home_sigma": 40.0,
+        "away_mu": 1799.9,
+        "away_sigma": 40.0,
+        "home_band": [
+          1759.9,
+          1839.9
+        ],
+        "away_band": [
+          1759.9,
+          1839.9
+        ]
+      },
+      "efficiency": {
+        "home_off_rating": 116.45122,
+        "home_def_rating": 110.12195,
+        "home_net_rating": 6.329270000000008,
+        "away_off_rating": 119.82927,
+        "away_def_rating": 111.52439,
+        "away_net_rating": 8.304879999999997,
+        "home_pace": 100.0,
+        "away_pace": 100.0
+      },
+      "injuries": {
+        "home": [],
+        "away": [
+          {
+            "player": "David Jones Garcia",
+            "status": "Out",
+            "position": "F",
+            "injury_description": "Jones Garcia only managed to make 11 appearances for the Spurs in his introductory season, finishing with averages of 2.9 points and 1.6 assists per game. The 24-year-old rookie was on a one-year, two-way deal with the Spurs, so he'll be a free agent this summer.",
+            "value_tier": "starter"
+          }
+        ]
+      },
+      "injury_impact": {
+        "home_elo_penalty": 0.0,
+        "away_elo_penalty": 14.0,
+        "home_key_players_out": [],
+        "away_key_players_out": [
+          {
+            "player": "David Jones Garcia",
+            "position": "F",
+            "status": "Out",
+            "elo_impact": 14.0,
+            "value_tier": "starter"
+          }
+        ],
+        "home_star_count": 0,
+        "away_star_count": 0,
+        "home_star_stack_multiplier": 1.0,
+        "away_star_stack_multiplier": 1.0
+      },
+      "prediction_drivers": [
+        "David Jones Garcia (SAS) [Starter] OUT \u2014 \u221214 ELO",
+        "Offensive rating: SAS leads by 3.4 pts/100",
+        "Travel: away travels 1583 miles",
+        "Home court: NYK +100 ELO advantage"
+      ],
+      "explanation": "The model gives New York Knicks a 60.5% win probability \u2014 a moderate favorite over San Antonio Spurs. New York Knicks net rating: +6.3. Home court +100 ELO for New York Knicks."
     }
   ]
 }
