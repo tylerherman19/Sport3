@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-12T12:08:52.767825+00:00",
+  "updated": "2026-06-13T11:05:28.694871+00:00",
   "season": 2026,
   "league": "nba",
   "is_offseason": false,
@@ -8,7 +8,7 @@
       "game_id": "401859967",
       "game_time": "2026-06-14T00:30Z",
       "status": "STATUS_SCHEDULED",
-      "is_future": true,
+      "is_future": false,
       "home_team": "SAS",
       "away_team": "NYK",
       "home_name": "San Antonio Spurs",
@@ -19,9 +19,9 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.581,
+        "ensemble_prob": 0.5731,
         "logistic_prob": 0.5152,
-        "elo_prob": 0.6202,
+        "elo_prob": 0.6071,
         "xgb_prob": 0.5338,
         "pyth_prob": 0.6056,
         "eff_prob": 0.6658,
@@ -35,18 +35,18 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6359,
-        "exp_margin": 4.11,
-        "prob_7plus": 0.4015,
-        "prob_14plus": 0.1981,
-        "prob_21plus": 0.0765,
+        "win_prob": 0.6272,
+        "exp_margin": 3.92,
+        "prob_7plus": 0.3903,
+        "prob_14plus": 0.1946,
+        "prob_21plus": 0.0769,
         "margin_percentiles": [
-          -14.9,
-          -10.7,
+          -15.3,
+          -11.0,
           -3.9,
-          4.0,
+          3.9,
           11.9,
-          19.2,
+          19.3,
           23.5
         ]
       },
@@ -148,6 +148,13 @@
       "injuries": {
         "home": [
           {
+            "player": "Luke Kornet",
+            "status": "Day-To-Day",
+            "position": "C",
+            "injury_description": "Kornet is under the weather and may be held out of Saturday's do-or-die matchup. The veteran big man's absence wouldn't cause any significant waves in the rotation, though Victor Wembanyama and Carter Bryant could pick up a few extra minutes.",
+            "value_tier": "starter"
+          },
+          {
             "player": "David Jones Garcia",
             "status": "Out",
             "position": "F",
@@ -158,9 +165,16 @@
         "away": []
       },
       "injury_impact": {
-        "home_elo_penalty": 14.0,
+        "home_elo_penalty": 23.6,
         "away_elo_penalty": 0.0,
         "home_key_players_out": [
+          {
+            "player": "Luke Kornet",
+            "position": "C",
+            "status": "Day-To-Day",
+            "elo_impact": 9.6,
+            "value_tier": "starter"
+          },
           {
             "player": "David Jones Garcia",
             "position": "F",
@@ -176,12 +190,13 @@
         "away_star_stack_multiplier": 1.0
       },
       "prediction_drivers": [
+        "Luke Kornet (SAS) [Starter] DAY-TO-DAY \u2014 \u221210 ELO",
         "David Jones Garcia (SAS) [Starter] OUT \u2014 \u221214 ELO",
         "Offensive rating: SAS leads by 3.4 pts/100",
         "Travel: away travels 1583 miles",
         "Home court: SAS +100 ELO advantage"
       ],
-      "explanation": "The model gives San Antonio Spurs a 58.1% win probability \u2014 a slight favorite over New York Knicks. San Antonio Spurs net rating: +8.3. Home court +100 ELO for San Antonio Spurs."
+      "explanation": "The model gives San Antonio Spurs a 57.3% win probability \u2014 a slight favorite over New York Knicks. San Antonio Spurs net rating: +8.3. Home court +100 ELO for San Antonio Spurs."
     },
     {
       "game_id": "401859968",
@@ -198,9 +213,9 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.6051,
+        "ensemble_prob": 0.613,
         "logistic_prob": 0.5843,
-        "elo_prob": 0.6104,
+        "elo_prob": 0.6235,
         "xgb_prob": 0.6188,
         "pyth_prob": 0.6731,
         "eff_prob": 0.6135,
@@ -214,19 +229,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6353,
-        "exp_margin": 4.02,
-        "prob_7plus": 0.4037,
-        "prob_14plus": 0.198,
-        "prob_21plus": 0.0735,
+        "win_prob": 0.6357,
+        "exp_margin": 4.06,
+        "prob_7plus": 0.3998,
+        "prob_14plus": 0.1957,
+        "prob_21plus": 0.0754,
         "margin_percentiles": [
           -15.3,
-          -11.0,
-          -4.0,
-          4.0,
-          12.0,
-          19.0,
-          23.1
+          -10.8,
+          -3.8,
+          4.1,
+          11.9,
+          19.1,
+          23.5
         ]
       },
       "adjustments": {
@@ -328,6 +343,13 @@
         "home": [],
         "away": [
           {
+            "player": "Luke Kornet",
+            "status": "Day-To-Day",
+            "position": "C",
+            "injury_description": "Kornet is under the weather and may be held out of Saturday's do-or-die matchup. The veteran big man's absence wouldn't cause any significant waves in the rotation, though Victor Wembanyama and Carter Bryant could pick up a few extra minutes.",
+            "value_tier": "starter"
+          },
+          {
             "player": "David Jones Garcia",
             "status": "Out",
             "position": "F",
@@ -338,9 +360,16 @@
       },
       "injury_impact": {
         "home_elo_penalty": 0.0,
-        "away_elo_penalty": 14.0,
+        "away_elo_penalty": 23.6,
         "home_key_players_out": [],
         "away_key_players_out": [
+          {
+            "player": "Luke Kornet",
+            "position": "C",
+            "status": "Day-To-Day",
+            "elo_impact": 9.6,
+            "value_tier": "starter"
+          },
           {
             "player": "David Jones Garcia",
             "position": "F",
@@ -355,12 +384,13 @@
         "away_star_stack_multiplier": 1.0
       },
       "prediction_drivers": [
+        "Luke Kornet (SAS) [Starter] DAY-TO-DAY \u2014 \u221210 ELO",
         "David Jones Garcia (SAS) [Starter] OUT \u2014 \u221214 ELO",
         "Offensive rating: SAS leads by 3.4 pts/100",
         "Travel: away travels 1583 miles",
         "Home court: NYK +100 ELO advantage"
       ],
-      "explanation": "The model gives New York Knicks a 60.5% win probability \u2014 a moderate favorite over San Antonio Spurs. New York Knicks net rating: +6.3. Home court +100 ELO for New York Knicks."
+      "explanation": "The model gives New York Knicks a 61.3% win probability \u2014 a moderate favorite over San Antonio Spurs. New York Knicks net rating: +6.3. Home court +100 ELO for New York Knicks."
     },
     {
       "game_id": "401859969",
@@ -377,9 +407,9 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.581,
+        "ensemble_prob": 0.5731,
         "logistic_prob": 0.5152,
-        "elo_prob": 0.6202,
+        "elo_prob": 0.6071,
         "xgb_prob": 0.5338,
         "pyth_prob": 0.6056,
         "eff_prob": 0.6658,
@@ -393,19 +423,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6361,
-        "exp_margin": 4.02,
-        "prob_7plus": 0.3939,
-        "prob_14plus": 0.1934,
-        "prob_21plus": 0.0696,
+        "win_prob": 0.6318,
+        "exp_margin": 3.91,
+        "prob_7plus": 0.3916,
+        "prob_14plus": 0.1954,
+        "prob_21plus": 0.0731,
         "margin_percentiles": [
-          -14.7,
-          -10.7,
-          -3.8,
-          4.0,
-          11.7,
+          -15.4,
+          -11.1,
+          -4.1,
+          3.8,
+          11.9,
           18.9,
-          23.1
+          23.4
         ]
       },
       "adjustments": {
@@ -506,6 +536,13 @@
       "injuries": {
         "home": [
           {
+            "player": "Luke Kornet",
+            "status": "Day-To-Day",
+            "position": "C",
+            "injury_description": "Kornet is under the weather and may be held out of Saturday's do-or-die matchup. The veteran big man's absence wouldn't cause any significant waves in the rotation, though Victor Wembanyama and Carter Bryant could pick up a few extra minutes.",
+            "value_tier": "starter"
+          },
+          {
             "player": "David Jones Garcia",
             "status": "Out",
             "position": "F",
@@ -516,9 +553,16 @@
         "away": []
       },
       "injury_impact": {
-        "home_elo_penalty": 14.0,
+        "home_elo_penalty": 23.6,
         "away_elo_penalty": 0.0,
         "home_key_players_out": [
+          {
+            "player": "Luke Kornet",
+            "position": "C",
+            "status": "Day-To-Day",
+            "elo_impact": 9.6,
+            "value_tier": "starter"
+          },
           {
             "player": "David Jones Garcia",
             "position": "F",
@@ -534,12 +578,13 @@
         "away_star_stack_multiplier": 1.0
       },
       "prediction_drivers": [
+        "Luke Kornet (SAS) [Starter] DAY-TO-DAY \u2014 \u221210 ELO",
         "David Jones Garcia (SAS) [Starter] OUT \u2014 \u221214 ELO",
         "Offensive rating: SAS leads by 3.4 pts/100",
         "Travel: away travels 1583 miles",
         "Home court: SAS +100 ELO advantage"
       ],
-      "explanation": "The model gives San Antonio Spurs a 58.1% win probability \u2014 a slight favorite over New York Knicks. San Antonio Spurs net rating: +8.3. Home court +100 ELO for San Antonio Spurs."
+      "explanation": "The model gives San Antonio Spurs a 57.3% win probability \u2014 a slight favorite over New York Knicks. San Antonio Spurs net rating: +8.3. Home court +100 ELO for San Antonio Spurs."
     },
     {
       "game_id": "401859965",
@@ -556,9 +601,9 @@
       "home_score": 111,
       "away_score": 115,
       "predictions": {
-        "ensemble_prob": 0.6051,
+        "ensemble_prob": 0.613,
         "logistic_prob": 0.5843,
-        "elo_prob": 0.6104,
+        "elo_prob": 0.6235,
         "xgb_prob": 0.6188,
         "pyth_prob": 0.6731,
         "eff_prob": 0.6135,
@@ -572,19 +617,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6302,
-        "exp_margin": 3.9,
-        "prob_7plus": 0.3906,
-        "prob_14plus": 0.1987,
-        "prob_21plus": 0.0717,
+        "win_prob": 0.6362,
+        "exp_margin": 3.94,
+        "prob_7plus": 0.3954,
+        "prob_14plus": 0.1944,
+        "prob_21plus": 0.0705,
         "margin_percentiles": [
-          -15.2,
-          -11.0,
-          -4.1,
-          3.8,
-          11.8,
-          19.0,
-          23.2
+          -15.7,
+          -11.3,
+          -3.7,
+          4.2,
+          11.7,
+          18.6,
+          23.0
         ]
       },
       "adjustments": {
@@ -686,6 +731,13 @@
         "home": [],
         "away": [
           {
+            "player": "Luke Kornet",
+            "status": "Day-To-Day",
+            "position": "C",
+            "injury_description": "Kornet is under the weather and may be held out of Saturday's do-or-die matchup. The veteran big man's absence wouldn't cause any significant waves in the rotation, though Victor Wembanyama and Carter Bryant could pick up a few extra minutes.",
+            "value_tier": "starter"
+          },
+          {
             "player": "David Jones Garcia",
             "status": "Out",
             "position": "F",
@@ -696,9 +748,16 @@
       },
       "injury_impact": {
         "home_elo_penalty": 0.0,
-        "away_elo_penalty": 14.0,
+        "away_elo_penalty": 23.6,
         "home_key_players_out": [],
         "away_key_players_out": [
+          {
+            "player": "Luke Kornet",
+            "position": "C",
+            "status": "Day-To-Day",
+            "elo_impact": 9.6,
+            "value_tier": "starter"
+          },
           {
             "player": "David Jones Garcia",
             "position": "F",
@@ -713,12 +772,13 @@
         "away_star_stack_multiplier": 1.0
       },
       "prediction_drivers": [
+        "Luke Kornet (SAS) [Starter] DAY-TO-DAY \u2014 \u221210 ELO",
         "David Jones Garcia (SAS) [Starter] OUT \u2014 \u221214 ELO",
         "Offensive rating: SAS leads by 3.4 pts/100",
         "Travel: away travels 1583 miles",
         "Home court: NYK +100 ELO advantage"
       ],
-      "explanation": "The model gives New York Knicks a 60.5% win probability \u2014 a moderate favorite over San Antonio Spurs. New York Knicks net rating: +6.3. Home court +100 ELO for New York Knicks."
+      "explanation": "The model gives New York Knicks a 61.3% win probability \u2014 a moderate favorite over San Antonio Spurs. New York Knicks net rating: +6.3. Home court +100 ELO for New York Knicks."
     },
     {
       "game_id": "401859966",
@@ -735,9 +795,9 @@
       "home_score": 107,
       "away_score": 106,
       "predictions": {
-        "ensemble_prob": 0.6051,
+        "ensemble_prob": 0.613,
         "logistic_prob": 0.5843,
-        "elo_prob": 0.6104,
+        "elo_prob": 0.6235,
         "xgb_prob": 0.6188,
         "pyth_prob": 0.6731,
         "eff_prob": 0.6135,
@@ -751,19 +811,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.632,
-        "exp_margin": 4.01,
-        "prob_7plus": 0.4009,
-        "prob_14plus": 0.1945,
-        "prob_21plus": 0.0748,
+        "win_prob": 0.6324,
+        "exp_margin": 4.06,
+        "prob_7plus": 0.4,
+        "prob_14plus": 0.1967,
+        "prob_21plus": 0.0724,
         "margin_percentiles": [
-          -15.3,
-          -11.2,
-          -4.1,
-          4.1,
-          12.0,
-          19.1,
-          23.4
+          -15.0,
+          -10.7,
+          -3.7,
+          4.0,
+          11.9,
+          18.9,
+          23.1
         ]
       },
       "adjustments": {
@@ -865,6 +925,13 @@
         "home": [],
         "away": [
           {
+            "player": "Luke Kornet",
+            "status": "Day-To-Day",
+            "position": "C",
+            "injury_description": "Kornet is under the weather and may be held out of Saturday's do-or-die matchup. The veteran big man's absence wouldn't cause any significant waves in the rotation, though Victor Wembanyama and Carter Bryant could pick up a few extra minutes.",
+            "value_tier": "starter"
+          },
+          {
             "player": "David Jones Garcia",
             "status": "Out",
             "position": "F",
@@ -875,9 +942,16 @@
       },
       "injury_impact": {
         "home_elo_penalty": 0.0,
-        "away_elo_penalty": 14.0,
+        "away_elo_penalty": 23.6,
         "home_key_players_out": [],
         "away_key_players_out": [
+          {
+            "player": "Luke Kornet",
+            "position": "C",
+            "status": "Day-To-Day",
+            "elo_impact": 9.6,
+            "value_tier": "starter"
+          },
           {
             "player": "David Jones Garcia",
             "position": "F",
@@ -892,12 +966,13 @@
         "away_star_stack_multiplier": 1.0
       },
       "prediction_drivers": [
+        "Luke Kornet (SAS) [Starter] DAY-TO-DAY \u2014 \u221210 ELO",
         "David Jones Garcia (SAS) [Starter] OUT \u2014 \u221214 ELO",
         "Offensive rating: SAS leads by 3.4 pts/100",
         "Travel: away travels 1583 miles",
         "Home court: NYK +100 ELO advantage"
       ],
-      "explanation": "The model gives New York Knicks a 60.5% win probability \u2014 a moderate favorite over San Antonio Spurs. New York Knicks net rating: +6.3. Home court +100 ELO for New York Knicks."
+      "explanation": "The model gives New York Knicks a 61.3% win probability \u2014 a moderate favorite over San Antonio Spurs. New York Knicks net rating: +6.3. Home court +100 ELO for New York Knicks."
     }
   ]
 }
