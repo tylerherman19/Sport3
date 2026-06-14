@@ -1,50 +1,19 @@
 {
-  "updated": "2026-06-13T11:05:28.694871+00:00",
+  "updated": "2026-06-14T11:20:54.615060+00:00",
   "season": 2026,
   "league": "nba",
   "teams": [
-    {
-      "team": "SAS",
-      "team_name": "San Antonio Spurs",
-      "abbrev": "sas",
-      "logo": "https://a.espncdn.com/i/teamlogos/nba/500/sas.png",
-      "elo": 1838.9,
-      "sigma": 40.0,
-      "mu": 1799.9,
-      "lower_band": 1759.9,
-      "upper_band": 1839.9,
-      "pyth": 0.6048,
-      "net_eff": 8.3,
-      "off_eff": 119.8,
-      "def_eff": 111.5,
-      "net_rating": 8.3,
-      "offensive_rating": 119.8,
-      "defensive_rating": 111.5,
-      "pace": 100.0,
-      "wins": 62,
-      "losses": 20,
-      "ties": 0,
-      "playoff_prob": 1.0,
-      "sb_prob": 0.1417,
-      "champ_prob": 0.1417,
-      "trend": "down",
-      "streak_type": "L",
-      "streak_count": 1,
-      "injury_elo_penalty": 23.6,
-      "injury_impact_score": 0.1967,
-      "injury_players_count": 2
-    },
     {
       "team": "NYK",
       "team_name": "New York Knicks",
       "abbrev": "nyk",
       "logo": "https://a.espncdn.com/i/teamlogos/nba/500/nyk.png",
-      "elo": 1821.3,
+      "elo": 1832.8,
       "sigma": 40.0,
       "mu": 1799.9,
       "lower_band": 1759.9,
       "upper_band": 1839.9,
-      "pyth": 0.6685,
+      "pyth": 0.6684,
       "net_eff": 6.33,
       "off_eff": 116.5,
       "def_eff": 110.1,
@@ -60,10 +29,41 @@
       "champ_prob": 0.0,
       "trend": "up",
       "streak_type": "W",
-      "streak_count": 1,
-      "injury_elo_penalty": 0.0,
-      "injury_impact_score": 0.0,
-      "injury_players_count": 0
+      "streak_count": 2,
+      "injury_elo_penalty": 9.0,
+      "injury_impact_score": 0.075,
+      "injury_players_count": 1
+    },
+    {
+      "team": "SAS",
+      "team_name": "San Antonio Spurs",
+      "abbrev": "sas",
+      "logo": "https://a.espncdn.com/i/teamlogos/nba/500/sas.png",
+      "elo": 1827.5,
+      "sigma": 40.0,
+      "mu": 1799.9,
+      "lower_band": 1759.9,
+      "upper_band": 1839.9,
+      "pyth": 0.6038,
+      "net_eff": 8.3,
+      "off_eff": 119.8,
+      "def_eff": 111.5,
+      "net_rating": 8.3,
+      "offensive_rating": 119.8,
+      "defensive_rating": 111.5,
+      "pace": 100.0,
+      "wins": 62,
+      "losses": 20,
+      "ties": 0,
+      "playoff_prob": 1.0,
+      "sb_prob": 0.0,
+      "champ_prob": 0.0,
+      "trend": "down",
+      "streak_type": "L",
+      "streak_count": 2,
+      "injury_elo_penalty": 14.0,
+      "injury_impact_score": 0.1167,
+      "injury_players_count": 1
     },
     {
       "team": "OKC",
@@ -87,14 +87,14 @@
       "losses": 18,
       "ties": 0,
       "playoff_prob": 1.0,
-      "sb_prob": 0.8583,
-      "champ_prob": 0.8583,
+      "sb_prob": 1.0,
+      "champ_prob": 1.0,
       "trend": "down",
       "streak_type": "L",
       "streak_count": 2,
-      "injury_elo_penalty": 46.0,
-      "injury_impact_score": 0.3833,
-      "injury_players_count": 3
+      "injury_elo_penalty": 61.0,
+      "injury_impact_score": 0.5083,
+      "injury_players_count": 4
     },
     {
       "team": "DET",
@@ -185,8 +185,8 @@
       "trend": "down",
       "streak_type": "L",
       "streak_count": 1,
-      "injury_elo_penalty": 19.2,
-      "injury_impact_score": 0.16,
+      "injury_elo_penalty": 29.0,
+      "injury_impact_score": 0.2417,
       "injury_players_count": 2
     },
     {
@@ -278,8 +278,8 @@
       "trend": "neutral",
       "streak_type": "L",
       "streak_count": 4,
-      "injury_elo_penalty": 4.5,
-      "injury_impact_score": 0.0375,
+      "injury_elo_penalty": 15.0,
+      "injury_impact_score": 0.125,
       "injury_players_count": 1
     },
     {
@@ -309,8 +309,8 @@
       "trend": "down",
       "streak_type": "L",
       "streak_count": 1,
-      "injury_elo_penalty": 42.52,
-      "injury_impact_score": 0.3543,
+      "injury_elo_penalty": 67.26,
+      "injury_impact_score": 0.5605,
       "injury_players_count": 3
     },
     {
@@ -340,8 +340,8 @@
       "trend": "neutral",
       "streak_type": "L",
       "streak_count": 2,
-      "injury_elo_penalty": 4.5,
-      "injury_impact_score": 0.0375,
+      "injury_elo_penalty": 15.0,
+      "injury_impact_score": 0.125,
       "injury_players_count": 1
     },
     {
@@ -371,8 +371,8 @@
       "trend": "down",
       "streak_type": "L",
       "streak_count": 3,
-      "injury_elo_penalty": 27.85,
-      "injury_impact_score": 0.2321,
+      "injury_elo_penalty": 38.67,
+      "injury_impact_score": 0.3223,
       "injury_players_count": 2
     },
     {
@@ -433,8 +433,8 @@
       "trend": "neutral",
       "streak_type": "L",
       "streak_count": 1,
-      "injury_elo_penalty": 34.2,
-      "injury_impact_score": 0.285,
+      "injury_elo_penalty": 44.0,
+      "injury_impact_score": 0.3667,
       "injury_players_count": 3
     },
     {
@@ -526,8 +526,8 @@
       "trend": "neutral",
       "streak_type": "L",
       "streak_count": 1,
-      "injury_elo_penalty": 20.5,
-      "injury_impact_score": 0.1708,
+      "injury_elo_penalty": 31.0,
+      "injury_impact_score": 0.2583,
       "injury_players_count": 2
     },
     {
@@ -582,7 +582,7 @@
       "wins": 45,
       "losses": 37,
       "ties": 0,
-      "playoff_prob": 1.0,
+      "playoff_prob": 0.0,
       "sb_prob": 0.0,
       "champ_prob": 0.0,
       "trend": "neutral",
@@ -681,8 +681,8 @@
       "trend": "down",
       "streak_type": "L",
       "streak_count": 2,
-      "injury_elo_penalty": 77.5,
-      "injury_impact_score": 0.6458,
+      "injury_elo_penalty": 88.0,
+      "injury_impact_score": 0.7333,
       "injury_players_count": 6
     },
     {
@@ -712,8 +712,8 @@
       "trend": "neutral",
       "streak_type": "L",
       "streak_count": 1,
-      "injury_elo_penalty": 107.39,
-      "injury_impact_score": 0.8949,
+      "injury_elo_penalty": 120.0,
+      "injury_impact_score": 1.0,
       "injury_players_count": 9
     },
     {
@@ -774,8 +774,8 @@
       "trend": "down",
       "streak_type": "L",
       "streak_count": 2,
-      "injury_elo_penalty": 114.9,
-      "injury_impact_score": 0.9575,
+      "injury_elo_penalty": 120.0,
+      "injury_impact_score": 1.0,
       "injury_players_count": 10
     },
     {
