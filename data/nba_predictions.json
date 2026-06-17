@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-16T13:19:41.412774+00:00",
+  "updated": "2026-06-17T12:42:33.614117+00:00",
   "season": 2026,
   "league": "nba",
   "is_offseason": false,
@@ -19,11 +19,11 @@
       "home_score": 90,
       "away_score": 94,
       "predictions": {
-        "ensemble_prob": 0.5636,
-        "logistic_prob": 0.5265,
-        "elo_prob": 0.5856,
-        "xgb_prob": 0.537,
-        "pyth_prob": 0.6097,
+        "ensemble_prob": 0.5704,
+        "logistic_prob": 0.5185,
+        "elo_prob": 0.5986,
+        "xgb_prob": 0.5441,
+        "pyth_prob": 0.6051,
         "eff_prob": 0.6658,
         "bayesian_prob": 0.9615
       },
@@ -35,19 +35,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6339,
-        "exp_margin": 4.09,
-        "prob_7plus": 0.4046,
-        "prob_14plus": 0.2016,
-        "prob_21plus": 0.0748,
+        "win_prob": 0.6366,
+        "exp_margin": 4.01,
+        "prob_7plus": 0.4043,
+        "prob_14plus": 0.1993,
+        "prob_21plus": 0.0737,
         "margin_percentiles": [
-          -15.2,
-          -10.8,
-          -3.9,
-          4.1,
-          12.1,
-          19.2,
-          23.3
+          -15.8,
+          -11.3,
+          -3.8,
+          4.0,
+          11.9,
+          19.1,
+          23.2
         ]
       },
       "adjustments": {
@@ -117,9 +117,9 @@
         ]
       },
       "elo": {
-        "home": 1825.8,
-        "away": 1833.4,
-        "diff": -7.6
+        "home": 1827.5,
+        "away": 1832.8,
+        "diff": -5.3
       },
       "bayesian": {
         "home_mu": 1799.9,
@@ -149,7 +149,7 @@
         "home": [
           {
             "player": "David Jones Garcia",
-            "status": "Out",
+            "status": "Day-To-Day",
             "position": "F",
             "injury_description": "Jones Garcia only managed to make 11 appearances for the Spurs in his introductory season, finishing with averages of 2.9 points and 1.6 assists per game. The 24-year-old rookie was on a one-year, two-way deal with the Spurs, so he'll be a free agent this summer.",
             "value_tier": "starter"
@@ -158,14 +158,14 @@
         "away": []
       },
       "injury_impact": {
-        "home_elo_penalty": 14.0,
+        "home_elo_penalty": 7.0,
         "away_elo_penalty": 0.0,
         "home_key_players_out": [
           {
             "player": "David Jones Garcia",
             "position": "F",
-            "status": "Out",
-            "elo_impact": 14.0,
+            "status": "Day-To-Day",
+            "elo_impact": 7.0,
             "value_tier": "starter"
           }
         ],
@@ -176,12 +176,12 @@
         "away_star_stack_multiplier": 1.0
       },
       "prediction_drivers": [
-        "David Jones Garcia (SAS) [Starter] OUT \u2014 \u221214 ELO",
+        "David Jones Garcia (SAS) [Starter] DAY-TO-DAY \u2014 \u22127 ELO",
         "Offensive rating: SAS leads by 3.4 pts/100",
         "Travel: away travels 1583 miles",
         "Home court: SAS +100 ELO advantage"
       ],
-      "explanation": "The model gives San Antonio Spurs a 56.4% win probability \u2014 a slight favorite over New York Knicks. San Antonio Spurs net rating: +8.3. Home court +100 ELO for San Antonio Spurs."
+      "explanation": "The model gives San Antonio Spurs a 57.0% win probability \u2014 a slight favorite over New York Knicks. San Antonio Spurs net rating: +8.3. Home court +100 ELO for San Antonio Spurs."
     }
   ]
 }
