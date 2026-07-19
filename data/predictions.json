@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-18T09:15:14.014448+00:00",
+  "updated": "2026-07-19T09:44:26.429867+00:00",
   "season": 2025,
   "week": 1,
   "is_offseason": false,
@@ -20,9 +20,9 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.6982,
+        "ensemble_prob": 0.6973,
         "logistic_prob": 0.6957,
-        "elo_prob": 0.7786,
+        "elo_prob": 0.7726,
         "xgb_prob": 0.7745,
         "pyth_prob": 0.6113,
         "eff_prob": 0.5542,
@@ -36,19 +36,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6353,
-        "exp_margin": 4.92,
-        "prob_7plus": 0.4442,
-        "prob_14plus": 0.2644,
-        "prob_21plus": 0.1281,
+        "win_prob": 0.6347,
+        "exp_margin": 4.87,
+        "prob_7plus": 0.441,
+        "prob_14plus": 0.2557,
+        "prob_21plus": 0.1257,
         "margin_percentiles": [
-          -18.3,
-          -13.5,
+          -18.2,
+          -13.2,
           -4.8,
-          4.9,
-          14.7,
-          23.1,
-          28.2
+          4.8,
+          14.2,
+          23.0,
+          28.5
         ]
       },
       "adjustments": {
@@ -62,7 +62,7 @@
       "elo": {
         "home": 1761.7,
         "away": 1671.9,
-        "diff": 218.5
+        "diff": 212.5
       },
       "bayesian": {
         "home_mu": 1775.3,
@@ -80,6 +80,13 @@
       },
       "injuries": {
         "home": [
+          {
+            "player": "Deven Eastern",
+            "status": "Out",
+            "position": "DT",
+            "injury_description": "A seventh-round pick of the 2026 NFL Draft, Eastern had missed parts of minicamp and OTAs due to an unspecified injury. By being placed on the PUP, Eastern is eligible to be activated at any time during training camp once he's fully healthy. The nature of the Minnesota product's injury might become more clear once the Seahawks conduct their first practice of training camp July 25.",
+            "value_tier": "starter"
+          },
           {
             "player": "Jason Myers",
             "status": "Active",
@@ -106,13 +113,6 @@
             "status": "Active",
             "position": "WR",
             "injury_description": "Fowler notes that the Seahawks offense will utilize more motions and shifts under Fleury's scheme and that Shaheed should see more short-to-medium throws from Sam Darnold as a result. Shaheed and Darnold demonstrated a strong connection during spring practices, and it appears the former is in line for a larger role in the offense, perhaps leapfrogging Cooper Kupp as the team's WR2 behind Jaxon Smith-Njigba.",
-            "value_tier": "starter"
-          },
-          {
-            "player": "Sam Darnold",
-            "status": "Active",
-            "position": "QB",
-            "injury_description": "In his first year with the Seahawks, Darnold helmed his team's Super Bowl LX win over the Patriots, but despite that success the veteran QB acknowledges that there's still work to be done in terms of \"continuing to hone in on the deep ball\" as well as understanding how he can get better that way by \"quieting (his) feet in the pocket.\" Darnold -- who threw for 4,048 yards and 25 TDs in 17 regular-season games in 2025 -- also points to his 20 regular-season turnovers (14 interceptions and six fumbles lost) as an area that he can improve. Looking ahead to the coming campaign, the 29-year-old will be working with a pass-catching corps that returns WRs Jaxon Smith-Njigba, Cooper Kupp and Rashid Shaheed and TE AJ Barner. Following the free-agent departure of RB Kenneth Walker, the team added Jadarian Price in the first round of the 2026 NFL Draft to bolster a backfield that awaits the recovery of Zach Charbonnet, who's bouncing back from a torn ACL.",
             "value_tier": "starter"
           }
         ],
@@ -155,11 +155,18 @@
         ]
       },
       "injury_impact": {
-        "home_elo_penalty": 11.8,
+        "home_elo_penalty": 17.8,
         "away_elo_penalty": 9.5,
-        "home_impact_score": 0.1073,
+        "home_impact_score": 0.1618,
         "away_impact_score": 0.0864,
         "home_key_players_out": [
+          {
+            "player": "Deven Eastern",
+            "position": "DT",
+            "status": "Out",
+            "elo_impact": 6.0,
+            "value_tier": "starter"
+          },
           {
             "player": "Zach Charbonnet",
             "position": "RB",
@@ -212,16 +219,16 @@
       },
       "prediction_drivers": [
         "ELO advantage: SEA +90 rating points",
+        "Deven Eastern (SEA) [Starter] OUT \u2014 \u22126 ELO",
         "Zach Charbonnet (SEA) [Starter] QUESTIONABLE \u2014 \u22123 ELO",
         "Tory Horton (SEA) [Starter] QUESTIONABLE \u2014 \u22123 ELO",
-        "AJ Barner (SEA) [Starter] QUESTIONABLE \u2014 \u22123 ELO",
         "Gabe Jacas (NE) [Starter] QUESTIONABLE \u2014 \u22122 ELO",
         "Julian Hill (NE) [Starter] INJURED RESERVE \u2014 \u22128 ELO",
         "Efficiency gap: SEA net -0.116 vs NE net +0.019",
         "Travel penalty: away team travels 2491 miles",
         "Home field: SEA +65 ELO home advantage"
       ],
-      "explanation": "The model gives Seattle Seahawks a 69.8% win probability \u2014 a moderate favorite over New England Patriots. The ELO gap is 90 points with home field adding approximately 65 ELO points. Travel distance 2491 miles factors into the away team rating."
+      "explanation": "The model gives Seattle Seahawks a 69.7% win probability \u2014 a moderate favorite over New England Patriots. The ELO gap is 90 points with home field adding approximately 65 ELO points. Travel distance 2491 miles factors into the away team rating."
     },
     {
       "game_id": "401872657",
@@ -239,9 +246,9 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.6483,
+        "ensemble_prob": 0.6497,
         "logistic_prob": 0.6957,
-        "elo_prob": 0.6546,
+        "elo_prob": 0.6643,
         "xgb_prob": 0.675,
         "pyth_prob": 0.5724,
         "eff_prob": 0.5373,
@@ -255,19 +262,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.5812,
-        "exp_margin": 2.99,
-        "prob_7plus": 0.3856,
-        "prob_14plus": 0.2181,
+        "win_prob": 0.5828,
+        "exp_margin": 2.95,
+        "prob_7plus": 0.3824,
+        "prob_14plus": 0.2161,
         "prob_21plus": 0.1009,
         "margin_percentiles": [
-          -20.0,
-          -15.1,
-          -6.5,
-          2.9,
-          12.5,
+          -20.1,
+          -14.9,
+          -6.6,
+          3.0,
+          12.4,
           21.1,
-          26.6
+          26.3
         ]
       },
       "adjustments": {
@@ -281,7 +288,7 @@
       "elo": {
         "home": 1655.5,
         "away": 1602.0,
-        "diff": 111.1
+        "diff": 118.6
       },
       "bayesian": {
         "home_mu": 1741.1,
@@ -337,6 +344,13 @@
         ],
         "away": [
           {
+            "player": "Khalil Dinkins",
+            "status": "Out",
+            "position": "TE",
+            "injury_description": "It's unclear what issue Dinkins is working through, but since he was placed on the active NFI list, he is eligible to practice and play in preseason games once fully healthy. He signed with the 49ers as an undrafted free agent in late April following a four-year collegiate career at Penn State.",
+            "value_tier": "starter"
+          },
+          {
             "player": "Christian McCaffrey",
             "status": "Active",
             "position": "RB",
@@ -363,21 +377,14 @@
             "position": "QB",
             "injury_description": "As the coming campaign approaches, Purdy -- who has had time to move past the shoulder and toe issues he dealt with last season -- is set to work with a WR corps that welcomes a trio of key additions in Mike Evans, Christian Kirk and rookie second-rounder De'Zhaun Stribling. Also in the mix are returnees Ricky Pearsall, Jacob Cowing, Jordan Watkins and Demarcus Robinson. Meanwhile, Kittle is bouncing back from an Achilles injury, and though the star TE says that he has \"a chance\" to be ready for Week 1, the 49ers may need to lean more on their key wideouts out of the gate this year while Kittle works his way back into the mix. Purdy is coming off a 2025 regular season in which he threw for 2,167 yards with 20 TDs and 10 picks, while carrying 33 times for 147 yards and three scores in nine games. Looking ahead, the signal-caller's fantasy upside in 2026 hinges largely on avoiding injuries, as well as building strong on-field chemistry with his team's re-tooled pass-catching unit.",
             "value_tier": "starter"
-          },
-          {
-            "player": "Brandon Aiyuk",
-            "status": "Out",
-            "position": "WR",
-            "injury_description": "That said, it's unclear whether the Commanders would have interest in signing Aiyuk in such a scenario. Moreover, it's not a situation they can publicly comment on, given that the wideout is still under contract with the 49ers. Back in January, 49ers GM John Lynch said that it was \"safe to say that (Aiyuk) has played his last snap with the Niners.\" However, since then the team has held on to the 2020 first-rounder in the hopes of finding a trade partner. San Francisco's veteran players are set to arrive at training camp July 25, with the report suggesting that it's possible the team is waiting until then to make a call on Aiyuk's status with the franchise.",
-            "value_tier": "starter"
           }
         ]
       },
       "injury_impact": {
         "home_elo_penalty": 5.0,
-        "away_elo_penalty": 33.6,
+        "away_elo_penalty": 41.1,
         "home_impact_score": 0.0455,
-        "away_impact_score": 0.3055,
+        "away_impact_score": 0.3736,
         "home_key_players_out": [
           {
             "player": "Eddie Walls III",
@@ -388,6 +395,13 @@
           }
         ],
         "away_key_players_out": [
+          {
+            "player": "Khalil Dinkins",
+            "position": "TE",
+            "status": "Out",
+            "elo_impact": 7.5,
+            "value_tier": "starter"
+          },
           {
             "player": "Mac Jones",
             "position": "QB",
@@ -439,13 +453,13 @@
       "prediction_drivers": [
         "ELO advantage: LAR +53 rating points",
         "Eddie Walls III (LAR) [Starter] INJURED RESERVE \u2014 \u22125 ELO",
+        "Khalil Dinkins (SF) [Starter] OUT \u2014 \u22128 ELO",
         "Mac Jones (SF) [Starter] QUESTIONABLE \u2014 \u221212 ELO",
         "Brandon Aiyuk (SF) [Starter] OUT \u2014 \u22128 ELO",
-        "George Kittle (SF) [Starter] QUESTIONABLE \u2014 \u22123 ELO",
         "Efficiency gap: LAR net +0.183 vs SF net +0.053",
         "Rest advantage: SF has 7 extra days rest"
       ],
-      "explanation": "The model gives Los Angeles Rams a 64.8% win probability \u2014 a moderate favorite over San Francisco 49ers. The ELO gap is 53 points at a neutral site. Rest advantage favors SF."
+      "explanation": "The model gives Los Angeles Rams a 65.0% win probability \u2014 a moderate favorite over San Francisco 49ers. The ELO gap is 53 points at a neutral site. Rest advantage favors SF."
     },
     {
       "game_id": "401872925",
@@ -479,19 +493,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.5799,
-        "exp_margin": 2.89,
-        "prob_7plus": 0.3857,
-        "prob_14plus": 0.2164,
-        "prob_21plus": 0.0998,
+        "win_prob": 0.5717,
+        "exp_margin": 2.53,
+        "prob_7plus": 0.3724,
+        "prob_14plus": 0.2125,
+        "prob_21plus": 0.0978,
         "margin_percentiles": [
-          -20.3,
-          -15.0,
-          -6.8,
-          2.9,
-          12.6,
-          21.0,
-          26.2
+          -20.8,
+          -15.5,
+          -7.1,
+          2.5,
+          12.1,
+          20.8,
+          25.6
         ]
       },
       "adjustments": {
@@ -689,19 +703,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.619,
-        "exp_margin": 4.47,
-        "prob_7plus": 0.4256,
-        "prob_14plus": 0.2544,
-        "prob_21plus": 0.1217,
+        "win_prob": 0.6241,
+        "exp_margin": 4.52,
+        "prob_7plus": 0.4265,
+        "prob_14plus": 0.2528,
+        "prob_21plus": 0.1271,
         "margin_percentiles": [
-          -18.6,
-          -14.0,
-          -5.4,
+          -18.5,
+          -13.6,
+          -5.2,
           4.4,
-          14.2,
-          22.6,
-          28.2
+          14.1,
+          23.0,
+          28.0
         ]
       },
       "adjustments": {
@@ -929,19 +943,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6843,
-        "exp_margin": 6.92,
-        "prob_7plus": 0.4961,
-        "prob_14plus": 0.3107,
-        "prob_21plus": 0.1633,
+        "win_prob": 0.6958,
+        "exp_margin": 7.27,
+        "prob_7plus": 0.511,
+        "prob_14plus": 0.313,
+        "prob_21plus": 0.164,
         "margin_percentiles": [
-          -16.3,
-          -11.5,
-          -2.8,
-          6.9,
-          16.7,
-          25.1,
-          30.2
+          -15.8,
+          -10.9,
+          -2.3,
+          7.4,
+          16.6,
+          25.4,
+          30.7
         ]
       },
       "adjustments": {
@@ -1145,19 +1159,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.5697,
-        "exp_margin": 2.58,
-        "prob_7plus": 0.379,
-        "prob_14plus": 0.2086,
-        "prob_21plus": 0.0968,
+        "win_prob": 0.5652,
+        "exp_margin": 2.25,
+        "prob_7plus": 0.3683,
+        "prob_14plus": 0.2035,
+        "prob_21plus": 0.0933,
         "margin_percentiles": [
-          -20.8,
-          -15.7,
-          -6.6,
-          2.5,
+          -21.2,
+          -16.1,
+          -7.5,
+          2.2,
           12.0,
-          20.7,
-          25.8
+          20.5,
+          25.4
         ]
       },
       "adjustments": {
@@ -1377,19 +1391,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.5563,
-        "exp_margin": 2.16,
-        "prob_7plus": 0.3694,
-        "prob_14plus": 0.2074,
-        "prob_21plus": 0.0925,
+        "win_prob": 0.5604,
+        "exp_margin": 2.09,
+        "prob_7plus": 0.3629,
+        "prob_14plus": 0.2019,
+        "prob_21plus": 0.0906,
         "margin_percentiles": [
-          -21.4,
+          -21.3,
           -16.2,
-          -7.6,
+          -7.4,
           2.1,
-          11.9,
-          20.4,
-          25.5
+          11.7,
+          20.3,
+          25.4
         ]
       },
       "adjustments": {
@@ -1615,17 +1629,17 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.4633,
-        "exp_margin": -1.1,
-        "prob_7plus": 0.2767,
-        "prob_14plus": 0.1447,
+        "win_prob": 0.4787,
+        "exp_margin": -0.83,
+        "prob_7plus": 0.2872,
+        "prob_14plus": 0.1467,
         "prob_21plus": 0.0612,
         "margin_percentiles": [
-          -24.2,
-          -19.3,
-          -10.5,
-          -1.3,
-          8.4,
+          -24.1,
+          -19.0,
+          -10.3,
+          -0.7,
+          8.6,
           17.3,
           22.5
         ]
@@ -1849,19 +1863,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.7316,
-        "exp_margin": 8.59,
-        "prob_7plus": 0.5498,
-        "prob_14plus": 0.3535,
-        "prob_21plus": 0.188,
+        "win_prob": 0.7325,
+        "exp_margin": 8.83,
+        "prob_7plus": 0.5486,
+        "prob_14plus": 0.3573,
+        "prob_21plus": 0.1974,
         "margin_percentiles": [
-          -14.8,
-          -9.6,
-          -0.9,
-          8.7,
-          18.0,
-          26.5,
-          31.9
+          -14.6,
+          -9.4,
+          -0.7,
+          8.6,
+          18.5,
+          27.3,
+          32.7
         ]
       },
       "adjustments": {
@@ -2104,19 +2118,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.5856,
-        "exp_margin": 2.93,
-        "prob_7plus": 0.3894,
-        "prob_14plus": 0.2164,
-        "prob_21plus": 0.098,
+        "win_prob": 0.5877,
+        "exp_margin": 3.09,
+        "prob_7plus": 0.3888,
+        "prob_14plus": 0.2168,
+        "prob_21plus": 0.0977,
         "margin_percentiles": [
-          -20.7,
-          -15.5,
-          -6.6,
+          -19.3,
+          -14.6,
+          -6.2,
           3.0,
-          12.6,
+          12.3,
           20.8,
-          26.1
+          25.7
         ]
       },
       "adjustments": {
@@ -2350,19 +2364,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.5491,
-        "exp_margin": 1.68,
-        "prob_7plus": 0.3563,
-        "prob_14plus": 0.196,
-        "prob_21plus": 0.0862,
+        "win_prob": 0.5447,
+        "exp_margin": 1.39,
+        "prob_7plus": 0.3392,
+        "prob_14plus": 0.1828,
+        "prob_21plus": 0.0813,
         "margin_percentiles": [
-          -21.8,
+          -21.6,
           -16.6,
           -8.0,
-          1.6,
-          11.3,
-          19.8,
-          24.9
+          1.5,
+          10.7,
+          19.4,
+          24.3
         ]
       },
       "adjustments": {
@@ -2598,18 +2612,18 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.5953,
-        "exp_margin": 3.48,
-        "prob_7plus": 0.4005,
-        "prob_14plus": 0.2299,
-        "prob_21plus": 0.1088,
+        "win_prob": 0.6023,
+        "exp_margin": 3.59,
+        "prob_7plus": 0.4022,
+        "prob_14plus": 0.2328,
+        "prob_21plus": 0.1094,
         "margin_percentiles": [
-          -19.9,
-          -14.7,
+          -20.0,
+          -14.8,
           -6.1,
-          3.4,
-          13.0,
-          21.7,
+          3.8,
+          13.2,
+          22.0,
           27.0
         ]
       },
@@ -2816,19 +2830,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6756,
-        "exp_margin": 6.32,
-        "prob_7plus": 0.4789,
-        "prob_14plus": 0.2891,
-        "prob_21plus": 0.147,
+        "win_prob": 0.6842,
+        "exp_margin": 6.87,
+        "prob_7plus": 0.497,
+        "prob_14plus": 0.3072,
+        "prob_21plus": 0.1577,
         "margin_percentiles": [
-          -16.8,
-          -11.6,
-          -3.0,
-          6.2,
-          15.7,
-          24.2,
-          29.7
+          -16.5,
+          -11.0,
+          -2.6,
+          6.9,
+          16.3,
+          24.8,
+          30.0
         ]
       },
       "adjustments": {
@@ -3020,19 +3034,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.7067,
-        "exp_margin": 7.69,
-        "prob_7plus": 0.5203,
-        "prob_14plus": 0.3261,
-        "prob_21plus": 0.1758,
+        "win_prob": 0.7142,
+        "exp_margin": 7.92,
+        "prob_7plus": 0.5305,
+        "prob_14plus": 0.3314,
+        "prob_21plus": 0.174,
         "margin_percentiles": [
-          -15.8,
-          -10.5,
-          -1.9,
-          7.8,
+          -15.2,
+          -10.2,
+          -1.7,
+          8.1,
           17.3,
           26.0,
-          30.8
+          30.9
         ]
       },
       "adjustments": {
@@ -3275,17 +3289,17 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6212,
-        "exp_margin": 4.29,
-        "prob_7plus": 0.4264,
-        "prob_14plus": 0.2445,
-        "prob_21plus": 0.1179,
+        "win_prob": 0.6216,
+        "exp_margin": 4.3,
+        "prob_7plus": 0.4298,
+        "prob_14plus": 0.2499,
+        "prob_21plus": 0.115,
         "margin_percentiles": [
-          -18.9,
-          -13.9,
-          -5.2,
-          4.4,
-          13.7,
+          -19.3,
+          -13.8,
+          -5.3,
+          4.3,
+          14.0,
           22.2,
           27.2
         ]
@@ -3570,19 +3584,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.442,
-        "exp_margin": -2.14,
-        "prob_7plus": 0.2555,
-        "prob_14plus": 0.1274,
-        "prob_21plus": 0.0506,
+        "win_prob": 0.4394,
+        "exp_margin": -2.11,
+        "prob_7plus": 0.2616,
+        "prob_14plus": 0.1277,
+        "prob_21plus": 0.05,
         "margin_percentiles": [
           -25.2,
-          -20.3,
+          -20.2,
           -11.6,
-          -2.0,
-          7.3,
-          15.9,
-          21.1
+          -2.2,
+          7.6,
+          16.0,
+          21.0
         ]
       },
       "adjustments": {
@@ -3788,19 +3802,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6497,
-        "exp_margin": 5.38,
-        "prob_7plus": 0.4542,
-        "prob_14plus": 0.2759,
-        "prob_21plus": 0.1346,
+        "win_prob": 0.6516,
+        "exp_margin": 5.36,
+        "prob_7plus": 0.4497,
+        "prob_14plus": 0.2644,
+        "prob_21plus": 0.1368,
         "margin_percentiles": [
-          -18.2,
-          -13.0,
-          -4.0,
+          -18.0,
+          -12.6,
+          -3.9,
           5.3,
-          15.2,
-          23.5,
-          28.7
+          14.6,
+          23.6,
+          28.8
         ]
       },
       "adjustments": {
@@ -3997,19 +4011,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.4186,
-        "exp_margin": -2.94,
-        "prob_7plus": 0.2365,
-        "prob_14plus": 0.1105,
-        "prob_21plus": 0.0437,
+        "win_prob": 0.4243,
+        "exp_margin": -2.61,
+        "prob_7plus": 0.2485,
+        "prob_14plus": 0.1152,
+        "prob_21plus": 0.0479,
         "margin_percentiles": [
           -26.0,
-          -20.9,
-          -12.3,
-          -2.9,
-          6.4,
-          14.9,
-          20.1
+          -20.7,
+          -12.2,
+          -2.7,
+          6.9,
+          15.4,
+          20.6
         ]
       },
       "adjustments": {
@@ -4216,18 +4230,18 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.52,
-        "exp_margin": 0.79,
-        "prob_7plus": 0.3316,
-        "prob_14plus": 0.1773,
-        "prob_21plus": 0.0793,
+        "win_prob": 0.5316,
+        "exp_margin": 1.07,
+        "prob_7plus": 0.3389,
+        "prob_14plus": 0.1803,
+        "prob_21plus": 0.0815,
         "margin_percentiles": [
           -22.7,
-          -17.6,
-          -9.0,
-          0.9,
-          10.6,
-          19.2,
+          -17.2,
+          -8.4,
+          1.1,
+          10.7,
+          19.3,
           24.4
         ]
       },
@@ -4511,19 +4525,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.5326,
-        "exp_margin": 1.15,
-        "prob_7plus": 0.3377,
-        "prob_14plus": 0.1812,
-        "prob_21plus": 0.0804,
+        "win_prob": 0.5479,
+        "exp_margin": 1.41,
+        "prob_7plus": 0.3448,
+        "prob_14plus": 0.1831,
+        "prob_21plus": 0.0858,
         "margin_percentiles": [
-          -21.7,
-          -17.1,
-          -8.6,
-          1.2,
-          10.8,
-          19.3,
-          24.4
+          -22.2,
+          -17.0,
+          -8.1,
+          1.5,
+          10.9,
+          19.7,
+          24.9
         ]
       },
       "adjustments": {
@@ -4735,19 +4749,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.3294,
-        "exp_margin": -6.65,
-        "prob_7plus": 0.1682,
-        "prob_14plus": 0.0718,
-        "prob_21plus": 0.0236,
+        "win_prob": 0.3161,
+        "exp_margin": -6.86,
+        "prob_7plus": 0.1684,
+        "prob_14plus": 0.0756,
+        "prob_21plus": 0.0274,
         "margin_percentiles": [
-          -30.0,
-          -25.1,
-          -16.3,
-          -6.7,
-          3.2,
-          11.6,
-          16.6
+          -30.5,
+          -25.4,
+          -16.6,
+          -6.9,
+          2.8,
+          11.7,
+          16.9
         ]
       },
       "adjustments": {
@@ -4931,19 +4945,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.3372,
-        "exp_margin": -6.01,
-        "prob_7plus": 0.1789,
-        "prob_14plus": 0.0787,
-        "prob_21plus": 0.0268,
+        "win_prob": 0.3351,
+        "exp_margin": -6.04,
+        "prob_7plus": 0.1768,
+        "prob_14plus": 0.0797,
+        "prob_21plus": 0.0315,
         "margin_percentiles": [
           -29.2,
-          -24.2,
-          -15.5,
+          -24.4,
+          -15.8,
           -6.0,
           3.4,
-          12.2,
-          17.4
+          12.0,
+          17.6
         ]
       },
       "adjustments": {
@@ -5146,9 +5160,9 @@
       "home_score": 21,
       "away_score": 26,
       "predictions": {
-        "ensemble_prob": 0.2926,
+        "ensemble_prob": 0.2941,
         "logistic_prob": 0.1786,
-        "elo_prob": 0.4055,
+        "elo_prob": 0.4159,
         "xgb_prob": 0.1871,
         "pyth_prob": 0.4637,
         "eff_prob": 0.5072,
@@ -5162,19 +5176,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.5126,
-        "exp_margin": 0.46,
-        "prob_7plus": 0.3276,
-        "prob_14plus": 0.1733,
+        "win_prob": 0.5136,
+        "exp_margin": 0.44,
+        "prob_7plus": 0.3225,
+        "prob_14plus": 0.1712,
         "prob_21plus": 0.0745,
         "margin_percentiles": [
-          -22.7,
-          -17.5,
-          -9.4,
+          -23.4,
+          -17.9,
+          -9.1,
           0.4,
-          10.3,
+          10.0,
           18.7,
-          23.4
+          23.8
         ]
       },
       "adjustments": {
@@ -5188,7 +5202,7 @@
       "elo": {
         "home": 1441.2,
         "away": 1602.0,
-        "diff": -66.5
+        "diff": -59.0
       },
       "bayesian": {
         "home_mu": 1605.0,
@@ -5244,6 +5258,13 @@
         ],
         "away": [
           {
+            "player": "Khalil Dinkins",
+            "status": "Out",
+            "position": "TE",
+            "injury_description": "It's unclear what issue Dinkins is working through, but since he was placed on the active NFI list, he is eligible to practice and play in preseason games once fully healthy. He signed with the 49ers as an undrafted free agent in late April following a four-year collegiate career at Penn State.",
+            "value_tier": "starter"
+          },
+          {
             "player": "Christian McCaffrey",
             "status": "Active",
             "position": "RB",
@@ -5270,21 +5291,14 @@
             "position": "QB",
             "injury_description": "As the coming campaign approaches, Purdy -- who has had time to move past the shoulder and toe issues he dealt with last season -- is set to work with a WR corps that welcomes a trio of key additions in Mike Evans, Christian Kirk and rookie second-rounder De'Zhaun Stribling. Also in the mix are returnees Ricky Pearsall, Jacob Cowing, Jordan Watkins and Demarcus Robinson. Meanwhile, Kittle is bouncing back from an Achilles injury, and though the star TE says that he has \"a chance\" to be ready for Week 1, the 49ers may need to lean more on their key wideouts out of the gate this year while Kittle works his way back into the mix. Purdy is coming off a 2025 regular season in which he threw for 2,167 yards with 20 TDs and 10 picks, while carrying 33 times for 147 yards and three scores in nine games. Looking ahead, the signal-caller's fantasy upside in 2026 hinges largely on avoiding injuries, as well as building strong on-field chemistry with his team's re-tooled pass-catching unit.",
             "value_tier": "starter"
-          },
-          {
-            "player": "Brandon Aiyuk",
-            "status": "Out",
-            "position": "WR",
-            "injury_description": "That said, it's unclear whether the Commanders would have interest in signing Aiyuk in such a scenario. Moreover, it's not a situation they can publicly comment on, given that the wideout is still under contract with the 49ers. Back in January, 49ers GM John Lynch said that it was \"safe to say that (Aiyuk) has played his last snap with the Niners.\" However, since then the team has held on to the 2020 first-rounder in the hopes of finding a trade partner. San Francisco's veteran players are set to arrive at training camp July 25, with the report suggesting that it's possible the team is waiting until then to make a call on Aiyuk's status with the franchise.",
-            "value_tier": "starter"
           }
         ]
       },
       "injury_impact": {
         "home_elo_penalty": 20.2,
-        "away_elo_penalty": 33.6,
+        "away_elo_penalty": 41.1,
         "home_impact_score": 0.1836,
-        "away_impact_score": 0.3055,
+        "away_impact_score": 0.3736,
         "home_key_players_out": [
           {
             "player": "Jordyn Tyson",
@@ -5323,6 +5337,13 @@
           }
         ],
         "away_key_players_out": [
+          {
+            "player": "Khalil Dinkins",
+            "position": "TE",
+            "status": "Out",
+            "elo_impact": 7.5,
+            "value_tier": "starter"
+          },
           {
             "player": "Mac Jones",
             "position": "QB",
@@ -5376,14 +5397,14 @@
         "Jordyn Tyson (NO) [Starter] QUESTIONABLE \u2014 \u22123 ELO",
         "Devin Neal (NO) [Starter] QUESTIONABLE \u2014 \u22123 ELO",
         "Kendre Miller (NO) [Starter] QUESTIONABLE \u2014 \u22123 ELO",
+        "Khalil Dinkins (SF) [Starter] OUT \u2014 \u22128 ELO",
         "Mac Jones (SF) [Starter] QUESTIONABLE \u2014 \u221212 ELO",
         "Brandon Aiyuk (SF) [Starter] OUT \u2014 \u22128 ELO",
-        "George Kittle (SF) [Starter] QUESTIONABLE \u2014 \u22123 ELO",
         "Efficiency gap: NO net -0.247 vs SF net +0.053",
         "Travel penalty: away team travels 1898 miles",
         "Home field: NO +65 ELO home advantage"
       ],
-      "explanation": "The model gives San Francisco 49ers a 70.7% win probability \u2014 a strong favorite over New Orleans Saints. The ELO gap is 161 points with home field adding approximately 65 ELO points. Travel distance 1898 miles factors into the away team rating."
+      "explanation": "The model gives San Francisco 49ers a 70.6% win probability \u2014 a strong favorite over New Orleans Saints. The ELO gap is 161 points with home field adding approximately 65 ELO points. Travel distance 1898 miles factors into the away team rating."
     },
     {
       "game_id": "401772727",
@@ -5417,19 +5438,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.2489,
-        "exp_margin": -9.67,
-        "prob_7plus": 0.1213,
-        "prob_14plus": 0.048,
-        "prob_21plus": 0.0151,
+        "win_prob": 0.2476,
+        "exp_margin": -9.63,
+        "prob_7plus": 0.122,
+        "prob_14plus": 0.0463,
+        "prob_21plus": 0.016,
         "margin_percentiles": [
           -32.9,
-          -27.8,
+          -27.6,
           -19.2,
-          -9.7,
+          -9.6,
           -0.1,
-          8.5,
-          13.7
+          8.6,
+          13.6
         ]
       },
       "adjustments": {
@@ -5634,9 +5655,9 @@
       "home_score": 17,
       "away_score": 31,
       "predictions": {
-        "ensemble_prob": 0.2782,
+        "ensemble_prob": 0.2791,
         "logistic_prob": 0.1786,
-        "elo_prob": 0.2396,
+        "elo_prob": 0.246,
         "xgb_prob": 0.1655,
         "pyth_prob": 0.4486,
         "eff_prob": 0.6231,
@@ -5650,19 +5671,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.3913,
-        "exp_margin": -3.97,
-        "prob_7plus": 0.2171,
-        "prob_14plus": 0.0986,
-        "prob_21plus": 0.0372,
+        "win_prob": 0.3877,
+        "exp_margin": -3.94,
+        "prob_7plus": 0.219,
+        "prob_14plus": 0.1048,
+        "prob_21plus": 0.0402,
         "margin_percentiles": [
-          -27.0,
-          -21.9,
-          -13.4,
+          -27.5,
+          -22.0,
+          -13.5,
           -4.0,
-          5.4,
-          13.8,
-          19.3
+          5.6,
+          14.4,
+          19.6
         ]
       },
       "adjustments": {
@@ -5676,7 +5697,7 @@
       "elo": {
         "home": 1495.9,
         "away": 1761.7,
-        "diff": -200.6
+        "diff": -194.6
       },
       "bayesian": {
         "home_mu": 1608.8,
@@ -5732,6 +5753,13 @@
         ],
         "away": [
           {
+            "player": "Deven Eastern",
+            "status": "Out",
+            "position": "DT",
+            "injury_description": "A seventh-round pick of the 2026 NFL Draft, Eastern had missed parts of minicamp and OTAs due to an unspecified injury. By being placed on the PUP, Eastern is eligible to be activated at any time during training camp once he's fully healthy. The nature of the Minnesota product's injury might become more clear once the Seahawks conduct their first practice of training camp July 25.",
+            "value_tier": "starter"
+          },
+          {
             "player": "Jason Myers",
             "status": "Active",
             "position": "PK",
@@ -5758,21 +5786,14 @@
             "position": "WR",
             "injury_description": "Fowler notes that the Seahawks offense will utilize more motions and shifts under Fleury's scheme and that Shaheed should see more short-to-medium throws from Sam Darnold as a result. Shaheed and Darnold demonstrated a strong connection during spring practices, and it appears the former is in line for a larger role in the offense, perhaps leapfrogging Cooper Kupp as the team's WR2 behind Jaxon Smith-Njigba.",
             "value_tier": "starter"
-          },
-          {
-            "player": "Sam Darnold",
-            "status": "Active",
-            "position": "QB",
-            "injury_description": "In his first year with the Seahawks, Darnold helmed his team's Super Bowl LX win over the Patriots, but despite that success the veteran QB acknowledges that there's still work to be done in terms of \"continuing to hone in on the deep ball\" as well as understanding how he can get better that way by \"quieting (his) feet in the pocket.\" Darnold -- who threw for 4,048 yards and 25 TDs in 17 regular-season games in 2025 -- also points to his 20 regular-season turnovers (14 interceptions and six fumbles lost) as an area that he can improve. Looking ahead to the coming campaign, the 29-year-old will be working with a pass-catching corps that returns WRs Jaxon Smith-Njigba, Cooper Kupp and Rashid Shaheed and TE AJ Barner. Following the free-agent departure of RB Kenneth Walker, the team added Jadarian Price in the first round of the 2026 NFL Draft to bolster a backfield that awaits the recovery of Zach Charbonnet, who's bouncing back from a torn ACL.",
-            "value_tier": "starter"
           }
         ]
       },
       "injury_impact": {
         "home_elo_penalty": 9.6,
-        "away_elo_penalty": 11.8,
+        "away_elo_penalty": 17.8,
         "home_impact_score": 0.0873,
-        "away_impact_score": 0.1073,
+        "away_impact_score": 0.1618,
         "home_key_players_out": [
           {
             "player": "Broderick Jones",
@@ -5790,6 +5811,13 @@
           }
         ],
         "away_key_players_out": [
+          {
+            "player": "Deven Eastern",
+            "position": "DT",
+            "status": "Out",
+            "elo_impact": 6.0,
+            "value_tier": "starter"
+          },
           {
             "player": "Zach Charbonnet",
             "position": "RB",
@@ -5828,14 +5856,14 @@
         "ELO advantage: SEA +266 rating points",
         "Broderick Jones (PIT) [Starter] QUESTIONABLE \u2014 \u22124 ELO",
         "Daequan Hardy (PIT) [Starter] INJURED RESERVE \u2014 \u22126 ELO",
+        "Deven Eastern (SEA) [Starter] OUT \u2014 \u22126 ELO",
         "Zach Charbonnet (SEA) [Starter] QUESTIONABLE \u2014 \u22123 ELO",
         "Tory Horton (SEA) [Starter] QUESTIONABLE \u2014 \u22123 ELO",
-        "AJ Barner (SEA) [Starter] QUESTIONABLE \u2014 \u22123 ELO",
         "Efficiency gap: PIT net -0.005 vs SEA net -0.116",
         "Travel penalty: away team travels 2137 miles",
         "Home field: PIT +65 ELO home advantage"
       ],
-      "explanation": "The model gives Seattle Seahawks a 72.2% win probability \u2014 a strong favorite over Pittsburgh Steelers. The ELO gap is 266 points with home field adding approximately 65 ELO points. Travel distance 2137 miles factors into the away team rating."
+      "explanation": "The model gives Seattle Seahawks a 72.1% win probability \u2014 a strong favorite over Pittsburgh Steelers. The ELO gap is 266 points with home field adding approximately 65 ELO points. Travel distance 2137 miles factors into the away team rating."
     },
     {
       "game_id": "401772726",
@@ -5869,19 +5897,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6532,
-        "exp_margin": 5.58,
-        "prob_7plus": 0.4618,
-        "prob_14plus": 0.2758,
-        "prob_21plus": 0.1357,
+        "win_prob": 0.6564,
+        "exp_margin": 5.69,
+        "prob_7plus": 0.467,
+        "prob_14plus": 0.2842,
+        "prob_21plus": 0.1401,
         "margin_percentiles": [
-          -17.8,
-          -12.5,
-          -3.9,
-          5.6,
-          15.0,
-          23.6,
-          29.2
+          -18.2,
+          -12.6,
+          -3.8,
+          5.8,
+          15.4,
+          23.7,
+          28.8
         ]
       },
       "adjustments": {
@@ -6123,19 +6151,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.4932,
-        "exp_margin": -0.2,
-        "prob_7plus": 0.301,
-        "prob_14plus": 0.1577,
-        "prob_21plus": 0.0679,
+        "win_prob": 0.4942,
+        "exp_margin": -0.03,
+        "prob_7plus": 0.3072,
+        "prob_14plus": 0.1624,
+        "prob_21plus": 0.0716,
         "margin_percentiles": [
-          -23.6,
-          -18.1,
-          -9.6,
-          -0.3,
-          9.2,
-          18.0,
-          23.1
+          -23.5,
+          -18.3,
+          -9.5,
+          -0.2,
+          9.5,
+          18.3,
+          23.4
         ]
       },
       "adjustments": {
@@ -6348,19 +6376,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.4562,
-        "exp_margin": -1.51,
-        "prob_7plus": 0.2744,
-        "prob_14plus": 0.1401,
-        "prob_21plus": 0.0587,
+        "win_prob": 0.4623,
+        "exp_margin": -1.4,
+        "prob_7plus": 0.2806,
+        "prob_14plus": 0.1373,
+        "prob_21plus": 0.0564,
         "margin_percentiles": [
-          -25.0,
-          -19.7,
-          -11.2,
-          -1.7,
-          8.0,
-          16.9,
-          22.2
+          -24.5,
+          -19.5,
+          -11.1,
+          -1.3,
+          8.2,
+          16.5,
+          21.8
         ]
       },
       "adjustments": {
@@ -6617,19 +6645,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.492,
-        "exp_margin": -0.17,
-        "prob_7plus": 0.3082,
-        "prob_14plus": 0.1531,
-        "prob_21plus": 0.0629,
+        "win_prob": 0.4988,
+        "exp_margin": -0.01,
+        "prob_7plus": 0.3095,
+        "prob_14plus": 0.1567,
+        "prob_21plus": 0.0702,
         "margin_percentiles": [
-          -23.5,
+          -23.3,
           -18.1,
-          -9.5,
-          -0.2,
+          -9.6,
+          -0.0,
           9.4,
-          17.7,
-          22.6
+          18.1,
+          23.3
         ]
       },
       "adjustments": {
@@ -6842,19 +6870,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.5936,
-        "exp_margin": 3.37,
-        "prob_7plus": 0.4012,
-        "prob_14plus": 0.2248,
-        "prob_21plus": 0.1094,
+        "win_prob": 0.5918,
+        "exp_margin": 3.48,
+        "prob_7plus": 0.4,
+        "prob_14plus": 0.2323,
+        "prob_21plus": 0.1098,
         "margin_percentiles": [
-          -20.4,
-          -15.1,
+          -19.8,
+          -14.9,
           -6.1,
-          3.4,
-          12.9,
+          3.3,
+          13.2,
           21.7,
-          26.9
+          27.0
         ]
       },
       "adjustments": {
@@ -7081,19 +7109,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.7088,
-        "exp_margin": 7.76,
-        "prob_7plus": 0.523,
-        "prob_14plus": 0.3255,
-        "prob_21plus": 0.1748,
+        "win_prob": 0.7064,
+        "exp_margin": 7.79,
+        "prob_7plus": 0.5176,
+        "prob_14plus": 0.3311,
+        "prob_21plus": 0.1797,
         "margin_percentiles": [
           -15.5,
-          -10.6,
-          -1.7,
-          7.8,
-          17.2,
-          26.1,
-          31.1
+          -10.5,
+          -1.8,
+          7.6,
+          17.5,
+          26.3,
+          31.5
         ]
       },
       "adjustments": {
@@ -7313,19 +7341,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.3967,
-        "exp_margin": -3.54,
-        "prob_7plus": 0.2264,
-        "prob_14plus": 0.1113,
-        "prob_21plus": 0.0455,
+        "win_prob": 0.3933,
+        "exp_margin": -3.75,
+        "prob_7plus": 0.2247,
+        "prob_14plus": 0.1082,
+        "prob_21plus": 0.0425,
         "margin_percentiles": [
-          -27.1,
-          -21.8,
-          -13.2,
-          -3.7,
-          6.0,
-          15.1,
-          20.3
+          -27.2,
+          -22.0,
+          -13.4,
+          -3.9,
+          5.9,
+          14.7,
+          20.0
         ]
       },
       "adjustments": {
@@ -7538,19 +7566,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.7762,
-        "exp_margin": 10.74,
-        "prob_7plus": 0.6058,
-        "prob_14plus": 0.4073,
-        "prob_21plus": 0.2322,
+        "win_prob": 0.776,
+        "exp_margin": 10.72,
+        "prob_7plus": 0.607,
+        "prob_14plus": 0.4081,
+        "prob_21plus": 0.2319,
         "margin_percentiles": [
-          -12.2,
-          -7.1,
+          -12.8,
+          -7.4,
           1.2,
-          10.6,
+          10.9,
           20.2,
-          28.6,
-          34.2
+          29.0,
+          33.6
         ]
       },
       "adjustments": {
@@ -7785,19 +7813,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.5172,
-        "exp_margin": 0.64,
-        "prob_7plus": 0.3263,
-        "prob_14plus": 0.1784,
-        "prob_21plus": 0.0788,
+        "win_prob": 0.5121,
+        "exp_margin": 0.55,
+        "prob_7plus": 0.3264,
+        "prob_14plus": 0.1754,
+        "prob_21plus": 0.0784,
         "margin_percentiles": [
           -22.7,
-          -17.7,
-          -9.0,
-          0.6,
-          10.3,
-          19.1,
-          24.1
+          -17.9,
+          -9.1,
+          0.5,
+          10.1,
+          18.9,
+          24.2
         ]
       },
       "adjustments": {
@@ -8046,19 +8074,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.4273,
-        "exp_margin": -2.65,
-        "prob_7plus": 0.2506,
-        "prob_14plus": 0.1188,
-        "prob_21plus": 0.0457,
+        "win_prob": 0.4209,
+        "exp_margin": -2.59,
+        "prob_7plus": 0.2529,
+        "prob_14plus": 0.1279,
+        "prob_21plus": 0.0494,
         "margin_percentiles": [
-          -25.6,
-          -21.0,
-          -12.2,
-          -2.6,
-          7.0,
-          15.2,
-          20.4
+          -26.0,
+          -21.1,
+          -12.1,
+          -2.8,
+          7.2,
+          15.9,
+          21.0
         ]
       },
       "adjustments": {
@@ -8271,19 +8299,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6296,
-        "exp_margin": 4.69,
-        "prob_7plus": 0.4357,
-        "prob_14plus": 0.2545,
-        "prob_21plus": 0.1222,
+        "win_prob": 0.6201,
+        "exp_margin": 4.28,
+        "prob_7plus": 0.4212,
+        "prob_14plus": 0.2415,
+        "prob_21plus": 0.1203,
         "margin_percentiles": [
-          -18.5,
-          -13.4,
-          -4.8,
-          4.7,
-          14.2,
+          -19.0,
+          -13.6,
+          -5.0,
+          4.2,
+          13.7,
           22.6,
-          27.5
+          27.6
         ]
       },
       "adjustments": {
@@ -8482,19 +8510,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6849,
-        "exp_margin": 6.83,
-        "prob_7plus": 0.4956,
-        "prob_14plus": 0.3078,
-        "prob_21plus": 0.1621,
+        "win_prob": 0.6773,
+        "exp_margin": 6.68,
+        "prob_7plus": 0.493,
+        "prob_14plus": 0.3019,
+        "prob_21plus": 0.1604,
         "margin_percentiles": [
-          -16.1,
-          -11.3,
-          -3.0,
+          -16.8,
+          -11.6,
+          -3.2,
           6.8,
-          16.5,
-          24.9,
-          30.1
+          16.2,
+          25.2,
+          30.5
         ]
       },
       "adjustments": {
@@ -8684,19 +8712,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.4754,
-        "exp_margin": -1.01,
-        "prob_7plus": 0.2869,
-        "prob_14plus": 0.1432,
-        "prob_21plus": 0.0573,
+        "win_prob": 0.488,
+        "exp_margin": -0.6,
+        "prob_7plus": 0.3028,
+        "prob_14plus": 0.1534,
+        "prob_21plus": 0.0615,
         "margin_percentiles": [
-          -24.0,
-          -19.2,
-          -10.7,
-          -0.8,
-          8.6,
-          17.0,
-          22.0
+          -24.1,
+          -19.0,
+          -10.1,
+          -0.4,
+          9.4,
+          17.5,
+          22.3
         ]
       },
       "adjustments": {
@@ -8888,19 +8916,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.7534,
-        "exp_margin": 9.8,
-        "prob_7plus": 0.5751,
-        "prob_14plus": 0.3841,
-        "prob_21plus": 0.2134,
+        "win_prob": 0.7615,
+        "exp_margin": 9.89,
+        "prob_7plus": 0.5874,
+        "prob_14plus": 0.3889,
+        "prob_21plus": 0.2116,
         "margin_percentiles": [
-          -13.5,
-          -8.4,
-          0.1,
-          9.8,
-          19.3,
-          28.0,
-          33.3
+          -13.4,
+          -8.6,
+          0.6,
+          10.1,
+          19.4,
+          27.8,
+          33.2
         ]
       },
       "adjustments": {
@@ -9105,19 +9133,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6577,
-        "exp_margin": 5.7,
-        "prob_7plus": 0.4639,
-        "prob_14plus": 0.278,
-        "prob_21plus": 0.1381,
+        "win_prob": 0.6537,
+        "exp_margin": 5.5,
+        "prob_7plus": 0.4592,
+        "prob_14plus": 0.2697,
+        "prob_21plus": 0.1312,
         "margin_percentiles": [
           -17.7,
           -12.6,
-          -3.9,
-          5.7,
-          15.2,
-          23.7,
-          29.1
+          -4.0,
+          5.6,
+          14.8,
+          23.5,
+          28.7
         ]
       },
       "adjustments": {
@@ -9317,19 +9345,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.5567,
-        "exp_margin": 1.9,
-        "prob_7plus": 0.3671,
-        "prob_14plus": 0.2001,
-        "prob_21plus": 0.0909,
+        "win_prob": 0.5432,
+        "exp_margin": 1.73,
+        "prob_7plus": 0.3602,
+        "prob_14plus": 0.1955,
+        "prob_21plus": 0.0864,
         "margin_percentiles": [
-          -21.7,
-          -16.6,
-          -7.7,
-          2.1,
+          -21.8,
+          -16.4,
+          -8.0,
+          1.5,
           11.6,
-          20.2,
-          25.3
+          19.8,
+          24.9
         ]
       },
       "adjustments": {
@@ -9577,19 +9605,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.5839,
-        "exp_margin": 3.14,
-        "prob_7plus": 0.3851,
-        "prob_14plus": 0.2236,
-        "prob_21plus": 0.1012,
+        "win_prob": 0.582,
+        "exp_margin": 2.96,
+        "prob_7plus": 0.3871,
+        "prob_14plus": 0.2151,
+        "prob_21plus": 0.1021,
         "margin_percentiles": [
-          -19.7,
-          -14.7,
-          -6.4,
-          2.9,
-          12.7,
-          21.1,
-          26.5
+          -20.4,
+          -15.1,
+          -6.5,
+          3.1,
+          12.3,
+          21.2,
+          25.9
         ]
       },
       "adjustments": {
@@ -9816,19 +9844,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.4981,
-        "exp_margin": -0.19,
-        "prob_7plus": 0.313,
-        "prob_14plus": 0.1588,
-        "prob_21plus": 0.0663,
+        "win_prob": 0.4887,
+        "exp_margin": -0.51,
+        "prob_7plus": 0.2993,
+        "prob_14plus": 0.1515,
+        "prob_21plus": 0.0643,
         "margin_percentiles": [
-          -23.6,
-          -18.4,
-          -9.8,
-          -0.1,
-          9.7,
-          18.1,
-          23.0
+          -24.0,
+          -18.8,
+          -10.1,
+          -0.3,
+          9.1,
+          17.6,
+          22.7
         ]
       },
       "adjustments": {
@@ -10010,9 +10038,9 @@
       "home_score": 44,
       "away_score": 13,
       "predictions": {
-        "ensemble_prob": 0.8778,
+        "ensemble_prob": 0.8774,
         "logistic_prob": 1.0,
-        "elo_prob": 0.9137,
+        "elo_prob": 0.9109,
         "xgb_prob": 0.8726,
         "pyth_prob": 0.7839,
         "eff_prob": 0.6282,
@@ -10026,19 +10054,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.7448,
-        "exp_margin": 9.23,
-        "prob_7plus": 0.562,
-        "prob_14plus": 0.3704,
-        "prob_21plus": 0.2017,
+        "win_prob": 0.7464,
+        "exp_margin": 9.55,
+        "prob_7plus": 0.5744,
+        "prob_14plus": 0.3782,
+        "prob_21plus": 0.2089,
         "margin_percentiles": [
-          -14.1,
+          -13.5,
           -8.5,
           -0.2,
-          9.1,
-          18.9,
-          27.3,
-          32.5
+          9.6,
+          19.2,
+          27.9,
+          33.4
         ]
       },
       "adjustments": {
@@ -10052,7 +10080,7 @@
       "elo": {
         "home": 1761.7,
         "away": 1441.2,
-        "diff": 409.9
+        "diff": 403.9
       },
       "bayesian": {
         "home_mu": 1775.3,
@@ -10070,6 +10098,13 @@
       },
       "injuries": {
         "home": [
+          {
+            "player": "Deven Eastern",
+            "status": "Out",
+            "position": "DT",
+            "injury_description": "A seventh-round pick of the 2026 NFL Draft, Eastern had missed parts of minicamp and OTAs due to an unspecified injury. By being placed on the PUP, Eastern is eligible to be activated at any time during training camp once he's fully healthy. The nature of the Minnesota product's injury might become more clear once the Seahawks conduct their first practice of training camp July 25.",
+            "value_tier": "starter"
+          },
           {
             "player": "Jason Myers",
             "status": "Active",
@@ -10096,13 +10131,6 @@
             "status": "Active",
             "position": "WR",
             "injury_description": "Fowler notes that the Seahawks offense will utilize more motions and shifts under Fleury's scheme and that Shaheed should see more short-to-medium throws from Sam Darnold as a result. Shaheed and Darnold demonstrated a strong connection during spring practices, and it appears the former is in line for a larger role in the offense, perhaps leapfrogging Cooper Kupp as the team's WR2 behind Jaxon Smith-Njigba.",
-            "value_tier": "starter"
-          },
-          {
-            "player": "Sam Darnold",
-            "status": "Active",
-            "position": "QB",
-            "injury_description": "In his first year with the Seahawks, Darnold helmed his team's Super Bowl LX win over the Patriots, but despite that success the veteran QB acknowledges that there's still work to be done in terms of \"continuing to hone in on the deep ball\" as well as understanding how he can get better that way by \"quieting (his) feet in the pocket.\" Darnold -- who threw for 4,048 yards and 25 TDs in 17 regular-season games in 2025 -- also points to his 20 regular-season turnovers (14 interceptions and six fumbles lost) as an area that he can improve. Looking ahead to the coming campaign, the 29-year-old will be working with a pass-catching corps that returns WRs Jaxon Smith-Njigba, Cooper Kupp and Rashid Shaheed and TE AJ Barner. Following the free-agent departure of RB Kenneth Walker, the team added Jadarian Price in the first round of the 2026 NFL Draft to bolster a backfield that awaits the recovery of Zach Charbonnet, who's bouncing back from a torn ACL.",
             "value_tier": "starter"
           }
         ],
@@ -10145,11 +10173,18 @@
         ]
       },
       "injury_impact": {
-        "home_elo_penalty": 11.8,
+        "home_elo_penalty": 17.8,
         "away_elo_penalty": 20.2,
-        "home_impact_score": 0.1073,
+        "home_impact_score": 0.1618,
         "away_impact_score": 0.1836,
         "home_key_players_out": [
+          {
+            "player": "Deven Eastern",
+            "position": "DT",
+            "status": "Out",
+            "elo_impact": 6.0,
+            "value_tier": "starter"
+          },
           {
             "player": "Zach Charbonnet",
             "position": "RB",
@@ -10223,9 +10258,9 @@
       },
       "prediction_drivers": [
         "ELO advantage: SEA +321 rating points",
+        "Deven Eastern (SEA) [Starter] OUT \u2014 \u22126 ELO",
         "Zach Charbonnet (SEA) [Starter] QUESTIONABLE \u2014 \u22123 ELO",
         "Tory Horton (SEA) [Starter] QUESTIONABLE \u2014 \u22123 ELO",
-        "AJ Barner (SEA) [Starter] QUESTIONABLE \u2014 \u22123 ELO",
         "Jordyn Tyson (NO) [Starter] QUESTIONABLE \u2014 \u22123 ELO",
         "Devin Neal (NO) [Starter] QUESTIONABLE \u2014 \u22123 ELO",
         "Kendre Miller (NO) [Starter] QUESTIONABLE \u2014 \u22123 ELO",
@@ -10233,7 +10268,7 @@
         "Travel penalty: away team travels 2100 miles",
         "Home field: SEA +65 ELO home advantage"
       ],
-      "explanation": "The model gives Seattle Seahawks a 87.8% win probability \u2014 a strong favorite over New Orleans Saints. The ELO gap is 321 points with home field adding approximately 65 ELO points. Travel distance 2100 miles factors into the away team rating."
+      "explanation": "The model gives Seattle Seahawks a 87.7% win probability \u2014 a strong favorite over New Orleans Saints. The ELO gap is 321 points with home field adding approximately 65 ELO points. Travel distance 2100 miles factors into the away team rating."
     },
     {
       "game_id": "401772844",
@@ -10267,19 +10302,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.72,
-        "exp_margin": 8.16,
-        "prob_7plus": 0.5326,
-        "prob_14plus": 0.3367,
-        "prob_21plus": 0.1767,
+        "win_prob": 0.7184,
+        "exp_margin": 8.19,
+        "prob_7plus": 0.5278,
+        "prob_14plus": 0.3408,
+        "prob_21plus": 0.1898,
         "margin_percentiles": [
           -15.0,
-          -9.9,
-          -1.3,
-          8.2,
-          17.6,
-          26.2,
-          31.6
+          -9.8,
+          -1.5,
+          8.0,
+          17.8,
+          26.6,
+          31.5
         ]
       },
       "adjustments": {
@@ -10505,9 +10540,9 @@
       "home_score": 16,
       "away_score": 15,
       "predictions": {
-        "ensemble_prob": 0.8512,
+        "ensemble_prob": 0.8504,
         "logistic_prob": 1.0,
-        "elo_prob": 0.8656,
+        "elo_prob": 0.8605,
         "xgb_prob": 0.8442,
         "pyth_prob": 0.7329,
         "eff_prob": 0.5798,
@@ -10521,19 +10556,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.7464,
-        "exp_margin": 9.32,
-        "prob_7plus": 0.5691,
-        "prob_14plus": 0.3677,
-        "prob_21plus": 0.2013,
+        "win_prob": 0.7447,
+        "exp_margin": 9.39,
+        "prob_7plus": 0.5647,
+        "prob_14plus": 0.3702,
+        "prob_21plus": 0.21,
         "margin_percentiles": [
           -13.9,
           -8.8,
           -0.2,
-          9.4,
-          18.8,
-          27.4,
-          32.6
+          9.3,
+          19.1,
+          27.5,
+          32.9
         ]
       },
       "adjustments": {
@@ -10547,7 +10582,7 @@
       "elo": {
         "home": 1602.0,
         "away": 1354.2,
-        "diff": 323.6
+        "diff": 316.1
       },
       "bayesian": {
         "home_mu": 1663.8,
@@ -10565,6 +10600,13 @@
       },
       "injuries": {
         "home": [
+          {
+            "player": "Khalil Dinkins",
+            "status": "Out",
+            "position": "TE",
+            "injury_description": "It's unclear what issue Dinkins is working through, but since he was placed on the active NFI list, he is eligible to practice and play in preseason games once fully healthy. He signed with the 49ers as an undrafted free agent in late April following a four-year collegiate career at Penn State.",
+            "value_tier": "starter"
+          },
           {
             "player": "Christian McCaffrey",
             "status": "Active",
@@ -10591,13 +10633,6 @@
             "status": "Active",
             "position": "QB",
             "injury_description": "As the coming campaign approaches, Purdy -- who has had time to move past the shoulder and toe issues he dealt with last season -- is set to work with a WR corps that welcomes a trio of key additions in Mike Evans, Christian Kirk and rookie second-rounder De'Zhaun Stribling. Also in the mix are returnees Ricky Pearsall, Jacob Cowing, Jordan Watkins and Demarcus Robinson. Meanwhile, Kittle is bouncing back from an Achilles injury, and though the star TE says that he has \"a chance\" to be ready for Week 1, the 49ers may need to lean more on their key wideouts out of the gate this year while Kittle works his way back into the mix. Purdy is coming off a 2025 regular season in which he threw for 2,167 yards with 20 TDs and 10 picks, while carrying 33 times for 147 yards and three scores in nine games. Looking ahead, the signal-caller's fantasy upside in 2026 hinges largely on avoiding injuries, as well as building strong on-field chemistry with his team's re-tooled pass-catching unit.",
-            "value_tier": "starter"
-          },
-          {
-            "player": "Brandon Aiyuk",
-            "status": "Out",
-            "position": "WR",
-            "injury_description": "That said, it's unclear whether the Commanders would have interest in signing Aiyuk in such a scenario. Moreover, it's not a situation they can publicly comment on, given that the wideout is still under contract with the 49ers. Back in January, 49ers GM John Lynch said that it was \"safe to say that (Aiyuk) has played his last snap with the Niners.\" However, since then the team has held on to the 2020 first-rounder in the hopes of finding a trade partner. San Francisco's veteran players are set to arrive at training camp July 25, with the report suggesting that it's possible the team is waiting until then to make a call on Aiyuk's status with the franchise.",
             "value_tier": "starter"
           }
         ],
@@ -10640,11 +10675,18 @@
         ]
       },
       "injury_impact": {
-        "home_elo_penalty": 33.6,
+        "home_elo_penalty": 41.1,
         "away_elo_penalty": 21.4,
-        "home_impact_score": 0.3055,
+        "home_impact_score": 0.3736,
         "away_impact_score": 0.1945,
         "home_key_players_out": [
+          {
+            "player": "Khalil Dinkins",
+            "position": "TE",
+            "status": "Out",
+            "elo_impact": 7.5,
+            "value_tier": "starter"
+          },
           {
             "player": "Mac Jones",
             "position": "QB",
@@ -10753,15 +10795,15 @@
       },
       "prediction_drivers": [
         "ELO advantage: SF +248 rating points",
+        "Khalil Dinkins (SF) [Starter] OUT \u2014 \u22128 ELO",
         "Mac Jones (SF) [Starter] QUESTIONABLE \u2014 \u221212 ELO",
         "Brandon Aiyuk (SF) [Starter] OUT \u2014 \u22128 ELO",
-        "George Kittle (SF) [Starter] QUESTIONABLE \u2014 \u22123 ELO",
         "Kaleb Proctor (ARI) [Starter] QUESTIONABLE \u2014 \u22122 ELO",
         "Tip Reiman (ARI) [Starter] QUESTIONABLE \u2014 \u22123 ELO",
         "Karson Sharar (ARI) [Starter] QUESTIONABLE \u2014 \u22122 ELO",
         "Home field: SF +65 ELO home advantage"
       ],
-      "explanation": "The model gives San Francisco 49ers a 85.1% win probability \u2014 a strong favorite over Arizona Cardinals. The ELO gap is 248 points with home field adding approximately 65 ELO points."
+      "explanation": "The model gives San Francisco 49ers a 85.0% win probability \u2014 a strong favorite over Arizona Cardinals. The ELO gap is 248 points with home field adding approximately 65 ELO points."
     },
     {
       "game_id": "401772920",
@@ -10795,19 +10837,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.5704,
-        "exp_margin": 2.46,
-        "prob_7plus": 0.3722,
-        "prob_14plus": 0.2054,
-        "prob_21plus": 0.0992,
+        "win_prob": 0.5757,
+        "exp_margin": 2.77,
+        "prob_7plus": 0.3833,
+        "prob_14plus": 0.2135,
+        "prob_21plus": 0.1012,
         "margin_percentiles": [
-          -21.3,
-          -15.9,
+          -20.2,
+          -15.5,
           -7.0,
-          2.4,
-          11.9,
-          20.9,
-          26.0
+          2.8,
+          12.3,
+          21.1,
+          25.8
         ]
       },
       "adjustments": {
@@ -11062,18 +11104,18 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.5657,
-        "exp_margin": 2.41,
-        "prob_7plus": 0.3777,
-        "prob_14plus": 0.2097,
-        "prob_21plus": 0.0987,
+        "win_prob": 0.5671,
+        "exp_margin": 2.31,
+        "prob_7plus": 0.37,
+        "prob_14plus": 0.2035,
+        "prob_21plus": 0.0933,
         "margin_percentiles": [
-          -21.5,
+          -20.9,
           -15.9,
-          -7.1,
+          -7.2,
           2.4,
-          12.0,
-          20.8,
+          11.9,
+          20.5,
           25.7
         ]
       },
@@ -11271,9 +11313,9 @@
       "home_score": 20,
       "away_score": 23,
       "predictions": {
-        "ensemble_prob": 0.1863,
+        "ensemble_prob": 0.1867,
         "logistic_prob": 0.0,
-        "elo_prob": 0.0876,
+        "elo_prob": 0.0904,
         "xgb_prob": 0.1655,
         "pyth_prob": 0.3417,
         "eff_prob": 0.6506,
@@ -11287,19 +11329,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.2788,
-        "exp_margin": -8.36,
-        "prob_7plus": 0.1377,
-        "prob_14plus": 0.0558,
-        "prob_21plus": 0.0191,
+        "win_prob": 0.2853,
+        "exp_margin": -8.24,
+        "prob_7plus": 0.1371,
+        "prob_14plus": 0.0564,
+        "prob_21plus": 0.0194,
         "margin_percentiles": [
-          -31.5,
-          -26.5,
-          -18.0,
-          -8.3,
-          1.1,
-          9.7,
-          14.7
+          -31.9,
+          -26.8,
+          -17.7,
+          -8.1,
+          1.5,
+          9.9,
+          14.8
         ]
       },
       "adjustments": {
@@ -11313,7 +11355,7 @@
       "elo": {
         "home": 1354.2,
         "away": 1761.7,
-        "diff": -407.0
+        "diff": -401.0
       },
       "bayesian": {
         "home_mu": 1500.7,
@@ -11369,6 +11411,13 @@
         ],
         "away": [
           {
+            "player": "Deven Eastern",
+            "status": "Out",
+            "position": "DT",
+            "injury_description": "A seventh-round pick of the 2026 NFL Draft, Eastern had missed parts of minicamp and OTAs due to an unspecified injury. By being placed on the PUP, Eastern is eligible to be activated at any time during training camp once he's fully healthy. The nature of the Minnesota product's injury might become more clear once the Seahawks conduct their first practice of training camp July 25.",
+            "value_tier": "starter"
+          },
+          {
             "player": "Jason Myers",
             "status": "Active",
             "position": "PK",
@@ -11395,21 +11444,14 @@
             "position": "WR",
             "injury_description": "Fowler notes that the Seahawks offense will utilize more motions and shifts under Fleury's scheme and that Shaheed should see more short-to-medium throws from Sam Darnold as a result. Shaheed and Darnold demonstrated a strong connection during spring practices, and it appears the former is in line for a larger role in the offense, perhaps leapfrogging Cooper Kupp as the team's WR2 behind Jaxon Smith-Njigba.",
             "value_tier": "starter"
-          },
-          {
-            "player": "Sam Darnold",
-            "status": "Active",
-            "position": "QB",
-            "injury_description": "In his first year with the Seahawks, Darnold helmed his team's Super Bowl LX win over the Patriots, but despite that success the veteran QB acknowledges that there's still work to be done in terms of \"continuing to hone in on the deep ball\" as well as understanding how he can get better that way by \"quieting (his) feet in the pocket.\" Darnold -- who threw for 4,048 yards and 25 TDs in 17 regular-season games in 2025 -- also points to his 20 regular-season turnovers (14 interceptions and six fumbles lost) as an area that he can improve. Looking ahead to the coming campaign, the 29-year-old will be working with a pass-catching corps that returns WRs Jaxon Smith-Njigba, Cooper Kupp and Rashid Shaheed and TE AJ Barner. Following the free-agent departure of RB Kenneth Walker, the team added Jadarian Price in the first round of the 2026 NFL Draft to bolster a backfield that awaits the recovery of Zach Charbonnet, who's bouncing back from a torn ACL.",
-            "value_tier": "starter"
           }
         ]
       },
       "injury_impact": {
         "home_elo_penalty": 21.4,
-        "away_elo_penalty": 11.8,
+        "away_elo_penalty": 17.8,
         "home_impact_score": 0.1945,
-        "away_impact_score": 0.1073,
+        "away_impact_score": 0.1618,
         "home_key_players_out": [
           {
             "player": "Kaleb Proctor",
@@ -11470,6 +11512,13 @@
         ],
         "away_key_players_out": [
           {
+            "player": "Deven Eastern",
+            "position": "DT",
+            "status": "Out",
+            "elo_impact": 6.0,
+            "value_tier": "starter"
+          },
+          {
             "player": "Zach Charbonnet",
             "position": "RB",
             "status": "Questionable",
@@ -11508,13 +11557,13 @@
         "Kaleb Proctor (ARI) [Starter] QUESTIONABLE \u2014 \u22122 ELO",
         "Tip Reiman (ARI) [Starter] QUESTIONABLE \u2014 \u22123 ELO",
         "Karson Sharar (ARI) [Starter] QUESTIONABLE \u2014 \u22122 ELO",
+        "Deven Eastern (SEA) [Starter] OUT \u2014 \u22126 ELO",
         "Zach Charbonnet (SEA) [Starter] QUESTIONABLE \u2014 \u22123 ELO",
         "Tory Horton (SEA) [Starter] QUESTIONABLE \u2014 \u22123 ELO",
-        "AJ Barner (SEA) [Starter] QUESTIONABLE \u2014 \u22123 ELO",
         "Efficiency gap: ARI net +0.098 vs SEA net -0.116",
         "Home field: ARI +65 ELO home advantage"
       ],
-      "explanation": "The model gives Seattle Seahawks a 81.4% win probability \u2014 a strong favorite over Arizona Cardinals. The ELO gap is 407 points with home field adding approximately 65 ELO points. Travel distance 1104 miles factors into the away team rating."
+      "explanation": "The model gives Seattle Seahawks a 81.3% win probability \u2014 a strong favorite over Arizona Cardinals. The ELO gap is 407 points with home field adding approximately 65 ELO points. Travel distance 1104 miles factors into the away team rating."
     },
     {
       "game_id": "401772632",
@@ -11548,19 +11597,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.4583,
-        "exp_margin": -1.32,
-        "prob_7plus": 0.2807,
-        "prob_14plus": 0.1404,
-        "prob_21plus": 0.0599,
+        "win_prob": 0.4696,
+        "exp_margin": -1.15,
+        "prob_7plus": 0.2882,
+        "prob_14plus": 0.1426,
+        "prob_21plus": 0.0605,
         "margin_percentiles": [
-          -25.0,
-          -19.6,
+          -24.8,
+          -19.5,
           -10.9,
-          -1.4,
-          8.3,
-          17.3,
-          22.3
+          -1.2,
+          8.7,
+          17.0,
+          22.4
         ]
       },
       "adjustments": {
@@ -11749,19 +11798,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6438,
-        "exp_margin": 5.16,
-        "prob_7plus": 0.4493,
-        "prob_14plus": 0.2639,
-        "prob_21plus": 0.1343,
+        "win_prob": 0.6388,
+        "exp_margin": 5.14,
+        "prob_7plus": 0.4459,
+        "prob_14plus": 0.269,
+        "prob_21plus": 0.1339,
         "margin_percentiles": [
           -18.2,
           -13.0,
-          -4.3,
-          5.2,
-          14.6,
+          -4.6,
+          5.0,
+          14.7,
           23.4,
-          28.5
+          28.8
         ]
       },
       "adjustments": {
@@ -11980,19 +12029,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6805,
-        "exp_margin": 6.7,
-        "prob_7plus": 0.4914,
-        "prob_14plus": 0.3079,
+        "win_prob": 0.6824,
+        "exp_margin": 6.78,
+        "prob_7plus": 0.4957,
+        "prob_14plus": 0.3102,
         "prob_21plus": 0.1586,
         "margin_percentiles": [
           -16.6,
-          -11.6,
-          -2.9,
-          6.7,
-          16.4,
-          25.0,
-          30.0
+          -11.7,
+          -3.0,
+          6.8,
+          16.5,
+          24.8,
+          30.4
         ]
       },
       "adjustments": {
@@ -12220,19 +12269,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6631,
-        "exp_margin": 5.98,
-        "prob_7plus": 0.469,
-        "prob_14plus": 0.2878,
-        "prob_21plus": 0.1453,
+        "win_prob": 0.6663,
+        "exp_margin": 6.07,
+        "prob_7plus": 0.4731,
+        "prob_14plus": 0.2873,
+        "prob_21plus": 0.142,
         "margin_percentiles": [
-          -17.2,
-          -12.3,
+          -17.1,
+          -12.0,
           -3.4,
-          6.0,
-          15.6,
+          6.1,
+          15.5,
           24.1,
-          29.3
+          29.5
         ]
       },
       "adjustments": {
@@ -12481,19 +12530,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.7027,
-        "exp_margin": 7.35,
-        "prob_7plus": 0.5054,
-        "prob_14plus": 0.3162,
-        "prob_21plus": 0.1662,
+        "win_prob": 0.6885,
+        "exp_margin": 6.98,
+        "prob_7plus": 0.5017,
+        "prob_14plus": 0.3129,
+        "prob_21plus": 0.1572,
         "margin_percentiles": [
-          -15.5,
-          -10.6,
-          -2.2,
-          7.2,
-          16.9,
-          25.3,
-          30.8
+          -16.3,
+          -11.3,
+          -2.7,
+          7.0,
+          16.4,
+          25.0,
+          30.2
         ]
       },
       "adjustments": {
@@ -12706,19 +12755,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.5248,
-        "exp_margin": 1.04,
-        "prob_7plus": 0.3383,
-        "prob_14plus": 0.1798,
-        "prob_21plus": 0.0791,
+        "win_prob": 0.5243,
+        "exp_margin": 0.84,
+        "prob_7plus": 0.3311,
+        "prob_14plus": 0.1776,
+        "prob_21plus": 0.0805,
         "margin_percentiles": [
-          -22.3,
-          -17.2,
-          -8.5,
-          0.9,
-          10.7,
+          -22.7,
+          -17.3,
+          -9.0,
+          0.8,
+          10.3,
           19.1,
-          24.6
+          24.5
         ]
       },
       "adjustments": {
@@ -12968,19 +13017,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.5004,
-        "exp_margin": -0.06,
-        "prob_7plus": 0.3042,
-        "prob_14plus": 0.1583,
-        "prob_21plus": 0.0694,
+        "win_prob": 0.4808,
+        "exp_margin": -0.64,
+        "prob_7plus": 0.2934,
+        "prob_14plus": 0.147,
+        "prob_21plus": 0.0603,
         "margin_percentiles": [
-          -23.8,
-          -18.1,
-          -9.3,
-          0.0,
-          9.3,
-          18.2,
-          23.6
+          -23.7,
+          -18.7,
+          -9.9,
+          -0.7,
+          8.8,
+          17.3,
+          22.4
         ]
       },
       "adjustments": {
@@ -13179,19 +13228,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.774,
-        "exp_margin": 10.81,
-        "prob_7plus": 0.6035,
-        "prob_14plus": 0.4123,
-        "prob_21plus": 0.2394,
+        "win_prob": 0.7722,
+        "exp_margin": 10.77,
+        "prob_7plus": 0.6019,
+        "prob_14plus": 0.4181,
+        "prob_21plus": 0.2353,
         "margin_percentiles": [
-          -12.8,
-          -7.4,
-          1.1,
-          10.9,
-          20.5,
-          29.0,
-          34.5
+          -12.6,
+          -7.7,
+          1.0,
+          10.8,
+          20.4,
+          28.9,
+          34.2
         ]
       },
       "adjustments": {
@@ -13411,19 +13460,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6738,
-        "exp_margin": 6.48,
-        "prob_7plus": 0.4894,
-        "prob_14plus": 0.2998,
-        "prob_21plus": 0.1509,
+        "win_prob": 0.6739,
+        "exp_margin": 6.59,
+        "prob_7plus": 0.4867,
+        "prob_14plus": 0.302,
+        "prob_21plus": 0.1547,
         "margin_percentiles": [
-          -17.0,
-          -11.8,
-          -3.4,
-          6.5,
-          16.1,
-          24.6,
-          30.6
+          -17.2,
+          -11.6,
+          -3.1,
+          6.6,
+          16.2,
+          24.9,
+          30.3
         ]
       },
       "adjustments": {
@@ -13612,9 +13661,9 @@
       "home_score": 21,
       "away_score": 26,
       "predictions": {
-        "ensemble_prob": 0.3959,
+        "ensemble_prob": 0.3943,
         "logistic_prob": 0.2667,
-        "elo_prob": 0.5249,
+        "elo_prob": 0.5142,
         "xgb_prob": 0.3224,
         "pyth_prob": 0.5373,
         "eff_prob": 0.5969,
@@ -13628,19 +13677,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.5044,
-        "exp_margin": 0.22,
-        "prob_7plus": 0.3145,
-        "prob_14plus": 0.1687,
-        "prob_21plus": 0.0775,
+        "win_prob": 0.5046,
+        "exp_margin": 0.18,
+        "prob_7plus": 0.3153,
+        "prob_14plus": 0.168,
+        "prob_21plus": 0.072,
         "margin_percentiles": [
-          -23.5,
-          -17.9,
+          -23.4,
+          -18.0,
           -9.4,
           0.2,
-          9.8,
-          18.7,
-          24.0
+          9.9,
+          18.6,
+          23.5
         ]
       },
       "adjustments": {
@@ -13654,7 +13703,7 @@
       "elo": {
         "home": 1602.0,
         "away": 1628.5,
-        "diff": 17.3
+        "diff": 9.8
       },
       "bayesian": {
         "home_mu": 1663.8,
@@ -13672,6 +13721,13 @@
       },
       "injuries": {
         "home": [
+          {
+            "player": "Khalil Dinkins",
+            "status": "Out",
+            "position": "TE",
+            "injury_description": "It's unclear what issue Dinkins is working through, but since he was placed on the active NFI list, he is eligible to practice and play in preseason games once fully healthy. He signed with the 49ers as an undrafted free agent in late April following a four-year collegiate career at Penn State.",
+            "value_tier": "starter"
+          },
           {
             "player": "Christian McCaffrey",
             "status": "Active",
@@ -13698,13 +13754,6 @@
             "status": "Active",
             "position": "QB",
             "injury_description": "As the coming campaign approaches, Purdy -- who has had time to move past the shoulder and toe issues he dealt with last season -- is set to work with a WR corps that welcomes a trio of key additions in Mike Evans, Christian Kirk and rookie second-rounder De'Zhaun Stribling. Also in the mix are returnees Ricky Pearsall, Jacob Cowing, Jordan Watkins and Demarcus Robinson. Meanwhile, Kittle is bouncing back from an Achilles injury, and though the star TE says that he has \"a chance\" to be ready for Week 1, the 49ers may need to lean more on their key wideouts out of the gate this year while Kittle works his way back into the mix. Purdy is coming off a 2025 regular season in which he threw for 2,167 yards with 20 TDs and 10 picks, while carrying 33 times for 147 yards and three scores in nine games. Looking ahead, the signal-caller's fantasy upside in 2026 hinges largely on avoiding injuries, as well as building strong on-field chemistry with his team's re-tooled pass-catching unit.",
-            "value_tier": "starter"
-          },
-          {
-            "player": "Brandon Aiyuk",
-            "status": "Out",
-            "position": "WR",
-            "injury_description": "That said, it's unclear whether the Commanders would have interest in signing Aiyuk in such a scenario. Moreover, it's not a situation they can publicly comment on, given that the wideout is still under contract with the 49ers. Back in January, 49ers GM John Lynch said that it was \"safe to say that (Aiyuk) has played his last snap with the Niners.\" However, since then the team has held on to the 2020 first-rounder in the hopes of finding a trade partner. San Francisco's veteran players are set to arrive at training camp July 25, with the report suggesting that it's possible the team is waiting until then to make a call on Aiyuk's status with the franchise.",
             "value_tier": "starter"
           }
         ],
@@ -13747,11 +13796,18 @@
         ]
       },
       "injury_impact": {
-        "home_elo_penalty": 33.6,
+        "home_elo_penalty": 41.1,
         "away_elo_penalty": 8.4,
-        "home_impact_score": 0.3055,
+        "home_impact_score": 0.3736,
         "away_impact_score": 0.0764,
         "home_key_players_out": [
+          {
+            "player": "Khalil Dinkins",
+            "position": "TE",
+            "status": "Out",
+            "elo_impact": 7.5,
+            "value_tier": "starter"
+          },
           {
             "player": "Mac Jones",
             "position": "QB",
@@ -13824,16 +13880,16 @@
         "away_star_stack_multiplier": 1.0
       },
       "prediction_drivers": [
+        "Khalil Dinkins (SF) [Starter] OUT \u2014 \u22128 ELO",
         "Mac Jones (SF) [Starter] QUESTIONABLE \u2014 \u221212 ELO",
         "Brandon Aiyuk (SF) [Starter] OUT \u2014 \u22128 ELO",
-        "George Kittle (SF) [Starter] QUESTIONABLE \u2014 \u22123 ELO",
         "Travis Hunter (JAX) [Starter] QUESTIONABLE \u2014 \u22123 ELO",
         "Jourdan Lewis (JAX) [Starter] QUESTIONABLE \u2014 \u22122 ELO",
         "Chris Rodriguez Jr. (JAX) [Starter] QUESTIONABLE \u2014 \u22123 ELO",
         "Travel penalty: away team travels 2351 miles",
         "Home field: SF +65 ELO home advantage"
       ],
-      "explanation": "The model gives Jacksonville Jaguars a 60.4% win probability \u2014 a moderate favorite over San Francisco 49ers. The ELO gap is 26 points with home field adding approximately 65 ELO points. Travel distance 2351 miles factors into the away team rating."
+      "explanation": "The model gives Jacksonville Jaguars a 60.6% win probability \u2014 a moderate favorite over San Francisco 49ers. The ELO gap is 26 points with home field adding approximately 65 ELO points. Travel distance 2351 miles factors into the away team rating."
     },
     {
       "game_id": "401772741",
@@ -13867,19 +13923,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.5068,
-        "exp_margin": 0.14,
-        "prob_7plus": 0.3121,
-        "prob_14plus": 0.1622,
-        "prob_21plus": 0.0673,
+        "win_prob": 0.5165,
+        "exp_margin": 0.55,
+        "prob_7plus": 0.3219,
+        "prob_14plus": 0.1688,
+        "prob_21plus": 0.0729,
         "margin_percentiles": [
-          -23.9,
-          -18.2,
-          -9.2,
-          0.3,
-          9.6,
-          18.1,
-          23.5
+          -22.7,
+          -17.4,
+          -8.9,
+          0.6,
+          9.9,
+          18.6,
+          23.7
         ]
       },
       "adjustments": {
@@ -14093,19 +14149,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.3396,
-        "exp_margin": -5.98,
-        "prob_7plus": 0.1771,
-        "prob_14plus": 0.0768,
-        "prob_21plus": 0.0268,
+        "win_prob": 0.3366,
+        "exp_margin": -5.9,
+        "prob_7plus": 0.1763,
+        "prob_14plus": 0.0791,
+        "prob_21plus": 0.0294,
         "margin_percentiles": [
-          -29.3,
-          -24.2,
+          -28.9,
+          -24.1,
           -15.6,
           -6.0,
-          3.7,
-          11.7,
-          17.0
+          3.6,
+          12.1,
+          17.5
         ]
       },
       "adjustments": {
@@ -14320,19 +14376,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.5058,
-        "exp_margin": -0.02,
-        "prob_7plus": 0.3125,
-        "prob_14plus": 0.1587,
-        "prob_21plus": 0.0675,
+        "win_prob": 0.4886,
+        "exp_margin": -0.36,
+        "prob_7plus": 0.2997,
+        "prob_14plus": 0.1556,
+        "prob_21plus": 0.0671,
         "margin_percentiles": [
-          -23.1,
-          -18.4,
-          -9.7,
-          0.2,
-          9.5,
-          17.9,
-          22.8
+          -23.7,
+          -18.7,
+          -9.9,
+          -0.4,
+          9.2,
+          18.1,
+          23.3
         ]
       },
       "adjustments": {
@@ -14581,19 +14637,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6853,
-        "exp_margin": 6.75,
-        "prob_7plus": 0.492,
-        "prob_14plus": 0.3064,
-        "prob_21plus": 0.1544,
+        "win_prob": 0.6793,
+        "exp_margin": 6.76,
+        "prob_7plus": 0.496,
+        "prob_14plus": 0.3106,
+        "prob_21plus": 0.1575,
         "margin_percentiles": [
-          -16.5,
-          -11.6,
+          -16.9,
+          -11.2,
           -2.9,
-          6.7,
-          16.4,
-          24.8,
-          30.6
+          6.9,
+          16.5,
+          24.7,
+          30.0
         ]
       },
       "adjustments": {
@@ -14827,19 +14883,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6961,
-        "exp_margin": 7.32,
-        "prob_7plus": 0.509,
-        "prob_14plus": 0.3217,
-        "prob_21plus": 0.1673,
+        "win_prob": 0.7007,
+        "exp_margin": 7.68,
+        "prob_7plus": 0.517,
+        "prob_14plus": 0.3312,
+        "prob_21plus": 0.1727,
         "margin_percentiles": [
-          -15.8,
-          -11.2,
-          -2.3,
-          7.3,
-          16.9,
-          25.4,
-          30.7
+          -15.5,
+          -10.6,
+          -2.1,
+          7.6,
+          17.4,
+          26.0,
+          31.2
         ]
       },
       "adjustments": {
