@@ -1,56 +1,56 @@
 {
-  "updated": "2026-07-25T09:27:49.162323+00:00",
-  "log_loss": 1.2276274916373144,
-  "brier_score": 0.18297518300117466,
-  "auc": 0.8088668499607228,
+  "updated": "2026-07-26T09:50:34.399283+00:00",
+  "log_loss": 1.3943904909769045,
+  "brier_score": 0.18641237302204075,
+  "auc": 0.809593023255814,
   "calibration_buckets": [
     {
       "bucket": "0-10%",
-      "predicted": 0.031,
-      "actual": 0.15,
-      "count": 60
+      "predicted": 0.027,
+      "actual": 0.191,
+      "count": 68
     },
     {
       "bucket": "10-20%",
-      "predicted": 0.18,
-      "actual": 0.214,
-      "count": 14
+      "predicted": 0.15,
+      "actual": 0.15,
+      "count": 0
     },
     {
       "bucket": "20-30%",
-      "predicted": 0.286,
-      "actual": 0.0,
-      "count": 1
+      "predicted": 0.273,
+      "actual": 0.2,
+      "count": 10
     },
     {
       "bucket": "30-40%",
-      "predicted": 0.31,
-      "actual": 0.444,
-      "count": 36
+      "predicted": 0.368,
+      "actual": 0.44,
+      "count": 50
     },
     {
       "bucket": "40-50%",
-      "predicted": 0.476,
-      "actual": 0.478,
-      "count": 23
+      "predicted": 0.457,
+      "actual": 0.556,
+      "count": 9
     },
     {
       "bucket": "50-60%",
-      "predicted": 0.559,
-      "actual": 0.596,
-      "count": 57
+      "predicted": 0.59,
+      "actual": 0.514,
+      "count": 37
     },
     {
       "bucket": "60-70%",
-      "predicted": 0.692,
-      "actual": 0.667,
-      "count": 24
+      "predicted": 0.667,
+      "actual": 0.727,
+      "count": 44
     },
     {
       "bucket": "70-80%",
-      "predicted": 0.73,
-      "actual": 0.769,
-      "count": 13
+      "predicted": 0.75,
+      "actual": 0.75,
+      "count": 0
     },
     {
       "bucket": "80-90%",
@@ -60,12 +60,12 @@
     },
     {
       "bucket": "90-100%",
-      "predicted": 0.929,
-      "actual": 1.0,
-      "count": 2
+      "predicted": 0.95,
+      "actual": 0.95,
+      "count": 0
     }
   ],
   "historical_accuracy": [],
-  "n_training_games": 286,
+  "n_training_games": 273,
   "xgboost_available": true
 }
