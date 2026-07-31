@@ -83,23 +83,28 @@ function normalInv(p) {
   return (((((a[0]*r+a[1])*r+a[2])*r+a[3])*r+a[4])*r+a[5])*q / (((((b[0]*r+b[1])*r+b[2])*r+b[3])*r+b[4])*r+1);
 }
 
-function calcLiveWinProb(pregameProb, homePts, awayPts, period, clockStr) {
+function calcLiveWinProb(pregameProb, homePts, awayPts, period, clockStr, sport = 'nba') {
   if (!period || period === 0) return pregameProb;
-  const NBA_STD = 11.5;    // typical NBA final score std dev in points
-  const TOTAL_SECS = 2880; // 48 min regulation
+  const isNfl = sport === 'nfl';
+  // Final-margin std dev — matches the backend Monte Carlo model's game_noise_std
+  // (model/monte_carlo.py: NFL default 14.0, NBA override 11.5).
+  const GAME_STD = isNfl ? 14.0 : 11.5;
+  const QUARTER_SECS = isNfl ? 900 : 720; // NFL: 15-min quarters, NBA: 12-min quarters
+  const TOTAL_SECS = QUARTER_SECS * 4;    // NFL: 60 min, NBA: 48 min regulation
   const parts = (clockStr || '0:00').split(':');
   const clockSecs = (parseInt(parts[0]) || 0) * 60 + (parseInt(parts[1]) || 0);
-  // For OT periods, each OT is 5 min (300 sec)
+  // OT: NFL regular-season OT is 10 min, NBA OT is 5 min — only matters for how
+  // quickly `frac` (and thus live uncertainty) collapses as the OT clock runs down.
   const isOT = period > 4;
   const secRemaining = isOT
-    ? clockSecs  // just this OT period
-    : Math.max(0, 4 - period) * 720 + clockSecs;
+    ? clockSecs
+    : Math.max(0, 4 - period) * QUARTER_SECS + clockSecs;
   const frac = isOT ? clockSecs / TOTAL_SECS : secRemaining / TOTAL_SECS;
   if (frac <= 0.001) return homePts > awayPts ? 0.99 : homePts < awayPts ? 0.01 : 0.5;
-  const pregameSpread = normalInv(Math.max(0.01, Math.min(0.99, pregameProb))) * NBA_STD;
+  const pregameSpread = normalInv(Math.max(0.01, Math.min(0.99, pregameProb))) * GAME_STD;
   const scoreDiff = homePts - awayPts;
   const blendedSpread = scoreDiff + pregameSpread * frac;
-  const liveStd = NBA_STD * Math.sqrt(frac);
+  const liveStd = GAME_STD * Math.sqrt(frac);
   return Math.max(0.01, Math.min(0.99, normalCDF(blendedSpread / liveStd)));
 }
 
@@ -592,8 +597,7 @@ function renderAll() {
 }
 
 function forceRefresh() {
-  loadNflData();
-  loadNbaData().then(() => fetchLiveScores());
+  Promise.all([loadNflData(), loadNbaData()]).then(() => fetchLiveScores());
 }
 
 /* ── Live score overlay ─────────���──────────────────────────────── */
@@ -603,52 +607,64 @@ function mergeLiveGame(game) {
   return { ...game, ...live };
 }
 
+const LIVE_SCOREBOARD_URLS = {
+  nba: 'https://site.api.espn.com/apis/site/v2/sports/basketball/nba/scoreboard',
+  nfl: 'https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard',
+};
+
 async function fetchLiveScores() {
   const now = new Date();
   const dates = [now, new Date(now - 86400000)].map(d =>
     d.toISOString().slice(0, 10).replace(/-/g, '')
   );
   let updated = false;
-  for (const dateStr of dates) {
-    try {
-      const data = await fetch(
-        `https://site.api.espn.com/apis/site/v2/sports/basketball/nba/scoreboard?dates=${dateStr}`
-      ).then(r => r.json());
-      for (const event of (data.events || [])) {
-        const comp = event.competitions?.[0];
-        if (!comp) continue;
-        const home = comp.competitors?.find(c => c.homeAway === 'home');
-        const away = comp.competitors?.find(c => c.homeAway === 'away');
-        const statusObj = event.status || {};
-        liveScoreCache[event.id] = {
-          home_score: parseInt(home?.score || 0),
-          away_score: parseInt(away?.score || 0),
-          status: statusObj.type?.name || '',
-          period: statusObj.period || 0,
-          display_clock: statusObj.displayClock || '',
-          status_detail: statusObj.type?.detail || '',
-        };
-        updated = true;
-      }
-    } catch (_) { /* network errors are non-fatal */ }
+  for (const sport of ['nba', 'nfl']) {
+    for (const dateStr of dates) {
+      try {
+        const data = await fetch(
+          `${LIVE_SCOREBOARD_URLS[sport]}?dates=${dateStr}`
+        ).then(r => r.json());
+        for (const event of (data.events || [])) {
+          const comp = event.competitions?.[0];
+          if (!comp) continue;
+          const home = comp.competitors?.find(c => c.homeAway === 'home');
+          const away = comp.competitors?.find(c => c.homeAway === 'away');
+          const statusObj = event.status || {};
+          liveScoreCache[event.id] = {
+            home_score: parseInt(home?.score || 0),
+            away_score: parseInt(away?.score || 0),
+            status: statusObj.type?.name || '',
+            period: statusObj.period || 0,
+            display_clock: statusObj.displayClock || '',
+            status_detail: statusObj.type?.detail || '',
+          };
+          updated = true;
+        }
+      } catch (_) { /* network errors are non-fatal */ }
+    }
   }
-  if (updated && state.league === 'nba') renderAll();
+  if (updated) renderAll();
   manageLivePolling();
   updateRefreshButtonState();
   // Ensure any newly-FINAL games are logged before resolving winners
   if (updated) {
+    const nflGames = state.predictions?.games;
     const nbaGames = state.nba.predictions?.games;
+    if (nflGames) logPredictions(nflGames, 'nfl');
     if (nbaGames) logPredictions(nbaGames, 'nba');
+    resolveActualWinners('nfl');
     resolveActualWinners('nba');
   }
 }
 
 function manageLivePolling() {
-  const games = state.nba.predictions?.games || [];
-  const hasLive = games.some(g => {
+  const nflGames = state.predictions?.games || [];
+  const nbaGames = state.nba.predictions?.games || [];
+  const isLive = g => {
     const s = (liveScoreCache[g.game_id]?.status) || g.status;
     return s === 'STATUS_IN_PROGRESS' || s === 'STATUS_HALFTIME';
-  });
+  };
+  const hasLive = nflGames.some(isLive) || nbaGames.some(isLive);
   if (hasLive && !livePollingInterval) {
     livePollingInterval = setInterval(fetchLiveScores, LIVE_POLL_MS);
   } else if (!hasLive && livePollingInterval) {
@@ -671,8 +687,7 @@ function updateRefreshButtonState() {
 }
 
 // Start loading both leagues immediately
-loadNflData();
-loadNbaData().then(() => fetchLiveScores());
+Promise.all([loadNflData(), loadNbaData()]).then(() => fetchLiveScores());
 
 /* ══════════════════════════════════════════════════════════════
    SECTION 1 — THIS WEEK'S GAMES
@@ -924,8 +939,10 @@ function buildRichExplanationHtml(game, homeData, awayData, lbData, isNba, ensPr
 
     // Live score: deficit / lead analysis with model context
     if (liveGame && liveGame.period && liveGame.home_score != null && liveGame.away_score != null) {
-      const LS_STD    = 11.5;
-      const LS_TOTAL  = 2880;
+      // Matches calcLiveWinProb()'s constants — keep both in sync.
+      const LS_STD     = isNba ? 11.5 : 14.0;
+      const LS_QUARTER = isNba ? 720 : 900;
+      const LS_TOTAL   = LS_QUARTER * 4;
       const homePts   = liveGame.home_score;
       const awayPts   = liveGame.away_score;
       const scoreDiff = homePts - awayPts;
@@ -935,7 +952,7 @@ function buildRichExplanationHtml(game, homeData, awayData, lbData, isNba, ensPr
       const cParts    = clockStr.split(':');
       const clockSecs = (parseInt(cParts[0]) || 0) * 60 + (parseInt(cParts[1]) || 0);
       const isOT      = period > 4;
-      const secRem    = isOT ? clockSecs : Math.max(0, 4 - period) * 720 + clockSecs;
+      const secRem    = isOT ? clockSecs : Math.max(0, 4 - period) * LS_QUARTER + clockSecs;
       const frac      = isOT ? clockSecs / LS_TOTAL : secRem / LS_TOTAL;
       const liveStd   = LS_STD * Math.sqrt(Math.max(frac, 0.001));
       const baseProb  = pregameProb != null ? pregameProb : Math.max(0.01, Math.min(0.99, ensProb));
@@ -1043,16 +1060,17 @@ function isEarlySeason(game, isNba) {
 function buildGameCard(game, isNba) {
   let p = game.predictions || {};
   const g = mergeLiveGame(game);
-  const isLiveGame = isNba && (g.status === 'STATUS_IN_PROGRESS' || g.status === 'STATUS_HALFTIME');
+  const isLiveGame = g.status === 'STATUS_IN_PROGRESS' || g.status === 'STATUS_HALFTIME';
+  const sport = isNba ? 'nba' : 'nfl';
   const pregameEnsProb = ensembleFromProbs(p, state.weights);
   let ensProb = pregameEnsProb;
   let liveP = p;
   if (isLiveGame && g.period) {
-    ensProb = calcLiveWinProb(pregameEnsProb, g.home_score, g.away_score, g.period, g.display_clock);
+    ensProb = calcLiveWinProb(pregameEnsProb, g.home_score, g.away_score, g.period, g.display_clock, sport);
     liveP = { ...p };
     for (const key of ['elo_prob','pyth_prob','eff_prob','bayesian_prob','logistic_prob','xgb_prob']) {
       if (liveP[key] != null) {
-        liveP[key] = calcLiveWinProb(liveP[key], g.home_score, g.away_score, g.period, g.display_clock);
+        liveP[key] = calcLiveWinProb(liveP[key], g.home_score, g.away_score, g.period, g.display_clock, sport);
       }
     }
   }
