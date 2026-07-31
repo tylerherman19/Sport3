@@ -32,6 +32,14 @@ def build_team_epa_signals(player_week_df, teams, n=8):
     """
     Returns {team: {"off_epa_l{n}": float, "def_epa_allowed_l{n}": float}} for every
     team in `teams`, using each team's last n games of player-week data on file.
+
+    Both signals are opponent-strength adjusted: a game's raw EPA is shifted by how
+    much tougher/easier that specific opponent was than league average, so beating
+    up on a bad defense no longer looks identical to the same output against an
+    elite one. Without this, a team's rolling offensive EPA is really just "how
+    good was my recent schedule," not "how good is this offense" — the single
+    biggest known gap in this signal (unadjusted rolling EPA has no strength-of-
+    schedule correction).
     """
     if player_week_df is None or player_week_df.empty:
         return {t: {f"off_epa_l{n}": 0.0, f"def_epa_allowed_l{n}": 0.0} for t in teams}
@@ -39,15 +47,49 @@ def build_team_epa_signals(player_week_df, teams, n=8):
     off_series = _team_game_epa(player_week_df, "team", n)
     def_series = _team_game_epa(player_week_df, "opponent_team", n)
 
+    # Opponent-strength priors: each team's average offensive / defensive EPA
+    # across all games on file, used as a fixed "how tough is this opponent"
+    # reference. Not a true iterative SOS (a la Massey/SRS) — just a single-pass
+    # adjustment — but it's a live-inference signal, not a trained/backtested
+    # one, so there's no lookahead-leakage concern in using the fullest data on hand.
+    off_strength = off_series.groupby(level=0).mean()
+    def_strength = def_series.groupby(level=0).mean()
+    league_avg_off = float(off_strength.mean()) if len(off_strength) else 0.0
+    league_avg_def = float(def_strength.mean()) if len(def_strength) else 0.0
+
+    # For a given team's offensive game log, who was the opponent (whose defense
+    # they faced)? And symmetrically for the defensive game log, who was the
+    # offense they faced?
+    opp_for_offense = player_week_df.groupby(["team", "season", "week"])["opponent_team"].first()
+    opp_for_defense = player_week_df.groupby(["opponent_team", "season", "week"])["team"].first()
+
     signals = {}
     for t in teams:
-        off_vals = off_series.loc[t] if t in off_series.index.get_level_values(0) else pd.Series(dtype=float)
-        def_vals = def_series.loc[t] if t in def_series.index.get_level_values(0) else pd.Series(dtype=float)
-        off_recent = off_vals.sort_index().tail(n)
-        def_recent = def_vals.sort_index().tail(n)
+        if t in off_series.index.get_level_values(0):
+            off_recent = off_series.loc[t].sort_index().tail(n)
+            adj = []
+            for (season, week), raw_epa in off_recent.items():
+                opp = opp_for_offense.get((t, season, week))
+                opp_def = def_strength.get(opp, league_avg_def) if opp is not None else league_avg_def
+                adj.append(raw_epa - (opp_def - league_avg_def))
+            off_adj_avg = float(np.mean(adj)) if adj else 0.0
+        else:
+            off_adj_avg = 0.0
+
+        if t in def_series.index.get_level_values(0):
+            def_recent = def_series.loc[t].sort_index().tail(n)
+            adj = []
+            for (season, week), raw_epa in def_recent.items():
+                opp = opp_for_defense.get((t, season, week))
+                opp_off = off_strength.get(opp, league_avg_off) if opp is not None else league_avg_off
+                adj.append(raw_epa - (opp_off - league_avg_off))
+            def_adj_avg = float(np.mean(adj)) if adj else 0.0
+        else:
+            def_adj_avg = 0.0
+
         signals[t] = {
-            f"off_epa_l{n}": float(off_recent.mean()) if len(off_recent) else 0.0,
-            f"def_epa_allowed_l{n}": float(def_recent.mean()) if len(def_recent) else 0.0,
+            f"off_epa_l{n}": off_adj_avg,
+            f"def_epa_allowed_l{n}": def_adj_avg,
         }
     return signals
 
