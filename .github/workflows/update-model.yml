@@ -32,10 +32,18 @@ jobs:
           pip install --upgrade pip
           pip install -r requirements.txt
 
+      - name: Cache nflverse data
+        uses: actions/cache@v4
+        with:
+          path: data/nflverse_cache
+          key: nflverse-${{ github.run_id }}
+          restore-keys: |
+            nflverse-
+
       - name: Run NFL prediction model
         env:
           ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
-        run: python scripts/update_data.py
+        run: python scripts/main.py --nfl
 
       - name: Fetch Kalshi markets
         env:
@@ -47,6 +55,6 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: 'chore: update NFL predictions [skip ci]'
-          file_pattern: 'data/nfl_*.json data/predictions.json data/elo_ratings.json data/leaderboard.json data/model_metrics.json data/kalshidata.json'
+          file_pattern: 'data/nfl_*.json data/predictions.json data/elo_ratings.json data/leaderboard.json data/model_metrics.json data/kalshidata.json data/ensemble_weights_nfl.json'
           commit_user_name: 'github-actions[bot]'
           commit_user_email: 'github-actions[bot]@users.noreply.github.com'
