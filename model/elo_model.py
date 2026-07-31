@@ -117,6 +117,78 @@ def compute_elo(historical_df, k_base=20.0, hfa=65.0, initial_elo=1500.0, regres
     return elo_dict, game_history
 
 
+def annotate_pregame_elo(df, k_base=20.0, hfa=65.0, initial_elo=1500.0, regress_pct=0.33):
+    """
+    Same ELO recurrence as compute_elo(), but stamps each row with the two teams'
+    ratings as they stood immediately before that game (elo1_pre/elo2_pre).
+
+    The old FiveThirtyEight dataset shipped its own precomputed elo1_pre/elo2_pre
+    columns that the logistic/XGBoost feature builders train on. Now that game
+    history comes from nflverse (no precomputed ELO included), this reproduces
+    those columns from our own ELO system instead — self-consistent with the
+    standalone ELO model rather than importing FiveThirtyEight's separate rating.
+    """
+    df = df.copy()
+    df = df.dropna(subset=["score1", "score2"])
+    df["date"] = pd.to_datetime(df["date"])
+    df = df.sort_values("date").reset_index(drop=True)
+
+    elo_dict = {}
+    elo1_pre_col = [None] * len(df)
+    elo2_pre_col = [None] * len(df)
+
+    NFL_SEASON_GAMES = 17
+    seasons = sorted(df["season"].unique())
+
+    for season in seasons:
+        season_idx = df.index[df["season"] == season]
+
+        for team in list(elo_dict.keys()):
+            elo_dict[team] = elo_dict[team] * (1 - regress_pct) + initial_elo * regress_pct
+
+        team_game_counts = {}
+
+        for idx in season_idx:
+            row = df.loc[idx]
+            team1, team2 = row["team1"], row["team2"]
+            score1, score2 = row["score1"], row["score2"]
+            neutral = row.get("neutral", 0)
+
+            elo_dict.setdefault(team1, initial_elo)
+            elo_dict.setdefault(team2, initial_elo)
+
+            e1 = elo_dict[team1]
+            e2 = elo_dict[team2]
+            elo1_pre_col[idx] = e1
+            elo2_pre_col[idx] = e2
+
+            hfa_adj = 0 if neutral else hfa
+            adj_e1 = e1 + hfa_adj
+
+            exp1 = expected_score(adj_e1, e2)
+            exp2 = 1.0 - exp1
+
+            actual1 = 1.0 if score1 > score2 else (0.5 if score1 == score2 else 0.0)
+            actual2 = 1.0 - actual1
+
+            point_diff = abs(score1 - score2)
+            elo_diff_abs = abs(adj_e1 - e2)
+            mov = mov_multiplier(point_diff, elo_diff_abs) if point_diff > 0 else 1.0
+
+            progress = min(1.0, team_game_counts.get(team1, 0) / NFL_SEASON_GAMES)
+            k = k_base * (1.0 - 0.5 * progress)
+
+            elo_dict[team1] = e1 + k * mov * (actual1 - exp1)
+            elo_dict[team2] = e2 + k * mov * (actual2 - exp2)
+
+            team_game_counts[team1] = team_game_counts.get(team1, 0) + 1
+            team_game_counts[team2] = team_game_counts.get(team2, 0) + 1
+
+    df["elo1_pre"] = elo1_pre_col
+    df["elo2_pre"] = elo2_pre_col
+    return df
+
+
 def recent_form(game_history, team, n=5):
     """Win rate over last n games."""
     hist = game_history.get(team, [])

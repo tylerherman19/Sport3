@@ -51,11 +51,12 @@ XGB_FEATURE_COLS = [
 # to compensate. These are fallback defaults; learn_ensemble_weights() produces
 # empirically optimized values that override these at runtime.
 DEFAULT_WEIGHTS = {
-    "logistic": 0.35,
-    "xgboost": 0.25,
-    "elo": 0.15,
-    "pythagorean": 0.10,
-    "efficiency": 0.15,
+    "logistic": 0.32,
+    "xgboost": 0.23,
+    "elo": 0.14,
+    "pythagorean": 0.09,
+    "efficiency": 0.14,
+    "player_form": 0.08,
 }
 
 
@@ -315,52 +316,31 @@ def predict_xgboost(matchups, model, scaler, elo_dict, game_history,
     return results
 
 
-def ensemble_predict(logistic_prob, xgb_prob, elo_prob, pyth_prob, eff_prob, weights=None):
+def ensemble_predict(logistic_prob, xgb_prob, elo_prob, pyth_prob, eff_prob,
+                      weights=None, player_form_prob=None):
     """
-    System 12: Weighted ensemble of all models.
-    Returns final ensemble probability.
-    Handles None for both logistic_prob and xgb_prob independently (4-case structure).
+    System 12: Weighted ensemble of all models (now 13 with player-form).
+    Returns final ensemble probability. Any component may be None (model
+    unavailable / not enough data) — its weight is dropped and the rest
+    renormalized, so the ensemble degrades gracefully rather than guessing 0.5.
     """
     if weights is None:
         weights = DEFAULT_WEIGHTS
 
-    w_log  = weights.get("logistic", 0.35)
-    w_xgb  = weights.get("xgboost", 0.25)
-    w_elo  = weights.get("elo", 0.15)
-    w_pyth = weights.get("pythagorean", 0.10)
-    w_eff  = weights.get("efficiency", 0.15)
+    components = {
+        "logistic":     (logistic_prob,     weights.get("logistic", 0.35)),
+        "xgboost":      (xgb_prob,          weights.get("xgboost", 0.25)),
+        "elo":          (elo_prob,          weights.get("elo", 0.15)),
+        "pythagorean":  (pyth_prob,         weights.get("pythagorean", 0.10)),
+        "efficiency":   (eff_prob,          weights.get("efficiency", 0.15)),
+        "player_form":  (player_form_prob,  weights.get("player_form", 0.0)),
+    }
 
-    if logistic_prob is None and xgb_prob is None:
-        # Neither ML model available — use physics models only
-        total = w_elo + w_pyth + w_eff
-        if total < 1e-9:
-            return 0.5
-        prob = (w_elo * elo_prob + w_pyth * pyth_prob + w_eff * eff_prob) / total
+    total = sum(w for p, w in components.values() if p is not None)
+    if total < 1e-9:
+        return 0.5
 
-    elif logistic_prob is None:
-        # XGBoost available, logistic not
-        total = w_xgb + w_elo + w_pyth + w_eff
-        if total < 1e-9:
-            return 0.5
-        prob = (w_xgb * xgb_prob + w_elo * elo_prob +
-                w_pyth * pyth_prob + w_eff * eff_prob) / total
-
-    elif xgb_prob is None:
-        # Logistic available, XGBoost not
-        total = w_log + w_elo + w_pyth + w_eff
-        if total < 1e-9:
-            return 0.5
-        prob = (w_log * logistic_prob + w_elo * elo_prob +
-                w_pyth * pyth_prob + w_eff * eff_prob) / total
-
-    else:
-        # Both available — full ensemble
-        total = w_log + w_xgb + w_elo + w_pyth + w_eff
-        if total < 1e-9:
-            return 0.5
-        prob = (w_log * logistic_prob + w_xgb * xgb_prob + w_elo * elo_prob +
-                w_pyth * pyth_prob + w_eff * eff_prob) / total
-
+    prob = sum(p * w for p, w in components.values() if p is not None) / total
     return round(float(np.clip(prob, 0.01, 0.99)), 4)
 
 

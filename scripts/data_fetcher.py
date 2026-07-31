@@ -22,6 +22,7 @@ import logging
 import re
 from datetime import datetime, timedelta, timezone
 from concurrent.futures import ThreadPoolExecutor, as_completed
+from pathlib import Path
 
 import requests
 
@@ -34,9 +35,18 @@ ESPN_NBA_WEB_BASE  = "https://site.web.api.espn.com/apis/v2/sports/basketball/nb
 ESPN_NBA_STANDINGS = "https://site.web.api.espn.com/apis/v2/sports/basketball/nba/standings"
 CDN_NBA_STATS      = "https://cdn.nba.com/stats"
 CDN_NBA_STATIC     = "https://cdn.nba.com/static/json"
-FTE_URL            = "https://raw.githubusercontent.com/fivethirtyeight/data/master/nfl-elo/nfl_elo.csv"
+# FiveThirtyEight retired their nfl-elo dataset (nfl_elo.csv 404s as of 2026) — nflverse-data
+# is the actively-maintained free replacement: full game history back to 1999, no API key.
+NFLVERSE_GAMES_URL        = "https://github.com/nflverse/nflverse-data/releases/download/schedules/games.csv"
+NFLVERSE_PLAYER_WEEK_URL  = "https://github.com/nflverse/nflverse-data/releases/download/stats_player/stats_player_week_{season}.csv"
+NFLVERSE_ROSTER_URL       = "https://github.com/nflverse/nflverse-data/releases/download/rosters/roster_{season}.csv"
 ODDS_BASE_NFL      = "https://api.the-odds-api.com/v4/sports/americanfootball_nfl/odds/"
 ODDS_BASE_NBA      = "https://api.the-odds-api.com/v4/sports/basketball_nba/odds/"
+
+DATA_DIR = Path(__file__).parent.parent / "data"
+DATA_DIR.mkdir(exist_ok=True)
+NFLVERSE_CACHE_DIR = DATA_DIR / "nflverse_cache"
+NFLVERSE_CACHE_DIR.mkdir(exist_ok=True)
 
 # ---- balldontlie.io (All-Star tier) ----
 # Used as fallback only when ESPN / cdn.nba.com primary sources fail.
@@ -74,6 +84,9 @@ _CDN_HEADERS = {
 
 _ESPN_NFL_TO_ABBREV = {
     "WSH": "WAS", "JAC": "JAX", "LVR": "LV", "LA": "LAR", "LAR": "LAR", "LAC": "LAC",
+    # Franchise relocations as labeled in nflverse historical data — normalize to
+    # the current abbreviation so ELO/rating history carries across the move.
+    "OAK": "LV", "SD": "LAC", "STL": "LAR",
 }
 _ESPN_NBA_TO_ABBREV = {
     "GS": "GSW", "NY": "NYK", "NO": "NOP", "SA": "SAS",
@@ -473,18 +486,107 @@ def _bdl_nfl_standings_fallback(season_year=None):
     return standings
 
 
-# ---- FTE ----
+# ---- nflverse historical games (replaces the retired FiveThirtyEight nfl-elo dataset) ----
 
-def fetch_fte_data():
+_NFLVERSE_GAMES_CACHE = NFLVERSE_CACHE_DIR / "games.csv"
+
+
+def fetch_nfl_historical_games():
+    """
+    Full NFL game history (1999–present) from nflverse-data, normalized to the
+    team1/team2/score1/score2/date/season/neutral schema the ELO/ML pipeline expects.
+
+    Falls back to the last successfully cached copy on disk if the download fails,
+    so a transient nflverse outage doesn't zero out the whole model.
+    """
     import pandas as pd
-    log.info("Downloading FiveThirtyEight NFL ELO data...")
+    log.info("Downloading nflverse NFL game history...")
+    raw = None
     try:
-        df = pd.read_csv(FTE_URL)
-        log.info(f"FTE data: {len(df)} rows, seasons {df['season'].min()}–{df['season'].max()}")
-        return df
+        raw = pd.read_csv(NFLVERSE_GAMES_URL)
+        try:
+            raw.to_csv(_NFLVERSE_GAMES_CACHE, index=False)
+        except Exception as ce:
+            log.warning(f"Could not cache nflverse games: {ce}")
     except Exception as e:
-        log.error(f"Failed to download FTE data: {e}")
+        log.error(f"Failed to download nflverse games: {e} — trying local cache")
+        if _NFLVERSE_GAMES_CACHE.exists():
+            try:
+                raw = pd.read_csv(_NFLVERSE_GAMES_CACHE)
+                log.info(f"Loaded {len(raw)} games from local nflverse cache")
+            except Exception as ce:
+                log.error(f"Local nflverse cache also unreadable: {ce}")
+
+    if raw is None or raw.empty:
         return pd.DataFrame()
+
+    df = raw.dropna(subset=["home_score", "away_score"]).copy()
+    df["team1"]   = df["home_team"].apply(nfl_abbrev_norm)
+    df["team2"]   = df["away_team"].apply(nfl_abbrev_norm)
+    df["score1"]  = df["home_score"].astype(float)
+    df["score2"]  = df["away_score"].astype(float)
+    df["date"]    = df["gameday"]
+    df["neutral"] = (df["location"] == "Neutral").astype(int)
+    df = df[["date", "season", "team1", "team2", "score1", "score2", "neutral", "week", "game_type"]]
+    df = df.sort_values("date").reset_index(drop=True)
+    log.info(f"nflverse games: {len(df)} rows, seasons {df['season'].min()}–{df['season'].max()}")
+    return df
+
+
+def _fetch_nflverse_cached_csv(url, cache_path, label):
+    import pandas as pd
+    df = None
+    try:
+        df = pd.read_csv(url, low_memory=False)
+        try:
+            df.to_csv(cache_path, index=False)
+        except Exception as ce:
+            log.warning(f"Could not cache {label}: {ce}")
+    except Exception as e:
+        log.warning(f"Failed to download {label}: {e} — trying local cache")
+        if cache_path.exists():
+            try:
+                df = pd.read_csv(cache_path, low_memory=False)
+                log.info(f"Loaded {label} from local cache ({len(df)} rows)")
+            except Exception as ce:
+                log.error(f"Local cache for {label} unreadable: {ce}")
+    return df
+
+
+def fetch_nflverse_player_week_stats(seasons):
+    """
+    Per-player weekly stat lines (offense + individual defense) for the given
+    NFL seasons, from nflverse-data (stats_player release). Powers rolling
+    player/team form and player-vs-opponent historical splits.
+    """
+    import pandas as pd
+    frames = []
+    for season in seasons:
+        url = NFLVERSE_PLAYER_WEEK_URL.format(season=season)
+        cache_path = NFLVERSE_CACHE_DIR / f"player_week_{season}.csv"
+        df = _fetch_nflverse_cached_csv(url, cache_path, f"player_week_{season}")
+        if df is not None and not df.empty:
+            frames.append(df)
+    if not frames:
+        return pd.DataFrame()
+    combined = pd.concat(frames, ignore_index=True)
+    combined["team"]           = combined["team"].apply(nfl_abbrev_norm)
+    combined["opponent_team"]  = combined["opponent_team"].apply(nfl_abbrev_norm)
+    log.info(f"nflverse player-week stats: {len(combined)} rows across {len(seasons)} season(s)")
+    return combined
+
+
+def fetch_nflverse_roster(season):
+    """Full team roster (every player, position, experience) for a given season."""
+    import pandas as pd
+    url = NFLVERSE_ROSTER_URL.format(season=season)
+    cache_path = NFLVERSE_CACHE_DIR / f"roster_{season}.csv"
+    df = _fetch_nflverse_cached_csv(url, cache_path, f"roster_{season}")
+    if df is None or df.empty:
+        return pd.DataFrame()
+    df["team"] = df["team"].apply(nfl_abbrev_norm)
+    log.info(f"nflverse roster {season}: {len(df)} players")
+    return df
 
 
 # ---- NFL ESPN ----
@@ -663,30 +765,42 @@ def _nfl_normalize_name(name):
 
 
 def fetch_nfl_depth_charts():
+    """
+    ESPN's depthcharts response schema (as of 2026) is:
+      { "depthchart": [ {"name": "<formation>", "positions": {
+            "<pos>": {"athletes": [ {displayName, ...}, ... ] }  # list is depth-ordered
+      }}, ... ] }
+    The previous "positionGroups" -> "positions": [...] shape this parser targeted
+    no longer exists, which silently made every depth chart fetch return 0 entries.
+    """
     log.info("Fetching NFL depth charts...")
     player_depth = {}
+    qb_starters = {}
     try:
         teams_data = safe_get(f"{ESPN_NFL_BASE}/teams")
-        if not teams_data: return {}
+        if not teams_data: return {}, {}
         teams_list = teams_data.get("sports",[{}])[0].get("leagues",[{}])[0].get("teams",[])
         for te in teams_list:
             team_id = te.get("team", {}).get("id", "")
+            abbrev  = nfl_abbrev_norm(te.get("team", {}).get("abbreviation", ""))
             if not team_id: continue
             dd = safe_get(f"{ESPN_NFL_BASE}/teams/{team_id}/depthcharts")
             if not dd: continue
-            for pg in dd.get("positionGroups", []):
-                for pos in pg.get("positions", []):
-                    for ae in pos.get("athletes", []):
-                        name = ae.get("athlete", {}).get("displayName", "")
-                        dp   = int(ae.get("rank") or ae.get("slot", 99))
+            for formation in dd.get("depthchart", []):
+                for pos_key, pos_entry in formation.get("positions", {}).items():
+                    athletes = pos_entry.get("athletes", [])
+                    if pos_key == "qb" and athletes and abbrev:
+                        qb_starters.setdefault(abbrev, athletes[0].get("displayName", ""))
+                    for dp, ae in enumerate(athletes, start=1):
+                        name = ae.get("displayName", "")
                         if not name: continue
                         for key in [name, _nfl_normalize_name(name)]:
                             if key and (key not in player_depth or dp < player_depth[key]):
                                 player_depth[key] = dp
     except Exception as e:
         log.warning(f"Error fetching NFL depth charts: {e}")
-    log.info(f"NFL depth chart: {len(player_depth)} entries")
-    return player_depth
+    log.info(f"NFL depth chart: {len(player_depth)} entries, {len(qb_starters)} QB1s")
+    return player_depth, qb_starters
 
 
 def fetch_nfl_betting_odds(api_key):

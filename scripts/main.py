@@ -28,10 +28,10 @@ import pandas as pd
 # ---- Data fetching ----
 from scripts.data_fetcher import (
     # NFL
-    fetch_fte_data, fetch_nfl_scoreboard, fetch_nfl_future_games,
+    fetch_nfl_historical_games, fetch_nfl_scoreboard, fetch_nfl_future_games,
     fetch_nfl_completed_games, fetch_nfl_standings, fetch_nfl_injuries,
     fetch_nfl_depth_charts, fetch_nfl_betting_odds, nfl_abbrev_norm,
-    _nfl_normalize_name,
+    _nfl_normalize_name, fetch_nflverse_player_week_stats, fetch_nflverse_roster,
     # NBA
     fetch_nba_scoreboard, fetch_nba_future_games, fetch_nba_season_games_espn,
     fetch_nba_standings_cdn, fetch_nba_injuries_espn, fetch_nba_depth_charts_espn,
@@ -61,7 +61,7 @@ from scripts.output_writer import (
 )
 
 # ---- Model sub-modules ----
-from model.elo_model import compute_elo, predict_game as elo_predict_game, get_trend
+from model.elo_model import compute_elo, annotate_pregame_elo, predict_game as elo_predict_game, get_trend
 from model.logistic_model import (build_features as build_nfl_logistic_features, train_logistic,
                                    evaluate_model, calibration_buckets,
                                    predict_matchups, historical_accuracy_by_year)
@@ -73,7 +73,10 @@ from model.efficiency_model import (compute_pythagorean, compute_efficiency,
 from model.monte_carlo import simulate_game, simulate_season
 from model.ensemble_model import (build_xgb_features, train_xgboost, predict_xgboost,
                                    ensemble_predict, kelly_criterion,
-                                   american_to_prob, remove_vig)
+                                   american_to_prob, remove_vig, DEFAULT_WEIGHTS)
+from model.nfl_ensemble_weights import learn_nfl_weights
+from model.player_stats import (build_team_epa_signals, identify_starting_qb,
+                                 qb_epa_per_play, player_vs_opponent, player_form_prob)
 from model.injury_model import (compute_all_team_impacts, injury_elo_adjustment,
                                  compute_all_nba_team_impacts)
 from model.nba_elo import (compute_nba_elo, predict_nba_game, nba_recent_form,
@@ -129,7 +132,9 @@ def run_nfl():
     now_utc      = datetime.now(timezone.utc).isoformat()
     odds_api_key = os.environ.get("ODDS_API_KEY", "")
 
-    fte_df                         = fetch_fte_data()
+    fte_df                         = fetch_nfl_historical_games()
+    if not fte_df.empty:
+        fte_df = annotate_pregame_elo(fte_df)
     scoreboard_games, current_week = fetch_nfl_scoreboard()
     standings                      = fetch_nfl_standings()
     injuries                       = fetch_nfl_injuries()
@@ -152,7 +157,7 @@ def run_nfl():
                 standings[team]["points_against"] += float(row[osc])
                 standings[team]["games_played"]   += 1
 
-    depth_charts  = fetch_nfl_depth_charts()
+    depth_charts, qb_depth_starters = fetch_nfl_depth_charts()
     player_values = _build_nfl_player_values(depth_charts)
     log.info("Computing NFL injury impacts...")
     injury_impacts = compute_all_team_impacts(injuries, player_values)
@@ -176,6 +181,47 @@ def run_nfl():
     season_year = datetime.now().year
     if datetime.now().month < 8:
         season_year -= 1
+
+    log.info("Fetching nflverse player stats + roster...")
+    player_week_df = fetch_nflverse_player_week_stats(
+        [season_year, season_year - 1, season_year - 2])
+    roster_df = fetch_nflverse_roster(season_year)
+    team_epa_signals = build_team_epa_signals(player_week_df, NFL_TEAMS, n=8)
+    nfl_starters = {}
+    for t in NFL_TEAMS:
+        starter = identify_starting_qb(player_week_df, t)
+        depth_name = qb_depth_starters.get(t, "")
+        if depth_name and not (starter and _nfl_normalize_name(starter["player_name"]) == _nfl_normalize_name(depth_name)):
+            # Depth chart QB1 disagrees with (or lacks) the recent-game-passer proxy —
+            # trust the live depth chart for "who's actually QB1 right now" and just
+            # borrow the player_id from their most recent game log, if we have one.
+            qb_rows = player_week_df[
+                (player_week_df["team"] == t) & (player_week_df["position"] == "QB")
+            ] if player_week_df is not None and not player_week_df.empty else None
+            match = None
+            if qb_rows is not None and not qb_rows.empty:
+                norm_target = _nfl_normalize_name(depth_name)
+                hit = qb_rows[qb_rows["player_display_name"].apply(
+                    lambda n: _nfl_normalize_name(str(n)) == norm_target)]
+                if not hit.empty:
+                    match = hit.iloc[-1]["player_id"]
+            starter = {"player_id": match, "player_name": depth_name}
+        nfl_starters[t] = starter
+    qb_epa_l8 = {
+        t: qb_epa_per_play(player_week_df, nfl_starters[t]["player_id"], n=8)
+        if nfl_starters.get(t) else 0.0
+        for t in NFL_TEAMS
+    }
+    roster_lookup = {}
+    if not roster_df.empty:
+        for _, r in roster_df.iterrows():
+            key = _nfl_normalize_name(str(r.get("full_name", "")))
+            if key:
+                roster_lookup[key] = {
+                    "position": r.get("position", ""),
+                    "years_exp": int(r["years_exp"]) if pd.notna(r.get("years_exp")) else None,
+                    "college": r.get("college", ""),
+                }
 
     is_offseason = len(scoreboard_games) == 0
     if not is_offseason and scoreboard_games and all(g.get("status")=="STATUS_FINAL" for g in scoreboard_games):
@@ -213,6 +259,13 @@ def run_nfl():
         t: {"points_for": standings.get(t,{}).get("points_for",350),
             "points_against": standings.get(t,{}).get("points_against",350)} for t in NFL_TEAMS}
     pythagorean_data = compute_pythagorean(teams_pts_data)
+
+    nfl_weights = DEFAULT_WEIGHTS
+    if not fte_df.empty:
+        try:
+            nfl_weights = learn_nfl_weights(fte_df, pythagorean_data, efficiency_data, DEFAULT_WEIGHTS)
+        except Exception as e:
+            log.warning(f"NFL ensemble weight learning failed, using defaults: {e}")
 
     logistic_model = logistic_scaler = logistic_calibrator = None
     model_metrics  = {"log_loss":None,"brier_score":None,"auc":None,"calibration_buckets":[],"historical_accuracy":[]}
@@ -288,8 +341,17 @@ def run_nfl():
             if xgb_model and xgb_scaler:
                 xps = predict_xgboost(md,xgb_model,xgb_scaler,elo_dict,game_history,efficiency_data,pythagorean_data)
                 if xps and xps[0]["xgb_prob"] is not None: xp = xps[0]["xgb_prob"]
+
+            home_qb = nfl_starters.get(home); away_qb = nfl_starters.get(away)
+            home_epa = team_epa_signals.get(home, {}); away_epa = team_epa_signals.get(away, {})
+            pf = player_form_prob(
+                home_epa.get("off_epa_l8", 0.0), home_epa.get("def_epa_allowed_l8", 0.0),
+                away_epa.get("off_epa_l8", 0.0), away_epa.get("def_epa_allowed_l8", 0.0),
+                qb_epa_l8.get(home, 0.0), qb_epa_l8.get(away, 0.0),
+            )
             ep = ensemble_predict(logistic_prob=lp,xgb_prob=xp,elo_prob=er["prob"],
-                                  pyth_prob=effr["pyth_prob"],eff_prob=effr["eff_prob"])
+                                  pyth_prob=effr["pyth_prob"],eff_prob=effr["eff_prob"],
+                                  weights=nfl_weights, player_form_prob=pf)
             mh = bayesian_ratings.get(home,{}).get("mu",elo_dict.get(home,1500.0))
             ma = bayesian_ratings.get(away,{}).get("mu",elo_dict.get(away,1500.0))
             sh = bayesian_ratings.get(home,{}).get("sigma",75.0)
@@ -305,12 +367,17 @@ def run_nfl():
             winner = home if ep>=0.5 else away; wp = ep if ep>=0.5 else 1-ep; loser = away if ep>=0.5 else home
             elo_gap = abs(elo_dict.get(home,1500)-elo_dict.get(away,1500))
             conf = "strong" if wp>0.70 else "moderate" if wp>0.60 else "slight"
+            home_qb_vs_away = player_vs_opponent(player_week_df, home_qb["player_id"], away) if home_qb else None
+            away_qb_vs_home = player_vs_opponent(player_week_df, away_qb["player_id"], home) if away_qb else None
+            qb_epa_gap = qb_epa_l8.get(home, 0.0) - qb_epa_l8.get(away, 0.0)
             expl = (f"The model gives {NFL_TEAM_NAMES.get(winner,winner)} a {wp*100:.1f}% win probability —"
                     f" a {conf} favorite over {NFL_TEAM_NAMES.get(loser,loser)}."
                     f" ELO gap: {elo_gap:.0f} pts"
                     + (" with home field +65 ELO." if not neutral else " at a neutral site.")
                     + (f" Rest: {home if adj['rest_diff']>0 else away} has the edge." if abs(adj.get('rest_diff',0))>=3 else "")
-                    + (f" Travel: {round(dist)} miles." if dist>1000 else ""))
+                    + (f" Travel: {round(dist)} miles." if dist>1000 else "")
+                    + (f" QB form: {(home_qb or {}).get('player_name','?') if qb_epa_gap>0 else (away_qb or {}).get('player_name','?')}"
+                       f" has the EPA/play edge over their last 8 starts." if abs(qb_epa_gap)>=0.08 else ""))
             predictions_list.append({
                 "game_id":game_id,"game_time":game["game_time"],"week":game.get("week",0),
                 "status":game.get("status",""),"is_future":bool(game.get("is_future",False)),
@@ -328,6 +395,21 @@ def run_nfl():
                 "elo":{"home":round(elo_dict.get(home,1500.0),1),"away":round(elo_dict.get(away,1500.0),1),"diff":round(er["elo_diff"],1)},
                 "bayesian":{"home_mu":br["mu_a"],"home_sigma":br["sigma_a"],"away_mu":br["mu_b"],"away_sigma":br["sigma_b"],
                             "home_band":br["uncertainty_band_a"],"away_band":br["uncertainty_band_b"]},
+                "player_form":{
+                    "player_form_prob": round(pf,4),
+                    "home_qb": (home_qb or {}).get("player_name"),
+                    "away_qb": (away_qb or {}).get("player_name"),
+                    "home_qb_epa_l8": round(qb_epa_l8.get(home,0.0),3),
+                    "away_qb_epa_l8": round(qb_epa_l8.get(away,0.0),3),
+                    "home_off_epa_l8": round(home_epa.get("off_epa_l8",0.0),2),
+                    "away_off_epa_l8": round(away_epa.get("off_epa_l8",0.0),2),
+                    "home_def_epa_allowed_l8": round(home_epa.get("def_epa_allowed_l8",0.0),2),
+                    "away_def_epa_allowed_l8": round(away_epa.get("def_epa_allowed_l8",0.0),2),
+                    "home_qb_roster": roster_lookup.get(_nfl_normalize_name((home_qb or {}).get("player_name",""))),
+                    "away_qb_roster": roster_lookup.get(_nfl_normalize_name((away_qb or {}).get("player_name",""))),
+                    "home_qb_vs_opponent": home_qb_vs_away,
+                    "away_qb_vs_opponent": away_qb_vs_home,
+                },
                 "injuries":{
                     "home":[{**p,"value_tier":_nfl_value_tier_label(player_values.get(p.get("player",""),1.0))} for p in injuries.get(home,[])[:5]],
                     "away":[{**p,"value_tier":_nfl_value_tier_label(player_values.get(p.get("player",""),1.0))} for p in injuries.get(away,[])[:5]],
