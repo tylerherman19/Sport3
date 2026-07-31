@@ -109,15 +109,40 @@ def identify_starting_qb(player_week_df, team):
     return {"player_id": starter["player_id"], "player_name": starter["player_display_name"]}
 
 
+def _pass_defense_strength(player_week_df):
+    """
+    {team: avg passing EPA allowed per game} — how generous a pass defense has
+    been, on average, across the games on file. Used to opponent-adjust QB EPA.
+    """
+    sub = player_week_df[player_week_df["attempts"] >= 5]
+    per_game = sub.groupby(["opponent_team", "season", "week"])["passing_epa"].sum(min_count=1).fillna(0.0)
+    return per_game.groupby(level=0).mean()
+
+
 def qb_epa_per_play(player_week_df, player_id, n=8):
-    """Trailing passing EPA per dropback for a specific player (min 5 attempts/game)."""
+    """
+    Trailing passing EPA per dropback for a specific player (min 5 attempts/game),
+    opponent-adjusted for each game's pass-defense quality — same rationale as the
+    team-level SOS adjustment in build_team_epa_signals().
+    """
     if player_week_df is None or player_week_df.empty or not player_id:
         return 0.0
     sub = player_week_df[(player_week_df["player_id"] == player_id) & (player_week_df["attempts"] >= 5)]
     sub = sub.sort_values(["season", "week"]).tail(n)
     if sub.empty or sub["attempts"].sum() == 0:
         return 0.0
-    return float(sub["passing_epa"].sum() / sub["attempts"].sum())
+
+    pass_def_strength = _pass_defense_strength(player_week_df)
+    league_avg_pass_epa = float(pass_def_strength.mean()) if len(pass_def_strength) else 0.0
+
+    # Both passing_epa (per game) and pass_def_strength (per game) are total-EPA
+    # units, so the adjustment is a straight per-game offset, same as the
+    # team-level version — no extra scaling needed.
+    adj_epa_total = 0.0
+    for _, row in sub.iterrows():
+        opp_strength = pass_def_strength.get(row["opponent_team"], league_avg_pass_epa)
+        adj_epa_total += row["passing_epa"] - (opp_strength - league_avg_pass_epa)
+    return float(adj_epa_total / sub["attempts"].sum())
 
 
 def player_vs_opponent(player_week_df, player_id, opponent_team):
