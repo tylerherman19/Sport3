@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-02T09:48:09.131716+00:00",
+  "updated": "2026-08-03T11:12:53.304070+00:00",
   "season": 2026,
   "week": 1,
   "is_offseason": false,
@@ -20,9 +20,9 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.5048,
+        "ensemble_prob": 0.5045,
         "logistic_prob": 0.4357,
-        "elo_prob": 0.5022,
+        "elo_prob": 0.5015,
         "xgb_prob": 0.5038,
         "pyth_prob": 0.5,
         "eff_prob": 0.5,
@@ -36,19 +36,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.386,
-        "exp_margin": -4.18,
-        "prob_7plus": 0.2183,
-        "prob_14plus": 0.0956,
-        "prob_21plus": 0.0394,
+        "win_prob": 0.3908,
+        "exp_margin": -4.01,
+        "prob_7plus": 0.2176,
+        "prob_14plus": 0.1017,
+        "prob_21plus": 0.0416,
         "margin_percentiles": [
-          -28.2,
-          -22.5,
-          -13.6,
-          -4.1,
+          -27.4,
+          -22.2,
+          -13.7,
+          -3.9,
           5.5,
-          13.6,
-          19.3
+          14.1,
+          19.6
         ]
       },
       "adjustments": {
@@ -62,7 +62,7 @@
       "elo": {
         "home": 1371.0,
         "away": 1389.5,
-        "diff": 1.5
+        "diff": 1.0
       },
       "bayesian": {
         "home_mu": 1536.0,
@@ -112,6 +112,20 @@
       "injuries": {
         "home": [
           {
+            "player": "Walter Nolen III",
+            "status": "Active",
+            "position": "DT",
+            "injury_description": "Nolen was experiencing some discomfort in the knee he hurt last year, but he has moved past the issue. The defensive tackle underwent surgery in December for a torn meniscus and is learning to practice post-injury. Nolen was working on the knee with trainers Friday and is now seemingly more confident in its stability.",
+            "value_tier": "starter"
+          },
+          {
+            "player": "Joey Blount",
+            "status": "Questionable",
+            "position": "S",
+            "injury_description": "Blount sat out the session due to a stinger, which is understandable given his history of neck issues. The safety's 2025 season ended after Week 1 when he sustained a neck injury.",
+            "value_tier": "rotation"
+          },
+          {
             "player": "PJ Mustipher",
             "status": "Injured Reserve",
             "position": "DT",
@@ -131,20 +145,6 @@
             "position": "CB",
             "injury_description": "The nature of Davis' injury has not been announced, but now that he's on IR, he'll be forced to miss the entire 2026 season unless he reaches an injury settlement with the Cardinals. He appeared in each of the Cardinals' last three games of the 2025 regular season, logging three tackles (two solo) in that span.",
             "value_tier": "rotation"
-          },
-          {
-            "player": "Joey Blount",
-            "status": "Active",
-            "position": "S",
-            "injury_description": "Blount suffered a season-ending neck injury during the Cardinals' Week 1 game against the Saints in 2025, but he has recovered from the injury and is battling for a roster spot in training camp. If Blount does make the 53-man roster, then he'll likely be limited to work on special teams while providing depth in the secondary.",
-            "value_tier": "rotation"
-          },
-          {
-            "player": "Mack Wilson Sr.",
-            "status": "Active",
-            "position": "LB",
-            "injury_description": "Wilson seems to have recovered from his rib injury and is all set to take the field. The middle linebacker has already resumed his duties as the starter for the Cardinals' defense. The 28-year-old veteran player has been playing alongside both Cody Simon and Jack Gibbens as the two battle for reps at linebacker.",
-            "value_tier": "starter"
           }
         ],
         "away": [
@@ -186,11 +186,18 @@
         ]
       },
       "injury_impact": {
-        "home_elo_penalty": 19.02,
+        "home_elo_penalty": 19.52,
         "away_elo_penalty": 35.1,
-        "home_impact_score": 0.173,
+        "home_impact_score": 0.1775,
         "away_impact_score": 0.3191,
         "home_key_players_out": [
+          {
+            "player": "Joey Blount",
+            "position": "S",
+            "status": "Questionable",
+            "elo_impact": 0.5,
+            "value_tier": "rotation"
+          },
           {
             "player": "PJ Mustipher",
             "position": "DT",
@@ -319,15 +326,15 @@
         "away_star_stack_multiplier": 1.0
       },
       "prediction_drivers": [
+        "Joey Blount (ARI) [Rotation] QUESTIONABLE \u2014 \u22120 ELO",
         "PJ Mustipher (ARI) [Rotation] INJURED RESERVE \u2014 \u22121 ELO",
         "Jaden Davis (ARI) [Rotation] INJURED RESERVE \u2014 \u22121 ELO",
-        "James Conner (ARI) [Rotation] QUESTIONABLE \u2014 \u22121 ELO",
         "Chris Brazzell II (CAR) [Rotation] INJURED RESERVE \u2014 \u22121 ELO",
         "Dan Chisena (CAR) [Rotation] INJURED RESERVE \u2014 \u22121 ELO",
         "Mitchell Evans (CAR) [Rotation] QUESTIONABLE \u2014 \u22121 ELO",
         "Travel penalty: away travels 1791 miles"
       ],
-      "explanation": "The model gives Arizona Cardinals a 50.5% win probability \u2014 a slight favorite over Carolina Panthers. ELO gap: 19 pts at a neutral site. Travel: 1791 miles."
+      "explanation": "The model gives Arizona Cardinals a 50.4% win probability \u2014 a slight favorite over Carolina Panthers. ELO gap: 19 pts at a neutral site. Travel: 1791 miles."
     },
     {
       "game_id": "401772936",
@@ -345,9 +352,9 @@
       "home_score": 27,
       "away_score": 18,
       "predictions": {
-        "ensemble_prob": 0.6801,
+        "ensemble_prob": 0.6807,
         "logistic_prob": 0.6524,
-        "elo_prob": 0.7349,
+        "elo_prob": 0.7366,
         "xgb_prob": 0.6672,
         "pyth_prob": 0.5925,
         "eff_prob": 0.5925,
@@ -361,18 +368,18 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.649,
-        "exp_margin": 5.43,
-        "prob_7plus": 0.4582,
-        "prob_14plus": 0.2702,
-        "prob_21plus": 0.1345,
+        "win_prob": 0.6481,
+        "exp_margin": 5.35,
+        "prob_7plus": 0.4575,
+        "prob_14plus": 0.2715,
+        "prob_21plus": 0.1354,
         "margin_percentiles": [
           -18.0,
-          -12.8,
-          -4.1,
-          5.5,
-          14.9,
-          23.6,
+          -12.9,
+          -4.3,
+          5.2,
+          14.8,
+          23.7,
           28.9
         ]
       },
@@ -387,7 +394,7 @@
       "elo": {
         "home": 1572.7,
         "away": 1441.4,
-        "diff": 177.1
+        "diff": 178.7
       },
       "bayesian": {
         "home_mu": 1665.6,
@@ -441,6 +448,20 @@
       "injuries": {
         "home": [
           {
+            "player": "Jager Burton",
+            "status": "Active",
+            "position": "C",
+            "injury_description": "Burton pulled a hamstring during drills in Thursday's practice, but the rookie fifth-rounder was cleared to return for Sunday's session. He figures to serve as the Packers' backup center behind Sean Rhyan for the upcoming season.",
+            "value_tier": "backup"
+          },
+          {
+            "player": "Kamal Hadden",
+            "status": "Active",
+            "position": "CB",
+            "injury_description": "Hadden opened training camp on the PUP list while in the final stages of his recovery form a broken right tibia and fibula that he suffered in Week 17 of the 2025 season. He was given the green light to participate in Sunday's practice, and the third-year pro will now use training camp as an opportunity to earn a spot on the Packers' 53-man roster for the 2026 campaign.",
+            "value_tier": "rotation"
+          },
+          {
             "player": "Edgerrin Cooper",
             "status": "Active",
             "position": "LB",
@@ -460,20 +481,6 @@
             "position": "PK",
             "injury_description": "The Packers evidently feel comfortable handing kicking duties over to Smack. The rookie sixth-round pick impressed in college at Florida but will need to prove he's capable of handling the pressure of kicking in the NFL, as well as the cold and windy conditions that arise at Lambeau Field.",
             "value_tier": "starter"
-          },
-          {
-            "player": "Cal Adomitis",
-            "status": "Active",
-            "position": "LS",
-            "injury_description": "Green Bay had a hole at the position due to the absence of veteran snapper Matthew Orzech (calf). Since Adomitis has extensive experience in recent seasons (49 games with the Bengals and nine more with the Eagles since 2022), he might be a real competitor to Orzech for the spot, per Huber.",
-            "value_tier": "backup"
-          },
-          {
-            "player": "Donovan Jennings",
-            "status": "Active",
-            "position": "G",
-            "injury_description": "Jennings sat out Week 18 and the postseason last year with a throat injury, but he now seems to be back to full strength for training camp. He projects for a depth role on the interior of Green Bay's offensive line in 2026.",
-            "value_tier": "backup"
           }
         ],
         "away": [
@@ -515,9 +522,9 @@
         ]
       },
       "injury_impact": {
-        "home_elo_penalty": 29.48,
+        "home_elo_penalty": 27.93,
         "away_elo_penalty": 17.26,
-        "home_impact_score": 0.268,
+        "home_impact_score": 0.2539,
         "away_impact_score": 0.1569,
         "home_key_players_out": [
           {
@@ -526,13 +533,6 @@
             "status": "Questionable",
             "elo_impact": 3.0,
             "value_tier": "starter"
-          },
-          {
-            "player": "Jager Burton",
-            "position": "C",
-            "status": "Questionable",
-            "elo_impact": 0.7,
-            "value_tier": "backup"
           },
           {
             "player": "Brant Banks",
@@ -582,13 +582,6 @@
             "status": "Out",
             "elo_impact": 7.0,
             "value_tier": "starter"
-          },
-          {
-            "player": "Kamal Hadden",
-            "position": "CB",
-            "status": "Out",
-            "elo_impact": 0.9,
-            "value_tier": "rotation"
           }
         ],
         "away_key_players_out": [
@@ -657,14 +650,14 @@
       "prediction_drivers": [
         "ELO advantage: GB +131 rating points",
         "Tucker Kraft (GB) [Starter] QUESTIONABLE \u2014 \u22123 ELO",
-        "Jager Burton (GB) [Backup] QUESTIONABLE \u2014 \u22121 ELO",
         "Brant Banks (GB) [Rotation] OUT \u2014 \u22122 ELO",
+        "Matt Orzech (GB) [Starter] OUT \u2014 \u22120 ELO",
         "Nick Allegretti (WAS) [Starter] QUESTIONABLE \u2014 \u22121 ELO",
         "John Bates (WAS) [Backup] QUESTIONABLE \u2014 \u22122 ELO",
         "Treylon Burks (WAS) [Backup] QUESTIONABLE \u2014 \u22122 ELO",
         "Home field: GB +65 ELO home advantage"
       ],
-      "explanation": "The model gives Green Bay Packers a 68.0% win probability \u2014 a moderate favorite over Washington Commanders. ELO gap: 131 pts with home field +65 ELO. QB form: Jordan Love has the EPA/play edge over their last 8 starts."
+      "explanation": "The model gives Green Bay Packers a 68.1% win probability \u2014 a moderate favorite over Washington Commanders. ELO gap: 131 pts with home field +65 ELO. QB form: Jordan Love has the EPA/play edge over their last 8 starts."
     },
     {
       "game_id": "401772725",
@@ -698,18 +691,18 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.4438,
-        "exp_margin": -1.78,
-        "prob_7plus": 0.2651,
-        "prob_14plus": 0.1314,
-        "prob_21plus": 0.0545,
+        "win_prob": 0.4573,
+        "exp_margin": -1.6,
+        "prob_7plus": 0.2724,
+        "prob_14plus": 0.1366,
+        "prob_21plus": 0.0546,
         "margin_percentiles": [
-          -24.8,
-          -19.8,
+          -25.0,
+          -19.7,
           -11.1,
-          -2.0,
-          7.7,
-          16.2,
+          -1.6,
+          8.0,
+          16.6,
           21.5
         ]
       },
@@ -815,6 +808,13 @@
         ],
         "away": [
           {
+            "player": "Chris Rodriguez Jr.",
+            "status": "Questionable",
+            "position": "RB",
+            "injury_description": "Rodriguez has yet to participate fully in practice while working his way back from offseason surgery on his left foot. However, the fourth-year pro participated in team drills for the first time in training camp and even saw work with the first-team offense, per Ryan O'Halloran of The Florida Times-Union. Rodriguez and Bhayshul Tuten continue to battle for the RB1 job following Travis Etienne's departure to New Orleans in free agency, but Tuten figures to see the bulk of carries in practice and preseason games until Rodriguez is fully healthy.",
+            "value_tier": "backup"
+          },
+          {
             "player": "Danny Striggow",
             "status": "Active",
             "position": "DE",
@@ -840,13 +840,6 @@
             "status": "Active",
             "position": "WR",
             "injury_description": "Hunter seems to be progressing well in his recovery from season-ending LCL surgery, and he has mixed into some team drills at practice, playing mostly with the defense at cornerback while occasionally mixing in with the offense at wide receiver. The second overall pick in the 2025 NFL Draft said he feels lighter on his feet as a result of the added muscle and that he's hoping to reach 23 miles per hour, which would put him in elite top-speed territory alongside the likes of Tyreek Hill (knee).",
-            "value_tier": "starter"
-          },
-          {
-            "player": "Jack Kiser",
-            "status": "Questionable",
-            "position": "LB",
-            "injury_description": "The outside linebacker seems to have picked up a problem with his right knee but isn't expected to have a particularly lengthy absence. The fact O'Halloran notes Kiser is expected back \"later in camp\" suggests the 2025 fourth-round pick should have a chance to return to the field with enough time to amply prepare for what's expected to be a starting role in 2026.",
             "value_tier": "starter"
           }
         ]
@@ -881,18 +874,18 @@
         ],
         "away_key_players_out": [
           {
-            "player": "Jack Kiser",
-            "position": "LB",
-            "status": "Questionable",
-            "elo_impact": 2.0,
-            "value_tier": "starter"
-          },
-          {
             "player": "Chris Rodriguez Jr.",
             "position": "RB",
             "status": "Questionable",
             "elo_impact": 1.5,
             "value_tier": "backup"
+          },
+          {
+            "player": "Jack Kiser",
+            "position": "LB",
+            "status": "Questionable",
+            "elo_impact": 2.0,
+            "value_tier": "starter"
           },
           {
             "player": "Garrett DiGiorgio",
@@ -919,8 +912,8 @@
         "Shemar Stewart (CIN) [Backup] QUESTIONABLE \u2014 \u22122 ELO",
         "Josh Kattus (CIN) [Rotation] OUT \u2014 \u22121 ELO",
         "B.J. Hill (CIN) [Backup] OUT \u2014 \u22123 ELO",
-        "Jack Kiser (JAX) [Starter] QUESTIONABLE \u2014 \u22122 ELO",
         "Chris Rodriguez Jr. (JAX) [Backup] QUESTIONABLE \u2014 \u22122 ELO",
+        "Jack Kiser (JAX) [Starter] QUESTIONABLE \u2014 \u22122 ELO",
         "Garrett DiGiorgio (JAX) [Rotation] OUT \u2014 \u22122 ELO",
         "Home field: CIN +65 ELO home advantage"
       ],
@@ -958,19 +951,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.5445,
-        "exp_margin": 1.48,
-        "prob_7plus": 0.3483,
-        "prob_14plus": 0.1819,
-        "prob_21plus": 0.0821,
+        "win_prob": 0.5425,
+        "exp_margin": 1.51,
+        "prob_7plus": 0.3519,
+        "prob_14plus": 0.1939,
+        "prob_21plus": 0.0835,
         "margin_percentiles": [
-          -21.4,
-          -16.5,
+          -21.9,
+          -16.8,
           -8.0,
-          1.5,
-          10.9,
-          19.5,
-          24.6
+          1.6,
+          11.3,
+          19.8,
+          24.4
         ]
       },
       "adjustments": {
@@ -1230,9 +1223,9 @@
       "home_score": 52,
       "away_score": 21,
       "predictions": {
-        "ensemble_prob": 0.6271,
+        "ensemble_prob": 0.6279,
         "logistic_prob": 0.6138,
-        "elo_prob": 0.7039,
+        "elo_prob": 0.7058,
         "xgb_prob": 0.6156,
         "pyth_prob": 0.5925,
         "eff_prob": 0.5925,
@@ -1246,19 +1239,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.5422,
-        "exp_margin": 1.48,
-        "prob_7plus": 0.3532,
-        "prob_14plus": 0.1909,
-        "prob_21plus": 0.0845,
+        "win_prob": 0.5324,
+        "exp_margin": 1.05,
+        "prob_7plus": 0.3321,
+        "prob_14plus": 0.176,
+        "prob_21plus": 0.0773,
         "margin_percentiles": [
-          -21.6,
-          -16.6,
-          -8.0,
-          1.6,
-          11.2,
-          19.6,
-          24.5
+          -22.0,
+          -16.8,
+          -8.3,
+          1.0,
+          10.3,
+          19.1,
+          24.0
         ]
       },
       "adjustments": {
@@ -1272,7 +1265,7 @@
       "elo": {
         "home": 1600.8,
         "away": 1519.2,
-        "diff": 150.4
+        "diff": 152.1
       },
       "bayesian": {
         "home_mu": 1692.7,
@@ -1326,10 +1319,24 @@
       "injuries": {
         "home": [
           {
-            "player": "Alim McNeill",
+            "player": "Derrick Moore",
             "status": "Questionable",
+            "position": "DE",
+            "injury_description": "The results of that evaluation will determine the next steps for Moore, who was a second-round selection of the Lions in the 2026 NFL Draft. The rookie out of Michigan is competing for rotational snaps at defensive end behind starters Aidan Hutchinson and D.J. Wonnum, with Tyler Lacy, Tyre West and Trevor Nowaske serving as Moore's main competition.",
+            "value_tier": "backup"
+          },
+          {
+            "player": "Miles Kitselman",
+            "status": "Questionable",
+            "position": "TE",
+            "injury_description": "Kitselman signed with the Lions in mid-May as an undrafted free agent. He's competing for a depth spot on the team's 53-man roster by the time training camp wraps up, so he'll aim to return to practice and be ready for the Lions' preseason opener against the Bengals on Thursday, Aug. 13.",
+            "value_tier": "rotation"
+          },
+          {
+            "player": "Alim McNeill",
+            "status": "Active",
             "position": "DT",
-            "injury_description": "McNeil suffered a neck injury during Friday's practice but is believed to be OK. The 26-year-old is expected to serve as one of Detroit's starting defensive tackles during the upcoming campaign.",
+            "injury_description": "McNeil was held out of Friday's practice due to a neck injury, but the sixth-year defensive tackle was cleared to participate in Sunday's session. He's coming off a 2025 campaign in which he missed seven regular-season games due to knee and abdomen injuries, finishing with 14 tackles (five solo), including 1.0 sacks, one pass defense and one forced fumble over 10 games.",
             "value_tier": "starter"
           },
           {
@@ -1345,20 +1352,6 @@
             "position": "LB",
             "injury_description": "White participated in all 17 regular-season games for the Raiders last year, producing 174 total tackles (including 2.5 sacks), three passes defensed (including one interception) and a forced fumble. The linebacker was ranked third in the NFL in tackles as well. White will provide a strong veteran presence to a Lions linebacker corps that has suffered consistent injuries over the past few seasons.",
             "value_tier": "backup"
-          },
-          {
-            "player": "Christian Mahogany",
-            "status": "Active",
-            "position": "G",
-            "injury_description": "Mahogany has been cleared to practice after recovering from an undisclosed injury. He's slated to serve as the Lions' starter at left guard for the 2026 season, with his main competition coming from Juice Scruggs and Miles Frazier.",
-            "value_tier": "starter"
-          },
-          {
-            "player": "Anthony Firkser",
-            "status": "Active",
-            "position": "TE",
-            "injury_description": "In a corresponding transaction, the Lions waived tight end Zach Horton. With fellow veteran tight end Tyler Conklin (knee) on the PUP list, Firkser could get a good chance right away to prove he's worthy of a depth role in 2026.",
-            "value_tier": "rotation"
           }
         ],
         "away": [
@@ -1400,17 +1393,24 @@
         ]
       },
       "injury_impact": {
-        "home_elo_penalty": 26.48,
+        "home_elo_penalty": 24.87,
         "away_elo_penalty": 30.34,
-        "home_impact_score": 0.2407,
+        "home_impact_score": 0.226,
         "away_impact_score": 0.2758,
         "home_key_players_out": [
           {
-            "player": "Alim McNeill",
-            "position": "DT",
+            "player": "Derrick Moore",
+            "position": "DE",
             "status": "Questionable",
-            "elo_impact": 2.4,
-            "value_tier": "starter"
+            "elo_impact": 1.5,
+            "value_tier": "backup"
+          },
+          {
+            "player": "Miles Kitselman",
+            "position": "TE",
+            "status": "Questionable",
+            "elo_impact": 0.4,
+            "value_tier": "rotation"
           },
           {
             "player": "Jimmy Rolder",
@@ -1460,13 +1460,6 @@
             "status": "Out",
             "elo_impact": 5.0,
             "value_tier": "starter"
-          },
-          {
-            "player": "Kendrick Law",
-            "position": "WR",
-            "status": "Injured Reserve",
-            "elo_impact": 1.2,
-            "value_tier": "rotation"
           }
         ],
         "away_key_players_out": [
@@ -1541,15 +1534,15 @@
       },
       "prediction_drivers": [
         "ELO advantage: DET +82 rating points",
-        "Alim McNeill (DET) [Starter] QUESTIONABLE \u2014 \u22122 ELO",
+        "Derrick Moore (DET) [Backup] QUESTIONABLE \u2014 \u22122 ELO",
+        "Miles Kitselman (DET) [Rotation] QUESTIONABLE \u2014 \u22120 ELO",
         "Jimmy Rolder (DET) [Rotation] QUESTIONABLE \u2014 \u22120 ELO",
-        "Jahmyr Gibbs (DET) [Starter] QUESTIONABLE \u2014 \u22123 ELO",
         "Kyle Monangai (CHI) [Backup] QUESTIONABLE \u2014 \u22122 ELO",
         "Elijah Hicks (CHI) [Backup] OUT \u2014 \u22123 ELO",
         "Kyler Gordon (CHI) [Starter] OUT \u2014 \u22126 ELO",
         "Home field: DET +65 ELO home advantage"
       ],
-      "explanation": "The model gives Detroit Lions a 62.7% win probability \u2014 a moderate favorite over Chicago Bears. ELO gap: 82 pts with home field +65 ELO."
+      "explanation": "The model gives Detroit Lions a 62.8% win probability \u2014 a moderate favorite over Chicago Bears. ELO gap: 82 pts with home field +65 ELO."
     },
     {
       "game_id": "401772724",
@@ -1567,9 +1560,9 @@
       "home_score": 19,
       "away_score": 33,
       "predictions": {
-        "ensemble_prob": 0.2502,
+        "ensemble_prob": 0.2511,
         "logistic_prob": 0.2034,
-        "elo_prob": 0.1656,
+        "elo_prob": 0.1678,
         "xgb_prob": 0.3378,
         "pyth_prob": 0.5925,
         "eff_prob": 0.5925,
@@ -1583,19 +1576,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.3334,
-        "exp_margin": -5.99,
-        "prob_7plus": 0.1777,
-        "prob_14plus": 0.0825,
-        "prob_21plus": 0.0282,
+        "win_prob": 0.3373,
+        "exp_margin": -6.03,
+        "prob_7plus": 0.1836,
+        "prob_14plus": 0.0795,
+        "prob_21plus": 0.0283,
         "margin_percentiles": [
-          -28.9,
-          -24.1,
+          -29.6,
+          -24.3,
           -15.6,
-          -5.9,
+          -6.0,
           3.5,
           12.2,
-          17.5
+          17.2
         ]
       },
       "adjustments": {
@@ -1609,7 +1602,7 @@
       "elo": {
         "home": 1284.1,
         "away": 1640.8,
-        "diff": -281.0
+        "diff": -278.2
       },
       "bayesian": {
         "home_mu": 1540.3,
@@ -1700,6 +1693,13 @@
         ],
         "away": [
           {
+            "player": "Myles Garrett",
+            "status": "Questionable",
+            "position": "DE",
+            "injury_description": "Garrett has missed the team's last three sessions as he continues to deal with lower-body soreness. While the 29-year-old is expected to be sidelined for Monday's practice as well, head coach Sean McVay said the injury isn't serious and Garrett should be back for the next practice block.",
+            "value_tier": "starter"
+          },
+          {
             "player": "Alaric Jackson",
             "status": "Questionable",
             "position": "OT",
@@ -1726,21 +1726,14 @@
             "position": "WR",
             "injury_description": "We've heard this before at a similar time of the year, and while Whittington has seen a few opportunities as the No. 3 receiver, it's rarely amounted to much in terms of routes and targets. The job bounced around between a slew of players last year, including Xavier Smith and Konata Mumpfield, both of whom are still on the team. The Rams also have rookie sixth-round pick CJ Daniels as a dark horse candidate for the job. In any case, the offense likely will use a lot of multi-TE formations, limiting the WR3's snap and route shares.",
             "value_tier": "starter"
-          },
-          {
-            "player": "Blake Hance",
-            "status": "Active",
-            "position": "G",
-            "injury_description": "Hance is headed to Los Angeles after having spent the 2025 campaign with the Titans. The 30-year-old has recovered from the shoulder injury he suffered last October and will spend the remainder of the summer competing for a depth spot on the Rams' roster.",
-            "value_tier": "rotation"
           }
         ]
       },
       "injury_impact": {
         "home_elo_penalty": 0.75,
-        "away_elo_penalty": 7.5,
+        "away_elo_penalty": 10.3,
         "home_impact_score": 0.0068,
-        "away_impact_score": 0.0682,
+        "away_impact_score": 0.0936,
         "home_key_players_out": [
           {
             "player": "Sanoussi Kane",
@@ -1751,6 +1744,13 @@
           }
         ],
         "away_key_players_out": [
+          {
+            "player": "Myles Garrett",
+            "position": "DE",
+            "status": "Questionable",
+            "elo_impact": 2.8,
+            "value_tier": "starter"
+          },
           {
             "player": "Alaric Jackson",
             "position": "OT",
@@ -1788,13 +1788,13 @@
       "prediction_drivers": [
         "ELO advantage: LAR +357 rating points",
         "Sanoussi Kane (TEN) [Rotation] INJURED RESERVE \u2014 \u22121 ELO",
+        "Myles Garrett (LAR) [Starter] QUESTIONABLE \u2014 \u22123 ELO",
         "Alaric Jackson (LAR) [Starter] QUESTIONABLE \u2014 \u22124 ELO",
         "Justin Dedich (LAR) [Backup] OUT \u2014 \u22122 ELO",
-        "Al'zillion Hamilton (LAR) [Rotation] OUT \u2014 \u22122 ELO",
         "Travel penalty: away travels 1788 miles",
         "Home field: TEN +65 ELO home advantage"
       ],
-      "explanation": "The model gives Los Angeles Rams a 75.0% win probability \u2014 a strong favorite over Tennessee Titans. ELO gap: 357 pts with home field +65 ELO. Travel: 1788 miles. QB form: Matthew Stafford has the EPA/play edge over their last 8 starts."
+      "explanation": "The model gives Los Angeles Rams a 74.9% win probability \u2014 a strong favorite over Tennessee Titans. ELO gap: 357 pts with home field +65 ELO. Travel: 1788 miles. QB form: Matthew Stafford has the EPA/play edge over their last 8 starts."
     },
     {
       "game_id": "401772728",
@@ -1828,19 +1828,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.3855,
-        "exp_margin": -4.22,
-        "prob_7plus": 0.2124,
-        "prob_14plus": 0.0988,
-        "prob_21plus": 0.0365,
+        "win_prob": 0.3698,
+        "exp_margin": -4.61,
+        "prob_7plus": 0.2091,
+        "prob_14plus": 0.0981,
+        "prob_21plus": 0.0385,
         "margin_percentiles": [
-          -27.6,
-          -22.2,
-          -13.7,
-          -4.2,
-          5.3,
-          13.9,
-          19.0
+          -27.9,
+          -22.7,
+          -14.5,
+          -4.7,
+          5.0,
+          13.8,
+          19.1
         ]
       },
       "adjustments": {
@@ -2087,9 +2087,9 @@
       "home_score": 21,
       "away_score": 26,
       "predictions": {
-        "ensemble_prob": 0.3866,
+        "ensemble_prob": 0.3881,
         "logistic_prob": 0.3523,
-        "elo_prob": 0.3675,
+        "elo_prob": 0.3714,
         "xgb_prob": 0.4758,
         "pyth_prob": 0.5925,
         "eff_prob": 0.5925,
@@ -2103,19 +2103,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.5388,
-        "exp_margin": 1.51,
-        "prob_7plus": 0.3491,
-        "prob_14plus": 0.1895,
-        "prob_21plus": 0.0856,
+        "win_prob": 0.5373,
+        "exp_margin": 1.53,
+        "prob_7plus": 0.3508,
+        "prob_14plus": 0.1935,
+        "prob_21plus": 0.0865,
         "margin_percentiles": [
-          -21.6,
-          -16.4,
-          -8.0,
+          -21.8,
+          -16.7,
+          -8.1,
           1.4,
           11.1,
-          19.6,
-          24.9
+          19.9,
+          25.0
         ]
       },
       "adjustments": {
@@ -2129,7 +2129,7 @@
       "elo": {
         "home": 1389.7,
         "away": 1575.4,
-        "diff": -94.3
+        "diff": -91.4
       },
       "bayesian": {
         "home_mu": 1648.1,
@@ -2171,6 +2171,20 @@
       "injuries": {
         "home": [
           {
+            "player": "Bryan Bresee",
+            "status": "Out",
+            "position": "DT",
+            "injury_description": "It's a brutal blow for Bresee, who has played in 46 of 48 possible regular-season games since being selected by the Saints in the first round of the 2023 NFL Draft. An ACL repair procedure typically carries a nine-month recovery timeline, so Bresee should be available for the 2027 season, which is the final year of his rookie contract. John Ridgeway figures to step into a starting role at defensive end opposite veteran Cameron Jordan, while Michael Heldman, Vernon Broughton and Tyree Wilson compete for rotational snaps.",
+            "value_tier": "rotation"
+          },
+          {
+            "player": "Kool-Aid McKinstry",
+            "status": "Active",
+            "position": "CB",
+            "injury_description": "McKinstry left Thursday's practice early after tweaking his ankle, though it was a precautionary move by the Saints. The third-year cornerback was back on the field Sunday, though he did not participate in the final team drill of practice. Still, it appears McKinstry is past the injury and should be an active participant in practices moving forward.",
+            "value_tier": "starter"
+          },
+          {
             "player": "Nathan Shepherd",
             "status": "Active",
             "position": "DT",
@@ -2190,23 +2204,16 @@
             "position": "OT",
             "injury_description": "Banks was a first-round selection of the Saints in the 2025 NFL Draft and started in all 17 regular-season games last year. He suffered an ankle injury during the Saints' regular-season finale against the Falcons in early January, but he is fully healthy for the start of training camp. Banks figures to keep his starting role at left tackle for the 2026 campaign.",
             "value_tier": "starter"
-          },
-          {
-            "player": "Cody Hardy",
-            "status": "Active",
-            "position": "TE",
-            "injury_description": "Hardy is now clear to participate in training camp practices and preseason games as he he looks to make a case for a spot on the Saints' 53-man roster for the 2026 season. He signed with New Orleans as an undrafted free agent in late April following his final college season at North Carolina, when he mostly contributed as a run blocker and finished with six catches for 83 yards and two touchdowns across five games.",
-            "value_tier": "rotation"
-          },
-          {
-            "player": "Chris Olave",
-            "status": "Active",
-            "position": "WR",
-            "injury_description": "Olave inked a four-year extension worth up to $132 million with the Saints on Thursday, providing sufficient motivation for the 2022 first-rounder to get in his first full-team reps of training camp. Treatment related to a blood clot kept Olave from taking part in team drills during spring activities, but the star wideout seems to be fully healthy in advance of the 2026 regular season. Olave will look to build on the career year he logged in 2025 as he now heads into Year 2 with quarterback Tyler Shough under center.",
-            "value_tier": "starter"
           }
         ],
         "away": [
+          {
+            "player": "Khalil Herbert",
+            "status": "Active",
+            "position": "RB",
+            "injury_description": "Herbert will provide San Francisco with much-needed depth at running back, as Jordan James (ribs), Isaac Guerendo (pectoral) and Kaelon Black (undisclosed) are all currently dealing with injuries. Herbert spent last season with the Jets, rushing for 52 yards on 16 carries. The 28-year-old could also add value as a return specialist.",
+            "value_tier": "rotation"
+          },
           {
             "player": "Deebo Samuel",
             "status": "Active",
@@ -2219,13 +2226,6 @@
             "status": "Injured Reserve",
             "position": "TE",
             "injury_description": "McLachlan was waived/injured Friday with an undisclosed issue and will now spend the 2026 season on IR. The 2024 sixth-round pick out of Cincinnati will need to look toward 2027 for a chance to get back on an NFL field.",
-            "value_tier": "rotation"
-          },
-          {
-            "player": "Mikail Kamara",
-            "status": "Questionable",
-            "position": "DE",
-            "injury_description": "Kamara needed to be carted off the field due to the issue. The severity of the injury is unclear, but it seems the undrafted free agent out of Indiana has joined much of the 49ers' linebacker corps on the injury list. With the state of the corps, if any young players such as Kamara can recover quickly, they will have an inside track to climbing the depth chart.",
             "value_tier": "rotation"
           },
           {
@@ -2245,24 +2245,17 @@
         ]
       },
       "injury_impact": {
-        "home_elo_penalty": 11.0,
-        "away_elo_penalty": 21.39,
-        "home_impact_score": 0.1,
-        "away_impact_score": 0.1944,
+        "home_elo_penalty": 7.7,
+        "away_elo_penalty": 20.97,
+        "home_impact_score": 0.07,
+        "away_impact_score": 0.1906,
         "home_key_players_out": [
-          {
-            "player": "Kool-Aid McKinstry",
-            "position": "CB",
-            "status": "Questionable",
-            "elo_impact": 2.4,
-            "value_tier": "starter"
-          },
           {
             "player": "Bryan Bresee",
             "position": "DT",
-            "status": "Questionable",
-            "elo_impact": 2.4,
-            "value_tier": "starter"
+            "status": "Out",
+            "elo_impact": 1.5,
+            "value_tier": "rotation"
           },
           {
             "player": "Mason Tipton",
@@ -2292,13 +2285,6 @@
             "position": "TE",
             "status": "Injured Reserve",
             "elo_impact": 1.1,
-            "value_tier": "rotation"
-          },
-          {
-            "player": "Mikail Kamara",
-            "position": "DE",
-            "status": "Questionable",
-            "elo_impact": 0.4,
             "value_tier": "rotation"
           },
           {
@@ -2400,16 +2386,16 @@
       },
       "prediction_drivers": [
         "ELO advantage: SF +186 rating points",
-        "Kool-Aid McKinstry (NO) [Starter] QUESTIONABLE \u2014 \u22122 ELO",
-        "Bryan Bresee (NO) [Starter] QUESTIONABLE \u2014 \u22122 ELO",
+        "Bryan Bresee (NO) [Rotation] OUT \u2014 \u22122 ELO",
         "Mason Tipton (NO) [Backup] OUT \u2014 \u22124 ELO",
+        "Zxavian Harris (NO) [Rotation] OUT \u2014 \u22121 ELO",
         "Tanner McLachlan (SF) [Rotation] INJURED RESERVE \u2014 \u22121 ELO",
-        "Mikail Kamara (SF) [Rotation] QUESTIONABLE \u2014 \u22120 ELO",
         "Keion White (SF) [Backup] QUESTIONABLE \u2014 \u22122 ELO",
+        "Romello Height (SF) [Rotation] QUESTIONABLE \u2014 \u22121 ELO",
         "Travel penalty: away travels 1898 miles",
         "Home field: NO +65 ELO home advantage"
       ],
-      "explanation": "The model gives San Francisco 49ers a 61.3% win probability \u2014 a moderate favorite over New Orleans Saints. ELO gap: 186 pts with home field +65 ELO. Travel: 1898 miles. QB form: Brock Purdy has the EPA/play edge over their last 8 starts."
+      "explanation": "The model gives San Francisco 49ers a 61.2% win probability \u2014 a moderate favorite over New Orleans Saints. ELO gap: 186 pts with home field +65 ELO. Travel: 1898 miles. QB form: Brock Purdy has the EPA/play edge over their last 8 starts."
     },
     {
       "game_id": "401772727",
@@ -2443,16 +2429,16 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.2769,
+        "win_prob": 0.2747,
         "exp_margin": -8.47,
-        "prob_7plus": 0.1356,
-        "prob_14plus": 0.0558,
-        "prob_21plus": 0.019,
+        "prob_7plus": 0.1346,
+        "prob_14plus": 0.0553,
+        "prob_21plus": 0.0173,
         "margin_percentiles": [
-          -31.7,
+          -32.0,
           -26.6,
-          -18.1,
-          -8.4,
+          -18.0,
+          -8.5,
           1.1,
           9.4,
           14.7
@@ -2716,9 +2702,9 @@
       "home_score": 17,
       "away_score": 31,
       "predictions": {
-        "ensemble_prob": 0.4047,
+        "ensemble_prob": 0.406,
         "logistic_prob": 0.3273,
-        "elo_prob": 0.355,
+        "elo_prob": 0.3585,
         "xgb_prob": 0.3613,
         "pyth_prob": 0.5925,
         "eff_prob": 0.5925,
@@ -2732,19 +2718,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.4223,
-        "exp_margin": -2.83,
-        "prob_7plus": 0.2443,
-        "prob_14plus": 0.1201,
-        "prob_21plus": 0.0443,
+        "win_prob": 0.4239,
+        "exp_margin": -2.66,
+        "prob_7plus": 0.2495,
+        "prob_14plus": 0.1215,
+        "prob_21plus": 0.0481,
         "margin_percentiles": [
           -25.8,
-          -20.9,
-          -12.4,
-          -2.8,
-          6.7,
-          15.4,
-          20.2
+          -20.5,
+          -12.2,
+          -2.7,
+          6.9,
+          15.5,
+          20.8
         ]
       },
       "adjustments": {
@@ -2758,7 +2744,7 @@
       "elo": {
         "home": 1521.4,
         "away": 1686.6,
-        "diff": -103.7
+        "diff": -101.1
       },
       "bayesian": {
         "home_mu": 1647.2,
@@ -2849,6 +2835,20 @@
         ],
         "away": [
           {
+            "player": "Brandon Pili",
+            "status": "Questionable",
+            "position": "DT",
+            "injury_description": "The severity of Pili's injury is unclear, but he'll aim to return to practice before the Seahawks' preseason opener against the Cowboys on Saturday, Aug. 15. He served in a rotational role on the Seahawks' defensive line last year, finishing with 12 tackles (one solo) and one forced fumble recovery across 13 regular-season games. Pili, assuming he can get healthy, will use training camp as his opportunity to solidify his backup role behind Jarran Reed, with Deven Eastern and Uso Seumalo representing Pili's main competition.",
+            "value_tier": "backup"
+          },
+          {
+            "player": "Julian Neal",
+            "status": "Questionable",
+            "position": "CB",
+            "injury_description": "It's unclear when Neal sustained the injury, but his status is worth monitoring over the coming days. He was a third-round selection of the Seahawks in the 2026 NFL Draft, and the rookie out of Arkansas is competing for a rotational role in Seattle's secondary, though his clearest path to playing time figures to be as a contributor on special teams.",
+            "value_tier": "backup"
+          },
+          {
             "player": "Jadarian Price",
             "status": "Active",
             "position": "RB",
@@ -2868,28 +2868,14 @@
             "position": "WR",
             "injury_description": "The Seahawks invited Duplessis to a tryout Wednesday and signed him on the same day, with the Delaware product taking the spot vacated by Kenny McIntosh, who was waived by Seattle on Monday. Duplessis logged 60 catches for 824 yards and five touchdowns across 13 games in his final collegiate season, but he's considered a long shot to make the Seahawks' 53-man roster at the end of training camp.",
             "value_tier": "rotation"
-          },
-          {
-            "player": "Rashid Shaheed",
-            "status": "Active",
-            "position": "WR",
-            "injury_description": "Shaheed remained a big-play and return-game weapon after joining Seattle midseason in 2025, but his receiving role was limited as he adjusted on the fly to a new team and offense. That should change now that he's had an offseason to build familiarity with new OC Brian Fleury and improve his timing with with Darnold, giving him a clearer path to downfield targets alongside Jaxon Smith-Njigba and Cooper Kupp. Shaheed's week-to-week fantasy value may remain volatile, but he will boast a higher ceiling if Seattle follows through on finding more ways to get him the ball.",
-            "value_tier": "starter"
-          },
-          {
-            "player": "Jake Bobo",
-            "status": "Questionable",
-            "position": "WR",
-            "injury_description": "Per Bell, Bobo picked up the injury during Monday's session and was forced to leave early. The severity of the injury isn't clear, but getting back on the practice field is crucial for the fourth-year wideout, who is competing against Tory Horton and rookie sixth-rounder Emmanuel Henderson for the WR4 job behind Jaxon Smith-Njigba, Rashid Shaheed and Cooper Kupp. Bobo split his snaps evenly between offense and special teams last year and finished the regular season with two catches (on as many targets) for 20 yards across 11 games. He also caught a 17-yard touchdown pass during the NFC Championship Game against the Rams.",
-            "value_tier": "backup"
           }
         ]
       },
       "injury_impact": {
         "home_elo_penalty": 15.3,
-        "away_elo_penalty": 13.76,
+        "away_elo_penalty": 16.4,
         "home_impact_score": 0.1391,
-        "away_impact_score": 0.1251,
+        "away_impact_score": 0.1491,
         "home_key_players_out": [
           {
             "player": "Joey Porter Jr.",
@@ -2914,6 +2900,20 @@
           }
         ],
         "away_key_players_out": [
+          {
+            "player": "Brandon Pili",
+            "position": "DT",
+            "status": "Questionable",
+            "elo_impact": 1.3,
+            "value_tier": "backup"
+          },
+          {
+            "player": "Julian Neal",
+            "position": "CB",
+            "status": "Questionable",
+            "elo_impact": 1.3,
+            "value_tier": "backup"
+          },
           {
             "player": "Jake Bobo",
             "position": "WR",
@@ -2946,13 +2946,13 @@
         "Joey Porter Jr. (PIT) [Starter] OUT \u2014 \u22126 ELO",
         "Donte Kent (PIT) [Backup] OUT \u2014 \u22123 ELO",
         "Jalen Ramsey (PIT) [Starter] OUT \u2014 \u22126 ELO",
+        "Brandon Pili (SEA) [Backup] QUESTIONABLE \u2014 \u22121 ELO",
+        "Julian Neal (SEA) [Backup] QUESTIONABLE \u2014 \u22121 ELO",
         "Jake Bobo (SEA) [Backup] QUESTIONABLE \u2014 \u22122 ELO",
-        "Nick Emmanwori (SEA) [Starter] OUT \u2014 \u22125 ELO",
-        "Zach Charbonnet (SEA) [Starter] OUT \u2014 \u22127 ELO",
         "Travel penalty: away travels 2137 miles",
         "Home field: PIT +65 ELO home advantage"
       ],
-      "explanation": "The model gives Seattle Seahawks a 59.5% win probability \u2014 a slight favorite over Pittsburgh Steelers. ELO gap: 165 pts with home field +65 ELO. Travel: 2137 miles. QB form: Sam Darnold has the EPA/play edge over their last 8 starts."
+      "explanation": "The model gives Seattle Seahawks a 59.4% win probability \u2014 a slight favorite over Pittsburgh Steelers. ELO gap: 165 pts with home field +65 ELO. Travel: 2137 miles. QB form: Sam Darnold has the EPA/play edge over their last 8 starts."
     },
     {
       "game_id": "401772726",
@@ -2986,19 +2986,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6508,
-        "exp_margin": 5.35,
-        "prob_7plus": 0.4556,
-        "prob_14plus": 0.2652,
-        "prob_21plus": 0.1288,
+        "win_prob": 0.6547,
+        "exp_margin": 5.5,
+        "prob_7plus": 0.4588,
+        "prob_14plus": 0.2723,
+        "prob_21plus": 0.137,
         "margin_percentiles": [
-          -17.5,
-          -12.5,
-          -3.9,
-          5.5,
-          14.6,
-          23.1,
-          28.3
+          -17.9,
+          -12.9,
+          -4.1,
+          5.6,
+          15.0,
+          23.4,
+          28.7
         ]
       },
       "adjustments": {
@@ -3215,9 +3215,9 @@
       "home_score": 29,
       "away_score": 28,
       "predictions": {
-        "ensemble_prob": 0.4013,
+        "ensemble_prob": 0.4009,
         "logistic_prob": 0.3273,
-        "elo_prob": 0.3585,
+        "elo_prob": 0.3573,
         "xgb_prob": 0.3625,
         "pyth_prob": 0.5925,
         "eff_prob": 0.5925,
@@ -3231,19 +3231,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.502,
-        "exp_margin": -0.13,
-        "prob_7plus": 0.3108,
-        "prob_14plus": 0.1624,
-        "prob_21plus": 0.0674,
+        "win_prob": 0.4824,
+        "exp_margin": -0.46,
+        "prob_7plus": 0.2978,
+        "prob_14plus": 0.1524,
+        "prob_21plus": 0.0621,
         "margin_percentiles": [
-          -23.9,
-          -18.7,
-          -9.7,
-          0.1,
-          9.5,
-          18.2,
-          23.2
+          -23.4,
+          -18.5,
+          -10.0,
+          -0.6,
+          9.2,
+          17.5,
+          22.5
         ]
       },
       "adjustments": {
@@ -3257,7 +3257,7 @@
       "elo": {
         "home": 1482.6,
         "away": 1627.9,
-        "diff": -101.1
+        "diff": -102.0
       },
       "bayesian": {
         "home_mu": 1657.5,
@@ -3348,13 +3348,6 @@
         ],
         "away": [
           {
-            "player": "Blake Cotton",
-            "status": "Injured Reserve",
-            "position": "CB",
-            "injury_description": "Cotton was waived/injured Friday due to his injury and will spend the entire 2026 season on IR. The undrafted free agent out of Utah will need to look toward 2027 for a potential NFL debut.",
-            "value_tier": "rotation"
-          },
-          {
             "player": "Joseph Manjack IV",
             "status": "Questionable",
             "position": "WR",
@@ -3381,14 +3374,21 @@
             "position": "QB",
             "injury_description": "Nix had been limited during the team's offseason program while working his way back from ankle surgery and a follow-up procedure, but as expected, he was ready for training camp's first practice and looked sharp during red-zone work in the process. As the coming campaign approaches, Nix's fantasy prospects should be bolstered by the fact that Denver added Jaylen Waddle, via a trade with the Dolphins this offseason, to a WR corps that returns Courtland Sutton, giving the team a notable 1-2 punch at the position.",
             "value_tier": "starter"
+          },
+          {
+            "player": "Nick Gargiulo",
+            "status": "Out",
+            "position": "G",
+            "injury_description": "The offensive guard was placed on the active/PUP list to kick off training camp Sunday, but the team expects to have to move him to the reserve/PUP list once the regular season rolls around, per Tomasson. If he does move to the reserve/PUP list on or after cut-down day, Gargiulo will have to miss the first four regular-season games. The 2024 seventh-round pick tore his ACL during an August 2025 preseason game.",
+            "value_tier": "rotation"
           }
         ]
       },
       "injury_impact": {
         "home_elo_penalty": 10.7,
-        "away_elo_penalty": 3.03,
+        "away_elo_penalty": 2.13,
         "home_impact_score": 0.0973,
-        "away_impact_score": 0.0275,
+        "away_impact_score": 0.0194,
         "home_key_players_out": [
           {
             "player": "Sauce Gardner",
@@ -3413,13 +3413,6 @@
           }
         ],
         "away_key_players_out": [
-          {
-            "player": "Blake Cotton",
-            "position": "CB",
-            "status": "Injured Reserve",
-            "elo_impact": 0.9,
-            "value_tier": "rotation"
-          },
           {
             "player": "Joseph Manjack IV",
             "position": "WR",
@@ -3459,9 +3452,9 @@
         "Sauce Gardner (IND) [Starter] QUESTIONABLE \u2014 \u22122 ELO",
         "Alec Pierce (IND) [Starter] OUT \u2014 \u22128 ELO",
         "Hunter Wohler (IND) [Rotation] QUESTIONABLE \u2014 \u22120 ELO",
-        "Blake Cotton (DEN) [Rotation] INJURED RESERVE \u2014 \u22121 ELO",
         "Joseph Manjack IV (DEN) [Rotation] QUESTIONABLE \u2014 \u22120 ELO",
         "Nick Gargiulo (DEN) [Rotation] OUT \u2014 \u22120 ELO",
+        "Jordan Turner (DEN) [Rotation] OUT \u2014 \u22121 ELO",
         "Home field: IND +65 ELO home advantage"
       ],
       "explanation": "The model gives Denver Broncos a 59.9% win probability \u2014 a slight favorite over Indianapolis Colts. ELO gap: 145 pts with home field +65 ELO. Travel: 1002 miles."
@@ -3482,9 +3475,9 @@
       "home_score": 27,
       "away_score": 22,
       "predictions": {
-        "ensemble_prob": 0.5941,
+        "ensemble_prob": 0.5938,
         "logistic_prob": 0.5353,
-        "elo_prob": 0.5946,
+        "elo_prob": 0.5939,
         "xgb_prob": 0.6017,
         "pyth_prob": 0.5925,
         "eff_prob": 0.5925,
@@ -3498,19 +3491,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.4518,
-        "exp_margin": -1.54,
-        "prob_7plus": 0.2742,
-        "prob_14plus": 0.1383,
-        "prob_21plus": 0.0596,
+        "win_prob": 0.4543,
+        "exp_margin": -1.73,
+        "prob_7plus": 0.2677,
+        "prob_14plus": 0.1352,
+        "prob_21plus": 0.0537,
         "margin_percentiles": [
-          -25.0,
-          -19.7,
-          -10.9,
+          -25.2,
+          -19.9,
+          -11.4,
           -1.7,
-          7.9,
-          16.7,
-          22.1
+          7.7,
+          16.4,
+          21.4
         ]
       },
       "adjustments": {
@@ -3524,7 +3517,7 @@
       "elo": {
         "home": 1371.0,
         "away": 1389.5,
-        "diff": 66.5
+        "diff": 66.0
       },
       "bayesian": {
         "home_mu": 1536.0,
@@ -3574,6 +3567,20 @@
       "injuries": {
         "home": [
           {
+            "player": "Walter Nolen III",
+            "status": "Active",
+            "position": "DT",
+            "injury_description": "Nolen was experiencing some discomfort in the knee he hurt last year, but he has moved past the issue. The defensive tackle underwent surgery in December for a torn meniscus and is learning to practice post-injury. Nolen was working on the knee with trainers Friday and is now seemingly more confident in its stability.",
+            "value_tier": "starter"
+          },
+          {
+            "player": "Joey Blount",
+            "status": "Questionable",
+            "position": "S",
+            "injury_description": "Blount sat out the session due to a stinger, which is understandable given his history of neck issues. The safety's 2025 season ended after Week 1 when he sustained a neck injury.",
+            "value_tier": "rotation"
+          },
+          {
             "player": "PJ Mustipher",
             "status": "Injured Reserve",
             "position": "DT",
@@ -3593,20 +3600,6 @@
             "position": "CB",
             "injury_description": "The nature of Davis' injury has not been announced, but now that he's on IR, he'll be forced to miss the entire 2026 season unless he reaches an injury settlement with the Cardinals. He appeared in each of the Cardinals' last three games of the 2025 regular season, logging three tackles (two solo) in that span.",
             "value_tier": "rotation"
-          },
-          {
-            "player": "Joey Blount",
-            "status": "Active",
-            "position": "S",
-            "injury_description": "Blount suffered a season-ending neck injury during the Cardinals' Week 1 game against the Saints in 2025, but he has recovered from the injury and is battling for a roster spot in training camp. If Blount does make the 53-man roster, then he'll likely be limited to work on special teams while providing depth in the secondary.",
-            "value_tier": "rotation"
-          },
-          {
-            "player": "Mack Wilson Sr.",
-            "status": "Active",
-            "position": "LB",
-            "injury_description": "Wilson seems to have recovered from his rib injury and is all set to take the field. The middle linebacker has already resumed his duties as the starter for the Cardinals' defense. The 28-year-old veteran player has been playing alongside both Cody Simon and Jack Gibbens as the two battle for reps at linebacker.",
-            "value_tier": "starter"
           }
         ],
         "away": [
@@ -3648,11 +3641,18 @@
         ]
       },
       "injury_impact": {
-        "home_elo_penalty": 19.02,
+        "home_elo_penalty": 19.52,
         "away_elo_penalty": 35.1,
-        "home_impact_score": 0.173,
+        "home_impact_score": 0.1775,
         "away_impact_score": 0.3191,
         "home_key_players_out": [
+          {
+            "player": "Joey Blount",
+            "position": "S",
+            "status": "Questionable",
+            "elo_impact": 0.5,
+            "value_tier": "rotation"
+          },
           {
             "player": "PJ Mustipher",
             "position": "DT",
@@ -3781,9 +3781,9 @@
         "away_star_stack_multiplier": 1.0
       },
       "prediction_drivers": [
+        "Joey Blount (ARI) [Rotation] QUESTIONABLE \u2014 \u22120 ELO",
         "PJ Mustipher (ARI) [Rotation] INJURED RESERVE \u2014 \u22121 ELO",
         "Jaden Davis (ARI) [Rotation] INJURED RESERVE \u2014 \u22121 ELO",
-        "James Conner (ARI) [Rotation] QUESTIONABLE \u2014 \u22121 ELO",
         "Chris Brazzell II (CAR) [Rotation] INJURED RESERVE \u2014 \u22121 ELO",
         "Dan Chisena (CAR) [Rotation] INJURED RESERVE \u2014 \u22121 ELO",
         "Mitchell Evans (CAR) [Rotation] QUESTIONABLE \u2014 \u22121 ELO",
@@ -3824,19 +3824,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.4975,
-        "exp_margin": -0.2,
-        "prob_7plus": 0.3099,
-        "prob_14plus": 0.1621,
-        "prob_21plus": 0.0683,
+        "win_prob": 0.5016,
+        "exp_margin": 0.1,
+        "prob_7plus": 0.3103,
+        "prob_14plus": 0.1637,
+        "prob_21plus": 0.0733,
         "margin_percentiles": [
-          -23.7,
-          -18.6,
-          -9.9,
-          -0.1,
-          9.6,
-          18.2,
-          23.1
+          -23.0,
+          -18.0,
+          -9.5,
+          0.1,
+          9.7,
+          18.5,
+          23.7
         ]
       },
       "adjustments": {
@@ -4110,9 +4110,9 @@
       "home_score": 6,
       "away_score": 22,
       "predictions": {
-        "ensemble_prob": 0.6639,
+        "ensemble_prob": 0.6643,
         "logistic_prob": 0.6524,
-        "elo_prob": 0.787,
+        "elo_prob": 0.788,
         "xgb_prob": 0.6933,
         "pyth_prob": 0.5925,
         "eff_prob": 0.5925,
@@ -4126,19 +4126,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.596,
-        "exp_margin": 3.48,
-        "prob_7plus": 0.4027,
-        "prob_14plus": 0.2307,
-        "prob_21plus": 0.1063,
+        "win_prob": 0.6026,
+        "exp_margin": 3.54,
+        "prob_7plus": 0.4038,
+        "prob_14plus": 0.2293,
+        "prob_21plus": 0.1062,
         "margin_percentiles": [
-          -19.7,
+          -19.5,
           -14.7,
-          -6.2,
-          3.4,
-          13.0,
+          -6.1,
+          3.7,
+          13.1,
           21.5,
-          27.3
+          26.8
         ]
       },
       "adjustments": {
@@ -4152,7 +4152,7 @@
       "elo": {
         "home": 1551.6,
         "away": 1446.1,
-        "diff": 227.1
+        "diff": 228.1
       },
       "bayesian": {
         "home_mu": 1675.8,
@@ -4268,19 +4268,11 @@
         ]
       },
       "injury_impact": {
-        "home_elo_penalty": 1.05,
+        "home_elo_penalty": 0.0,
         "away_elo_penalty": 46.6,
-        "home_impact_score": 0.0095,
+        "home_impact_score": 0.0,
         "away_impact_score": 0.4236,
-        "home_key_players_out": [
-          {
-            "player": "Kejon Owens",
-            "position": "RB",
-            "status": "Out",
-            "elo_impact": 1.1,
-            "value_tier": "rotation"
-          }
-        ],
+        "home_key_players_out": [],
         "away_key_players_out": [
           {
             "player": "Jawaan Taylor",
@@ -4353,7 +4345,6 @@
       },
       "prediction_drivers": [
         "ELO advantage: MIN +106 rating points",
-        "Kejon Owens (MIN) [Rotation] OUT \u2014 \u22121 ELO",
         "Jawaan Taylor (ATL) [Starter] OUT \u2014 \u22129 ELO",
         "Michael Penix Jr. (ATL) [Backup] QUESTIONABLE \u2014 \u22127 ELO",
         "Tua Tagovailoa (ATL) [Starter] QUESTIONABLE \u2014 \u221212 ELO",
@@ -4377,9 +4368,9 @@
       "home_score": 19,
       "away_score": 20,
       "predictions": {
-        "ensemble_prob": 0.6982,
+        "ensemble_prob": 0.6972,
         "logistic_prob": 0.777,
-        "elo_prob": 0.7506,
+        "elo_prob": 0.748,
         "xgb_prob": 0.7499,
         "pyth_prob": 0.5925,
         "eff_prob": 0.5925,
@@ -4393,18 +4384,18 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6676,
-        "exp_margin": 6.37,
-        "prob_7plus": 0.4806,
-        "prob_14plus": 0.2998,
-        "prob_21plus": 0.1555,
+        "win_prob": 0.6784,
+        "exp_margin": 6.48,
+        "prob_7plus": 0.4814,
+        "prob_14plus": 0.2957,
+        "prob_21plus": 0.1523,
         "margin_percentiles": [
-          -17.1,
-          -11.9,
-          -3.5,
-          6.4,
+          -16.3,
+          -11.5,
+          -3.1,
+          6.3,
           16.0,
-          24.9,
+          24.6,
           29.9
         ]
       },
@@ -4419,7 +4410,7 @@
       "elo": {
         "home": 1612.2,
         "away": 1500.4,
-        "diff": 191.4
+        "diff": 189.0
       },
       "bayesian": {
         "home_mu": 1729.5,
@@ -4473,6 +4464,13 @@
       "injuries": {
         "home": [
           {
+            "player": "Mario Edwards Jr.",
+            "status": "Active",
+            "position": "DT",
+            "injury_description": "Edwards is officially set to return to Houston despite having been released by the team in March. The 32-year-old has spent the past two seasons with the Texans and should serve as a depth defensive tackle once again during the upcoming campaign.",
+            "value_tier": "rotation"
+          },
+          {
             "player": "Jake Hansen",
             "status": "Questionable",
             "position": "LB",
@@ -4499,16 +4497,16 @@
             "position": "S",
             "injury_description": "It sounds like Stewart is more week-to-week than day-to-day after he was placed on the active/PUP list to begin camp Tuesday. Stewart inked a one-year, $2.7 million deal to remain with the Texans over the offseason after he recorded 25 tackles (15 solo) across nine regular-season appearances in 2025.",
             "value_tier": "backup"
-          },
-          {
-            "player": "E.J. Speed",
-            "status": "Out",
-            "position": "LB",
-            "injury_description": "Speed suffered a partial tear to his quad while lifting weights back in May and was placed on the active/PUP list Tuesday. By the sounds of it, Speed could open the regular season on reserve/PUP list, which would cost him at least the first four games of 2026. Speed inked a two-year, $10 million deal with Houston over the offseason.",
-            "value_tier": "starter"
           }
         ],
         "away": [
+          {
+            "player": "Benjamin Morrison",
+            "status": "Active",
+            "position": "CB",
+            "injury_description": "Morrison missed the first three practices of training camp while tending to a lingering hamstring injury from the 2025 season, but he was back in action Sunday with no restrictions. Leg injuries limited the 2025 second-rounder to 10 regular-season games during his rookie year, finishing with 26 tackles (19 solo), four pass defenses and one fumble recovery. Morrison is projected to start opposite Zyon McCollum at outside cornerback, with Josh Hayes and Damarion Williams providing depth at the position.",
+            "value_tier": "starter"
+          },
           {
             "player": "Haggai Ndubuisi",
             "status": "Out",
@@ -4536,21 +4534,14 @@
             "position": "QB",
             "injury_description": "Mayfield wanted to get a deal done before training camp but apparently never came close. He did suggest his agent could remain in contact with the team while Mayfield turns his attention to the practice field and his teammates. \"If you've waited this long to take care of your franchise quarterback, that's too bad,\" said Mayfield. \"Because it's only going to get worse from here. I'm going to have a really big year.\"",
             "value_tier": "starter"
-          },
-          {
-            "player": "Tristan Wirfs",
-            "status": "Questionable",
-            "position": "OT",
-            "injury_description": "Wirfs got hurt during a conditioning test and is currently considered day-to-day. Once healthy again, the 27-year-old will resume his role as the team's starting left tackle.",
-            "value_tier": "starter"
           }
         ]
       },
       "injury_impact": {
         "home_elo_penalty": 19.11,
-        "away_elo_penalty": 10.8,
+        "away_elo_penalty": 8.4,
         "home_impact_score": 0.1737,
-        "away_impact_score": 0.0982,
+        "away_impact_score": 0.0764,
         "home_key_players_out": [
           {
             "player": "Jake Hansen",
@@ -4611,13 +4602,6 @@
             "value_tier": "starter"
           },
           {
-            "player": "Benjamin Morrison",
-            "position": "CB",
-            "status": "Questionable",
-            "elo_impact": 2.4,
-            "value_tier": "starter"
-          },
-          {
             "player": "Vita Vea",
             "position": "DT",
             "status": "Questionable",
@@ -4644,10 +4628,10 @@
         "E.J. Speed (HOU) [Starter] OUT \u2014 \u22125 ELO",
         "Haggai Ndubuisi (TB) [Rotation] OUT \u2014 \u22121 ELO",
         "Tristan Wirfs (TB) [Starter] QUESTIONABLE \u2014 \u22124 ELO",
-        "Benjamin Morrison (TB) [Starter] QUESTIONABLE \u2014 \u22122 ELO",
+        "Vita Vea (TB) [Starter] QUESTIONABLE \u2014 \u22122 ELO",
         "Home field: HOU +65 ELO home advantage"
       ],
-      "explanation": "The model gives Houston Texans a 69.8% win probability \u2014 a moderate favorite over Tampa Bay Buccaneers. ELO gap: 112 pts with home field +65 ELO. QB form: C.J. Stroud has the EPA/play edge over their last 8 starts."
+      "explanation": "The model gives Houston Texans a 69.7% win probability \u2014 a moderate favorite over Tampa Bay Buccaneers. ELO gap: 112 pts with home field +65 ELO. QB form: C.J. Stroud has the EPA/play edge over their last 8 starts."
     },
     {
       "game_id": "401772811",
@@ -4681,19 +4665,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.4209,
-        "exp_margin": -2.84,
-        "prob_7plus": 0.2375,
-        "prob_14plus": 0.1143,
-        "prob_21plus": 0.0452,
+        "win_prob": 0.4275,
+        "exp_margin": -2.58,
+        "prob_7plus": 0.2511,
+        "prob_14plus": 0.1185,
+        "prob_21plus": 0.0495,
         "margin_percentiles": [
-          -25.6,
-          -20.8,
-          -12.3,
-          -2.8,
-          6.4,
-          15.1,
-          20.3
+          -25.9,
+          -20.9,
+          -12.1,
+          -2.5,
+          7.1,
+          15.5,
+          20.9
         ]
       },
       "adjustments": {
@@ -4912,19 +4896,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.7626,
-        "exp_margin": 9.89,
-        "prob_7plus": 0.5777,
-        "prob_14plus": 0.385,
-        "prob_21plus": 0.2143,
+        "win_prob": 0.7582,
+        "exp_margin": 10.0,
+        "prob_7plus": 0.5848,
+        "prob_14plus": 0.3912,
+        "prob_21plus": 0.2215,
         "margin_percentiles": [
-          -13.2,
-          -8.0,
-          0.6,
-          9.9,
-          19.2,
-          28.1,
-          33.0
+          -13.3,
+          -8.5,
+          0.4,
+          10.1,
+          19.5,
+          28.2,
+          33.3
         ]
       },
       "adjustments": {
@@ -5157,9 +5141,9 @@
       "home_score": 13,
       "away_score": 10,
       "predictions": {
-        "ensemble_prob": 0.3713,
+        "ensemble_prob": 0.3705,
         "logistic_prob": 0.3523,
-        "elo_prob": 0.371,
+        "elo_prob": 0.3689,
         "xgb_prob": 0.4011,
         "pyth_prob": 0.5925,
         "eff_prob": 0.5925,
@@ -5173,19 +5157,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.5167,
-        "exp_margin": 0.45,
-        "prob_7plus": 0.323,
-        "prob_14plus": 0.1696,
-        "prob_21plus": 0.0736,
+        "win_prob": 0.5149,
+        "exp_margin": 0.54,
+        "prob_7plus": 0.3267,
+        "prob_14plus": 0.1693,
+        "prob_21plus": 0.0734,
         "margin_percentiles": [
-          -23.2,
-          -17.7,
-          -9.1,
+          -22.8,
+          -17.6,
+          -9.0,
           0.6,
-          10.0,
-          18.5,
-          23.6
+          10.2,
+          18.4,
+          24.1
         ]
       },
       "adjustments": {
@@ -5199,7 +5183,7 @@
       "elo": {
         "home": 1380.6,
         "away": 1572.7,
-        "diff": -91.7
+        "diff": -93.2
       },
       "bayesian": {
         "home_mu": 1615.2,
@@ -5284,6 +5268,20 @@
         ],
         "away": [
           {
+            "player": "Jager Burton",
+            "status": "Active",
+            "position": "C",
+            "injury_description": "Burton pulled a hamstring during drills in Thursday's practice, but the rookie fifth-rounder was cleared to return for Sunday's session. He figures to serve as the Packers' backup center behind Sean Rhyan for the upcoming season.",
+            "value_tier": "backup"
+          },
+          {
+            "player": "Kamal Hadden",
+            "status": "Active",
+            "position": "CB",
+            "injury_description": "Hadden opened training camp on the PUP list while in the final stages of his recovery form a broken right tibia and fibula that he suffered in Week 17 of the 2025 season. He was given the green light to participate in Sunday's practice, and the third-year pro will now use training camp as an opportunity to earn a spot on the Packers' 53-man roster for the 2026 campaign.",
+            "value_tier": "rotation"
+          },
+          {
             "player": "Edgerrin Cooper",
             "status": "Active",
             "position": "LB",
@@ -5303,28 +5301,14 @@
             "position": "PK",
             "injury_description": "The Packers evidently feel comfortable handing kicking duties over to Smack. The rookie sixth-round pick impressed in college at Florida but will need to prove he's capable of handling the pressure of kicking in the NFL, as well as the cold and windy conditions that arise at Lambeau Field.",
             "value_tier": "starter"
-          },
-          {
-            "player": "Cal Adomitis",
-            "status": "Active",
-            "position": "LS",
-            "injury_description": "Green Bay had a hole at the position due to the absence of veteran snapper Matthew Orzech (calf). Since Adomitis has extensive experience in recent seasons (49 games with the Bengals and nine more with the Eagles since 2022), he might be a real competitor to Orzech for the spot, per Huber.",
-            "value_tier": "backup"
-          },
-          {
-            "player": "Donovan Jennings",
-            "status": "Active",
-            "position": "G",
-            "injury_description": "Jennings sat out Week 18 and the postseason last year with a throat injury, but he now seems to be back to full strength for training camp. He projects for a depth role on the interior of Green Bay's offensive line in 2026.",
-            "value_tier": "backup"
           }
         ]
       },
       "injury_impact": {
         "home_elo_penalty": 6.0,
-        "away_elo_penalty": 29.48,
+        "away_elo_penalty": 27.93,
         "home_impact_score": 0.0545,
-        "away_impact_score": 0.268,
+        "away_impact_score": 0.2539,
         "home_key_players_out": [
           {
             "player": "Maliek Collins",
@@ -5341,13 +5325,6 @@
             "status": "Questionable",
             "elo_impact": 3.0,
             "value_tier": "starter"
-          },
-          {
-            "player": "Jager Burton",
-            "position": "C",
-            "status": "Questionable",
-            "elo_impact": 0.7,
-            "value_tier": "backup"
           },
           {
             "player": "Brant Banks",
@@ -5397,13 +5374,6 @@
             "status": "Out",
             "elo_impact": 7.0,
             "value_tier": "starter"
-          },
-          {
-            "player": "Kamal Hadden",
-            "position": "CB",
-            "status": "Out",
-            "elo_impact": 0.9,
-            "value_tier": "rotation"
           }
         ],
         "home_star_count": 0,
@@ -5415,8 +5385,8 @@
         "ELO advantage: GB +192 rating points",
         "Maliek Collins (CLE) [Starter] OUT \u2014 \u22126 ELO",
         "Tucker Kraft (GB) [Starter] QUESTIONABLE \u2014 \u22123 ELO",
-        "Jager Burton (GB) [Backup] QUESTIONABLE \u2014 \u22121 ELO",
         "Brant Banks (GB) [Rotation] OUT \u2014 \u22122 ELO",
+        "Matt Orzech (GB) [Starter] OUT \u2014 \u22120 ELO",
         "Home field: CLE +65 ELO home advantage"
       ],
       "explanation": "The model gives Green Bay Packers a 62.9% win probability \u2014 a moderate favorite over Cleveland Browns. ELO gap: 192 pts with home field +65 ELO. QB form: Jordan Love has the EPA/play edge over their last 8 starts."
@@ -5453,19 +5423,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.4462,
+        "win_prob": 0.4427,
         "exp_margin": -1.98,
-        "prob_7plus": 0.2681,
-        "prob_14plus": 0.1311,
-        "prob_21plus": 0.054,
+        "prob_7plus": 0.2646,
+        "prob_14plus": 0.1337,
+        "prob_21plus": 0.0552,
         "margin_percentiles": [
           -25.5,
-          -20.3,
+          -20.0,
           -11.5,
-          -1.8,
-          7.8,
-          16.1,
-          21.4
+          -2.1,
+          7.7,
+          16.2,
+          21.5
         ]
       },
       "adjustments": {
@@ -5674,9 +5644,9 @@
       "home_score": 48,
       "away_score": 10,
       "predictions": {
-        "ensemble_prob": 0.6817,
+        "ensemble_prob": 0.6822,
         "logistic_prob": 0.7356,
-        "elo_prob": 0.7463,
+        "elo_prob": 0.7475,
         "xgb_prob": 0.7565,
         "pyth_prob": 0.5925,
         "eff_prob": 0.5925,
@@ -5690,19 +5660,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6135,
-        "exp_margin": 4.07,
-        "prob_7plus": 0.4166,
-        "prob_14plus": 0.2419,
-        "prob_21plus": 0.1142,
+        "win_prob": 0.6225,
+        "exp_margin": 4.36,
+        "prob_7plus": 0.4211,
+        "prob_14plus": 0.2456,
+        "prob_21plus": 0.1172,
         "margin_percentiles": [
-          -19.0,
-          -14.2,
-          -5.5,
-          4.0,
-          13.7,
-          22.1,
-          27.7
+          -18.7,
+          -13.3,
+          -5.1,
+          4.2,
+          13.8,
+          22.4,
+          27.4
         ]
       },
       "adjustments": {
@@ -5716,7 +5686,7 @@
       "elo": {
         "home": 1551.6,
         "away": 1457.1,
-        "diff": 187.5
+        "diff": 188.5
       },
       "bayesian": {
         "home_mu": 1675.8,
@@ -5832,19 +5802,11 @@
         ]
       },
       "injury_impact": {
-        "home_elo_penalty": 1.05,
+        "home_elo_penalty": 0.0,
         "away_elo_penalty": 5.96,
-        "home_impact_score": 0.0095,
+        "home_impact_score": 0.0,
         "away_impact_score": 0.0542,
-        "home_key_players_out": [
-          {
-            "player": "Kejon Owens",
-            "position": "RB",
-            "status": "Out",
-            "elo_impact": 1.1,
-            "value_tier": "rotation"
-          }
-        ],
+        "home_key_players_out": [],
         "away_key_players_out": [
           {
             "player": "Shemar Stewart",
@@ -5875,7 +5837,6 @@
       },
       "prediction_drivers": [
         "ELO advantage: MIN +95 rating points",
-        "Kejon Owens (MIN) [Rotation] OUT \u2014 \u22121 ELO",
         "Shemar Stewart (CIN) [Backup] QUESTIONABLE \u2014 \u22122 ELO",
         "Josh Kattus (CIN) [Rotation] OUT \u2014 \u22121 ELO",
         "B.J. Hill (CIN) [Backup] OUT \u2014 \u22123 ELO",
@@ -5915,19 +5876,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6643,
-        "exp_margin": 6.03,
-        "prob_7plus": 0.4657,
-        "prob_14plus": 0.2908,
-        "prob_21plus": 0.1401,
+        "win_prob": 0.6651,
+        "exp_margin": 6.07,
+        "prob_7plus": 0.4741,
+        "prob_14plus": 0.2909,
+        "prob_21plus": 0.1488,
         "margin_percentiles": [
-          -17.2,
-          -12.0,
-          -3.5,
-          5.8,
+          -17.5,
+          -12.3,
+          -3.6,
+          6.0,
           15.7,
-          24.2,
-          29.0
+          24.4,
+          29.6
         ]
       },
       "adjustments": {
@@ -6180,9 +6141,9 @@
       "home_score": 33,
       "away_score": 26,
       "predictions": {
-        "ensemble_prob": 0.5319,
+        "ensemble_prob": 0.5334,
         "logistic_prob": 0.5353,
-        "elo_prob": 0.5812,
+        "elo_prob": 0.5852,
         "xgb_prob": 0.5729,
         "pyth_prob": 0.5925,
         "eff_prob": 0.5925,
@@ -6196,19 +6157,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.504,
-        "exp_margin": 0.2,
-        "prob_7plus": 0.3112,
-        "prob_14plus": 0.165,
-        "prob_21plus": 0.0734,
+        "win_prob": 0.5073,
+        "exp_margin": 0.37,
+        "prob_7plus": 0.3172,
+        "prob_14plus": 0.1682,
+        "prob_21plus": 0.0721,
         "margin_percentiles": [
-          -23.2,
-          -18.0,
-          -9.4,
-          0.1,
-          9.7,
+          -23.0,
+          -17.5,
+          -9.0,
+          0.3,
+          9.8,
           18.5,
-          23.7
+          23.5
         ]
       },
       "adjustments": {
@@ -6222,7 +6183,7 @@
       "elo": {
         "home": 1622.5,
         "away": 1640.8,
-        "diff": 57.0
+        "diff": 59.8
       },
       "bayesian": {
         "home_mu": 1699.4,
@@ -6313,6 +6274,13 @@
         ],
         "away": [
           {
+            "player": "Myles Garrett",
+            "status": "Questionable",
+            "position": "DE",
+            "injury_description": "Garrett has missed the team's last three sessions as he continues to deal with lower-body soreness. While the 29-year-old is expected to be sidelined for Monday's practice as well, head coach Sean McVay said the injury isn't serious and Garrett should be back for the next practice block.",
+            "value_tier": "starter"
+          },
+          {
             "player": "Alaric Jackson",
             "status": "Questionable",
             "position": "OT",
@@ -6339,21 +6307,14 @@
             "position": "WR",
             "injury_description": "We've heard this before at a similar time of the year, and while Whittington has seen a few opportunities as the No. 3 receiver, it's rarely amounted to much in terms of routes and targets. The job bounced around between a slew of players last year, including Xavier Smith and Konata Mumpfield, both of whom are still on the team. The Rams also have rookie sixth-round pick CJ Daniels as a dark horse candidate for the job. In any case, the offense likely will use a lot of multi-TE formations, limiting the WR3's snap and route shares.",
             "value_tier": "starter"
-          },
-          {
-            "player": "Blake Hance",
-            "status": "Active",
-            "position": "G",
-            "injury_description": "Hance is headed to Los Angeles after having spent the 2025 campaign with the Titans. The 30-year-old has recovered from the shoulder injury he suffered last October and will spend the remainder of the summer competing for a depth spot on the Rams' roster.",
-            "value_tier": "rotation"
           }
         ]
       },
       "injury_impact": {
         "home_elo_penalty": 7.2,
-        "away_elo_penalty": 7.5,
+        "away_elo_penalty": 10.3,
         "home_impact_score": 0.0655,
-        "away_impact_score": 0.0682,
+        "away_impact_score": 0.0936,
         "home_key_players_out": [
           {
             "player": "Jaeden Roberts",
@@ -6393,6 +6354,13 @@
         ],
         "away_key_players_out": [
           {
+            "player": "Myles Garrett",
+            "position": "DE",
+            "status": "Questionable",
+            "elo_impact": 2.8,
+            "value_tier": "starter"
+          },
+          {
             "player": "Alaric Jackson",
             "position": "OT",
             "status": "Questionable",
@@ -6430,13 +6398,13 @@
         "Jaeden Roberts (PHI) [Rotation] QUESTIONABLE \u2014 \u22120 ELO",
         "Keyshawn James-Newby (PHI) [Rotation] QUESTIONABLE \u2014 \u22120 ELO",
         "Cole Wisniewski (PHI) [Rotation] QUESTIONABLE \u2014 \u22120 ELO",
+        "Myles Garrett (LAR) [Starter] QUESTIONABLE \u2014 \u22123 ELO",
         "Alaric Jackson (LAR) [Starter] QUESTIONABLE \u2014 \u22124 ELO",
         "Justin Dedich (LAR) [Backup] OUT \u2014 \u22122 ELO",
-        "Al'zillion Hamilton (LAR) [Rotation] OUT \u2014 \u22122 ELO",
         "Travel penalty: away travels 2401 miles",
         "Home field: PHI +65 ELO home advantage"
       ],
-      "explanation": "The model gives Philadelphia Eagles a 53.2% win probability \u2014 a slight favorite over Los Angeles Rams. ELO gap: 18 pts with home field +65 ELO. Travel: 2401 miles. QB form: Matthew Stafford has the EPA/play edge over their last 8 starts."
+      "explanation": "The model gives Philadelphia Eagles a 53.3% win probability \u2014 a slight favorite over Los Angeles Rams. ELO gap: 18 pts with home field +65 ELO. Travel: 2401 miles. QB form: Matthew Stafford has the EPA/play edge over their last 8 starts."
     },
     {
       "game_id": "401772840",
@@ -6454,9 +6422,9 @@
       "home_score": 29,
       "away_score": 27,
       "predictions": {
-        "ensemble_prob": 0.7593,
+        "ensemble_prob": 0.7601,
         "logistic_prob": 0.7901,
-        "elo_prob": 0.8235,
+        "elo_prob": 0.8255,
         "xgb_prob": 0.7727,
         "pyth_prob": 0.5925,
         "eff_prob": 0.5925,
@@ -6470,19 +6438,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.7438,
-        "exp_margin": 9.35,
-        "prob_7plus": 0.5645,
-        "prob_14plus": 0.3743,
-        "prob_21plus": 0.2058,
+        "win_prob": 0.7549,
+        "exp_margin": 9.67,
+        "prob_7plus": 0.5717,
+        "prob_14plus": 0.378,
+        "prob_21plus": 0.2142,
         "margin_percentiles": [
-          -14.0,
-          -8.8,
-          -0.3,
-          9.3,
-          19.0,
-          27.6,
-          32.6
+          -13.1,
+          -8.4,
+          0.2,
+          9.8,
+          19.2,
+          27.7,
+          33.1
         ]
       },
       "adjustments": {
@@ -6496,7 +6464,7 @@
       "elo": {
         "home": 1500.4,
         "away": 1315.1,
-        "diff": 267.5
+        "diff": 269.9
       },
       "bayesian": {
         "home_mu": 1632.7,
@@ -6544,6 +6512,13 @@
       "injuries": {
         "home": [
           {
+            "player": "Benjamin Morrison",
+            "status": "Active",
+            "position": "CB",
+            "injury_description": "Morrison missed the first three practices of training camp while tending to a lingering hamstring injury from the 2025 season, but he was back in action Sunday with no restrictions. Leg injuries limited the 2025 second-rounder to 10 regular-season games during his rookie year, finishing with 26 tackles (19 solo), four pass defenses and one fumble recovery. Morrison is projected to start opposite Zyon McCollum at outside cornerback, with Josh Hayes and Damarion Williams providing depth at the position.",
+            "value_tier": "starter"
+          },
+          {
             "player": "Haggai Ndubuisi",
             "status": "Out",
             "position": "DT",
@@ -6569,13 +6544,6 @@
             "status": "Active",
             "position": "QB",
             "injury_description": "Mayfield wanted to get a deal done before training camp but apparently never came close. He did suggest his agent could remain in contact with the team while Mayfield turns his attention to the practice field and his teammates. \"If you've waited this long to take care of your franchise quarterback, that's too bad,\" said Mayfield. \"Because it's only going to get worse from here. I'm going to have a really big year.\"",
-            "value_tier": "starter"
-          },
-          {
-            "player": "Tristan Wirfs",
-            "status": "Questionable",
-            "position": "OT",
-            "injury_description": "Wirfs got hurt during a conditioning test and is currently considered day-to-day. Once healthy again, the 27-year-old will resume his role as the team's starting left tackle.",
             "value_tier": "starter"
           }
         ],
@@ -6618,9 +6586,9 @@
         ]
       },
       "injury_impact": {
-        "home_elo_penalty": 10.8,
+        "home_elo_penalty": 8.4,
         "away_elo_penalty": 16.95,
-        "home_impact_score": 0.0982,
+        "home_impact_score": 0.0764,
         "away_impact_score": 0.1541,
         "home_key_players_out": [
           {
@@ -6635,13 +6603,6 @@
             "position": "OT",
             "status": "Questionable",
             "elo_impact": 3.6,
-            "value_tier": "starter"
-          },
-          {
-            "player": "Benjamin Morrison",
-            "position": "CB",
-            "status": "Questionable",
-            "elo_impact": 2.4,
             "value_tier": "starter"
           },
           {
@@ -6719,13 +6680,13 @@
         "ELO advantage: TB +185 rating points",
         "Haggai Ndubuisi (TB) [Rotation] OUT \u2014 \u22121 ELO",
         "Tristan Wirfs (TB) [Starter] QUESTIONABLE \u2014 \u22124 ELO",
-        "Benjamin Morrison (TB) [Starter] QUESTIONABLE \u2014 \u22122 ELO",
+        "Vita Vea (TB) [Starter] QUESTIONABLE \u2014 \u22122 ELO",
         "Gee Scott Jr. (NYJ) [Rotation] INJURED RESERVE \u2014 \u22121 ELO",
         "Jalen Walthall (NYJ) [Rotation] INJURED RESERVE \u2014 \u22121 ELO",
         "D'Angelo Ponds (NYJ) [Starter] QUESTIONABLE \u2014 \u22122 ELO",
         "Home field: TB +65 ELO home advantage"
       ],
-      "explanation": "The model gives Tampa Bay Buccaneers a 75.9% win probability \u2014 a strong favorite over New York Jets. ELO gap: 185 pts with home field +65 ELO. Travel: 1006 miles. QB form: Geno Smith has the EPA/play edge over their last 8 starts."
+      "explanation": "The model gives Tampa Bay Buccaneers a 76.0% win probability \u2014 a strong favorite over New York Jets. ELO gap: 185 pts with home field +65 ELO. Travel: 1006 miles. QB form: Geno Smith has the EPA/play edge over their last 8 starts."
     },
     {
       "game_id": "401772841",
@@ -6759,19 +6720,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6534,
-        "exp_margin": 5.44,
-        "prob_7plus": 0.455,
-        "prob_14plus": 0.2693,
-        "prob_21plus": 0.1342,
+        "win_prob": 0.6433,
+        "exp_margin": 5.27,
+        "prob_7plus": 0.4479,
+        "prob_14plus": 0.2656,
+        "prob_21plus": 0.1357,
         "margin_percentiles": [
           -17.8,
-          -12.4,
-          -3.9,
-          5.3,
-          14.8,
-          23.2,
-          28.1
+          -12.8,
+          -4.2,
+          5.1,
+          14.7,
+          23.7,
+          29.1
         ]
       },
       "adjustments": {
@@ -7036,19 +6997,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.5566,
-        "exp_margin": 1.91,
-        "prob_7plus": 0.3597,
-        "prob_14plus": 0.1924,
-        "prob_21plus": 0.0863,
+        "win_prob": 0.5563,
+        "exp_margin": 1.98,
+        "prob_7plus": 0.3675,
+        "prob_14plus": 0.2001,
+        "prob_21plus": 0.0926,
         "margin_percentiles": [
-          -21.1,
-          -16.3,
-          -7.6,
-          1.9,
-          11.4,
-          19.8,
-          25.2
+          -21.2,
+          -16.5,
+          -7.7,
+          2.1,
+          11.5,
+          20.3,
+          25.3
         ]
       },
       "adjustments": {
@@ -7367,18 +7328,18 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.5883,
-        "exp_margin": 3.02,
-        "prob_7plus": 0.3889,
-        "prob_14plus": 0.2153,
-        "prob_21plus": 0.1051,
+        "win_prob": 0.5814,
+        "exp_margin": 2.93,
+        "prob_7plus": 0.3816,
+        "prob_14plus": 0.2176,
+        "prob_21plus": 0.1029,
         "margin_percentiles": [
-          -20.2,
-          -15.0,
-          -6.6,
-          3.1,
+          -20.4,
+          -14.8,
+          -6.5,
+          2.7,
           12.3,
-          21.4,
+          21.3,
           26.4
         ]
       },
@@ -7447,6 +7408,13 @@
       "injuries": {
         "home": [
           {
+            "player": "Chris Rodriguez Jr.",
+            "status": "Questionable",
+            "position": "RB",
+            "injury_description": "Rodriguez has yet to participate fully in practice while working his way back from offseason surgery on his left foot. However, the fourth-year pro participated in team drills for the first time in training camp and even saw work with the first-team offense, per Ryan O'Halloran of The Florida Times-Union. Rodriguez and Bhayshul Tuten continue to battle for the RB1 job following Travis Etienne's departure to New Orleans in free agency, but Tuten figures to see the bulk of carries in practice and preseason games until Rodriguez is fully healthy.",
+            "value_tier": "backup"
+          },
+          {
             "player": "Danny Striggow",
             "status": "Active",
             "position": "DE",
@@ -7473,16 +7441,16 @@
             "position": "WR",
             "injury_description": "Hunter seems to be progressing well in his recovery from season-ending LCL surgery, and he has mixed into some team drills at practice, playing mostly with the defense at cornerback while occasionally mixing in with the offense at wide receiver. The second overall pick in the 2025 NFL Draft said he feels lighter on his feet as a result of the added muscle and that he's hoping to reach 23 miles per hour, which would put him in elite top-speed territory alongside the likes of Tyreek Hill (knee).",
             "value_tier": "starter"
-          },
-          {
-            "player": "Jack Kiser",
-            "status": "Questionable",
-            "position": "LB",
-            "injury_description": "The outside linebacker seems to have picked up a problem with his right knee but isn't expected to have a particularly lengthy absence. The fact O'Halloran notes Kiser is expected back \"later in camp\" suggests the 2025 fourth-round pick should have a chance to return to the field with enough time to amply prepare for what's expected to be a starting role in 2026.",
-            "value_tier": "starter"
           }
         ],
         "away": [
+          {
+            "player": "Mario Edwards Jr.",
+            "status": "Active",
+            "position": "DT",
+            "injury_description": "Edwards is officially set to return to Houston despite having been released by the team in March. The 32-year-old has spent the past two seasons with the Texans and should serve as a depth defensive tackle once again during the upcoming campaign.",
+            "value_tier": "rotation"
+          },
           {
             "player": "Jake Hansen",
             "status": "Questionable",
@@ -7510,13 +7478,6 @@
             "position": "S",
             "injury_description": "It sounds like Stewart is more week-to-week than day-to-day after he was placed on the active/PUP list to begin camp Tuesday. Stewart inked a one-year, $2.7 million deal to remain with the Texans over the offseason after he recorded 25 tackles (15 solo) across nine regular-season appearances in 2025.",
             "value_tier": "backup"
-          },
-          {
-            "player": "E.J. Speed",
-            "status": "Out",
-            "position": "LB",
-            "injury_description": "Speed suffered a partial tear to his quad while lifting weights back in May and was placed on the active/PUP list Tuesday. By the sounds of it, Speed could open the regular season on reserve/PUP list, which would cost him at least the first four games of 2026. Speed inked a two-year, $10 million deal with Houston over the offseason.",
-            "value_tier": "starter"
           }
         ]
       },
@@ -7527,18 +7488,18 @@
         "away_impact_score": 0.1737,
         "home_key_players_out": [
           {
-            "player": "Jack Kiser",
-            "position": "LB",
-            "status": "Questionable",
-            "elo_impact": 2.0,
-            "value_tier": "starter"
-          },
-          {
             "player": "Chris Rodriguez Jr.",
             "position": "RB",
             "status": "Questionable",
             "elo_impact": 1.5,
             "value_tier": "backup"
+          },
+          {
+            "player": "Jack Kiser",
+            "position": "LB",
+            "status": "Questionable",
+            "elo_impact": 2.0,
+            "value_tier": "starter"
           },
           {
             "player": "Garrett DiGiorgio",
@@ -7606,8 +7567,8 @@
       },
       "prediction_drivers": [
         "ELO advantage: HOU +55 rating points",
-        "Jack Kiser (JAX) [Starter] QUESTIONABLE \u2014 \u22122 ELO",
         "Chris Rodriguez Jr. (JAX) [Backup] QUESTIONABLE \u2014 \u22122 ELO",
+        "Jack Kiser (JAX) [Starter] QUESTIONABLE \u2014 \u22122 ELO",
         "Garrett DiGiorgio (JAX) [Rotation] OUT \u2014 \u22122 ELO",
         "Jake Hansen (HOU) [Rotation] QUESTIONABLE \u2014 \u22120 ELO",
         "M.J. Stewart (HOU) [Backup] OUT \u2014 \u22123 ELO",
@@ -7632,9 +7593,9 @@
       "home_score": 23,
       "away_score": 20,
       "predictions": {
-        "ensemble_prob": 0.4519,
+        "ensemble_prob": 0.4514,
         "logistic_prob": 0.4357,
-        "elo_prob": 0.4749,
+        "elo_prob": 0.4736,
         "xgb_prob": 0.4406,
         "pyth_prob": 0.5925,
         "eff_prob": 0.5925,
@@ -7648,19 +7609,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.4925,
-        "exp_margin": -0.41,
-        "prob_7plus": 0.299,
-        "prob_14plus": 0.1547,
-        "prob_21plus": 0.0631,
+        "win_prob": 0.4946,
+        "exp_margin": -0.2,
+        "prob_7plus": 0.304,
+        "prob_14plus": 0.1566,
+        "prob_21plus": 0.0684,
         "margin_percentiles": [
-          -23.7,
-          -18.7,
-          -10.0,
-          -0.3,
-          9.0,
-          17.6,
-          22.7
+          -23.9,
+          -18.6,
+          -9.7,
+          -0.2,
+          9.3,
+          18.2,
+          23.1
         ]
       },
       "adjustments": {
@@ -7674,7 +7635,7 @@
       "elo": {
         "home": 1545.7,
         "away": 1627.9,
-        "diff": -17.5
+        "diff": -18.4
       },
       "bayesian": {
         "home_mu": 1663.2,
@@ -7765,13 +7726,6 @@
         ],
         "away": [
           {
-            "player": "Blake Cotton",
-            "status": "Injured Reserve",
-            "position": "CB",
-            "injury_description": "Cotton was waived/injured Friday due to his injury and will spend the entire 2026 season on IR. The undrafted free agent out of Utah will need to look toward 2027 for a potential NFL debut.",
-            "value_tier": "rotation"
-          },
-          {
             "player": "Joseph Manjack IV",
             "status": "Questionable",
             "position": "WR",
@@ -7798,14 +7752,21 @@
             "position": "QB",
             "injury_description": "Nix had been limited during the team's offseason program while working his way back from ankle surgery and a follow-up procedure, but as expected, he was ready for training camp's first practice and looked sharp during red-zone work in the process. As the coming campaign approaches, Nix's fantasy prospects should be bolstered by the fact that Denver added Jaylen Waddle, via a trade with the Dolphins this offseason, to a WR corps that returns Courtland Sutton, giving the team a notable 1-2 punch at the position.",
             "value_tier": "starter"
+          },
+          {
+            "player": "Nick Gargiulo",
+            "status": "Out",
+            "position": "G",
+            "injury_description": "The offensive guard was placed on the active/PUP list to kick off training camp Sunday, but the team expects to have to move him to the reserve/PUP list once the regular season rolls around, per Tomasson. If he does move to the reserve/PUP list on or after cut-down day, Gargiulo will have to miss the first four regular-season games. The 2024 seventh-round pick tore his ACL during an August 2025 preseason game.",
+            "value_tier": "rotation"
           }
         ]
       },
       "injury_impact": {
         "home_elo_penalty": 2.25,
-        "away_elo_penalty": 3.03,
+        "away_elo_penalty": 2.13,
         "home_impact_score": 0.0205,
-        "away_impact_score": 0.0275,
+        "away_impact_score": 0.0194,
         "home_key_players_out": [
           {
             "player": "Isaiah World",
@@ -7816,13 +7777,6 @@
           }
         ],
         "away_key_players_out": [
-          {
-            "player": "Blake Cotton",
-            "position": "CB",
-            "status": "Injured Reserve",
-            "elo_impact": 0.9,
-            "value_tier": "rotation"
-          },
           {
             "player": "Joseph Manjack IV",
             "position": "WR",
@@ -7860,12 +7814,12 @@
       "prediction_drivers": [
         "ELO advantage: DEN +82 rating points",
         "Isaiah World (LAC) [Rotation] OUT \u2014 \u22122 ELO",
-        "Blake Cotton (DEN) [Rotation] INJURED RESERVE \u2014 \u22121 ELO",
         "Joseph Manjack IV (DEN) [Rotation] QUESTIONABLE \u2014 \u22120 ELO",
         "Nick Gargiulo (DEN) [Rotation] OUT \u2014 \u22120 ELO",
+        "Jordan Turner (DEN) [Rotation] OUT \u2014 \u22121 ELO",
         "Home field: LAC +65 ELO home advantage"
       ],
-      "explanation": "The model gives Denver Broncos a 54.8% win probability \u2014 a slight favorite over Los Angeles Chargers. ELO gap: 82 pts with home field +65 ELO. QB form: Bo Nix has the EPA/play edge over their last 8 starts."
+      "explanation": "The model gives Denver Broncos a 54.9% win probability \u2014 a slight favorite over Los Angeles Chargers. ELO gap: 82 pts with home field +65 ELO. QB form: Bo Nix has the EPA/play edge over their last 8 starts."
     },
     {
       "game_id": "401772736",
@@ -7883,9 +7837,9 @@
       "home_score": 44,
       "away_score": 13,
       "predictions": {
-        "ensemble_prob": 0.8347,
+        "ensemble_prob": 0.8334,
         "logistic_prob": 0.8857,
-        "elo_prob": 0.8965,
+        "elo_prob": 0.8933,
         "xgb_prob": 0.8764,
         "pyth_prob": 0.5925,
         "eff_prob": 0.5925,
@@ -7899,19 +7853,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.7093,
-        "exp_margin": 7.79,
-        "prob_7plus": 0.5197,
-        "prob_14plus": 0.3237,
-        "prob_21plus": 0.1782,
+        "win_prob": 0.7146,
+        "exp_margin": 7.92,
+        "prob_7plus": 0.5226,
+        "prob_14plus": 0.3365,
+        "prob_21plus": 0.1725,
         "margin_percentiles": [
-          -15.7,
-          -10.4,
-          -1.7,
-          7.7,
+          -15.2,
+          -10.0,
+          -1.5,
+          7.8,
           17.4,
-          26.1,
-          31.2
+          25.9,
+          31.1
         ]
       },
       "adjustments": {
@@ -7925,7 +7879,7 @@
       "elo": {
         "home": 1686.6,
         "away": 1389.7,
-        "diff": 375.1
+        "diff": 369.2
       },
       "bayesian": {
         "home_mu": 1778.7,
@@ -7979,6 +7933,20 @@
       "injuries": {
         "home": [
           {
+            "player": "Brandon Pili",
+            "status": "Questionable",
+            "position": "DT",
+            "injury_description": "The severity of Pili's injury is unclear, but he'll aim to return to practice before the Seahawks' preseason opener against the Cowboys on Saturday, Aug. 15. He served in a rotational role on the Seahawks' defensive line last year, finishing with 12 tackles (one solo) and one forced fumble recovery across 13 regular-season games. Pili, assuming he can get healthy, will use training camp as his opportunity to solidify his backup role behind Jarran Reed, with Deven Eastern and Uso Seumalo representing Pili's main competition.",
+            "value_tier": "backup"
+          },
+          {
+            "player": "Julian Neal",
+            "status": "Questionable",
+            "position": "CB",
+            "injury_description": "It's unclear when Neal sustained the injury, but his status is worth monitoring over the coming days. He was a third-round selection of the Seahawks in the 2026 NFL Draft, and the rookie out of Arkansas is competing for a rotational role in Seattle's secondary, though his clearest path to playing time figures to be as a contributor on special teams.",
+            "value_tier": "backup"
+          },
+          {
             "player": "Jadarian Price",
             "status": "Active",
             "position": "RB",
@@ -7998,23 +7966,23 @@
             "position": "WR",
             "injury_description": "The Seahawks invited Duplessis to a tryout Wednesday and signed him on the same day, with the Delaware product taking the spot vacated by Kenny McIntosh, who was waived by Seattle on Monday. Duplessis logged 60 catches for 824 yards and five touchdowns across 13 games in his final collegiate season, but he's considered a long shot to make the Seahawks' 53-man roster at the end of training camp.",
             "value_tier": "rotation"
-          },
-          {
-            "player": "Rashid Shaheed",
-            "status": "Active",
-            "position": "WR",
-            "injury_description": "Shaheed remained a big-play and return-game weapon after joining Seattle midseason in 2025, but his receiving role was limited as he adjusted on the fly to a new team and offense. That should change now that he's had an offseason to build familiarity with new OC Brian Fleury and improve his timing with with Darnold, giving him a clearer path to downfield targets alongside Jaxon Smith-Njigba and Cooper Kupp. Shaheed's week-to-week fantasy value may remain volatile, but he will boast a higher ceiling if Seattle follows through on finding more ways to get him the ball.",
-            "value_tier": "starter"
-          },
-          {
-            "player": "Jake Bobo",
-            "status": "Questionable",
-            "position": "WR",
-            "injury_description": "Per Bell, Bobo picked up the injury during Monday's session and was forced to leave early. The severity of the injury isn't clear, but getting back on the practice field is crucial for the fourth-year wideout, who is competing against Tory Horton and rookie sixth-rounder Emmanuel Henderson for the WR4 job behind Jaxon Smith-Njigba, Rashid Shaheed and Cooper Kupp. Bobo split his snaps evenly between offense and special teams last year and finished the regular season with two catches (on as many targets) for 20 yards across 11 games. He also caught a 17-yard touchdown pass during the NFC Championship Game against the Rams.",
-            "value_tier": "backup"
           }
         ],
         "away": [
+          {
+            "player": "Bryan Bresee",
+            "status": "Out",
+            "position": "DT",
+            "injury_description": "It's a brutal blow for Bresee, who has played in 46 of 48 possible regular-season games since being selected by the Saints in the first round of the 2023 NFL Draft. An ACL repair procedure typically carries a nine-month recovery timeline, so Bresee should be available for the 2027 season, which is the final year of his rookie contract. John Ridgeway figures to step into a starting role at defensive end opposite veteran Cameron Jordan, while Michael Heldman, Vernon Broughton and Tyree Wilson compete for rotational snaps.",
+            "value_tier": "rotation"
+          },
+          {
+            "player": "Kool-Aid McKinstry",
+            "status": "Active",
+            "position": "CB",
+            "injury_description": "McKinstry left Thursday's practice early after tweaking his ankle, though it was a precautionary move by the Saints. The third-year cornerback was back on the field Sunday, though he did not participate in the final team drill of practice. Still, it appears McKinstry is past the injury and should be an active participant in practices moving forward.",
+            "value_tier": "starter"
+          },
           {
             "player": "Nathan Shepherd",
             "status": "Active",
@@ -8035,29 +8003,29 @@
             "position": "OT",
             "injury_description": "Banks was a first-round selection of the Saints in the 2025 NFL Draft and started in all 17 regular-season games last year. He suffered an ankle injury during the Saints' regular-season finale against the Falcons in early January, but he is fully healthy for the start of training camp. Banks figures to keep his starting role at left tackle for the 2026 campaign.",
             "value_tier": "starter"
-          },
-          {
-            "player": "Cody Hardy",
-            "status": "Active",
-            "position": "TE",
-            "injury_description": "Hardy is now clear to participate in training camp practices and preseason games as he he looks to make a case for a spot on the Saints' 53-man roster for the 2026 season. He signed with New Orleans as an undrafted free agent in late April following his final college season at North Carolina, when he mostly contributed as a run blocker and finished with six catches for 83 yards and two touchdowns across five games.",
-            "value_tier": "rotation"
-          },
-          {
-            "player": "Chris Olave",
-            "status": "Active",
-            "position": "WR",
-            "injury_description": "Olave inked a four-year extension worth up to $132 million with the Saints on Thursday, providing sufficient motivation for the 2022 first-rounder to get in his first full-team reps of training camp. Treatment related to a blood clot kept Olave from taking part in team drills during spring activities, but the star wideout seems to be fully healthy in advance of the 2026 regular season. Olave will look to build on the career year he logged in 2025 as he now heads into Year 2 with quarterback Tyler Shough under center.",
-            "value_tier": "starter"
           }
         ]
       },
       "injury_impact": {
-        "home_elo_penalty": 13.76,
-        "away_elo_penalty": 11.0,
-        "home_impact_score": 0.1251,
-        "away_impact_score": 0.1,
+        "home_elo_penalty": 16.4,
+        "away_elo_penalty": 7.7,
+        "home_impact_score": 0.1491,
+        "away_impact_score": 0.07,
         "home_key_players_out": [
+          {
+            "player": "Brandon Pili",
+            "position": "DT",
+            "status": "Questionable",
+            "elo_impact": 1.3,
+            "value_tier": "backup"
+          },
+          {
+            "player": "Julian Neal",
+            "position": "CB",
+            "status": "Questionable",
+            "elo_impact": 1.3,
+            "value_tier": "backup"
+          },
           {
             "player": "Jake Bobo",
             "position": "WR",
@@ -8082,18 +8050,11 @@
         ],
         "away_key_players_out": [
           {
-            "player": "Kool-Aid McKinstry",
-            "position": "CB",
-            "status": "Questionable",
-            "elo_impact": 2.4,
-            "value_tier": "starter"
-          },
-          {
             "player": "Bryan Bresee",
             "position": "DT",
-            "status": "Questionable",
-            "elo_impact": 2.4,
-            "value_tier": "starter"
+            "status": "Out",
+            "elo_impact": 1.5,
+            "value_tier": "rotation"
           },
           {
             "player": "Mason Tipton",
@@ -8124,16 +8085,16 @@
       },
       "prediction_drivers": [
         "ELO advantage: SEA +297 rating points",
+        "Brandon Pili (SEA) [Backup] QUESTIONABLE \u2014 \u22121 ELO",
+        "Julian Neal (SEA) [Backup] QUESTIONABLE \u2014 \u22121 ELO",
         "Jake Bobo (SEA) [Backup] QUESTIONABLE \u2014 \u22122 ELO",
-        "Nick Emmanwori (SEA) [Starter] OUT \u2014 \u22125 ELO",
-        "Zach Charbonnet (SEA) [Starter] OUT \u2014 \u22127 ELO",
-        "Kool-Aid McKinstry (NO) [Starter] QUESTIONABLE \u2014 \u22122 ELO",
-        "Bryan Bresee (NO) [Starter] QUESTIONABLE \u2014 \u22122 ELO",
+        "Bryan Bresee (NO) [Rotation] OUT \u2014 \u22122 ELO",
         "Mason Tipton (NO) [Backup] OUT \u2014 \u22124 ELO",
+        "Zxavian Harris (NO) [Rotation] OUT \u2014 \u22121 ELO",
         "Travel penalty: away travels 2100 miles",
         "Home field: SEA +65 ELO home advantage"
       ],
-      "explanation": "The model gives Seattle Seahawks a 83.5% win probability \u2014 a strong favorite over New Orleans Saints. ELO gap: 297 pts with home field +65 ELO. Travel: 2100 miles. QB form: Sam Darnold has the EPA/play edge over their last 8 starts."
+      "explanation": "The model gives Seattle Seahawks a 83.3% win probability \u2014 a strong favorite over New Orleans Saints. ELO gap: 297 pts with home field +65 ELO. Travel: 2100 miles. QB form: Sam Darnold has the EPA/play edge over their last 8 starts."
     },
     {
       "game_id": "401772844",
@@ -8167,19 +8128,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6999,
-        "exp_margin": 7.37,
-        "prob_7plus": 0.5057,
-        "prob_14plus": 0.3194,
-        "prob_21plus": 0.1747,
+        "win_prob": 0.7021,
+        "exp_margin": 7.66,
+        "prob_7plus": 0.5224,
+        "prob_14plus": 0.3317,
+        "prob_21plus": 0.1754,
         "margin_percentiles": [
-          -16.0,
-          -11.1,
-          -2.3,
-          7.2,
-          17.0,
-          25.8,
-          30.9
+          -15.9,
+          -10.8,
+          -2.1,
+          7.9,
+          17.3,
+          25.9,
+          31.0
         ]
       },
       "adjustments": {
@@ -8460,9 +8421,9 @@
       "home_score": 16,
       "away_score": 15,
       "predictions": {
-        "ensemble_prob": 0.7915,
+        "ensemble_prob": 0.7918,
         "logistic_prob": 0.8481,
-        "elo_prob": 0.8415,
+        "elo_prob": 0.8422,
         "xgb_prob": 0.8333,
         "pyth_prob": 0.5925,
         "eff_prob": 0.5925,
@@ -8476,19 +8437,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.7214,
-        "exp_margin": 8.36,
-        "prob_7plus": 0.5334,
-        "prob_14plus": 0.3463,
-        "prob_21plus": 0.1893,
+        "win_prob": 0.7233,
+        "exp_margin": 8.27,
+        "prob_7plus": 0.5305,
+        "prob_14plus": 0.3408,
+        "prob_21plus": 0.1846,
         "margin_percentiles": [
-          -15.3,
-          -9.9,
-          -1.2,
+          -14.9,
+          -9.7,
+          -0.9,
           8.2,
-          18.0,
-          26.7,
-          32.3
+          17.8,
+          26.6,
+          31.4
         ]
       },
       "adjustments": {
@@ -8502,7 +8463,7 @@
       "elo": {
         "home": 1575.4,
         "away": 1371.0,
-        "diff": 290.0
+        "diff": 290.9
       },
       "bayesian": {
         "home_mu": 1679.2,
@@ -8556,6 +8517,13 @@
       "injuries": {
         "home": [
           {
+            "player": "Khalil Herbert",
+            "status": "Active",
+            "position": "RB",
+            "injury_description": "Herbert will provide San Francisco with much-needed depth at running back, as Jordan James (ribs), Isaac Guerendo (pectoral) and Kaelon Black (undisclosed) are all currently dealing with injuries. Herbert spent last season with the Jets, rushing for 52 yards on 16 carries. The 28-year-old could also add value as a return specialist.",
+            "value_tier": "rotation"
+          },
+          {
             "player": "Deebo Samuel",
             "status": "Active",
             "position": "WR",
@@ -8567,13 +8535,6 @@
             "status": "Injured Reserve",
             "position": "TE",
             "injury_description": "McLachlan was waived/injured Friday with an undisclosed issue and will now spend the 2026 season on IR. The 2024 sixth-round pick out of Cincinnati will need to look toward 2027 for a chance to get back on an NFL field.",
-            "value_tier": "rotation"
-          },
-          {
-            "player": "Mikail Kamara",
-            "status": "Questionable",
-            "position": "DE",
-            "injury_description": "Kamara needed to be carted off the field due to the issue. The severity of the injury is unclear, but it seems the undrafted free agent out of Indiana has joined much of the 49ers' linebacker corps on the injury list. With the state of the corps, if any young players such as Kamara can recover quickly, they will have an inside track to climbing the depth chart.",
             "value_tier": "rotation"
           },
           {
@@ -8592,6 +8553,20 @@
           }
         ],
         "away": [
+          {
+            "player": "Walter Nolen III",
+            "status": "Active",
+            "position": "DT",
+            "injury_description": "Nolen was experiencing some discomfort in the knee he hurt last year, but he has moved past the issue. The defensive tackle underwent surgery in December for a torn meniscus and is learning to practice post-injury. Nolen was working on the knee with trainers Friday and is now seemingly more confident in its stability.",
+            "value_tier": "starter"
+          },
+          {
+            "player": "Joey Blount",
+            "status": "Questionable",
+            "position": "S",
+            "injury_description": "Blount sat out the session due to a stinger, which is understandable given his history of neck issues. The safety's 2025 season ended after Week 1 when he sustained a neck injury.",
+            "value_tier": "rotation"
+          },
           {
             "player": "PJ Mustipher",
             "status": "Injured Reserve",
@@ -8612,41 +8587,20 @@
             "position": "CB",
             "injury_description": "The nature of Davis' injury has not been announced, but now that he's on IR, he'll be forced to miss the entire 2026 season unless he reaches an injury settlement with the Cardinals. He appeared in each of the Cardinals' last three games of the 2025 regular season, logging three tackles (two solo) in that span.",
             "value_tier": "rotation"
-          },
-          {
-            "player": "Joey Blount",
-            "status": "Active",
-            "position": "S",
-            "injury_description": "Blount suffered a season-ending neck injury during the Cardinals' Week 1 game against the Saints in 2025, but he has recovered from the injury and is battling for a roster spot in training camp. If Blount does make the 53-man roster, then he'll likely be limited to work on special teams while providing depth in the secondary.",
-            "value_tier": "rotation"
-          },
-          {
-            "player": "Mack Wilson Sr.",
-            "status": "Active",
-            "position": "LB",
-            "injury_description": "Wilson seems to have recovered from his rib injury and is all set to take the field. The middle linebacker has already resumed his duties as the starter for the Cardinals' defense. The 28-year-old veteran player has been playing alongside both Cody Simon and Jack Gibbens as the two battle for reps at linebacker.",
-            "value_tier": "starter"
           }
         ]
       },
       "injury_impact": {
-        "home_elo_penalty": 21.39,
-        "away_elo_penalty": 19.02,
-        "home_impact_score": 0.1944,
-        "away_impact_score": 0.173,
+        "home_elo_penalty": 20.97,
+        "away_elo_penalty": 19.52,
+        "home_impact_score": 0.1906,
+        "away_impact_score": 0.1775,
         "home_key_players_out": [
           {
             "player": "Tanner McLachlan",
             "position": "TE",
             "status": "Injured Reserve",
             "elo_impact": 1.1,
-            "value_tier": "rotation"
-          },
-          {
-            "player": "Mikail Kamara",
-            "position": "DE",
-            "status": "Questionable",
-            "elo_impact": 0.4,
             "value_tier": "rotation"
           },
           {
@@ -8743,6 +8697,13 @@
         ],
         "away_key_players_out": [
           {
+            "player": "Joey Blount",
+            "position": "S",
+            "status": "Questionable",
+            "elo_impact": 0.5,
+            "value_tier": "rotation"
+          },
+          {
             "player": "PJ Mustipher",
             "position": "DT",
             "status": "Injured Reserve",
@@ -8807,14 +8768,14 @@
       "prediction_drivers": [
         "ELO advantage: SF +204 rating points",
         "Tanner McLachlan (SF) [Rotation] INJURED RESERVE \u2014 \u22121 ELO",
-        "Mikail Kamara (SF) [Rotation] QUESTIONABLE \u2014 \u22120 ELO",
         "Keion White (SF) [Backup] QUESTIONABLE \u2014 \u22122 ELO",
+        "Romello Height (SF) [Rotation] QUESTIONABLE \u2014 \u22121 ELO",
+        "Joey Blount (ARI) [Rotation] QUESTIONABLE \u2014 \u22120 ELO",
         "PJ Mustipher (ARI) [Rotation] INJURED RESERVE \u2014 \u22121 ELO",
         "Jaden Davis (ARI) [Rotation] INJURED RESERVE \u2014 \u22121 ELO",
-        "James Conner (ARI) [Rotation] QUESTIONABLE \u2014 \u22121 ELO",
         "Home field: SF +65 ELO home advantage"
       ],
-      "explanation": "The model gives San Francisco 49ers a 79.1% win probability \u2014 a strong favorite over Arizona Cardinals. ELO gap: 204 pts with home field +65 ELO. QB form: Brock Purdy has the EPA/play edge over their last 8 starts."
+      "explanation": "The model gives San Francisco 49ers a 79.2% win probability \u2014 a strong favorite over Arizona Cardinals. ELO gap: 204 pts with home field +65 ELO. QB form: Brock Purdy has the EPA/play edge over their last 8 starts."
     },
     {
       "game_id": "401772920",
@@ -8848,19 +8809,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.5791,
-        "exp_margin": 2.97,
-        "prob_7plus": 0.3907,
-        "prob_14plus": 0.2181,
-        "prob_21plus": 0.1031,
+        "win_prob": 0.5803,
+        "exp_margin": 3.0,
+        "prob_7plus": 0.3902,
+        "prob_14plus": 0.2219,
+        "prob_21plus": 0.1015,
         "margin_percentiles": [
-          -20.3,
-          -15.4,
-          -6.6,
-          2.8,
+          -20.0,
+          -15.3,
+          -6.5,
+          3.0,
           12.6,
-          21.3,
-          26.6
+          21.1,
+          26.2
         ]
       },
       "adjustments": {
@@ -9137,9 +9098,9 @@
       "home_score": 30,
       "away_score": 38,
       "predictions": {
-        "ensemble_prob": 0.5366,
+        "ensemble_prob": 0.5357,
         "logistic_prob": 0.5062,
-        "elo_prob": 0.5499,
+        "elo_prob": 0.5476,
         "xgb_prob": 0.628,
         "pyth_prob": 0.5925,
         "eff_prob": 0.5925,
@@ -9153,19 +9114,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.5782,
-        "exp_margin": 2.58,
-        "prob_7plus": 0.379,
-        "prob_14plus": 0.2023,
-        "prob_21plus": 0.0951,
+        "win_prob": 0.566,
+        "exp_margin": 2.3,
+        "prob_7plus": 0.3655,
+        "prob_14plus": 0.2001,
+        "prob_21plus": 0.0947,
         "margin_percentiles": [
-          -20.9,
-          -15.7,
-          -6.9,
-          2.9,
-          11.9,
+          -20.5,
+          -16.1,
+          -7.1,
+          2.2,
+          11.6,
           20.6,
-          25.9
+          25.8
         ]
       },
       "adjustments": {
@@ -9179,7 +9140,7 @@
       "elo": {
         "home": 1562.2,
         "away": 1600.8,
-        "diff": 34.8
+        "diff": 33.2
       },
       "bayesian": {
         "home_mu": 1687.5,
@@ -9270,10 +9231,24 @@
         ],
         "away": [
           {
-            "player": "Alim McNeill",
+            "player": "Derrick Moore",
             "status": "Questionable",
+            "position": "DE",
+            "injury_description": "The results of that evaluation will determine the next steps for Moore, who was a second-round selection of the Lions in the 2026 NFL Draft. The rookie out of Michigan is competing for rotational snaps at defensive end behind starters Aidan Hutchinson and D.J. Wonnum, with Tyler Lacy, Tyre West and Trevor Nowaske serving as Moore's main competition.",
+            "value_tier": "backup"
+          },
+          {
+            "player": "Miles Kitselman",
+            "status": "Questionable",
+            "position": "TE",
+            "injury_description": "Kitselman signed with the Lions in mid-May as an undrafted free agent. He's competing for a depth spot on the team's 53-man roster by the time training camp wraps up, so he'll aim to return to practice and be ready for the Lions' preseason opener against the Bengals on Thursday, Aug. 13.",
+            "value_tier": "rotation"
+          },
+          {
+            "player": "Alim McNeill",
+            "status": "Active",
             "position": "DT",
-            "injury_description": "McNeil suffered a neck injury during Friday's practice but is believed to be OK. The 26-year-old is expected to serve as one of Detroit's starting defensive tackles during the upcoming campaign.",
+            "injury_description": "McNeil was held out of Friday's practice due to a neck injury, but the sixth-year defensive tackle was cleared to participate in Sunday's session. He's coming off a 2025 campaign in which he missed seven regular-season games due to knee and abdomen injuries, finishing with 14 tackles (five solo), including 1.0 sacks, one pass defense and one forced fumble over 10 games.",
             "value_tier": "starter"
           },
           {
@@ -9289,28 +9264,14 @@
             "position": "LB",
             "injury_description": "White participated in all 17 regular-season games for the Raiders last year, producing 174 total tackles (including 2.5 sacks), three passes defensed (including one interception) and a forced fumble. The linebacker was ranked third in the NFL in tackles as well. White will provide a strong veteran presence to a Lions linebacker corps that has suffered consistent injuries over the past few seasons.",
             "value_tier": "backup"
-          },
-          {
-            "player": "Christian Mahogany",
-            "status": "Active",
-            "position": "G",
-            "injury_description": "Mahogany has been cleared to practice after recovering from an undisclosed injury. He's slated to serve as the Lions' starter at left guard for the 2026 season, with his main competition coming from Juice Scruggs and Miles Frazier.",
-            "value_tier": "starter"
-          },
-          {
-            "player": "Anthony Firkser",
-            "status": "Active",
-            "position": "TE",
-            "injury_description": "In a corresponding transaction, the Lions waived tight end Zach Horton. With fellow veteran tight end Tyler Conklin (knee) on the PUP list, Firkser could get a good chance right away to prove he's worthy of a depth role in 2026.",
-            "value_tier": "rotation"
           }
         ]
       },
       "injury_impact": {
         "home_elo_penalty": 18.11,
-        "away_elo_penalty": 26.48,
+        "away_elo_penalty": 24.87,
         "home_impact_score": 0.1646,
-        "away_impact_score": 0.2407,
+        "away_impact_score": 0.226,
         "home_key_players_out": [
           {
             "player": "Andrew Vorhees",
@@ -9350,11 +9311,18 @@
         ],
         "away_key_players_out": [
           {
-            "player": "Alim McNeill",
-            "position": "DT",
+            "player": "Derrick Moore",
+            "position": "DE",
             "status": "Questionable",
-            "elo_impact": 2.4,
-            "value_tier": "starter"
+            "elo_impact": 1.5,
+            "value_tier": "backup"
+          },
+          {
+            "player": "Miles Kitselman",
+            "position": "TE",
+            "status": "Questionable",
+            "elo_impact": 0.4,
+            "value_tier": "rotation"
           },
           {
             "player": "Jimmy Rolder",
@@ -9404,13 +9372,6 @@
             "status": "Out",
             "elo_impact": 5.0,
             "value_tier": "starter"
-          },
-          {
-            "player": "Kendrick Law",
-            "position": "WR",
-            "status": "Injured Reserve",
-            "elo_impact": 1.2,
-            "value_tier": "rotation"
           }
         ],
         "home_star_count": 0,
@@ -9422,12 +9383,12 @@
         "Andrew Vorhees (BAL) [Backup] QUESTIONABLE \u2014 \u22121 ELO",
         "Corey Bullock (BAL) [Rotation] OUT \u2014 \u22120 ELO",
         "John Jenkins (BAL) [Starter] OUT \u2014 \u22126 ELO",
-        "Alim McNeill (DET) [Starter] QUESTIONABLE \u2014 \u22122 ELO",
+        "Derrick Moore (DET) [Backup] QUESTIONABLE \u2014 \u22122 ELO",
+        "Miles Kitselman (DET) [Rotation] QUESTIONABLE \u2014 \u22120 ELO",
         "Jimmy Rolder (DET) [Rotation] QUESTIONABLE \u2014 \u22120 ELO",
-        "Jahmyr Gibbs (DET) [Starter] QUESTIONABLE \u2014 \u22123 ELO",
         "Home field: BAL +65 ELO home advantage"
       ],
-      "explanation": "The model gives Baltimore Ravens a 53.7% win probability \u2014 a slight favorite over Detroit Lions. ELO gap: 39 pts with home field +65 ELO. QB form: Jared Goff has the EPA/play edge over their last 8 starts."
+      "explanation": "The model gives Baltimore Ravens a 53.6% win probability \u2014 a slight favorite over Detroit Lions. ELO gap: 39 pts with home field +65 ELO. QB form: Jared Goff has the EPA/play edge over their last 8 starts."
     },
     {
       "game_id": "401772938",
@@ -9445,9 +9406,9 @@
       "home_score": 20,
       "away_score": 23,
       "predictions": {
-        "ensemble_prob": 0.2835,
+        "ensemble_prob": 0.2842,
         "logistic_prob": 0.2034,
-        "elo_prob": 0.1657,
+        "elo_prob": 0.1674,
         "xgb_prob": 0.2265,
         "pyth_prob": 0.5925,
         "eff_prob": 0.5925,
@@ -9461,19 +9422,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.3173,
-        "exp_margin": -6.89,
-        "prob_7plus": 0.1641,
-        "prob_14plus": 0.0681,
-        "prob_21plus": 0.0242,
+        "win_prob": 0.3012,
+        "exp_margin": -7.29,
+        "prob_7plus": 0.1557,
+        "prob_14plus": 0.067,
+        "prob_21plus": 0.0248,
         "margin_percentiles": [
           -30.6,
-          -25.4,
-          -16.3,
-          -6.7,
-          2.8,
+          -25.5,
+          -16.9,
+          -7.4,
+          2.3,
           10.9,
-          16.4
+          16.0
         ]
       },
       "adjustments": {
@@ -9487,7 +9448,7 @@
       "elo": {
         "home": 1371.0,
         "away": 1686.6,
-        "diff": -280.8
+        "diff": -278.7
       },
       "bayesian": {
         "home_mu": 1536.0,
@@ -9541,6 +9502,20 @@
       "injuries": {
         "home": [
           {
+            "player": "Walter Nolen III",
+            "status": "Active",
+            "position": "DT",
+            "injury_description": "Nolen was experiencing some discomfort in the knee he hurt last year, but he has moved past the issue. The defensive tackle underwent surgery in December for a torn meniscus and is learning to practice post-injury. Nolen was working on the knee with trainers Friday and is now seemingly more confident in its stability.",
+            "value_tier": "starter"
+          },
+          {
+            "player": "Joey Blount",
+            "status": "Questionable",
+            "position": "S",
+            "injury_description": "Blount sat out the session due to a stinger, which is understandable given his history of neck issues. The safety's 2025 season ended after Week 1 when he sustained a neck injury.",
+            "value_tier": "rotation"
+          },
+          {
             "player": "PJ Mustipher",
             "status": "Injured Reserve",
             "position": "DT",
@@ -9560,23 +9535,23 @@
             "position": "CB",
             "injury_description": "The nature of Davis' injury has not been announced, but now that he's on IR, he'll be forced to miss the entire 2026 season unless he reaches an injury settlement with the Cardinals. He appeared in each of the Cardinals' last three games of the 2025 regular season, logging three tackles (two solo) in that span.",
             "value_tier": "rotation"
-          },
-          {
-            "player": "Joey Blount",
-            "status": "Active",
-            "position": "S",
-            "injury_description": "Blount suffered a season-ending neck injury during the Cardinals' Week 1 game against the Saints in 2025, but he has recovered from the injury and is battling for a roster spot in training camp. If Blount does make the 53-man roster, then he'll likely be limited to work on special teams while providing depth in the secondary.",
-            "value_tier": "rotation"
-          },
-          {
-            "player": "Mack Wilson Sr.",
-            "status": "Active",
-            "position": "LB",
-            "injury_description": "Wilson seems to have recovered from his rib injury and is all set to take the field. The middle linebacker has already resumed his duties as the starter for the Cardinals' defense. The 28-year-old veteran player has been playing alongside both Cody Simon and Jack Gibbens as the two battle for reps at linebacker.",
-            "value_tier": "starter"
           }
         ],
         "away": [
+          {
+            "player": "Brandon Pili",
+            "status": "Questionable",
+            "position": "DT",
+            "injury_description": "The severity of Pili's injury is unclear, but he'll aim to return to practice before the Seahawks' preseason opener against the Cowboys on Saturday, Aug. 15. He served in a rotational role on the Seahawks' defensive line last year, finishing with 12 tackles (one solo) and one forced fumble recovery across 13 regular-season games. Pili, assuming he can get healthy, will use training camp as his opportunity to solidify his backup role behind Jarran Reed, with Deven Eastern and Uso Seumalo representing Pili's main competition.",
+            "value_tier": "backup"
+          },
+          {
+            "player": "Julian Neal",
+            "status": "Questionable",
+            "position": "CB",
+            "injury_description": "It's unclear when Neal sustained the injury, but his status is worth monitoring over the coming days. He was a third-round selection of the Seahawks in the 2026 NFL Draft, and the rookie out of Arkansas is competing for a rotational role in Seattle's secondary, though his clearest path to playing time figures to be as a contributor on special teams.",
+            "value_tier": "backup"
+          },
           {
             "player": "Jadarian Price",
             "status": "Active",
@@ -9597,29 +9572,22 @@
             "position": "WR",
             "injury_description": "The Seahawks invited Duplessis to a tryout Wednesday and signed him on the same day, with the Delaware product taking the spot vacated by Kenny McIntosh, who was waived by Seattle on Monday. Duplessis logged 60 catches for 824 yards and five touchdowns across 13 games in his final collegiate season, but he's considered a long shot to make the Seahawks' 53-man roster at the end of training camp.",
             "value_tier": "rotation"
-          },
-          {
-            "player": "Rashid Shaheed",
-            "status": "Active",
-            "position": "WR",
-            "injury_description": "Shaheed remained a big-play and return-game weapon after joining Seattle midseason in 2025, but his receiving role was limited as he adjusted on the fly to a new team and offense. That should change now that he's had an offseason to build familiarity with new OC Brian Fleury and improve his timing with with Darnold, giving him a clearer path to downfield targets alongside Jaxon Smith-Njigba and Cooper Kupp. Shaheed's week-to-week fantasy value may remain volatile, but he will boast a higher ceiling if Seattle follows through on finding more ways to get him the ball.",
-            "value_tier": "starter"
-          },
-          {
-            "player": "Jake Bobo",
-            "status": "Questionable",
-            "position": "WR",
-            "injury_description": "Per Bell, Bobo picked up the injury during Monday's session and was forced to leave early. The severity of the injury isn't clear, but getting back on the practice field is crucial for the fourth-year wideout, who is competing against Tory Horton and rookie sixth-rounder Emmanuel Henderson for the WR4 job behind Jaxon Smith-Njigba, Rashid Shaheed and Cooper Kupp. Bobo split his snaps evenly between offense and special teams last year and finished the regular season with two catches (on as many targets) for 20 yards across 11 games. He also caught a 17-yard touchdown pass during the NFC Championship Game against the Rams.",
-            "value_tier": "backup"
           }
         ]
       },
       "injury_impact": {
-        "home_elo_penalty": 19.02,
-        "away_elo_penalty": 13.76,
-        "home_impact_score": 0.173,
-        "away_impact_score": 0.1251,
+        "home_elo_penalty": 19.52,
+        "away_elo_penalty": 16.4,
+        "home_impact_score": 0.1775,
+        "away_impact_score": 0.1491,
         "home_key_players_out": [
+          {
+            "player": "Joey Blount",
+            "position": "S",
+            "status": "Questionable",
+            "elo_impact": 0.5,
+            "value_tier": "rotation"
+          },
           {
             "player": "PJ Mustipher",
             "position": "DT",
@@ -9679,6 +9647,20 @@
         ],
         "away_key_players_out": [
           {
+            "player": "Brandon Pili",
+            "position": "DT",
+            "status": "Questionable",
+            "elo_impact": 1.3,
+            "value_tier": "backup"
+          },
+          {
+            "player": "Julian Neal",
+            "position": "CB",
+            "status": "Questionable",
+            "elo_impact": 1.3,
+            "value_tier": "backup"
+          },
+          {
             "player": "Jake Bobo",
             "position": "WR",
             "status": "Questionable",
@@ -9707,15 +9689,15 @@
       },
       "prediction_drivers": [
         "ELO advantage: SEA +316 rating points",
+        "Joey Blount (ARI) [Rotation] QUESTIONABLE \u2014 \u22120 ELO",
         "PJ Mustipher (ARI) [Rotation] INJURED RESERVE \u2014 \u22121 ELO",
         "Jaden Davis (ARI) [Rotation] INJURED RESERVE \u2014 \u22121 ELO",
-        "James Conner (ARI) [Rotation] QUESTIONABLE \u2014 \u22121 ELO",
+        "Brandon Pili (SEA) [Backup] QUESTIONABLE \u2014 \u22121 ELO",
+        "Julian Neal (SEA) [Backup] QUESTIONABLE \u2014 \u22121 ELO",
         "Jake Bobo (SEA) [Backup] QUESTIONABLE \u2014 \u22122 ELO",
-        "Nick Emmanwori (SEA) [Starter] OUT \u2014 \u22125 ELO",
-        "Zach Charbonnet (SEA) [Starter] OUT \u2014 \u22127 ELO",
         "Home field: ARI +65 ELO home advantage"
       ],
-      "explanation": "The model gives Seattle Seahawks a 71.7% win probability \u2014 a strong favorite over Arizona Cardinals. ELO gap: 316 pts with home field +65 ELO. Travel: 1104 miles. QB form: Sam Darnold has the EPA/play edge over their last 8 starts."
+      "explanation": "The model gives Seattle Seahawks a 71.6% win probability \u2014 a strong favorite over Arizona Cardinals. ELO gap: 316 pts with home field +65 ELO. Travel: 1104 miles. QB form: Sam Darnold has the EPA/play edge over their last 8 starts."
     },
     {
       "game_id": "401772632",
@@ -9733,9 +9715,9 @@
       "home_score": 24,
       "away_score": 21,
       "predictions": {
-        "ensemble_prob": 0.4581,
+        "ensemble_prob": 0.4575,
         "logistic_prob": 0.3714,
-        "elo_prob": 0.4265,
+        "elo_prob": 0.425,
         "xgb_prob": 0.4377,
         "pyth_prob": 0.5,
         "eff_prob": 0.5,
@@ -9749,19 +9731,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.4567,
-        "exp_margin": -1.33,
-        "prob_7plus": 0.2777,
-        "prob_14plus": 0.141,
-        "prob_21plus": 0.0584,
+        "win_prob": 0.4678,
+        "exp_margin": -1.19,
+        "prob_7plus": 0.2815,
+        "prob_14plus": 0.1408,
+        "prob_21plus": 0.0599,
         "margin_percentiles": [
           -24.3,
-          -19.3,
+          -19.0,
           -10.9,
-          -1.4,
-          8.2,
-          16.8,
-          22.0
+          -1.3,
+          8.4,
+          17.0,
+          22.2
         ]
       },
       "adjustments": {
@@ -9775,7 +9757,7 @@
       "elo": {
         "home": 1521.4,
         "away": 1551.6,
-        "diff": -51.4
+        "diff": -52.5
       },
       "bayesian": {
         "home_mu": 1647.2,
@@ -9898,9 +9880,9 @@
       },
       "injury_impact": {
         "home_elo_penalty": 15.3,
-        "away_elo_penalty": 1.05,
+        "away_elo_penalty": 0.0,
         "home_impact_score": 0.1391,
-        "away_impact_score": 0.0095,
+        "away_impact_score": 0.0,
         "home_key_players_out": [
           {
             "player": "Joey Porter Jr.",
@@ -9924,15 +9906,7 @@
             "value_tier": "starter"
           }
         ],
-        "away_key_players_out": [
-          {
-            "player": "Kejon Owens",
-            "position": "RB",
-            "status": "Out",
-            "elo_impact": 1.1,
-            "value_tier": "rotation"
-          }
-        ],
+        "away_key_players_out": [],
         "home_star_count": 0,
         "away_star_count": 0,
         "home_star_stack_multiplier": 1.0,
@@ -9941,8 +9915,7 @@
       "prediction_drivers": [
         "Joey Porter Jr. (PIT) [Starter] OUT \u2014 \u22126 ELO",
         "Donte Kent (PIT) [Backup] OUT \u2014 \u22123 ELO",
-        "Jalen Ramsey (PIT) [Starter] OUT \u2014 \u22126 ELO",
-        "Kejon Owens (MIN) [Rotation] OUT \u2014 \u22121 ELO"
+        "Jalen Ramsey (PIT) [Starter] OUT \u2014 \u22126 ELO"
       ],
       "explanation": "The model gives Minnesota Vikings a 54.2% win probability \u2014 a slight favorite over Pittsburgh Steelers. ELO gap: 30 pts at a neutral site."
     },
@@ -9978,19 +9951,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6436,
-        "exp_margin": 5.13,
-        "prob_7plus": 0.4436,
-        "prob_14plus": 0.264,
-        "prob_21plus": 0.1342,
+        "win_prob": 0.6467,
+        "exp_margin": 5.14,
+        "prob_7plus": 0.4467,
+        "prob_14plus": 0.2695,
+        "prob_21plus": 0.1344,
         "margin_percentiles": [
-          -17.8,
-          -12.7,
-          -4.4,
-          4.9,
-          14.7,
-          23.3,
-          28.2
+          -18.8,
+          -13.3,
+          -4.5,
+          5.2,
+          14.9,
+          23.5,
+          29.1
         ]
       },
       "adjustments": {
@@ -10285,9 +10258,9 @@
       "home_score": 31,
       "away_score": 19,
       "predictions": {
-        "ensemble_prob": 0.8309,
+        "ensemble_prob": 0.8301,
         "logistic_prob": 0.8481,
-        "elo_prob": 0.8675,
+        "elo_prob": 0.8653,
         "xgb_prob": 0.827,
         "pyth_prob": 0.5925,
         "eff_prob": 0.5925,
@@ -10301,19 +10274,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6655,
-        "exp_margin": 6.06,
-        "prob_7plus": 0.4818,
-        "prob_14plus": 0.2898,
-        "prob_21plus": 0.148,
+        "win_prob": 0.663,
+        "exp_margin": 6.05,
+        "prob_7plus": 0.4758,
+        "prob_14plus": 0.2913,
+        "prob_21plus": 0.1473,
         "margin_percentiles": [
-          -18.0,
+          -17.6,
           -12.4,
-          -3.7,
-          6.4,
+          -3.6,
+          6.1,
           15.8,
           24.3,
-          29.4
+          29.9
         ]
       },
       "adjustments": {
@@ -10327,7 +10300,7 @@
       "elo": {
         "home": 1650.0,
         "away": 1389.7,
-        "diff": 326.4
+        "diff": 323.1
       },
       "bayesian": {
         "home_mu": 1733.7,
@@ -10412,6 +10385,20 @@
         ],
         "away": [
           {
+            "player": "Bryan Bresee",
+            "status": "Out",
+            "position": "DT",
+            "injury_description": "It's a brutal blow for Bresee, who has played in 46 of 48 possible regular-season games since being selected by the Saints in the first round of the 2023 NFL Draft. An ACL repair procedure typically carries a nine-month recovery timeline, so Bresee should be available for the 2027 season, which is the final year of his rookie contract. John Ridgeway figures to step into a starting role at defensive end opposite veteran Cameron Jordan, while Michael Heldman, Vernon Broughton and Tyree Wilson compete for rotational snaps.",
+            "value_tier": "rotation"
+          },
+          {
+            "player": "Kool-Aid McKinstry",
+            "status": "Active",
+            "position": "CB",
+            "injury_description": "McKinstry left Thursday's practice early after tweaking his ankle, though it was a precautionary move by the Saints. The third-year cornerback was back on the field Sunday, though he did not participate in the final team drill of practice. Still, it appears McKinstry is past the injury and should be an active participant in practices moving forward.",
+            "value_tier": "starter"
+          },
+          {
             "player": "Nathan Shepherd",
             "status": "Active",
             "position": "DT",
@@ -10431,28 +10418,14 @@
             "position": "OT",
             "injury_description": "Banks was a first-round selection of the Saints in the 2025 NFL Draft and started in all 17 regular-season games last year. He suffered an ankle injury during the Saints' regular-season finale against the Falcons in early January, but he is fully healthy for the start of training camp. Banks figures to keep his starting role at left tackle for the 2026 campaign.",
             "value_tier": "starter"
-          },
-          {
-            "player": "Cody Hardy",
-            "status": "Active",
-            "position": "TE",
-            "injury_description": "Hardy is now clear to participate in training camp practices and preseason games as he he looks to make a case for a spot on the Saints' 53-man roster for the 2026 season. He signed with New Orleans as an undrafted free agent in late April following his final college season at North Carolina, when he mostly contributed as a run blocker and finished with six catches for 83 yards and two touchdowns across five games.",
-            "value_tier": "rotation"
-          },
-          {
-            "player": "Chris Olave",
-            "status": "Active",
-            "position": "WR",
-            "injury_description": "Olave inked a four-year extension worth up to $132 million with the Saints on Thursday, providing sufficient motivation for the 2022 first-rounder to get in his first full-team reps of training camp. Treatment related to a blood clot kept Olave from taking part in team drills during spring activities, but the star wideout seems to be fully healthy in advance of the 2026 regular season. Olave will look to build on the career year he logged in 2025 as he now heads into Year 2 with quarterback Tyler Shough under center.",
-            "value_tier": "starter"
           }
         ]
       },
       "injury_impact": {
         "home_elo_penalty": 8.9,
-        "away_elo_penalty": 11.0,
+        "away_elo_penalty": 7.7,
         "home_impact_score": 0.0809,
-        "away_impact_score": 0.1,
+        "away_impact_score": 0.07,
         "home_key_players_out": [
           {
             "player": "C.J. Gardner-Johnson",
@@ -10492,18 +10465,11 @@
         ],
         "away_key_players_out": [
           {
-            "player": "Kool-Aid McKinstry",
-            "position": "CB",
-            "status": "Questionable",
-            "elo_impact": 2.4,
-            "value_tier": "starter"
-          },
-          {
             "player": "Bryan Bresee",
             "position": "DT",
-            "status": "Questionable",
-            "elo_impact": 2.4,
-            "value_tier": "starter"
+            "status": "Out",
+            "elo_impact": 1.5,
+            "value_tier": "rotation"
           },
           {
             "player": "Mason Tipton",
@@ -10537,12 +10503,12 @@
         "C.J. Gardner-Johnson (BUF) [Starter] QUESTIONABLE \u2014 \u22122 ELO",
         "Tyrell Shavers (BUF) [Rotation] OUT \u2014 \u22122 ELO",
         "Dorian Strong (BUF) [Rotation] OUT \u2014 \u22121 ELO",
-        "Kool-Aid McKinstry (NO) [Starter] QUESTIONABLE \u2014 \u22122 ELO",
-        "Bryan Bresee (NO) [Starter] QUESTIONABLE \u2014 \u22122 ELO",
+        "Bryan Bresee (NO) [Rotation] OUT \u2014 \u22122 ELO",
         "Mason Tipton (NO) [Backup] OUT \u2014 \u22124 ELO",
+        "Zxavian Harris (NO) [Rotation] OUT \u2014 \u22121 ELO",
         "Home field: BUF +65 ELO home advantage"
       ],
-      "explanation": "The model gives Buffalo Bills a 83.1% win probability \u2014 a strong favorite over New Orleans Saints. ELO gap: 260 pts with home field +65 ELO. Travel: 1083 miles. QB form: Josh Allen has the EPA/play edge over their last 8 starts."
+      "explanation": "The model gives Buffalo Bills a 83.0% win probability \u2014 a strong favorite over New Orleans Saints. ELO gap: 260 pts with home field +65 ELO. Travel: 1083 miles. QB form: Josh Allen has the EPA/play edge over their last 8 starts."
     },
     {
       "game_id": "401772846",
@@ -10560,9 +10526,9 @@
       "home_score": 34,
       "away_score": 10,
       "predictions": {
-        "ensemble_prob": 0.7926,
+        "ensemble_prob": 0.7932,
         "logistic_prob": 0.7901,
-        "elo_prob": 0.8211,
+        "elo_prob": 0.8225,
         "xgb_prob": 0.7818,
         "pyth_prob": 0.5925,
         "eff_prob": 0.5925,
@@ -10576,19 +10542,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6566,
-        "exp_margin": 5.77,
-        "prob_7plus": 0.468,
-        "prob_14plus": 0.2872,
-        "prob_21plus": 0.1461,
+        "win_prob": 0.6586,
+        "exp_margin": 5.72,
+        "prob_7plus": 0.4652,
+        "prob_14plus": 0.2836,
+        "prob_21plus": 0.1418,
         "margin_percentiles": [
-          -18.2,
-          -12.7,
+          -17.9,
+          -12.5,
           -3.8,
-          5.9,
-          15.5,
+          5.7,
+          15.4,
           24.0,
-          29.0
+          28.8
         ]
       },
       "adjustments": {
@@ -10602,7 +10568,7 @@
       "elo": {
         "home": 1600.8,
         "away": 1380.6,
-        "diff": 264.8
+        "diff": 266.4
       },
       "bayesian": {
         "home_mu": 1692.7,
@@ -10650,10 +10616,24 @@
       "injuries": {
         "home": [
           {
-            "player": "Alim McNeill",
+            "player": "Derrick Moore",
             "status": "Questionable",
+            "position": "DE",
+            "injury_description": "The results of that evaluation will determine the next steps for Moore, who was a second-round selection of the Lions in the 2026 NFL Draft. The rookie out of Michigan is competing for rotational snaps at defensive end behind starters Aidan Hutchinson and D.J. Wonnum, with Tyler Lacy, Tyre West and Trevor Nowaske serving as Moore's main competition.",
+            "value_tier": "backup"
+          },
+          {
+            "player": "Miles Kitselman",
+            "status": "Questionable",
+            "position": "TE",
+            "injury_description": "Kitselman signed with the Lions in mid-May as an undrafted free agent. He's competing for a depth spot on the team's 53-man roster by the time training camp wraps up, so he'll aim to return to practice and be ready for the Lions' preseason opener against the Bengals on Thursday, Aug. 13.",
+            "value_tier": "rotation"
+          },
+          {
+            "player": "Alim McNeill",
+            "status": "Active",
             "position": "DT",
-            "injury_description": "McNeil suffered a neck injury during Friday's practice but is believed to be OK. The 26-year-old is expected to serve as one of Detroit's starting defensive tackles during the upcoming campaign.",
+            "injury_description": "McNeil was held out of Friday's practice due to a neck injury, but the sixth-year defensive tackle was cleared to participate in Sunday's session. He's coming off a 2025 campaign in which he missed seven regular-season games due to knee and abdomen injuries, finishing with 14 tackles (five solo), including 1.0 sacks, one pass defense and one forced fumble over 10 games.",
             "value_tier": "starter"
           },
           {
@@ -10669,20 +10649,6 @@
             "position": "LB",
             "injury_description": "White participated in all 17 regular-season games for the Raiders last year, producing 174 total tackles (including 2.5 sacks), three passes defensed (including one interception) and a forced fumble. The linebacker was ranked third in the NFL in tackles as well. White will provide a strong veteran presence to a Lions linebacker corps that has suffered consistent injuries over the past few seasons.",
             "value_tier": "backup"
-          },
-          {
-            "player": "Christian Mahogany",
-            "status": "Active",
-            "position": "G",
-            "injury_description": "Mahogany has been cleared to practice after recovering from an undisclosed injury. He's slated to serve as the Lions' starter at left guard for the 2026 season, with his main competition coming from Juice Scruggs and Miles Frazier.",
-            "value_tier": "starter"
-          },
-          {
-            "player": "Anthony Firkser",
-            "status": "Active",
-            "position": "TE",
-            "injury_description": "In a corresponding transaction, the Lions waived tight end Zach Horton. With fellow veteran tight end Tyler Conklin (knee) on the PUP list, Firkser could get a good chance right away to prove he's worthy of a depth role in 2026.",
-            "value_tier": "rotation"
           }
         ],
         "away": [
@@ -10724,17 +10690,24 @@
         ]
       },
       "injury_impact": {
-        "home_elo_penalty": 26.48,
+        "home_elo_penalty": 24.87,
         "away_elo_penalty": 6.0,
-        "home_impact_score": 0.2407,
+        "home_impact_score": 0.226,
         "away_impact_score": 0.0545,
         "home_key_players_out": [
           {
-            "player": "Alim McNeill",
-            "position": "DT",
+            "player": "Derrick Moore",
+            "position": "DE",
             "status": "Questionable",
-            "elo_impact": 2.4,
-            "value_tier": "starter"
+            "elo_impact": 1.5,
+            "value_tier": "backup"
+          },
+          {
+            "player": "Miles Kitselman",
+            "position": "TE",
+            "status": "Questionable",
+            "elo_impact": 0.4,
+            "value_tier": "rotation"
           },
           {
             "player": "Jimmy Rolder",
@@ -10784,13 +10757,6 @@
             "status": "Out",
             "elo_impact": 5.0,
             "value_tier": "starter"
-          },
-          {
-            "player": "Kendrick Law",
-            "position": "WR",
-            "status": "Injured Reserve",
-            "elo_impact": 1.2,
-            "value_tier": "rotation"
           }
         ],
         "away_key_players_out": [
@@ -10809,9 +10775,9 @@
       },
       "prediction_drivers": [
         "ELO advantage: DET +220 rating points",
-        "Alim McNeill (DET) [Starter] QUESTIONABLE \u2014 \u22122 ELO",
+        "Derrick Moore (DET) [Backup] QUESTIONABLE \u2014 \u22122 ELO",
+        "Miles Kitselman (DET) [Rotation] QUESTIONABLE \u2014 \u22120 ELO",
         "Jimmy Rolder (DET) [Rotation] QUESTIONABLE \u2014 \u22120 ELO",
-        "Jahmyr Gibbs (DET) [Starter] QUESTIONABLE \u2014 \u22123 ELO",
         "Maliek Collins (CLE) [Starter] OUT \u2014 \u22126 ELO",
         "Home field: DET +65 ELO home advantage"
       ],
@@ -10849,19 +10815,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6755,
-        "exp_margin": 6.38,
-        "prob_7plus": 0.4837,
-        "prob_14plus": 0.2932,
-        "prob_21plus": 0.1506,
+        "win_prob": 0.6746,
+        "exp_margin": 6.33,
+        "prob_7plus": 0.4867,
+        "prob_14plus": 0.295,
+        "prob_21plus": 0.1516,
         "margin_percentiles": [
-          -17.2,
-          -11.6,
-          -3.0,
+          -17.1,
+          -12.2,
+          -3.1,
           6.5,
-          15.8,
-          24.4,
-          29.5
+          15.9,
+          24.2,
+          29.1
         ]
       },
       "adjustments": {
@@ -11172,19 +11138,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.5493,
-        "exp_margin": 1.65,
-        "prob_7plus": 0.3543,
-        "prob_14plus": 0.192,
-        "prob_21plus": 0.089,
+        "win_prob": 0.535,
+        "exp_margin": 1.28,
+        "prob_7plus": 0.3447,
+        "prob_14plus": 0.1867,
+        "prob_21plus": 0.0845,
         "margin_percentiles": [
-          -22.1,
-          -16.8,
-          -7.9,
-          1.7,
-          11.4,
-          20.1,
-          25.2
+          -22.3,
+          -17.1,
+          -8.3,
+          1.3,
+          11.1,
+          19.6,
+          24.5
         ]
       },
       "adjustments": {
@@ -11415,9 +11381,9 @@
       "home_score": 25,
       "away_score": 31,
       "predictions": {
-        "ensemble_prob": 0.4428,
+        "ensemble_prob": 0.4441,
         "logistic_prob": 0.3523,
-        "elo_prob": 0.4038,
+        "elo_prob": 0.4072,
         "xgb_prob": 0.421,
         "pyth_prob": 0.5925,
         "eff_prob": 0.5925,
@@ -11431,19 +11397,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.4985,
-        "exp_margin": 0.17,
-        "prob_7plus": 0.3188,
-        "prob_14plus": 0.1704,
-        "prob_21plus": 0.0733,
+        "win_prob": 0.4977,
+        "exp_margin": -0.07,
+        "prob_7plus": 0.3091,
+        "prob_14plus": 0.1593,
+        "prob_21plus": 0.0672,
         "margin_percentiles": [
-          -23.4,
-          -18.3,
-          -9.4,
+          -23.1,
+          -18.1,
+          -9.5,
           -0.1,
-          9.9,
-          18.6,
-          23.8
+          9.6,
+          17.8,
+          23.2
         ]
       },
       "adjustments": {
@@ -11457,7 +11423,7 @@
       "elo": {
         "home": 1500.4,
         "away": 1622.5,
-        "diff": -67.7
+        "diff": -65.3
       },
       "bayesian": {
         "home_mu": 1632.7,
@@ -11511,6 +11477,13 @@
       "injuries": {
         "home": [
           {
+            "player": "Benjamin Morrison",
+            "status": "Active",
+            "position": "CB",
+            "injury_description": "Morrison missed the first three practices of training camp while tending to a lingering hamstring injury from the 2025 season, but he was back in action Sunday with no restrictions. Leg injuries limited the 2025 second-rounder to 10 regular-season games during his rookie year, finishing with 26 tackles (19 solo), four pass defenses and one fumble recovery. Morrison is projected to start opposite Zyon McCollum at outside cornerback, with Josh Hayes and Damarion Williams providing depth at the position.",
+            "value_tier": "starter"
+          },
+          {
             "player": "Haggai Ndubuisi",
             "status": "Out",
             "position": "DT",
@@ -11536,13 +11509,6 @@
             "status": "Active",
             "position": "QB",
             "injury_description": "Mayfield wanted to get a deal done before training camp but apparently never came close. He did suggest his agent could remain in contact with the team while Mayfield turns his attention to the practice field and his teammates. \"If you've waited this long to take care of your franchise quarterback, that's too bad,\" said Mayfield. \"Because it's only going to get worse from here. I'm going to have a really big year.\"",
-            "value_tier": "starter"
-          },
-          {
-            "player": "Tristan Wirfs",
-            "status": "Questionable",
-            "position": "OT",
-            "injury_description": "Wirfs got hurt during a conditioning test and is currently considered day-to-day. Once healthy again, the 27-year-old will resume his role as the team's starting left tackle.",
             "value_tier": "starter"
           }
         ],
@@ -11585,9 +11551,9 @@
         ]
       },
       "injury_impact": {
-        "home_elo_penalty": 10.8,
+        "home_elo_penalty": 8.4,
         "away_elo_penalty": 7.2,
-        "home_impact_score": 0.0982,
+        "home_impact_score": 0.0764,
         "away_impact_score": 0.0655,
         "home_key_players_out": [
           {
@@ -11602,13 +11568,6 @@
             "position": "OT",
             "status": "Questionable",
             "elo_impact": 3.6,
-            "value_tier": "starter"
-          },
-          {
-            "player": "Benjamin Morrison",
-            "position": "CB",
-            "status": "Questionable",
-            "elo_impact": 2.4,
             "value_tier": "starter"
           },
           {
@@ -11672,13 +11631,13 @@
         "ELO advantage: PHI +122 rating points",
         "Haggai Ndubuisi (TB) [Rotation] OUT \u2014 \u22121 ELO",
         "Tristan Wirfs (TB) [Starter] QUESTIONABLE \u2014 \u22124 ELO",
-        "Benjamin Morrison (TB) [Starter] QUESTIONABLE \u2014 \u22122 ELO",
+        "Vita Vea (TB) [Starter] QUESTIONABLE \u2014 \u22122 ELO",
         "Jaeden Roberts (PHI) [Rotation] QUESTIONABLE \u2014 \u22120 ELO",
         "Keyshawn James-Newby (PHI) [Rotation] QUESTIONABLE \u2014 \u22120 ELO",
         "Cole Wisniewski (PHI) [Rotation] QUESTIONABLE \u2014 \u22120 ELO",
         "Home field: TB +65 ELO home advantage"
       ],
-      "explanation": "The model gives Philadelphia Eagles a 55.7% win probability \u2014 a slight favorite over Tampa Bay Buccaneers. ELO gap: 122 pts with home field +65 ELO. QB form: Jalen Hurts has the EPA/play edge over their last 8 starts."
+      "explanation": "The model gives Philadelphia Eagles a 55.6% win probability \u2014 a slight favorite over Tampa Bay Buccaneers. ELO gap: 122 pts with home field +65 ELO. QB form: Jalen Hurts has the EPA/play edge over their last 8 starts."
     },
     {
       "game_id": "401772738",
@@ -11712,18 +11671,18 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.769,
-        "exp_margin": 10.29,
-        "prob_7plus": 0.5921,
-        "prob_14plus": 0.3941,
-        "prob_21plus": 0.228,
+        "win_prob": 0.7666,
+        "exp_margin": 10.23,
+        "prob_7plus": 0.5898,
+        "prob_14plus": 0.3997,
+        "prob_21plus": 0.2234,
         "margin_percentiles": [
-          -13.0,
-          -7.8,
-          0.9,
-          10.3,
-          19.9,
-          28.4,
+          -12.7,
+          -7.6,
+          0.7,
+          10.2,
+          19.7,
+          28.5,
           33.4
         ]
       },
@@ -11792,6 +11751,13 @@
       "injuries": {
         "home": [
           {
+            "player": "Mario Edwards Jr.",
+            "status": "Active",
+            "position": "DT",
+            "injury_description": "Edwards is officially set to return to Houston despite having been released by the team in March. The 32-year-old has spent the past two seasons with the Texans and should serve as a depth defensive tackle once again during the upcoming campaign.",
+            "value_tier": "rotation"
+          },
+          {
             "player": "Jake Hansen",
             "status": "Questionable",
             "position": "LB",
@@ -11818,13 +11784,6 @@
             "position": "S",
             "injury_description": "It sounds like Stewart is more week-to-week than day-to-day after he was placed on the active/PUP list to begin camp Tuesday. Stewart inked a one-year, $2.7 million deal to remain with the Texans over the offseason after he recorded 25 tackles (15 solo) across nine regular-season appearances in 2025.",
             "value_tier": "backup"
-          },
-          {
-            "player": "E.J. Speed",
-            "status": "Out",
-            "position": "LB",
-            "injury_description": "Speed suffered a partial tear to his quad while lifting weights back in May and was placed on the active/PUP list Tuesday. By the sounds of it, Speed could open the regular season on reserve/PUP list, which would cost him at least the first four games of 2026. Speed inked a two-year, $10 million deal with Houston over the offseason.",
-            "value_tier": "starter"
           }
         ],
         "away": [
@@ -11954,9 +11913,9 @@
       "home_score": 27,
       "away_score": 20,
       "predictions": {
-        "ensemble_prob": 0.786,
+        "ensemble_prob": 0.7851,
         "logistic_prob": 0.7901,
-        "elo_prob": 0.8123,
+        "elo_prob": 0.8098,
         "xgb_prob": 0.8007,
         "pyth_prob": 0.5925,
         "eff_prob": 0.5925,
@@ -11970,19 +11929,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6753,
-        "exp_margin": 6.51,
+        "win_prob": 0.6832,
+        "exp_margin": 6.6,
         "prob_7plus": 0.4891,
-        "prob_14plus": 0.2996,
-        "prob_21plus": 0.1531,
+        "prob_14plus": 0.3033,
+        "prob_21plus": 0.1518,
         "margin_percentiles": [
-          -16.5,
-          -11.8,
-          -3.0,
+          -16.7,
+          -11.7,
+          -2.8,
           6.6,
           16.1,
           24.6,
-          29.6
+          29.5
         ]
       },
       "adjustments": {
@@ -11996,7 +11955,7 @@
       "elo": {
         "home": 1640.8,
         "away": 1482.6,
-        "diff": 254.5
+        "diff": 251.7
       },
       "bayesian": {
         "home_mu": 1755.8,
@@ -12050,6 +12009,13 @@
       "injuries": {
         "home": [
           {
+            "player": "Myles Garrett",
+            "status": "Questionable",
+            "position": "DE",
+            "injury_description": "Garrett has missed the team's last three sessions as he continues to deal with lower-body soreness. While the 29-year-old is expected to be sidelined for Monday's practice as well, head coach Sean McVay said the injury isn't serious and Garrett should be back for the next practice block.",
+            "value_tier": "starter"
+          },
+          {
             "player": "Alaric Jackson",
             "status": "Questionable",
             "position": "OT",
@@ -12076,13 +12042,6 @@
             "position": "WR",
             "injury_description": "We've heard this before at a similar time of the year, and while Whittington has seen a few opportunities as the No. 3 receiver, it's rarely amounted to much in terms of routes and targets. The job bounced around between a slew of players last year, including Xavier Smith and Konata Mumpfield, both of whom are still on the team. The Rams also have rookie sixth-round pick CJ Daniels as a dark horse candidate for the job. In any case, the offense likely will use a lot of multi-TE formations, limiting the WR3's snap and route shares.",
             "value_tier": "starter"
-          },
-          {
-            "player": "Blake Hance",
-            "status": "Active",
-            "position": "G",
-            "injury_description": "Hance is headed to Los Angeles after having spent the 2025 campaign with the Titans. The 30-year-old has recovered from the shoulder injury he suffered last October and will spend the remainder of the summer competing for a depth spot on the Rams' roster.",
-            "value_tier": "rotation"
           }
         ],
         "away": [
@@ -12124,11 +12083,18 @@
         ]
       },
       "injury_impact": {
-        "home_elo_penalty": 7.5,
+        "home_elo_penalty": 10.3,
         "away_elo_penalty": 10.7,
-        "home_impact_score": 0.0682,
+        "home_impact_score": 0.0936,
         "away_impact_score": 0.0973,
         "home_key_players_out": [
+          {
+            "player": "Myles Garrett",
+            "position": "DE",
+            "status": "Questionable",
+            "elo_impact": 2.8,
+            "value_tier": "starter"
+          },
           {
             "player": "Alaric Jackson",
             "position": "OT",
@@ -12188,16 +12154,16 @@
       },
       "prediction_drivers": [
         "ELO advantage: LAR +158 rating points",
+        "Myles Garrett (LAR) [Starter] QUESTIONABLE \u2014 \u22123 ELO",
         "Alaric Jackson (LAR) [Starter] QUESTIONABLE \u2014 \u22124 ELO",
         "Justin Dedich (LAR) [Backup] OUT \u2014 \u22122 ELO",
-        "Al'zillion Hamilton (LAR) [Rotation] OUT \u2014 \u22122 ELO",
         "Sauce Gardner (IND) [Starter] QUESTIONABLE \u2014 \u22122 ELO",
         "Alec Pierce (IND) [Starter] OUT \u2014 \u22128 ELO",
         "Hunter Wohler (IND) [Rotation] QUESTIONABLE \u2014 \u22120 ELO",
         "Travel penalty: away travels 1817 miles",
         "Home field: LAR +65 ELO home advantage"
       ],
-      "explanation": "The model gives Los Angeles Rams a 78.6% win probability \u2014 a strong favorite over Indianapolis Colts. ELO gap: 158 pts with home field +65 ELO. Travel: 1817 miles. QB form: Matthew Stafford has the EPA/play edge over their last 8 starts."
+      "explanation": "The model gives Los Angeles Rams a 78.5% win probability \u2014 a strong favorite over Indianapolis Colts. ELO gap: 158 pts with home field +65 ELO. Travel: 1817 miles. QB form: Matthew Stafford has the EPA/play edge over their last 8 starts."
     },
     {
       "game_id": "401772848",
@@ -12215,9 +12181,9 @@
       "home_score": 21,
       "away_score": 26,
       "predictions": {
-        "ensemble_prob": 0.6096,
+        "ensemble_prob": 0.6098,
         "logistic_prob": 0.5488,
-        "elo_prob": 0.6146,
+        "elo_prob": 0.6152,
         "xgb_prob": 0.5935,
         "pyth_prob": 0.5925,
         "eff_prob": 0.5925,
@@ -12231,18 +12197,18 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.513,
-        "exp_margin": 0.4,
-        "prob_7plus": 0.3212,
-        "prob_14plus": 0.1671,
-        "prob_21plus": 0.0694,
+        "win_prob": 0.505,
+        "exp_margin": 0.13,
+        "prob_7plus": 0.3187,
+        "prob_14plus": 0.1617,
+        "prob_21plus": 0.0696,
         "margin_percentiles": [
-          -22.7,
-          -17.4,
-          -9.1,
-          0.5,
-          9.8,
-          18.1,
+          -23.2,
+          -18.1,
+          -9.6,
+          0.2,
+          10.0,
+          18.2,
           23.3
         ]
       },
@@ -12257,7 +12223,7 @@
       "elo": {
         "home": 1575.4,
         "away": 1556.7,
-        "diff": 81.1
+        "diff": 81.5
       },
       "bayesian": {
         "home_mu": 1679.2,
@@ -12311,6 +12277,13 @@
       "injuries": {
         "home": [
           {
+            "player": "Khalil Herbert",
+            "status": "Active",
+            "position": "RB",
+            "injury_description": "Herbert will provide San Francisco with much-needed depth at running back, as Jordan James (ribs), Isaac Guerendo (pectoral) and Kaelon Black (undisclosed) are all currently dealing with injuries. Herbert spent last season with the Jets, rushing for 52 yards on 16 carries. The 28-year-old could also add value as a return specialist.",
+            "value_tier": "rotation"
+          },
+          {
             "player": "Deebo Samuel",
             "status": "Active",
             "position": "WR",
@@ -12322,13 +12295,6 @@
             "status": "Injured Reserve",
             "position": "TE",
             "injury_description": "McLachlan was waived/injured Friday with an undisclosed issue and will now spend the 2026 season on IR. The 2024 sixth-round pick out of Cincinnati will need to look toward 2027 for a chance to get back on an NFL field.",
-            "value_tier": "rotation"
-          },
-          {
-            "player": "Mikail Kamara",
-            "status": "Questionable",
-            "position": "DE",
-            "injury_description": "Kamara needed to be carted off the field due to the issue. The severity of the injury is unclear, but it seems the undrafted free agent out of Indiana has joined much of the 49ers' linebacker corps on the injury list. With the state of the corps, if any young players such as Kamara can recover quickly, they will have an inside track to climbing the depth chart.",
             "value_tier": "rotation"
           },
           {
@@ -12347,6 +12313,13 @@
           }
         ],
         "away": [
+          {
+            "player": "Chris Rodriguez Jr.",
+            "status": "Questionable",
+            "position": "RB",
+            "injury_description": "Rodriguez has yet to participate fully in practice while working his way back from offseason surgery on his left foot. However, the fourth-year pro participated in team drills for the first time in training camp and even saw work with the first-team offense, per Ryan O'Halloran of The Florida Times-Union. Rodriguez and Bhayshul Tuten continue to battle for the RB1 job following Travis Etienne's departure to New Orleans in free agency, but Tuten figures to see the bulk of carries in practice and preseason games until Rodriguez is fully healthy.",
+            "value_tier": "backup"
+          },
           {
             "player": "Danny Striggow",
             "status": "Active",
@@ -12374,20 +12347,13 @@
             "position": "WR",
             "injury_description": "Hunter seems to be progressing well in his recovery from season-ending LCL surgery, and he has mixed into some team drills at practice, playing mostly with the defense at cornerback while occasionally mixing in with the offense at wide receiver. The second overall pick in the 2025 NFL Draft said he feels lighter on his feet as a result of the added muscle and that he's hoping to reach 23 miles per hour, which would put him in elite top-speed territory alongside the likes of Tyreek Hill (knee).",
             "value_tier": "starter"
-          },
-          {
-            "player": "Jack Kiser",
-            "status": "Questionable",
-            "position": "LB",
-            "injury_description": "The outside linebacker seems to have picked up a problem with his right knee but isn't expected to have a particularly lengthy absence. The fact O'Halloran notes Kiser is expected back \"later in camp\" suggests the 2025 fourth-round pick should have a chance to return to the field with enough time to amply prepare for what's expected to be a starting role in 2026.",
-            "value_tier": "starter"
           }
         ]
       },
       "injury_impact": {
-        "home_elo_penalty": 21.39,
+        "home_elo_penalty": 20.97,
         "away_elo_penalty": 14.79,
-        "home_impact_score": 0.1944,
+        "home_impact_score": 0.1906,
         "away_impact_score": 0.1345,
         "home_key_players_out": [
           {
@@ -12395,13 +12361,6 @@
             "position": "TE",
             "status": "Injured Reserve",
             "elo_impact": 1.1,
-            "value_tier": "rotation"
-          },
-          {
-            "player": "Mikail Kamara",
-            "position": "DE",
-            "status": "Questionable",
-            "elo_impact": 0.4,
             "value_tier": "rotation"
           },
           {
@@ -12498,18 +12457,18 @@
         ],
         "away_key_players_out": [
           {
-            "player": "Jack Kiser",
-            "position": "LB",
-            "status": "Questionable",
-            "elo_impact": 2.0,
-            "value_tier": "starter"
-          },
-          {
             "player": "Chris Rodriguez Jr.",
             "position": "RB",
             "status": "Questionable",
             "elo_impact": 1.5,
             "value_tier": "backup"
+          },
+          {
+            "player": "Jack Kiser",
+            "position": "LB",
+            "status": "Questionable",
+            "elo_impact": 2.0,
+            "value_tier": "starter"
           },
           {
             "player": "Garrett DiGiorgio",
@@ -12533,10 +12492,10 @@
       },
       "prediction_drivers": [
         "Tanner McLachlan (SF) [Rotation] INJURED RESERVE \u2014 \u22121 ELO",
-        "Mikail Kamara (SF) [Rotation] QUESTIONABLE \u2014 \u22120 ELO",
         "Keion White (SF) [Backup] QUESTIONABLE \u2014 \u22122 ELO",
-        "Jack Kiser (JAX) [Starter] QUESTIONABLE \u2014 \u22122 ELO",
+        "Romello Height (SF) [Rotation] QUESTIONABLE \u2014 \u22121 ELO",
         "Chris Rodriguez Jr. (JAX) [Backup] QUESTIONABLE \u2014 \u22122 ELO",
+        "Jack Kiser (JAX) [Starter] QUESTIONABLE \u2014 \u22122 ELO",
         "Garrett DiGiorgio (JAX) [Rotation] OUT \u2014 \u22122 ELO",
         "Travel penalty: away travels 2351 miles",
         "Home field: SF +65 ELO home advantage"
@@ -12575,19 +12534,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.5088,
-        "exp_margin": 0.31,
-        "prob_7plus": 0.3182,
-        "prob_14plus": 0.1638,
-        "prob_21plus": 0.0711,
+        "win_prob": 0.515,
+        "exp_margin": 0.45,
+        "prob_7plus": 0.3238,
+        "prob_14plus": 0.1708,
+        "prob_21plus": 0.0746,
         "margin_percentiles": [
-          -22.8,
-          -17.6,
-          -9.1,
-          0.4,
-          9.7,
-          18.4,
-          23.9
+          -23.1,
+          -18.0,
+          -9.2,
+          0.6,
+          10.0,
+          18.7,
+          23.8
         ]
       },
       "adjustments": {
@@ -12876,19 +12835,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.3522,
-        "exp_margin": -5.28,
-        "prob_7plus": 0.1927,
-        "prob_14plus": 0.0857,
-        "prob_21plus": 0.0324,
+        "win_prob": 0.3558,
+        "exp_margin": -5.2,
+        "prob_7plus": 0.1951,
+        "prob_14plus": 0.0887,
+        "prob_21plus": 0.0348,
         "margin_percentiles": [
-          -28.3,
-          -23.3,
-          -14.9,
-          -5.3,
+          -28.8,
+          -23.6,
+          -15.0,
+          -5.2,
           4.3,
-          12.7,
-          18.0
+          13.1,
+          18.3
         ]
       },
       "adjustments": {
@@ -13150,9 +13109,9 @@
       "home_score": 40,
       "away_score": 40,
       "predictions": {
-        "ensemble_prob": 0.497,
+        "ensemble_prob": 0.4962,
         "logistic_prob": 0.4357,
-        "elo_prob": 0.4803,
+        "elo_prob": 0.4781,
         "xgb_prob": 0.4966,
         "pyth_prob": 0.5925,
         "eff_prob": 0.5925,
@@ -13166,19 +13125,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.5042,
-        "exp_margin": 0.06,
-        "prob_7plus": 0.3081,
-        "prob_14plus": 0.1629,
-        "prob_21plus": 0.0661,
+        "win_prob": 0.504,
+        "exp_margin": -0.05,
+        "prob_7plus": 0.3059,
+        "prob_14plus": 0.1587,
+        "prob_21plus": 0.0677,
         "margin_percentiles": [
-          -23.2,
-          -17.9,
-          -9.4,
-          0.2,
-          9.6,
-          18.1,
-          23.2
+          -23.3,
+          -18.2,
+          -9.5,
+          0.1,
+          9.4,
+          18.0,
+          23.0
         ]
       },
       "adjustments": {
@@ -13192,7 +13151,7 @@
       "elo": {
         "home": 1459.1,
         "away": 1572.7,
-        "diff": -13.7
+        "diff": -15.2
       },
       "bayesian": {
         "home_mu": 1602.7,
@@ -13283,6 +13242,20 @@
         ],
         "away": [
           {
+            "player": "Jager Burton",
+            "status": "Active",
+            "position": "C",
+            "injury_description": "Burton pulled a hamstring during drills in Thursday's practice, but the rookie fifth-rounder was cleared to return for Sunday's session. He figures to serve as the Packers' backup center behind Sean Rhyan for the upcoming season.",
+            "value_tier": "backup"
+          },
+          {
+            "player": "Kamal Hadden",
+            "status": "Active",
+            "position": "CB",
+            "injury_description": "Hadden opened training camp on the PUP list while in the final stages of his recovery form a broken right tibia and fibula that he suffered in Week 17 of the 2025 season. He was given the green light to participate in Sunday's practice, and the third-year pro will now use training camp as an opportunity to earn a spot on the Packers' 53-man roster for the 2026 campaign.",
+            "value_tier": "rotation"
+          },
+          {
             "player": "Edgerrin Cooper",
             "status": "Active",
             "position": "LB",
@@ -13302,28 +13275,14 @@
             "position": "PK",
             "injury_description": "The Packers evidently feel comfortable handing kicking duties over to Smack. The rookie sixth-round pick impressed in college at Florida but will need to prove he's capable of handling the pressure of kicking in the NFL, as well as the cold and windy conditions that arise at Lambeau Field.",
             "value_tier": "starter"
-          },
-          {
-            "player": "Cal Adomitis",
-            "status": "Active",
-            "position": "LS",
-            "injury_description": "Green Bay had a hole at the position due to the absence of veteran snapper Matthew Orzech (calf). Since Adomitis has extensive experience in recent seasons (49 games with the Bengals and nine more with the Eagles since 2022), he might be a real competitor to Orzech for the spot, per Huber.",
-            "value_tier": "backup"
-          },
-          {
-            "player": "Donovan Jennings",
-            "status": "Active",
-            "position": "G",
-            "injury_description": "Jennings sat out Week 18 and the postseason last year with a throat injury, but he now seems to be back to full strength for training camp. He projects for a depth role on the interior of Green Bay's offensive line in 2026.",
-            "value_tier": "backup"
           }
         ]
       },
       "injury_impact": {
         "home_elo_penalty": 5.55,
-        "away_elo_penalty": 29.48,
+        "away_elo_penalty": 27.93,
         "home_impact_score": 0.0505,
-        "away_impact_score": 0.268,
+        "away_impact_score": 0.2539,
         "home_key_players_out": [
           {
             "player": "Zion Childress",
@@ -13368,13 +13327,6 @@
             "status": "Questionable",
             "elo_impact": 3.0,
             "value_tier": "starter"
-          },
-          {
-            "player": "Jager Burton",
-            "position": "C",
-            "status": "Questionable",
-            "elo_impact": 0.7,
-            "value_tier": "backup"
           },
           {
             "player": "Brant Banks",
@@ -13424,13 +13376,6 @@
             "status": "Out",
             "elo_impact": 7.0,
             "value_tier": "starter"
-          },
-          {
-            "player": "Kamal Hadden",
-            "position": "CB",
-            "status": "Out",
-            "elo_impact": 0.9,
-            "value_tier": "rotation"
           }
         ],
         "home_star_count": 0,
@@ -13444,11 +13389,11 @@
         "Jalen Thompson (DAL) [Starter] QUESTIONABLE \u2014 \u22122 ELO",
         "P.J. Locke (DAL) [Backup] QUESTIONABLE \u2014 \u22121 ELO",
         "Tucker Kraft (GB) [Starter] QUESTIONABLE \u2014 \u22123 ELO",
-        "Jager Burton (GB) [Backup] QUESTIONABLE \u2014 \u22121 ELO",
         "Brant Banks (GB) [Rotation] OUT \u2014 \u22122 ELO",
+        "Matt Orzech (GB) [Starter] OUT \u2014 \u22120 ELO",
         "Home field: DAL +65 ELO home advantage"
       ],
-      "explanation": "The model gives Green Bay Packers a 50.3% win probability \u2014 a slight favorite over Dallas Cowboys. ELO gap: 114 pts with home field +65 ELO."
+      "explanation": "The model gives Green Bay Packers a 50.4% win probability \u2014 a slight favorite over Dallas Cowboys. ELO gap: 114 pts with home field +65 ELO."
     },
     {
       "game_id": "401772813",
@@ -13482,19 +13427,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6752,
-        "exp_margin": 6.38,
-        "prob_7plus": 0.4849,
-        "prob_14plus": 0.2953,
-        "prob_21plus": 0.1481,
+        "win_prob": 0.686,
+        "exp_margin": 6.8,
+        "prob_7plus": 0.4992,
+        "prob_14plus": 0.3061,
+        "prob_21plus": 0.1577,
         "margin_percentiles": [
-          -16.8,
+          -16.9,
           -11.5,
-          -3.2,
-          6.3,
-          15.9,
-          24.5,
-          29.2
+          -2.8,
+          7.0,
+          16.3,
+          25.0,
+          30.2
         ]
       },
       "adjustments": {
@@ -13735,9 +13680,9 @@
       "home_score": 28,
       "away_score": 3,
       "predictions": {
-        "ensemble_prob": 0.7355,
+        "ensemble_prob": 0.7358,
         "logistic_prob": 0.777,
-        "elo_prob": 0.8081,
+        "elo_prob": 0.8089,
         "xgb_prob": 0.7509,
         "pyth_prob": 0.5925,
         "eff_prob": 0.5925,
@@ -13751,19 +13696,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6779,
-        "exp_margin": 6.61,
-        "prob_7plus": 0.4904,
-        "prob_14plus": 0.3053,
-        "prob_21plus": 0.1533,
+        "win_prob": 0.6844,
+        "exp_margin": 6.7,
+        "prob_7plus": 0.4931,
+        "prob_14plus": 0.2983,
+        "prob_21plus": 0.1572,
         "margin_percentiles": [
-          -16.7,
-          -11.4,
-          -3.0,
-          6.7,
-          16.4,
-          24.7,
-          29.7
+          -17.0,
+          -11.5,
+          -2.8,
+          6.8,
+          16.2,
+          25.2,
+          30.1
         ]
       },
       "adjustments": {
@@ -13777,7 +13722,7 @@
       "elo": {
         "home": 1627.9,
         "away": 1457.1,
-        "diff": 249.8
+        "diff": 250.7
       },
       "bayesian": {
         "home_mu": 1732.8,
@@ -13831,13 +13776,6 @@
       "injuries": {
         "home": [
           {
-            "player": "Blake Cotton",
-            "status": "Injured Reserve",
-            "position": "CB",
-            "injury_description": "Cotton was waived/injured Friday due to his injury and will spend the entire 2026 season on IR. The undrafted free agent out of Utah will need to look toward 2027 for a potential NFL debut.",
-            "value_tier": "rotation"
-          },
-          {
             "player": "Joseph Manjack IV",
             "status": "Questionable",
             "position": "WR",
@@ -13864,6 +13802,13 @@
             "position": "QB",
             "injury_description": "Nix had been limited during the team's offseason program while working his way back from ankle surgery and a follow-up procedure, but as expected, he was ready for training camp's first practice and looked sharp during red-zone work in the process. As the coming campaign approaches, Nix's fantasy prospects should be bolstered by the fact that Denver added Jaylen Waddle, via a trade with the Dolphins this offseason, to a WR corps that returns Courtland Sutton, giving the team a notable 1-2 punch at the position.",
             "value_tier": "starter"
+          },
+          {
+            "player": "Nick Gargiulo",
+            "status": "Out",
+            "position": "G",
+            "injury_description": "The offensive guard was placed on the active/PUP list to kick off training camp Sunday, but the team expects to have to move him to the reserve/PUP list once the regular season rolls around, per Tomasson. If he does move to the reserve/PUP list on or after cut-down day, Gargiulo will have to miss the first four regular-season games. The 2024 seventh-round pick tore his ACL during an August 2025 preseason game.",
+            "value_tier": "rotation"
           }
         ],
         "away": [
@@ -13905,18 +13850,11 @@
         ]
       },
       "injury_impact": {
-        "home_elo_penalty": 3.03,
+        "home_elo_penalty": 2.13,
         "away_elo_penalty": 5.96,
-        "home_impact_score": 0.0275,
+        "home_impact_score": 0.0194,
         "away_impact_score": 0.0542,
         "home_key_players_out": [
-          {
-            "player": "Blake Cotton",
-            "position": "CB",
-            "status": "Injured Reserve",
-            "elo_impact": 0.9,
-            "value_tier": "rotation"
-          },
           {
             "player": "Joseph Manjack IV",
             "position": "WR",
@@ -13976,9 +13914,9 @@
       },
       "prediction_drivers": [
         "ELO advantage: DEN +171 rating points",
-        "Blake Cotton (DEN) [Rotation] INJURED RESERVE \u2014 \u22121 ELO",
         "Joseph Manjack IV (DEN) [Rotation] QUESTIONABLE \u2014 \u22120 ELO",
         "Nick Gargiulo (DEN) [Rotation] OUT \u2014 \u22120 ELO",
+        "Jordan Turner (DEN) [Rotation] OUT \u2014 \u22121 ELO",
         "Shemar Stewart (CIN) [Backup] QUESTIONABLE \u2014 \u22122 ELO",
         "Josh Kattus (CIN) [Rotation] OUT \u2014 \u22121 ELO",
         "B.J. Hill (CIN) [Backup] OUT \u2014 \u22123 ELO",
