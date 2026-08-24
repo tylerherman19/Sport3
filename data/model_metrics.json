@@ -1,68 +1,68 @@
 {
-  "updated": "2026-08-23T08:18:17.315691+00:00",
-  "log_loss": 0.6366357553285689,
-  "brier_score": 0.2212752030227413,
-  "auc": 0.6831362501183359,
+  "updated": "2026-08-24T08:36:24.232666+00:00",
+  "log_loss": 0.6365867562994866,
+  "brier_score": 0.22124418137148238,
+  "auc": 0.6831634683400639,
   "calibration_buckets": [
     {
       "bucket": "0-10%",
-      "predicted": 0.0,
-      "actual": 0.143,
-      "count": 7
+      "predicted": 0.003,
+      "actual": 0.125,
+      "count": 8
     },
     {
       "bucket": "10-20%",
-      "predicted": 0.149,
+      "predicted": 0.157,
       "actual": 0.0,
-      "count": 2
+      "count": 1
     },
     {
       "bucket": "20-30%",
-      "predicted": 0.256,
-      "actual": 0.288,
-      "count": 552
+      "predicted": 0.258,
+      "actual": 0.284,
+      "count": 545
     },
     {
       "bucket": "30-40%",
-      "predicted": 0.374,
-      "actual": 0.381,
-      "count": 1148
+      "predicted": 0.351,
+      "actual": 0.359,
+      "count": 658
     },
     {
       "bucket": "40-50%",
-      "predicted": 0.419,
-      "actual": 0.465,
-      "count": 774
+      "predicted": 0.412,
+      "actual": 0.441,
+      "count": 1255
     },
     {
       "bucket": "50-60%",
-      "predicted": 0.551,
-      "actual": 0.559,
-      "count": 1968
+      "predicted": 0.549,
+      "actual": 0.56,
+      "count": 2015
     },
     {
       "bucket": "60-70%",
-      "predicted": 0.633,
-      "actual": 0.647,
-      "count": 1401
+      "predicted": 0.637,
+      "actual": 0.654,
+      "count": 1406
     },
     {
       "bucket": "70-80%",
-      "predicted": 0.747,
-      "actual": 0.76,
-      "count": 871
+      "predicted": 0.751,
+      "actual": 0.757,
+      "count": 827
     },
     {
       "bucket": "80-90%",
-      "predicted": 0.841,
-      "actual": 0.841,
-      "count": 460
+      "predicted": 0.839,
+      "actual": 0.84,
+      "count": 468
     },
     {
       "bucket": "90-100%",
-      "predicted": 0.94,
-      "actual": 0.911,
-      "count": 90
+      "predicted": 0.943,
+      "actual": 0.912,
+      "count": 91
     }
   ],
   "historical_accuracy": [
@@ -80,11 +80,11 @@
     },
     {
       "year": 2019,
-      "accuracy": 0.6592
+      "accuracy": 0.6667
     },
     {
       "year": 2020,
-      "accuracy": 0.6766
+      "accuracy": 0.6691
     },
     {
       "year": 2021,
@@ -96,7 +96,7 @@
     },
     {
       "year": 2023,
-      "accuracy": 0.6035
+      "accuracy": 0.607
     },
     {
       "year": 2024,
