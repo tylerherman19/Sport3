@@ -22,11 +22,47 @@ def mov_multiplier(point_diff, elo_diff):
     return log(abs(point_diff) + 1) * (2.2 / (elo_diff * 0.001 + 2.2))
 
 
-def compute_elo(historical_df, k_base=20.0, hfa=65.0, initial_elo=1500.0, regress_pct=0.33):
+def mov_multiplier_538(point_diff, winner_elo_diff):
     """
-    Process FiveThirtyEight CSV and compute current ELO ratings.
+    FiveThirtyEight's margin-of-victory multiplier with the autocorrelation
+    adjustment computed from the WINNER's pregame Elo perspective: upsets
+    (negative winner diff) inflate the multiplier, chalk wins deflate it.
+    Measured better than the abs-diff variant on the walk-forward harness
+    (research/RESULTS.md).
+    """
+    return log(abs(point_diff) + 1) * (2.2 / (winner_elo_diff * 0.001 + 2.2))
+
+
+def era_hfa(home_win_rates, current_season, default=48.0, window=10):
+    """
+    Rolling home-field advantage in Elo points from the trailing `window`
+    completed seasons' home win rate, per 538's rolling 10-year average
+    (~48 pts in the modern era). home_win_rates: {season: home_win_pct}.
+    """
+    vals = [home_win_rates[s] for s in range(current_season - window, current_season)
+            if s in home_win_rates]
+    if len(vals) < 3:
+        return default
+    from math import log10
+    p = sum(vals) / len(vals)
+    p = min(max(p, 0.5), 0.75)
+    return 400.0 * log10(p / (1.0 - p))
+
+
+def compute_elo(historical_df, k_base=20.0, hfa=48.0, initial_elo=1500.0, regress_pct=0.33,
+                qb_map=None, use_era_hfa=True, pregame_out=None):
+    """
+    Process historical games and compute current ELO ratings.
     Returns dict: {team: elo}
     Also returns recent game history for form calculation.
+
+    2026-09 accuracy pass (research/RESULTS.md, all walk-forward verified):
+    - HFA defaults to 48 (modern-era average) and, with use_era_hfa, is recomputed
+      per season from the trailing 10 completed seasons' home win rate.
+    - K is flat (the within-season K decay was measured to hurt accuracy).
+    - Margin-of-victory uses 538's winner-perspective autocorrelation adjustment.
+    - qb_map: optional {(date_str, team1, team2): (adj_home, adj_away)} from
+      model.qb_model - applied to both prediction expectation and post-game update.
     """
     df = historical_df.copy()
     df = df.dropna(subset=["score1", "score2"])
@@ -36,22 +72,27 @@ def compute_elo(historical_df, k_base=20.0, hfa=65.0, initial_elo=1500.0, regres
     elo_dict = {}
     last_season = {}
     game_history = {}  # {team: [{"result":1/0, "elo_diff":x}, ...]}
+    if pregame_out is not None:
+        pregame_out.clear()  # {(date_str, team1, team2): (e1_base, e2_base)}
 
     seasons = sorted(df["season"].unique())
 
-    # NFL regular season games per team — used for K-factor decay
-    NFL_SEASON_GAMES = 17
+    # Trailing home win rates drive the era-rolling HFA
+    home_win_rates = {}
+    for s in seasons:
+        sdf = df[df["season"] == s]
+        played = sdf.dropna(subset=["score1", "score2"])
+        if len(played):
+            home_win_rates[s] = float((played["score1"] > played["score2"]).mean())
 
     for season in seasons:
         season_df = df[df["season"] == season]
+        season_hfa = era_hfa(home_win_rates, season, default=hfa) if use_era_hfa else hfa
 
         # Regress ELOs toward mean at start of each season
         for team in list(elo_dict.keys()):
             elo_dict[team] = elo_dict[team] * (1 - regress_pct) + initial_elo * regress_pct
             game_history[team] = []
-
-        # Per-team game count within this season — drives K-factor decay
-        team_game_counts = {}
 
         for _, row in season_df.iterrows():
             team1 = row["team1"]
@@ -70,36 +111,41 @@ def compute_elo(historical_df, k_base=20.0, hfa=65.0, initial_elo=1500.0, regres
             e1 = elo_dict[team1]
             e2 = elo_dict[team2]
 
-            # Home field adjustment
-            hfa_adj = 0 if neutral else hfa
-            adj_e1 = e1 + hfa_adj
+            # Home field adjustment (era-rolling per season)
+            hfa_adj = 0 if neutral else season_hfa
 
-            exp1 = expected_score(adj_e1, e2)
+            if pregame_out is not None:
+                pregame_out[(str(pd.to_datetime(row["date"]).date()), team1, team2)] = (e1, e2)
+
+            # QB adjustments (538-style), keyed by game date
+            qb_adj1 = qb_adj2 = 0.0
+            if qb_map:
+                date_str = str(pd.to_datetime(row["date"]).date())
+                qb_adj1, qb_adj2 = qb_map.get((date_str, team1, team2), (0.0, 0.0))
+
+            adj_e1 = e1 + hfa_adj + qb_adj1
+            adj_e2 = e2 + qb_adj2
+
+            exp1 = expected_score(adj_e1, adj_e2)
             exp2 = 1.0 - exp1
 
             actual1 = 1.0 if score1 > score2 else (0.5 if score1 == score2 else 0.0)
             actual2 = 1.0 - actual1
 
             point_diff = abs(score1 - score2)
-            elo_diff_abs = abs(adj_e1 - e2)
 
             if point_diff > 0:
-                mov = mov_multiplier(point_diff, elo_diff_abs)
+                # 538 winner-perspective autocorrelation adjustment
+                winner_diff = (adj_e1 - adj_e2) if actual1 == 1.0 else (adj_e2 - adj_e1)
+                mov = mov_multiplier_538(point_diff, winner_diff)
             else:
                 mov = 1.0
 
-            # Dynamic K-factor: decays from k_base to k_base/2 over NFL_SEASON_GAMES.
-            # Uses team1's game count as the progress signal; both teams receive the
-            # same K for a given game, which is consistent with FiveThirtyEight's
-            # season-progress approach. K resets to k_base each new season.
-            progress = min(1.0, team_game_counts.get(team1, 0) / NFL_SEASON_GAMES)
-            k = k_base * (1.0 - 0.5 * progress)
+            # Flat K (measured: within-season K decay costs accuracy)
+            k = k_base
 
             elo_dict[team1] = e1 + k * mov * (actual1 - exp1)
             elo_dict[team2] = e2 + k * mov * (actual2 - exp2)
-
-            team_game_counts[team1] = team_game_counts.get(team1, 0) + 1
-            team_game_counts[team2] = team_game_counts.get(team2, 0) + 1
 
             game_history[team1].append({
                 "result": actual1,
@@ -117,72 +163,30 @@ def compute_elo(historical_df, k_base=20.0, hfa=65.0, initial_elo=1500.0, regres
     return elo_dict, game_history
 
 
-def annotate_pregame_elo(df, k_base=20.0, hfa=65.0, initial_elo=1500.0, regress_pct=0.33):
+def annotate_pregame_elo(df, k_base=20.0, hfa=48.0, initial_elo=1500.0, regress_pct=0.33,
+                         qb_map=None):
     """
-    Same ELO recurrence as compute_elo(), but stamps each row with the two teams'
-    ratings as they stood immediately before that game (elo1_pre/elo2_pre).
-
-    The old FiveThirtyEight dataset shipped its own precomputed elo1_pre/elo2_pre
-    columns that the logistic/XGBoost feature builders train on. Now that game
-    history comes from nflverse (no precomputed ELO included), this reproduces
-    those columns from our own ELO system instead — self-consistent with the
-    standalone ELO model rather than importing FiveThirtyEight's separate rating.
+    Stamps each completed game row with the two teams' base ELO ratings as they
+    stood immediately before that game (elo1_pre/elo2_pre), computed by the exact
+    same recurrence as compute_elo() (era-rolling HFA, flat K, winner-perspective
+    MOV, optional QB adjustments) so training features stay self-consistent with
+    the shipped ratings.
     """
     df = df.copy()
     df = df.dropna(subset=["score1", "score2"])
     df["date"] = pd.to_datetime(df["date"])
     df = df.sort_values("date").reset_index(drop=True)
 
-    elo_dict = {}
-    elo1_pre_col = [None] * len(df)
-    elo2_pre_col = [None] * len(df)
+    pregame = {}
+    compute_elo(df, k_base=k_base, hfa=hfa, initial_elo=initial_elo,
+                regress_pct=regress_pct, qb_map=qb_map, pregame_out=pregame)
 
-    NFL_SEASON_GAMES = 17
-    seasons = sorted(df["season"].unique())
-
-    for season in seasons:
-        season_idx = df.index[df["season"] == season]
-
-        for team in list(elo_dict.keys()):
-            elo_dict[team] = elo_dict[team] * (1 - regress_pct) + initial_elo * regress_pct
-
-        team_game_counts = {}
-
-        for idx in season_idx:
-            row = df.loc[idx]
-            team1, team2 = row["team1"], row["team2"]
-            score1, score2 = row["score1"], row["score2"]
-            neutral = row.get("neutral", 0)
-
-            elo_dict.setdefault(team1, initial_elo)
-            elo_dict.setdefault(team2, initial_elo)
-
-            e1 = elo_dict[team1]
-            e2 = elo_dict[team2]
-            elo1_pre_col[idx] = e1
-            elo2_pre_col[idx] = e2
-
-            hfa_adj = 0 if neutral else hfa
-            adj_e1 = e1 + hfa_adj
-
-            exp1 = expected_score(adj_e1, e2)
-            exp2 = 1.0 - exp1
-
-            actual1 = 1.0 if score1 > score2 else (0.5 if score1 == score2 else 0.0)
-            actual2 = 1.0 - actual1
-
-            point_diff = abs(score1 - score2)
-            elo_diff_abs = abs(adj_e1 - e2)
-            mov = mov_multiplier(point_diff, elo_diff_abs) if point_diff > 0 else 1.0
-
-            progress = min(1.0, team_game_counts.get(team1, 0) / NFL_SEASON_GAMES)
-            k = k_base * (1.0 - 0.5 * progress)
-
-            elo_dict[team1] = e1 + k * mov * (actual1 - exp1)
-            elo_dict[team2] = e2 + k * mov * (actual2 - exp2)
-
-            team_game_counts[team1] = team_game_counts.get(team1, 0) + 1
-            team_game_counts[team2] = team_game_counts.get(team2, 0) + 1
+    elo1_pre_col, elo2_pre_col = [], []
+    for row in df.itertuples():
+        key = (str(pd.to_datetime(row.date).date()), row.team1, row.team2)
+        e1, e2 = pregame.get(key, (1500.0, 1500.0))
+        elo1_pre_col.append(e1)
+        elo2_pre_col.append(e2)
 
     df["elo1_pre"] = elo1_pre_col
     df["elo2_pre"] = elo2_pre_col
