@@ -527,7 +527,7 @@ def fetch_nfl_historical_games():
     df["score2"]  = df["away_score"].astype(float)
     df["date"]    = df["gameday"]
     df["neutral"] = (df["location"] == "Neutral").astype(int)
-    df = df[["date", "season", "team1", "team2", "score1", "score2", "neutral", "week", "game_type"]]
+    df = df[["date", "season", "team1", "team2", "score1", "score2", "neutral", "week", "game_type", "game_id"]]
     df = df.sort_values("date").reset_index(drop=True)
     log.info(f"nflverse games: {len(df)} rows, seasons {df['season'].min()}–{df['season'].max()}")
     return df
