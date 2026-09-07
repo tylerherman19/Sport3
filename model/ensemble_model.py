@@ -34,11 +34,6 @@ XGB_FEATURE_COLS = [
     "last5_win_rate_diff",
     "offensive_rating_diff",
     "defensive_rating_diff",
-    "pace_diff",
-    "third_down_conv_diff",
-    "red_zone_eff_diff",
-    "penalty_yards_diff",
-    "time_of_possession_diff",
     "passing_eff_diff",
     "rushing_eff_diff",
     "pass_def_eff_diff",
@@ -92,8 +87,17 @@ def build_xgb_features(df, elo_dict, game_history, efficiency_data, pythagorean_
 
     # Track last game date per team for rest calculation
     team_last_date: dict = {}
+    team_last_season: dict = {}
     # Prevent look-ahead leakage in form features.
     rolling_history = {}
+
+    # Era-rolling HFA for the elo_diff feature (matches compute_elo)
+    from model.elo_model import era_hfa
+    home_wr = {}
+    for _s, _g in df.groupby("season"):
+        _p = _g.dropna(subset=["score1", "score2"])
+        if len(_p):
+            home_wr[int(_s)] = float((_p["score1"] > _p["score2"]).mean())
 
     for _, row in df.iterrows():
         team1 = str(row["team1"])
@@ -103,7 +107,7 @@ def build_xgb_features(df, elo_dict, game_history, efficiency_data, pythagorean_
 
         elo1 = float(row.get("elo1_pre", 1500))
         elo2 = float(row.get("elo2_pre", 1500))
-        hfa = 65.0 if not neutral else 0.0
+        hfa = era_hfa(home_wr, int(row.get("season", 2024)), default=48.0) if not neutral else 0.0
         elo_diff = (elo1 + hfa) - elo2
 
         pyth1 = pythagorean_data.get(team1, {}).get("pyth", 0.5)
@@ -127,13 +131,18 @@ def build_xgb_features(df, elo_dict, game_history, efficiency_data, pythagorean_
         try:
             from datetime import datetime as _dt
             gd = _dt.strptime(game_date_str[:10], "%Y-%m-%d").date()
+            season_now = int(row.get("season", 0))
             last1 = team_last_date.get(team1)
             last2 = team_last_date.get(team2)
-            rest1 = (gd - last1).days if last1 else 7
-            rest2 = (gd - last2).days if last2 else 7
+            # Reset across season boundaries: days since last season's finale is
+            # not rest advantage, it's just the offseason (external review 2026-09-06)
+            rest1 = (gd - last1).days if (last1 and team_last_season.get(team1) == season_now) else 7
+            rest2 = (gd - last2).days if (last2 and team_last_season.get(team2) == season_now) else 7
             rest_days_diff = float(rest1 - rest2)
             team_last_date[team1] = gd
             team_last_date[team2] = gd
+            team_last_season[team1] = season_now
+            team_last_season[team2] = season_now
         except (ValueError, TypeError):
             rest_days_diff = 0.0
 
@@ -164,11 +173,6 @@ def build_xgb_features(df, elo_dict, game_history, efficiency_data, pythagorean_
             lr1 - lr2,
             off1 - off2,
             def1 - def2,
-            float(adv1.get("pace", 0)) - float(adv2.get("pace", 0)),
-            float(adv1.get("third_down_pct", 0)) - float(adv2.get("third_down_pct", 0)),
-            float(adv1.get("red_zone_pct", 0)) - float(adv2.get("red_zone_pct", 0)),
-            float(adv1.get("penalty_yards", 0)) - float(adv2.get("penalty_yards", 0)),
-            float(adv1.get("time_of_possession", 0)) - float(adv2.get("time_of_possession", 0)),
             pass1 - pass2,
             rush1 - rush2,
             pdef1 - pdef2,
@@ -231,7 +235,7 @@ def train_xgboost(X, y):
 
 
 def predict_xgboost(matchups, model, scaler, elo_dict, game_history,
-                    efficiency_data, pythagorean_data, advanced_stats=None):
+                    efficiency_data, pythagorean_data, advanced_stats=None, hfa_pts=48.0):
     """Predict XGBoost probabilities for a list of matchups."""
     if model is None or not HAS_XGB:
         return [{
@@ -253,7 +257,7 @@ def predict_xgboost(matchups, model, scaler, elo_dict, game_history,
 
         elo_a = elo_dict.get(team_a, 1500.0)
         elo_b = elo_dict.get(team_b, 1500.0)
-        hfa = 65.0 if (is_home and not neutral) else 0.0
+        hfa = hfa_pts if (is_home and not neutral) else 0.0
         elo_diff = (elo_a + hfa) - elo_b
 
         pyth_a = pythagorean_data.get(team_a, {}).get("pyth", 0.5)
@@ -292,11 +296,6 @@ def predict_xgboost(matchups, model, scaler, elo_dict, game_history,
             lr_a - lr_b,
             off_a - off_b,
             def_a - def_b,
-            float(adv_a.get("pace", 0)) - float(adv_b.get("pace", 0)),
-            float(adv_a.get("third_down_pct", 0)) - float(adv_b.get("third_down_pct", 0)),
-            float(adv_a.get("red_zone_pct", 0)) - float(adv_b.get("red_zone_pct", 0)),
-            float(adv_a.get("penalty_yards", 0)) - float(adv_b.get("penalty_yards", 0)),
-            float(adv_a.get("time_of_possession", 0)) - float(adv_b.get("time_of_possession", 0)),
             pass_a - pass_b,
             rush_a - rush_b,
             pdef_a - pdef_b,
