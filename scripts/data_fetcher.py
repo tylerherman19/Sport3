@@ -53,8 +53,8 @@ NFLVERSE_CACHE_DIR.mkdir(exist_ok=True)
 # Permitted endpoints: /v1/games, /v1/players, /v1/teams
 # Blocked (do not call): /v1/stats, /v1/injuries
 BDL_BASE    = "https://api.balldontlie.io/v1"
-BDL_API_KEY = "3f8c3073-796d-4226-a8dc-4784afb14287"
-_BDL_HEADERS = {"Authorization": BDL_API_KEY}
+BDL_API_KEY = os.environ.get("BALLDONTLIE_API_KEY", "")
+_BDL_HEADERS = {"Authorization": BDL_API_KEY} if BDL_API_KEY else {}
 
 # Mapping from balldontlie team abbreviation → internal abbreviation
 _BDL_NBA_ABBREV = {
