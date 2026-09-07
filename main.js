@@ -27,7 +27,9 @@ const state = {
   sortDir: 'desc',
   gameFilter: 'live', // 'upcoming' | 'live' | 'completed'
   weights: { logistic: 0.30, xgboost: 0.25, elo: 0.20, pyth: 0.15, eff: 0.10 },
-  // Note: weights are overwritten from localStorage below if saved values exist
+  // Fallback-only weights: the backend's ensemble_prob is the displayed headline
+  // unless the user moves a weight slider this session (weightTouched).
+  weightTouched: false,
   params: { k: 20, hfa: 65, mov: 1.0, form: 0.30, sos: 0.5, h2h: 0.5, to: 1.0, rt: 1.0, lambda: 0.10 },
   gameOverrides: {}, // { [game_id]: { homeBoost, awayBoost, hfaMult, momentumBoost, restFactor } }
   kalshiData: null,    // cached Kalshi market list (shared; re-matched per league)
@@ -40,11 +42,8 @@ const state = {
   },
 };
 
-/* ── Load persisted weights ───────────────────────────────────── */
-try {
-  const _sw = localStorage.getItem('sport3_weights');
-  if (_sw) Object.assign(state.weights, JSON.parse(_sw));
-} catch {}
+/* Per-browser weight persistence and auto-nudging removed (external quant
+   review, 2026-09-06): the backend model owns the ensemble now. */
 
 /* ── Chart instances ──────────────────────────────────────────── */
 let calibrationChart = null;
@@ -190,6 +189,12 @@ function normalizePredictionPayload(p) {
 }
 
 function ensembleFromProbs(probs, weights) {
+  // The backend's ensemble_prob IS the model (walk-forward-verified QB-adjusted
+  // ELO). Browser-side blending is only a fallback for payloads without a
+  // backend probability, or after the user manually moves the weight sliders.
+  if (!state.weightTouched && probs && typeof probs.ensemble_prob === 'number' && probs.ensemble_prob > 0) {
+    return probs.ensemble_prob;
+  }
   const w = { ...weights };
   // If XGBoost unavailable, redistribute its weight proportionally to remaining models
   // (previously fell back to logistic_prob, giving logistic double weight)
@@ -1634,7 +1639,7 @@ function recalcGameCard(gameId) {
   const adjEloProb = clamp(1 / (1 + Math.pow(10, (adjAwayElo - adjHomeElo) / 400)), 0.01, 0.99);
 
   const p = game.predictions || {};
-  const modifiedProbs = { ...p, elo_prob: adjEloProb };
+  const modifiedProbs = { ...p, elo_prob: adjEloProb, ensemble_prob: null }; // null: force blend for the what-if sliders
   const newEns = ensembleFromProbs(modifiedProbs, state.weights);
   const newAway = 1 - newEns;
 
@@ -1791,10 +1796,10 @@ bindSlider('sl-rt', 'val-rt', 'rt', state.params, null, 1);
 bindSlider('sl-lambda', 'val-lambda', 'lambda', state.params, null, 2);
 
 function saveWeights() {
-  try { localStorage.setItem('sport3_weights', JSON.stringify(state.weights)); } catch {}
+  // Session-only: weights are not persisted; the backend model owns the headline.
 }
 
-function onWeightChange() { updateWeightTotal(); saveWeights(); }
+function onWeightChange() { state.weightTouched = true; updateWeightTotal(); saveWeights(); }
 
 bindSlider('sl-w-log',  'val-w-log',  'logistic', state.weights, onWeightChange, 2);
 bindSlider('sl-w-xgb',  'val-w-xgb',  'xgboost',  state.weights, onWeightChange, 2);
@@ -1833,15 +1838,7 @@ syncWeightSliders();
     const key = `sport3_log_${league}`;
     let entries = [];
     try { entries = JSON.parse(localStorage.getItem(key) || '[]'); } catch {}
-    const resolved = entries.filter(e => e.actual_winner != null);
-    if (resolved.length < 50) {
-      btn.textContent = `Need 50+ resolved games (have ${resolved.length}) — check back later`;
-      btn.disabled = true;
-      setTimeout(() => { btn.textContent = 'Apply auto-learned weights'; btn.disabled = false; }, 3500);
-      return;
-    }
-    adjustWeightsFromLog(league);
-    btn.textContent = 'Weights updated!';
+    btn.textContent = 'Weights come from the server model now';
     setTimeout(() => { btn.textContent = 'Apply auto-learned weights'; }, 2000);
   });
 })();
@@ -2646,60 +2643,12 @@ async function resolveActualWinners(league) {
   }
 
   try { localStorage.setItem(key, JSON.stringify(entries)); } catch {}
-  adjustWeightsFromLog(league);
 }
 
 // ��─ Weight feedback loop ──────────────────────────────────────────
 // After each batch of resolved games, nudge sub-model weights toward
 // whichever models have been most accurate recently (last 20 games).
 // Adjustments are intentionally tiny (±0.02 max per call).
-function adjustWeightsFromLog(league) {
-  const key = `sport3_log_${league}`;
-  let entries = [];
-  try { entries = JSON.parse(localStorage.getItem(key) || '[]'); } catch { return; }
-
-  const resolved = entries.filter(e => e.actual_winner != null);
-  if (resolved.length < 50) return; // need enough data before nudging (Issue 6 fix: 10 → 50)
-
-  // Use the most recent 50 resolved games (Issue 6 fix: 20 → 50 for statistical stability)
-  const recent = resolved.slice(-50);
-
-  // Map log pick fields to ensemble weight keys.
-  // bayes_pick removed — the Bayesian model is not part of the ensemble
-  // weight set (logistic/xgboost/elo/pyth/eff), so feeding its accuracy back
-  // into the xgboost weight slot was incorrect cross-model contamination.
-  const modelMap = [
-    { pickKey: 'elo_pick',  weightKey: 'elo'      },
-    { pickKey: 'lr_pick',   weightKey: 'logistic' },
-    { pickKey: 'pyth_pick', weightKey: 'pyth'     },
-    { pickKey: 'eff_pick',  weightKey: 'eff'      },
-  ];
-
-  // Compute accuracy per model
-  const accuracies = modelMap.map(({ pickKey, weightKey }) => {
-    const valid = recent.filter(e => e[pickKey] != null);
-    if (!valid.length) return { weightKey, acc: 0.5 };
-    const correct = valid.filter(e => e[pickKey] === e.actual_winner).length;
-    return { weightKey, acc: correct / valid.length };
-  });
-
-  const avgAcc = accuracies.reduce((s, m) => s + m.acc, 0) / accuracies.length;
-
-  // Nudge weights: better-than-average models gain, worse ones lose
-  // Issue 6 fix: reduced delta cap ±0.02→±0.01 and sensitivity 0.1→0.05 to avoid overcorrecting
-  accuracies.forEach(({ weightKey, acc }) => {
-    const delta = Math.max(-0.01, Math.min(0.01, (acc - avgAcc) * 0.05));
-    state.weights[weightKey] = Math.max(0.01, state.weights[weightKey] + delta);
-  });
-
-  // Re-normalise so weights sum to 1.0
-  const total = Object.values(state.weights).reduce((s, v) => s + v, 0);
-  for (const k of Object.keys(state.weights)) state.weights[k] /= total;
-
-  saveWeights();
-  syncWeightSliders();
-}
-
 async function renderAccuracyTab() {
   const container = $('tab-accuracy');
   if (!container) return;
