@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sport3 - the field</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;800&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --paper:#FBFBF7; --ink:#1A1A16; --muted:#6B6B60; --faint:#E5E4DA;
+  --green:#2F5E33; /* the only accent: field paint */
+}
+*{margin:0;padding:0;box-sizing:border-box;border-radius:0!important}
+body{background:var(--paper);color:var(--ink);font-family:"Archivo",sans-serif;font-size:15px;line-height:20px;font-variant-numeric:tabular-nums}
+
+/* end zones */
+.ez{background:var(--green);color:#fff;padding:28px 20px;text-align:center}
+.ez h1{font-size:clamp(40px,11vw,72px);font-weight:800;letter-spacing:.18em;text-transform:uppercase;line-height:1}
+.ez p{font-size:12px;letter-spacing:.22em;text-transform:uppercase;margin-top:8px;opacity:.85}
+.ez.bottom{padding:20px;font-size:12px;letter-spacing:.06em;line-height:18em,1.5}
+
+/* the field: margins carry yard numbers */
+.field{position:relative;max-width:760px;margin:0 auto;padding:0 44px;
+  background-image:repeating-linear-gradient(to bottom, transparent 0 79px, var(--faint) 79px 80px);
+}
+.hash{position:absolute;top:0;bottom:0;width:8px;
+  background-image:repeating-linear-gradient(to bottom, var(--faint) 0 1px, transparent 1px 40px);}
+.hash.l{left:28px}.hash.r{right:28px}
+.yardnums{position:absolute;left:0;top:0;bottom:0;width:24px;font-size:10px;font-weight:600;color:var(--muted);
+  display:flex;flex-direction:column;justify-content:space-between;padding:120px 0;text-align:center}
+.yardnums.r{left:auto;right:0}
+
+.quarter{padding:36px 0 8px}
+.qhead{display:flex;align-items:baseline;gap:12px;border-bottom:2px solid var(--ink);padding-bottom:8px;margin-bottom:8px}
+.qhead .q{font-size:11px;font-weight:800;letter-spacing:.2em;color:var(--green)}
+.qhead h2{font-size:22px;font-weight:800;text-transform:uppercase;letter-spacing:.04em}
+.qhead span{margin-left:auto;font-size:11px;color:var(--muted);font-weight:600}
+
+.lede{padding:20px 0;font-size:17px;line-height:26px}
+.lede b{color:var(--green)}
+
+/* each game = a play drawn on a mini field */
+.game{padding:14px 0;border-bottom:1px solid var(--faint)}
+.gtop{display:flex;justify-content:space-between;align-items:baseline;cursor:pointer;background:none;border:none;width:100%;font:inherit;color:inherit;padding:0;text-align:left}
+.gtop .mu{font-weight:600;font-size:16px}
+.gtop .mu b{font-weight:800}
+.gtop .pk{font-size:13px;font-weight:800;color:var(--green);white-space:nowrap;margin-left:12px}
+.gmeta{font-size:12px;color:var(--muted);margin-top:2px}
+.minifield{position:relative;height:18px;margin-top:8px;
+  background-image:repeating-linear-gradient(to right, var(--faint) 0 1px, transparent 1px 10%);}
+.minifield::before{content:"";position:absolute;left:0;right:0;top:8px;height:2px;background:var(--ink)}
+.minifield .ball{position:absolute;top:3px;width:12px;height:12px;background:var(--green);transform:translateX(-50%)}
+.minifield .five{position:absolute;top:13px;font-size:9px;color:var(--muted);transform:translateX(-50%)}
+.gdet{display:none;font-size:13px;line-height:20px;padding:8px 0}
+.game.open .gdet{display:block}
+.gdet p{padding:5px 0;border-top:1px solid var(--faint)}
+.gdet .models{color:var(--muted);font-size:12px}
+.gdet .models .ship{color:var(--green);font-weight:700}
+
+/* table (rankings) */
+.rtab{width:100%;border-collapse:collapse;font-size:12px}
+.rtab th{text-align:left;font-size:10px;font-weight:800;letter-spacing:.14em;color:var(--muted);text-transform:uppercase;padding:4px 8px 4px 0;border-bottom:2px solid var(--ink)}
+.rtab td{padding:5px 8px 5px 0;border-bottom:1px solid var(--faint);white-space:nowrap}
+.rtab th.n,.rtab td.n{text-align:right}
+.rtab .po{color:var(--green);font-weight:700}
+
+/* injuries */
+.iteam{padding:10px 0;border-bottom:1px solid var(--faint);font-size:12px;line-height:17px;color:var(--muted)}
+.iteam h4{font-size:13px;color:var(--ink);display:flex;justify-content:space-between;margin-bottom:3px}
+.iteam b{color:var(--ink)}
+.iteam .out{color:var(--green);font-weight:800}
+
+/* ledger */
+.ledge{display:grid;grid-template-columns:1fr 1fr;gap:0 24px}
+.lrow{padding:10px 0;border-bottom:1px solid var(--faint)}
+.lrow .n{font-size:28px;font-weight:800;display:block;line-height:32px}
+.lrow .n.g{color:var(--green)}
+.lrow .l{font-size:11px;font-weight:600;letter-spacing:.08em;color:var(--muted);text-transform:uppercase}
+
+/* toy */
+.toy select,.toy input[type=number]{font:inherit;padding:8px;border:1px solid var(--ink);background:var(--paper);width:100%;font-size:15px}
+.toy label{font-size:11px;font-weight:800;letter-spacing:.1em;color:var(--muted);display:block;margin:12px 0 4px;text-transform:uppercase}
+.toyrow{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.toy button{margin-top:16px;width:100%;padding:12px;font:inherit;font-weight:800;background:var(--green);color:#fff;border:none;cursor:pointer;font-size:15px;letter-spacing:.04em}
+.toy button:hover{background:#265428}
+.toyres{margin-top:16px;display:none}
+.toyres .v{font-size:26px;font-weight:800;line-height:32px}
+.toyres .v span{color:var(--green)}
+.toyres .w{font-size:13px;color:var(--muted);margin-top:8px;line-height:20px}
+.note{font-size:11px;color:var(--muted);padding:8px 0 16px;line-height:16px}
+</style>
+</head>
+<body>
+<div class="ez"><h1>Sport3</h1><p id="ez-sub">Week 1 · 2026 Season</p></div>
+<div class="field">
+  <div class="hash l"></div><div class="hash r"></div>
+  <div class="yardnums" id="yn-l"></div><div class="yardnums r" id="yn-r"></div>
+
+  <p class="lede" id="lede" style="padding-top:28px"></p>
+
+  <section class="quarter">
+    <div class="qhead"><span class="q">1ST QUARTER</span><h2>The Slate</h2><span id="wk-note"></span></div>
+    <div id="games"></div>
+  </section>
+
+  <section class="quarter">
+    <div class="qhead"><span class="q">2ND QUARTER</span><h2>The Table</h2><span>ALL 32</span></div>
+    <table class="rtab" id="rtab"></table>
+  </section>
+
+  <section class="quarter">
+    <div class="qhead"><span class="q">HALFTIME</span><h2>The Numbers</h2><span>MODEL VS VEGAS</span></div>
+    <div class="ledge" id="ledge"></div>
+    <p class="note" id="l-note"></p>
+  </section>
+
+  <section class="quarter">
+    <div class="qhead"><span class="q">3RD QUARTER</span><h2>The Wounded</h2><span id="inj-count"></span></div>
+    <div id="inj"></div>
+  </section>
+
+  <section class="quarter" style="padding-bottom:32px">
+    <div class="qhead"><span class="q">4TH QUARTER</span><h2>Practice Squad</h2><span>ANY MATCHUP</span></div>
+    <form class="toy" id="toy">
+      <div class="toyrow">
+        <div><label for="th">Home</label><select id="th"></select></div>
+        <div><label for="ta">Away</label><select id="ta"></select></div>
+      </div>
+      <div class="toyrow">
+        <div><label for="rh">Home rest</label><input id="rh" type="number" min="3" max="14" value="7"></div>
+        <div><label for="ra">Away rest</label><input id="ra" type="number" min="3" max="14" value="7"></div>
+      </div>
+      <label><input type="checkbox" id="nt" style="width:16px;height:16px;vertical-align:-3px"> Neutral site</label>
+      <button type="submit">Run the play</button>
+      <div class="toyres" id="toyres"></div>
+    </form>
+  </section>
+</div>
+<div class="ez bottom">Updated nightly by a robot. Not affiliated with the National Football League, which does not return calls. Not betting advice. Barely advice at all.</div>
+<script>
+/* shared data layer for lab previews */
+const TZ="America/Chicago";
+const DATA_BASE="/Sport3/data/";
+async function getJSON(f){try{const r=await fetch(DATA_BASE+f+"?t="+Date.now());return r.ok?await r.json():null}catch{return null}}
+async function loadAll(){
+  const [pred,lb,metrics,inj]=await Promise.all([
+    getJSON("nfl_predictions.json").then(d=>d||getJSON("predictions.json")),
+    getJSON("nfl_leaderboard.json").then(d=>d||getJSON("leaderboard.json")),
+    getJSON("model_metrics.json"),
+    getJSON("nfl_injuries.json")]);
+  return {pred,lb,metrics,inj:inj?.injuries||[]};
+}
+const pct1=p=>p==null?"—":(p*100).toFixed(1)+"%";
+const pct0=p=>p==null?"—":Math.round(p*100)+"%";
+const fmtInt=n=>n==null?"—":Number(n).toLocaleString("en-US");
+const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const signed=(n,d=1)=>n==null?"—":(n>0?"+":"")+n.toFixed(d);
+function fav(g){const p=g.predictions?.ensemble_prob;if(p==null)return null;return p>=.5?{team:g.home_team,name:g.home_name,p}:{team:g.away_team,name:g.away_name,p:1-p}}
+function kickoff(g){const d=new Date(g.game_time);return{day:d.toLocaleDateString("en-US",{timeZone:TZ,weekday:"short"}).toUpperCase(),time:d.toLocaleTimeString("en-US",{timeZone:TZ,hour:"numeric",minute:"2-digit"}).replace(" ","").toLowerCase()}}
+function gamesFor(pred,w){return (pred?.games||[]).filter(g=>g.week===w).sort((a,b)=>new Date(a.game_time)-new Date(b.game_time))}
+
+const NFL_COORDS={ARI:[33.5276,-112.2626],ATL:[33.7553,-84.4006],BAL:[39.2780,-76.6227],BUF:[42.7738,-78.7870],CAR:[35.2258,-80.8528],CHI:[41.8623,-87.6167],CIN:[39.0954,-84.5160],CLE:[41.5061,-81.6995],DAL:[32.7473,-97.0945],DEN:[39.7439,-105.0201],DET:[42.3400,-83.0456],GB:[44.5013,-88.0622],HOU:[29.6847,-95.4107],IND:[39.7601,-86.1639],JAX:[30.3240,-81.6373],KC:[39.0489,-94.4839],LAC:[33.9534,-118.3392],LAR:[33.9534,-118.3392],LV:[36.0909,-115.1833],MIA:[25.9580,-80.2389],MIN:[44.9738,-93.2581],NE:[42.0909,-71.2643],NO:[29.9509,-90.0814],NYG:[40.8128,-74.0742],NYJ:[40.8128,-74.0742],PHI:[39.9008,-75.1675],PIT:[40.4468,-80.0158],SEA:[47.5952,-122.3316],SF:[37.4030,-121.9700],TB:[27.9759,-82.5033],TEN:[36.1665,-86.7713],WAS:[38.9076,-76.8645]};
+const hav=(a,b)=>{const R=3958.8,r=Math.PI/180,dL=(b[0]-a[0])*r,dO=(b[1]-a[1])*r,h=Math.sin(dL/2)**2+Math.cos(a[0]*r)*Math.cos(b[0]*r)*Math.sin(dO/2)**2;return 2*R*Math.asin(Math.sqrt(h))};
+const eP=d=>1/(1+Math.pow(10,-d/400));
+let WEEK=null,PRED=null;
+
+// yard numbers down both margins, like a real field: 10..50..10
+(function(){
+  const seq=[];for(let y=10;y<=50;y+=10)seq.push(y);for(let y=40;y>=10;y-=10)seq.push(y);
+  const html=seq.map(y=>`<span>${y}</span>`).join("");
+  document.getElementById("yn-l").innerHTML=html;
+  document.getElementById("yn-r").innerHTML=html;
+})();
+
+function renderGames(){
+  const wrap=document.getElementById("games");wrap.innerHTML="";
+  for(const g of gamesFor(PRED,WEEK)){
+    const f=fav(g),k=kickoff(g),mc=g.monte_carlo||{};
+    const box=document.createElement("div");box.className="game";
+    box.innerHTML=`
+      <button class="gtop" type="button">
+        <span class="mu">${esc(g.away_name)} at <b>${esc(g.home_name)}</b></span>
+        <span class="pk">${f?esc(f.team)+" "+pct1(f.p):"no line"}</span>
+      </button>
+      <div class="gmeta">${k.day} ${k.time} CT${g.neutral?" · neutral":""} · ${esc((g.player_form?.away_qb||"")+" vs "+(g.player_form?.home_qb||""))} · by ${Math.abs(mc.exp_margin??0).toFixed(1)}</div>
+      <div class="minifield">
+        <span class="five" style="left:10%">10</span><span class="five" style="left:30%">30</span><span class="five" style="left:50%">50</span><span class="five" style="left:70%">30</span><span class="five" style="left:90%">10</span>
+        <span class="ball" style="left:${f?f.p*100:50}%"></span>
+      </div>
+      <div class="gdet">
+        <p><b>Elo</b> ${esc(g.home_team)} ${Math.round(g.elo?.home??0)} · ${esc(g.away_team)} ${Math.round(g.elo?.away??0)} · rest ${g.adjustments?.rest_home??"—"}/${g.adjustments?.rest_away??"—"}${g.adjustments?.travel_dist_miles?" · "+esc(g.away_team)+" travels "+fmtInt(Math.round(g.adjustments.travel_dist_miles))+" mi":""}</p>
+        ${g.explanation?`<p>${esc(g.explanation).replace(/—/g,"-")}</p>`:""}
+        <p class="models">${["ensemble_prob|MODEL|1","elo_prob|ELO","logistic_prob|LOG","xgb_prob|XGB","pyth_prob|PYTH","eff_prob|EFF","bayesian_prob|BAY"].map(s=>{const[k,l,sh]=s.split("|");const v=g.predictions?.[k];return v!=null?`<span class="${sh?"ship":""}">${l} ${pct0(v)}</span>`:""}).filter(Boolean).join(" · ")}</p>
+      </div>`;
+    box.querySelector(".gtop").addEventListener("click",()=>box.classList.toggle("open"));
+    wrap.appendChild(box);
+  }
+  document.getElementById("wk-note").textContent="WEEK "+WEEK+" · ALL TIMES CT";
+}
+
+function renderTable(lb){
+  const teams=(lb?.teams||[]).slice().sort((a,b)=>b.elo-a.elo);
+  document.getElementById("rtab").innerHTML=
+    `<tr><th>#</th><th>Team</th><th class="n">Elo</th><th class="n">Playoffs</th><th class="n">Title</th><th class="n">Inj</th></tr>`+
+    teams.map((t,i)=>`<tr><td>${i+1}</td><td><b>${esc(t.team)}</b></td><td class="n">${Math.round(t.elo)}</td><td class="n po">${pct0(t.playoff_prob)}</td><td class="n">${pct0(t.sb_prob)}</td><td class="n">${t.injury_elo_penalty?"-"+t.injury_elo_penalty.toFixed(0):"0"}</td></tr>`).join("");
+}
+
+function renderLedge(m){
+  if(!m)return;
+  document.getElementById("ledge").innerHTML=[
+    {n:pct1(m.accuracy),l:"Model · "+fmtInt(m.n_scored_games)+" games"},
+    {n:pct1(m.vegas_benchmark?.accuracy),l:"Vegas",g:1},
+    {n:m.log_loss?.toFixed(3),l:"Log loss"},
+    {n:m.auc?.toFixed(3),l:"AUC"},
+  ].map(s=>`<div class="lrow"><span class="n ${s.g?"g":""}">${s.n}</span><span class="l">${s.l}</span></div>`).join("");
+  const gap=((m.vegas_benchmark?.accuracy-m.accuracy)*100).toFixed(1);
+  document.getElementById("l-note").textContent="Walk-forward backtest, 2017-2025, pre-game information only, "+fmtInt(m.n_training_games)+" training games. The model trails Vegas by "+gap+" points over "+fmtInt(m.n_scored_games)+" scored games. That gap is the whole story: the model is good, Vegas is better, bet nothing.";
+}
+
+function renderInj(list){
+  const R={"Out":0,"Injured Reserve":1,"Suspension":2,"Questionable":3},S={"Out":"OUT","Injured Reserve":"IR","Suspension":"SUSP","Questionable":"Q"};
+  const by={};for(const p of list){if(!p.team||!(p.status in R))continue;(by[p.team]=by[p.team]||[]).push(p)}
+  let tot=0;
+  document.getElementById("inj").innerHTML=Object.keys(by).sort().map(t=>{
+    const ps=by[t].sort((a,b)=>(R[a.status]-R[b.status])||((b.value_tier==="starter")-(a.value_tier==="starter")));
+    tot+=ps.length;
+    return `<div class="iteam"><h4>${esc(t)}<span>${ps.length}</span></h4>${ps.slice(0,10).map(p=>`<span class="${p.status==="Out"?"out":""}">${S[p.status]}</span> ${p.value_tier==="starter"?`<b>${esc(p.player)}</b>`:esc(p.player)} (${esc(p.position)})`).join(" · ")}${ps.length>10?` · +${ps.length-10} more Q`:""}</div>`;
+  }).join("");
+  document.getElementById("inj-count").textContent=tot+" NOT ACTIVE";
+}
+
+function setupToy(lb){
+  const teams=(lb?.teams||[]).slice().sort((a,b)=>a.team.localeCompare(b.team));
+  for(const id of["th","ta"])document.getElementById(id).innerHTML=teams.map(t=>`<option value="${t.team}">${esc(t.team_name)}</option>`).join("");
+  document.getElementById("th").value="MIN";document.getElementById("ta").value="CHI";
+  document.getElementById("toy").addEventListener("submit",e=>{
+    e.preventDefault();
+    const h=document.getElementById("th").value,a=document.getElementById("ta").value;if(h===a)return;
+    const nt=document.getElementById("nt").checked,rh=+document.getElementById("rh").value||7,ra=+document.getElementById("ra").value||7;
+    const hd=teams.find(t=>t.team===h),ad=teams.find(t=>t.team===a);
+    const hfa=nt?0:65,hE=hd?.elo??1500,aE=ad?.elo??1500;
+    const el=eP(hE+hfa-aE),lg=eP(hE+hfa+(rh-ra)*1.5-aE);
+    const py=eP(((hd?.pyth??.5)-(ad?.pyth??.5))*400+hfa),ef=eP(((hd?.net_eff??0)-(ad?.net_eff??0))*200+hfa);
+    const xw=.25,rem=.75,ens=lg*(.30+xw*.30/rem)+el*(.20+xw*.20/rem)+py*(.15+xw*.15/rem)+ef*(.10+xw*.10/rem);
+    const w=ens>=.5?h:a,wp=Math.max(ens,1-ens),wn=ens>=.5?hd.team_name:ad.team_name;
+    const mi=NFL_COORDS[h]&&NFL_COORDS[a]?Math.round(hav(NFL_COORDS[a],NFL_COORDS[h])):0;
+    const r=document.getElementById("toyres");r.style.display="block";
+    r.innerHTML=`<p class="v"><span>${esc(w)}</span> ${pct1(wp)}</p><p class="w">${esc(wn)}, ${wp>.7?"a strong favorite":wp>.6?"a clear favorite":"barely favored"}. Elo ${Math.round(hE)} vs ${Math.round(aE)}${nt?", neutral site":", home field worth 65 Elo"}. ${mi>500?esc(a)+" travels "+fmtInt(mi)+" miles.":"Short trip."} Sub-calls: ELO ${pct0(el)} · LOG ${pct0(lg)} · PYTH ${pct0(py)} · EFF ${pct0(ef)}.</p>`;
+  });
+}
+
+(async()=>{
+  const {pred,lb,metrics,inj}=await loadAll();
+  if(!pred){document.getElementById("lede").textContent="The data robot has not published tonight's file.";return}
+  PRED=pred;WEEK=pred.week??1;
+  document.getElementById("ez-sub").textContent="Week "+WEEK+" · "+pred.season+" Season";
+  const gs=gamesFor(pred,WEEK);
+  let fv=null,tg=null;
+  for(const g of gs){const p=g.predictions?.ensemble_prob;if(p==null)continue;const t=Math.max(p,1-p);if(!fv||t>fv.t)fv={g,t};if(!tg||t<tg.t)tg={g,t}}
+  document.getElementById("lede").innerHTML=`${gs.length} games this week. <b>${esc(fv.g.predictions.ensemble_prob>=.5?fv.g.home_team:fv.g.away_team)}</b> has the ball at the ${fv.t>=.5?"opponent's "+Math.round((1-fv.t)*100):"own "+Math.round(fv.t*100)} (${pct1(fv.t)}). <b>${esc(tg.g.away_team)} at ${esc(tg.g.home_team)}</b> is midfield, ${pct1(tg.t)}. Every game below carries its own marker.`;
+  renderGames();renderTable(lb);renderLedge(metrics);renderInj(inj);setupToy(lb);
+})();
+</script>
+</body>
+</html>
