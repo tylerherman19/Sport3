@@ -7,7 +7,7 @@
 
 /* ── State ────────────────────────────────────────────────────── */
 const state = {
-  league: 'nba',
+  league: 'nfl',
   // NFL data
   predictions: null,
   eloRatings: null,
