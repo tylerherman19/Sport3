@@ -1,399 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sports Prediction Dashboard</title>
-  <link rel="stylesheet" href="style.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet" />
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sport3 — A sports page for games that have not happened yet</title>
+<meta name="description" content="NFL predictions from a walk-forward-tested model. Sixteen games a week, ranked by how sure the model is." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="style.css" />
 </head>
-<body data-league="nfl">
+<body>
 
-<!-- ═══════════════════════════════ HEADER ═══════════════════════════════ -->
-<header>
-  <div class="container header-inner">
-    <div class="logo">
-      <div class="logo-icon" id="header-icon">🏈</div>
-      <div>
-        <h1 id="header-title">NFL Prediction Dashboard</h1>
-        <p>12-Model Ensemble • Live Data • Monte Carlo Simulations</p>
-      </div>
-    </div>
-    <div class="header-meta">
-      <div class="league-switcher">
-        <button class="league-btn active" data-league="nfl">🏈 NFL</button>
-        <button class="league-btn" data-league="nba">🏀 NBA</button>
-      </div>
-      <div><span class="status-dot"></span>Auto-updated daily</div>
-      <div style="display:flex;align-items:center;gap:0.5rem;">
-        <span id="last-updated" class="muted">Loading...</span>
-        <button id="btn-refresh" onclick="forceRefresh()" title="Force data reload" style="background:none;border:1px solid var(--border);border-radius:4px;color:var(--text-secondary);cursor:pointer;font-size:0.75rem;padding:2px 7px;line-height:1.4;">↻ Refresh</button>
-      </div>
-      <div id="season-week" class="muted"></div>
-    </div>
+<header class="masthead">
+  <div class="mast-strip">
+    <span id="mast-week">2026 NFL SEASON</span>
+    <span id="mast-updated"></span>
   </div>
+  <div class="mast-nameplate">
+    <h1>Sport3<span class="accent">.</span></h1>
+    <p class="mast-dek">A sports page for games that have not happened yet.</p>
+  </div>
+  <nav class="mast-index" aria-label="Sections">
+    <a href="#board">The Board</a>
+    <a href="#ledger">The Ledger</a>
+    <a href="#rankings">Power Rankings</a>
+    <a href="#injuries">Injury Report</a>
+    <a href="#toy">The Toy</a>
+  </nav>
 </header>
 
-<!-- ════════════════════════════════ NAV ═════════════════════════════════ -->
-<nav>
-  <div class="container">
-    <div class="nav-tabs">
-      <button class="nav-tab active" data-tab="games" id="tab-btn-games">This Week's Games</button>
-      <button class="nav-tab" data-tab="controls" id="tab-btn-controls">Model Controls</button>
-      <button class="nav-tab" data-tab="predictor" id="tab-btn-predictor">Matchup Predictor</button>
-      <button class="nav-tab" data-tab="leaderboard" id="tab-btn-leaderboard">ELO Leaderboard</button>
-      <button class="nav-tab" data-tab="performance" id="tab-btn-performance">Model Performance</button>
-      <button class="nav-tab" data-tab="accuracy" id="tab-btn-accuracy">Prediction Log</button>
-      <!-- SANDBOXED: Kalshi tab disabled — see sandbox/kalshi/
-      <button class="nav-tab" data-tab="kalshi" id="tab-btn-kalshi">Kalshi Odds</button>
-      -->
-    </div>
-  </div>
-</nav>
-
-<!-- ══════════════════════════ MAIN ══════════════════════════════ -->
 <main>
-  <div class="container">
 
-    <!-- ── Section 1: This Week's Games ── -->
-    <section id="tab-games" class="section active">
-      <div class="section-header">
-        <div class="section-title">
-          <h2 id="games-section-title">This Week's Games</h2>
-          <span class="section-badge" id="games-count-badge">0 games</span>
-        </div>
+  <p class="lede" id="lede"></p>
+
+  <section id="board" aria-labelledby="board-title">
+    <header class="section-head">
+      <h2 id="board-title">The Board</h2>
+      <p class="section-dek" id="board-dek">Every game, kickoff to kickoff. All times Central. Tap a game for the full scouting line.</p>
+      <div class="week-line" id="week-line" role="tablist" aria-label="Week"></div>
+    </header>
+    <div id="games"></div>
+  </section>
+
+  <section id="ledger" aria-labelledby="ledger-title">
+    <header class="section-head">
+      <h2 id="ledger-title">The Ledger</h2>
+      <p class="section-dek">Nine years of walk-forward backtests, scored before kickoff with no peeking. Vegas is still better. The size of &ldquo;still&rdquo; is the whole point of this section.</p>
+    </header>
+    <div class="stat-row" id="stat-row"></div>
+    <div class="ledger-cols">
+      <div>
+        <h3>By the season</h3>
+        <table class="agate" id="year-table"></table>
       </div>
-      <div id="offseason-banner"></div>
-      <div class="game-filter-pills" id="game-filter-pills">
-        <button class="filter-pill" data-filter="upcoming">Upcoming</button>
-        <button class="filter-pill active" data-filter="live">Live</button>
-        <button class="filter-pill" data-filter="completed">Completed</button>
+      <div>
+        <h3>When it says 70%, does it win 70%?</h3>
+        <table class="agate" id="cal-table"></table>
       </div>
-      <div id="games-grid" class="games-grid">
-        <div class="loading"><div class="spinner"></div><span>Loading predictions...</span></div>
+    </div>
+    <p class="fine-print" id="ledger-foot"></p>
+  </section>
+
+  <section id="rankings" aria-labelledby="rankings-title">
+    <header class="section-head">
+      <h2 id="rankings-title">Power Rankings</h2>
+      <p class="section-dek">All 32 teams by QB-adjusted Elo. Click a column head to sort. The band is the model&rsquo;s honest uncertainty: it expects the true rating to land inside it.</p>
+    </header>
+    <table class="agate rankings" id="rank-table"></table>
+  </section>
+
+  <section id="injuries" aria-labelledby="injuries-title">
+    <header class="section-head">
+      <h2 id="injuries-title">Injury Report</h2>
+      <p class="section-dek" id="inj-dek">Everyone who is not Active. Starters first, alphabet by team.</p>
+    </header>
+    <div class="inj-grid" id="inj-grid"></div>
+  </section>
+
+  <section id="toy" aria-labelledby="toy-title">
+    <header class="section-head">
+      <h2 id="toy-title">The Toy</h2>
+      <p class="section-dek">Pick two teams. The model does the rest. Literally: rest days move the number, and so does the plane ride.</p>
+    </header>
+    <form id="toy-form" class="toy-form">
+      <div class="toy-field">
+        <label for="toy-home">Home</label>
+        <select id="toy-home"></select>
       </div>
-    </section>
-
-    <!-- ── Section 2: Model Controls ── -->
-    <section id="tab-controls" class="section">
-      <div class="section-header">
-        <div class="section-title">
-          <h2>Model Controls</h2>
-          <span class="section-badge">Real-time</span>
-        </div>
+      <div class="toy-field">
+        <label for="toy-away">Away</label>
+        <select id="toy-away"></select>
       </div>
-      <p class="muted mb-3" style="font-size:0.8125rem;">Adjust model parameters. Changes update the Matchup Predictor live. Full model retraining runs daily via GitHub Actions.</p>
-      <div class="controls-grid">
-
-        <!-- ELO Parameters -->
-        <div class="control-card">
-          <h4>ELO Parameters</h4>
-          <div class="slider-group">
-            <div class="slider-item">
-              <div class="slider-header">
-                <span class="slider-label">K-Factor</span>
-                <span class="slider-value" id="val-k">20</span>
-              </div>
-              <input type="range" id="sl-k" min="10" max="40" step="1" value="20" />
-            </div>
-            <div class="slider-item">
-              <div class="slider-header">
-                <span class="slider-label" id="hfa-label">Home Field Advantage (ELO pts)</span>
-                <span class="slider-value" id="val-hfa">65</span>
-              </div>
-              <input type="range" id="sl-hfa" min="0" max="150" step="5" value="65" />
-            </div>
-            <div class="slider-item">
-              <div class="slider-header">
-                <span class="slider-label">MOV Multiplier Weight</span>
-                <span class="slider-value" id="val-mov">1.0</span>
-              </div>
-              <input type="range" id="sl-mov" min="0" max="2" step="0.1" value="1.0" />
-            </div>
-            <div class="slider-item">
-              <div class="slider-header">
-                <span class="slider-label">Recent Form Blend</span>
-                <span class="slider-value" id="val-form">0.30</span>
-              </div>
-              <input type="range" id="sl-form" min="0" max="1" step="0.05" value="0.30" />
-            </div>
-          </div>
-        </div>
-
-        <!-- Adjustments -->
-        <div class="control-card">
-          <h4>Game Adjustments</h4>
-          <div class="slider-group">
-            <div class="slider-item">
-              <div class="slider-header">
-                <span class="slider-label">SOS Weight</span>
-                <span class="slider-value" id="val-sos">0.50</span>
-              </div>
-              <input type="range" id="sl-sos" min="0" max="1" step="0.05" value="0.50" />
-            </div>
-            <div class="slider-item">
-              <div class="slider-header">
-                <span class="slider-label">Head-to-Head Modifier</span>
-                <span class="slider-value" id="val-h2h">0.50</span>
-              </div>
-              <input type="range" id="sl-h2h" min="0" max="1" step="0.05" value="0.50" />
-            </div>
-            <div class="slider-item">
-              <div class="slider-header">
-                <span class="slider-label">Turnover Impact</span>
-                <span class="slider-value" id="val-to">1.0</span>
-              </div>
-              <input type="range" id="sl-to" min="0" max="2" step="0.1" value="1.0" />
-            </div>
-            <div class="slider-item">
-              <div class="slider-header">
-                <span class="slider-label">Rest/Travel Scaling</span>
-                <span class="slider-value" id="val-rt">1.0</span>
-              </div>
-              <input type="range" id="sl-rt" min="0" max="2" step="0.1" value="1.0" />
-            </div>
-            <div class="slider-item">
-              <div class="slider-header">
-                <span class="slider-label">Time Decay λ</span>
-                <span class="slider-value" id="val-lambda">0.10</span>
-              </div>
-              <input type="range" id="sl-lambda" min="0.01" max="0.5" step="0.01" value="0.10" />
-            </div>
-          </div>
-        </div>
-
-        <!-- Ensemble Weights -->
-        <div class="control-card">
-          <h4>Ensemble Weights</h4>
-          <div class="slider-group">
-            <div class="slider-item">
-              <div class="slider-header">
-                <span class="slider-label">Logistic Regression</span>
-                <span class="slider-value" id="val-w-log">0.30</span>
-              </div>
-              <div class="slider-desc">Linear model trained on historical win/loss matchup data. Good baseline; fast to update.</div>
-              <input type="range" id="sl-w-log" min="0" max="1" step="0.05" value="0.30" data-weight="logistic" />
-            </div>
-            <div class="slider-item">
-              <div class="slider-header">
-                <span class="slider-label">XGBoost</span>
-                <span class="slider-value" id="val-w-xgb">0.25</span>
-              </div>
-              <div class="slider-desc">Gradient-boosted decision trees trained on 17 features (ELO, efficiency, rest days, travel distance, pace, passing/rushing splits, etc.). Learns non-linear interactions that a logistic model misses — e.g. a rested team with a big ELO edge matters more than either factor alone.</div>
-              <input type="range" id="sl-w-xgb" min="0" max="1" step="0.05" value="0.25" data-weight="xgboost" />
-            </div>
-            <div class="slider-item">
-              <div class="slider-header">
-                <span class="slider-label">ELO Model</span>
-                <span class="slider-value" id="val-w-elo">0.20</span>
-              </div>
-              <div class="slider-desc">Points-based rating updated after every result. Simple, proven, and self-correcting — a team on a hot streak earns a higher rating quickly.</div>
-              <input type="range" id="sl-w-elo" min="0" max="1" step="0.05" value="0.20" data-weight="elo" />
-            </div>
-            <div class="slider-item">
-              <div class="slider-header">
-                <span class="slider-label">Pythagorean</span>
-                <span class="slider-value" id="val-w-pyth">0.15</span>
-              </div>
-              <div class="slider-desc">Expected win rate from points scored vs. allowed (Bill James formula). Captures scoring dominance independent of actual W/L record — teams that outshoot opponents tend to be better than their record shows.</div>
-              <input type="range" id="sl-w-pyth" min="0" max="1" step="0.05" value="0.15" data-weight="pyth" />
-            </div>
-            <div class="slider-item">
-              <div class="slider-header">
-                <span class="slider-label">Efficiency</span>
-                <span class="slider-value" id="val-w-eff">0.10</span>
-              </div>
-              <div class="slider-desc">Offensive and defensive efficiency margins per 100 possessions. Pace-adjusted, so fast-paced teams aren't over-rated just for scoring volume.</div>
-              <input type="range" id="sl-w-eff" min="0" max="1" step="0.05" value="0.10" data-weight="eff" />
-            </div>
-          </div>
-          <div class="weight-total">
-            <span>Total weight</span>
-            <span id="weight-total-val" class="weight-total-val ok">1.00</span>
-          </div>
-          <div class="weight-auto-note">Weights auto-nudge after 50+ resolved games toward whichever models have been most accurate recently. Use the button below to apply that auto-learned adjustment now.</div>
-          <button class="btn-reset-weights" id="btn-reset-weights" title="Re-run the accuracy-based weight optimiser on your prediction log">Apply auto-learned weights</button>
-        </div>
-
+      <div class="toy-field toy-field-sm">
+        <label for="toy-rest-home">Home rest</label>
+        <input id="toy-rest-home" type="number" min="3" max="14" value="7" inputmode="numeric" />
       </div>
-    </section>
-
-    <!-- ── Section 3: Matchup Predictor ── -->
-    <section id="tab-predictor" class="section">
-      <div class="section-header">
-        <div class="section-title">
-          <h2>Matchup Predictor</h2>
-          <span class="section-badge">Any Teams</span>
-        </div>
+      <div class="toy-field toy-field-sm">
+        <label for="toy-rest-away">Away rest</label>
+        <input id="toy-rest-away" type="number" min="3" max="14" value="7" inputmode="numeric" />
       </div>
-      <div class="predictor-layout">
-
-        <div class="predictor-form">
-          <div class="form-group">
-            <label class="form-label" for="pred-home">Home Team</label>
-            <select id="pred-home"><option value="">Select team...</option></select>
-          </div>
-          <div class="form-group">
-            <label class="form-label" for="pred-away">Away Team</label>
-            <select id="pred-away"><option value="">Select team...</option></select>
-          </div>
-          <!-- NFL rest options -->
-          <div id="nfl-rest-options">
-            <div class="form-group">
-              <label class="form-label" for="pred-rest-home">Home Team Rest Days</label>
-              <select id="pred-rest-home">
-                <option value="4">4 days (Thu game)</option>
-                <option value="7" selected>7 days (normal)</option>
-                <option value="10">10 days</option>
-                <option value="14">14 days (bye week)</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label class="form-label" for="pred-rest-away">Away Team Rest Days</label>
-              <select id="pred-rest-away">
-                <option value="4">4 days (Thu game)</option>
-                <option value="7" selected>7 days (normal)</option>
-                <option value="10">10 days</option>
-                <option value="14">14 days (bye week)</option>
-              </select>
-            </div>
-          </div>
-          <!-- NBA rest options -->
-          <div id="nba-rest-options" style="display:none;">
-            <div class="form-group">
-              <label class="form-label" for="pred-nba-rest-home">Home Team Rest</label>
-              <select id="pred-nba-rest-home">
-                <option value="b2b">Back-to-back (0 days)</option>
-                <option value="1">1 day rest</option>
-                <option value="2" selected>2 days rest (normal)</option>
-                <option value="3">3+ days rest</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label class="form-label" for="pred-nba-rest-away">Away Team Rest</label>
-              <select id="pred-nba-rest-away">
-                <option value="b2b">Back-to-back (0 days)</option>
-                <option value="1">1 day rest</option>
-                <option value="2" selected>2 days rest (normal)</option>
-                <option value="3">3+ days rest</option>
-              </select>
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="form-label" for="pred-neutral">Venue</label>
-            <select id="pred-neutral">
-              <option value="0">Home team stadium</option>
-              <option value="1">Neutral site</option>
-            </select>
-          </div>
-          <button class="btn btn-primary" id="btn-predict">Run Prediction</button>
-        </div>
-
-        <div class="predictor-results" id="predictor-results">
-          <div class="empty-state">
-            <div class="empty-state-icon" id="predictor-empty-icon">🏈</div>
-            <h3>Select Two Teams</h3>
-            <p>Choose a home and away team, then click Run Prediction.</p>
-          </div>
-        </div>
-
+      <div class="toy-field toy-field-check">
+        <label for="toy-neutral">Neutral site</label>
+        <input id="toy-neutral" type="checkbox" />
       </div>
-    </section>
+      <button type="submit" class="toy-run">Run it</button>
+    </form>
+    <div id="toy-result" class="toy-result" hidden></div>
+  </section>
 
-    <!-- ── Section 4: ELO Leaderboard ── -->
-    <section id="tab-leaderboard" class="section">
-      <div class="section-header">
-        <div class="section-title">
-          <h2>ELO Leaderboard</h2>
-          <span class="section-badge" id="leaderboard-badge">All 32 Teams</span>
-        </div>
-        <div style="font-size:0.75rem;color:var(--text-muted);">Click column header to sort</div>
-      </div>
-      <div class="table-wrapper">
-        <table id="leaderboard-table">
-          <thead id="leaderboard-thead">
-            <tr>
-              <th data-col="rank">Rank</th>
-              <th data-col="team">Team</th>
-              <th data-col="elo" class="sorted">ELO ▲ <span class="sort-icon">▼</span></th>
-              <th data-col="band">±Band</th>
-              <th data-col="record">Record</th>
-              <th data-col="pyth">Pythagorean</th>
-              <th data-col="net_eff" id="col-net-eff">Net Eff</th>
-              <th data-col="off_eff" id="col-off-eff">Off Eff</th>
-              <th data-col="def_eff" id="col-def-eff">Def Eff</th>
-              <th data-col="playoff_prob">Playoff %</th>
-              <th data-col="sb_prob" id="col-sb-prob">SB %</th>
-              <th data-col="trend">Trend</th>
-            </tr>
-          </thead>
-          <tbody id="leaderboard-body">
-            <tr><td colspan="12"><div class="loading"><div class="spinner"></div></div></td></tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
-
-    <!-- ── Section 5: Model Performance ── -->
-    <section id="tab-performance" class="section">
-      <div class="section-header">
-        <div class="section-title">
-          <h2>Model Performance</h2>
-          <span class="section-badge" id="metrics-trained-on">Loading...</span>
-        </div>
-      </div>
-
-      <div class="metrics-row" id="metrics-row">
-        <div class="loading"><div class="spinner"></div></div>
-      </div>
-
-      <div class="charts-row">
-        <div class="chart-card">
-          <div class="chart-title">Calibration Curve</div>
-          <div class="chart-container">
-            <canvas id="calibration-chart" height="280"></canvas>
-          </div>
-        </div>
-        <div class="chart-card">
-          <div class="chart-title">Historical Accuracy by Season</div>
-          <div class="chart-container">
-            <canvas id="accuracy-chart" height="280"></canvas>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ── Section 6: Prediction Log ── -->
-    <section id="tab-accuracy" class="section">
-      <div class="loading"><div class="spinner"></div><span>Loading prediction log...</span></div>
-    </section>
-
-    <!-- SANDBOXED: Kalshi section disabled — see sandbox/kalshi/
-    [Section 7: Kalshi Odds]
-    <section id="tab-kalshi" class="section">
-      <div class="section-header">
-        <div class="section-title">
-          <h2>Kalshi Odds Comparison</h2>
-          <span class="section-badge" id="kalshi-badge">Model vs Market</span>
-        </div>
-        <div style="font-size:0.75rem;color:var(--text-muted);">Ranked by prediction mismatch</div>
-      </div>
-      <div class="game-filter-pills" id="kalshi-league-pills">
-        <button class="filter-pill active" data-kleague="nfl" onclick="setKalshiLeague('nfl')">🏈 NFL</button>
-        <button class="filter-pill" data-kleague="nba" onclick="setKalshiLeague('nba')">🏀 NBA</button>
-      </div>
-      <div id="kalshi-content">
-        <div class="loading"><div class="spinner"></div><span>Loading Kalshi markets...</span></div>
-      </div>
-    </section>
-    -->
-
-  </div><!-- /container -->
 </main>
 
+<footer class="colophon">
+  <p>Picks by a walk-forward-tested ensemble: Elo, logistic regression, gradient boosting, Pythagorean expectation, efficiency, Bayesian ratings, and 10,000 simulated games per matchup. It watched 7,276 games to form its opinions.</p>
+  <p>Updated nightly by a robot. Not affiliated with the National Football League, which does not return calls. Not betting advice. Barely advice at all.</p>
+</footer>
+
+<noscript><p style="padding:20px">Sport3 needs JavaScript to lay out the page. The picks themselves are computed nightly by Python, which needs nothing.</p></noscript>
 <script src="main.js"></script>
 </body>
 </html>
