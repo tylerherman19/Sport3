@@ -19,7 +19,9 @@ from pathlib import Path
 # Add project root to path
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-from model.elo_model import compute_elo, predict_game as elo_predict_game, get_trend
+from model.elo_model import compute_elo, predict_game as elo_predict_game, get_trend, \
+                                expected_score as elo_expected_score, era_hfa
+from model import qb_model
 from model.logistic_model import (build_features, train_logistic, evaluate_model,
                                    calibration_buckets, predict_matchups,
                                    historical_accuracy_by_year)
@@ -497,10 +499,13 @@ def fetch_espn_completed_games(season_year):
 
 
 def extend_elo_with_espn(elo_dict, game_history, espn_games,
-                          fte_cutoff_date=None, k_base=20.0, hfa=65.0):
+                          fte_cutoff_date=None, k_base=20.0, hfa=48.0,
+                          qb_map=None):
     """
     Continue ELO computation with ESPN live results after FTE dataset ends.
     Skips games already covered by FTE (before cutoff date).
+    Matches compute_elo's measured mechanics: era HFA (caller passes the
+    current-season value), flat K, 538 winner-perspective MOV, QB adjustments.
     """
     if not espn_games:
         return elo_dict, game_history
@@ -511,7 +516,7 @@ def extend_elo_with_espn(elo_dict, game_history, espn_games,
     else:
         cutoff = pd.Timestamp("2024-02-12")  # Super Bowl LVIII (end of 2023 season)
 
-    from model.elo_model import expected_score, mov_multiplier
+    from model.elo_model import expected_score, mov_multiplier_538
 
     new_games = sorted(
         [g for g in espn_games if pd.to_datetime(g["date"]) > cutoff],
@@ -538,17 +543,27 @@ def extend_elo_with_espn(elo_dict, game_history, espn_games,
         e2 = elo_dict[team2]
 
         hfa_adj = 0 if neutral else hfa
-        adj_e1 = e1 + hfa_adj
 
-        exp1 = expected_score(adj_e1, e2)
+        qb_adj1 = qb_adj2 = 0.0
+        if qb_map:
+            date_str = str(pd.to_datetime(game["date"]).date())
+            qb_adj1, qb_adj2 = qb_map.get((date_str, team1, team2), (0.0, 0.0))
+
+        adj_e1 = e1 + hfa_adj + qb_adj1
+        adj_e2 = e2 + qb_adj2
+
+        exp1 = expected_score(adj_e1, adj_e2)
         exp2 = 1.0 - exp1
 
         actual1 = 1.0 if score1 > score2 else (0.5 if score1 == score2 else 0.0)
         actual2 = 1.0 - actual1
 
         point_diff = abs(score1 - score2)
-        elo_diff_abs = abs(adj_e1 - e2)
-        mov = mov_multiplier(point_diff, elo_diff_abs) if point_diff > 0 else 1.0
+        if point_diff > 0:
+            winner_diff = (adj_e1 - adj_e2) if actual1 == 1.0 else (adj_e2 - adj_e1)
+            mov = mov_multiplier_538(point_diff, winner_diff)
+        else:
+            mov = 1.0
 
         elo_dict[team1] = e1 + k_base * mov * (actual1 - exp1)
         elo_dict[team2] = e2 + k_base * mov * (actual2 - exp2)
@@ -859,11 +874,40 @@ def run():
     future_games = fetch_espn_future_games(current_week, season_year, weeks_ahead=3)
     all_games_for_prediction = scoreboard_games + future_games
 
+    # Depth-chart QB1s for projecting future-game adjustments (fallback: last starter)
+    dc_qbs = {}
+    try:
+        dc_qbs = qb_model.load_depth_chart_qbs(season_year)
+        log.info(f"Depth-chart QBs loaded for {len(dc_qbs)} teams")
+    except Exception as de:
+        log.warning(f"Depth chart load failed, using last starters: {de}")
+
     # ── 2. Build ELO ratings (FTE historical + ESPN live continuation) ─────
     log.info("Computing ELO ratings from FTE data...")
     fte_cutoff_date = None
+    qb_ctx = {"game_adj": {}, "state": {}}
+    pred_hfa = 48.0
     if not fte_df.empty:
-        elo_dict, game_history = compute_elo(fte_df)
+        # 538-style QB adjustment context (measured winner, research/RESULTS.md)
+        try:
+            qb_ctx = qb_model.build_qb_context(fte_df, first_season=2014)
+            log.info(f"QB context built: {len(qb_ctx['game_adj'])} games adjusted")
+        except Exception as qe:
+            log.warning(f"QB context build failed, running without QB adjustments: {qe}")
+            qb_ctx = {"game_adj": {}, "state": {}}
+        # Era-rolling HFA for the prediction season
+        try:
+            _hwr = {}
+            for _s, _g in fte_df.groupby("season"):
+                _p = _g.dropna(subset=["score1", "score2"])
+                if len(_p):
+                    _hwr[int(_s)] = float((_p["score1"] > _p["score2"]).mean())
+            pred_hfa = era_hfa(_hwr, season_year, default=48.0)
+            log.info(f"Era-rolling HFA for {season_year}: {pred_hfa:.1f}")
+        except Exception as he:
+            log.warning(f"Era HFA failed, using 48: {he}")
+            pred_hfa = 48.0
+        elo_dict, game_history = compute_elo(fte_df, qb_map=qb_ctx["game_adj"])
         # Determine last date covered by FTE dataset
         completed_fte = fte_df.dropna(subset=["score1", "score2"])
         if not completed_fte.empty:
@@ -888,7 +932,8 @@ def run():
     if espn_completed:
         elo_dict, game_history = extend_elo_with_espn(
             elo_dict, game_history, espn_completed,
-            fte_cutoff_date=fte_cutoff_date
+            fte_cutoff_date=fte_cutoff_date, hfa=pred_hfa,
+            qb_map=qb_ctx.get("game_adj")
         )
     log.info(f"ELO updated for {len(elo_dict)} teams after live extension")
 
@@ -1120,17 +1165,19 @@ def run():
                 if xgb_preds and xgb_preds[0]["xgb_prob"] is not None:
                     xgb_prob = xgb_preds[0]["xgb_prob"]
 
-            # Ensemble
-            # Issue 5: Learn + apply NFL ensemble weights
-            if "nfl_weights" not in dir():
-                nfl_weights = learn_nfl_weights(fte_df, pythagorean_data, efficiency_data, DEFAULT_WEIGHTS)
-            ensemble_prob = ensemble_predict(
-                logistic_prob=log_prob,
-                xgb_prob=xgb_prob,
-                elo_prob=elo_result["prob"],
-                pyth_prob=eff_result["pyth_prob"],
-                eff_prob=eff_result["eff_prob"],
-                weights=nfl_weights,
+            # Headline probability: pure QB-adjusted ELO (the measured winning
+            # stack - walk-forward 65.2% vs the 12-model ensemble's 60-64%,
+            # research/RESULTS.md). Sub-models stay as display context only.
+            _state = qb_ctx.get("state", {})
+            if _state:
+                qadj_home = qb_model.projected_adjustment(_state, home, season_year, dc_qbs)
+                qadj_away = qb_model.projected_adjustment(_state, away, season_year, dc_qbs)
+            else:
+                qadj_home = qadj_away = 0.0
+            qb_hfa = 0 if neutral else pred_hfa
+            ensemble_prob = elo_expected_score(
+                elo_dict.get(home, 1500.0) + qb_hfa + qadj_home,
+                elo_dict.get(away, 1500.0) + qadj_away
             )
 
             # Monte Carlo
@@ -1162,7 +1209,7 @@ def run():
                 "rest_diff": rest_home - rest_away,
                 "travel_dist_miles": round(dist, 0),
                 "travel_adj": travel_adj_away,
-                "home_elo_bonus": 0 if neutral else 65,
+                "home_elo_bonus": 0 if neutral else round(pred_hfa, 1),
             }
 
             # Prediction drivers
