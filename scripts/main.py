@@ -326,7 +326,9 @@ def run_nfl():
     if not fte_df.empty:
         rec = fte_df[fte_df["season"] >= season_year-3].dropna(subset=["score1","score2"])
         games_list = rec[["team1","team2","score1","score2","date","neutral","season"]].to_dict("records")
-    bayesian_ratings = update_ratings(games_list, elo_dict)
+    # Seed flat at 1500 (external review 2026-09-06): seeding from the FINAL
+    # elo_dict then replaying the same games double-counted every result.
+    bayesian_ratings = update_ratings(games_list, {t: 1500.0 for t in NFL_TEAMS}, hfa=pred_hfa)
     for t in NFL_TEAMS: bayesian_ratings.setdefault(t, {"mu":elo_dict.get(t,1500.0),"sigma":75.0})
 
     remaining_schedule = [
@@ -372,7 +374,7 @@ def run_nfl():
             exported_lp = lp if lp is not None else 0.5
             xp = None
             if xgb_model and xgb_scaler:
-                xps = predict_xgboost(md,xgb_model,xgb_scaler,elo_dict,game_history,efficiency_data,pythagorean_data)
+                xps = predict_xgboost(md,xgb_model,xgb_scaler,elo_dict,game_history,efficiency_data,pythagorean_data,hfa_pts=pred_hfa)
                 if xps and xps[0]["xgb_prob"] is not None: xp = xps[0]["xgb_prob"]
 
             home_qb = nfl_starters.get(home); away_qb = nfl_starters.get(away)
