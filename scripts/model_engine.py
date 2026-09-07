@@ -53,12 +53,16 @@ def nfl_days_since_last_game(game_history: dict, team: str, before_date) -> int:
 
 
 def extend_elo_with_espn(elo_dict: dict, game_history: dict, espn_games: list,
-                          fte_cutoff_date=None, k_base: float = 20.0, hfa: float = 65.0):
+                          fte_cutoff_date=None, k_base: float = 20.0, hfa: float = 48.0,
+                          qb_map=None):
+    """Same measured mechanics as model.elo_model.compute_elo: era HFA (caller
+    passes the current-season value), flat K, 538 winner-perspective MOV,
+    optional QB adjustments keyed by (date_str, team1, team2)."""
     import pandas as pd
     if not espn_games:
         return elo_dict, game_history
     cutoff = pd.to_datetime(fte_cutoff_date) if fte_cutoff_date else pd.Timestamp("2024-02-12")
-    from model.elo_model import expected_score, mov_multiplier
+    from model.elo_model import expected_score, mov_multiplier_538
     new_games = sorted(
         [g for g in espn_games if pd.to_datetime(g["date"]) > cutoff],
         key=lambda g: g["date"],
@@ -73,11 +77,20 @@ def extend_elo_with_espn(elo_dict: dict, game_history: dict, espn_games: list,
             game_history.setdefault(t, [])
         e1, e2 = elo_dict[t1], elo_dict[t2]
         hfa_adj = 0 if neutral else hfa
-        adj_e1 = e1 + hfa_adj
-        exp1 = expected_score(adj_e1, e2)
+        qb_adj1 = qb_adj2 = 0.0
+        if qb_map:
+            qb_adj1, qb_adj2 = qb_map.get(
+                (str(pd.to_datetime(game["date"]).date()), t1, t2), (0.0, 0.0))
+        adj_e1 = e1 + hfa_adj + qb_adj1
+        adj_e2 = e2 + qb_adj2
+        exp1 = expected_score(adj_e1, adj_e2)
         actual1 = 1.0 if s1 > s2 else (0.5 if s1 == s2 else 0.0)
         point_diff = abs(s1 - s2)
-        mov = mov_multiplier(point_diff, abs(adj_e1 - e2)) if point_diff > 0 else 1.0
+        if point_diff > 0:
+            winner_diff = (adj_e1 - adj_e2) if actual1 == 1.0 else (adj_e2 - adj_e1)
+            mov = mov_multiplier_538(point_diff, winner_diff)
+        else:
+            mov = 1.0
         elo_dict[t1] = e1 + k_base * mov * (actual1 - exp1)
         elo_dict[t2] = e2 + k_base * mov * ((1 - actual1) - (1 - exp1))
         game_history[t1].append({"result": actual1, "elo_diff": adj_e1 - e2, "date": game["date"]})
