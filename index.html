@@ -1,399 +1,466 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sports Prediction Dashboard</title>
-  <link rel="stylesheet" href="style.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet" />
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The Model - Sunday rundown</title>
+<meta name="description" content="NFL predictions from a walk-forward-tested model. Sixteen games a week, every pick written down before kickoff and graded after." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --paper:#FAFAF7; --ink:#131313; --muted:#676761; --faint:#E4E3DB;
+  --blue:#013369; /* NFL shield blue - the only accent */
+}
+*{margin:0;padding:0;box-sizing:border-box;border-radius:0!important}
+body{background:var(--paper);color:var(--ink);font-family:"Archivo",sans-serif;font-size:15px;line-height:20px;font-variant-numeric:tabular-nums}
+.disp{font-family:"Archivo Black",sans-serif;font-weight:400}
+
+/* scorebug */
+.bug{position:sticky;top:0;z-index:9;background:var(--ink);color:#fff;display:flex;align-items:stretch;font-size:12px}
+.bug .b1{background:var(--blue);padding:8px 12px;font-family:"Archivo Black";font-size:16px;letter-spacing:.02em}
+.bug .b2{padding:10px 12px;font-weight:600;letter-spacing:.12em}
+.bug .b3{margin-left:auto;padding:10px 12px;color:#9a9a94;font-weight:500}
+
+.strip-head{background:var(--ink);color:#fff;padding:8px 16px;display:flex;justify-content:space-between;align-items:baseline;margin-top:24px}
+.strip-head h2{font-family:"Archivo Black";font-size:20px;letter-spacing:.02em;font-weight:400}
+.strip-head span{font-size:11px;letter-spacing:.14em;color:#9a9a94;font-weight:600}
+.lede{padding:20px 16px;font-size:17px;line-height:26px;font-weight:500;border-bottom:4px solid var(--ink)}
+.lede b{color:var(--blue)}
+.sec-note{padding:12px 16px;font-size:12px;line-height:16px;color:var(--muted);border-bottom:1px solid var(--faint)}
+
+/* rundown strips */
+.game{border-bottom:1px solid var(--faint)}
+.grow{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:16px;background:none;border:none;width:100%;font:inherit;color:inherit;cursor:pointer;text-align:center}
+.gside .tm{display:block;font-size:11px;font-weight:700;letter-spacing:.1em;color:var(--muted)}
+.gside .pc{font-family:"Archivo Black";font-size:32px;line-height:36px}
+.gside.win .pc{color:var(--blue)}
+.gmid{padding:0 16px;font-size:11px;font-weight:600;letter-spacing:.1em;color:var(--muted);line-height:16px}
+.possess{height:8px;display:flex;background:var(--faint)}
+.possess i{display:block;background:var(--ink)}
+.possess i.w{background:var(--blue)}
+.gdet{display:none;padding:0 16px 16px;font-size:13px;line-height:20px}
+.game.open .gdet{display:block}
+.gdet p{padding:6px 0;border-top:1px solid var(--faint)}
+.gdet b{font-weight:700}
+.gdet .models{color:var(--muted);font-size:12px}
+.gdet .models .ship{color:var(--blue);font-weight:700}
+
+/* audible (per-game what-if) */
+.audible{margin-top:8px;border-top:4px solid var(--ink);padding-top:8px}
+.audible h5{font-size:11px;font-weight:700;letter-spacing:.14em;color:var(--muted);margin-bottom:4px}
+.audrow{display:grid;grid-template-columns:72px 1fr 44px;gap:8px;align-items:center;font-size:11px;font-weight:700;letter-spacing:.08em;color:var(--muted);padding:4px 0}
+.audrow output{text-align:right;color:var(--ink);font-variant-numeric:tabular-nums}
+.audres{font-size:13px;padding:6px 0}
+.audres b{color:var(--blue)}
+
+/* on the record */
+.rec-strip{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--faint)}
+.rec-strip .rs{padding:16px 8px;text-align:center;border-right:1px solid var(--faint)}
+.rec-strip .rs:last-child{border-right:none}
+.rec-strip .n{font-family:"Archivo Black";font-size:28px;line-height:32px;display:block}
+.rec-strip .n.blue{color:var(--blue)}
+.rec-strip .l{font-size:10px;font-weight:600;letter-spacing:.1em;color:var(--muted);text-transform:uppercase}
+.rec{display:grid;grid-template-columns:64px 1fr auto;gap:8px;padding:10px 16px;border-bottom:1px solid var(--faint);font-size:13px;align-items:baseline}
+.rec .d{font-size:11px;font-weight:700;letter-spacing:.08em;color:var(--muted)}
+.rec .pk b{font-weight:700}
+.rec .pk .v{color:var(--muted);font-size:12px}
+.rec .res{font-family:"Archivo Black";font-size:14px;text-align:right}
+.rec .res.hit{color:var(--blue)}
+.rec .res.miss{color:var(--muted);text-decoration:line-through}
+.rec .res.pend{color:var(--muted);font-family:"Archivo";font-weight:600;font-size:11px;letter-spacing:.1em}
+.burn{display:block;width:100%;background:none;border:none;border-top:1px solid var(--faint);padding:12px;font:inherit;font-size:11px;font-weight:700;letter-spacing:.14em;color:var(--muted);cursor:pointer;text-align:center}
+.burn:hover{color:var(--ink)}
+
+/* halftime report */
+.halftime{display:grid;grid-template-columns:1fr 1fr;border-top:4px solid var(--ink)}
+.hf{padding:16px;border-bottom:1px solid var(--faint)}
+.hf:nth-child(odd){border-right:1px solid var(--faint)}
+.hf .n{font-family:"Archivo Black";font-size:36px;line-height:40px;display:block}
+.hf .n.blue{color:var(--blue)}
+.hf .l{font-size:11px;font-weight:600;letter-spacing:.1em;color:var(--muted);text-transform:uppercase}
+.note{padding:16px;font-size:12px;color:var(--muted);line-height:16px}
+.cal{padding:8px 16px 16px}
+.cal h5,.szn h5{font-size:11px;font-weight:700;letter-spacing:.14em;color:var(--muted);padding:8px 0}
+.calrow{display:grid;grid-template-columns:56px 1fr 88px;gap:8px;align-items:center;padding:3px 0;font-size:11px;font-weight:600;color:var(--muted)}
+.calrow .bars{display:grid;gap:2px}
+.calrow .bars i{display:block;height:6px;background:var(--faint)}
+.calrow .bars i.a{background:var(--blue)}
+.calrow .va{text-align:right;font-variant-numeric:tabular-nums}
+.szn{padding:0 16px 16px}
+.sznrow{display:grid;grid-template-columns:44px 1fr 52px;gap:8px;align-items:center;padding:3px 0;font-size:12px;font-weight:600}
+.sznrow i{display:block;height:8px;background:var(--ink)}
+.sznrow .va{text-align:right;font-variant-numeric:tabular-nums;color:var(--muted)}
+
+/* crawl */
+.crawl{border-top:4px solid var(--ink)}
+.crow{display:grid;grid-template-columns:36px 56px 1fr auto;gap:8px;padding:8px 16px;border-bottom:1px solid var(--faint);font-size:13px;align-items:baseline}
+.crow .rk{font-family:"Archivo Black";font-size:18px;color:var(--blue)}
+.crow .tm{font-weight:700}
+.crow .num{text-align:right;color:var(--muted)}
+.crow .num b{color:var(--ink)}
+
+/* control room */
+.ctrl{padding:8px 16px 16px;border-top:4px solid var(--ink)}
+.ctrlrow{display:grid;grid-template-columns:112px 1fr 48px;gap:12px;align-items:center;padding:6px 0}
+.ctrlrow label{font-size:11px;font-weight:700;letter-spacing:.1em;color:var(--muted);text-transform:uppercase}
+.ctrlrow output{text-align:right;font-family:"Archivo Black";font-size:16px;font-variant-numeric:tabular-nums}
+.ctrl input[type=range],.audible input[type=range]{width:100%;accent-color:var(--blue)}
+.ctrlnote{font-size:11px;color:var(--muted);line-height:16px;padding-top:8px}
+.ctrlreset{margin-top:12px;width:100%;padding:12px;font:inherit;font-weight:700;background:var(--paper);color:var(--ink);border:1px solid var(--ink);cursor:pointer;font-size:13px}
+.ctrlreset:hover{background:var(--ink);color:#fff}
+
+/* injuries */
+.iteam{padding:12px 16px;border-bottom:1px solid var(--faint);font-size:12px;line-height:16px;color:var(--muted)}
+.iteam b{color:var(--ink)}
+.iteam h4{font-size:13px;color:var(--ink);display:flex;justify-content:space-between;margin-bottom:4px}
+.iteam .out{color:var(--blue);font-weight:700}
+
+/* toy */
+.toy{padding:16px;border-top:4px solid var(--ink)}
+.toy select,.toy input[type=number]{font:inherit;padding:8px;border:1px solid var(--ink);background:var(--paper);width:100%;font-size:15px}
+.toy label{font-size:11px;font-weight:700;letter-spacing:.1em;color:var(--muted);display:block;margin:12px 0 4px;text-transform:uppercase}
+.toyrow{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.toy button{margin-top:16px;width:100%;padding:12px;font:inherit;font-weight:700;background:var(--ink);color:#fff;border:none;cursor:pointer;font-size:15px}
+.toy button:hover{background:var(--blue)}
+.toyres{margin-top:16px;display:none}
+.toyres .v{font-family:"Archivo Black";font-size:28px;line-height:32px}
+.toyres .v span{color:var(--blue)}
+.toyres .w{font-size:13px;color:var(--muted);margin-top:8px;line-height:20px}
+
+.colophon{padding:24px 16px 48px;font-size:12px;line-height:16px;color:var(--muted)}
+.colophon p{max-width:640px;margin-bottom:8px}
+@media(min-width:760px){
+  main{max-width:960px;margin:0 auto}
+  .gside .pc{font-size:44px;line-height:48px}
+  .halftime{grid-template-columns:repeat(4,1fr)}
+  .hf{border-right:1px solid var(--faint)}
+  .hf:last-child{border-right:none}
+}
+</style>
 </head>
-<body data-league="nfl">
-
-<!-- ═══════════════════════════════ HEADER ═══════════════════════════════ -->
-<header>
-  <div class="container header-inner">
-    <div class="logo">
-      <div class="logo-icon" id="header-icon">🏈</div>
-      <div>
-        <h1 id="header-title">NFL Prediction Dashboard</h1>
-        <p>12-Model Ensemble • Live Data • Monte Carlo Simulations</p>
-      </div>
-    </div>
-    <div class="header-meta">
-      <div class="league-switcher">
-        <button class="league-btn active" data-league="nfl">🏈 NFL</button>
-        <button class="league-btn" data-league="nba">🏀 NBA</button>
-      </div>
-      <div><span class="status-dot"></span>Auto-updated daily</div>
-      <div style="display:flex;align-items:center;gap:0.5rem;">
-        <span id="last-updated" class="muted">Loading...</span>
-        <button id="btn-refresh" onclick="forceRefresh()" title="Force data reload" style="background:none;border:1px solid var(--border);border-radius:4px;color:var(--text-secondary);cursor:pointer;font-size:0.75rem;padding:2px 7px;line-height:1.4;">↻ Refresh</button>
-      </div>
-      <div id="season-week" class="muted"></div>
-    </div>
-  </div>
-</header>
-
-<!-- ════════════════════════════════ NAV ═════════════════════════════════ -->
-<nav>
-  <div class="container">
-    <div class="nav-tabs">
-      <button class="nav-tab active" data-tab="games" id="tab-btn-games">This Week's Games</button>
-      <button class="nav-tab" data-tab="controls" id="tab-btn-controls">Model Controls</button>
-      <button class="nav-tab" data-tab="predictor" id="tab-btn-predictor">Matchup Predictor</button>
-      <button class="nav-tab" data-tab="leaderboard" id="tab-btn-leaderboard">ELO Leaderboard</button>
-      <button class="nav-tab" data-tab="performance" id="tab-btn-performance">Model Performance</button>
-      <button class="nav-tab" data-tab="accuracy" id="tab-btn-accuracy">Prediction Log</button>
-      <!-- SANDBOXED: Kalshi tab disabled — see sandbox/kalshi/
-      <button class="nav-tab" data-tab="kalshi" id="tab-btn-kalshi">Kalshi Odds</button>
-      -->
-    </div>
-  </div>
-</nav>
-
-<!-- ══════════════════════════ MAIN ══════════════════════════════ -->
+<body>
+<div class="bug"><span class="b1">THE MODEL</span><span class="b2" id="bug-week">WK 1</span><span class="b3" id="bug-upd"></span></div>
 <main>
-  <div class="container">
+<p class="lede" id="lede"></p>
 
-    <!-- ── Section 1: This Week's Games ── -->
-    <section id="tab-games" class="section active">
-      <div class="section-header">
-        <div class="section-title">
-          <h2 id="games-section-title">This Week's Games</h2>
-          <span class="section-badge" id="games-count-badge">0 games</span>
-        </div>
-      </div>
-      <div id="offseason-banner"></div>
-      <div class="game-filter-pills" id="game-filter-pills">
-        <button class="filter-pill" data-filter="upcoming">Upcoming</button>
-        <button class="filter-pill active" data-filter="live">Live</button>
-        <button class="filter-pill" data-filter="completed">Completed</button>
-      </div>
-      <div id="games-grid" class="games-grid">
-        <div class="loading"><div class="spinner"></div><span>Loading predictions...</span></div>
-      </div>
-    </section>
+<header class="strip-head"><h2>THE RUNDOWN</h2><span id="wk-line"></span></header>
+<div id="games"></div>
 
-    <!-- ── Section 2: Model Controls ── -->
-    <section id="tab-controls" class="section">
-      <div class="section-header">
-        <div class="section-title">
-          <h2>Model Controls</h2>
-          <span class="section-badge">Real-time</span>
-        </div>
-      </div>
-      <p class="muted mb-3" style="font-size:0.8125rem;">Adjust model parameters. Changes update the Matchup Predictor live. Full model retraining runs daily via GitHub Actions.</p>
-      <div class="controls-grid">
+<header class="strip-head"><h2>ON THE RECORD</h2><span>THE PREDICTION LOG</span></header>
+<p class="sec-note">Every pick gets written down here, on this device, before kickoff. When the games end, the tape gets graded. Nothing gets erased unless you erase it.</p>
+<div class="rec-strip" id="rec-strip"></div>
+<div id="rec"></div>
+<button class="burn" id="burn" type="button">Burn the tape</button>
 
-        <!-- ELO Parameters -->
-        <div class="control-card">
-          <h4>ELO Parameters</h4>
-          <div class="slider-group">
-            <div class="slider-item">
-              <div class="slider-header">
-                <span class="slider-label">K-Factor</span>
-                <span class="slider-value" id="val-k">20</span>
-              </div>
-              <input type="range" id="sl-k" min="10" max="40" step="1" value="20" />
-            </div>
-            <div class="slider-item">
-              <div class="slider-header">
-                <span class="slider-label" id="hfa-label">Home Field Advantage (ELO pts)</span>
-                <span class="slider-value" id="val-hfa">65</span>
-              </div>
-              <input type="range" id="sl-hfa" min="0" max="150" step="5" value="65" />
-            </div>
-            <div class="slider-item">
-              <div class="slider-header">
-                <span class="slider-label">MOV Multiplier Weight</span>
-                <span class="slider-value" id="val-mov">1.0</span>
-              </div>
-              <input type="range" id="sl-mov" min="0" max="2" step="0.1" value="1.0" />
-            </div>
-            <div class="slider-item">
-              <div class="slider-header">
-                <span class="slider-label">Recent Form Blend</span>
-                <span class="slider-value" id="val-form">0.30</span>
-              </div>
-              <input type="range" id="sl-form" min="0" max="1" step="0.05" value="0.30" />
-            </div>
-          </div>
-        </div>
+<header class="strip-head"><h2>HALFTIME REPORT</h2><span>MODEL VS VEGAS</span></header>
+<div class="halftime" id="hf"></div>
+<p class="note" id="hf-note"></p>
+<div class="cal" id="cal"></div>
+<div class="szn" id="szn"></div>
 
-        <!-- Adjustments -->
-        <div class="control-card">
-          <h4>Game Adjustments</h4>
-          <div class="slider-group">
-            <div class="slider-item">
-              <div class="slider-header">
-                <span class="slider-label">SOS Weight</span>
-                <span class="slider-value" id="val-sos">0.50</span>
-              </div>
-              <input type="range" id="sl-sos" min="0" max="1" step="0.05" value="0.50" />
-            </div>
-            <div class="slider-item">
-              <div class="slider-header">
-                <span class="slider-label">Head-to-Head Modifier</span>
-                <span class="slider-value" id="val-h2h">0.50</span>
-              </div>
-              <input type="range" id="sl-h2h" min="0" max="1" step="0.05" value="0.50" />
-            </div>
-            <div class="slider-item">
-              <div class="slider-header">
-                <span class="slider-label">Turnover Impact</span>
-                <span class="slider-value" id="val-to">1.0</span>
-              </div>
-              <input type="range" id="sl-to" min="0" max="2" step="0.1" value="1.0" />
-            </div>
-            <div class="slider-item">
-              <div class="slider-header">
-                <span class="slider-label">Rest/Travel Scaling</span>
-                <span class="slider-value" id="val-rt">1.0</span>
-              </div>
-              <input type="range" id="sl-rt" min="0" max="2" step="0.1" value="1.0" />
-            </div>
-            <div class="slider-item">
-              <div class="slider-header">
-                <span class="slider-label">Time Decay λ</span>
-                <span class="slider-value" id="val-lambda">0.10</span>
-              </div>
-              <input type="range" id="sl-lambda" min="0.01" max="0.5" step="0.01" value="0.10" />
-            </div>
-          </div>
-        </div>
+<header class="strip-head"><h2>THE CRAWL</h2><span>POWER RANKINGS</span></header>
+<div class="crawl" id="crawl"></div>
 
-        <!-- Ensemble Weights -->
-        <div class="control-card">
-          <h4>Ensemble Weights</h4>
-          <div class="slider-group">
-            <div class="slider-item">
-              <div class="slider-header">
-                <span class="slider-label">Logistic Regression</span>
-                <span class="slider-value" id="val-w-log">0.30</span>
-              </div>
-              <div class="slider-desc">Linear model trained on historical win/loss matchup data. Good baseline; fast to update.</div>
-              <input type="range" id="sl-w-log" min="0" max="1" step="0.05" value="0.30" data-weight="logistic" />
-            </div>
-            <div class="slider-item">
-              <div class="slider-header">
-                <span class="slider-label">XGBoost</span>
-                <span class="slider-value" id="val-w-xgb">0.25</span>
-              </div>
-              <div class="slider-desc">Gradient-boosted decision trees trained on 17 features (ELO, efficiency, rest days, travel distance, pace, passing/rushing splits, etc.). Learns non-linear interactions that a logistic model misses — e.g. a rested team with a big ELO edge matters more than either factor alone.</div>
-              <input type="range" id="sl-w-xgb" min="0" max="1" step="0.05" value="0.25" data-weight="xgboost" />
-            </div>
-            <div class="slider-item">
-              <div class="slider-header">
-                <span class="slider-label">ELO Model</span>
-                <span class="slider-value" id="val-w-elo">0.20</span>
-              </div>
-              <div class="slider-desc">Points-based rating updated after every result. Simple, proven, and self-correcting — a team on a hot streak earns a higher rating quickly.</div>
-              <input type="range" id="sl-w-elo" min="0" max="1" step="0.05" value="0.20" data-weight="elo" />
-            </div>
-            <div class="slider-item">
-              <div class="slider-header">
-                <span class="slider-label">Pythagorean</span>
-                <span class="slider-value" id="val-w-pyth">0.15</span>
-              </div>
-              <div class="slider-desc">Expected win rate from points scored vs. allowed (Bill James formula). Captures scoring dominance independent of actual W/L record — teams that outshoot opponents tend to be better than their record shows.</div>
-              <input type="range" id="sl-w-pyth" min="0" max="1" step="0.05" value="0.15" data-weight="pyth" />
-            </div>
-            <div class="slider-item">
-              <div class="slider-header">
-                <span class="slider-label">Efficiency</span>
-                <span class="slider-value" id="val-w-eff">0.10</span>
-              </div>
-              <div class="slider-desc">Offensive and defensive efficiency margins per 100 possessions. Pace-adjusted, so fast-paced teams aren't over-rated just for scoring volume.</div>
-              <input type="range" id="sl-w-eff" min="0" max="1" step="0.05" value="0.10" data-weight="eff" />
-            </div>
-          </div>
-          <div class="weight-total">
-            <span>Total weight</span>
-            <span id="weight-total-val" class="weight-total-val ok">1.00</span>
-          </div>
-          <div class="weight-auto-note">Weights auto-nudge after 50+ resolved games toward whichever models have been most accurate recently. Use the button below to apply that auto-learned adjustment now.</div>
-          <button class="btn-reset-weights" id="btn-reset-weights" title="Re-run the accuracy-based weight optimiser on your prediction log">Apply auto-learned weights</button>
-        </div>
+<header class="strip-head"><h2>CONTROL ROOM</h2><span>YOUR NUMBERS, NOT ITS</span></header>
+<div class="ctrl" id="ctrl">
+  <div class="ctrlrow"><label for="cw-log">Logistic</label><input type="range" id="cw-log" min="0" max="1" step="0.05" value="0.30"><output id="co-log">0.30</output></div>
+  <div class="ctrlrow"><label for="cw-xgb">XGBoost</label><input type="range" id="cw-xgb" min="0" max="1" step="0.05" value="0.25"><output id="co-xgb">0.25</output></div>
+  <div class="ctrlrow"><label for="cw-elo">Elo</label><input type="range" id="cw-elo" min="0" max="1" step="0.05" value="0.20"><output id="co-elo">0.20</output></div>
+  <div class="ctrlrow"><label for="cw-pyth">Pythagorean</label><input type="range" id="cw-pyth" min="0" max="1" step="0.05" value="0.15"><output id="co-pyth">0.15</output></div>
+  <div class="ctrlrow"><label for="cw-eff">Efficiency</label><input type="range" id="cw-eff" min="0" max="1" step="0.05" value="0.10"><output id="co-eff">0.10</output></div>
+  <div class="ctrlrow"><label for="cw-hfa">Home field</label><input type="range" id="cw-hfa" min="0" max="150" step="5" value="65"><output id="co-hfa">65</output></div>
+  <p class="ctrlnote">Move a dial and every number in the Rundown re-blends live. The shipped line stays the model's; what you dial in is yours. Nothing here is saved.</p>
+  <button class="ctrlreset" id="ctrl-reset" type="button">Back to the shipped line</button>
+</div>
 
-      </div>
-    </section>
+<header class="strip-head"><h2>INJURY LIST</h2><span id="inj-count"></span></header>
+<div id="inj"></div>
 
-    <!-- ── Section 3: Matchup Predictor ── -->
-    <section id="tab-predictor" class="section">
-      <div class="section-header">
-        <div class="section-title">
-          <h2>Matchup Predictor</h2>
-          <span class="section-badge">Any Teams</span>
-        </div>
-      </div>
-      <div class="predictor-layout">
+<header class="strip-head"><h2>CALL THE PLAY</h2><span>ANY MATCHUP</span></header>
+<form class="toy" id="toy">
+  <div class="toyrow">
+    <div><label for="th">Home</label><select id="th"></select></div>
+    <div><label for="ta">Away</label><select id="ta"></select></div>
+  </div>
+  <div class="toyrow">
+    <div><label for="rh">Home rest (days)</label><input id="rh" type="number" min="3" max="14" value="7"></div>
+    <div><label for="ra">Away rest (days)</label><input id="ra" type="number" min="3" max="14" value="7"></div>
+  </div>
+  <label style="margin-top:12px"><input type="checkbox" id="nt" style="width:16px;height:16px;vertical-align:-3px"> Neutral site</label>
+  <button type="submit">Run it</button>
+  <div class="toyres" id="toyres"></div>
+</form>
 
-        <div class="predictor-form">
-          <div class="form-group">
-            <label class="form-label" for="pred-home">Home Team</label>
-            <select id="pred-home"><option value="">Select team...</option></select>
-          </div>
-          <div class="form-group">
-            <label class="form-label" for="pred-away">Away Team</label>
-            <select id="pred-away"><option value="">Select team...</option></select>
-          </div>
-          <!-- NFL rest options -->
-          <div id="nfl-rest-options">
-            <div class="form-group">
-              <label class="form-label" for="pred-rest-home">Home Team Rest Days</label>
-              <select id="pred-rest-home">
-                <option value="4">4 days (Thu game)</option>
-                <option value="7" selected>7 days (normal)</option>
-                <option value="10">10 days</option>
-                <option value="14">14 days (bye week)</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label class="form-label" for="pred-rest-away">Away Team Rest Days</label>
-              <select id="pred-rest-away">
-                <option value="4">4 days (Thu game)</option>
-                <option value="7" selected>7 days (normal)</option>
-                <option value="10">10 days</option>
-                <option value="14">14 days (bye week)</option>
-              </select>
-            </div>
-          </div>
-          <!-- NBA rest options -->
-          <div id="nba-rest-options" style="display:none;">
-            <div class="form-group">
-              <label class="form-label" for="pred-nba-rest-home">Home Team Rest</label>
-              <select id="pred-nba-rest-home">
-                <option value="b2b">Back-to-back (0 days)</option>
-                <option value="1">1 day rest</option>
-                <option value="2" selected>2 days rest (normal)</option>
-                <option value="3">3+ days rest</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label class="form-label" for="pred-nba-rest-away">Away Team Rest</label>
-              <select id="pred-nba-rest-away">
-                <option value="b2b">Back-to-back (0 days)</option>
-                <option value="1">1 day rest</option>
-                <option value="2" selected>2 days rest (normal)</option>
-                <option value="3">3+ days rest</option>
-              </select>
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="form-label" for="pred-neutral">Venue</label>
-            <select id="pred-neutral">
-              <option value="0">Home team stadium</option>
-              <option value="1">Neutral site</option>
-            </select>
-          </div>
-          <button class="btn btn-primary" id="btn-predict">Run Prediction</button>
-        </div>
-
-        <div class="predictor-results" id="predictor-results">
-          <div class="empty-state">
-            <div class="empty-state-icon" id="predictor-empty-icon">🏈</div>
-            <h3>Select Two Teams</h3>
-            <p>Choose a home and away team, then click Run Prediction.</p>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ── Section 4: ELO Leaderboard ── -->
-    <section id="tab-leaderboard" class="section">
-      <div class="section-header">
-        <div class="section-title">
-          <h2>ELO Leaderboard</h2>
-          <span class="section-badge" id="leaderboard-badge">All 32 Teams</span>
-        </div>
-        <div style="font-size:0.75rem;color:var(--text-muted);">Click column header to sort</div>
-      </div>
-      <div class="table-wrapper">
-        <table id="leaderboard-table">
-          <thead id="leaderboard-thead">
-            <tr>
-              <th data-col="rank">Rank</th>
-              <th data-col="team">Team</th>
-              <th data-col="elo" class="sorted">ELO ▲ <span class="sort-icon">▼</span></th>
-              <th data-col="band">±Band</th>
-              <th data-col="record">Record</th>
-              <th data-col="pyth">Pythagorean</th>
-              <th data-col="net_eff" id="col-net-eff">Net Eff</th>
-              <th data-col="off_eff" id="col-off-eff">Off Eff</th>
-              <th data-col="def_eff" id="col-def-eff">Def Eff</th>
-              <th data-col="playoff_prob">Playoff %</th>
-              <th data-col="sb_prob" id="col-sb-prob">SB %</th>
-              <th data-col="trend">Trend</th>
-            </tr>
-          </thead>
-          <tbody id="leaderboard-body">
-            <tr><td colspan="12"><div class="loading"><div class="spinner"></div></div></td></tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
-
-    <!-- ── Section 5: Model Performance ── -->
-    <section id="tab-performance" class="section">
-      <div class="section-header">
-        <div class="section-title">
-          <h2>Model Performance</h2>
-          <span class="section-badge" id="metrics-trained-on">Loading...</span>
-        </div>
-      </div>
-
-      <div class="metrics-row" id="metrics-row">
-        <div class="loading"><div class="spinner"></div></div>
-      </div>
-
-      <div class="charts-row">
-        <div class="chart-card">
-          <div class="chart-title">Calibration Curve</div>
-          <div class="chart-container">
-            <canvas id="calibration-chart" height="280"></canvas>
-          </div>
-        </div>
-        <div class="chart-card">
-          <div class="chart-title">Historical Accuracy by Season</div>
-          <div class="chart-container">
-            <canvas id="accuracy-chart" height="280"></canvas>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ── Section 6: Prediction Log ── -->
-    <section id="tab-accuracy" class="section">
-      <div class="loading"><div class="spinner"></div><span>Loading prediction log...</span></div>
-    </section>
-
-    <!-- SANDBOXED: Kalshi section disabled — see sandbox/kalshi/
-    [Section 7: Kalshi Odds]
-    <section id="tab-kalshi" class="section">
-      <div class="section-header">
-        <div class="section-title">
-          <h2>Kalshi Odds Comparison</h2>
-          <span class="section-badge" id="kalshi-badge">Model vs Market</span>
-        </div>
-        <div style="font-size:0.75rem;color:var(--text-muted);">Ranked by prediction mismatch</div>
-      </div>
-      <div class="game-filter-pills" id="kalshi-league-pills">
-        <button class="filter-pill active" data-kleague="nfl" onclick="setKalshiLeague('nfl')">🏈 NFL</button>
-        <button class="filter-pill" data-kleague="nba" onclick="setKalshiLeague('nba')">🏀 NBA</button>
-      </div>
-      <div id="kalshi-content">
-        <div class="loading"><div class="spinner"></div><span>Loading Kalshi markets...</span></div>
-      </div>
-    </section>
-    -->
-
-  </div><!-- /container -->
+<footer class="colophon">
+<p>The Model is a walk-forward-tested ensemble: Elo, logistic regression, gradient boosting, Pythagorean expectation, efficiency, Bayesian ratings, and 10,000 simulated games per matchup. It watched 7,276 games to form its opinions.</p>
+<p>Updated nightly by a robot. Not affiliated with the National Football League, which does not return calls. Not betting advice. Barely advice at all.</p>
+</footer>
 </main>
+<script>
+const TZ="America/Chicago";
+const DATA_BASE="./data/";
+async function getJSON(f){try{const r=await fetch(DATA_BASE+f+"?t="+Date.now());return r.ok?await r.json():null}catch{return null}}
+async function loadAll(){
+  const [pred,lb,metrics,inj]=await Promise.all([
+    getJSON("nfl_predictions.json").then(d=>d||getJSON("predictions.json")),
+    getJSON("nfl_leaderboard.json").then(d=>d||getJSON("leaderboard.json")),
+    getJSON("model_metrics.json"),
+    getJSON("nfl_injuries.json")]);
+  return {pred,lb,metrics,inj:inj?.injuries||[]};
+}
+const pct1=p=>p==null?"—":(p*100).toFixed(1)+"%";
+const pct0=p=>p==null?"—":Math.round(p*100)+"%";
+const fmtInt=n=>n==null?"—":Number(n).toLocaleString("en-US");
+const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+function kickoff(g){const d=new Date(g.game_time);return{day:d.toLocaleDateString("en-US",{timeZone:TZ,weekday:"short"}).toUpperCase(),time:d.toLocaleTimeString("en-US",{timeZone:TZ,hour:"numeric",minute:"2-digit"}).replace(" ","").toLowerCase()}}
+function gamesFor(pred,w){return (pred?.games||[]).filter(g=>g.week===w).sort((a,b)=>new Date(a.game_time)-new Date(b.game_time))}
 
-<script src="main.js"></script>
+const NFL_COORDS={ARI:[33.5276,-112.2626],ATL:[33.7553,-84.4006],BAL:[39.2780,-76.6227],BUF:[42.7738,-78.7870],CAR:[35.2258,-80.8528],CHI:[41.8623,-87.6167],CIN:[39.0954,-84.5160],CLE:[41.5061,-81.6995],DAL:[32.7473,-97.0945],DEN:[39.7439,-105.0201],DET:[42.3400,-83.0456],GB:[44.5013,-88.0622],HOU:[29.6847,-95.4107],IND:[39.7601,-86.1639],JAX:[30.3240,-81.6373],KC:[39.0489,-94.4839],LAC:[33.9534,-118.3392],LAR:[33.9534,-118.3392],LV:[36.0909,-115.1833],MIA:[25.9580,-80.2389],MIN:[44.9738,-93.2581],NE:[42.0909,-71.2643],NO:[29.9509,-90.0814],NYG:[40.8128,-74.0742],NYJ:[40.8128,-74.0742],PHI:[39.9008,-75.1675],PIT:[40.4468,-80.0158],SEA:[47.5952,-122.3316],SF:[37.4030,-121.9700],TB:[27.9759,-82.5033],TEN:[36.1665,-86.7713],WAS:[38.9076,-76.8645]};
+const hav=(a,b)=>{const R=3958.8,r=Math.PI/180,dL=(b[0]-a[0])*r,dO=(b[1]-a[1])*r,h=Math.sin(dL/2)**2+Math.cos(a[0]*r)*Math.cos(b[0]*r)*Math.sin(dO/2)**2;return 2*R*Math.asin(Math.sqrt(h))};
+const eP=d=>1/(1+Math.pow(10,-d/400));
+
+let WEEK=null, PRED=null, LB=null;
+
+/* ── control room state ── */
+const W0={logistic:.30,xgboost:.25,elo:.20,pyth:.15,eff:.10};
+const CTRL={w:{...W0},hfa:65,touched:false};
+
+function blend(p,force){
+  if(!force&&!CTRL.touched&&p&&typeof p.ensemble_prob==="number"&&p.ensemble_prob>0)return p.ensemble_prob;
+  if(!p)return .5;
+  const w={...CTRL.w};
+  if(p.xgb_prob==null){
+    const xw=w.xgboost,rem=w.logistic+w.elo+w.pyth+w.eff;
+    if(rem>0){w.logistic+=xw*w.logistic/rem;w.elo+=xw*w.elo/rem;w.pyth+=xw*w.pyth/rem;w.eff+=xw*w.eff/rem}
+    w.xgboost=0;
+  }
+  const t=w.logistic+w.xgboost+w.elo+w.pyth+w.eff;
+  if(t===0)return .5;
+  return (w.logistic*(p.logistic_prob??.5)+w.xgboost*(p.xgb_prob??.5)+w.elo*(p.elo_prob??.5)+w.pyth*(p.pyth_prob??.5)+w.eff*(p.eff_prob??.5))/t;
+}
+function gameProb(g){
+  const p={...(g.predictions||{})};
+  if(CTRL.touched&&CTRL.hfa!==65&&g.elo){
+    p.elo_prob=eP((g.elo.home??1500)+CTRL.hfa-(g.elo.away??1500));
+    p.ensemble_prob=null;
+  }
+  return blend(p);
+}
+
+/* ── rundown ── */
+const AUD={}; /* game_id -> {he,ae} */
+function renderGames(){
+  const wrap=document.getElementById("games"); wrap.innerHTML="";
+  for(const g of gamesFor(PRED,WEEK)){
+    const pr=gameProb(g), f={team:pr>=.5?g.home_team:g.away_team,p:Math.max(pr,1-pr)};
+    const k=kickoff(g), mc=g.monte_carlo||{};
+    const winSide=pr>=.5?"home":"away";
+    const box=document.createElement("div"); box.className="game";
+    box.innerHTML=`
+      <button class="grow" type="button" aria-expanded="false">
+        <span class="gside ${winSide==="away"?"win":""}"><span class="tm">${esc(g.away_team)}</span><span class="pc">${pct1(1-pr)}</span></span>
+        <span class="gmid">${k.day} ${k.time}<br>${esc((g.player_form?.away_qb||"")+" / "+(g.player_form?.home_qb||""))}</span>
+        <span class="gside ${winSide==="home"?"win":""}"><span class="tm">${esc(g.home_team)}</span><span class="pc">${pct1(pr)}</span></span>
+      </button>
+      <div class="possess"><i class="${winSide==="away"?"w":""}" style="width:${(1-pr)*100}%"></i><i class="${winSide==="home"?"w":""}" style="width:${pr*100}%"></i></div>
+      <div class="gdet">
+        <p><b>Elo</b> ${esc(g.home_team)} ${Math.round(g.elo?.home??0)} · ${esc(g.away_team)} ${Math.round(g.elo?.away??0)} · rest ${g.adjustments?.rest_home??"—"}/${g.adjustments?.rest_away??"—"} days${g.adjustments?.travel_dist_miles?" · "+esc(g.away_team)+" travels "+fmtInt(Math.round(g.adjustments.travel_dist_miles))+" mi":""}</p>
+        <p><b>Simulation</b> ${esc(f.team)} by ${Math.abs(mc.exp_margin??0).toFixed(1)}, ${pct0(mc.prob_7plus)} to win by 7+, ${pct0(mc.prob_14plus)} by 14+</p>
+        ${g.explanation?`<p>${esc(g.explanation).replace(/—/g,"-")}</p>`:""}
+        <p class="models">${["ensemble_prob|MODEL|1","elo_prob|ELO","logistic_prob|LOG","xgb_prob|XGB","pyth_prob|PYTH","eff_prob|EFF","bayesian_prob|BAY"].map(s=>{const[kk,l,sh]=s.split("|");const v=g.predictions?.[kk];return v!=null?`<span class="${sh?"ship":""}">${l} ${pct0(v)}</span>`:""}).filter(Boolean).join(" · ")}</p>
+        <div class="audible">
+          <h5>CALL AN AUDIBLE</h5>
+          <div class="audrow"><span>${esc(g.home_team)} edge</span><input type="range" min="-60" max="60" step="5" value="0" data-aud="he"><output>0</output></div>
+          <div class="audrow"><span>${esc(g.away_team)} edge</span><input type="range" min="-60" max="60" step="5" value="0" data-aud="ae"><output>0</output></div>
+          <p class="audres" style="display:none"></p>
+        </div>
+      </div>`;
+    box.querySelector(".grow").addEventListener("click",()=>box.classList.toggle("open"));
+    const res=box.querySelector(".audres");
+    const doAud=()=>{
+      const he=+box.querySelector('[data-aud=he]').value, ae=+box.querySelector('[data-aud=ae]').value;
+      AUD[g.game_id]={he,ae};
+      if(!he&&!ae){res.style.display="none";return}
+      const p={...(g.predictions||{})};
+      p.elo_prob=eP((g.elo?.home??1500)+CTRL.hfa+he-ae-(g.elo?.away??1500));
+      p.ensemble_prob=null;
+      const ap=blend(p,true);
+      res.style.display="block";
+      res.innerHTML=`Audible: <b>${esc(g.home_team)} ${pct1(ap)}</b> · ${esc(g.away_team)} ${pct1(1-ap)}`;
+    };
+    box.querySelectorAll("[data-aud]").forEach(sl=>sl.addEventListener("input",e=>{e.target.closest(".audrow").querySelector("output").textContent=e.target.value;doAud()}));
+    wrap.appendChild(box);
+  }
+  document.getElementById("wk-line").textContent="WEEK "+WEEK+" OF 18";
+}
+
+/* ── on the record: the prediction log ── */
+const LOGKEY="sport3_log_nfl";
+function logRead(){try{return JSON.parse(localStorage.getItem(LOGKEY)||"[]")}catch{return[]}}
+function logWrite(e){try{localStorage.setItem(LOGKEY,JSON.stringify(e))}catch{}}
+function logGames(){
+  const entries=logRead(), ids=new Set(entries.map(e=>e.game_id));
+  let added=false;
+  for(const g of (PRED?.games||[])){
+    if(!g.game_id||ids.has(g.game_id))continue;
+    const p=g.predictions?.ensemble_prob;
+    if(typeof p!=="number")continue;
+    entries.push({game_id:g.game_id,saved_at:new Date().toISOString(),home_team:g.home_team,away_team:g.away_team,game_time:g.game_time,week:g.week,predicted_winner:p>=.5?g.home_team:g.away_team,predicted_prob:Math.max(p,1-p),actual_winner:null,home_score:null,away_score:null});
+    added=true;
+  }
+  if(added)logWrite(entries);
+}
+const ESPNFIX={"JAC":"JAX","ARZ":"ARI","CLV":"CLE","HST":"HOU","LVR":"LV","WSH":"WAS"};
+const normAbbr=a=>{const u=(a||"").toUpperCase();return ESPNFIX[u]||u};
+async function resolveWinners(){
+  const entries=logRead(), un=entries.filter(e=>!e.actual_winner&&e.game_time&&new Date(e.game_time)<new Date());
+  if(!un.length)return;
+  const groups={};
+  for(const e of un){const dt=new Date(e.game_time);const d=dt.getUTCFullYear()+String(dt.getUTCMonth()+1).padStart(2,"0")+String(dt.getUTCDate()).padStart(2,"0");(groups[d]=groups[d]||[]).push(e)}
+  for(const [date,dayEntries] of Object.entries(groups)){
+    try{
+      const data=await fetch("https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard?dates="+date).then(r=>r.json());
+      for(const ev of (data.events||[])){
+        const comp=(ev.competitions||[])[0]; if(!comp)continue;
+        const cs=comp.competitors||[]; if(cs.length<2)continue;
+        let winner=cs.find(c=>c.winner);
+        const homeC=cs.find(c=>c.homeAway==="home"), awayC=cs.find(c=>c.homeAway==="away");
+        if(!winner&&ev.status?.type?.name==="STATUS_FINAL"&&homeC&&awayC){
+          const hs=parseInt(homeC.score,10),as=parseInt(awayC.score,10);
+          if(!isNaN(hs)&&!isNaN(as)&&hs!==as)winner=hs>as?homeC:awayC;
+        }
+        if(!winner)continue;
+        const wAbbr=normAbbr(winner.team?.abbreviation);
+        const match=dayEntries.find(e=>e.game_id===ev.id||(e.home_team===normAbbr(homeC?.team?.abbreviation)&&e.away_team===normAbbr(awayC?.team?.abbreviation)));
+        const entry=match&&entries.find(e=>e.game_id===match.game_id);
+        if(entry&&wAbbr){
+          entry.actual_winner=wAbbr;
+          if(homeC?.score!=null)entry.home_score=parseInt(homeC.score,10);
+          if(awayC?.score!=null)entry.away_score=parseInt(awayC.score,10);
+        }
+      }
+    }catch{/* network failure, skip */}
+  }
+  logWrite(entries);
+}
+function renderLog(){
+  const entries=logRead().slice().sort((a,b)=>new Date(b.game_time)-new Date(a.game_time));
+  const resolved=entries.filter(e=>e.actual_winner);
+  const hits=resolved.filter(e=>e.actual_winner===e.predicted_winner);
+  document.getElementById("rec-strip").innerHTML=[
+    {n:entries.length,l:"Called"},
+    {n:hits.length,l:"Hit",blue:1},
+    {n:resolved.length-hits.length,l:"Missed"},
+    {n:resolved.length?(hits.length/resolved.length*100).toFixed(1)+"%":"—",l:"Graded",blue:1},
+  ].map(s=>`<div class="rs"><span class="n ${s.blue?"blue":""}">${s.n}</span><span class="l">${s.l}</span></div>`).join("");
+  document.getElementById("rec").innerHTML=entries.length?entries.map(e=>{
+    const d=new Date(e.game_time);
+    const ds=d.toLocaleDateString("en-US",{timeZone:TZ,month:"short",day:"numeric"}).toUpperCase();
+    const graded=!!e.actual_winner, hit=graded&&e.actual_winner===e.predicted_winner;
+    const score=graded&&e.home_score!=null?` · ${esc(e.away_team)} ${e.away_score}, ${esc(e.home_team)} ${e.home_score}`:"";
+    return `<div class="rec"><span class="d">${ds}</span><span class="pk"><b>${esc(e.predicted_winner)}</b> ${(e.predicted_prob*100).toFixed(1)}%<span class="v"> · ${esc(e.away_team)} at ${esc(e.home_team)}${score}</span></span><span class="res ${graded?(hit?"hit":"miss"):"pend"}">${graded?(hit?"HIT":"MISS"):"PENDING"}</span></div>`;
+  }).join(""):`<p class="sec-note">No picks on the record yet. This week's card was just dealt - check back after kickoff.</p>`;
+}
+document.getElementById("burn").addEventListener("click",()=>{
+  if(!confirm("Burn the whole tape? Every logged pick on this device gets erased."))return;
+  try{localStorage.removeItem(LOGKEY)}catch{};
+  renderLog();
+});
+
+/* ── halftime report ── */
+function renderHF(m){
+  if(!m)return;
+  document.getElementById("hf").innerHTML=[
+    {n:pct1(m.accuracy),l:"Model accuracy · "+fmtInt(m.n_scored_games)+" games"},
+    {n:pct1(m.vegas_benchmark?.accuracy),l:"Vegas accuracy",blue:1},
+    {n:m.log_loss?.toFixed(3),l:"Log loss (Vegas "+(m.vegas_benchmark?.log_loss?.toFixed(3)??"—")+")"},
+    {n:m.auc?.toFixed(3),l:"AUC (Vegas "+(m.vegas_benchmark?.auc?.toFixed(3)??"—")+")"},
+  ].map(s=>`<div class="hf"><span class="n ${s.blue?"blue":""}">${s.n}</span><span class="l">${s.l}</span></div>`).join("");
+  const yrs=(m.historical_accuracy||[]).slice(-3).map(h=>h.year+": "+pct1(h.accuracy)).join(" · ");
+  document.getElementById("hf-note").textContent="Last three seasons: "+yrs+". Walk-forward backtest, pre-game information only. The model trails Vegas by "+((m.vegas_benchmark?.accuracy-m.accuracy)*100).toFixed(1)+" points. Bet accordingly: don't.";
+  const buckets=(m.calibration_buckets||[]).filter(b=>b.count>0);
+  document.getElementById("cal").innerHTML=buckets.length?`<h5>CALIBRATION - WHAT IT SAID VS WHAT HAPPENED</h5>`+buckets.map(b=>
+    `<div class="calrow"><span>${esc(b.bucket)}</span><span class="bars"><i style="width:${(b.predicted*100).toFixed(0)}%"></i><i class="a" style="width:${(b.actual*100).toFixed(0)}%"></i></span><span class="va">${pct0(b.predicted)} / ${pct0(b.actual)} · ${b.count}</span></div>`).join("")+`<p class="note" style="padding:8px 0 0">Top bar: what the model said. Bottom bar: what actually happened. Right column: said / happened / games.</p>`:"";
+  const hist=(m.historical_accuracy||[]);
+  document.getElementById("szn").innerHTML=hist.length?`<h5>SEASON BY SEASON</h5>`+hist.map(h=>
+    `<div class="sznrow"><span>${h.year}</span><i style="width:${(h.accuracy*100).toFixed(0)}%"></i><span class="va">${pct1(h.accuracy)}</span></div>`).join(""):"";
+}
+
+/* ── crawl ── */
+function renderCrawl(lb){
+  const teams=(lb?.teams||[]).slice().sort((a,b)=>b.elo-a.elo);
+  document.getElementById("crawl").innerHTML=teams.map((t,i)=>
+    `<div class="crow"><span class="rk">${i+1}</span><span class="tm">${esc(t.team)}</span><span class="num">${Math.round(t.lower_band)}-${Math.round(t.upper_band)}</span><span class="num"><b>${Math.round(t.elo)}</b> · PO ${pct0(t.playoff_prob)} · SB ${pct0(t.sb_prob)}</span></div>`).join("");
+}
+
+/* ── control room ── */
+function setupCtrl(){
+  const map=[["log","logistic"],["xgb","xgboost"],["elo","elo"],["pyth","pyth"],["eff","eff"]];
+  for(const [id,key] of map){
+    const sl=document.getElementById("cw-"+id), out=document.getElementById("co-"+id);
+    sl.addEventListener("input",()=>{CTRL.w[key]=+sl.value;out.textContent=(+sl.value).toFixed(2);CTRL.touched=true;renderGames()});
+  }
+  const hs=document.getElementById("cw-hfa"), ho=document.getElementById("co-hfa");
+  hs.addEventListener("input",()=>{CTRL.hfa=+hs.value;ho.textContent=hs.value;CTRL.touched=true;renderGames()});
+  document.getElementById("ctrl-reset").addEventListener("click",()=>{
+    CTRL.w={...W0};CTRL.hfa=65;CTRL.touched=false;
+    for(const [id,key] of map){document.getElementById("cw-"+id).value=W0[key];document.getElementById("co-"+id).textContent=W0[key].toFixed(2)}
+    hs.value=65;ho.textContent="65";
+    renderGames();
+  });
+}
+
+/* ── injuries ── */
+function renderInj(list){
+  const R={"Out":0,"Injured Reserve":1,"Suspension":2,"Questionable":3},S={"Out":"OUT","Injured Reserve":"IR","Suspension":"SUSP","Questionable":"Q"};
+  const by={};for(const p of list){if(!p.team||!(p.status in R))continue;(by[p.team]=by[p.team]||[]).push(p)}
+  let tot=0;
+  document.getElementById("inj").innerHTML=Object.keys(by).sort().map(t=>{
+    const ps=by[t].sort((a,b)=>(R[a.status]-R[b.status])||((b.value_tier==="starter")-(a.value_tier==="starter")));
+    tot+=ps.length;
+    return `<div class="iteam"><h4>${esc(t)}<span>${ps.length}</span></h4>${ps.slice(0,10).map(p=>`<span class="${p.status==="Out"?"out":""}">${S[p.status]}</span> ${p.value_tier==="starter"?`<b>${esc(p.player)}</b>`:esc(p.player)} (${esc(p.position)})`).join(" · ")}${ps.length>10?` · +${ps.length-10} more Q`:""}</div>`;
+  }).join("");
+  document.getElementById("inj-count").textContent=tot+" PLAYERS";
+}
+
+/* ── call the play ── */
+function setupToy(lb){
+  const teams=(lb?.teams||[]).slice().sort((a,b)=>a.team.localeCompare(b.team));
+  for(const id of["th","ta"])document.getElementById(id).innerHTML=teams.map(t=>`<option value="${t.team}">${esc(t.team_name)}</option>`).join("");
+  document.getElementById("th").value="MIN";document.getElementById("ta").value="CHI";
+  document.getElementById("toy").addEventListener("submit",e=>{
+    e.preventDefault();
+    const h=document.getElementById("th").value,a=document.getElementById("ta").value;if(h===a)return;
+    const nt=document.getElementById("nt").checked,rh=+document.getElementById("rh").value||7,ra=+document.getElementById("ra").value||7;
+    const hd=teams.find(t=>t.team===h),ad=teams.find(t=>t.team===a);
+    const hfa=nt?0:65,hE=hd?.elo??1500,aE=ad?.elo??1500;
+    const el=eP(hE+hfa-aE),lg=eP(hE+hfa+(rh-ra)*1.5-aE);
+    const py=eP(((hd?.pyth??.5)-(ad?.pyth??.5))*400+hfa),ef=eP(((hd?.net_eff??0)-(ad?.net_eff??0))*200+hfa);
+    const xw=.25,rem=.75,ens=lg*(.30+xw*.30/rem)+el*(.20+xw*.20/rem)+py*(.15+xw*.15/rem)+ef*(.10+xw*.10/rem);
+    const w=ens>=.5?h:a,wp=Math.max(ens,1-ens),wn=ens>=.5?hd.team_name:ad.team_name;
+    const mi=NFL_COORDS[h]&&NFL_COORDS[a]?Math.round(hav(NFL_COORDS[a],NFL_COORDS[h])):0;
+    const r=document.getElementById("toyres");r.style.display="block";
+    r.innerHTML=`<p class="v"><span>${esc(w)}</span> ${pct1(wp)}</p><p class="w">${esc(wn)}, ${wp>.7?"a strong favorite":wp>.6?"a clear favorite":"barely favored"}. Elo ${Math.round(hE)} vs ${Math.round(aE)}${nt?", neutral site":", home field worth 65 Elo"}. ${mi>500?esc(a)+" travels "+fmtInt(mi)+" miles.":"Short trip."} Sub-calls: ELO ${pct0(el)} · LOG ${pct0(lg)} · PYTH ${pct0(py)} · EFF ${pct0(ef)}.</p>`;
+  });
+}
+
+(async()=>{
+  const {pred,lb,metrics,inj}=await loadAll();
+  if(!pred){document.getElementById("lede").textContent="The data robot has not published tonight's file.";return}
+  PRED=pred;LB=lb;WEEK=pred.week??1;
+  document.getElementById("bug-week").textContent="WK "+WEEK+" · "+pred.season;
+  const u=pred.updated?new Date(pred.updated):null;
+  document.getElementById("bug-upd").textContent=u?("UPD "+u.toLocaleString("en-US",{timeZone:TZ,month:"short",day:"numeric",hour:"numeric",minute:"2-digit"}).toUpperCase()):"";
+  const gs=gamesFor(pred,WEEK);
+  let fv=null,tg=null;
+  for(const g of gs){const p=g.predictions?.ensemble_prob;if(p==null)continue;const t=Math.max(p,1-p);if(!fv||t>fv.t)fv={g,t};if(!tg||t<tg.t)tg={g,t}}
+  document.getElementById("lede").innerHTML=`${gs.length} games on the Sunday rundown. <b>${esc(fv.g.predictions.ensemble_prob>=.5?fv.g.home_team:fv.g.away_team)} ${pct1(fv.t)}</b> is the lock of the week. <b>${esc(tg.g.away_team)} at ${esc(tg.g.home_team)}</b> is the coin flip. The full scouting line is one tap down.`;
+  renderGames();renderHF(metrics);renderCrawl(lb);renderInj(inj);setupToy(lb);setupCtrl();
+  logGames();renderLog();
+  resolveWinners().then(renderLog);
+})();
+</script>
 </body>
 </html>
