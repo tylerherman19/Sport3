@@ -146,6 +146,15 @@ body{background:var(--paper);color:var(--ink);font-family:"Archivo",sans-serif;f
 .bug .b1 a{color:#fff;text-decoration:none}
 .ctrlgo{display:block;margin-top:12px;padding:12px;text-align:center;font-weight:700;background:var(--ink);color:#fff;text-decoration:none;font-size:15px}
 .ctrlgo:hover{background:var(--blue)}
+/* calibration, said vs happened */
+.calrow2{padding:8px 0;border-bottom:1px solid var(--faint)}
+.calrow2 .bh{font-size:11px;font-weight:700;letter-spacing:.1em;color:var(--muted);display:flex;justify-content:space-between;padding-bottom:4px}
+.calbar{display:grid;grid-template-columns:76px 1fr 44px;gap:8px;align-items:center;padding:2px 0;font-size:11px;font-weight:700}
+.calbar .tag{color:var(--muted);letter-spacing:.08em}
+.calbar i{display:block;height:8px;background:var(--ink)}
+.calbar.hp i{background:var(--blue)}
+.calbar.hp .va{color:var(--blue)}
+.calbar .va{text-align:right;font-variant-numeric:tabular-nums}
 </style>
 </head>
 <body data-page="halftime">
@@ -202,8 +211,8 @@ function renderHF(m){
   const yrs=(m.historical_accuracy||[]).slice(-3).map(h=>h.year+": "+pct1(h.accuracy)).join(" · ");
   document.getElementById("hf-note").textContent="Last three seasons: "+yrs+". Walk-forward backtest, pre-game information only. The model trails Vegas by "+((m.vegas_benchmark?.accuracy-m.accuracy)*100).toFixed(1)+" points. Bet accordingly: don't.";
   const buckets=(m.calibration_buckets||[]).filter(b=>b.count>0);
-  document.getElementById("cal").innerHTML=buckets.length?`<h5>CALIBRATION - WHAT IT SAID VS WHAT HAPPENED</h5>`+buckets.map(b=>
-    `<div class="calrow"><span>${esc(b.bucket)}</span><span class="bars"><i style="width:${(b.predicted*100).toFixed(0)}%"></i><i class="a" style="width:${(b.actual*100).toFixed(0)}%"></i></span><span class="va">${pct0(b.predicted)} / ${pct0(b.actual)} · ${b.count}</span></div>`).join("")+`<p class="note" style="padding:8px 0 0">Top bar: what the model said. Bottom bar: what actually happened. Right column: said / happened / games.</p>`:"";
+  document.getElementById("cal").innerHTML=buckets.length?`<h5>CALIBRATION - SAID VS HAPPENED</h5><p class="note" style="padding:0 0 8px">When it screams, believe it more than the number. When it shrugs, believe it less.</p>`+buckets.map(b=>
+    `<div class="calrow2"><div class="bh"><span>${esc(b.bucket)}</span><span>${b.count} GAMES</span></div><div class="calbar"><span class="tag">SAID</span><i style="width:${(b.predicted*100).toFixed(0)}%"></i><span class="va">${pct0(b.predicted)}</span></div><div class="calbar hp"><span class="tag">HAPPENED</span><i style="width:${(b.actual*100).toFixed(0)}%"></i><span class="va">${pct0(b.actual)}</span></div></div>`).join(""):"";
   const hist=(m.historical_accuracy||[]);
   document.getElementById("szn").innerHTML=hist.length?`<h5>SEASON BY SEASON</h5>`+hist.map(h=>
     `<div class="sznrow"><span>${h.year}</span><i style="width:${(h.accuracy*100).toFixed(0)}%"></i><span class="va">${pct1(h.accuracy)}</span></div>`).join(""):"";
