@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The Model - Call the play</title>
+<meta name="description" content="NFL predictions from a walk-forward-tested model. Sixteen games a week, every pick written down before kickoff and graded after." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --paper:#FAFAF7; --ink:#131313; --muted:#676761; --faint:#E4E3DB;
+  --blue:#013369; /* NFL shield blue - the only accent */
+}
+*{margin:0;padding:0;box-sizing:border-box;border-radius:0!important}
+body{background:var(--paper);color:var(--ink);font-family:"Archivo",sans-serif;font-size:15px;line-height:20px;font-variant-numeric:tabular-nums}
+.disp{font-family:"Archivo Black",sans-serif;font-weight:400}
+
+/* scorebug */
+.bug{position:sticky;top:0;z-index:9;background:var(--ink);color:#fff;display:flex;align-items:stretch;font-size:12px}
+.bug .b1{background:var(--blue);padding:8px 12px;font-family:"Archivo Black";font-size:16px;letter-spacing:.02em}
+.bug .b2{padding:10px 12px;font-weight:600;letter-spacing:.12em}
+.bug .b3{margin-left:auto;padding:10px 12px;color:#9a9a94;font-weight:500}
+
+.strip-head{background:var(--ink);color:#fff;padding:8px 16px;display:flex;justify-content:space-between;align-items:baseline;margin-top:24px}
+.strip-head h2{font-family:"Archivo Black";font-size:20px;letter-spacing:.02em;font-weight:400}
+.strip-head span{font-size:11px;letter-spacing:.14em;color:#9a9a94;font-weight:600}
+.lede{padding:20px 16px;font-size:17px;line-height:26px;font-weight:500;border-bottom:4px solid var(--ink)}
+.lede b{color:var(--blue)}
+.sec-note{padding:12px 16px;font-size:12px;line-height:16px;color:var(--muted);border-bottom:1px solid var(--faint)}
+
+/* rundown strips */
+.game{border-bottom:1px solid var(--faint)}
+.grow{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:16px;background:none;border:none;width:100%;font:inherit;color:inherit;cursor:pointer;text-align:center}
+.gside .tm{display:block;font-size:11px;font-weight:700;letter-spacing:.1em;color:var(--muted)}
+.gside .pc{font-family:"Archivo Black";font-size:32px;line-height:36px}
+.gside.win .pc{color:var(--blue)}
+.gmid{padding:0 16px;font-size:11px;font-weight:600;letter-spacing:.1em;color:var(--muted);line-height:16px}
+.possess{height:8px;display:flex;background:var(--faint)}
+.possess i{display:block;background:var(--ink)}
+.possess i.w{background:var(--blue)}
+.gdet{display:none;padding:0 16px 16px;font-size:13px;line-height:20px}
+.game.open .gdet{display:block}
+.gdet p{padding:6px 0;border-top:1px solid var(--faint)}
+.gdet b{font-weight:700}
+.gdet .models{color:var(--muted);font-size:12px}
+.gdet .models .ship{color:var(--blue);font-weight:700}
+
+/* audible (per-game what-if) */
+.audible{margin-top:8px;border-top:4px solid var(--ink);padding-top:8px}
+.audible h5{font-size:11px;font-weight:700;letter-spacing:.14em;color:var(--muted);margin-bottom:4px}
+.audrow{display:grid;grid-template-columns:72px 1fr 44px;gap:8px;align-items:center;font-size:11px;font-weight:700;letter-spacing:.08em;color:var(--muted);padding:4px 0}
+.audrow output{text-align:right;color:var(--ink);font-variant-numeric:tabular-nums}
+.audres{font-size:13px;padding:6px 0}
+.audres b{color:var(--blue)}
+
+/* on the record */
+.rec-strip{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--faint)}
+.rec-strip .rs{padding:16px 8px;text-align:center;border-right:1px solid var(--faint)}
+.rec-strip .rs:last-child{border-right:none}
+.rec-strip .n{font-family:"Archivo Black";font-size:28px;line-height:32px;display:block}
+.rec-strip .n.blue{color:var(--blue)}
+.rec-strip .l{font-size:10px;font-weight:600;letter-spacing:.1em;color:var(--muted);text-transform:uppercase}
+.rec{display:grid;grid-template-columns:64px 1fr auto;gap:8px;padding:10px 16px;border-bottom:1px solid var(--faint);font-size:13px;align-items:baseline}
+.rec .d{font-size:11px;font-weight:700;letter-spacing:.08em;color:var(--muted)}
+.rec .pk b{font-weight:700}
+.rec .pk .v{color:var(--muted);font-size:12px}
+.rec .res{font-family:"Archivo Black";font-size:14px;text-align:right}
+.rec .res.hit{color:var(--blue)}
+.rec .res.miss{color:var(--muted);text-decoration:line-through}
+.rec .res.pend{color:var(--muted);font-family:"Archivo";font-weight:600;font-size:11px;letter-spacing:.1em}
+.burn{display:block;width:100%;background:none;border:none;border-top:1px solid var(--faint);padding:12px;font:inherit;font-size:11px;font-weight:700;letter-spacing:.14em;color:var(--muted);cursor:pointer;text-align:center}
+.burn:hover{color:var(--ink)}
+
+/* halftime report */
+.halftime{display:grid;grid-template-columns:1fr 1fr;border-top:4px solid var(--ink)}
+.hf{padding:16px;border-bottom:1px solid var(--faint)}
+.hf:nth-child(odd){border-right:1px solid var(--faint)}
+.hf .n{font-family:"Archivo Black";font-size:36px;line-height:40px;display:block}
+.hf .n.blue{color:var(--blue)}
+.hf .l{font-size:11px;font-weight:600;letter-spacing:.1em;color:var(--muted);text-transform:uppercase}
+.note{padding:16px;font-size:12px;color:var(--muted);line-height:16px}
+.cal{padding:8px 16px 16px}
+.cal h5,.szn h5{font-size:11px;font-weight:700;letter-spacing:.14em;color:var(--muted);padding:8px 0}
+.calrow{display:grid;grid-template-columns:56px 1fr 88px;gap:8px;align-items:center;padding:3px 0;font-size:11px;font-weight:600;color:var(--muted)}
+.calrow .bars{display:grid;gap:2px}
+.calrow .bars i{display:block;height:6px;background:var(--faint)}
+.calrow .bars i.a{background:var(--blue)}
+.calrow .va{text-align:right;font-variant-numeric:tabular-nums}
+.szn{padding:0 16px 16px}
+.sznrow{display:grid;grid-template-columns:44px 1fr 52px;gap:8px;align-items:center;padding:3px 0;font-size:12px;font-weight:600}
+.sznrow i{display:block;height:8px;background:var(--ink)}
+.sznrow .va{text-align:right;font-variant-numeric:tabular-nums;color:var(--muted)}
+
+/* crawl */
+.crawl{border-top:4px solid var(--ink)}
+.crow{display:grid;grid-template-columns:36px 56px 1fr auto;gap:8px;padding:8px 16px;border-bottom:1px solid var(--faint);font-size:13px;align-items:baseline}
+.crow .rk{font-family:"Archivo Black";font-size:18px;color:var(--blue)}
+.crow .tm{font-weight:700}
+.crow .num{text-align:right;color:var(--muted)}
+.crow .num b{color:var(--ink)}
+
+/* control room */
+.ctrl{padding:8px 16px 16px;border-top:4px solid var(--ink)}
+.ctrlrow{display:grid;grid-template-columns:112px 1fr 48px;gap:12px;align-items:center;padding:6px 0}
+.ctrlrow label{font-size:11px;font-weight:700;letter-spacing:.1em;color:var(--muted);text-transform:uppercase}
+.ctrlrow output{text-align:right;font-family:"Archivo Black";font-size:16px;font-variant-numeric:tabular-nums}
+.ctrl input[type=range],.audible input[type=range]{width:100%;accent-color:var(--blue)}
+.ctrlnote{font-size:11px;color:var(--muted);line-height:16px;padding-top:8px}
+.ctrlreset{margin-top:12px;width:100%;padding:12px;font:inherit;font-weight:700;background:var(--paper);color:var(--ink);border:1px solid var(--ink);cursor:pointer;font-size:13px}
+.ctrlreset:hover{background:var(--ink);color:#fff}
+
+/* injuries */
+.iteam{padding:12px 16px;border-bottom:1px solid var(--faint);font-size:12px;line-height:16px;color:var(--muted)}
+.iteam b{color:var(--ink)}
+.iteam h4{font-size:13px;color:var(--ink);display:flex;justify-content:space-between;margin-bottom:4px}
+.iteam .out{color:var(--blue);font-weight:700}
+
+/* toy */
+.toy{padding:16px;border-top:4px solid var(--ink)}
+.toy select,.toy input[type=number]{font:inherit;padding:8px;border:1px solid var(--ink);background:var(--paper);width:100%;font-size:15px}
+.toy label{font-size:11px;font-weight:700;letter-spacing:.1em;color:var(--muted);display:block;margin:12px 0 4px;text-transform:uppercase}
+.toyrow{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.toy button{margin-top:16px;width:100%;padding:12px;font:inherit;font-weight:700;background:var(--ink);color:#fff;border:none;cursor:pointer;font-size:15px}
+.toy button:hover{background:var(--blue)}
+.toyres{margin-top:16px;display:none}
+.toyres .v{font-family:"Archivo Black";font-size:28px;line-height:32px}
+.toyres .v span{color:var(--blue)}
+.toyres .w{font-size:13px;color:var(--muted);margin-top:8px;line-height:20px}
+
+.colophon{padding:24px 16px 48px;font-size:12px;line-height:16px;color:var(--muted)}
+.colophon p{max-width:640px;margin-bottom:8px}
+@media(min-width:760px){
+  main{max-width:960px;margin:0 auto}
+  .gside .pc{font-size:44px;line-height:48px}
+  .halftime{grid-template-columns:repeat(4,1fr)}
+  .hf{border-right:1px solid var(--faint)}
+  .hf:last-child{border-right:none}
+}
+
+/* page nav */
+.pagenav{position:sticky;top:36px;z-index:8;background:var(--paper);display:flex;overflow-x:auto;border-bottom:4px solid var(--ink);-webkit-overflow-scrolling:touch}
+.pagenav a{flex:0 0 auto;padding:10px 14px;font-size:11px;font-weight:700;letter-spacing:.12em;color:var(--muted);text-decoration:none;border-right:1px solid var(--faint)}
+.pagenav a.on{color:var(--blue);box-shadow:inset 0 -4px 0 var(--blue)}
+.bug .b1 a{color:#fff;text-decoration:none}
+.ctrlgo{display:block;margin-top:12px;padding:12px;text-align:center;font-weight:700;background:var(--ink);color:#fff;text-decoration:none;font-size:15px}
+.ctrlgo:hover{background:var(--blue)}
+</style>
+</head>
+<body data-page="play">
+<div class="bug"><span class="b1"><a href="index.html">THE MODEL</a></span><span class="b2" id="bug-week">WK 1</span><span class="b3" id="bug-upd"></span></div>
+<nav class="pagenav">
+<a href="index.html" data-pg="rundown">RUNDOWN</a>
+<a href="record.html" data-pg="record">RECORD</a>
+<a href="halftime.html" data-pg="halftime">HALFTIME</a>
+<a href="crawl.html" data-pg="crawl">CRAWL</a>
+<a href="injuries.html" data-pg="injuries">INJURIES</a>
+<a href="play.html" data-pg="play" class="on">PLAY</a>
+<a href="control.html" data-pg="control">CONTROL</a>
+</nav>
+<main>
+<header class="strip-head"><h2>CALL THE PLAY</h2><span>ANY MATCHUP</span></header>
+<form class="toy" id="toy">
+  <div class="toyrow">
+    <div><label for="th">Home</label><select id="th"></select></div>
+    <div><label for="ta">Away</label><select id="ta"></select></div>
+  </div>
+  <div class="toyrow">
+    <div><label for="rh">Home rest (days)</label><input id="rh" type="number" min="3" max="14" value="7"></div>
+    <div><label for="ra">Away rest (days)</label><input id="ra" type="number" min="3" max="14" value="7"></div>
+  </div>
+  <label style="margin-top:12px"><input type="checkbox" id="nt" style="width:16px;height:16px;vertical-align:-3px"> Neutral site</label>
+  <button type="submit">Run it</button>
+  <div class="toyres" id="toyres"></div>
+</form>
+</main>
+<script>const TZ="America/Chicago";
+const DATA_BASE="./data/";
+async function getJSON(f){try{const r=await fetch(DATA_BASE+f+"?t="+Date.now());return r.ok?await r.json():null}catch{return null}}
+async function loadAll(){
+  const [pred,lb,metrics,inj]=await Promise.all([
+    getJSON("nfl_predictions.json").then(d=>d||getJSON("predictions.json")),
+    getJSON("nfl_leaderboard.json").then(d=>d||getJSON("leaderboard.json")),
+    getJSON("model_metrics.json"),
+    getJSON("nfl_injuries.json")]);
+  return {pred,lb,metrics,inj:inj?.injuries||[]};
+}
+const pct1=p=>p==null?"—":(p*100).toFixed(1)+"%";
+const pct0=p=>p==null?"—":Math.round(p*100)+"%";
+const fmtInt=n=>n==null?"—":Number(n).toLocaleString("en-US");
+const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+function kickoff(g){const d=new Date(g.game_time);return{day:d.toLocaleDateString("en-US",{timeZone:TZ,weekday:"short"}).toUpperCase(),time:d.toLocaleTimeString("en-US",{timeZone:TZ,hour:"numeric",minute:"2-digit"}).replace(" ","").toLowerCase()}}
+function gamesFor(pred,w){return (pred?.games||[]).filter(g=>g.week===w).sort((a,b)=>new Date(a.game_time)-new Date(b.game_time))}
+
+const NFL_COORDS={ARI:[33.5276,-112.2626],ATL:[33.7553,-84.4006],BAL:[39.2780,-76.6227],BUF:[42.7738,-78.7870],CAR:[35.2258,-80.8528],CHI:[41.8623,-87.6167],CIN:[39.0954,-84.5160],CLE:[41.5061,-81.6995],DAL:[32.7473,-97.0945],DEN:[39.7439,-105.0201],DET:[42.3400,-83.0456],GB:[44.5013,-88.0622],HOU:[29.6847,-95.4107],IND:[39.7601,-86.1639],JAX:[30.3240,-81.6373],KC:[39.0489,-94.4839],LAC:[33.9534,-118.3392],LAR:[33.9534,-118.3392],LV:[36.0909,-115.1833],MIA:[25.9580,-80.2389],MIN:[44.9738,-93.2581],NE:[42.0909,-71.2643],NO:[29.9509,-90.0814],NYG:[40.8128,-74.0742],NYJ:[40.8128,-74.0742],PHI:[39.9008,-75.1675],PIT:[40.4468,-80.0158],SEA:[47.5952,-122.3316],SF:[37.4030,-121.9700],TB:[27.9759,-82.5033],TEN:[36.1665,-86.7713],WAS:[38.9076,-76.8645]};
+const hav=(a,b)=>{const R=3958.8,r=Math.PI/180,dL=(b[0]-a[0])*r,dO=(b[1]-a[1])*r,h=Math.sin(dL/2)**2+Math.cos(a[0]*r)*Math.cos(b[0]*r)*Math.sin(dO/2)**2;return 2*R*Math.asin(Math.sqrt(h))};
+const eP=d=>1/(1+Math.pow(10,-d/400));
+
+let WEEK=null, PRED=null, LB=null;
+
+/* ── call the play ── */
+function setupToy(lb){
+  const teams=(lb?.teams||[]).slice().sort((a,b)=>a.team.localeCompare(b.team));
+  for(const id of["th","ta"])document.getElementById(id).innerHTML=teams.map(t=>`<option value="${t.team}">${esc(t.team_name)}</option>`).join("");
+  document.getElementById("th").value="MIN";document.getElementById("ta").value="CHI";
+  document.getElementById("toy").addEventListener("submit",e=>{
+    e.preventDefault();
+    const h=document.getElementById("th").value,a=document.getElementById("ta").value;if(h===a)return;
+    const nt=document.getElementById("nt").checked,rh=+document.getElementById("rh").value||7,ra=+document.getElementById("ra").value||7;
+    const hd=teams.find(t=>t.team===h),ad=teams.find(t=>t.team===a);
+    const hfa=nt?0:65,hE=hd?.elo??1500,aE=ad?.elo??1500;
+    const el=eP(hE+hfa-aE),lg=eP(hE+hfa+(rh-ra)*1.5-aE);
+    const py=eP(((hd?.pyth??.5)-(ad?.pyth??.5))*400+hfa),ef=eP(((hd?.net_eff??0)-(ad?.net_eff??0))*200+hfa);
+    const xw=.25,rem=.75,ens=lg*(.30+xw*.30/rem)+el*(.20+xw*.20/rem)+py*(.15+xw*.15/rem)+ef*(.10+xw*.10/rem);
+    const w=ens>=.5?h:a,wp=Math.max(ens,1-ens),wn=ens>=.5?hd.team_name:ad.team_name;
+    const mi=NFL_COORDS[h]&&NFL_COORDS[a]?Math.round(hav(NFL_COORDS[a],NFL_COORDS[h])):0;
+    const r=document.getElementById("toyres");r.style.display="block";
+    r.innerHTML=`<p class="v"><span>${esc(w)}</span> ${pct1(wp)}</p><p class="w">${esc(wn)}, ${wp>.7?"a strong favorite":wp>.6?"a clear favorite":"barely favored"}. Elo ${Math.round(hE)} vs ${Math.round(aE)}${nt?", neutral site":", home field worth 65 Elo"}. ${mi>500?esc(a)+" travels "+fmtInt(mi)+" miles.":"Short trip."} Sub-calls: ELO ${pct0(el)} · LOG ${pct0(lg)} · PYTH ${pct0(py)} · EFF ${pct0(ef)}.</p>`;
+  });
+}
+
+
+function fillBug(pred){
+  if(!pred)return;
+  document.getElementById("bug-week").textContent="WK "+(pred.week??1)+" · "+pred.season;
+  const u=pred.updated?new Date(pred.updated):null;
+  document.getElementById("bug-upd").textContent=u?("UPD "+u.toLocaleString("en-US",{timeZone:TZ,month:"short",day:"numeric",hour:"numeric",minute:"2-digit"}).toUpperCase()):"";
+}
+
+(async()=>{
+  const {pred,lb}=await loadAll();
+  fillBug(pred);
+  setupToy(lb);
+})();
+</script>
+</body>
+</html>
