@@ -54,3 +54,35 @@ Conclusion: once ELO carries QB adjustments + era HFA, ML stacking adds no signa
 Production's ensemble architecture (weights tuned on leaky evals) is likely diluting,
 not helping. Round 2 = make production's core the improved ELO and re-derive any blend
 weight walk-forward, or drop the blend.
+
+---
+
+## Production ship (2026-09-06) — QB-adjusted Elo is now the model
+
+The winning stack shipped to the live pipeline (`scripts/main.py --nfl`, the
+"Update NFL Model" Actions workflow):
+
+- `model/qb_model.py` (new): full 538-style QB overlay - per-start QB VALUE,
+  rolling ratings (0.1 QB / 0.05 team / 0.1 defense-allowed), vet 25% reversion
+  (10-100 starts), draft-initialized rookies, QB_MULT 2.0. Data: nflverse
+  stats_player_week + draft_picks + depth_charts, cached in data/nflverse_cache.
+- `model/elo_model.py`: flat K=20 (within-season decay removed - measured to
+  hurt), era-rolling HFA (trailing 10 completed seasons' home win rate, ~34 pts
+  for 2026), winner-perspective MOV autocorrelation adjustment, qb_map hook.
+  annotate_pregame_elo now wraps compute_elo so training features can't drift
+  from shipped ratings again.
+- `scripts/model_engine.py` + `scripts/main.py`: same mechanics in the ESPN
+  live extension; headline probability is now the pure QB-adjusted Elo
+  expected score. The 12-model ensemble is demoted to display context
+  (walk-forward: ensemble 60-64% vs QB-Elo 65.2%).
+- `scripts/data_fetcher.py`: nflverse games loader passes game_id through
+  (needed by the QB model).
+
+Fair walk-forward verification of the SHIPPED code path (production modules,
+not the lab): **0.6523 acc / 0.6251 log-loss / 0.2180 Brier**, 2017-2025,
+N=2485, vs Vegas closing 0.6660 / 0.6255 / 0.2164. Final production
+compute_elo ratings matched the walk-forward scorer exactly (max diff 0.0).
+Sanity: SEA-NE Week 1 2026 headline 0.7068 reproduced by hand to 0.7069.
+
+Also fixed: depth-chart schema drift (nflverse now uses pos_abb/pos_rank/dt);
+explanation text no longer hardcodes +65 home-field ELO.
