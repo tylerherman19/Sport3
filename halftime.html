@@ -226,9 +226,9 @@ function renderHF(m){
     const band=agg.find(a=>conf>=a[0]&&conf<a[1]);
     if(band){band.said+=b.count*conf;band.hit+=b.count*hit;band.n+=b.count}
   }
-  document.getElementById("cal").innerHTML=`<h5>MODEL ACCURACY - DOES IT TELL THE TRUTH</h5><p class="note" style="padding:0 0 8px">2,486 past games, graded. For each confidence level: how often the pick actually hit, next to what the model claimed. If it were lying, the big number would sag under the claim.</p>`+agg.filter(a=>a.n>0).map(a=>{
+  document.getElementById("cal").innerHTML=`<h5>MODEL ACCURACY - DOES IT TELL THE TRUTH</h5><p class="note" style="padding:0 0 8px">2,486 past games, graded. Each row: games where the model's pick carried that much confidence, and how often those picks actually won.</p>`+agg.filter(a=>a.n>0).map(a=>{
     const said=a.said/a.n, hit=a.hit/a.n, honest=hit>=said;
-    return `<div class="hrow"><div class="hh"><span>PICKED AT ${a[3]} · ${a[2]}</span><span>${a.n} GAMES</span></div><div class="hbig"><span class="n ${honest?'blue':''}">${(hit*100).toFixed(0)}%</span><span class="sub">hit · it said ${(said*100).toFixed(0)}%${honest?' · tells the truth':' · talks a little big'}</span></div></div>`}).join("")+`<p class="note" style="padding:8px 0 0">Modest at the top, a little swagger in the 60s. Everything else means what it says.</p>`;
+    return `<div class="hrow"><div class="hh"><span>THE MODEL SAID ${a[3]} · ${a[2]}</span><span>${a.n} GAMES</span></div><div class="hbig"><span class="n ${honest?'blue':''}">${(hit*100).toFixed(0)}%</span><span class="sub">of those picks won - it said ${(said*100).toFixed(0)}%. ${honest?'Tells the truth.':'Talks a little big.'}</span></div></div>`}).join("")+`<p class="note" style="padding:8px 0 0">Honest everywhere, and modest about its locks: when it says 84%, the truth is 86%.</p>`;
   const hist=(m.historical_accuracy||[]);
   document.getElementById("szn").innerHTML=hist.length?`<h5>SEASON BY SEASON</h5>`+hist.map(h=>
     `<div class="sznrow"><span>${h.year}</span><i style="width:${(h.accuracy*100).toFixed(0)}%"></i><span class="va">${pct1(h.accuracy)}</span></div>`).join(""):"";
