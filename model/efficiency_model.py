@@ -126,7 +126,10 @@ def compute_efficiency(teams_data, league_avg_ypp=5.5, league_avg_ypp_allowed=5.
 
         off_eff = ypp_off / max(real_league_avg_off, 0.1)
         def_eff = real_league_avg_def / max(ypp_def, 0.1)
-        net_eff = off_eff - def_eff
+        # def_eff is already oriented so >1 = GOOD defense; net must ADD it
+        # (was off_eff - def_eff, which erased the defensive signal entirely -
+        # corr with win% was -0.007, fixed: +0.913; external review 2026-09-06)
+        net_eff = off_eff + def_eff - 2.0
 
         elo_equiv = 1500.0 + net_eff * 200.0
 
