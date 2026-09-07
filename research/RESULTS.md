@@ -86,3 +86,54 @@ Sanity: SEA-NE Week 1 2026 headline 0.7068 reproduced by hand to 0.7069.
 
 Also fixed: depth-chart schema drift (nflverse now uses pos_abb/pos_rank/dt);
 explanation text no longer hardcodes +65 home-field ELO.
+
+## Vegas line-setting logic (2026-09-07)
+
+Research directive: absorb the LOGIC of how sportsbooks originate and move
+lines, then prototype whatever transfers to free (non-odds) data. Sources:
+
+- Yahoo Sports, veteran Vegas oddsmakers (Chris Andrews / South Point,
+  Tristan Davis / BetMGM): openers come from power ratings plus context;
+  sharp early action is treated as error-correction on the opener.
+  https://sports.yahoo.com/how-are-point-spreads-made-for-nfl-games-veteran-vegas-oddsmakers-explain-140051148.html
+- Sports Betting Primer, opening-line construction: books blend MULTIPLE
+  models (scoring margin, off/def efficiency, pace, SOS, recent form, roster
+  metrics) into one power rating; spread = rating diff + systematic context
+  adjustments (HFA now ~1.5-2.5 pts, venue-dependent - Seattle/Denver higher;
+  short weeks; cross-timezone travel; QB absence worth 3-7 pts; wind >15mph).
+  Moneylines derive from spread via win-prob conversion tables (key numbers
+  3 and 7). Market-making books (Circa, Pinnacle, BetCRIS) originate; retail
+  books copy and shade toward their customer base's biases.
+  https://sportsbettingprime.com/how-sportsbooks-set-opening-lines.html
+- WagerLex, midweek line movement: lines open Sunday night; Tue-Wed is the
+  sharp window (low limits, professional flow); Thu-Sun is recreational.
+  A sustained half-point move propagating across books in 30-90 min = sharp
+  positioning; quick reversals carry no signal. Closing line = the market's
+  best estimate with maximum information; CLV is the only proven long-run
+  profitability indicator.
+  https://wagerlex.com/the-stack/nfl-week-line-movement-primer/
+
+What transfers to our stack: their architecture IS our architecture - a
+blended power rating (our QB-adjusted Elo), era-compressed HFA (ours is
+rolling, 33.8 pts for 2026 ~= the cited 1.5-2.5 pts), a QB injury/change
+adjustment (our 538-style QB overlay ~= their 3-7 pt QB swing), and
+rest/travel context. Their residual edge is information timing - final
+injury confirmations, weather, sharp flow between open and close - which
+free feeds do not carry pre-game.
+
+Prototypes tested on the fair walk-forward harness (QB stack, production
+constants, 2017-2025, N=2485; baseline 0.6483 acc / 0.6255 ll / 0.2181 br):
+
+- Venue-specific HFA (per-team trailing-10-season home win rate):
+  0.6394 / 0.6298 / 0.2202 - REJECTED (global era HFA wins by 0.9 pts)
+- Short-week penalty (<6 days rest, -10/-20/-30 Elo): 0.6483-0.6487,
+  no change - REJECTED (rest differential already carries what little
+  signal exists)
+- West-to-east early-window penalty (PT/MT away team, <=1pm ET kickoff,
+  -10/-20/-30): monotonically worse (0.6483 -> 0.6455) - REJECTED
+- (Round 1 already rejected: bye-week rest bonus, per-1000-mile travel)
+
+Verdict: none of the documented situational angles add measurable signal on
+top of the shipped QB-Elo stack over 2017-2025. The ~1.4 pt accuracy gap to
+the closing market (65.2 vs 66.6) is information, not methodology. Odds-data
+features (review item 10) remain excluded per the user's standing decision.
