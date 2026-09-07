@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sport3 - the wall</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@500;600;700&family=Archivo:wght@400;600;700&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --wall:#F4F1E8; /* painted drywall */
+  --ink:#211F1A; --muted:#716D60; --faint:#DDD9CB;
+  --paint:#C2410C; /* the only accent: sign paint */
+}
+*{margin:0;padding:0;box-sizing:border-box;border-radius:0!important}
+body{background:var(--wall);color:var(--ink);font-family:"Archivo",sans-serif;font-size:15px;line-height:20px;font-variant-numeric:tabular-nums}
+.slab{font-family:"Zilla Slab",serif}
+
+header.top{padding:16px 20px 12px;border-bottom:4px solid var(--ink);display:flex;align-items:baseline;justify-content:space-between;gap:12px}
+header.top h1{font-family:"Zilla Slab",serif;font-weight:700;font-size:32px;letter-spacing:.01em}
+header.top h1 i{font-style:normal;color:var(--paint)}
+header.top .meta{font-size:11px;font-weight:700;letter-spacing:.14em;color:var(--muted);text-transform:uppercase;text-align:right}
+
+.lede{padding:16px 20px;font-family:"Zilla Slab",serif;font-size:19px;line-height:26px;border-bottom:1px solid var(--ink)}
+.lede b{color:var(--paint)}
+
+.sec{padding:0 20px;margin-top:28px;max-width:1080px;margin-left:auto;margin-right:auto}
+.sec > h2{font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);border-top:2px solid var(--ink);padding-top:8px;margin-bottom:12px;display:flex;justify-content:space-between}
+
+/* the wall: uniform slots */
+.wall{display:grid;grid-template-columns:1fr;gap:8px}
+@media(min-width:560px){.wall{grid-template-columns:1fr 1fr}}
+@media(min-width:900px){.wall{grid-template-columns:1fr 1fr 1fr}}
+.slot{background:#fff;border:1px solid var(--ink);cursor:pointer;text-align:left;font:inherit;color:inherit;padding:0;width:100%;display:block}
+.slot .row1,.slot .row2{display:flex;justify-content:space-between;align-items:baseline;padding:8px 12px}
+.slot .row1{border-bottom:2px solid var(--ink)}
+.slot .tm{font-family:"Zilla Slab",serif;font-weight:600;font-size:20px}
+.slot .pv{font-family:"Zilla Slab",serif;font-weight:700;font-size:24px}
+.slot .lead .tm,.slot .lead .pv{color:var(--paint)}
+.slot .row3{display:flex;justify-content:space-between;padding:6px 12px;font-size:11px;font-weight:600;letter-spacing:.06em;color:var(--muted);text-transform:uppercase}
+.slotdet{border:1px solid var(--ink);border-top:none;background:#fff;padding:8px 12px 12px;font-size:13px;line-height:19px;display:none;margin-top:-8px;margin-bottom:8px}
+.slotdet.open{display:block}
+.slotdet p{padding:5px 0;border-top:1px solid var(--faint)}
+.slotdet .models{color:var(--muted);font-size:12px}
+.slotdet .models .ship{color:var(--paint);font-weight:700}
+
+/* out-of-town board: mini slots */
+.ot{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+@media(min-width:700px){.ot{grid-template-columns:repeat(4,1fr)}}
+.otslot{background:#fff;border:1px solid var(--ink);padding:8px 12px}
+.otslot .r{font-size:11px;font-weight:700;color:var(--muted)}
+.otslot .t{font-family:"Zilla Slab",serif;font-weight:700;font-size:22px}
+.otslot .n{font-size:12px;color:var(--muted)}
+.otslot .n b{color:var(--ink)}
+.otslot.top .t{color:var(--paint)}
+
+/* numbers wall */
+.nwall{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+@media(min-width:700px){.nwall{grid-template-columns:repeat(4,1fr)}}
+.nslot{background:#fff;border:1px solid var(--ink);padding:10px 12px}
+.nslot .n{font-family:"Zilla Slab",serif;font-weight:700;font-size:30px;display:block;line-height:34px}
+.nslot .n.p{color:var(--paint)}
+.nslot .l{font-size:11px;font-weight:600;letter-spacing:.08em;color:var(--muted);text-transform:uppercase}
+
+/* injuries */
+.iteam{background:#fff;border:1px solid var(--ink);padding:8px 12px;font-size:12px;line-height:17px;color:var(--muted)}
+.iteam h4{font-size:13px;color:var(--ink);display:flex;justify-content:space-between;margin-bottom:3px}
+.iteam b{color:var(--ink)}
+.iteam .out{color:var(--paint);font-weight:700}
+.iwall{display:grid;grid-template-columns:1fr;gap:8px}
+@media(min-width:700px){.iwall{grid-template-columns:1fr 1fr}}
+
+/* toy */
+.toy{background:#fff;border:1px solid var(--ink);padding:16px}
+.toy select,.toy input[type=number]{font:inherit;padding:8px;border:1px solid var(--ink);background:var(--wall);width:100%;font-size:15px}
+.toy label{font-size:11px;font-weight:700;letter-spacing:.1em;color:var(--muted);display:block;margin:12px 0 4px;text-transform:uppercase}
+.toyrow{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.toy button{margin-top:16px;width:100%;padding:12px;font:inherit;font-weight:700;background:var(--ink);color:#fff;border:none;cursor:pointer;font-size:15px}
+.toy button:hover{background:var(--paint)}
+.toyres{margin-top:16px;display:none}
+.toyres .v{font-family:"Zilla Slab",serif;font-size:28px;font-weight:700;line-height:32px}
+.toyres .v span{color:var(--paint)}
+.toyres .w{font-size:13px;color:var(--muted);margin-top:8px;line-height:20px}
+
+.note{padding:8px 20px 0;font-size:11px;color:var(--muted);line-height:16px;max-width:1080px;margin:0 auto}
+footer{padding:24px 20px 48px;font-size:12px;line-height:16px;color:var(--muted);max-width:1080px;margin:0 auto}
+footer p{max-width:640px;margin-bottom:8px}
+</style>
+</head>
+<body>
+<header class="top">
+  <h1>Sport3<i>.</i></h1>
+  <span class="meta" id="meta"></span>
+</header>
+<p class="lede" id="lede"></p>
+
+<section class="sec">
+  <h2><span>The Wall</span><span id="wk-note"></span></h2>
+  <div class="wall" id="wall"></div>
+</section>
+
+<section class="sec">
+  <h2><span>The Math</span><span>MODEL VS VEGAS</span></h2>
+  <div class="nwall" id="nwall"></div>
+</section>
+<p class="note" id="l-note"></p>
+
+<section class="sec">
+  <h2><span>Out-of-Town Board</span><span>POWER RANKINGS</span></h2>
+  <div class="ot" id="ot"></div>
+</section>
+
+<section class="sec">
+  <h2><span>Casualty List</span><span id="inj-count"></span></h2>
+  <div class="iwall" id="inj"></div>
+</section>
+
+<section class="sec" style="margin-bottom:32px">
+  <h2><span>Make Your Own</span><span>ANY MATCHUP</span></h2>
+  <form class="toy" id="toy">
+    <div class="toyrow">
+      <div><label for="th">Home</label><select id="th"></select></div>
+      <div><label for="ta">Away</label><select id="ta"></select></div>
+    </div>
+    <div class="toyrow">
+      <div><label for="rh">Home rest</label><input id="rh" type="number" min="3" max="14" value="7"></div>
+      <div><label for="ra">Away rest</label><input id="ra" type="number" min="3" max="14" value="7"></div>
+    </div>
+    <label><input type="checkbox" id="nt" style="width:16px;height:16px;vertical-align:-3px"> Neutral site</label>
+    <button type="submit">Post it</button>
+    <div class="toyres" id="toyres"></div>
+  </form>
+</section>
+
+<footer>
+<p>Picks by a walk-forward-tested ensemble: Elo, logistic regression, gradient boosting, Pythagorean expectation, efficiency, Bayesian ratings, and 10,000 simulated games per matchup. It watched 7,276 games to form its opinions.</p>
+<p>Updated nightly by a robot. Not affiliated with the National Football League, which does not return calls. Not betting advice. Barely advice at all.</p>
+</footer>
+<script>
+/* shared data layer for lab previews */
+const TZ="America/Chicago";
+const DATA_BASE="/Sport3/data/";
+async function getJSON(f){try{const r=await fetch(DATA_BASE+f+"?t="+Date.now());return r.ok?await r.json():null}catch{return null}}
+async function loadAll(){
+  const [pred,lb,metrics,inj]=await Promise.all([
+    getJSON("nfl_predictions.json").then(d=>d||getJSON("predictions.json")),
+    getJSON("nfl_leaderboard.json").then(d=>d||getJSON("leaderboard.json")),
+    getJSON("model_metrics.json"),
+    getJSON("nfl_injuries.json")]);
+  return {pred,lb,metrics,inj:inj?.injuries||[]};
+}
+const pct1=p=>p==null?"—":(p*100).toFixed(1)+"%";
+const pct0=p=>p==null?"—":Math.round(p*100)+"%";
+const fmtInt=n=>n==null?"—":Number(n).toLocaleString("en-US");
+const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const signed=(n,d=1)=>n==null?"—":(n>0?"+":"")+n.toFixed(d);
+function fav(g){const p=g.predictions?.ensemble_prob;if(p==null)return null;return p>=.5?{team:g.home_team,name:g.home_name,p}:{team:g.away_team,name:g.away_name,p:1-p}}
+function kickoff(g){const d=new Date(g.game_time);return{day:d.toLocaleDateString("en-US",{timeZone:TZ,weekday:"short"}).toUpperCase(),time:d.toLocaleTimeString("en-US",{timeZone:TZ,hour:"numeric",minute:"2-digit"}).replace(" ","").toLowerCase()}}
+function gamesFor(pred,w){return (pred?.games||[]).filter(g=>g.week===w).sort((a,b)=>new Date(a.game_time)-new Date(b.game_time))}
+
+const NFL_COORDS={ARI:[33.5276,-112.2626],ATL:[33.7553,-84.4006],BAL:[39.2780,-76.6227],BUF:[42.7738,-78.7870],CAR:[35.2258,-80.8528],CHI:[41.8623,-87.6167],CIN:[39.0954,-84.5160],CLE:[41.5061,-81.6995],DAL:[32.7473,-97.0945],DEN:[39.7439,-105.0201],DET:[42.3400,-83.0456],GB:[44.5013,-88.0622],HOU:[29.6847,-95.4107],IND:[39.7601,-86.1639],JAX:[30.3240,-81.6373],KC:[39.0489,-94.4839],LAC:[33.9534,-118.3392],LAR:[33.9534,-118.3392],LV:[36.0909,-115.1833],MIA:[25.9580,-80.2389],MIN:[44.9738,-93.2581],NE:[42.0909,-71.2643],NO:[29.9509,-90.0814],NYG:[40.8128,-74.0742],NYJ:[40.8128,-74.0742],PHI:[39.9008,-75.1675],PIT:[40.4468,-80.0158],SEA:[47.5952,-122.3316],SF:[37.4030,-121.9700],TB:[27.9759,-82.5033],TEN:[36.1665,-86.7713],WAS:[38.9076,-76.8645]};
+const hav=(a,b)=>{const R=3958.8,r=Math.PI/180,dL=(b[0]-a[0])*r,dO=(b[1]-a[1])*r,h=Math.sin(dL/2)**2+Math.cos(a[0]*r)*Math.cos(b[0]*r)*Math.sin(dO/2)**2;return 2*R*Math.asin(Math.sqrt(h))};
+const eP=d=>1/(1+Math.pow(10,-d/400));
+let WEEK=null,PRED=null;
+
+function renderWall(){
+  const wrap=document.getElementById("wall");wrap.innerHTML="";
+  for(const g of gamesFor(PRED,WEEK)){
+    const f=fav(g),k=kickoff(g),mc=g.monte_carlo||{};
+    const awayLead=f&&f.team===g.away_team;
+    const slot=document.createElement("button");slot.className="slot";slot.type="button";
+    slot.innerHTML=`
+      <span class="row1 ${awayLead?"lead":""}"><span class="tm">${esc(g.away_team)}</span><span class="pv">${awayLead?pct1(f.p):pct1(f?1-f.p:0.5)}</span></span>
+      <span class="row2 ${awayLead?"":"lead"}"><span class="tm">${esc(g.home_team)}</span><span class="pv">${awayLead?pct1(f?1-f.p:0.5):pct1(f?f.p:0.5)}</span></span>
+      <span class="row3"><span>${k.day} ${k.time}${g.neutral?" · neutral":""}</span><span>by ${Math.abs(mc.exp_margin??0).toFixed(1)}</span></span>`;
+    const det=document.createElement("div");det.className="slotdet";
+    det.innerHTML=`
+      <p><b>${esc(g.away_name)} at ${esc(g.home_name)}</b> · ${esc((g.player_form?.away_qb||"")+" vs "+(g.player_form?.home_qb||""))}</p>
+      <p>Elo ${Math.round(g.elo?.home??0)} vs ${Math.round(g.elo?.away??0)} · rest ${g.adjustments?.rest_home??"—"}/${g.adjustments?.rest_away??"—"}${g.adjustments?.travel_dist_miles?" · "+esc(g.away_team)+" travels "+fmtInt(Math.round(g.adjustments.travel_dist_miles))+" mi":""}</p>
+      <p>Simulation: ${esc(f?f.team:"")} by ${Math.abs(mc.exp_margin??0).toFixed(1)}, ${pct0(mc.prob_7plus)} to win by 7+</p>
+      ${g.explanation?`<p>${esc(g.explanation).replace(/—/g,"-")}</p>`:""}
+      <p class="models">${["ensemble_prob|MODEL|1","elo_prob|ELO","logistic_prob|LOG","xgb_prob|XGB","pyth_prob|PYTH","eff_prob|EFF","bayesian_prob|BAY"].map(s=>{const[k,l,sh]=s.split("|");const v=g.predictions?.[k];return v!=null?`<span class="${sh?"ship":""}">${l} ${pct0(v)}</span>`:""}).filter(Boolean).join(" · ")}</p>`;
+    slot.addEventListener("click",()=>det.classList.toggle("open"));
+    wrap.appendChild(slot);wrap.appendChild(det);
+  }
+  document.getElementById("wk-note").textContent="WEEK "+WEEK+" · ALL TIMES CT";
+}
+
+function renderN(m){
+  if(!m)return;
+  document.getElementById("nwall").innerHTML=[
+    {n:pct1(m.accuracy),l:"Model · "+fmtInt(m.n_scored_games)+" games"},
+    {n:pct1(m.vegas_benchmark?.accuracy),l:"Vegas",p:1},
+    {n:m.log_loss?.toFixed(3),l:"Log loss (Vegas "+(m.vegas_benchmark?.log_loss?.toFixed(3)??"—")+")"},
+    {n:m.auc?.toFixed(3),l:"AUC (Vegas "+(m.vegas_benchmark?.auc?.toFixed(3)??"—")+")"},
+  ].map(s=>`<div class="nslot"><span class="n ${s.p?"p":""}">${s.n}</span><span class="l">${s.l}</span></div>`).join("");
+  document.getElementById("l-note").textContent="Walk-forward backtest, 2017-2025, pre-game information only. The model trails Vegas by "+((m.vegas_benchmark?.accuracy-m.accuracy)*100).toFixed(1)+" points over "+fmtInt(m.n_scored_games)+" scored games. Bet accordingly: don't.";
+}
+
+function renderOT(lb){
+  const teams=(lb?.teams||[]).slice().sort((a,b)=>b.elo-a.elo);
+  document.getElementById("ot").innerHTML=teams.map((t,i)=>
+    `<div class="otslot ${i<4?"top":""}"><span class="r">#${i+1}</span> <span class="t">${esc(t.team)}</span><div class="n"><b>${Math.round(t.elo)}</b> Elo · PO ${pct0(t.playoff_prob)} · SB ${pct0(t.sb_prob)}</div></div>`).join("");
+}
+
+function renderInj(list){
+  const R={"Out":0,"Injured Reserve":1,"Suspension":2,"Questionable":3},S={"Out":"OUT","Injured Reserve":"IR","Suspension":"SUSP","Questionable":"Q"};
+  const by={};for(const p of list){if(!p.team||!(p.status in R))continue;(by[p.team]=by[p.team]||[]).push(p)}
+  let tot=0;
+  document.getElementById("inj").innerHTML=Object.keys(by).sort().map(t=>{
+    const ps=by[t].sort((a,b)=>(R[a.status]-R[b.status])||((b.value_tier==="starter")-(a.value_tier==="starter")));
+    tot+=ps.length;
+    return `<div class="iteam"><h4>${esc(t)}<span>${ps.length}</span></h4>${ps.slice(0,8).map(p=>`<span class="${p.status==="Out"?"out":""}">${S[p.status]}</span> ${p.value_tier==="starter"?`<b>${esc(p.player)}</b>`:esc(p.player)} (${esc(p.position)})`).join(" · ")}${ps.length>8?` · +${ps.length-8} more`:""}</div>`;
+  }).join("");
+  document.getElementById("inj-count").textContent=tot+" PLAYERS";
+}
+
+function setupToy(lb){
+  const teams=(lb?.teams||[]).slice().sort((a,b)=>a.team.localeCompare(b.team));
+  for(const id of["th","ta"])document.getElementById(id).innerHTML=teams.map(t=>`<option value="${t.team}">${esc(t.team_name)}</option>`).join("");
+  document.getElementById("th").value="MIN";document.getElementById("ta").value="CHI";
+  document.getElementById("toy").addEventListener("submit",e=>{
+    e.preventDefault();
+    const h=document.getElementById("th").value,a=document.getElementById("ta").value;if(h===a)return;
+    const nt=document.getElementById("nt").checked,rh=+document.getElementById("rh").value||7,ra=+document.getElementById("ra").value||7;
+    const hd=teams.find(t=>t.team===h),ad=teams.find(t=>t.team===a);
+    const hfa=nt?0:65,hE=hd?.elo??1500,aE=ad?.elo??1500;
+    const el=eP(hE+hfa-aE),lg=eP(hE+hfa+(rh-ra)*1.5-aE);
+    const py=eP(((hd?.pyth??.5)-(ad?.pyth??.5))*400+hfa),ef=eP(((hd?.net_eff??0)-(ad?.net_eff??0))*200+hfa);
+    const xw=.25,rem=.75,ens=lg*(.30+xw*.30/rem)+el*(.20+xw*.20/rem)+py*(.15+xw*.15/rem)+ef*(.10+xw*.10/rem);
+    const w=ens>=.5?h:a,wp=Math.max(ens,1-ens),wn=ens>=.5?hd.team_name:ad.team_name;
+    const mi=NFL_COORDS[h]&&NFL_COORDS[a]?Math.round(hav(NFL_COORDS[a],NFL_COORDS[h])):0;
+    const r=document.getElementById("toyres");r.style.display="block";
+    r.innerHTML=`<p class="v"><span>${esc(w)}</span> ${pct1(wp)}</p><p class="w">${esc(wn)}, ${wp>.7?"a strong favorite":wp>.6?"a clear favorite":"barely favored"}. Elo ${Math.round(hE)} vs ${Math.round(aE)}${nt?", neutral site":", home field worth 65 Elo"}. ${mi>500?esc(a)+" travels "+fmtInt(mi)+" miles.":"Short trip."} Sub-calls: ELO ${pct0(el)} · LOG ${pct0(lg)} · PYTH ${pct0(py)} · EFF ${pct0(ef)}.</p>`;
+  });
+}
+
+(async()=>{
+  const {pred,lb,metrics,inj}=await loadAll();
+  if(!pred){document.getElementById("lede").textContent="The data robot has not published tonight's file.";return}
+  PRED=pred;WEEK=pred.week??1;
+  const u=pred.updated?new Date(pred.updated):null;
+  document.getElementById("meta").innerHTML="WEEK "+WEEK+" · "+pred.season+"<br>"+(u?"UPDATED "+u.toLocaleString("en-US",{timeZone:TZ,month:"short",day:"numeric",hour:"numeric",minute:"2-digit"}).toUpperCase():"");
+  const gs=gamesFor(pred,WEEK);
+  let fv=null,tg=null;
+  for(const g of gs){const p=g.predictions?.ensemble_prob;if(p==null)continue;const t=Math.max(p,1-p);if(!fv||t>fv.t)fv={g,t};if(!tg||t<tg.t)tg={g,t}}
+  document.getElementById("lede").innerHTML=`${gs.length} games posted on the wall. Top of the board: <b>${esc(fv.g.predictions.ensemble_prob>=.5?fv.g.home_team:fv.g.away_team)} ${pct1(fv.t)}</b>. Closest to a coin flip: <b>${esc(tg.g.away_team)} at ${esc(tg.g.home_team)}, ${pct1(tg.t)}</b>. Tap any slot for the scouting line.`;
+  renderWall();renderN(metrics);renderOT(lb);renderInj(inj);setupToy(lb);
+})();
+</script>
+</body>
+</html>
