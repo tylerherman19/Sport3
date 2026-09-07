@@ -18,7 +18,7 @@ Fallback:
     /v1/teams. Stats and injury endpoints are NOT used (blocked on this tier).
 """
 
-import logging
+import logging, os
 import re
 from datetime import datetime, timedelta, timezone
 from concurrent.futures import ThreadPoolExecutor, as_completed
