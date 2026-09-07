@@ -71,6 +71,7 @@ def build_features(df, elo_dict, game_history, efficiency_data, pythagorean_data
 
     # Track the last game date per team for rest calculation
     team_last_date: dict = {}
+    team_last_season: dict = {}
     # Build features with rolling history only (pre-game information) to prevent leakage.
     rolling_history = {}
 
@@ -99,13 +100,17 @@ def build_features(df, elo_dict, game_history, efficiency_data, pythagorean_data
         try:
             from datetime import datetime as _dt
             gd = _dt.strptime(game_date_str[:10], "%Y-%m-%d").date()
+            season_now = int(row.get("season", 0))
             last1 = team_last_date.get(team1)
             last2 = team_last_date.get(team2)
-            rest1 = (gd - last1).days if last1 else 7
-            rest2 = (gd - last2).days if last2 else 7
+            # Reset across season boundaries (offseason is not rest advantage)
+            rest1 = (gd - last1).days if (last1 and team_last_season.get(team1) == season_now) else 7
+            rest2 = (gd - last2).days if (last2 and team_last_season.get(team2) == season_now) else 7
             rest_diff = float(rest1 - rest2)
             team_last_date[team1] = gd
             team_last_date[team2] = gd
+            team_last_season[team1] = season_now
+            team_last_season[team2] = season_now
         except (ValueError, TypeError):
             rest_diff = 0.0
 
