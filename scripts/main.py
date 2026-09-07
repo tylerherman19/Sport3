@@ -61,7 +61,9 @@ from scripts.output_writer import (
 )
 
 # ---- Model sub-modules ----
-from model.elo_model import compute_elo, annotate_pregame_elo, predict_game as elo_predict_game, get_trend
+from model.elo_model import compute_elo, annotate_pregame_elo, predict_game as elo_predict_game, get_trend, \
+                                era_hfa, expected_score as elo_expected_score
+from model import qb_model
 from model.logistic_model import (build_features as build_nfl_logistic_features, train_logistic,
                                    evaluate_model, calibration_buckets,
                                    predict_matchups, historical_accuracy_by_year)
@@ -132,9 +134,35 @@ def run_nfl():
     now_utc      = datetime.now(timezone.utc).isoformat()
     odds_api_key = os.environ.get("ODDS_API_KEY", "")
 
+    season_year = datetime.now().year
+    if datetime.now().month < 8:
+        season_year -= 1
+
     fte_df                         = fetch_nfl_historical_games()
+
+    # 538-style QB adjustment context + era-rolling HFA (measured winners,
+    # research/RESULTS.md). Built before annotation so training features match.
+    qb_ctx  = {"game_adj": {}, "state": {}}
+    pred_hfa = 48.0
     if not fte_df.empty:
-        fte_df = annotate_pregame_elo(fte_df)
+        try:
+            qb_ctx = qb_model.build_qb_context(fte_df, first_season=2014)
+            log.info(f"QB context built: {len(qb_ctx['game_adj'])} games adjusted")
+        except Exception as qe:
+            log.warning(f"QB context build failed, running without QB adjustments: {qe}")
+        try:
+            _hwr = {}
+            for _s, _g in fte_df.groupby("season"):
+                _p = _g.dropna(subset=["score1", "score2"])
+                if len(_p):
+                    _hwr[int(_s)] = float((_p["score1"] > _p["score2"]).mean())
+            pred_hfa = era_hfa(_hwr, season_year, default=48.0)
+            log.info(f"Era-rolling HFA for {season_year}: {pred_hfa:.1f}")
+        except Exception as he:
+            log.warning(f"Era HFA failed, using 48: {he}")
+
+    if not fte_df.empty:
+        fte_df = annotate_pregame_elo(fte_df, qb_map=qb_ctx["game_adj"])
     scoreboard_games, current_week = fetch_nfl_scoreboard()
     standings                      = fetch_nfl_standings()
     injuries                       = fetch_nfl_injuries()
@@ -177,10 +205,6 @@ def run_nfl():
         write_nfl_injuries(injuries_list, now_utc)
     else:
         log.warning("No NFL injury data — keeping existing nfl_injuries.json")
-
-    season_year = datetime.now().year
-    if datetime.now().month < 8:
-        season_year -= 1
 
     log.info("Fetching nflverse player stats + roster...")
     player_week_df = fetch_nflverse_player_week_stats(
@@ -240,7 +264,7 @@ def run_nfl():
     log.info("Computing ELO from FTE...")
     fte_cutoff_date = None
     if not fte_df.empty:
-        elo_dict, game_history = compute_elo(fte_df)
+        elo_dict, game_history = compute_elo(fte_df, qb_map=qb_ctx["game_adj"])
         cft = fte_df.dropna(subset=["score1","score2"])
         if not cft.empty:
             fte_cutoff_date = pd.to_datetime(cft["date"]).max()
@@ -252,13 +276,22 @@ def run_nfl():
     espn_completed = fetch_nfl_completed_games(season_year)
     if espn_completed:
         elo_dict, game_history = extend_elo_with_espn(
-            elo_dict, game_history, espn_completed, fte_cutoff_date=fte_cutoff_date)
+            elo_dict, game_history, espn_completed, fte_cutoff_date=fte_cutoff_date,
+            hfa=pred_hfa, qb_map=qb_ctx.get("game_adj"))
 
     efficiency_data = build_nfl_efficiency_data(standings, fte_df)
     teams_pts_data  = {
         t: {"points_for": standings.get(t,{}).get("points_for",350),
             "points_against": standings.get(t,{}).get("points_against",350)} for t in NFL_TEAMS}
     pythagorean_data = compute_pythagorean(teams_pts_data)
+
+    # Depth-chart QB1s for projecting future-game adjustments
+    dc_qbs = {}
+    try:
+        dc_qbs = qb_model.load_depth_chart_qbs(season_year)
+        log.info(f"Depth-chart QBs loaded for {len(dc_qbs)} teams")
+    except Exception as de:
+        log.warning(f"Depth chart load failed, using last starters: {de}")
 
     nfl_weights = DEFAULT_WEIGHTS
     if not fte_df.empty:
@@ -349,7 +382,20 @@ def run_nfl():
                 away_epa.get("off_epa_l8", 0.0), away_epa.get("def_epa_allowed_l8", 0.0),
                 qb_epa_l8.get(home, 0.0), qb_epa_l8.get(away, 0.0),
             )
-            ep = ensemble_predict(logistic_prob=lp,xgb_prob=xp,elo_prob=er["prob"],
+            # Headline probability: pure QB-adjusted ELO. Walk-forward backtest
+            # (research/RESULTS.md): this stack hits 65.2% vs 60-64% for the
+            # 12-model ensemble. Sub-models remain as display context only.
+            _qb_state = qb_ctx.get("state", {})
+            if _qb_state:
+                _qadj_home = qb_model.projected_adjustment(_qb_state, home, season_year, dc_qbs)
+                _qadj_away = qb_model.projected_adjustment(_qb_state, away, season_year, dc_qbs)
+            else:
+                _qadj_home = _qadj_away = 0.0
+            ep = elo_expected_score(
+                elo_dict.get(home, 1500.0) + (0 if neutral else pred_hfa) + _qadj_home,
+                elo_dict.get(away, 1500.0) + _qadj_away
+            )
+            ensemble_display = ensemble_predict(logistic_prob=lp,xgb_prob=xp,elo_prob=er["prob"],
                                   pyth_prob=effr["pyth_prob"],eff_prob=effr["eff_prob"],
                                   weights=nfl_weights, player_form_prob=pf)
             mh = bayesian_ratings.get(home,{}).get("mu",elo_dict.get(home,1500.0))
@@ -362,7 +408,7 @@ def run_nfl():
             me  = round(ep-mhp,4) if mhp else None
             kp  = kelly_criterion(ep,mhp) if mhp else None
             adj = {"rest_home":rh,"rest_away":ra,"rest_diff":rh-ra,
-                   "travel_dist_miles":round(dist,0),"travel_adj":taj,"home_elo_bonus":0 if neutral else 65}
+                   "travel_dist_miles":round(dist,0),"travel_adj":taj,"home_elo_bonus":0 if neutral else round(pred_hfa,1)}
             pd2 = generate_nfl_prediction_drivers(game,home,away,elo_dict,efficiency_data,injury_impacts,adj)
             winner = home if ep>=0.5 else away; wp = ep if ep>=0.5 else 1-ep; loser = away if ep>=0.5 else home
             elo_gap = abs(elo_dict.get(home,1500)-elo_dict.get(away,1500))
@@ -373,7 +419,7 @@ def run_nfl():
             expl = (f"The model gives {NFL_TEAM_NAMES.get(winner,winner)} a {wp*100:.1f}% win probability —"
                     f" a {conf} favorite over {NFL_TEAM_NAMES.get(loser,loser)}."
                     f" ELO gap: {elo_gap:.0f} pts"
-                    + (" with home field +65 ELO." if not neutral else " at a neutral site.")
+                    + (f" with home field +{round(pred_hfa)} ELO." if not neutral else " at a neutral site.")
                     + (f" Rest: {home if adj['rest_diff']>0 else away} has the edge." if abs(adj.get('rest_diff',0))>=3 else "")
                     + (f" Travel: {round(dist)} miles." if dist>1000 else "")
                     + (f" QB form: {(home_qb or {}).get('player_name','?') if qb_epa_gap>0 else (away_qb or {}).get('player_name','?')}"
