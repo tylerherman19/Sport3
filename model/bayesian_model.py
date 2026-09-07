@@ -113,10 +113,19 @@ def update_ratings(games, elo_dict, initial_sigma=75.0, obs_noise=100.0, regress
     return ratings
 
 
+# Outcome-level uncertainty (ELO points). The posterior sigmas above only capture
+# *rating* uncertainty; the far larger term in a win probability is the randomness
+# of the game itself. 277 matches the slope of the ELO 400-scale logistic at even
+# odds (phi(0)/sigma = ln(10)/1600), so this stays calibrated with the ELO model.
+# Without it, small rating gaps + HFA produced absurd confidences (e.g. 97.5%).
+OUTCOME_SIGMA = 277.0
+
+
 def predict_game(team_a, team_b, ratings, is_home_a=True, neutral=False, hfa=65.0):
     """
     Predict P(team_a wins) using Bayesian ratings.
-    Uses difference of Normal distributions.
+    Uses difference of Normal distributions, combining game-outcome noise
+    (OUTCOME_SIGMA) with each team's rating uncertainty.
     Returns {prob, mu_a, sigma_a, mu_b, sigma_b}
     """
     mu_a = ratings.get(team_a, {}).get("mu", 1500.0)
@@ -128,9 +137,10 @@ def predict_game(team_a, team_b, ratings, is_home_a=True, neutral=False, hfa=65.
     if not neutral:
         hfa_val = hfa if is_home_a else -hfa
 
-    # P(A > B) = P(A - B > 0), A-B ~ N(mu_a - mu_b, sigma_a^2 + sigma_b^2)
+    # P(A > B) = P(A - B > 0), A-B ~ N(mu_a - mu_b, sigma^2) where sigma
+    # combines irreducible game-outcome noise with rating uncertainty.
     diff_mu = (mu_a + hfa_val) - mu_b
-    diff_sigma = np.sqrt(sigma_a ** 2 + sigma_b ** 2)
+    diff_sigma = np.sqrt(OUTCOME_SIGMA ** 2 + sigma_a ** 2 + sigma_b ** 2)
 
     # P(A > B) = P(diff > 0) where diff ~ N(diff_mu, diff_sigma^2)
     # = Normal CDF at diff_mu / diff_sigma
