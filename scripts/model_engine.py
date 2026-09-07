@@ -47,7 +47,9 @@ def nfl_days_since_last_game(game_history: dict, team: str, before_date) -> int:
         return 7
     try:
         last = max(dates)
-        return max(0, (before_date - datetime.strptime(last, "%Y-%m-%d").date()).days)
+        days = max(0, (before_date - datetime.strptime(last, "%Y-%m-%d").date()).days)
+        # Offseason (>30 days) is not a rest advantage; treat as a normal week
+        return days if days <= 30 else 7
     except ValueError:
         return 7
 
