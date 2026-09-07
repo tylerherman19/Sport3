@@ -43,3 +43,14 @@ Gain over fair baseline: +1.6 pts accuracy. 2025 season: model 0.662 vs Vegas 0.
   than ELO alone, 0.602 vs 0.632)
 - Candidate: add qb_diff as LR/XGB feature
 - Candidate: isotonic recalibration of final prob on walk-forward residuals
+
+## Round 1.5 — ML layer check (2017-2025, N=2485)
+Stacked models trained per season on strictly-prior seasons, features from the improved
+walk state (elo_diff, qb_diff, hfa, rest_diff, last5_diff):
+- LR stack: 0.6455 / ll 0.6252 — does NOT beat improved ELO alone (0.6483 / 0.6255)
+- XGB stack: 0.6398 — worse
+- 0.7 ELO + 0.3 XGB blend: 0.6491 acc (noise-level +2 games), ll worse
+Conclusion: once ELO carries QB adjustments + era HFA, ML stacking adds no signal.
+Production's ensemble architecture (weights tuned on leaky evals) is likely diluting,
+not helping. Round 2 = make production's core the improved ELO and re-derive any blend
+weight walk-forward, or drop the blend.
