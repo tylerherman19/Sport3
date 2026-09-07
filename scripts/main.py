@@ -307,11 +307,21 @@ def run_nfl():
             X, y = build_nfl_logistic_features(fte_df, elo_dict, game_history, efficiency_data, pythagorean_data)
             if len(X) > 50:
                 logistic_model, logistic_scaler, logistic_calibrator = train_logistic(X, y)
-                model_metrics.update(evaluate_model(logistic_model, logistic_scaler, logistic_calibrator, X, y))
-                model_metrics["calibration_buckets"] = calibration_buckets(logistic_model, logistic_scaler, logistic_calibrator, X, y)
-                model_metrics["historical_accuracy"] = historical_accuracy_by_year(fte_df, logistic_model, logistic_scaler, logistic_calibrator, elo_dict, game_history, efficiency_data, pythagorean_data)
         except Exception as e:
             log.error(f"NFL logistic training failed: {e}")
+
+    # Honest evaluation (external review 2026-09-06, item 4): publish
+    # walk-forward backtest metrics of the SHIPPED headline (pure QB-Elo).
+    # The old in-sample logistic evaluation trained and scored on the same
+    # rows - leaky - so it no longer feeds the site's model metrics.
+    try:
+        from scripts.backtest_nfl import walkforward_metrics
+        wf_metrics = walkforward_metrics(fte_df, qb_ctx)
+        if wf_metrics:
+            model_metrics.update(wf_metrics)
+            log.info(f"Walk-forward metrics: acc={wf_metrics['accuracy']} ll={wf_metrics['log_loss']} N={wf_metrics['n_scored_games']}")
+    except Exception as e:
+        log.warning(f"Walk-forward backtest failed, metrics left null: {e}")
 
     xgb_model = xgb_scaler = None
     if not fte_df.empty and len(fte_df) > 100:
