@@ -50,7 +50,7 @@ def era_hfa(home_win_rates, current_season, default=48.0, window=10):
 
 
 def compute_elo(historical_df, k_base=20.0, hfa=48.0, initial_elo=1500.0, regress_pct=0.33,
-                qb_map=None, use_era_hfa=True, pregame_out=None):
+                qb_map=None, use_era_hfa=True, pregame_out=None, current_season=None):
     """
     Process historical games and compute current ELO ratings.
     Returns dict: {team: elo}
@@ -63,6 +63,11 @@ def compute_elo(historical_df, k_base=20.0, hfa=48.0, initial_elo=1500.0, regres
     - Margin-of-victory uses 538's winner-perspective autocorrelation adjustment.
     - qb_map: optional {(date_str, team1, team2): (adj_home, adj_away)} from
       model.qb_model - applied to both prediction expectation and post-game update.
+    - current_season: the season the caller is about to PREDICT. historical_df
+      holds completed games only, so before Week 1 of a new season the per-season
+      loop below stops at the previous season and never applies that season's
+      offseason regression. Passing current_season closes the gap (see the block
+      after the loop). Omit it to get the raw end-of-history ratings.
     """
     df = historical_df.copy()
     df = df.dropna(subset=["score1", "score2"])
@@ -159,6 +164,27 @@ def compute_elo(historical_df, k_base=20.0, hfa=48.0, initial_elo=1500.0, regres
                 "date": row["date"].isoformat(),
                 "opponent": team1,
             })
+
+    # Offseason regression for season(s) that have no completed games yet.
+    #
+    # The loop above regresses at the start of every season it iterates, but it
+    # only iterates seasons PRESENT in historical_df -- and historical_df is
+    # completed games only. Before Week 1 of a new season the loop therefore
+    # stops at the previous season, and the ratings handed to the live pipeline
+    # are raw end-of-last-season values: no mean reversion, so no accounting for
+    # roster turnover. That over-disperses the whole league (measured 2026-09-08:
+    # rating sd 120 vs 81 regressed) and manufactures large phantom edges against
+    # the market. It is a live-only defect -- the walk-forward harness always has
+    # the target season's games in frame, so it regresses and never reproduces it.
+    #
+    # Regress once per season boundary crossed. Self-healing: the moment the new
+    # season's first result lands in historical_df the loop owns that boundary
+    # and the range below is empty, so ratings are never regressed twice.
+    if current_season is not None and seasons:
+        for _ in range(max(0, int(current_season) - int(max(seasons)))):
+            for team in list(elo_dict.keys()):
+                elo_dict[team] = elo_dict[team] * (1 - regress_pct) + initial_elo * regress_pct
+                game_history[team] = []
 
     return elo_dict, game_history
 

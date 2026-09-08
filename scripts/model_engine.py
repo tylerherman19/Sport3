@@ -100,14 +100,41 @@ def extend_elo_with_espn(elo_dict: dict, game_history: dict, espn_games: list,
     return elo_dict, game_history
 
 
+# Neutral prior for a team with no completed games this season: league-average
+# offense and defense, zero net, Elo-equivalent 1500.
+NEUTRAL_NFL_EFFICIENCY = {
+    "ypp_offense": 5.5, "ypp_allowed": 5.5,
+    "off_eff": 1.0, "def_eff": 1.0, "net_eff": 0.0, "elo_equiv": 1500.0,
+    "passing_eff": 1.0, "rushing_eff": 1.0, "pass_def_eff": 1.0, "rush_def_eff": 1.0,
+}
+
+
+def nfl_season_stats_available(standings: dict) -> bool:
+    """True once at least one team has a completed game this season.
+
+    Points-based systems (Pythagorean, efficiency) carry no information before
+    then, so callers should treat their output as unavailable rather than as a
+    50/50 prior that still consumes ensemble weight and UI space.
+    """
+    return any(int(s.get("games_played", 0) or 0) > 0 for s in (standings or {}).values())
+
+
 def build_nfl_efficiency_data(standings: dict, fte_df) -> dict:
     from model.efficiency_model import compute_efficiency
     league_ppg = 22.0
     efficiency = {}
     for team, s in standings.items():
-        pf = s.get("points_for", 350)
-        pa = s.get("points_against", 350)
-        gp = max(s.get("games_played", 1), 1)
+        gp = int(s.get("games_played", 0) or 0)
+        if gp <= 0:
+            # ESPN reports points_for/points_against as 0 (not missing) before a
+            # team has played, so the ``.get(key, 350)`` defaults never fired and
+            # every team's ypp collapsed to 0. compute_efficiency then returned
+            # off_eff = def_eff = 0 and net_eff = -2.0 for all 32 teams -- a
+            # league-wide constant presented as a rating. Use the neutral prior.
+            efficiency[team] = dict(NEUTRAL_NFL_EFFICIENCY)
+            continue
+        pf = float(s.get("points_for", 0) or 0)
+        pa = float(s.get("points_against", 0) or 0)
         ppg_off, ppg_def = pf / gp, pa / gp
         ypp_off = 5.5 * (ppg_off / league_ppg)
         ypp_def = 5.5 * (ppg_def / league_ppg)
@@ -119,18 +146,18 @@ def build_nfl_efficiency_data(standings: dict, fte_df) -> dict:
             "pass_def_eff": 1.0 - (ppg_def - league_ppg) / league_ppg * 0.6,
             "rush_def_eff": 1.0 - (ppg_def - league_ppg) / league_ppg * 0.4,
         }
+    # League averages come only from teams that have actually played, so a team
+    # still on its neutral prior cannot drag the baseline it is measured against.
+    played = {t: d for t, d in efficiency.items()
+              if int((standings.get(t) or {}).get("games_played", 0) or 0) > 0}
     computed = compute_efficiency(
-        {t: {"ypp_offense": d["ypp_offense"], "ypp_allowed": d["ypp_allowed"]} for t, d in efficiency.items()}
-    )
+        {t: {"ypp_offense": d["ypp_offense"], "ypp_allowed": d["ypp_allowed"]} for t, d in played.items()}
+    ) if played else {}
     for team in efficiency:
         if team in computed:
             efficiency[team].update(computed[team])
     for team in NFL_TEAMS:
-        efficiency.setdefault(team, {
-            "ypp_offense": 5.5, "ypp_allowed": 5.5,
-            "off_eff": 1.0, "def_eff": 1.0, "net_eff": 0.0, "elo_equiv": 1500.0,
-            "passing_eff": 1.0, "rushing_eff": 1.0, "pass_def_eff": 1.0, "rush_def_eff": 1.0,
-        })
+        efficiency.setdefault(team, dict(NEUTRAL_NFL_EFFICIENCY))
     return efficiency
 
 
@@ -145,7 +172,8 @@ def match_odds_to_game(game: dict, odds_map: dict):
     return None
 
 
-def generate_nfl_prediction_drivers(game_info, home, away, elo_dict, efficiency_data, injury_impacts, adj):
+def generate_nfl_prediction_drivers(game_info, home, away, elo_dict, efficiency_data, injury_impacts, adj,
+                                    hfa_pts=None):
     drivers = []
     elo_diff = abs(elo_dict.get(home, 1500.0) - elo_dict.get(away, 1500.0))
     if elo_diff >= 50:
@@ -167,7 +195,11 @@ def generate_nfl_prediction_drivers(game_info, home, away, elo_dict, efficiency_
     if adj.get("travel_dist_miles", 0) >= 1500:
         drivers.append(f"Travel penalty: away travels {adj['travel_dist_miles']:.0f} miles")
     if not game_info.get("neutral", False):
-        drivers.append(f"Home field: {home} +65 ELO home advantage")
+        # Report the HFA actually used (era-rolling, ~34 pts for 2026), not a
+        # stale hardcoded 65 - the explanation text was fixed for this in
+        # 2026-09, the drivers list was missed.
+        hfa_used = hfa_pts if hfa_pts is not None else adj.get("home_elo_bonus", 48.0)
+        drivers.append(f"Home field: {home} +{round(hfa_used)} ELO home advantage")
     return drivers
 
 

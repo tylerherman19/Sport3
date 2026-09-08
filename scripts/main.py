@@ -42,7 +42,8 @@ from scripts.data_fetcher import (
 from scripts.model_engine import (
     NFL_TEAMS, NFL_TEAM_NAMES,
     nfl_days_since_last_game, extend_elo_with_espn,
-    build_nfl_efficiency_data, match_odds_to_game, generate_nfl_prediction_drivers,
+    build_nfl_efficiency_data, nfl_season_stats_available,
+    match_odds_to_game, generate_nfl_prediction_drivers,
     NBA_TEAMS, NBA_TEAM_NAMES,
     build_nba_player_values, build_nba_efficiency_data, compute_nba_pythagorean,
     build_nba_features, train_nba_logistic, train_nba_xgboost, evaluate_nba_model,
@@ -268,7 +269,11 @@ def run_nfl():
     log.info("Computing ELO from FTE...")
     fte_cutoff_date = None
     if not fte_df.empty:
-        elo_dict, game_history = compute_elo(fte_df, qb_map=qb_ctx["game_adj"])
+        # current_season: fte_df carries completed games only, so without this the
+        # ratings come back as raw end-of-last-season values with the new season's
+        # offseason regression never applied.
+        elo_dict, game_history = compute_elo(fte_df, qb_map=qb_ctx["game_adj"],
+                                             current_season=season_year)
         cft = fte_df.dropna(subset=["score1","score2"])
         if not cft.empty:
             fte_cutoff_date = pd.to_datetime(cft["date"]).max()
@@ -284,10 +289,24 @@ def run_nfl():
             hfa=pred_hfa, qb_map=qb_ctx.get("game_adj"))
 
     efficiency_data = build_nfl_efficiency_data(standings, fte_df)
-    teams_pts_data  = {
-        t: {"points_for": standings.get(t,{}).get("points_for",350),
-            "points_against": standings.get(t,{}).get("points_against",350)} for t in NFL_TEAMS}
+    # Points-based systems need at least one completed game. Before then ESPN
+    # reports 0 points for / 0 against (present, not missing), which made every
+    # team's Pythagorean exactly 0.500 and every team's efficiency identical --
+    # two "models" that were really one home-field constant. Feed them a neutral
+    # 350/350 prior and mark them unavailable for the week.
+    season_stats_live = nfl_season_stats_available(standings)
+    teams_pts_data  = {}
+    for t in NFL_TEAMS:
+        st = standings.get(t, {})
+        if int(st.get("games_played", 0) or 0) > 0:
+            teams_pts_data[t] = {"points_for": st.get("points_for", 350),
+                                 "points_against": st.get("points_against", 350)}
+        else:
+            teams_pts_data[t] = {"points_for": 350, "points_against": 350}
     pythagorean_data = compute_pythagorean(teams_pts_data)
+    if not season_stats_live:
+        log.info("No completed NFL games this season yet - Pythagorean and "
+                 "efficiency sub-models reported as unavailable")
 
     # Depth-chart QB1s for projecting future-game adjustments
     dc_qbs = {}
@@ -380,6 +399,11 @@ def run_nfl():
                                    rest_adj_a=raj+ijah,rest_adj_b=-raj+taj+ijaa)
             br  = bayes_predict(home,away,bayesian_ratings,is_home_a=True,neutral=neutral)
             effr = efficiency_predict_game(home,away,efficiency_data,pythagorean_data,not neutral,neutral)
+            # With no completed games these are a constant, not a signal: drop them
+            # so ensemble_predict renormalises over the models that do have data and
+            # the UI stops showing two identical percentages as independent systems.
+            pyth_prob = effr["pyth_prob"] if season_stats_live else None
+            eff_prob  = effr["eff_prob"]  if season_stats_live else None
             lp = None
             if logistic_model and logistic_scaler and logistic_calibrator:
                 lps = predict_matchups(md,logistic_model,logistic_scaler,logistic_calibrator,
@@ -412,7 +436,7 @@ def run_nfl():
                 elo_dict.get(away, 1500.0) + _qadj_away
             )
             ensemble_display = ensemble_predict(logistic_prob=lp,xgb_prob=xp,elo_prob=er["prob"],
-                                  pyth_prob=effr["pyth_prob"],eff_prob=effr["eff_prob"],
+                                  pyth_prob=pyth_prob,eff_prob=eff_prob,
                                   weights=nfl_weights, player_form_prob=pf)
             mh = bayesian_ratings.get(home,{}).get("mu",elo_dict.get(home,1500.0))
             ma = bayesian_ratings.get(away,{}).get("mu",elo_dict.get(away,1500.0))
@@ -427,7 +451,8 @@ def run_nfl():
             kp  = kelly_criterion(ep, mo.get("home_american")) if mo else None
             adj = {"rest_home":rh,"rest_away":ra,"rest_diff":rh-ra,
                    "travel_dist_miles":round(dist,0),"travel_adj":taj,"home_elo_bonus":0 if neutral else round(pred_hfa,1)}
-            pd2 = generate_nfl_prediction_drivers(game,home,away,elo_dict,efficiency_data,injury_impacts,adj)
+            pd2 = generate_nfl_prediction_drivers(game,home,away,elo_dict,efficiency_data,injury_impacts,adj,
+                                                  hfa_pts=pred_hfa)
             winner = home if ep>=0.5 else away; wp = ep if ep>=0.5 else 1-ep; loser = away if ep>=0.5 else home
             elo_gap = abs(elo_dict.get(home,1500)-elo_dict.get(away,1500))
             conf = "strong" if wp>0.70 else "moderate" if wp>0.60 else "slight"
@@ -450,7 +475,7 @@ def run_nfl():
                 "home_logo":game.get("home_logo",""),"away_logo":game.get("away_logo",""),
                 "neutral":neutral,"home_score":game.get("home_score",0),"away_score":game.get("away_score",0),
                 "predictions":{"ensemble_prob":ep,"logistic_prob":round(exported_lp,4),"elo_prob":round(er["prob"],4),
-                               "xgb_prob":xp,"pyth_prob":effr["pyth_prob"],"eff_prob":effr["eff_prob"],
+                               "xgb_prob":xp,"pyth_prob":pyth_prob,"eff_prob":eff_prob,
                                "bayesian_prob":br["bayesian_prob"]},
                 "market":{"home_prob":mhp,"edge":me,"kelly_pct":kp,
                           "home_american":mo.get("home_american") if mo else None,
