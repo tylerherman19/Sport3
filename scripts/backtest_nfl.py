@@ -164,8 +164,15 @@ def market_edge_backtest(records):
     }
 
 
-def walkforward_metrics(fte_df, qb_ctx, first_scored_season=FIRST_SCORED_SEASON):
-    """Score the shipped headline walk-forward. Returns a model_metrics dict or None."""
+def walkforward_metrics(fte_df, qb_ctx, first_scored_season=FIRST_SCORED_SEASON,
+                        roster_adjustments=None):
+    """Score the shipped headline walk-forward. Returns a model_metrics dict or None.
+
+    roster_adjustments must be the SAME map the live ratings were built with
+    (model/roster_value.py). This number is published on the site as "the shipped
+    model, scored honestly"; scoring a configuration we no longer ship would make
+    it a different model's number.
+    """
     if fte_df is None or fte_df.empty:
         return None
     qb_map = (qb_ctx or {}).get("game_adj", {})
@@ -181,7 +188,8 @@ def walkforward_metrics(fte_df, qb_ctx, first_scored_season=FIRST_SCORED_SEASON)
             home_win_rates[int(s)] = float((sdf["score1"] > sdf["score2"]).mean())
 
     pregame = {}
-    compute_elo(df, qb_map=qb_map, pregame_out=pregame)
+    compute_elo(df, qb_map=qb_map, pregame_out=pregame,
+                roster_adjustments=roster_adjustments)
 
     vegas = _vegas_map()
     recs = []
@@ -213,7 +221,9 @@ def walkforward_metrics(fte_df, qb_ctx, first_scored_season=FIRST_SCORED_SEASON)
         {"year": int(s), "accuracy": round(float(((g["prob"] >= 0.5) == (g["actual"] == 1)).mean()), 4)}
         for s, g in r.groupby("season")
     ]
-    m["evaluation"] = (f"walk-forward backtest of the shipped QB-adjusted Elo, "
+    layers = "QB-adjusted Elo" + (" with the offseason roster-value layer"
+                                 if roster_adjustments else "")
+    m["evaluation"] = (f"walk-forward backtest of the shipped {layers}, "
                        f"{first_scored_season}-{int(r['season'].max())}, pre-game information only")
     m["n_scored_games"] = int(len(r))
 

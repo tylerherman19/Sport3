@@ -22,6 +22,7 @@ sys.path.insert(0, str(Path(__file__).parent.parent))
 from model.elo_model import compute_elo, predict_game as elo_predict_game, get_trend, \
                                 expected_score as elo_expected_score, era_hfa
 from model import qb_model
+from model import roster_value
 from model.logistic_model import (build_features, train_logistic, evaluate_model,
                                    calibration_buckets, predict_matchups,
                                    historical_accuracy_by_year)
@@ -907,11 +908,21 @@ def run():
         except Exception as he:
             log.warning(f"Era HFA failed, using 48: {he}")
             pred_hfa = 48.0
+        # Offseason roster value: bounded Elo delta per team from the players who
+        # arrived and left between seasons, applied at each season boundary next to
+        # the mean reversion. Quarterbacks excluded - model/qb_model.py owns those.
+        roster_adj = {}
+        try:
+            roster_adj = roster_value.elo_adjustments(roster_value.build_offseason_ledger(
+                range(roster_value.FIRST_LEDGER_SEASON, season_year + 1)))
+        except Exception as re_:
+            log.warning(f"Roster-value layer unavailable, running without it: {re_}")
         # current_season: fte_df carries completed games only, so without this the
         # ratings come back as raw end-of-last-season values with the new season's
         # offseason regression never applied.
         elo_dict, game_history = compute_elo(fte_df, qb_map=qb_ctx["game_adj"],
-                                             current_season=season_year)
+                                             current_season=season_year,
+                                             roster_adjustments=roster_adj)
         # Determine last date covered by FTE dataset
         completed_fte = fte_df.dropna(subset=["score1", "score2"])
         if not completed_fte.empty:
