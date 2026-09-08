@@ -18,7 +18,11 @@ from scipy.special import expit
 try:
     import xgboost as xgb
     HAS_XGB = True
-except ImportError:
+except Exception:
+    # Native XGBoost imports can fail after package discovery (for example,
+    # missing OpenMP on macOS).  Forecast pipeline must fall back to its
+    # validated non-XGBoost components instead of failing at module import.
+    xgb = None
     HAS_XGB = False
 
 from sklearn.preprocessing import StandardScaler
@@ -392,17 +396,25 @@ def learn_ensemble_weights(sub_probs, actuals, weight_keys=None):
     return {k: round(float(v), 4) for k, v in zip(weight_keys, w_norm)}
 
 
-def kelly_criterion(model_prob, market_prob, bankroll_fraction=1.0):
+def kelly_criterion(model_prob, american_odds, bankroll_fraction=1.0, fraction=0.25):
+    """Return a conservative Kelly stake for the *offered* American price.
+
+    A devigged consensus probability is useful to measure model edge, but it is
+    not a bettable price.  Treating it as one overstated (or understated) the
+    displayed stake whenever the book's vig was nonzero.  ``american_odds`` is
+    the actual home/away price returned by the odds feed.  The result is a
+    fractional Kelly stake (quarter Kelly by default), capped at the requested
+    bankroll fraction.
     """
-    Kelly Criterion bet sizing.
-    f = (bp - q) / b where b = odds - 1, p = model_prob, q = 1 - model_prob
-    market_prob already has vig removed.
-    """
-    if market_prob <= 0 or market_prob >= 1:
+    try:
+        odds = float(american_odds)
+        p = float(model_prob)
+    except (TypeError, ValueError):
+        return 0.0
+    if not (0.0 < p < 1.0) or odds == 0:
         return 0.0
 
-    # Decimal odds from market prob
-    decimal_odds = 1.0 / market_prob
+    decimal_odds = 1.0 + (100.0 / abs(odds) if odds < 0 else odds / 100.0)
     b = decimal_odds - 1.0
     p = model_prob
     q = 1.0 - p
@@ -410,8 +422,9 @@ def kelly_criterion(model_prob, market_prob, bankroll_fraction=1.0):
     kelly = (b * p - q) / b if b > 0 else 0.0
     kelly = max(0.0, kelly)
 
-    # Quarter Kelly for conservative sizing
-    return round(float(kelly * 0.25 * bankroll_fraction), 4)
+    # Fractional Kelly reduces sensitivity to forecast error.  Never recommend
+    # more than the caller's explicit bankroll cap.
+    return round(float(min(kelly * fraction, bankroll_fraction)), 4)
 
 
 def american_to_prob(american_odds):

@@ -162,6 +162,7 @@ body{background:var(--paper);color:var(--ink);font-family:"Archivo",sans-serif;f
 .hrow .n.blue{color:var(--blue)}
 .hrow .sub{font-size:12px;color:var(--muted);font-weight:600}
 </style>
+<link rel="stylesheet" href="ui.css" />
 </head>
 <body data-page="halftime">
 <div class="bug"><span class="b1"><a href="index.html">THE MODEL</a></span><span class="b2" id="bug-week">WK 1</span><span class="b3" id="bug-upd"></span></div>
@@ -218,7 +219,7 @@ function renderHF(m){
   document.getElementById("hf-note").textContent="Last three seasons: "+yrs+". Walk-forward backtest, pre-game information only. The model trails Vegas by "+((m.vegas_benchmark?.accuracy-m.accuracy)*100).toFixed(1)+" points. Bet accordingly: don't.";
   const buckets=(m.calibration_buckets||[]).filter(b=>b.count>0);
   /* fold home-team buckets into pick-confidence bands */
-  const BANDS=[[.5,.6,"COIN FLIP","50-60%"],[.6,.7,"CLEAR FAVORITE","60-70%"],[.7,.8,"STRONG FAVORITE","70-80%"],[.8,1.01,"LOCK","80%+"],];
+  const BANDS=[[.5,.6,"COIN FLIP","50-60%"],[.6,.7,"CLEAR FAVORITE","60-70%"],[.7,.8,"STRONG FAVORITE","70-80%"],[.8,1.01,"HEAVY FAVORITE","80%+"],];
   const agg=BANDS.map(b=>({...b,said:0,hit:0,n:0}));
   for(const b of buckets){
     const conf=b.predicted>=.5?b.predicted:1-b.predicted;
@@ -226,9 +227,9 @@ function renderHF(m){
     const band=agg.find(a=>conf>=a[0]&&conf<a[1]);
     if(band){band.said+=b.count*conf;band.hit+=b.count*hit;band.n+=b.count}
   }
-  document.getElementById("cal").innerHTML=`<h5>MODEL ACCURACY - DOES IT TELL THE TRUTH</h5><p class="note" style="padding:0 0 8px">2,486 past games, graded. Each row: games where the model's pick carried that much confidence, and how often those picks actually won.</p>`+agg.filter(a=>a.n>0).map(a=>{
+  document.getElementById("cal").innerHTML=`<h5>CALIBRATION CHECK</h5><p class="note" style="padding:0 0 8px">2,486 past games, graded. Each row compares forecast confidence with observed win rate. Sample size limits precision.</p>`+agg.filter(a=>a.n>0).map(a=>{
     const said=a.said/a.n, hit=a.hit/a.n, honest=hit>=said;
-    return `<div class="hrow"><div class="hh"><span>THE MODEL SAID ${a[3]} · ${a[2]}</span><span>${a.n} GAMES</span></div><div class="hbig"><span class="n ${honest?'blue':''}">${(hit*100).toFixed(0)}%</span><span class="sub">of those picks won - it said ${(said*100).toFixed(0)}%. ${honest?'Tells the truth.':'Talks a little big.'}</span></div></div>`}).join("")+`<p class="note" style="padding:8px 0 0">Honest everywhere, and modest about its locks: when it says 84%, the truth is 86%.</p>`;
+    return `<div class="hrow"><div class="hh"><span>THE MODEL SAID ${a[3]} · ${a[2]}</span><span>${a.n} GAMES</span></div><div class="hbig"><span class="n ${honest?'blue':''}">${(hit*100).toFixed(0)}%</span><span class="sub">of those picks won - it said ${(said*100).toFixed(0)}%. ${honest?'Met or beat forecast in this band.':'Observed rate below forecast in this band.'}</span></div></div>`}).join("")+`<p class="note" style="padding:8px 0 0">Calibration is evidence, not certainty. Model probability is not a betting recommendation.</p>`;
   const hist=(m.historical_accuracy||[]);
   document.getElementById("szn").innerHTML=hist.length?`<h5>SEASON BY SEASON</h5>`+hist.map(h=>
     `<div class="sznrow"><span>${h.year}</span><i style="width:${(h.accuracy*100).toFixed(0)}%"></i><span class="va">${pct1(h.accuracy)}</span></div>`).join(""):"";

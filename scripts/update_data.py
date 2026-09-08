@@ -1201,7 +1201,7 @@ def run():
                 market_home_prob = market_odds.get("home_prob")
                 market_edge = round(ensemble_prob - market_home_prob, 4) if market_home_prob else None
                 if market_home_prob:
-                    kelly_pct = kelly_criterion(ensemble_prob, market_home_prob)
+                    kelly_pct = kelly_criterion(ensemble_prob, market_odds.get("home_american"))
 
             adj_dict = {
                 "rest_home": rest_home,

@@ -418,7 +418,9 @@ def run_nfl():
             mo = match_odds_to_game(game,odds_map)
             mhp = mo.get("home_prob") if mo else None
             me  = round(ep-mhp,4) if mhp else None
-            kp  = kelly_criterion(ep,mhp) if mhp else None
+            # Edge is against devigged consensus; stake uses the actual offered
+            # price.  A fair probability is not a price a user can bet.
+            kp  = kelly_criterion(ep, mo.get("home_american")) if mo else None
             adj = {"rest_home":rh,"rest_away":ra,"rest_diff":rh-ra,
                    "travel_dist_miles":round(dist,0),"travel_adj":taj,"home_elo_bonus":0 if neutral else round(pred_hfa,1)}
             pd2 = generate_nfl_prediction_drivers(game,home,away,elo_dict,efficiency_data,injury_impacts,adj)
@@ -836,7 +838,7 @@ def run_nba():
                     mo=odds; break
             mhp = mo.get("home_prob") if mo else None
             me2 = round(ensp-mhp,4) if mhp else None
-            kp2 = kelly_criterion(ensp,mhp) if mhp else None
+            kp2 = kelly_criterion(ensp, mo.get("home_american")) if mo else None
             adj = {"rest_home":rh,"rest_away":ra,"rest_diff":rd,"travel_dist_miles":round(dist,0),
                    "b2b_home":b2bh,"b2b_away":b2ba,"home_elo_bonus":0 if neutral else 100}
             pd3 = generate_nba_prediction_drivers(game,home,away,elo_dict,efficiency_data,injury_impacts,adj)

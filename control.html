@@ -147,6 +147,7 @@ body{background:var(--paper);color:var(--ink);font-family:"Archivo",sans-serif;f
 .ctrlgo{display:block;margin-top:12px;padding:12px;text-align:center;font-weight:700;background:var(--ink);color:#fff;text-decoration:none;font-size:15px}
 .ctrlgo:hover{background:var(--blue)}
 </style>
+<link rel="stylesheet" href="ui.css" />
 </head>
 <body data-page="control">
 <div class="bug"><span class="b1"><a href="index.html">THE MODEL</a></span><span class="b2" id="bug-week">WK 1</span><span class="b3" id="bug-upd"></span></div>
@@ -160,7 +161,7 @@ body{background:var(--paper);color:var(--ink);font-family:"Archivo",sans-serif;f
 <a href="control.html" data-pg="control" class="on">CONTROL</a>
 </nav>
 <main>
-<header class="strip-head"><h2>CONTROL ROOM</h2><span>DIAL IT IN</span></header>
+<header class="strip-head"><h2>SCENARIO SANDBOX</h2><span>NOT SHIPPED MODEL</span></header>
 <div class="ctrl" id="ctrl">
   <div class="ctrlrow"><label for="cw-log">Logistic</label><input type="range" id="cw-log" min="0" max="1" step="0.05" value="0.30"><output id="co-log">0.30</output></div>
   <div class="ctrlrow"><label for="cw-xgb">XGBoost</label><input type="range" id="cw-xgb" min="0" max="1" step="0.05" value="0.25"><output id="co-xgb">0.25</output></div>
@@ -168,7 +169,7 @@ body{background:var(--paper);color:var(--ink);font-family:"Archivo",sans-serif;f
   <div class="ctrlrow"><label for="cw-pyth">Pythagorean</label><input type="range" id="cw-pyth" min="0" max="1" step="0.05" value="0.15"><output id="co-pyth">0.15</output></div>
   <div class="ctrlrow"><label for="cw-eff">Efficiency</label><input type="range" id="cw-eff" min="0" max="1" step="0.05" value="0.10"><output id="co-eff">0.10</output></div>
   <div class="ctrlrow"><label for="cw-hfa">Home field</label><input type="range" id="cw-hfa" min="0" max="150" step="5" value="65"><output id="co-hfa">65</output></div>
-  <p class="ctrlnote">The dials follow you back to the Rundown and re-blend every line there - this visit only. The shipped line stays the model's; what you dial in is yours.</p>
+  <p class="ctrlnote">Hypothetical inputs only. These sliders are not backtested, do not change published forecasts, and must not be treated as model output.</p>
   <button class="ctrlreset" id="ctrl-reset" type="button">Back to the shipped line</button>
   <a class="ctrlgo" href="index.html">Take it to the Rundown</a>
 </div>

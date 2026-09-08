@@ -147,6 +147,7 @@ body{background:var(--paper);color:var(--ink);font-family:"Archivo",sans-serif;f
 .ctrlgo{display:block;margin-top:12px;padding:12px;text-align:center;font-weight:700;background:var(--ink);color:#fff;text-decoration:none;font-size:15px}
 .ctrlgo:hover{background:var(--blue)}
 </style>
+<link rel="stylesheet" href="ui.css" />
 </head>
 <body data-page="rundown">
 <div class="bug"><span class="b1"><a href="index.html">THE MODEL</a></span><span class="b2" id="bug-week">WK 1</span><span class="b3" id="bug-upd"></span></div>
@@ -160,8 +161,8 @@ body{background:var(--paper);color:var(--ink);font-family:"Archivo",sans-serif;f
 <a href="control.html" data-pg="control">CONTROL</a>
 </nav>
 <main>
-<p class="lede" id="lede"></p>
-<header class="strip-head"><h2>THE RUNDOWN</h2><span id="wk-line"></span></header>
+<section class="board-hero" aria-labelledby="board-title"><div><p class="eyebrow">NFL FORECAST DESK</p><h1 id="board-title">THIS WEEK'S BOARD</h1><p id="lede" class="board-lede" aria-live="polite"></p></div><div class="board-meta" id="board-meta"></div></section>
+<div class="board-tools" role="group" aria-label="Game filters"><button class="filter on" data-filter="all">ALL GAMES</button><button class="filter" data-filter="value">MARKET EDGE</button><button class="filter" data-filter="watch">TOSS-UPS</button><span id="wk-line"></span></div>
 <div id="games"></div>
 </main>
 <script>const TZ="America/Chicago";
@@ -186,7 +187,7 @@ const NFL_COORDS={ARI:[33.5276,-112.2626],ATL:[33.7553,-84.4006],BAL:[39.2780,-7
 const hav=(a,b)=>{const R=3958.8,r=Math.PI/180,dL=(b[0]-a[0])*r,dO=(b[1]-a[1])*r,h=Math.sin(dL/2)**2+Math.cos(a[0]*r)*Math.cos(b[0]*r)*Math.sin(dO/2)**2;return 2*R*Math.asin(Math.sqrt(h))};
 const eP=d=>1/(1+Math.pow(10,-d/400));
 
-let WEEK=null, PRED=null, LB=null;
+let WEEK=null, PRED=null, LB=null, FILTER="all";
 
 /* ── control room state ── */
 const W0={logistic:.30,xgboost:.25,elo:.20,pyth:.15,eff:.10};
@@ -224,18 +225,31 @@ ctrlLoad();
 const AUD={}; /* game_id -> {he,ae} */
 function renderGames(){
   const wrap=document.getElementById("games"); wrap.innerHTML="";
-  for(const g of gamesFor(PRED,WEEK)){
-    const pr=gameProb(g), f={team:pr>=.5?g.home_team:g.away_team,p:Math.max(pr,1-pr)};
+  let boardGames=gamesFor(PRED,WEEK).map(g=>({g,pr:gameProb(g)}));
+  if(FILTER==="value")boardGames=boardGames.filter(({g})=>g.market?.home_prob!=null).sort((a,b)=>Math.abs((b.pr-(b.g.market?.home_prob??.5)))-Math.abs((a.pr-(a.g.market?.home_prob??.5))));
+  if(FILTER==="watch")boardGames=boardGames.filter(({pr})=>Math.abs(pr-.5)<=.07);
+  if(!boardGames.length){wrap.innerHTML='<p class="sec-note">No games match this filter.</p>';return}
+  for(const {g,pr} of boardGames){
+    const f={team:pr>=.5?g.home_team:g.away_team,p:Math.max(pr,1-pr)};
     const k=kickoff(g), mc=g.monte_carlo||{};
     const winSide=pr>=.5?"home":"away";
+    const marketHome=g.market?.home_prob, marketAway=marketHome==null?null:1-marketHome;
+    const favoriteModel=pr>=.5?pr:1-pr, favoriteMarket=pr>=.5?marketHome:marketAway;
+    const edge=favoriteMarket==null?null:favoriteModel-favoriteMarket;
+    const homeLogo=g.home_logo||`https://a.espncdn.com/i/teamlogos/nfl/500/${String(g.home_team||"").toLowerCase()}.png`;
+    const awayLogo=g.away_logo||`https://a.espncdn.com/i/teamlogos/nfl/500/${String(g.away_team||"").toLowerCase()}.png`;
     const box=document.createElement("div"); box.className="game";
     box.innerHTML=`
       <button class="grow" type="button" aria-expanded="false">
-        <span class="gside ${winSide==="away"?"win":""}"><span class="tm">${esc(g.away_team)}</span><span class="pc">${pct1(1-pr)}</span></span>
-        <span class="gmid">${k.day} ${k.time}<br>${esc((g.player_form?.away_qb||"")+" / "+(g.player_form?.home_qb||""))}</span>
-        <span class="gside ${winSide==="home"?"win":""}"><span class="tm">${esc(g.home_team)}</span><span class="pc">${pct1(pr)}</span></span>
+        <span class="game-top"><span>${k.day} · ${k.time}</span><span class="market-state ${marketHome==null?"muted":""}">${marketHome==null?"MARKET PENDING":"MARKET LIVE"}</span></span>
+        <span class="matchup">
+          <span class="team ${winSide==="away"?"favored":""}"><img src="${esc(awayLogo)}" alt="" /><span class="team-copy"><span class="team-code">${esc(g.away_team)}</span><span class="team-name">${esc(g.away_name||g.away_team)}</span><span class="team-prob">${pct1(1-pr)}</span></span></span>
+          <span class="vs">AT</span>
+          <span class="team home ${winSide==="home"?"favored":""}"><img src="${esc(homeLogo)}" alt="" /><span class="team-copy"><span class="team-code">${esc(g.home_team)}</span><span class="team-name">${esc(g.home_name||g.home_team)}</span><span class="team-prob">${pct1(pr)}</span></span></span>
+        </span>
+        <span class="field" aria-label="${esc(g.home_team)} model probability ${pct1(pr)}"><i style="width:${pr*100}%"></i>${marketHome==null?"":`<b class="market-pin" style="left:${marketHome*100}%"></b>`}</span>
+        <span class="game-bottom"><span><small>MODEL</small><b>${pct1(favoriteModel)}</b></span><span><small>MARKET</small><b>${favoriteMarket==null?"—":pct1(favoriteMarket)}</b></span><span class="${edge!=null&&edge>0?"good":""}"><small>EDGE</small><b>${edge==null?"—":(edge>=0?"+":"")+(edge*100).toFixed(1)+" PP"}</b></span></span>
       </button>
-      <div class="possess"><i class="${winSide==="away"?"w":""}" style="width:${(1-pr)*100}%"></i><i class="${winSide==="home"?"w":""}" style="width:${pr*100}%"></i></div>
       <div class="gdet">
         <p><b>Elo</b> ${esc(g.home_team)} ${Math.round(g.elo?.home??0)} · ${esc(g.away_team)} ${Math.round(g.elo?.away??0)} · rest ${g.adjustments?.rest_home??"—"}/${g.adjustments?.rest_away??"—"} days${g.adjustments?.travel_dist_miles?" · "+esc(g.away_team)+" travels "+fmtInt(Math.round(g.adjustments.travel_dist_miles))+" mi":""}</p>
         <p><b>Simulation</b> ${esc(f.team)} by ${Math.abs(mc.exp_margin??0).toFixed(1)}, ${pct0(mc.prob_7plus)} to win by 7+, ${pct0(mc.prob_14plus)} by 14+</p>
@@ -248,7 +262,7 @@ function renderGames(){
           <p class="audres" style="display:none"></p>
         </div>
       </div>`;
-    box.querySelector(".grow").addEventListener("click",()=>box.classList.toggle("open"));
+    box.querySelector(".grow").addEventListener("click",()=>{const open=box.classList.toggle("open");box.querySelector(".grow").setAttribute("aria-expanded",String(open))});
     const res=box.querySelector(".audres");
     const doAud=()=>{
       const he=+box.querySelector('[data-aud=he]').value, ae=+box.querySelector('[data-aud=ae]').value;
@@ -356,7 +370,10 @@ function fillBug(pred){
   const gs=gamesFor(pred,WEEK);
   let fv=null,tg=null;
   for(const g of gs){const p=g.predictions?.ensemble_prob;if(p==null)continue;const t=Math.max(p,1-p);if(!fv||t>fv.t)fv={g,t};if(!tg||t<tg.t)tg={g,t}}
-  document.getElementById("lede").innerHTML=`${gs.length} games on the Sunday rundown. <b>${esc(fv.g.predictions.ensemble_prob>=.5?fv.g.home_team:fv.g.away_team)} ${pct1(fv.t)}</b> is the lock of the week. <b>${esc(tg.g.away_team)} at ${esc(tg.g.home_team)}</b> is the coin flip. The full scouting line is one tap down.`;
+  const marketCount=gs.filter(g=>g.market?.home_prob!=null).length;
+  document.getElementById("lede").textContent="Pre-game model probabilities. Market comparison appears only when current odds are available. Open a game for assumptions and scenario testing.";
+  document.getElementById("board-meta").innerHTML=`<div class="metric-chip signal"><strong>${fv?esc(fv.g.predictions.ensemble_prob>=.5?fv.g.home_team:fv.g.away_team)+" "+pct1(fv.t):"—"}</strong><span>TOP MODEL P</span></div><div class="metric-chip"><strong>${marketCount}/${gs.length}</strong><span>MARKETS LIVE</span></div><div class="metric-chip"><strong>${tg?pct1(tg.t):"—"}</strong><span>CLOSEST GAME</span></div>`;
+  document.querySelectorAll(".filter").forEach(button=>button.addEventListener("click",()=>{FILTER=button.dataset.filter;document.querySelectorAll(".filter").forEach(b=>b.classList.toggle("on",b===button));renderGames()}));
   renderGames();
   document.getElementById("wk-line").textContent="WEEK "+WEEK+" OF 18";
   logGames();
