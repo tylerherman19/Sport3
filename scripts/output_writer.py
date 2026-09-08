@@ -7,6 +7,7 @@ import json
 import logging
 from pathlib import Path
 from datetime import datetime, timezone
+from typing import Optional
 
 log = logging.getLogger(__name__)
 
@@ -119,7 +120,7 @@ def guard_nba_empty_output(existing_path: Path) -> bool:
     return False
 
 
-def write_nba_abort_log(reason: str, now_utc: str, counts: dict | None = None):
+def write_nba_abort_log(reason: str, now_utc: str, counts: Optional[dict] = None):
     """
     Write nba_pipeline_abort.json whenever a guard exits the NBA pipeline early.
     This gives the dashboard and operators a timestamped record of why and when
