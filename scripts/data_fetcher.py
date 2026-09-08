@@ -617,6 +617,10 @@ def _parse_nfl_events(data, default_week=0):
                 "home_logo": f"https://a.espncdn.com/i/teamlogos/nfl/500/{home['team']['abbreviation'].lower()}.png",
                 "away_logo": f"https://a.espncdn.com/i/teamlogos/nfl/500/{away['team']['abbreviation'].lower()}.png",
                 "neutral": int(comp.get("neutralSite", False)),
+                # ESPN's public scoreboard includes a current sportsbook line
+                # for many games. Keep raw odds here so the no-key market
+                # fallback does not require one request per event later.
+                "espn_odds": comp.get("odds", []),
             })
         except (KeyError, IndexError, ValueError) as e:
             log.debug(f"Error parsing NFL game: {e}")
@@ -831,6 +835,48 @@ def fetch_nfl_betting_odds(api_key):
         except Exception as e:
             log.debug(f"Error parsing NFL odds: {e}")
     log.info(f"NFL odds for {len(odds_map)} games"); return odds_map
+
+
+def fetch_nfl_espn_betting_odds(games):
+    """Build devigged NFL moneyline consensus from ESPN scoreboard odds.
+
+    This is a public, no-key fallback. It normally represents one listed
+    sportsbook, so The Odds API remains the preferred multi-book source when a
+    key is configured. Games without both moneylines are omitted rather than
+    inventing a market probability from a spread.
+    """
+    from model.ensemble_model import american_to_prob, remove_vig
+
+    odds_map = {}
+    for game in games or []:
+        try:
+            options = game.get("espn_odds") or []
+            option = next((o for o in options
+                           if o.get("moneyline", {}).get("home", {}).get("close", {}).get("odds") is not None
+                           and o.get("moneyline", {}).get("away", {}).get("close", {}).get("odds") is not None), None)
+            if not option:
+                continue
+            moneyline = option["moneyline"]
+            home_american = float(moneyline["home"]["close"]["odds"])
+            away_american = float(moneyline["away"]["close"]["odds"])
+            home_raw = american_to_prob(home_american)
+            away_raw = american_to_prob(away_american)
+            home_prob, away_prob = remove_vig(home_raw, away_raw)
+            home_name = game.get("home_name", game.get("home_team", ""))
+            away_name = game.get("away_name", game.get("away_team", ""))
+            if not home_name or not away_name:
+                continue
+            key = f"{away_name}_at_{home_name}"
+            odds_map[key] = {
+                "home_prob": round(home_prob, 4), "away_prob": round(away_prob, 4),
+                "home_american": home_american, "away_american": away_american,
+                "home_team_name": home_name, "away_team_name": away_name,
+                "source": f"ESPN / {option.get('provider', {}).get('displayName', 'listed book')}",
+            }
+        except (KeyError, TypeError, ValueError, ZeroDivisionError) as e:
+            log.debug(f"Error parsing ESPN NFL odds: {e}")
+    log.info(f"ESPN public NFL odds for {len(odds_map)} games")
+    return odds_map
 
 
 # ---- NBA ESPN / cdn.nba.com ----

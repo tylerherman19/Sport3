@@ -30,7 +30,7 @@ from scripts.data_fetcher import (
     # NFL
     fetch_nfl_historical_games, fetch_nfl_scoreboard, fetch_nfl_future_games,
     fetch_nfl_completed_games, fetch_nfl_standings, fetch_nfl_injuries,
-    fetch_nfl_depth_charts, fetch_nfl_betting_odds, nfl_abbrev_norm,
+    fetch_nfl_depth_charts, fetch_nfl_betting_odds, fetch_nfl_espn_betting_odds, nfl_abbrev_norm,
     _nfl_normalize_name, fetch_nflverse_player_week_stats, fetch_nflverse_roster,
     # NBA
     fetch_nba_scoreboard, fetch_nba_future_games, fetch_nba_season_games_espn,
@@ -260,6 +260,10 @@ def run_nfl():
 
     future_games = fetch_nfl_future_games(current_week, season_year, weeks_ahead=3)
     all_games    = scoreboard_games + future_games
+    # Public ESPN moneylines fill gaps when ODDS_API_KEY is absent.  Paid
+    # multi-book data wins on duplicate matchups.
+    espn_odds_map = fetch_nfl_espn_betting_odds(all_games)
+    odds_map = {**espn_odds_map, **odds_map}
 
     log.info("Computing ELO from FTE...")
     fte_cutoff_date = None
