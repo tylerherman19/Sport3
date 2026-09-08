@@ -50,7 +50,8 @@ def era_hfa(home_win_rates, current_season, default=48.0, window=10):
 
 
 def compute_elo(historical_df, k_base=20.0, hfa=48.0, initial_elo=1500.0, regress_pct=0.33,
-                qb_map=None, use_era_hfa=True, pregame_out=None, current_season=None):
+                qb_map=None, use_era_hfa=True, pregame_out=None, current_season=None,
+                roster_adjustments=None):
     """
     Process historical games and compute current ELO ratings.
     Returns dict: {team: elo}
@@ -68,6 +69,12 @@ def compute_elo(historical_df, k_base=20.0, hfa=48.0, initial_elo=1500.0, regres
       loop below stops at the previous season and never applies that season's
       offseason regression. Passing current_season closes the gap (see the block
       after the loop). Omit it to get the raw end-of-history ratings.
+    - roster_adjustments: optional {season: {team: elo_delta}} from
+      model.roster_value. Applied at each season boundary IMMEDIATELY AFTER the
+      mean reversion, never instead of it: reversion says "we know less than we
+      did in January", the roster delta says "and here is what actually changed".
+      Quarterbacks are excluded from that layer entirely - QB movement is owned by
+      the model.qb_model overlay, which is applied per game, not here.
     """
     df = historical_df.copy()
     df = df.dropna(subset=["score1", "score2"])
@@ -94,10 +101,12 @@ def compute_elo(historical_df, k_base=20.0, hfa=48.0, initial_elo=1500.0, regres
         season_df = df[df["season"] == season]
         season_hfa = era_hfa(home_win_rates, season, default=hfa) if use_era_hfa else hfa
 
-        # Regress ELOs toward mean at start of each season
+        # Regress ELOs toward mean at start of each season, then apply that
+        # season's offseason roster-value delta on top (see roster_adjustments).
         for team in list(elo_dict.keys()):
             elo_dict[team] = elo_dict[team] * (1 - regress_pct) + initial_elo * regress_pct
             game_history[team] = []
+        _apply_roster_adjustments(elo_dict, roster_adjustments, season)
 
         for _, row in season_df.iterrows():
             team1 = row["team1"]
@@ -181,22 +190,43 @@ def compute_elo(historical_df, k_base=20.0, hfa=48.0, initial_elo=1500.0, regres
     # season's first result lands in historical_df the loop owns that boundary
     # and the range below is empty, so ratings are never regressed twice.
     if current_season is not None and seasons:
-        for _ in range(max(0, int(current_season) - int(max(seasons)))):
+        last_played = int(max(seasons))
+        for step in range(max(0, int(current_season) - last_played)):
             for team in list(elo_dict.keys()):
                 elo_dict[team] = elo_dict[team] * (1 - regress_pct) + initial_elo * regress_pct
                 game_history[team] = []
+            _apply_roster_adjustments(elo_dict, roster_adjustments, last_played + step + 1)
 
     return elo_dict, game_history
 
 
+def _apply_roster_adjustments(elo_dict, roster_adjustments, season):
+    """Add the offseason roster-value delta for `season` to every rated team.
+
+    Called once per season boundary, right after the mean reversion, from both the
+    in-frame loop and the projected block above. Teams with no entry are untouched,
+    so a partial ledger degrades to today's behaviour rather than to zeros.
+
+    The deltas themselves are built and bounded in model/roster_value.py; this
+    function deliberately does no capping of its own so there is exactly one place
+    where the size of the layer is decided.
+    """
+    if not roster_adjustments:
+        return
+    deltas = roster_adjustments.get(season) or roster_adjustments.get(str(season)) or {}
+    for team, delta in deltas.items():
+        if team in elo_dict:
+            elo_dict[team] += float(delta)
+
+
 def annotate_pregame_elo(df, k_base=20.0, hfa=48.0, initial_elo=1500.0, regress_pct=0.33,
-                         qb_map=None):
+                         qb_map=None, roster_adjustments=None):
     """
     Stamps each completed game row with the two teams' base ELO ratings as they
     stood immediately before that game (elo1_pre/elo2_pre), computed by the exact
     same recurrence as compute_elo() (era-rolling HFA, flat K, winner-perspective
-    MOV, optional QB adjustments) so training features stay self-consistent with
-    the shipped ratings.
+    MOV, optional QB adjustments, optional offseason roster deltas) so training
+    features stay self-consistent with the shipped ratings.
     """
     df = df.copy()
     df = df.dropna(subset=["score1", "score2"])
@@ -205,7 +235,8 @@ def annotate_pregame_elo(df, k_base=20.0, hfa=48.0, initial_elo=1500.0, regress_
 
     pregame = {}
     compute_elo(df, k_base=k_base, hfa=hfa, initial_elo=initial_elo,
-                regress_pct=regress_pct, qb_map=qb_map, pregame_out=pregame)
+                regress_pct=regress_pct, qb_map=qb_map, pregame_out=pregame,
+                roster_adjustments=roster_adjustments)
 
     elo1_pre_col, elo2_pre_col = [], []
     for row in df.itertuples():

@@ -223,3 +223,126 @@ argmax. Vegas closing over the same window: 0.6660 / 0.6072 / 0.2099.
 `tests/test_offseason_regression.py` covers all three heads, including that the
 regression is applied once per missing season and becomes a no-op the moment the
 season's own results land (so ratings can never be regressed twice).
+
+---
+
+## Offseason roster value (2026-09-08)
+
+Built on top of cdeaebc. That commit made the Week 1 ratings *regress*; they still
+carried no information about **what** changed over the offseason. Mean reversion
+says "we know less than we did in January" and stops there, so a team that lost
+six starters and a team that returned all of them got identical treatment.
+
+`model/roster_value.py` supplies the missing term: net player value in and out
+between the end of last season and the start of this one, converted to a bounded
+Elo delta that `compute_elo()` applies at each season boundary **immediately after
+the reversion, not instead of it**.
+
+### The value metric
+
+Pro-Football-Reference's Approximate Value is the natural unit, but PFR serves 403
+to automated clients and nflverse publishes only *career* AV, and only for drafted
+players — no free per-player-per-season AV feed exists that a daily Action can
+depend on. So the layer computes an AV proxy ("sAV") the way AV itself is built,
+from free nflverse feeds:
+
+    sAV = STARTER_AV[group] x (0.6 x snap_share + 0.4 x prod_factor)
+
+- `snap_share`: fraction of the team's offensive/defensive snaps across the season
+  (nflverse `snap_counts`). A 17-game every-down starter ≈ 1.0.
+- `prod_factor`: season production against the median full-time starter at the same
+  position that season — PPR points for skill positions, a standard IDP line for
+  the front seven and secondary. Offensive line and specialists have no public box
+  score and run on playing time alone.
+- `STARTER_AV`: what a full-season starter at that group earns on PFR's scale, so
+  ledger numbers read in familiar units. Resulting 2025 medians: OL 2.9, DL 1.9,
+  DB 1.7, LB 1.6, WR 1.5, TE 1.4, RB 0.9; top of the league ≈ 8.
+
+sAV is measured on the season *before* the offseason in question, so nothing in the
+layer can see the season it is used to predict.
+
+**Quarterbacks are excluded entirely**, on both sides of every move. `qb_model.py`
+already adjusts each team's effective Elo by `QB_MULT x (starter VALUE − team
+VALUE)` per game; counting a quarterback here as well would pay for him twice.
+
+**Rookies** are priced off a per-pick expected-AV curve (`w_av` / expected career
+length) fitted only to drafts at least 8 years old, so the curve carries no
+lookahead, then cut to **35%** — the middle of the 25-50% band. A first overall
+pick is worth ~2.5 AV, less than a returning median starter at any position; a
+seventh-rounder ~0.8.
+
+Membership comes from the nflverse **weekly** roster release: the previous season's
+final regular-season week vs. this season's week 1, which brackets exactly the
+offseason and means a week-10 signing is not retroactively counted as an offseason
+arrival. Practice squad and already-cut players are not roster members.
+
+Net AV is centred on the league, because roster churn is near zero-sum between
+teams and the draft injects value league-wide that says nothing about who got
+better than whom.
+
+### Scale sweep (shipped-path walk-forward, 2017-2025, N=2485)
+
+`research/wf_roster.py` scores the production modules rather than a lab
+re-implementation: `compute_elo` for the chain, `build_qb_context` for the overlay,
+the same era-rolling HFA. Baseline reproduces cdeaebc to within one game
+(acc 0.6547 / ll 0.6237 here vs 0.6549 / 0.6235 reported).
+
+| elo_per_av | acc | log loss | brier |
+|---|---|---|---|
+| 0 (cdeaebc baseline) | 0.6547 | 0.6237 | 0.2173 |
+| **0.25 (shipped)** | **0.6551** | **0.6234** | **0.2172** |
+| 0.50 | 0.6551 | 0.6233 | 0.2171 |
+| 0.60 | 0.6555 | 0.6232 | 0.2171 |
+| 0.75 | 0.6543 | 0.6231 | 0.2171 |
+| 1.00 | 0.6507 | 0.6231 | 0.2171 |
+| 1.50 | 0.6507 | 0.6231 | 0.2171 |
+
+Accuracy is flat-to-positive from 0.25 to 0.6 and turns negative from 0.75; log
+loss improves monotonically and saturates near 0.6. Per-season at 0.25, log loss
+improves in 6 of 9 seasons (unchanged in 1, worse in 2021 and 2024); accuracy nets
++1 game. Largest applied delta over 352 team-seasons: −10.1 / +8.5, sd 2.9. The
+±40 cap never binds at this scale.
+
+0.25 and 0.5 are indistinguishable on the backtest, so the tie was broken on the
+one thing the backtest structurally cannot see — Week 1 of a season with no games
+played, which is the case this layer exists for (the same blind spot that let the
+cdeaebc defect ship). Week 1 2026, 64 priced games:
+
+| | mean \|model − market\| | games past 15pp | MIA@LV gap |
+|---|---|---|---|
+| cdeaebc baseline | 6.92 pp | 5 | 18.5 pp |
+| roster 0.25 (shipped) | 6.95 pp | 5 | **17.4 pp** |
+| roster 0.50 | 7.04 pp | 6 | 16.3 pp |
+
+At 0.5 the board moves away from the market in aggregate; at 0.25 it stays flat
+while still closing the MIA@LV gap. Roster value is a noisy estimate on its first
+outing, so the shrunk end of the plateau was taken.
+
+**MIA@LV specifically**: model LV 43.7% → **44.8%** against a market price of
+62.3%, gap 18.5 → 17.4 pp. MIA had the league's most negative 2026 offseason
+(−32 net AV: Waddle, Fitzpatrick, Chubb, Douglas, Jones all out) and takes −8 Elo;
+LV's ledger nets to zero, so the whole move is MIA's.
+
+Honest caveat: the aggregate is flat, not better. The layer narrows all four MIA
+games but pushes NYJ — the largest *positive* ledger, +32 net AV — further from the
+market in all four of its games. The model and the market disagree about the Jets;
+the backtest is the arbiter and it is mildly positive.
+
+### Published metric
+
+`scripts/backtest_nfl.walkforward_metrics` (what the site shows) now takes the same
+`roster_adjustments` map the live ratings were built with — scoring a configuration
+we no longer ship would be publishing a different model's number.
+Shipped path: **acc 0.6549 → 0.6553, log loss 0.6235 → 0.6233** (N=2486).
+
+### Not done, deliberately
+
+The Bayesian/sim layer (`model/bayesian_model.py`) does **not** see roster value.
+It is an independent rating built from scores alone, and feeding it the same
+offseason signal the Elo chain already carries would correlate two of the
+ensemble's supposedly-independent inputs. Making the sim roster-aware is a separate
+decision with its own validation, not a free rider on this one.
+
+`data/offseason_roster_value.json` persists the per-team ledger — who arrived, who
+left, what each was worth, the applied Elo delta. Nothing reads it yet; no UI in
+this change.

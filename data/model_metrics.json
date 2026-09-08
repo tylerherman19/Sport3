@@ -1,8 +1,8 @@
 {
-  "updated": "2026-09-08T14:25:15.852317+00:00",
-  "log_loss": 0.6235,
-  "brier_score": 0.2172,
-  "auc": 0.7046,
+  "updated": "2026-09-08T15:31:11.643397+00:00",
+  "log_loss": 0.6233,
+  "brier_score": 0.2171,
+  "auc": 0.7048,
   "calibration_buckets": [
     {
       "bucket": "0-10%",
@@ -12,69 +12,69 @@
     },
     {
       "bucket": "10-20%",
-      "predicted": 0.162,
-      "actual": 0.241,
-      "count": 54
+      "predicted": 0.164,
+      "actual": 0.236,
+      "count": 55
     },
     {
       "bucket": "20-30%",
       "predicted": 0.257,
-      "actual": 0.288,
-      "count": 163
+      "actual": 0.286,
+      "count": 161
     },
     {
       "bucket": "30-40%",
-      "predicted": 0.355,
-      "actual": 0.328,
-      "count": 287
+      "predicted": 0.356,
+      "actual": 0.332,
+      "count": 289
     },
     {
       "bucket": "40-50%",
       "predicted": 0.452,
-      "actual": 0.414,
-      "count": 423
+      "actual": 0.411,
+      "count": 421
     },
     {
       "bucket": "50-60%",
       "predicted": 0.552,
-      "actual": 0.54,
-      "count": 496
+      "actual": 0.543,
+      "count": 497
     },
     {
       "bucket": "60-70%",
       "predicted": 0.649,
-      "actual": 0.634,
-      "count": 489
+      "actual": 0.627,
+      "count": 491
     },
     {
       "bucket": "70-80%",
       "predicted": 0.746,
-      "actual": 0.739,
-      "count": 383
+      "actual": 0.745,
+      "count": 380
     },
     {
       "bucket": "80-90%",
       "predicted": 0.842,
-      "actual": 0.88,
-      "count": 175
+      "actual": 0.881,
+      "count": 176
     }
   ],
   "historical_accuracy": [
     {
       "year": 2017,
-      "accuracy": 0.6704
+      "accuracy": 0.6667
     },
     {
       "year": 2018,
-      "accuracy": 0.6377
+      "accuracy": 0.634
     },
     {
       "year": 2019,
-      "accuracy": 0.6391
+      "accuracy": 0.6353
     },
     {
       "year": 2020,
-      "accuracy": 0.6754
+      "accuracy": 0.6866
     },
     {
       "year": 2021,
@@ -86,7 +86,7 @@
     },
     {
       "year": 2023,
-      "accuracy": 0.6211
+      "accuracy": 0.6246
     },
     {
       "year": 2024,
@@ -97,8 +97,8 @@
       "accuracy": 0.6831
     }
   ],
-  "accuracy": 0.6549,
-  "evaluation": "walk-forward backtest of the shipped QB-adjusted Elo, 2017-2025, pre-game information only",
+  "accuracy": 0.6553,
+  "evaluation": "walk-forward backtest of the shipped QB-adjusted Elo with the offseason roster-value layer, 2017-2025, pre-game information only",
   "n_scored_games": 2486,
   "vegas_benchmark": {
     "accuracy": 0.6626,
@@ -114,42 +114,42 @@
     "cutoffs": [
       {
         "bets": 2273,
-        "win_rate": 0.4492,
-        "roi": -0.0317,
-        "net_units": -72.09,
-        "average_edge": 0.0672,
+        "win_rate": 0.454,
+        "roi": -0.0222,
+        "net_units": -50.37,
+        "average_edge": 0.0668,
         "min_edge": 0.0
       },
       {
-        "bets": 1696,
-        "win_rate": 0.4351,
-        "roi": -0.0376,
-        "net_units": -63.73,
-        "average_edge": 0.0858,
+        "bets": 1702,
+        "win_rate": 0.4383,
+        "roi": -0.0301,
+        "net_units": -51.3,
+        "average_edge": 0.0852,
         "min_edge": 0.025
       },
       {
-        "bets": 1188,
-        "win_rate": 0.4293,
-        "roi": -0.0319,
-        "net_units": -37.84,
-        "average_edge": 0.1065,
+        "bets": 1192,
+        "win_rate": 0.4279,
+        "roi": -0.0279,
+        "net_units": -33.2,
+        "average_edge": 0.1057,
         "min_edge": 0.05
       },
       {
-        "bets": 817,
-        "win_rate": 0.437,
-        "roi": 0.0208,
-        "net_units": 17.0,
-        "average_edge": 0.1268,
+        "bets": 804,
+        "win_rate": 0.4378,
+        "roi": 0.024,
+        "net_units": 19.32,
+        "average_edge": 0.1269,
         "min_edge": 0.075
       },
       {
-        "bets": 532,
-        "win_rate": 0.4211,
-        "roi": 0.0012,
-        "net_units": 0.65,
-        "average_edge": 0.1487,
+        "bets": 525,
+        "win_rate": 0.419,
+        "roi": 0.0008,
+        "net_units": 0.43,
+        "average_edge": 0.1484,
         "min_edge": 0.1
       }
     ],
@@ -157,48 +157,48 @@
     "season_roi_at_primary_cutoff": [
       {
         "season": 2017,
-        "bets": 130,
-        "roi": -0.0329
+        "bets": 131,
+        "roi": -0.0402
       },
       {
         "season": 2018,
-        "bets": 129,
-        "roi": 0.0519
-      },
-      {
-        "season": 2019,
-        "bets": 117,
-        "roi": -0.0151
-      },
-      {
-        "season": 2020,
-        "bets": 126,
-        "roi": -0.188
-      },
-      {
-        "season": 2021,
-        "bets": 132,
-        "roi": -0.031
-      },
-      {
-        "season": 2022,
-        "bets": 146,
-        "roi": -0.078
-      },
-      {
-        "season": 2023,
-        "bets": 130,
-        "roi": -0.0961
-      },
-      {
-        "season": 2024,
-        "bets": 140,
+        "bets": 134,
         "roi": 0.0683
       },
       {
+        "season": 2019,
+        "bets": 116,
+        "roi": -0.0176
+      },
+      {
+        "season": 2020,
+        "bets": 127,
+        "roi": -0.1804
+      },
+      {
+        "season": 2021,
+        "bets": 135,
+        "roi": -0.0412
+      },
+      {
+        "season": 2022,
+        "bets": 143,
+        "roi": -0.042
+      },
+      {
+        "season": 2023,
+        "bets": 132,
+        "roi": -0.109
+      },
+      {
+        "season": 2024,
+        "bets": 139,
+        "roi": 0.0744
+      },
+      {
         "season": 2025,
-        "bets": 138,
-        "roi": 0.0261
+        "bets": 135,
+        "roi": 0.0257
       }
     ]
   },

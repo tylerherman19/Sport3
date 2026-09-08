@@ -65,6 +65,7 @@ from scripts.output_writer import (
 from model.elo_model import compute_elo, annotate_pregame_elo, predict_game as elo_predict_game, get_trend, \
                                 era_hfa, expected_score as elo_expected_score
 from model import qb_model
+from model import roster_value
 from model.logistic_model import (build_features as build_nfl_logistic_features, train_logistic,
                                    evaluate_model, calibration_buckets,
                                    predict_matchups, historical_accuracy_by_year)
@@ -162,8 +163,25 @@ def run_nfl():
         except Exception as he:
             log.warning(f"Era HFA failed, using 48: {he}")
 
+    # Offseason roster value: what each team's incoming and outgoing players were
+    # worth last season, converted to a bounded Elo delta that compute_elo applies
+    # at each season boundary alongside (not instead of) the mean reversion.
+    # Quarterbacks are excluded - model/qb_model.py owns QB movement.
+    roster_ledger, roster_adj = {}, {}
+    try:
+        ledger_seasons = [s for s in range(roster_value.FIRST_LEDGER_SEASON, season_year + 1)]
+        roster_ledger = roster_value.build_offseason_ledger(ledger_seasons)
+        roster_adj = roster_value.elo_adjustments(roster_ledger)
+        log.info(f"Offseason roster value: {len(roster_ledger)} seasons, "
+                 f"{len(roster_adj.get(season_year, {}))} teams adjusted for {season_year}")
+    except Exception as re_:
+        log.warning(f"Roster-value layer unavailable, running without it: {re_}")
+
     if not fte_df.empty:
-        fte_df = annotate_pregame_elo(fte_df, qb_map=qb_ctx["game_adj"])
+        # Same roster deltas as the shipped ratings, so the logistic/XGB training
+        # features cannot drift from the Elo chain they are trained against.
+        fte_df = annotate_pregame_elo(fte_df, qb_map=qb_ctx["game_adj"],
+                                      roster_adjustments=roster_adj)
     scoreboard_games, current_week = fetch_nfl_scoreboard()
     standings                      = fetch_nfl_standings()
     injuries                       = fetch_nfl_injuries()
@@ -273,7 +291,8 @@ def run_nfl():
         # ratings come back as raw end-of-last-season values with the new season's
         # offseason regression never applied.
         elo_dict, game_history = compute_elo(fte_df, qb_map=qb_ctx["game_adj"],
-                                             current_season=season_year)
+                                             current_season=season_year,
+                                             roster_adjustments=roster_adj)
         cft = fte_df.dropna(subset=["score1","score2"])
         if not cft.empty:
             fte_cutoff_date = pd.to_datetime(cft["date"]).max()
@@ -339,7 +358,7 @@ def run_nfl():
     # rows - leaky - so it no longer feeds the site's model metrics.
     try:
         from scripts.backtest_nfl import walkforward_metrics
-        wf_metrics = walkforward_metrics(fte_df, qb_ctx)
+        wf_metrics = walkforward_metrics(fte_df, qb_ctx, roster_adjustments=roster_adj)
         if wf_metrics:
             model_metrics.update(wf_metrics)
             log.info(f"Walk-forward metrics: acc={wf_metrics['accuracy']} ll={wf_metrics['log_loss']} N={wf_metrics['n_scored_games']}")
@@ -544,6 +563,13 @@ def run_nfl():
     write_nfl_elo_ratings(elo_ratings_list, season_year, now_utc)
     write_nfl_leaderboard(elo_ratings_list, season_year, now_utc)
     write_nfl_model_metrics(model_metrics, len(fte_df) if not fte_df.empty else 0, xgb_model is not None, now_utc)
+    if roster_ledger:
+        # Persist the inputs behind every roster-driven Elo move: who arrived, who
+        # left, what each was worth. Data only - nothing reads it yet.
+        try:
+            roster_value.write_ledger(roster_ledger, generated_at=now_utc)
+        except Exception as we:
+            log.warning(f"Could not write offseason roster ledger: {we}")
     log.info("=== NFL Update complete ===")
     log.info(f"  Games predicted: {len(predictions_list)}  |  Teams: {len(elo_ratings_list)}")
 
