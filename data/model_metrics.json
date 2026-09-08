@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-07T13:48:05.743012+00:00",
+  "updated": "2026-09-08T02:02:37.141001+00:00",
   "log_loss": 0.625,
   "brier_score": 0.2179,
   "auc": 0.7018,
@@ -108,5 +108,100 @@
     "n_games": 2273
   },
   "n_training_games": 7276,
-  "xgboost_available": true
+  "xgboost_available": false,
+  "market_edge_backtest": {
+    "method": "Hypothetical one-unit moneyline bets when model probability differs from devigged archived market probability. Fixed cutoffs; no threshold chosen after results.",
+    "market_price_note": "nflverse archived moneyline fields; capture timestamp and sportsbook are not available in this dataset.",
+    "n_market_games": 2273,
+    "cutoffs": [
+      {
+        "bets": 2273,
+        "win_rate": 0.4369,
+        "roi": -0.0337,
+        "net_units": -76.71,
+        "average_edge": 0.0675,
+        "min_edge": 0.0
+      },
+      {
+        "bets": 1715,
+        "win_rate": 0.4187,
+        "roi": -0.0537,
+        "net_units": -92.06,
+        "average_edge": 0.0856,
+        "min_edge": 0.025
+      },
+      {
+        "bets": 1205,
+        "win_rate": 0.4083,
+        "roi": -0.042,
+        "net_units": -50.55,
+        "average_edge": 0.1063,
+        "min_edge": 0.05
+      },
+      {
+        "bets": 840,
+        "win_rate": 0.4095,
+        "roi": 0.0054,
+        "net_units": 4.52,
+        "average_edge": 0.1256,
+        "min_edge": 0.075
+      },
+      {
+        "bets": 525,
+        "win_rate": 0.3886,
+        "roi": -0.0015,
+        "net_units": -0.76,
+        "average_edge": 0.149,
+        "min_edge": 0.1
+      }
+    ],
+    "primary_cutoff": 0.05,
+    "season_roi_at_primary_cutoff": [
+      {
+        "season": 2017,
+        "bets": 133,
+        "roi": -0.1127
+      },
+      {
+        "season": 2018,
+        "bets": 134,
+        "roi": 0.0185
+      },
+      {
+        "season": 2019,
+        "bets": 120,
+        "roi": -0.0839
+      },
+      {
+        "season": 2020,
+        "bets": 128,
+        "roi": -0.1644
+      },
+      {
+        "season": 2021,
+        "bets": 132,
+        "roi": -0.0455
+      },
+      {
+        "season": 2022,
+        "bets": 146,
+        "roi": 0.004
+      },
+      {
+        "season": 2023,
+        "bets": 129,
+        "roi": -0.1344
+      },
+      {
+        "season": 2024,
+        "bets": 146,
+        "roi": 0.1075
+      },
+      {
+        "season": 2025,
+        "bets": 137,
+        "roi": 0.001
+      }
+    ]
+  }
 }

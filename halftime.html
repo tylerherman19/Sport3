@@ -181,6 +181,7 @@ body{background:var(--paper);color:var(--ink);font-family:"Archivo",sans-serif;f
 <p class="note" id="hf-note"></p>
 <div class="cal" id="cal"></div>
 <div class="szn" id="szn"></div>
+<section class="edge-test" id="edge-test"></section>
 </main>
 <script>const TZ="America/Chicago";
 const DATA_BASE="./data/";
@@ -235,6 +236,25 @@ function renderHF(m){
     `<div class="sznrow"><span>${h.year}</span><i style="width:${(h.accuracy*100).toFixed(0)}%"></i><span class="va">${pct1(h.accuracy)}</span></div>`).join(""):"";
 }
 
+function renderMarketEdge(backtest){
+  const box=document.getElementById("edge-test");
+  if(!backtest){box.innerHTML="";return}
+  const primary=(backtest.cutoffs||[]).find(r=>r.min_edge===backtest.primary_cutoff);
+  if(!primary){box.innerHTML="";return}
+  const roi=pct1(primary.roi), good=primary.roi>0;
+  box.innerHTML=`
+    <header class="strip-head edge-head"><h2>MARKET EDGE BACKTEST</h2><span>ARCHIVED MONEYLINES · 2017–2025</span></header>
+    <div class="edge-verdict ${good?"good":"bad"}">
+      <span class="edge-kicker">${good?"POSITIVE IN THIS SAMPLE":"MODEL DOES NOT BEAT THIS MARKET"}</span>
+      <strong>${roi} ROI</strong>
+      <p>Fixed ${pct0(backtest.primary_cutoff)} minimum edge · ${fmtInt(primary.bets)} hypothetical one-unit bets · ${primary.net_units>0?"+":""}${primary.net_units.toFixed(2)} units.</p>
+    </div>
+    <p class="note">This is the actual market-edge test: before each game, take the side where model probability exceeds the devigged market probability by the stated cutoff. Every cutoff is shown. No cutoff was selected after seeing results.</p>
+    <div class="edge-grid">${(backtest.cutoffs||[]).map(r=>`<div class="edge-row ${r.min_edge===backtest.primary_cutoff?"primary":""}"><span class="edge-cut">${pct0(r.min_edge)}+ EDGE</span><b class="${r.roi>0?"pos":"neg"}">${pct1(r.roi)} ROI</b><span>${fmtInt(r.bets)} bets · ${r.net_units>0?"+":""}${r.net_units.toFixed(1)}u</span></div>`).join("")}</div>
+    <div class="szn edge-season"><h5>5% EDGE · SEASON BY SEASON</h5>${(backtest.season_roi_at_primary_cutoff||[]).map(r=>`<div class="sznrow"><span>${r.season}</span><i class="${r.roi>=0?"positive":"negative"}" style="width:${Math.min(100,Math.abs(r.roi||0)*500).toFixed(0)}%"></i><span class="va ${r.roi>=0?"pos":"neg"}">${r.roi==null?"—":pct1(r.roi)}</span></div>`).join("")}</div>
+    <p class="note edge-caveat">${esc(backtest.market_price_note)} This is research, not a betting recommendation.</p>`;
+}
+
 
 function fillBug(pred){
   if(!pred)return;
@@ -247,6 +267,7 @@ function fillBug(pred){
   const {pred,metrics}=await loadAll();
   fillBug(pred);
   renderHF(metrics);
+  renderMarketEdge(metrics?.market_edge_backtest);
 })();
 </script>
 </body>

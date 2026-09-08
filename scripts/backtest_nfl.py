@@ -83,7 +83,11 @@ def _american_to_prob(o):
 
 
 def _vegas_map():
-    """{(date_str, home, away): devigged home prob} from the local nflverse cache, if present."""
+    """Archived two-way moneylines from the local nflverse game cache.
+
+    The cache has no capture timestamp, so these are a historical price
+    benchmark, not proof of a specific executable book/time. Never a feature.
+    """
     if not GAMES_CACHE.exists():
         return {}
     try:
@@ -96,8 +100,68 @@ def _vegas_map():
         hp = _american_to_prob(r.home_moneyline); ap = _american_to_prob(r.away_moneyline)
         if hp is None or ap is None:
             continue
-        out[(str(r.gameday), r.home_team, r.away_team)] = hp / (hp + ap)
+        out[(str(r.gameday), r.home_team, r.away_team)] = {
+            "home_prob": hp / (hp + ap),
+            "home_american": float(r.home_moneyline),
+            "away_american": float(r.away_moneyline),
+        }
     return out
+
+
+def _profit_units(american, won):
+    """Net units from risking one unit at an American moneyline."""
+    price = float(american)
+    if not price:
+        return 0.0
+    return (price / 100.0 if price > 0 else 100.0 / -price) if won else -1.0
+
+
+def market_edge_backtest(records):
+    """Grade model-market disagreements at fixed, predeclared cutoffs.
+
+    Each hypothetical bet chooses the side whose model probability exceeds the
+    devigged archived market probability and risks one unit at the archive's
+    listed price. Every cutoff is returned, including losing ones.
+    """
+    matched = [r for r in records if r.get("market") and r["actual"] != 0.5]
+    if not matched:
+        return None
+
+    def score(rows):
+        net = sum(row[2] for row in rows)
+        return {"bets": len(rows),
+                "win_rate": round(sum(row[0] for row in rows) / len(rows), 4) if rows else None,
+                "roi": round(net / len(rows), 4) if rows else None,
+                "net_units": round(net, 2),
+                "average_edge": round(sum(row[1] for row in rows) / len(rows), 4) if rows else None}
+
+    def bets_for(rows, threshold):
+        bets = []
+        for r in rows:
+            diff = r["prob"] - r["market"]["home_prob"]
+            if abs(diff) < threshold:
+                continue
+            home_side = diff > 0
+            won = (r["actual"] == 1.0) if home_side else (r["actual"] == 0.0)
+            price = r["market"]["home_american"] if home_side else r["market"]["away_american"]
+            bets.append((won, abs(diff), _profit_units(price, won)))
+        return bets
+
+    cutoffs = []
+    for threshold in (0.0, 0.025, 0.05, 0.075, 0.10):
+        result = score(bets_for(matched, threshold))
+        result["min_edge"] = threshold
+        cutoffs.append(result)
+    by_season = []
+    for season in sorted({r["season"] for r in matched}):
+        result = score(bets_for([r for r in matched if r["season"] == season], 0.05))
+        by_season.append({"season": int(season), "bets": result["bets"], "roi": result["roi"]})
+    return {
+        "method": "Hypothetical one-unit moneyline bets when model probability differs from devigged archived market probability. Fixed cutoffs; no threshold chosen after results.",
+        "market_price_note": "nflverse archived moneyline fields; capture timestamp and sportsbook are not available in this dataset.",
+        "n_market_games": len(matched), "cutoffs": cutoffs,
+        "primary_cutoff": 0.05, "season_roi_at_primary_cutoff": by_season,
+    }
 
 
 def walkforward_metrics(fte_df, qb_ctx, first_scored_season=FIRST_SCORED_SEASON):
@@ -134,7 +198,7 @@ def walkforward_metrics(fte_df, qb_ctx, first_scored_season=FIRST_SCORED_SEASON)
         prob = expected_score(e1 + hfa + qa1, e2 + qa2)
         actual = 1.0 if row.score1 > row.score2 else (0.5 if row.score1 == row.score2 else 0.0)
         recs.append({"season": int(row.season), "prob": prob, "actual": actual,
-                     "vegas": vegas.get(key)})
+                     "market": vegas.get(key)})
 
     if len(recs) < 100:
         return None
@@ -153,7 +217,9 @@ def walkforward_metrics(fte_df, qb_ctx, first_scored_season=FIRST_SCORED_SEASON)
                        f"{first_scored_season}-{int(r['season'].max())}, pre-game information only")
     m["n_scored_games"] = int(len(r))
 
-    v = r.dropna(subset=["vegas"])
+    v = r[r["market"].notna()].copy()
     if len(v) >= 100:
-        m["vegas_benchmark"] = dict(_score(v["vegas"].values, v["actual"].values), n_games=int(len(v)))
+        market_probs = v["market"].apply(lambda x: x["home_prob"]).values
+        m["vegas_benchmark"] = dict(_score(market_probs, v["actual"].values), n_games=int(len(v)))
+        m["market_edge_backtest"] = market_edge_backtest(r.to_dict("records"))
     return m

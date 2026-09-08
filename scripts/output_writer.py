@@ -54,6 +54,7 @@ def write_nfl_model_metrics(model_metrics: dict, n_training_games: int,
         "evaluation": model_metrics.get("evaluation"),
         "n_scored_games": model_metrics.get("n_scored_games"),
         "vegas_benchmark": model_metrics.get("vegas_benchmark"),
+        "market_edge_backtest": model_metrics.get("market_edge_backtest"),
         "n_training_games": n_training_games,
         "xgboost_available": xgb_available,
     })
