@@ -907,7 +907,11 @@ def run():
         except Exception as he:
             log.warning(f"Era HFA failed, using 48: {he}")
             pred_hfa = 48.0
-        elo_dict, game_history = compute_elo(fte_df, qb_map=qb_ctx["game_adj"])
+        # current_season: fte_df carries completed games only, so without this the
+        # ratings come back as raw end-of-last-season values with the new season's
+        # offseason regression never applied.
+        elo_dict, game_history = compute_elo(fte_df, qb_map=qb_ctx["game_adj"],
+                                             current_season=season_year)
         # Determine last date covered by FTE dataset
         completed_fte = fte_df.dropna(subset=["score1", "score2"])
         if not completed_fte.empty:

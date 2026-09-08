@@ -137,3 +137,89 @@ Verdict: none of the documented situational angles add measurable signal on
 top of the shipped QB-Elo stack over 2017-2025. The ~1.4 pt accuracy gap to
 the closing market (65.2 vs 66.6) is information, not methodology. Odds-data
 features (review item 10) remain excluded per the user's standing decision.
+
+---
+
+## Week 1 2026 defect: ratings that never crossed the offseason (2026-09-08)
+
+Reported from the live board: Miami at Las Vegas showed MIA 61.0% against a
+market price of MIA 37.7% — a 23.3 pp edge on a game the market made LV a
+-185 home favourite. It was not one bad game. Across all 64 priced Week 1
+matchups the mean absolute model-vs-market gap was **9.25 pp**, with 14 games
+past 15 pp, and every outlier ran the same direction: the model more extreme
+than the market at both ends.
+
+### Root cause
+
+`compute_elo()` regresses ratings toward 1500 at the start of each season it
+iterates. It iterates seasons **present in the dataframe**, and the loader
+(`fetch_nfl_historical_games`) drops rows with no score — completed games only.
+Before Week 1 of a new season there are no 2026 rows, so the loop stopped at
+2025 and returned raw end-of-2025 ratings. `extend_elo_with_espn()` then had no
+2026 results to apply. The shipped `data/elo_ratings.json` was literally the
+post-Super-Bowl-LX table.
+
+Nothing caught it because **the walk-forward harness cannot reproduce it**. The
+harness iterates a fixed frame that always contains the season being scored, so
+it crosses every boundary and regresses every time. Backtest and production
+diverge only in the one week of the year when the target season has no games —
+which is exactly the week this shipped.
+
+Measured effect on the rating distribution (2026 pre-Week-1):
+
+| | sd | spread | LV | MIA |
+|---|---|---|---|---|
+| shipped (no regression) | 120.4 | 484.0 | 1272 | 1434 |
+| regressed 0.33 | 80.7 | 324.3 | 1348 | 1456 |
+
+538-family NFL Elo runs sd ≈ 80. At sd 120 the whole league is over-dispersed,
+which is what manufactured the phantom edges. Replaying the 64 Week 1 games with
+the regression applied and the shipped QB adjustments held fixed:
+
+- mean |model − market|: 9.25 pp → **7.49 pp**
+- games past 15 pp: 14 → **6**
+- MIA@LV: model LV 39.0% → **48.6%** (market 62.3%)
+
+The same defect had two more heads, both fixed:
+
+- **QB overlay.** `build_qb_context()` reverts veteran QB ratings at a season
+  rollover, but the rollover only fires when a game from the new season arrives —
+  so `projected_adjustment()` for Week 1 ran off unreverted end-of-2025 state.
+- **Points-based sub-models.** ESPN reports `pointsFor`/`pointsAgainst` as `0`
+  (present, not missing) before a team plays, so `.get(key, 350)` never fired.
+  Every team's Pythagorean came out exactly 0.500 and `compute_efficiency`
+  returned `off_eff = def_eff = 0`, `net_eff = -2.0` league-wide. PYTH and EFF
+  were therefore the *same* home-field constant for every game (both 59.25% for
+  every home team), displayed on the card as two independent systems and drawing
+  full ensemble weight. They now report unavailable until a game is played.
+
+### QB team-baseline offseason reversion (new: `TEAM_REVERT`)
+
+The QB adjustment is `QB_MULT × (starter VALUE − team rolling VALUE)`. Veteran QB
+ratings reverted each offseason; the team baseline never did. A team that
+rebuilt its offense kept last season's baseline, and a stale-low baseline
+inflates the swing credited to an incoming starter — LV's inferred Week 1
+adjustment was +95 Elo on top of an already-unregressed rating.
+
+Swept on the walk-forward harness (production constants, era HFA, k20,
+regress .33, QB_MULT 2.0, 2017-2025, N=2485):
+
+| team_revert | acc | log loss | brier |
+|---|---|---|---|
+| 0.00 (shipped) | 0.6483 | 0.6255 | 0.2181 |
+| 0.33 | 0.6519 | 0.6244 | 0.2176 |
+| **0.50** | **0.6531** | **0.6240** | **0.2174** |
+| 0.70 | 0.6531 | 0.6237 | 0.2173 |
+| 0.90 | 0.6543 | 0.6235 | 0.2172 |
+| 1.00 | 0.6535 | 0.6235 | 0.2171 |
+
+Per-season at 0.50: log loss improves in **8 of 9** seasons, accuracy in 7 of 9.
+The curve is flat from 0.5 to 1.0 (~12 games of 2485 separate them — noise), so
+0.50 is taken as the point where the gain is realised rather than the grid
+argmax. Vegas closing over the same window: 0.6660 / 0.6072 / 0.2099.
+
+### Guard
+
+`tests/test_offseason_regression.py` covers all three heads, including that the
+regression is applied once per missing season and becomes a no-op the moment the
+season's own results land (so ratings can never be regressed twice).

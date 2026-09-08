@@ -33,6 +33,15 @@ QB_ROLL = 0.1            # individual QB rolling weight per game (538: update ev
 TEAM_ROLL = 0.05         # team rolling weight per game (538: every 20 games)
 DEF_ROLL = 0.1           # defensive VALUE-allowed rolling weight
 VET_REVERT = 0.25        # preseason reversion for veterans with 10-100 career starts
+TEAM_REVERT = 0.50       # preseason reversion of a team's rolling VALUE baseline toward
+                         # the league average. Without it a team that rebuilt its offense
+                         # keeps last season's baseline, and since the QB adjustment is
+                         # QB_MULT x (starter VALUE - team VALUE), a stale-low baseline
+                         # inflates the swing for an incoming starter. Measured on the
+                         # walk-forward harness (2017-2025, N=2485, production constants):
+                         # acc 0.6483 -> 0.6531, log loss 0.6255 -> 0.6240, better log loss
+                         # in 8 of 9 seasons. Flat from 0.5 to 1.0, so 0.5 is taken as the
+                         # point where the gain is realised rather than the grid argmax.
 
 # Rookie initial VALUE by draft round (Elo points / 3.3, from 538's published scale)
 DRAFT_INIT_ELO = {1: 113.0, 2: 40.0, 3: 25.0}
@@ -105,6 +114,23 @@ def _draft_init(draft_map, player_id, season):
     return DRAFT_INIT_ELO.get(rnd, 0.0) / 3.3
 
 
+def _offseason_transition(qb_rating, qb_starts, team_val):
+    """Apply one offseason step in place: veteran QB ratings and team rolling
+    baselines both revert toward their league averages.
+
+    Used by the in-season rollover in build_qb_context AND by projected_adjustment,
+    which has to cross the same boundary for a season whose games have not been
+    played yet -- otherwise Week 1 projections run off end-of-last-season state.
+    """
+    avg_qb = float(np.mean(list(qb_rating.values()))) if qb_rating else 0.0
+    for p in list(qb_rating):
+        if 10 <= qb_starts.get(p, 0) <= 100:
+            qb_rating[p] = qb_rating[p] * (1 - VET_REVERT) + avg_qb * VET_REVERT
+    avg_tv = float(np.mean(list(team_val.values()))) if team_val else 0.0
+    for t in list(team_val):
+        team_val[t] = team_val[t] * (1 - TEAM_REVERT) + avg_tv * TEAM_REVERT
+
+
 def _prep_starters(qb):
     """Per (game_id, team): starter (most attempts) + team total QB VALUE + opponent."""
     g = qb.sort_values("attempts", ascending=False).groupby(["game_id", "team"])
@@ -144,10 +170,8 @@ def build_qb_context(games_df, first_season=2014):
     df = games_df.dropna(subset=["score1", "score2"]).sort_values("date")
     for g in df.itertuples():
         if cur_season != g.season:
-            avg_qb = float(np.mean(list(qb_rating.values()))) if qb_rating else 0.0
-            for p in list(qb_rating):
-                if 10 <= qb_starts.get(p, 0) <= 100:
-                    qb_rating[p] = qb_rating[p] * (1 - VET_REVERT) + avg_qb * VET_REVERT
+            if cur_season is not None:
+                _offseason_transition(qb_rating, qb_starts, team_val)
             cur_season = g.season
         gid = getattr(g, "game_id", None)
         if gid is None or (isinstance(gid, float) and math.isnan(gid)):
@@ -181,9 +205,39 @@ def build_qb_context(games_df, first_season=2014):
         last_starter_name[r.team] = r.player_display_name
 
     return {"game_adj": game_adj,
-            "state": {"team_val": team_val, "qb_rating": qb_rating,
+            "state": {"team_val": team_val, "qb_rating": qb_rating, "qb_starts": qb_starts,
                       "last_starter": last_starter, "last_starter_name": last_starter_name,
-                      "draft_map": draft_map}}
+                      "draft_map": draft_map, "last_season": cur_season}}
+
+
+def _state_for_season(state, season):
+    """State advanced across every offseason between the last season actually
+    played and `season`, memoised on the state dict.
+
+    build_qb_context only crosses a season boundary when it meets a game from the
+    new season, and it is fed completed games only. Projecting Week 1 of a season
+    with no results yet therefore used raw end-of-last-season ratings and baselines
+    -- the same offseason-never-applied defect as the Elo chain. Returns the state
+    unchanged once the season's own games exist.
+    """
+    if season is None:
+        return state
+    last = state.get("last_season")
+    try:
+        steps = int(season) - int(last)
+    except (TypeError, ValueError):
+        return state
+    if steps <= 0:
+        return state
+    cache = state.setdefault("_projected", {})
+    if season not in cache:
+        qb_rating = dict(state.get("qb_rating", {}))
+        qb_starts = dict(state.get("qb_starts", {}))
+        team_val = dict(state.get("team_val", {}))
+        for _ in range(steps):
+            _offseason_transition(qb_rating, qb_starts, team_val)
+        cache[season] = {"qb_rating": qb_rating, "team_val": team_val}
+    return {**state, **cache[season]}
 
 
 def projected_adjustment(state, team, season, depth_chart_qb=None):
@@ -192,6 +246,7 @@ def projected_adjustment(state, team, season, depth_chart_qb=None):
     depth_chart_qb: optional {team: (player_id, name)} from the current season's depth chart;
     falls back to the team's last known starter. Unrated QBs get their draft-based initial value.
     """
+    state = _state_for_season(state, season)
     team_val = state.get("team_val", {})
     qb_rating = state.get("qb_rating", {})
     draft_map = state.get("draft_map", {})
