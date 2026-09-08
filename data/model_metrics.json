@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-08T02:02:37.141001+00:00",
+  "updated": "2026-09-08T12:23:55.264851+00:00",
   "log_loss": 0.625,
   "brier_score": 0.2179,
   "auc": 0.7018,
@@ -107,8 +107,6 @@
     "auc": 0.7239,
     "n_games": 2273
   },
-  "n_training_games": 7276,
-  "xgboost_available": false,
   "market_edge_backtest": {
     "method": "Hypothetical one-unit moneyline bets when model probability differs from devigged archived market probability. Fixed cutoffs; no threshold chosen after results.",
     "market_price_note": "nflverse archived moneyline fields; capture timestamp and sportsbook are not available in this dataset.",
@@ -203,5 +201,7 @@
         "roi": 0.001
       }
     ]
-  }
+  },
+  "n_training_games": 7276,
+  "xgboost_available": true
 }
