@@ -51,7 +51,7 @@ def era_hfa(home_win_rates, current_season, default=48.0, window=10):
 
 def compute_elo(historical_df, k_base=20.0, hfa=48.0, initial_elo=1500.0, regress_pct=0.33,
                 qb_map=None, use_era_hfa=True, pregame_out=None, current_season=None,
-                roster_adjustments=None):
+                roster_adjustments=None, boundary_anchor=None, boundary_anchor_weight=0.0):
     """
     Process historical games and compute current ELO ratings.
     Returns dict: {team: elo}
@@ -75,6 +75,13 @@ def compute_elo(historical_df, k_base=20.0, hfa=48.0, initial_elo=1500.0, regres
       did in January", the roster delta says "and here is what actually changed".
       Quarterbacks are excluded from that layer entirely - QB movement is owned by
       the model.qb_model overlay, which is applied per game, not here.
+    - boundary_anchor / boundary_anchor_weight: EXPERIMENTAL (user-directed
+      2026-09-09, evaluated in research/wf_sumer.py --anchor-sweep). When set,
+      each season-boundary rating becomes a blend
+          (1-w) * regressed_elo + w * boundary_anchor[season][team]
+      so an external rating (SumerSports prior-season EPA, model/sumer_epa.py)
+      can carry part - or, at w=1, all - of the cross-season signal instead of
+      only adding to it. Defaults keep the shipped behaviour exactly.
     """
     df = historical_df.copy()
     df = df.dropna(subset=["score1", "score2"])
@@ -106,6 +113,7 @@ def compute_elo(historical_df, k_base=20.0, hfa=48.0, initial_elo=1500.0, regres
         for team in list(elo_dict.keys()):
             elo_dict[team] = elo_dict[team] * (1 - regress_pct) + initial_elo * regress_pct
             game_history[team] = []
+        _apply_boundary_anchor(elo_dict, boundary_anchor, boundary_anchor_weight, season)
         _apply_roster_adjustments(elo_dict, roster_adjustments, season)
 
         for _, row in season_df.iterrows():
@@ -195,9 +203,32 @@ def compute_elo(historical_df, k_base=20.0, hfa=48.0, initial_elo=1500.0, regres
             for team in list(elo_dict.keys()):
                 elo_dict[team] = elo_dict[team] * (1 - regress_pct) + initial_elo * regress_pct
                 game_history[team] = []
+            _apply_boundary_anchor(elo_dict, boundary_anchor, boundary_anchor_weight,
+                                   last_played + step + 1)
             _apply_roster_adjustments(elo_dict, roster_adjustments, last_played + step + 1)
 
     return elo_dict, game_history
+
+
+def _apply_boundary_anchor(elo_dict, boundary_anchor, weight, season):
+    """Blend each rated team toward an external boundary anchor rating.
+
+    Runs AFTER the mean reversion and BEFORE additive layers (roster value):
+    the anchor replaces a share of the retained cross-season signal rather than
+    stacking on top of it, which is the difference between "EPA as primary
+    signal" and "EPA as extra credit". Teams missing from the anchor keep the
+    plain regressed rating; weight 0 or a None anchor is exactly the shipped
+    behaviour.
+    """
+    if not boundary_anchor or not weight or weight <= 0.0:
+        return
+    anchor = boundary_anchor.get(season) or boundary_anchor.get(str(season)) or {}
+    if not anchor:
+        return
+    w = min(1.0, float(weight))
+    for team, target in anchor.items():
+        if team in elo_dict:
+            elo_dict[team] = (1.0 - w) * elo_dict[team] + w * float(target)
 
 
 def _apply_roster_adjustments(elo_dict, roster_adjustments, season):
