@@ -346,3 +346,47 @@ decision with its own validation, not a free rider on this one.
 `data/offseason_roster_value.json` persists the per-team ledger — who arrived, who
 left, what each was worth, the applied Elo delta. Nothing reads it yet; no UI in
 this change.
+
+## SumerSports EPA layer (2026-09-09)
+
+Source: `scripts/sumersports_feed.py` mirrors the public, no-auth SumerSports
+team tables (offensive + defensive EPA/Play family, success rate, pass/rush
+splits; seasons 2022-2025 verified live; 2021 and earlier render empty) into
+`data/sumersports_cache/`. CI refreshes the current season daily; completed
+seasons are static. This is a raw-stats feed, eligible under the no-market-data
+rule.
+
+User-directed evaluation: SumerSports EPA as a **primary** cross-season signal,
+weight it higher than the existing inputs. Two mechanism families, both
+walk-forward (production `compute_elo` + QB overlay + roster layer, scored
+2017-2025, N=2485; layer can only affect the 2023-2025 boundaries, so the
+2023+ sub-window, N=854, is the honest read):
+
+**Family 1 — additive boundary deltas** (`boundary_deltas`, Elo per net-EPA/play
+sweep, cap ±40): monotonically harmful. epe=100: -0.12 acc / +0.0017 ll on
+2023+. epe=250: -1.05 acc. epe=600: -0.70 acc. Stacking EPA on top of the
+retained two-thirds rating double-counts last season.
+
+**Family 2 — boundary anchor blend** (`boundary_anchor`, rating =
+(1-w)*regressed + w*(1500 + K*net_EPA)): also monotonically harmful in w.
+K=450: w=0.15 -0.12 acc (ll a hair better), w=0.33 -0.23, w=0.5 -0.23,
+w=0.75 -0.94, w=1.0 **-1.41 acc / +0.0022 ll**. K=700 similar (w=1.0: -0.70).
+Full EPA-primary costs 0.7-1.4 points of accuracy.
+
+**Cross-sectional check** (why both families fail): full-season net EPA
+correlates with same-season win% at 0.865-0.876 — *below* the crude PPG proxy
+the efficiency slot already uses (0.881-0.913 all three years). Prior-season →
+next-season wins: EPA beats the PPG proxy once of three (2022→23: 0.454 vs
+0.450; 2023→24: 0.274 vs 0.314; 2024→25: 0.253 vs 0.294). The Elo chain
+already prices this information; the QB overlay owns the part of EPA that is
+the quarterback.
+
+**Verdict: rejected at every weight, including primary.** Same disposition as
+round 1's playoff multiplier and bye-rest bonus. What shipped instead:
+the feed + cache in CI, `model/sumer_epa.py` + the `compute_elo`
+`boundary_anchor` mechanism (defaults are the shipped behaviour, fully tested),
+`research/wf_sumer.py` for re-runs, per-team `sumer_net_epa` published in
+`nfl_leaderboard.json` as display context, and a zero-weight `sumer_prob`
+logged per game in `nfl_predictions.json` so the signal grades live going
+forward. If SumerSports ever earns real weight it will be through that live
+grading or through weekly snapshots, not through full-season tables.
