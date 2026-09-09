@@ -66,6 +66,7 @@ from model.elo_model import compute_elo, annotate_pregame_elo, predict_game as e
                                 era_hfa, expected_score as elo_expected_score
 from model import qb_model
 from model import roster_value
+from model import sumer_epa
 from model.logistic_model import (build_features as build_nfl_logistic_features, train_logistic,
                                    evaluate_model, calibration_buckets,
                                    predict_matchups, historical_accuracy_by_year)
@@ -308,6 +309,17 @@ def run_nfl():
             hfa=pred_hfa, qb_map=qb_ctx.get("game_adj"))
 
     efficiency_data = build_nfl_efficiency_data(standings, fte_df)
+    # SumerSports team EPA (open feed, refreshed daily in CI): display context
+    # and a graded experiment ONLY. The walk-forward rejected it as an Elo
+    # boundary anchor and the cross-sectional check showed no efficiency-slot
+    # upgrade (research/RESULTS.md, 2026-09-09), so it carries zero ensemble
+    # weight. sumer_prob is logged per game so the signal can be graded
+    # honestly going forward; sumer_net_epa is published per team as context.
+    sumer_season, sumer_nets = sumer_epa.current_net_epa()
+    sumer_elo = {t: 1500.0 + max(-80.0, min(80.0, 450.0 * n)) for t, n in sumer_nets.items()}
+    if sumer_nets:
+        log.info(f"SumerSports EPA context loaded from {sumer_season} table "
+                 f"({len(sumer_nets)} teams; zero-weight experiment)")
     # Points-based systems need at least one completed game. Before then ESPN
     # reports 0 points for / 0 against (present, not missing), which made every
     # team's Pythagorean exactly 0.500 and every team's efficiency identical --
@@ -418,6 +430,11 @@ def run_nfl():
                                    rest_adj_a=raj+ijah,rest_adj_b=-raj+taj+ijaa)
             br  = bayes_predict(home,away,bayesian_ratings,is_home_a=True,neutral=neutral)
             effr = efficiency_predict_game(home,away,efficiency_data,pythagorean_data,not neutral,neutral)
+            # Zero-weight experiment: EPA-only win prob (SumerSports table +
+            # home field), logged for live grading. Never feeds ensemble_predict.
+            sp = round(elo_expected_score(
+                sumer_elo.get(home, 1500.0) + (0 if neutral else pred_hfa),
+                sumer_elo.get(away, 1500.0)), 4) if sumer_elo else None
             # With no completed games these are a constant, not a signal: drop them
             # so ensemble_predict renormalises over the models that do have data and
             # the UI stops showing two identical percentages as independent systems.
@@ -495,7 +512,8 @@ def run_nfl():
                 "neutral":neutral,"home_score":game.get("home_score",0),"away_score":game.get("away_score",0),
                 "predictions":{"ensemble_prob":ep,"logistic_prob":round(exported_lp,4),"elo_prob":round(er["prob"],4),
                                "xgb_prob":xp,"pyth_prob":pyth_prob,"eff_prob":eff_prob,
-                               "bayesian_prob":br["bayesian_prob"]},
+                               "bayesian_prob":br["bayesian_prob"],
+                               "sumer_prob":sp},
                 "market":{"home_prob":mhp,"edge":me,"kelly_pct":kp,
                           "home_american":mo.get("home_american") if mo else None,
                           "away_american":mo.get("away_american") if mo else None},
@@ -545,6 +563,7 @@ def run_nfl():
             "pyth":round(pyth,4),"net_eff":round(efficiency_data.get(t,{}).get("net_eff",0.0),4),
             "off_eff":round(efficiency_data.get(t,{}).get("off_eff",1.0),4),
             "def_eff":round(efficiency_data.get(t,{}).get("def_eff",1.0),4),
+            "sumer_net_epa":round(sumer_nets.get(t,0.0),4),
             "wins":standings.get(t,{}).get("wins",0),"losses":standings.get(t,{}).get("losses",0),
             "ties":standings.get(t,{}).get("ties",0),
             "playoff_prob":round(season_sim.get(t,{}).get("playoff_prob",0.5),4),
