@@ -1,8 +1,8 @@
 {
-  "updated": "2026-09-10T12:29:57.086824+00:00",
-  "log_loss": 0.6233,
-  "brier_score": 0.2171,
-  "auc": 0.7047,
+  "updated": "2026-09-11T12:27:04.279159+00:00",
+  "log_loss": 0.6234,
+  "brier_score": 0.2172,
+  "auc": 0.7046,
   "calibration_buckets": [
     {
       "bucket": "0-10%",
@@ -25,20 +25,20 @@
     {
       "bucket": "30-40%",
       "predicted": 0.355,
-      "actual": 0.33,
-      "count": 285
+      "actual": 0.329,
+      "count": 286
     },
     {
       "bucket": "40-50%",
       "predicted": 0.452,
-      "actual": 0.41,
-      "count": 422
+      "actual": 0.411,
+      "count": 421
     },
     {
       "bucket": "50-60%",
       "predicted": 0.552,
-      "actual": 0.544,
-      "count": 500
+      "actual": 0.543,
+      "count": 501
     },
     {
       "bucket": "60-70%",
@@ -98,12 +98,12 @@
     },
     {
       "year": 2026,
-      "accuracy": 1.0
+      "accuracy": 0.5
     }
   ],
-  "accuracy": 0.6554,
+  "accuracy": 0.6551,
   "evaluation": "walk-forward backtest of the shipped QB-adjusted Elo with the offseason roster-value layer, 2017-2026, pre-game information only",
-  "n_scored_games": 2487,
+  "n_scored_games": 2488,
   "vegas_benchmark": {
     "accuracy": 0.6627,
     "log_loss": 0.609,
@@ -133,11 +133,11 @@
         "min_edge": 0.025
       },
       {
-        "bets": 1195,
-        "win_rate": 0.4259,
-        "roi": -0.0327,
-        "net_units": -39.1,
-        "average_edge": 0.1054,
+        "bets": 1197,
+        "win_rate": 0.4269,
+        "roi": -0.0315,
+        "net_units": -37.68,
+        "average_edge": 0.1053,
         "min_edge": 0.05
       },
       {
@@ -186,13 +186,13 @@
       },
       {
         "season": 2022,
-        "bets": 143,
-        "roi": -0.042
+        "bets": 144,
+        "roi": -0.0358
       },
       {
         "season": 2023,
-        "bets": 132,
-        "roi": -0.131
+        "bets": 133,
+        "roi": -0.1257
       },
       {
         "season": 2024,
@@ -211,6 +211,6 @@
       }
     ]
   },
-  "n_training_games": 7277,
+  "n_training_games": 7278,
   "xgboost_available": true
 }
