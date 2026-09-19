@@ -1,31 +1,31 @@
 {
-  "updated": "2026-06-18T12:15:00.599891+00:00",
+  "updated": "2026-09-19T12:43:15.366384+00:00",
   "season": 2026,
   "league": "nba",
   "is_offseason": false,
   "games": [
     {
-      "game_id": "401859967",
-      "game_time": "2026-06-14T00:30Z",
-      "status": "STATUS_FINAL",
-      "is_future": false,
-      "home_team": "SAS",
-      "away_team": "NYK",
-      "home_name": "San Antonio Spurs",
-      "away_name": "New York Knicks",
-      "home_logo": "https://a.espncdn.com/i/teamlogos/nba/500/sa.png",
-      "away_logo": "https://a.espncdn.com/i/teamlogos/nba/500/ny.png",
+      "game_id": "401902644",
+      "game_time": "2026-10-03T23:00Z",
+      "status": "STATUS_SCHEDULED",
+      "is_future": true,
+      "home_team": "TOR",
+      "away_team": "MIA",
+      "home_name": "Toronto Raptors",
+      "away_name": "Miami Heat",
+      "home_logo": "https://a.espncdn.com/i/teamlogos/nba/500/tor.png",
+      "away_logo": "https://a.espncdn.com/i/teamlogos/nba/500/mia.png",
       "neutral": false,
-      "home_score": 90,
-      "away_score": 94,
+      "home_score": 0,
+      "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.5704,
-        "logistic_prob": 0.5185,
-        "elo_prob": 0.5986,
-        "xgb_prob": 0.5441,
-        "pyth_prob": 0.6051,
-        "eff_prob": 0.6658,
-        "bayesian_prob": 0.9615
+        "ensemble_prob": 0.6245,
+        "logistic_prob": 0.5251,
+        "elo_prob": 0.6815,
+        "xgb_prob": 0.5622,
+        "pyth_prob": 0.6208,
+        "eff_prob": 0.6401,
+        "bayesian_prob": 0.643
       },
       "market": {
         "home_prob": null,
@@ -35,18 +35,18 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6371,
-        "exp_margin": 4.16,
-        "prob_7plus": 0.409,
-        "prob_14plus": 0.2022,
-        "prob_21plus": 0.0729,
+        "win_prob": 0.6373,
+        "exp_margin": 4.07,
+        "prob_7plus": 0.3987,
+        "prob_14plus": 0.1962,
+        "prob_21plus": 0.0715,
         "margin_percentiles": [
           -15.0,
-          -11.0,
-          -3.8,
-          4.3,
+          -10.7,
+          -3.7,
+          4.0,
           12.0,
-          19.2,
+          18.9,
           23.1
         ]
       },
@@ -54,134 +54,252 @@
         "rest_home": 7,
         "rest_away": 7,
         "rest_diff": 0,
-        "travel_dist_miles": 1583.0,
+        "travel_dist_miles": 1237.0,
         "b2b_home": false,
         "b2b_away": false,
         "home_elo_bonus": 100
       },
       "h2h": {
-        "home_wins": 5,
-        "away_wins": 11,
-        "total_meetings": 16,
+        "home_wins": 11,
+        "away_wins": 9,
+        "total_meetings": 20,
         "last_n": [
           {
-            "date": "2024-12-25",
-            "winner": "NYK",
-            "margin": 3
+            "date": "2024-04-13",
+            "winner": "MIA",
+            "margin": 22
           },
           {
-            "date": "2025-03-20",
-            "winner": "SAS",
+            "date": "2024-04-14",
+            "winner": "MIA",
             "margin": 15
           },
           {
-            "date": "2025-12-17",
-            "winner": "NYK",
-            "margin": 11
-          },
-          {
-            "date": "2026-01-01",
-            "winner": "SAS",
-            "margin": 2
-          },
-          {
-            "date": "2026-03-01",
-            "winner": "NYK",
-            "margin": 25
-          },
-          {
-            "date": "2026-06-04",
-            "winner": "NYK",
+            "date": "2024-11-30",
+            "winner": "MIA",
             "margin": 10
           },
           {
-            "date": "2026-06-06",
-            "winner": "NYK",
-            "margin": 1
+            "date": "2024-12-01",
+            "winner": "TOR",
+            "margin": 3
           },
           {
-            "date": "2026-06-09",
-            "winner": "SAS",
-            "margin": 4
+            "date": "2024-12-13",
+            "winner": "MIA",
+            "margin": 10
           },
           {
-            "date": "2026-06-11",
-            "winner": "NYK",
-            "margin": 1
+            "date": "2025-02-22",
+            "winner": "MIA",
+            "margin": 9
           },
           {
-            "date": "2026-06-14",
-            "winner": "NYK",
-            "margin": 4
+            "date": "2025-12-16",
+            "winner": "TOR",
+            "margin": 10
+          },
+          {
+            "date": "2025-12-24",
+            "winner": "TOR",
+            "margin": 21
+          },
+          {
+            "date": "2026-04-07",
+            "winner": "TOR",
+            "margin": 26
+          },
+          {
+            "date": "2026-04-09",
+            "winner": "TOR",
+            "margin": 14
           }
         ]
       },
       "elo": {
-        "home": 1827.5,
-        "away": 1832.8,
-        "diff": -5.3
+        "home": 1564.2,
+        "away": 1531.0,
+        "diff": 33.2
       },
       "bayesian": {
-        "home_mu": 1799.9,
+        "home_mu": 1799.2,
         "home_sigma": 40.0,
-        "away_mu": 1799.9,
+        "away_mu": 1795.6,
         "away_sigma": 40.0,
         "home_band": [
-          1759.9,
-          1839.9
+          1759.2,
+          1839.2
         ],
         "away_band": [
-          1759.9,
-          1839.9
+          1755.6,
+          1835.6
         ]
       },
       "efficiency": {
-        "home_off_rating": 119.82927,
-        "home_def_rating": 111.52439,
-        "home_net_rating": 8.304879999999997,
-        "away_off_rating": 116.45122,
-        "away_def_rating": 110.12195,
-        "away_net_rating": 6.329270000000008,
+        "home_off_rating": 110.0,
+        "home_def_rating": 110.0,
+        "home_net_rating": 0.0,
+        "away_off_rating": 110.0,
+        "away_def_rating": 110.0,
+        "away_net_rating": 0.0,
         "home_pace": 100.0,
         "away_pace": 100.0
       },
       "injuries": {
         "home": [
           {
-            "player": "David Jones Garcia",
+            "player": "Nate Bittle",
+            "status": "Day-To-Day",
+            "position": "C",
+            "injury_description": "Bittle missed Toronto's Summer League finale due to right knee soreness, though it's unclear exactly what he's dealing with now. The 23-year-old center out of Oregon signed an Exhibit 10 contract with the Raptors in June and is set to compete for a spot on the regular-season roster at training camp, so his status will be worth monitoring moving forward.",
+            "value_tier": "starter"
+          },
+          {
+            "player": "Alijah Martin",
+            "status": "Day-To-Day",
+            "position": "G",
+            "injury_description": "Martin will miss the Raptors' Summer League finale after being held out of the team's first four games in Las Vegas. He appeared in just 23 regular-season games in 2025-26 and figures to continue providing backcourt depth in 2026-27.",
+            "value_tier": "starter"
+          },
+          {
+            "player": "Chucky Hepburn",
+            "status": "Day-To-Day",
+            "position": "G",
+            "injury_description": "Hepburn will be held out of the Raptors' Summer League finale, marking his third consecutive contest on the inactive list. The 23-year-old point guard appeared in two Las Vegas Summer League games, averaging 6.5 points, 6.5 assists, 3.5 rebounds and 1.5 steals in 29.1 minutes per contest.",
+            "value_tier": "starter"
+          },
+          {
+            "player": "Collin Murray-Boyles",
             "status": "Day-To-Day",
             "position": "F",
-            "injury_description": "Jones Garcia only managed to make 11 appearances for the Spurs in his introductory season, finishing with averages of 2.9 points and 1.6 assists per game. The 24-year-old rookie was on a one-year, two-way deal with the Spurs, so he'll be a free agent this summer.",
+            "injury_description": "Murray-Boyles will miss all the Raptors' Las Vegas Summer League games due to a sprained finger. The 21-year-old big man was productive on both ends of the floor in his rookie campaign, and he figures to continue seeing meaningful playing time in 2026-27.",
             "value_tier": "starter"
           }
         ],
-        "away": []
+        "away": [
+          {
+            "player": "Giannis Antetokounmpo",
+            "status": "Day-To-Day",
+            "position": "F",
+            "injury_description": "Antetokounmpo's absence wasn't due to restrictions from Miami, as Greece's federation indicated the decision was made as part of his preparation for the upcoming season. The 31-year-old will begin a new chapter with the Heat after being acquired from Milwaukee in a blockbuster trade this offseason.",
+            "value_tier": "superstar"
+          },
+          {
+            "player": "Bam Adebayo",
+            "status": "Day-To-Day",
+            "position": "C",
+            "injury_description": "While Adebayo may sacrifice some scoring volume, Antetokounmpo's ability to collapse defenses should create more efficient scoring opportunities, and the duo projects to form one of the league's premier defensive frontcourts. Adebayo nursed a back issue to end the 2025-26 season, but he should be a full go for training camp.",
+            "value_tier": "all-star"
+          },
+          {
+            "player": "Trevor Keels",
+            "status": "Day-To-Day",
+            "position": "G",
+            "injury_description": "Keels missed Miami's Summer League finale, marking a third consecutive game on the inactive list due to right knee soreness. Over two Las Vegas Summer League appearances, he averaged 23.0 points, 4.5 rebounds, 3.0 assists and 2.0 steals in 27.2 minutes per showing.",
+            "value_tier": "starter"
+          },
+          {
+            "player": "Ryan Conwell",
+            "status": "Day-To-Day",
+            "position": "G",
+            "injury_description": "The Heat are erring on the side of caution while the rookie second-rounder tends to a hip injury. Conwell has plenty of time to heal up ahead of training camp in the fall, when he'll likely be competing with Dru Smith for the backup point guard role behind Davion Mitchell for 2026-27.",
+            "value_tier": "starter"
+          },
+          {
+            "player": "Myron Gardner",
+            "status": "Day-To-Day",
+            "position": "F",
+            "injury_description": "Gardner's Summer League is over because of an ankle sprain he suffered in Friday's California Classic opener in San Francisco against the Spurs. The swingman is missing out on valuable reps as he competes for a rotation spot with the Heat, but he does have plenty of time to recuperate for training camp in the fall.",
+            "value_tier": "starter"
+          }
+        ]
       },
       "injury_impact": {
-        "home_elo_penalty": 7.0,
-        "away_elo_penalty": 0.0,
+        "home_elo_penalty": 30.0,
+        "away_elo_penalty": 54.24,
         "home_key_players_out": [
           {
-            "player": "David Jones Garcia",
+            "player": "Nate Bittle",
+            "position": "C",
+            "status": "Day-To-Day",
+            "elo_impact": 8.0,
+            "value_tier": "starter"
+          },
+          {
+            "player": "Alijah Martin",
+            "position": "G",
+            "status": "Day-To-Day",
+            "elo_impact": 7.5,
+            "value_tier": "starter"
+          },
+          {
+            "player": "Chucky Hepburn",
+            "position": "G",
+            "status": "Day-To-Day",
+            "elo_impact": 7.5,
+            "value_tier": "starter"
+          },
+          {
+            "player": "Collin Murray-Boyles",
             "position": "F",
             "status": "Day-To-Day",
             "elo_impact": 7.0,
             "value_tier": "starter"
           }
         ],
-        "away_key_players_out": [],
+        "away_key_players_out": [
+          {
+            "player": "Giannis Antetokounmpo",
+            "position": "F",
+            "status": "Day-To-Day",
+            "elo_impact": 14.0,
+            "value_tier": "superstar"
+          },
+          {
+            "player": "Bam Adebayo",
+            "position": "C",
+            "status": "Day-To-Day",
+            "elo_impact": 12.0,
+            "value_tier": "all-star"
+          },
+          {
+            "player": "Trevor Keels",
+            "position": "G",
+            "status": "Day-To-Day",
+            "elo_impact": 7.5,
+            "value_tier": "starter"
+          },
+          {
+            "player": "Ryan Conwell",
+            "position": "G",
+            "status": "Day-To-Day",
+            "elo_impact": 7.5,
+            "value_tier": "starter"
+          },
+          {
+            "player": "Myron Gardner",
+            "position": "F",
+            "status": "Day-To-Day",
+            "elo_impact": 7.0,
+            "value_tier": "starter"
+          }
+        ],
         "home_star_count": 0,
-        "away_star_count": 0,
+        "away_star_count": 2,
         "home_star_stack_multiplier": 1.0,
-        "away_star_stack_multiplier": 1.0
+        "away_star_stack_multiplier": 1.13
       },
       "prediction_drivers": [
-        "David Jones Garcia (SAS) [Starter] DAY-TO-DAY \u2014 \u22127 ELO",
-        "Offensive rating: SAS leads by 3.4 pts/100",
-        "Travel: away travels 1583 miles",
-        "Home court: SAS +100 ELO advantage"
+        "Nate Bittle (TOR) [Starter] DAY-TO-DAY \u2014 \u22128 ELO",
+        "Alijah Martin (TOR) [Starter] DAY-TO-DAY \u2014 \u22128 ELO",
+        "Chucky Hepburn (TOR) [Starter] DAY-TO-DAY \u2014 \u22128 ELO",
+        "Giannis Antetokounmpo (MIA) [Superstar] DAY-TO-DAY \u2014 \u221214 ELO",
+        "Bam Adebayo (MIA) [All-Star] DAY-TO-DAY \u2014 \u221212 ELO",
+        "Trevor Keels (MIA) [Starter] DAY-TO-DAY \u2014 \u22128 ELO",
+        "MIA star stack: 2\u00d7 elite out \u2192 \u00d71.13 (\u221254 ELO)",
+        "Home court: TOR +100 ELO advantage"
       ],
-      "explanation": "The model gives San Antonio Spurs a 57.0% win probability \u2014 a slight favorite over New York Knicks. San Antonio Spurs net rating: +8.3. Home court +100 ELO for San Antonio Spurs."
+      "explanation": "The model gives Toronto Raptors a 62.5% win probability \u2014 a moderate favorite over Miami Heat. Toronto Raptors net rating: +0.0. Home court +100 ELO for Toronto Raptors."
     }
   ]
 }
