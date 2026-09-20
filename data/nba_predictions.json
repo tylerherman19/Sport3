@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-19T12:43:15.366384+00:00",
+  "updated": "2026-09-20T13:14:42.104839+00:00",
   "season": 2026,
   "league": "nba",
   "is_offseason": false,
@@ -19,13 +19,13 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.6245,
-        "logistic_prob": 0.5251,
-        "elo_prob": 0.6815,
-        "xgb_prob": 0.5622,
-        "pyth_prob": 0.6208,
+        "ensemble_prob": 0.617,
+        "logistic_prob": 0.5257,
+        "elo_prob": 0.6743,
+        "xgb_prob": 0.5402,
+        "pyth_prob": 0.6178,
         "eff_prob": 0.6401,
-        "bayesian_prob": 0.643
+        "bayesian_prob": 0.6429
       },
       "market": {
         "home_prob": null,
@@ -35,19 +35,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6373,
-        "exp_margin": 4.07,
-        "prob_7plus": 0.3987,
-        "prob_14plus": 0.1962,
-        "prob_21plus": 0.0715,
+        "win_prob": 0.6419,
+        "exp_margin": 4.09,
+        "prob_7plus": 0.4015,
+        "prob_14plus": 0.1964,
+        "prob_21plus": 0.0694,
         "margin_percentiles": [
           -15.0,
-          -10.7,
-          -3.7,
-          4.0,
-          12.0,
-          18.9,
-          23.1
+          -10.6,
+          -3.6,
+          4.1,
+          11.9,
+          18.7,
+          23.0
         ]
       },
       "adjustments": {
@@ -117,22 +117,22 @@
         ]
       },
       "elo": {
-        "home": 1564.2,
-        "away": 1531.0,
-        "diff": 33.2
+        "home": 1557.4,
+        "away": 1529.9,
+        "diff": 27.5
       },
       "bayesian": {
-        "home_mu": 1799.2,
+        "home_mu": 1799.1,
         "home_sigma": 40.0,
-        "away_mu": 1795.6,
+        "away_mu": 1795.5,
         "away_sigma": 40.0,
         "home_band": [
-          1759.2,
-          1839.2
+          1759.1,
+          1839.1
         ],
         "away_band": [
-          1755.6,
-          1835.6
+          1755.5,
+          1835.5
         ]
       },
       "efficiency": {
@@ -299,7 +299,471 @@
         "MIA star stack: 2\u00d7 elite out \u2192 \u00d71.13 (\u221254 ELO)",
         "Home court: TOR +100 ELO advantage"
       ],
-      "explanation": "The model gives Toronto Raptors a 62.5% win probability \u2014 a moderate favorite over Miami Heat. Toronto Raptors net rating: +0.0. Home court +100 ELO for Toronto Raptors."
+      "explanation": "The model gives Toronto Raptors a 61.7% win probability \u2014 a moderate favorite over Miami Heat. Toronto Raptors net rating: +0.0. Home court +100 ELO for Toronto Raptors."
+    },
+    {
+      "game_id": "401914127",
+      "game_time": "2026-10-04T23:00Z",
+      "status": "STATUS_SCHEDULED",
+      "is_future": true,
+      "home_team": "DEN",
+      "away_team": "UTAH",
+      "home_name": "Denver Nuggets",
+      "away_name": "Utah Jazz",
+      "home_logo": "https://a.espncdn.com/i/teamlogos/nba/500/den.png",
+      "away_logo": "https://a.espncdn.com/i/teamlogos/nba/500/utah.png",
+      "neutral": false,
+      "home_score": 0,
+      "away_score": 0,
+      "predictions": {
+        "ensemble_prob": 0.829,
+        "logistic_prob": 0.6984,
+        "elo_prob": 0.9337,
+        "xgb_prob": 0.6277,
+        "pyth_prob": 0.686,
+        "eff_prob": 0.6401,
+        "bayesian_prob": 0.6549
+      },
+      "market": {
+        "home_prob": null,
+        "edge": null,
+        "kelly_pct": null,
+        "home_american": null,
+        "away_american": null
+      },
+      "monte_carlo": {
+        "win_prob": 0.6497,
+        "exp_margin": 4.39,
+        "prob_7plus": 0.4133,
+        "prob_14plus": 0.2088,
+        "prob_21plus": 0.0776,
+        "margin_percentiles": [
+          -15.2,
+          -10.7,
+          -3.4,
+          4.5,
+          12.4,
+          19.5,
+          23.2
+        ]
+      },
+      "adjustments": {
+        "rest_home": 7,
+        "rest_away": 7,
+        "rest_diff": 0,
+        "travel_dist_miles": 0.0,
+        "b2b_home": false,
+        "b2b_away": false,
+        "home_elo_bonus": 100
+      },
+      "h2h": {
+        "home_wins": 13,
+        "away_wins": 7,
+        "total_meetings": 20,
+        "last_n": [
+          {
+            "date": "2024-03-10",
+            "winner": "DEN",
+            "margin": 21
+          },
+          {
+            "date": "2024-04-10",
+            "winner": "DEN",
+            "margin": 16
+          },
+          {
+            "date": "2024-11-03",
+            "winner": "DEN",
+            "margin": 26
+          },
+          {
+            "date": "2024-11-28",
+            "winner": "DEN",
+            "margin": 19
+          },
+          {
+            "date": "2024-12-31",
+            "winner": "DEN",
+            "margin": 11
+          },
+          {
+            "date": "2025-03-29",
+            "winner": "DEN",
+            "margin": 36
+          },
+          {
+            "date": "2025-12-23",
+            "winner": "DEN",
+            "margin": 23
+          },
+          {
+            "date": "2026-03-03",
+            "winner": "DEN",
+            "margin": 3
+          },
+          {
+            "date": "2026-03-28",
+            "winner": "DEN",
+            "margin": 6
+          },
+          {
+            "date": "2026-04-02",
+            "winner": "DEN",
+            "margin": 13
+          }
+        ]
+      },
+      "elo": {
+        "home": 1655.8,
+        "away": 1253.9,
+        "diff": 401.9
+      },
+      "bayesian": {
+        "home_mu": 1798.9,
+        "home_sigma": 40.0,
+        "away_mu": 1786.3,
+        "away_sigma": 40.0,
+        "home_band": [
+          1758.9,
+          1838.9
+        ],
+        "away_band": [
+          1746.3,
+          1826.3
+        ]
+      },
+      "efficiency": {
+        "home_off_rating": 110.0,
+        "home_def_rating": 110.0,
+        "home_net_rating": 0.0,
+        "away_off_rating": 110.0,
+        "away_def_rating": 110.0,
+        "away_net_rating": 0.0,
+        "home_pace": 100.0,
+        "away_pace": 100.0
+      },
+      "injuries": {
+        "home": [
+          {
+            "player": "Trevon Brazile",
+            "status": "Day-To-Day",
+            "position": "F",
+            "injury_description": "Brazile is likely just getting a rest day for the team's final Summer League game. The No. 35 pick showed clear upside at Summer League, averaging 25.5 points, 7.0 rebounds, 2.0 blocks and 1.0 assists in 28.0 minutes per contest across two appearances.",
+            "value_tier": "starter"
+          }
+        ],
+        "away": [
+          {
+            "player": "Jaren Jackson Jr.",
+            "status": "Day-To-Day",
+            "position": "F",
+            "injury_description": "Jackson was traded from Memphis to Utah in February, though he appeared in only three regular-season games for the Jazz before undergoing surgery due to a growth in his left knee. The 2022-23 Defensive Player of the Year will look to make his presence felt on that end of the floor and anchor a now Kessler-less Jazz frontcourt. Jackson's two-way production will be crucial for a Utah team that's looking to return to playoff contention, and he hasn't averaged fewer than 18.6 points per game since the 2021-22 campaign, when he averaged 16.3 points per tilt for the Grizzlies.",
+            "value_tier": "starter"
+          },
+          {
+            "player": "Trey Alexander",
+            "status": "Day-To-Day",
+            "position": "G",
+            "injury_description": "Alexander was taken off the court on a stretcher in Monday's 80-63 win over the Bulls due to a left rib contusion, and Utah is taking a cautious approach in its Summer League finale. The two-way player has plenty of time to recuperate ahead of training camp in the fall.",
+            "value_tier": "starter"
+          }
+        ]
+      },
+      "injury_impact": {
+        "home_elo_penalty": 7.0,
+        "away_elo_penalty": 14.5,
+        "home_key_players_out": [
+          {
+            "player": "Trevon Brazile",
+            "position": "F",
+            "status": "Day-To-Day",
+            "elo_impact": 7.0,
+            "value_tier": "starter"
+          }
+        ],
+        "away_key_players_out": [
+          {
+            "player": "Jaren Jackson Jr.",
+            "position": "F",
+            "status": "Day-To-Day",
+            "elo_impact": 7.0,
+            "value_tier": "starter"
+          },
+          {
+            "player": "Trey Alexander",
+            "position": "G",
+            "status": "Day-To-Day",
+            "elo_impact": 7.5,
+            "value_tier": "starter"
+          }
+        ],
+        "home_star_count": 0,
+        "away_star_count": 0,
+        "home_star_stack_multiplier": 1.0,
+        "away_star_stack_multiplier": 1.0
+      },
+      "prediction_drivers": [
+        "ELO advantage: DEN +402 rating points",
+        "Trevon Brazile (DEN) [Starter] DAY-TO-DAY \u2014 \u22127 ELO",
+        "Jaren Jackson Jr. (UTAH) [Starter] DAY-TO-DAY \u2014 \u22127 ELO",
+        "Trey Alexander (UTAH) [Starter] DAY-TO-DAY \u2014 \u22128 ELO",
+        "Home court: DEN +100 ELO advantage"
+      ],
+      "explanation": "The model gives Denver Nuggets a 82.9% win probability \u2014 a strong favorite over UTAH. Denver Nuggets net rating: +0.0. Home court +100 ELO for Denver Nuggets."
+    },
+    {
+      "game_id": "401918010",
+      "game_time": "2026-10-04T23:00Z",
+      "status": "STATUS_SCHEDULED",
+      "is_future": true,
+      "home_team": "LAC",
+      "away_team": "GSW",
+      "home_name": "LA Clippers",
+      "away_name": "Golden State Warriors",
+      "home_logo": "https://a.espncdn.com/i/teamlogos/nba/500/lac.png",
+      "away_logo": "https://a.espncdn.com/i/teamlogos/nba/500/gs.png",
+      "neutral": false,
+      "home_score": 0,
+      "away_score": 0,
+      "predictions": {
+        "ensemble_prob": 0.6763,
+        "logistic_prob": 0.5767,
+        "elo_prob": 0.7357,
+        "xgb_prob": 0.6047,
+        "pyth_prob": 0.6666,
+        "eff_prob": 0.6401,
+        "bayesian_prob": 0.6396
+      },
+      "market": {
+        "home_prob": null,
+        "edge": null,
+        "kelly_pct": null,
+        "home_american": null,
+        "away_american": null
+      },
+      "monte_carlo": {
+        "win_prob": 0.6295,
+        "exp_margin": 3.83,
+        "prob_7plus": 0.3931,
+        "prob_14plus": 0.196,
+        "prob_21plus": 0.0716,
+        "margin_percentiles": [
+          -15.6,
+          -11.3,
+          -4.2,
+          3.9,
+          11.9,
+          19.0,
+          23.3
+        ]
+      },
+      "adjustments": {
+        "rest_home": 7,
+        "rest_away": 7,
+        "rest_diff": 0,
+        "travel_dist_miles": 346.0,
+        "b2b_home": false,
+        "b2b_away": false,
+        "home_elo_bonus": 100
+      },
+      "h2h": {
+        "home_wins": 14,
+        "away_wins": 9,
+        "total_meetings": 23,
+        "last_n": [
+          {
+            "date": "2024-10-28",
+            "winner": "LAC",
+            "margin": 8
+          },
+          {
+            "date": "2024-11-19",
+            "winner": "LAC",
+            "margin": 3
+          },
+          {
+            "date": "2024-12-28",
+            "winner": "LAC",
+            "margin": 10
+          },
+          {
+            "date": "2025-04-13",
+            "winner": "LAC",
+            "margin": 5
+          },
+          {
+            "date": "2025-10-18",
+            "winner": "LAC",
+            "margin": 3
+          },
+          {
+            "date": "2025-10-29",
+            "winner": "GSW",
+            "margin": 19
+          },
+          {
+            "date": "2026-01-06",
+            "winner": "LAC",
+            "margin": 1
+          },
+          {
+            "date": "2026-03-03",
+            "winner": "LAC",
+            "margin": 13
+          },
+          {
+            "date": "2026-04-13",
+            "winner": "LAC",
+            "margin": 5
+          },
+          {
+            "date": "2026-04-16",
+            "winner": "GSW",
+            "margin": 5
+          }
+        ]
+      },
+      "elo": {
+        "home": 1546.4,
+        "away": 1417.0,
+        "diff": 129.4
+      },
+      "bayesian": {
+        "home_mu": 1799.4,
+        "home_sigma": 40.0,
+        "away_mu": 1798.4,
+        "away_sigma": 40.0,
+        "home_band": [
+          1759.4,
+          1839.4
+        ],
+        "away_band": [
+          1758.4,
+          1838.4
+        ]
+      },
+      "efficiency": {
+        "home_off_rating": 110.0,
+        "home_def_rating": 110.0,
+        "home_net_rating": 0.0,
+        "away_off_rating": 110.0,
+        "away_def_rating": 110.0,
+        "away_net_rating": 0.0,
+        "home_pace": 100.0,
+        "away_pace": 100.0
+      },
+      "injuries": {
+        "home": [
+          {
+            "player": "Brandon Ingram",
+            "status": "Day-To-Day",
+            "position": "F",
+            "injury_description": "The deal, which was agreed in principle June 30, was held up over two months due to the league's investigation involving salary-cap circumvention by Leonard and the Clippers. Ingram underwent surgery in early May to address ongoing right heel pain, so his health will be worth monitoring when he reports to Los Angeles training camp later in September.",
+            "value_tier": "starter"
+          },
+          {
+            "player": "Jordan Miller",
+            "status": "Out",
+            "position": "G",
+            "injury_description": "It's a tough break for Miller, who had an opportunity to battle for a reserve role during training camp in the fall. The timeline for a return is likely to keep him on the shelf until after the All-Star break. Miller's extended stay on the sidelines gives Kobe Sanders a chance to crack the Clippers' rotation.",
+            "value_tier": "starter"
+          },
+          {
+            "player": "Bradley Beal",
+            "status": "Day-To-Day",
+            "position": "G",
+            "injury_description": "Beal declined his $5.6 million player option for the 2026-27 season and became a free agent earlier this offseason, but he's agreed to new terms with the Clippers. The 33-year-old never got going during the 2025-26 campaign, as he suffered a fractured left hip in November after appearing in only six matchups. It remains to be seen whether Beal will be healthy for the start of the season, though once he is, he'll be expected to offer key contributions in the backcourt alongside rookie Keaton Wagler.",
+            "value_tier": "starter"
+          },
+          {
+            "player": "Yanic Konan Niederhauser",
+            "status": "Day-To-Day",
+            "position": "C",
+            "injury_description": "This is a tough blow for Niederhauser, who suffered the injury during Wednesday's matchup against the Pacers. It's still too early to talk about whether the big man will be available for the start of next season, though the team could provide an estimate following the procedure.",
+            "value_tier": "starter"
+          }
+        ],
+        "away": [
+          {
+            "player": "Jimmy Butler III",
+            "status": "Out",
+            "position": "F",
+            "injury_description": "There remains significant uncertainty surrounding his return timeline, as his injury typically carries a nine-to-12-month recovery window. A return sometime between Christmas and March appears to be a reasonable range for now, though fantasy managers shouldn't put much stock into a specific target date until Butler progresses further in his rehab.",
+            "value_tier": "starter"
+          },
+          {
+            "player": "Moses Moody",
+            "status": "Out",
+            "position": "G",
+            "injury_description": "The diagnosis ends Moody's season, and he'll require a long recovery period. Through 60 regular-season appearances, the fifth-year swingman averaged a career-high 12.1 points, 3.3 rebounds, 1.6 assists and 1.0 steals in 25.7 minutes per game. With Moody's campaign now over, De'Anthony Melton and Gary Payton should continue to help pick up the slack in the Golden State backcourt down the stretch.",
+            "value_tier": "starter"
+          }
+        ]
+      },
+      "injury_impact": {
+        "home_elo_penalty": 37.5,
+        "away_elo_penalty": 29.0,
+        "home_key_players_out": [
+          {
+            "player": "Brandon Ingram",
+            "position": "F",
+            "status": "Day-To-Day",
+            "elo_impact": 7.0,
+            "value_tier": "starter"
+          },
+          {
+            "player": "Jordan Miller",
+            "position": "G",
+            "status": "Out",
+            "elo_impact": 15.0,
+            "value_tier": "starter"
+          },
+          {
+            "player": "Bradley Beal",
+            "position": "G",
+            "status": "Day-To-Day",
+            "elo_impact": 7.5,
+            "value_tier": "starter"
+          },
+          {
+            "player": "Yanic Konan Niederhauser",
+            "position": "C",
+            "status": "Day-To-Day",
+            "elo_impact": 8.0,
+            "value_tier": "starter"
+          }
+        ],
+        "away_key_players_out": [
+          {
+            "player": "Jimmy Butler III",
+            "position": "F",
+            "status": "Out",
+            "elo_impact": 14.0,
+            "value_tier": "starter"
+          },
+          {
+            "player": "Moses Moody",
+            "position": "G",
+            "status": "Out",
+            "elo_impact": 15.0,
+            "value_tier": "starter"
+          }
+        ],
+        "home_star_count": 0,
+        "away_star_count": 0,
+        "home_star_stack_multiplier": 1.0,
+        "away_star_stack_multiplier": 1.0
+      },
+      "prediction_drivers": [
+        "ELO advantage: LAC +129 rating points",
+        "Brandon Ingram (LAC) [Starter] DAY-TO-DAY \u2014 \u22127 ELO",
+        "Jordan Miller (LAC) [Starter] OUT \u2014 \u221215 ELO",
+        "Bradley Beal (LAC) [Starter] DAY-TO-DAY \u2014 \u22128 ELO",
+        "Jimmy Butler III (GSW) [Starter] OUT \u2014 \u221214 ELO",
+        "Moses Moody (GSW) [Starter] OUT \u2014 \u221215 ELO",
+        "Home court: LAC +100 ELO advantage"
+      ],
+      "explanation": "The model gives LA Clippers a 67.6% win probability \u2014 a moderate favorite over Golden State Warriors. LA Clippers net rating: +0.0. Home court +100 ELO for LA Clippers."
     }
   ]
 }
