@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-27T14:20:24.451235+00:00",
+  "updated": "2026-09-28T17:04:43.789636+00:00",
   "season": 2026,
   "league": "nba",
   "is_offseason": false,
@@ -19,10 +19,10 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.6245,
-        "logistic_prob": 0.5251,
-        "elo_prob": 0.6815,
-        "xgb_prob": 0.5622,
+        "ensemble_prob": 0.6209,
+        "logistic_prob": 0.5234,
+        "elo_prob": 0.6798,
+        "xgb_prob": 0.5481,
         "pyth_prob": 0.6208,
         "eff_prob": 0.6401,
         "bayesian_prob": 0.643
@@ -35,17 +35,17 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6408,
+        "win_prob": 0.6436,
         "exp_margin": 4.26,
-        "prob_7plus": 0.4105,
-        "prob_14plus": 0.203,
-        "prob_21plus": 0.0767,
+        "prob_7plus": 0.4079,
+        "prob_14plus": 0.2025,
+        "prob_21plus": 0.0744,
         "margin_percentiles": [
-          -15.3,
-          -11.1,
+          -14.9,
+          -11.0,
           -3.6,
-          4.3,
-          12.3,
+          4.4,
+          12.2,
           19.2,
           23.5
         ]
@@ -117,7 +117,7 @@
         ]
       },
       "elo": {
-        "home": 1564.2,
+        "home": 1564.3,
         "away": 1531.0,
         "diff": 33.2
       },
@@ -167,13 +167,6 @@
             "position": "G",
             "injury_description": "Hepburn will be held out of the Raptors' Summer League finale, marking his third consecutive contest on the inactive list. The 23-year-old point guard appeared in two Las Vegas Summer League games, averaging 6.5 points, 6.5 assists, 3.5 rebounds and 1.5 steals in 29.1 minutes per contest.",
             "value_tier": "starter"
-          },
-          {
-            "player": "Collin Murray-Boyles",
-            "status": "Day-To-Day",
-            "position": "F",
-            "injury_description": "Murray-Boyles will miss all the Raptors' Las Vegas Summer League games due to a sprained finger. The 21-year-old big man was productive on both ends of the floor in his rookie campaign, and he figures to continue seeing meaningful playing time in 2026-27.",
-            "value_tier": "starter"
           }
         ],
         "away": [
@@ -192,13 +185,6 @@
             "value_tier": "all-star"
           },
           {
-            "player": "Trevor Keels",
-            "status": "Day-To-Day",
-            "position": "G",
-            "injury_description": "Keels missed Miami's Summer League finale, marking a third consecutive game on the inactive list due to right knee soreness. Over two Las Vegas Summer League appearances, he averaged 23.0 points, 4.5 rebounds, 3.0 assists and 2.0 steals in 27.2 minutes per showing.",
-            "value_tier": "starter"
-          },
-          {
             "player": "Ryan Conwell",
             "status": "Day-To-Day",
             "position": "G",
@@ -215,8 +201,8 @@
         ]
       },
       "injury_impact": {
-        "home_elo_penalty": 30.0,
-        "away_elo_penalty": 54.24,
+        "home_elo_penalty": 23.0,
+        "away_elo_penalty": 45.76,
         "home_key_players_out": [
           {
             "player": "Nate Bittle",
@@ -238,13 +224,6 @@
             "status": "Day-To-Day",
             "elo_impact": 7.5,
             "value_tier": "starter"
-          },
-          {
-            "player": "Collin Murray-Boyles",
-            "position": "F",
-            "status": "Day-To-Day",
-            "elo_impact": 7.0,
-            "value_tier": "starter"
           }
         ],
         "away_key_players_out": [
@@ -261,13 +240,6 @@
             "status": "Day-To-Day",
             "elo_impact": 12.0,
             "value_tier": "all-star"
-          },
-          {
-            "player": "Trevor Keels",
-            "position": "G",
-            "status": "Day-To-Day",
-            "elo_impact": 7.5,
-            "value_tier": "starter"
           },
           {
             "player": "Ryan Conwell",
@@ -295,11 +267,11 @@
         "Chucky Hepburn (TOR) [Starter] DAY-TO-DAY \u2014 \u22128 ELO",
         "Giannis Antetokounmpo (MIA) [Superstar] DAY-TO-DAY \u2014 \u221214 ELO",
         "Bam Adebayo (MIA) [All-Star] DAY-TO-DAY \u2014 \u221212 ELO",
-        "Trevor Keels (MIA) [Starter] DAY-TO-DAY \u2014 \u22128 ELO",
-        "MIA star stack: 2\u00d7 elite out \u2192 \u00d71.13 (\u221254 ELO)",
+        "Ryan Conwell (MIA) [Starter] DAY-TO-DAY \u2014 \u22128 ELO",
+        "MIA star stack: 2\u00d7 elite out \u2192 \u00d71.13 (\u221246 ELO)",
         "Home court: TOR +100 ELO advantage"
       ],
-      "explanation": "The model gives Toronto Raptors a 62.5% win probability \u2014 a moderate favorite over Miami Heat. Toronto Raptors net rating: +0.0. Home court +100 ELO for Toronto Raptors."
+      "explanation": "The model gives Toronto Raptors a 62.1% win probability \u2014 a moderate favorite over Miami Heat. Toronto Raptors net rating: +0.0. Home court +100 ELO for Toronto Raptors."
     },
     {
       "game_id": "401914127",
@@ -316,10 +288,10 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.8288,
-        "logistic_prob": 0.6967,
+        "ensemble_prob": 0.8314,
+        "logistic_prob": 0.6991,
         "elo_prob": 0.934,
-        "xgb_prob": 0.6281,
+        "xgb_prob": 0.6416,
         "pyth_prob": 0.686,
         "eff_prob": 0.6401,
         "bayesian_prob": 0.6599
@@ -332,19 +304,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6617,
-        "exp_margin": 4.79,
-        "prob_7plus": 0.4256,
-        "prob_14plus": 0.2109,
-        "prob_21plus": 0.0835,
+        "win_prob": 0.6601,
+        "exp_margin": 4.82,
+        "prob_7plus": 0.4268,
+        "prob_14plus": 0.2154,
+        "prob_21plus": 0.0827,
         "margin_percentiles": [
           -14.3,
-          -10.2,
-          -3.1,
+          -10.1,
+          -3.0,
           4.8,
-          12.6,
-          19.7,
-          23.9
+          12.7,
+          19.6,
+          24.2
         ]
       },
       "adjustments": {
@@ -414,8 +386,8 @@
         ]
       },
       "elo": {
-        "home": 1653.4,
-        "away": 1250.5,
+        "home": 1653.3,
+        "away": 1250.4,
         "diff": 402.9
       },
       "bayesian": {
@@ -509,7 +481,7 @@
         "Trey Alexander (UTAH) [Starter] DAY-TO-DAY \u2014 \u22128 ELO",
         "Home court: DEN +100 ELO advantage"
       ],
-      "explanation": "The model gives Denver Nuggets a 82.9% win probability \u2014 a strong favorite over UTAH. Denver Nuggets net rating: +0.0. Home court +100 ELO for Denver Nuggets."
+      "explanation": "The model gives Denver Nuggets a 83.1% win probability \u2014 a strong favorite over UTAH. Denver Nuggets net rating: +0.0. Home court +100 ELO for Denver Nuggets."
     },
     {
       "game_id": "401918010",
@@ -522,17 +494,17 @@
       "away_name": "Golden State Warriors",
       "home_logo": "https://a.espncdn.com/i/teamlogos/nba/500/lac.png",
       "away_logo": "https://a.espncdn.com/i/teamlogos/nba/500/gs.png",
-      "neutral": false,
+      "neutral": true,
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.6735,
-        "logistic_prob": 0.5732,
-        "elo_prob": 0.7354,
-        "xgb_prob": 0.5926,
-        "pyth_prob": 0.6666,
-        "eff_prob": 0.6401,
-        "bayesian_prob": 0.6396
+        "ensemble_prob": 0.6046,
+        "logistic_prob": 0.4235,
+        "elo_prob": 0.6858,
+        "xgb_prob": 0.582,
+        "pyth_prob": 0.5293,
+        "eff_prob": 0.5,
+        "bayesian_prob": 0.5015
       },
       "market": {
         "home_prob": null,
@@ -542,19 +514,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.638,
-        "exp_margin": 4.06,
-        "prob_7plus": 0.3987,
-        "prob_14plus": 0.1991,
-        "prob_21plus": 0.0786,
+        "win_prob": 0.5065,
+        "exp_margin": 0.11,
+        "prob_7plus": 0.2792,
+        "prob_14plus": 0.1132,
+        "prob_21plus": 0.0361,
         "margin_percentiles": [
-          -15.3,
-          -11.2,
-          -4.0,
-          4.0,
-          11.9,
-          19.3,
-          23.8
+          -19.4,
+          -14.8,
+          -7.7,
+          0.2,
+          8.0,
+          14.9,
+          19.4
         ]
       },
       "adjustments": {
@@ -564,7 +536,7 @@
         "travel_dist_miles": 346.0,
         "b2b_home": false,
         "b2b_away": false,
-        "home_elo_bonus": 100
+        "home_elo_bonus": 0
       },
       "h2h": {
         "home_wins": 14,
@@ -685,24 +657,31 @@
         ],
         "away": [
           {
+            "player": "Kristaps Porzingis",
+            "status": "Day-To-Day",
+            "position": "C",
+            "injury_description": "Porzingis will miss the start of training camp due to the unknown issue, and his status for the beginning of the regular season is murky. If the veteran big man is forced to miss time to begin the campaign, Al Horford and Charles Bassey would be candidates for increased playing time.",
+            "value_tier": "starter"
+          },
+          {
             "player": "Jimmy Butler III",
             "status": "Out",
             "position": "F",
-            "injury_description": "There remains significant uncertainty surrounding his return timeline, as his injury typically carries a nine-to-12-month recovery window. A return sometime between Christmas and March appears to be a reasonable range for now, though fantasy managers shouldn't put much stock into a specific target date until Butler progresses further in his rehab.",
+            "injury_description": "Butler tore the ACL in his right knee in January before undergoing surgery in early February. The star forward still does not have a clear timetable for a return to game action, though it's encouraging to see his progression thus far. The 37-year-old appeared in 38 games during the 2025-26 regular season, averaging 20.0 points, 5.6 rebounds, 4.9 assists and 1.4 steals across 31.1 minutes per contest.",
             "value_tier": "starter"
           },
           {
             "player": "Moses Moody",
             "status": "Out",
             "position": "G",
-            "injury_description": "The diagnosis ends Moody's season, and he'll require a long recovery period. Through 60 regular-season appearances, the fifth-year swingman averaged a career-high 12.1 points, 3.3 rebounds, 1.6 assists and 1.0 steals in 25.7 minutes per game. With Moody's campaign now over, De'Anthony Melton and Gary Payton should continue to help pick up the slack in the Golden State backcourt down the stretch.",
+            "injury_description": "Moody suffered the injury March 23 and underwent season-ending surgery four days later. The 24-year-old had been targeting September to resume running and on-court work, so his latest progress appears to keep his rehabilitation on track, though he remains without a firm timetable for his return to game action.",
             "value_tier": "starter"
           }
         ]
       },
       "injury_impact": {
         "home_elo_penalty": 37.5,
-        "away_elo_penalty": 29.0,
+        "away_elo_penalty": 37.0,
         "home_key_players_out": [
           {
             "player": "Brandon Ingram",
@@ -735,6 +714,13 @@
         ],
         "away_key_players_out": [
           {
+            "player": "Kristaps Porzingis",
+            "position": "C",
+            "status": "Day-To-Day",
+            "elo_impact": 8.0,
+            "value_tier": "starter"
+          },
+          {
             "player": "Jimmy Butler III",
             "position": "F",
             "status": "Out",
@@ -759,11 +745,11 @@
         "Brandon Ingram (LAC) [Starter] DAY-TO-DAY \u2014 \u22127 ELO",
         "Jordan Miller (LAC) [Starter] OUT \u2014 \u221215 ELO",
         "Bradley Beal (LAC) [Starter] DAY-TO-DAY \u2014 \u22128 ELO",
+        "Kristaps Porzingis (GSW) [Starter] DAY-TO-DAY \u2014 \u22128 ELO",
         "Jimmy Butler III (GSW) [Starter] OUT \u2014 \u221214 ELO",
-        "Moses Moody (GSW) [Starter] OUT \u2014 \u221215 ELO",
-        "Home court: LAC +100 ELO advantage"
+        "Moses Moody (GSW) [Starter] OUT \u2014 \u221215 ELO"
       ],
-      "explanation": "The model gives LA Clippers a 67.3% win probability \u2014 a moderate favorite over Golden State Warriors. LA Clippers net rating: +0.0. Home court +100 ELO for LA Clippers."
+      "explanation": "The model gives LA Clippers a 60.5% win probability \u2014 a moderate favorite over Golden State Warriors. LA Clippers net rating: +0.0."
     },
     {
       "game_id": "401898388",
@@ -780,10 +766,10 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.7513,
-        "logistic_prob": 0.5251,
-        "elo_prob": 0.9042,
-        "xgb_prob": 0.5166,
+        "ensemble_prob": 0.7543,
+        "logistic_prob": 0.5234,
+        "elo_prob": 0.9079,
+        "xgb_prob": 0.5245,
         "pyth_prob": 0.6531,
         "eff_prob": 0.6401,
         "bayesian_prob": 0.6483
@@ -796,19 +782,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6351,
-        "exp_margin": 4.18,
-        "prob_7plus": 0.4067,
-        "prob_14plus": 0.2045,
-        "prob_21plus": 0.0779,
+        "win_prob": 0.6468,
+        "exp_margin": 4.31,
+        "prob_7plus": 0.406,
+        "prob_14plus": 0.2009,
+        "prob_21plus": 0.0713,
         "margin_percentiles": [
-          -15.2,
-          -11.1,
-          -3.8,
+          -14.5,
+          -10.4,
+          -3.4,
           4.2,
-          12.3,
-          19.3,
-          23.9
+          12.1,
+          19.1,
+          23.2
         ]
       },
       "adjustments": {
@@ -939,6 +925,20 @@
         ],
         "away": [
           {
+            "player": "Micah Peavy",
+            "status": "Day-To-Day",
+            "position": "G",
+            "injury_description": "Peavy was traded from New Orleans to Memphis on Sept. 8 after averaging 4.3 points and 1.9 rebounds in 15.0 minutes per game during his rookie season with the Pelicans. The 25-year-old forward faces plenty of competition for playing time on the rebuilding Grizzlies, and it's unclear if he'll be able to suit up during the preseason, which does not bode well for his chances of carving out a meaningful role early in the season.",
+            "value_tier": "starter"
+          },
+          {
+            "player": "Zach Edey",
+            "status": "Day-To-Day",
+            "position": "C",
+            "injury_description": "Edey still hasn't been ruled out for the preseason, so there's a chance he will see some run ahead of the regular-season opener. The big man underwent surgeries on his left elbow and ankle in March, though he's trending in the right direction ahead of the 2026-27 campaign. The Purdue product appeared in only 11 regular-season games in 2025-26, averaging 13.6 points, 11.1 rebounds, 1.9 blocks, 1.1 assists and 0.6 steals in 25.8 minutes per contest.",
+            "value_tier": "starter"
+          },
+          {
             "player": "Scotty Pippen Jr.",
             "status": "Day-To-Day",
             "position": "G",
@@ -958,26 +958,12 @@
             "position": "F",
             "injury_description": "Lopez will be inactive for a second straight game to close Summer League. The No. 21 overall pick dealt with a hamstring injury throughout Summer League, so the team could just be playing it safe with him.",
             "value_tier": "starter"
-          },
-          {
-            "player": "Richie Saunders",
-            "status": "Out",
-            "position": "G",
-            "injury_description": "The soon-to-be 25-year-old is one of the older players in this draft, but he's also one of the more NBA-ready guys, with a pure shooting stroke and high basketball IQ. Saunders put in averages of 18.0 points, 5.8 rebounds, 2.1 assists, 2.6 triples and 1.7 steals per game on 49/38/82 shooting splits during his senior season at BYU, and he could immediately carve out a role on this rebuilding Memphis team.",
-            "value_tier": "starter"
-          },
-          {
-            "player": "Jaylen Wells",
-            "status": "Day-To-Day",
-            "position": "F",
-            "injury_description": "Wells' defensive ability and complementary skill set could help him carve out a role alongside the Grizzlies' established core. However, increased competition for minutes may make consistent opportunities more difficult to secure. In addition to Boozer, the Grizzlies also added forward Karim Lopez in the first round.",
-            "value_tier": "starter"
           }
         ]
       },
       "injury_impact": {
         "home_elo_penalty": 38.0,
-        "away_elo_penalty": 52.0,
+        "away_elo_penalty": 59.5,
         "home_key_players_out": [
           {
             "player": "Henri Veesaar",
@@ -1009,6 +995,20 @@
           }
         ],
         "away_key_players_out": [
+          {
+            "player": "Micah Peavy",
+            "position": "G",
+            "status": "Day-To-Day",
+            "elo_impact": 7.5,
+            "value_tier": "starter"
+          },
+          {
+            "player": "Zach Edey",
+            "position": "C",
+            "status": "Day-To-Day",
+            "elo_impact": 8.0,
+            "value_tier": "starter"
+          },
           {
             "player": "Scotty Pippen Jr.",
             "position": "G",
@@ -1043,13 +1043,6 @@
             "status": "Day-To-Day",
             "elo_impact": 7.0,
             "value_tier": "starter"
-          },
-          {
-            "player": "Zach Edey",
-            "position": "C",
-            "status": "Day-To-Day",
-            "elo_impact": 8.0,
-            "value_tier": "starter"
           }
         ],
         "home_star_count": 0,
@@ -1062,12 +1055,12 @@
         "Henri Veesaar (ATL) [Starter] OUT \u2014 \u221216 ELO",
         "Mouhamed Gueye (ATL) [Starter] DAY-TO-DAY \u2014 \u22127 ELO",
         "Keshon Gilbert (ATL) [Starter] DAY-TO-DAY \u2014 \u22128 ELO",
+        "Micah Peavy (MEM) [Starter] DAY-TO-DAY \u2014 \u22128 ELO",
+        "Zach Edey (MEM) [Starter] DAY-TO-DAY \u2014 \u22128 ELO",
         "Scotty Pippen Jr. (MEM) [Starter] DAY-TO-DAY \u2014 \u22128 ELO",
-        "Walter Clayton Jr. (MEM) [Starter] DAY-TO-DAY \u2014 \u22128 ELO",
-        "Karim Lopez (MEM) [Starter] DAY-TO-DAY \u2014 \u22127 ELO",
         "Home court: ATL +100 ELO advantage"
       ],
-      "explanation": "The model gives Atlanta Hawks a 75.1% win probability \u2014 a strong favorite over Memphis Grizzlies. Atlanta Hawks net rating: +0.0. Home court +100 ELO for Atlanta Hawks."
+      "explanation": "The model gives Atlanta Hawks a 75.4% win probability \u2014 a strong favorite over Memphis Grizzlies. Atlanta Hawks net rating: +0.0. Home court +100 ELO for Atlanta Hawks."
     },
     {
       "game_id": "401908947",
@@ -1084,10 +1077,10 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.7309,
-        "logistic_prob": 0.6047,
+        "ensemble_prob": 0.7282,
+        "logistic_prob": 0.6035,
         "elo_prob": 0.8336,
-        "xgb_prob": 0.5305,
+        "xgb_prob": 0.5143,
         "pyth_prob": 0.7227,
         "eff_prob": 0.6401,
         "bayesian_prob": 0.6428
@@ -1100,19 +1093,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6392,
-        "exp_margin": 4.27,
-        "prob_7plus": 0.4061,
-        "prob_14plus": 0.2008,
-        "prob_21plus": 0.0793,
+        "win_prob": 0.6347,
+        "exp_margin": 4.02,
+        "prob_7plus": 0.4012,
+        "prob_14plus": 0.1974,
+        "prob_21plus": 0.0724,
         "margin_percentiles": [
-          -14.9,
-          -10.8,
-          -3.8,
-          4.2,
-          12.2,
-          19.4,
-          23.6
+          -15.4,
+          -11.3,
+          -3.9,
+          4.1,
+          11.8,
+          19.0,
+          23.3
         ]
       },
       "adjustments": {
@@ -1276,7 +1269,7 @@
         "Travel: away travels 1688 miles",
         "Home court: DET +100 ELO advantage"
       ],
-      "explanation": "The model gives Detroit Pistons a 73.1% win probability \u2014 a strong favorite over Phoenix Suns. Detroit Pistons net rating: +0.0. Home court +100 ELO for Detroit Pistons."
+      "explanation": "The model gives Detroit Pistons a 72.8% win probability \u2014 a strong favorite over Phoenix Suns. Detroit Pistons net rating: +0.0. Home court +100 ELO for Detroit Pistons."
     },
     {
       "game_id": "401914101",
@@ -1293,10 +1286,10 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.2902,
-        "logistic_prob": 0.3661,
-        "elo_prob": 0.2182,
-        "xgb_prob": 0.4518,
+        "ensemble_prob": 0.2897,
+        "logistic_prob": 0.3696,
+        "elo_prob": 0.2185,
+        "xgb_prob": 0.4412,
         "pyth_prob": 0.4868,
         "eff_prob": 0.6401,
         "bayesian_prob": 0.6152
@@ -1309,19 +1302,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6119,
+        "win_prob": 0.6146,
         "exp_margin": 3.34,
-        "prob_7plus": 0.3787,
-        "prob_14plus": 0.1812,
-        "prob_21plus": 0.067,
+        "prob_7plus": 0.372,
+        "prob_14plus": 0.178,
+        "prob_21plus": 0.0648,
         "margin_percentiles": [
-          -15.8,
-          -11.7,
+          -15.5,
+          -11.5,
           -4.6,
           3.4,
-          11.2,
-          18.5,
-          22.7
+          11.0,
+          18.2,
+          22.4
         ]
       },
       "adjustments": {
@@ -1391,9 +1384,9 @@
         ]
       },
       "elo": {
-        "home": 1567.9,
-        "away": 1832.8,
-        "diff": -264.9
+        "home": 1568.2,
+        "away": 1832.9,
+        "diff": -264.6
       },
       "bayesian": {
         "home_mu": 1782.7,
@@ -1503,10 +1496,10 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.3557,
-        "logistic_prob": 0.5251,
+        "ensemble_prob": 0.3584,
+        "logistic_prob": 0.5234,
         "elo_prob": 0.235,
-        "xgb_prob": 0.556,
+        "xgb_prob": 0.577,
         "pyth_prob": 0.5464,
         "eff_prob": 0.6401,
         "bayesian_prob": 0.6325
@@ -1519,19 +1512,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6239,
-        "exp_margin": 3.72,
-        "prob_7plus": 0.3911,
+        "win_prob": 0.6322,
+        "exp_margin": 3.9,
+        "prob_7plus": 0.3944,
         "prob_14plus": 0.1941,
-        "prob_21plus": 0.071,
+        "prob_21plus": 0.0686,
         "margin_percentiles": [
-          -15.9,
-          -11.5,
-          -4.2,
-          3.8,
-          11.9,
+          -15.1,
+          -11.1,
+          -3.9,
+          3.9,
+          11.7,
           18.9,
-          22.8
+          22.9
         ]
       },
       "adjustments": {
@@ -1602,7 +1595,7 @@
       },
       "elo": {
         "home": 1345.3,
-        "away": 1613.8,
+        "away": 1613.7,
         "diff": -268.4
       },
       "bayesian": {
@@ -1681,7 +1674,7 @@
         "Donte DiVincenzo (MIN) [Starter] OUT \u2014 \u221215 ELO",
         "Home court: MIL +100 ELO advantage"
       ],
-      "explanation": "The model gives Minnesota Timberwolves a 64.4% win probability \u2014 a moderate favorite over Milwaukee Bucks. Minnesota Timberwolves net rating: +0.0. Home court +100 ELO for Milwaukee Bucks."
+      "explanation": "The model gives Minnesota Timberwolves a 64.2% win probability \u2014 a moderate favorite over Milwaukee Bucks. Minnesota Timberwolves net rating: +0.0. Home court +100 ELO for Milwaukee Bucks."
     },
     {
       "game_id": "401898716",
@@ -1698,10 +1691,10 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.3059,
-        "logistic_prob": 0.5251,
+        "ensemble_prob": 0.3054,
+        "logistic_prob": 0.5234,
         "elo_prob": 0.1527,
-        "xgb_prob": 0.5531,
+        "xgb_prob": 0.5525,
         "pyth_prob": 0.5567,
         "eff_prob": 0.6401,
         "bayesian_prob": 0.6298
@@ -1714,19 +1707,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6264,
-        "exp_margin": 3.71,
-        "prob_7plus": 0.3881,
-        "prob_14plus": 0.1917,
-        "prob_21plus": 0.0694,
+        "win_prob": 0.6303,
+        "exp_margin": 3.73,
+        "prob_7plus": 0.3877,
+        "prob_14plus": 0.1901,
+        "prob_21plus": 0.0693,
         "margin_percentiles": [
-          -15.8,
+          -15.3,
           -11.3,
-          -4.1,
-          3.7,
-          11.7,
+          -4.2,
+          3.8,
+          11.6,
           18.8,
-          23.1
+          22.9
         ]
       },
       "adjustments": {
@@ -1797,8 +1790,8 @@
       },
       "elo": {
         "home": 1306.5,
-        "away": 1634.8,
-        "diff": -328.3
+        "away": 1634.7,
+        "diff": -328.2
       },
       "bayesian": {
         "home_mu": 1787.2,
@@ -1889,7 +1882,7 @@
         "De'Andre Hunter (SAC) [Starter] DAY-TO-DAY \u2014 \u22127 ELO",
         "Home court: SAC +100 ELO advantage"
       ],
-      "explanation": "The model gives Los Angeles Lakers a 69.4% win probability \u2014 a moderate favorite over Sacramento Kings. Los Angeles Lakers net rating: +0.0. Home court +100 ELO for Sacramento Kings."
+      "explanation": "The model gives Los Angeles Lakers a 69.5% win probability \u2014 a moderate favorite over Sacramento Kings. Los Angeles Lakers net rating: +0.0. Home court +100 ELO for Sacramento Kings."
     },
     {
       "game_id": "401901820",
@@ -1906,10 +1899,10 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.786,
-        "logistic_prob": 0.6047,
-        "elo_prob": 0.9277,
-        "xgb_prob": 0.5212,
+        "ensemble_prob": 0.7867,
+        "logistic_prob": 0.6035,
+        "elo_prob": 0.9275,
+        "xgb_prob": 0.5288,
         "pyth_prob": 0.7239,
         "eff_prob": 0.6401,
         "bayesian_prob": 0.6656
@@ -1922,18 +1915,18 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6611,
-        "exp_margin": 4.95,
-        "prob_7plus": 0.4289,
-        "prob_14plus": 0.2238,
-        "prob_21plus": 0.0892,
+        "win_prob": 0.6606,
+        "exp_margin": 4.79,
+        "prob_7plus": 0.4257,
+        "prob_14plus": 0.2142,
+        "prob_21plus": 0.0843,
         "margin_percentiles": [
-          -14.2,
-          -10.1,
-          -2.9,
+          -14.6,
+          -10.2,
+          -3.0,
           4.8,
-          13.0,
-          20.2,
+          12.6,
+          20.0,
           24.1
         ]
       },
@@ -2004,8 +1997,8 @@
         ]
       },
       "elo": {
-        "home": 1651.1,
-        "away": 1246.6,
+        "home": 1651.2,
+        "away": 1246.5,
         "diff": 404.6
       },
       "bayesian": {
@@ -2038,7 +2031,14 @@
             "player": "Kon Knueppel",
             "status": "Day-To-Day",
             "position": "G",
-            "injury_description": "The Hornets say that Knueppel will be re-evaluated during the first week of the regular season, putting his status for Opening Night on Oct. 21 in jeopardy. Knueppel is coming off a dominant rookie campaign with regular-season averages of 18.5 points, 5.3 rebounds and 3.4 assists on 47.5 percent shooting from the field.",
+            "injury_description": "Knueppel's status for Opening Night remains uncertain as he continues to work his way back from his left hamstring injury. Peterson's comments suggest the Hornets aren't ready to rule out the second-year wing, though his availability will likely become clearer as training camp progresses. He has already been ruled out for the entire preseason, to be clear.",
+            "value_tier": "starter"
+          },
+          {
+            "player": "Rob Dillingham",
+            "status": "Day-To-Day",
+            "position": "G",
+            "injury_description": "Dillingham, the 2024 No. 8 overall pick, has appeared in 114 regular-season games for the Timberwolves and Bulls throughout his career, averaging 5.5 points, 1.6 rebounds and 2.1 assists over 13.0 minutes per contest. It's unknown what kind of role he will have in Charlotte, though it may not be a meaningful one, considering the Hornets have plenty of backcourt depth. Dillingham had minor surgery in April to remove a ganglion cyst but is expected to be ready to go to begin the 2026-27 campaign.",
             "value_tier": "starter"
           },
           {
@@ -2046,13 +2046,6 @@
             "status": "Day-To-Day",
             "position": "F",
             "injury_description": "Williams will be re-evaluated the first week of the regular season, putting his status for Opening Night in the air. Williams will have a difficult path to minutes this season as he competes with the likes of Naz Reid, Royce O'Neale and Tidjane Salaun.",
-            "value_tier": "starter"
-          },
-          {
-            "player": "Brandon Miller",
-            "status": "Day-To-Day",
-            "position": "F",
-            "injury_description": "With Miller coming off May surgery to address left shoulder instability, any rehab update is notable as Charlotte prepares for training camp. \"It's going good, going good,\" Miller said. \"I'm getting stronger. That's all I can ask for. The stronger I get, the more mobile I am with the shoulder and that is the most important thing.\" He wasn't ready to commit to a timetable, and he's still awaiting full clearance for basketball activities with training camp a little over a month away.",
             "value_tier": "starter"
           },
           {
@@ -2065,16 +2058,16 @@
         ],
         "away": [
           {
-            "player": "Nolan Traore",
+            "player": "Mikel Brown Jr.",
             "status": "Day-To-Day",
             "position": "G",
-            "injury_description": "Although Traore won't play in Summer League, he's expected to be 100 percent by training camp. During his rookie campaign, Traore averaged 8.9 points, 3.8 assists and 1.8 rebounds while shooting 38.0 percent from the field in 22.2 minutes per showing across 56 regular-season games (31 starts).",
+            "injury_description": "The team \"doesn't expect him to miss considerable time,\" though Brown's status will be worth monitoring heading into the Nets' preseason opener against the Hornets on Tuesday, Oct. 6. The rookie guard was selected with the sixth overall pick this summer and figures to take on a sizable role early in his career. Over 21 appearances (19 starts) at Louisville in 2025-26, he averaged 18.2 points, 4.7 assists, 3.3 rebounds and 1.2 steals while shooting 41.0 percent from the field in 29.2 minutes per game.",
             "value_tier": "starter"
           }
         ]
       },
       "injury_impact": {
-        "home_elo_penalty": 29.5,
+        "home_elo_penalty": 30.0,
         "away_elo_penalty": 7.5,
         "home_key_players_out": [
           {
@@ -2085,14 +2078,14 @@
             "value_tier": "starter"
           },
           {
-            "player": "Grant Williams",
-            "position": "F",
+            "player": "Rob Dillingham",
+            "position": "G",
             "status": "Day-To-Day",
-            "elo_impact": 7.0,
+            "elo_impact": 7.5,
             "value_tier": "starter"
           },
           {
-            "player": "Brandon Miller",
+            "player": "Grant Williams",
             "position": "F",
             "status": "Day-To-Day",
             "elo_impact": 7.0,
@@ -2108,7 +2101,7 @@
         ],
         "away_key_players_out": [
           {
-            "player": "Nolan Traore",
+            "player": "Mikel Brown Jr.",
             "position": "G",
             "status": "Day-To-Day",
             "elo_impact": 7.5,
@@ -2123,12 +2116,12 @@
       "prediction_drivers": [
         "ELO advantage: CHA +405 rating points",
         "Kon Knueppel (CHA) [Starter] DAY-TO-DAY \u2014 \u22128 ELO",
+        "Rob Dillingham (CHA) [Starter] DAY-TO-DAY \u2014 \u22128 ELO",
         "Grant Williams (CHA) [Starter] DAY-TO-DAY \u2014 \u22127 ELO",
-        "Brandon Miller (CHA) [Starter] DAY-TO-DAY \u2014 \u22127 ELO",
-        "Nolan Traore (BKN) [Starter] DAY-TO-DAY \u2014 \u22128 ELO",
+        "Mikel Brown Jr. (BKN) [Starter] DAY-TO-DAY \u2014 \u22128 ELO",
         "Home court: CHA +100 ELO advantage"
       ],
-      "explanation": "The model gives Charlotte Hornets a 78.6% win probability \u2014 a strong favorite over Brooklyn Nets. Charlotte Hornets net rating: +0.0. Home court +100 ELO for Charlotte Hornets."
+      "explanation": "The model gives Charlotte Hornets a 78.7% win probability \u2014 a strong favorite over Brooklyn Nets. Charlotte Hornets net rating: +0.0. Home court +100 ELO for Charlotte Hornets."
     },
     {
       "game_id": "401898389",
@@ -2145,10 +2138,10 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.8207,
-        "logistic_prob": 0.6967,
+        "ensemble_prob": 0.8223,
+        "logistic_prob": 0.6991,
         "elo_prob": 0.9253,
-        "xgb_prob": 0.609,
+        "xgb_prob": 0.6159,
         "pyth_prob": 0.8446,
         "eff_prob": 0.6401,
         "bayesian_prob": 0.6403
@@ -2161,19 +2154,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6347,
-        "exp_margin": 4.08,
-        "prob_7plus": 0.4046,
-        "prob_14plus": 0.2006,
-        "prob_21plus": 0.0735,
+        "win_prob": 0.6422,
+        "exp_margin": 4.25,
+        "prob_7plus": 0.4042,
+        "prob_14plus": 0.2018,
+        "prob_21plus": 0.0798,
         "margin_percentiles": [
-          -15.4,
-          -11.1,
-          -3.8,
-          4.1,
-          12.0,
-          19.1,
-          23.2
+          -15.3,
+          -10.8,
+          -3.6,
+          4.2,
+          12.1,
+          19.5,
+          23.7
         ]
       },
       "adjustments": {
@@ -2243,7 +2236,7 @@
         ]
       },
       "elo": {
-        "home": 1813.7,
+        "home": 1813.6,
         "away": 1406.9,
         "diff": 406.7
       },
@@ -2381,7 +2374,7 @@
         "Bryce McGowens (NOP) [Starter] DAY-TO-DAY \u2014 \u22128 ELO",
         "Home court: OKC +100 ELO advantage"
       ],
-      "explanation": "The model gives Oklahoma City Thunder a 82.1% win probability \u2014 a strong favorite over New Orleans Pelicans. Oklahoma City Thunder net rating: +0.0. Home court +100 ELO for Oklahoma City Thunder."
+      "explanation": "The model gives Oklahoma City Thunder a 82.2% win probability \u2014 a strong favorite over New Orleans Pelicans. Oklahoma City Thunder net rating: +0.0. Home court +100 ELO for Oklahoma City Thunder."
     },
     {
       "game_id": "401914128",
@@ -2398,10 +2391,10 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.2343,
-        "logistic_prob": 0.3661,
+        "ensemble_prob": 0.2378,
+        "logistic_prob": 0.3696,
         "elo_prob": 0.1116,
-        "xgb_prob": 0.5057,
+        "xgb_prob": 0.5229,
         "pyth_prob": 0.5914,
         "eff_prob": 0.6401,
         "bayesian_prob": 0.6161
@@ -2414,19 +2407,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6131,
-        "exp_margin": 3.32,
-        "prob_7plus": 0.3764,
-        "prob_14plus": 0.1823,
-        "prob_21plus": 0.0618,
+        "win_prob": 0.6059,
+        "exp_margin": 3.35,
+        "prob_7plus": 0.3751,
+        "prob_14plus": 0.1812,
+        "prob_21plus": 0.0692,
         "margin_percentiles": [
-          -16.0,
-          -11.6,
+          -15.6,
+          -11.5,
           -4.5,
-          3.5,
-          11.3,
-          18.0,
-          22.2
+          3.3,
+          11.1,
+          18.3,
+          22.8
         ]
       },
       "adjustments": {
@@ -2496,8 +2489,8 @@
         ]
       },
       "elo": {
-        "home": 1250.5,
-        "away": 1653.4,
+        "home": 1250.4,
+        "away": 1653.3,
         "diff": -402.9
       },
       "bayesian": {
@@ -2591,7 +2584,7 @@
         "Trevon Brazile (DEN) [Starter] DAY-TO-DAY \u2014 \u22127 ELO",
         "Home court: UTAH +100 ELO advantage"
       ],
-      "explanation": "The model gives Denver Nuggets a 76.6% win probability \u2014 a strong favorite over UTAH. Denver Nuggets net rating: +0.0. Home court +100 ELO for UTAH."
+      "explanation": "The model gives Denver Nuggets a 76.2% win probability \u2014 a strong favorite over UTAH. Denver Nuggets net rating: +0.0. Home court +100 ELO for UTAH."
     },
     {
       "game_id": "401898390",
@@ -2608,10 +2601,10 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.4026,
-        "logistic_prob": 0.6497,
-        "elo_prob": 0.2515,
-        "xgb_prob": 0.5956,
+        "ensemble_prob": 0.3979,
+        "logistic_prob": 0.6484,
+        "elo_prob": 0.243,
+        "xgb_prob": 0.6,
         "pyth_prob": 0.6633,
         "eff_prob": 0.6401,
         "bayesian_prob": 0.6446
@@ -2624,19 +2617,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6354,
-        "exp_margin": 4.12,
-        "prob_7plus": 0.4025,
-        "prob_14plus": 0.2018,
-        "prob_21plus": 0.0769,
+        "win_prob": 0.6446,
+        "exp_margin": 4.23,
+        "prob_7plus": 0.4071,
+        "prob_14plus": 0.2023,
+        "prob_21plus": 0.0725,
         "margin_percentiles": [
-          -15.0,
-          -10.9,
-          -3.8,
-          4.1,
-          12.0,
+          -14.8,
+          -10.8,
+          -3.7,
+          4.3,
+          12.1,
           19.1,
-          23.7
+          23.1
         ]
       },
       "adjustments": {
@@ -2707,8 +2700,8 @@
       },
       "elo": {
         "home": 1417.4,
-        "away": 1634.8,
-        "diff": -217.4
+        "away": 1634.7,
+        "diff": -217.3
       },
       "bayesian": {
         "home_mu": 1798.4,
@@ -2737,26 +2730,40 @@
       "injuries": {
         "home": [
           {
+            "player": "Kristaps Porzingis",
+            "status": "Day-To-Day",
+            "position": "C",
+            "injury_description": "Porzingis will miss the start of training camp due to the unknown issue, and his status for the beginning of the regular season is murky. If the veteran big man is forced to miss time to begin the campaign, Al Horford and Charles Bassey would be candidates for increased playing time.",
+            "value_tier": "starter"
+          },
+          {
             "player": "Jimmy Butler III",
             "status": "Out",
             "position": "F",
-            "injury_description": "There remains significant uncertainty surrounding his return timeline, as his injury typically carries a nine-to-12-month recovery window. A return sometime between Christmas and March appears to be a reasonable range for now, though fantasy managers shouldn't put much stock into a specific target date until Butler progresses further in his rehab.",
+            "injury_description": "Butler tore the ACL in his right knee in January before undergoing surgery in early February. The star forward still does not have a clear timetable for a return to game action, though it's encouraging to see his progression thus far. The 37-year-old appeared in 38 games during the 2025-26 regular season, averaging 20.0 points, 5.6 rebounds, 4.9 assists and 1.4 steals across 31.1 minutes per contest.",
             "value_tier": "starter"
           },
           {
             "player": "Moses Moody",
             "status": "Out",
             "position": "G",
-            "injury_description": "The diagnosis ends Moody's season, and he'll require a long recovery period. Through 60 regular-season appearances, the fifth-year swingman averaged a career-high 12.1 points, 3.3 rebounds, 1.6 assists and 1.0 steals in 25.7 minutes per game. With Moody's campaign now over, De'Anthony Melton and Gary Payton should continue to help pick up the slack in the Golden State backcourt down the stretch.",
+            "injury_description": "Moody suffered the injury March 23 and underwent season-ending surgery four days later. The 24-year-old had been targeting September to resume running and on-court work, so his latest progress appears to keep his rehabilitation on track, though he remains without a firm timetable for his return to game action.",
             "value_tier": "starter"
           }
         ],
         "away": []
       },
       "injury_impact": {
-        "home_elo_penalty": 29.0,
+        "home_elo_penalty": 37.0,
         "away_elo_penalty": 0.0,
         "home_key_players_out": [
+          {
+            "player": "Kristaps Porzingis",
+            "position": "C",
+            "status": "Day-To-Day",
+            "elo_impact": 8.0,
+            "value_tier": "starter"
+          },
           {
             "player": "Jimmy Butler III",
             "position": "F",
@@ -2780,11 +2787,12 @@
       },
       "prediction_drivers": [
         "ELO advantage: LAL +217 rating points",
+        "Kristaps Porzingis (GSW) [Starter] DAY-TO-DAY \u2014 \u22128 ELO",
         "Jimmy Butler III (GSW) [Starter] OUT \u2014 \u221214 ELO",
         "Moses Moody (GSW) [Starter] OUT \u2014 \u221215 ELO",
         "Home court: GSW +100 ELO advantage"
       ],
-      "explanation": "The model gives Los Angeles Lakers a 59.7% win probability \u2014 a slight favorite over Golden State Warriors. Los Angeles Lakers net rating: +0.0. Home court +100 ELO for Golden State Warriors."
+      "explanation": "The model gives Los Angeles Lakers a 60.2% win probability \u2014 a moderate favorite over Golden State Warriors. Los Angeles Lakers net rating: +0.0. Home court +100 ELO for Golden State Warriors."
     },
     {
       "game_id": "401914123",
@@ -2801,10 +2809,10 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.2497,
-        "logistic_prob": 0.3535,
+        "ensemble_prob": 0.2463,
+        "logistic_prob": 0.3579,
         "elo_prob": 0.1311,
-        "xgb_prob": 0.5507,
+        "xgb_prob": 0.5214,
         "pyth_prob": 0.4014,
         "eff_prob": 0.5,
         "bayesian_prob": 0.5159
@@ -2817,19 +2825,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.5154,
-        "exp_margin": 0.39,
-        "prob_7plus": 0.2908,
-        "prob_14plus": 0.1254,
-        "prob_21plus": 0.0392,
+        "win_prob": 0.517,
+        "exp_margin": 0.49,
+        "prob_7plus": 0.2864,
+        "prob_14plus": 0.1266,
+        "prob_21plus": 0.0406,
         "margin_percentiles": [
-          -19.2,
-          -14.8,
-          -7.6,
-          0.4,
-          8.5,
-          15.5,
-          19.7
+          -19.0,
+          -14.5,
+          -7.4,
+          0.6,
+          8.4,
+          15.6,
+          19.9
         ]
       },
       "adjustments": {
@@ -2899,9 +2907,9 @@
         ]
       },
       "elo": {
-        "home": 1275.1,
-        "away": 1613.8,
-        "diff": -338.6
+        "home": 1274.9,
+        "away": 1613.7,
+        "diff": -338.9
       },
       "bayesian": {
         "home_mu": 1797.1,
@@ -2978,7 +2986,7 @@
         "Johnny Furphy (IND) [Starter] OUT \u2014 \u221215 ELO",
         "Donte DiVincenzo (MIN) [Starter] OUT \u2014 \u221215 ELO"
       ],
-      "explanation": "The model gives Minnesota Timberwolves a 75.0% win probability \u2014 a strong favorite over Indiana Pacers. Minnesota Timberwolves net rating: +0.0."
+      "explanation": "The model gives Minnesota Timberwolves a 75.4% win probability \u2014 a strong favorite over Indiana Pacers. Minnesota Timberwolves net rating: +0.0."
     },
     {
       "game_id": "401898391",
@@ -2995,10 +3003,10 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.3261,
-        "logistic_prob": 0.6047,
-        "elo_prob": 0.1499,
-        "xgb_prob": 0.5668,
+        "ensemble_prob": 0.323,
+        "logistic_prob": 0.6035,
+        "elo_prob": 0.1445,
+        "xgb_prob": 0.5699,
         "pyth_prob": 0.6146,
         "eff_prob": 0.6401,
         "bayesian_prob": 0.6087
@@ -3011,19 +3019,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6023,
-        "exp_margin": 3.04,
-        "prob_7plus": 0.3722,
-        "prob_14plus": 0.1739,
-        "prob_21plus": 0.0588,
+        "win_prob": 0.6037,
+        "exp_margin": 3.18,
+        "prob_7plus": 0.3695,
+        "prob_14plus": 0.1782,
+        "prob_21plus": 0.0645,
         "margin_percentiles": [
-          -16.5,
-          -12.0,
-          -5.0,
-          3.1,
+          -15.8,
+          -11.7,
+          -4.8,
+          3.2,
           11.1,
           17.9,
-          22.0
+          22.5
         ]
       },
       "adjustments": {
@@ -3095,7 +3103,7 @@
       "elo": {
         "home": 1244.1,
         "away": 1583.0,
-        "diff": -338.9
+        "diff": -339.0
       },
       "bayesian": {
         "home_mu": 1772.7,
@@ -3124,6 +3132,20 @@
       "injuries": {
         "home": [
           {
+            "player": "Micah Peavy",
+            "status": "Day-To-Day",
+            "position": "G",
+            "injury_description": "Peavy was traded from New Orleans to Memphis on Sept. 8 after averaging 4.3 points and 1.9 rebounds in 15.0 minutes per game during his rookie season with the Pelicans. The 25-year-old forward faces plenty of competition for playing time on the rebuilding Grizzlies, and it's unclear if he'll be able to suit up during the preseason, which does not bode well for his chances of carving out a meaningful role early in the season.",
+            "value_tier": "starter"
+          },
+          {
+            "player": "Zach Edey",
+            "status": "Day-To-Day",
+            "position": "C",
+            "injury_description": "Edey still hasn't been ruled out for the preseason, so there's a chance he will see some run ahead of the regular-season opener. The big man underwent surgeries on his left elbow and ankle in March, though he's trending in the right direction ahead of the 2026-27 campaign. The Purdue product appeared in only 11 regular-season games in 2025-26, averaging 13.6 points, 11.1 rebounds, 1.9 blocks, 1.1 assists and 0.6 steals in 25.8 minutes per contest.",
+            "value_tier": "starter"
+          },
+          {
             "player": "Scotty Pippen Jr.",
             "status": "Day-To-Day",
             "position": "G",
@@ -3142,20 +3164,6 @@
             "status": "Day-To-Day",
             "position": "F",
             "injury_description": "Lopez will be inactive for a second straight game to close Summer League. The No. 21 overall pick dealt with a hamstring injury throughout Summer League, so the team could just be playing it safe with him.",
-            "value_tier": "starter"
-          },
-          {
-            "player": "Richie Saunders",
-            "status": "Out",
-            "position": "G",
-            "injury_description": "The soon-to-be 25-year-old is one of the older players in this draft, but he's also one of the more NBA-ready guys, with a pure shooting stroke and high basketball IQ. Saunders put in averages of 18.0 points, 5.8 rebounds, 2.1 assists, 2.6 triples and 1.7 steals per game on 49/38/82 shooting splits during his senior season at BYU, and he could immediately carve out a role on this rebuilding Memphis team.",
-            "value_tier": "starter"
-          },
-          {
-            "player": "Jaylen Wells",
-            "status": "Day-To-Day",
-            "position": "F",
-            "injury_description": "Wells' defensive ability and complementary skill set could help him carve out a role alongside the Grizzlies' established core. However, increased competition for minutes may make consistent opportunities more difficult to secure. In addition to Boozer, the Grizzlies also added forward Karim Lopez in the first round.",
             "value_tier": "starter"
           }
         ],
@@ -3184,9 +3192,23 @@
         ]
       },
       "injury_impact": {
-        "home_elo_penalty": 52.0,
+        "home_elo_penalty": 59.5,
         "away_elo_penalty": 25.79,
         "home_key_players_out": [
+          {
+            "player": "Micah Peavy",
+            "position": "G",
+            "status": "Day-To-Day",
+            "elo_impact": 7.5,
+            "value_tier": "starter"
+          },
+          {
+            "player": "Zach Edey",
+            "position": "C",
+            "status": "Day-To-Day",
+            "elo_impact": 8.0,
+            "value_tier": "starter"
+          },
           {
             "player": "Scotty Pippen Jr.",
             "position": "G",
@@ -3221,13 +3243,6 @@
             "status": "Day-To-Day",
             "elo_impact": 7.0,
             "value_tier": "starter"
-          },
-          {
-            "player": "Zach Edey",
-            "position": "C",
-            "status": "Day-To-Day",
-            "elo_impact": 8.0,
-            "value_tier": "starter"
           }
         ],
         "away_key_players_out": [
@@ -3260,15 +3275,15 @@
       },
       "prediction_drivers": [
         "ELO advantage: ORL +339 rating points",
+        "Micah Peavy (MEM) [Starter] DAY-TO-DAY \u2014 \u22128 ELO",
+        "Zach Edey (MEM) [Starter] DAY-TO-DAY \u2014 \u22128 ELO",
         "Scotty Pippen Jr. (MEM) [Starter] DAY-TO-DAY \u2014 \u22128 ELO",
-        "Walter Clayton Jr. (MEM) [Starter] DAY-TO-DAY \u2014 \u22128 ELO",
-        "Karim Lopez (MEM) [Starter] DAY-TO-DAY \u2014 \u22127 ELO",
         "Franz Wagner (ORL) [All-Star] DAY-TO-DAY \u2014 \u221210 ELO",
         "Izaiyah Nelson (ORL) [Starter] DAY-TO-DAY \u2014 \u22127 ELO",
         "Jonathan Isaac (ORL) [Starter] DAY-TO-DAY \u2014 \u22127 ELO",
         "Home court: MEM +100 ELO advantage"
       ],
-      "explanation": "The model gives Orlando Magic a 67.4% win probability \u2014 a moderate favorite over Memphis Grizzlies. Orlando Magic net rating: +0.0. Home court +100 ELO for Memphis Grizzlies."
+      "explanation": "The model gives Orlando Magic a 67.7% win probability \u2014 a moderate favorite over Memphis Grizzlies. Orlando Magic net rating: +0.0. Home court +100 ELO for Memphis Grizzlies."
     },
     {
       "game_id": "401908620",
@@ -3285,10 +3300,10 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.8242,
-        "logistic_prob": 0.6897,
+        "ensemble_prob": 0.8275,
+        "logistic_prob": 0.6865,
         "elo_prob": 0.9473,
-        "xgb_prob": 0.5556,
+        "xgb_prob": 0.5833,
         "pyth_prob": 0.8009,
         "eff_prob": 0.6401,
         "bayesian_prob": 0.6564
@@ -3301,19 +3316,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6475,
-        "exp_margin": 4.38,
-        "prob_7plus": 0.4107,
-        "prob_14plus": 0.2032,
-        "prob_21plus": 0.0791,
+        "win_prob": 0.6416,
+        "exp_margin": 4.33,
+        "prob_7plus": 0.4083,
+        "prob_14plus": 0.2036,
+        "prob_21plus": 0.0778,
         "margin_percentiles": [
-          -14.9,
-          -10.7,
+          -14.8,
+          -10.5,
           -3.4,
-          4.4,
-          12.2,
+          4.2,
+          12.3,
           19.4,
-          23.9
+          23.5
         ]
       },
       "adjustments": {
@@ -3383,7 +3398,7 @@
         ]
       },
       "elo": {
-        "home": 1813.7,
+        "home": 1813.6,
         "away": 1345.3,
         "diff": 468.3
       },
@@ -3521,7 +3536,7 @@
         "Kevin Porter Jr. (MIL) [Starter] DAY-TO-DAY \u2014 \u22128 ELO",
         "Home court: OKC +100 ELO advantage"
       ],
-      "explanation": "The model gives Oklahoma City Thunder a 82.4% win probability \u2014 a strong favorite over Milwaukee Bucks. Oklahoma City Thunder net rating: +0.0. Home court +100 ELO for Oklahoma City Thunder."
+      "explanation": "The model gives Oklahoma City Thunder a 82.8% win probability \u2014 a strong favorite over Milwaukee Bucks. Oklahoma City Thunder net rating: +0.0. Home court +100 ELO for Oklahoma City Thunder."
     },
     {
       "game_id": "401908939",
@@ -3538,10 +3553,10 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.4139,
-        "logistic_prob": 0.5251,
+        "ensemble_prob": 0.4141,
+        "logistic_prob": 0.5234,
         "elo_prob": 0.3314,
-        "xgb_prob": 0.5582,
+        "xgb_prob": 0.5624,
         "pyth_prob": 0.6035,
         "eff_prob": 0.6401,
         "bayesian_prob": 0.6329
@@ -3554,19 +3569,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6376,
-        "exp_margin": 4.01,
-        "prob_7plus": 0.4033,
-        "prob_14plus": 0.1954,
-        "prob_21plus": 0.0728,
+        "win_prob": 0.6302,
+        "exp_margin": 3.97,
+        "prob_7plus": 0.3907,
+        "prob_14plus": 0.195,
+        "prob_21plus": 0.074,
         "margin_percentiles": [
-          -15.4,
+          -15.3,
           -11.0,
           -3.9,
-          4.1,
+          3.9,
           11.8,
-          18.9,
-          23.0
+          19.1,
+          23.5
         ]
       },
       "adjustments": {
@@ -3793,10 +3808,10 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.6472,
-        "logistic_prob": 0.4508,
-        "elo_prob": 0.7587,
-        "xgb_prob": 0.5284,
+        "ensemble_prob": 0.6587,
+        "logistic_prob": 0.4737,
+        "elo_prob": 0.767,
+        "xgb_prob": 0.5335,
         "pyth_prob": 0.5872,
         "eff_prob": 0.6401,
         "bayesian_prob": 0.6373
@@ -3809,19 +3824,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6366,
-        "exp_margin": 4.03,
-        "prob_7plus": 0.3993,
-        "prob_14plus": 0.1991,
-        "prob_21plus": 0.0734,
+        "win_prob": 0.6335,
+        "exp_margin": 3.92,
+        "prob_7plus": 0.396,
+        "prob_14plus": 0.194,
+        "prob_21plus": 0.0713,
         "margin_percentiles": [
-          -15.3,
+          -15.2,
           -11.2,
-          -3.8,
-          4.1,
-          12.0,
-          19.0,
-          23.3
+          -3.9,
+          3.9,
+          11.9,
+          18.8,
+          22.9
         ]
       },
       "adjustments": {
@@ -3938,24 +3953,31 @@
         ],
         "away": [
           {
+            "player": "Kristaps Porzingis",
+            "status": "Day-To-Day",
+            "position": "C",
+            "injury_description": "Porzingis will miss the start of training camp due to the unknown issue, and his status for the beginning of the regular season is murky. If the veteran big man is forced to miss time to begin the campaign, Al Horford and Charles Bassey would be candidates for increased playing time.",
+            "value_tier": "starter"
+          },
+          {
             "player": "Jimmy Butler III",
             "status": "Out",
             "position": "F",
-            "injury_description": "There remains significant uncertainty surrounding his return timeline, as his injury typically carries a nine-to-12-month recovery window. A return sometime between Christmas and March appears to be a reasonable range for now, though fantasy managers shouldn't put much stock into a specific target date until Butler progresses further in his rehab.",
+            "injury_description": "Butler tore the ACL in his right knee in January before undergoing surgery in early February. The star forward still does not have a clear timetable for a return to game action, though it's encouraging to see his progression thus far. The 37-year-old appeared in 38 games during the 2025-26 regular season, averaging 20.0 points, 5.6 rebounds, 4.9 assists and 1.4 steals across 31.1 minutes per contest.",
             "value_tier": "starter"
           },
           {
             "player": "Moses Moody",
             "status": "Out",
             "position": "G",
-            "injury_description": "The diagnosis ends Moody's season, and he'll require a long recovery period. Through 60 regular-season appearances, the fifth-year swingman averaged a career-high 12.1 points, 3.3 rebounds, 1.6 assists and 1.0 steals in 25.7 minutes per game. With Moody's campaign now over, De'Anthony Melton and Gary Payton should continue to help pick up the slack in the Golden State backcourt down the stretch.",
+            "injury_description": "Moody suffered the injury March 23 and underwent season-ending surgery four days later. The 24-year-old had been targeting September to resume running and on-court work, so his latest progress appears to keep his rehabilitation on track, though he remains without a firm timetable for his return to game action.",
             "value_tier": "starter"
           }
         ]
       },
       "injury_impact": {
         "home_elo_penalty": 22.5,
-        "away_elo_penalty": 29.0,
+        "away_elo_penalty": 37.0,
         "home_key_players_out": [
           {
             "player": "Ja Morant",
@@ -3973,6 +3995,13 @@
           }
         ],
         "away_key_players_out": [
+          {
+            "player": "Kristaps Porzingis",
+            "position": "C",
+            "status": "Day-To-Day",
+            "elo_impact": 8.0,
+            "value_tier": "starter"
+          },
           {
             "player": "Jimmy Butler III",
             "position": "F",
@@ -3997,11 +4026,12 @@
         "ELO advantage: POR +132 rating points",
         "Ja Morant (POR) [Starter] DAY-TO-DAY \u2014 \u22128 ELO",
         "Shaedon Sharpe (POR) [Starter] OUT \u2014 \u221215 ELO",
+        "Kristaps Porzingis (GSW) [Starter] DAY-TO-DAY \u2014 \u22128 ELO",
         "Jimmy Butler III (GSW) [Starter] OUT \u2014 \u221214 ELO",
         "Moses Moody (GSW) [Starter] OUT \u2014 \u221215 ELO",
         "Home court: POR +100 ELO advantage"
       ],
-      "explanation": "The model gives Portland Trail Blazers a 64.7% win probability \u2014 a moderate favorite over Golden State Warriors. Portland Trail Blazers net rating: +0.0. Home court +100 ELO for Portland Trail Blazers."
+      "explanation": "The model gives Portland Trail Blazers a 65.9% win probability \u2014 a moderate favorite over Golden State Warriors. Portland Trail Blazers net rating: +0.0. Home court +100 ELO for Portland Trail Blazers."
     },
     {
       "game_id": "401898392",
@@ -4018,10 +4048,10 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.5137,
-        "logistic_prob": 0.5251,
-        "elo_prob": 0.4976,
-        "xgb_prob": 0.5593,
+        "ensemble_prob": 0.5141,
+        "logistic_prob": 0.5234,
+        "elo_prob": 0.4974,
+        "xgb_prob": 0.5654,
         "pyth_prob": 0.5972,
         "eff_prob": 0.6401,
         "bayesian_prob": 0.628
@@ -4034,19 +4064,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6239,
-        "exp_margin": 3.64,
-        "prob_7plus": 0.387,
-        "prob_14plus": 0.1872,
-        "prob_21plus": 0.0689,
+        "win_prob": 0.6223,
+        "exp_margin": 3.59,
+        "prob_7plus": 0.383,
+        "prob_14plus": 0.1881,
+        "prob_21plus": 0.0699,
         "margin_percentiles": [
-          -15.6,
-          -11.3,
-          -4.2,
-          3.7,
+          -16.0,
+          -11.5,
+          -4.4,
+          3.6,
           11.5,
-          18.5,
-          23.0
+          18.8,
+          22.8
         ]
       },
       "adjustments": {
@@ -4117,8 +4147,8 @@
       },
       "elo": {
         "home": 1629.5,
-        "away": 1684.7,
-        "diff": -55.1
+        "away": 1684.8,
+        "diff": -55.2
       },
       "bayesian": {
         "home_mu": 1791.9,
@@ -4195,10 +4225,10 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.6786,
-        "logistic_prob": 0.6897,
-        "elo_prob": 0.692,
-        "xgb_prob": 0.6066,
+        "ensemble_prob": 0.6846,
+        "logistic_prob": 0.6865,
+        "elo_prob": 0.7025,
+        "xgb_prob": 0.6097,
         "pyth_prob": 0.743,
         "eff_prob": 0.6401,
         "bayesian_prob": 0.6406
@@ -4211,19 +4241,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6381,
-        "exp_margin": 4.11,
-        "prob_7plus": 0.4066,
-        "prob_14plus": 0.2006,
-        "prob_21plus": 0.0738,
+        "win_prob": 0.6314,
+        "exp_margin": 3.92,
+        "prob_7plus": 0.3968,
+        "prob_14plus": 0.1971,
+        "prob_21plus": 0.0733,
         "margin_percentiles": [
-          -15.3,
-          -11.1,
-          -3.7,
-          4.2,
-          12.1,
+          -15.5,
+          -11.4,
+          -4.0,
+          3.9,
+          11.9,
           19.0,
-          23.2
+          23.4
         ]
       },
       "adjustments": {
@@ -4338,13 +4368,6 @@
             "value_tier": "all-star"
           },
           {
-            "player": "Trevor Keels",
-            "status": "Day-To-Day",
-            "position": "G",
-            "injury_description": "Keels missed Miami's Summer League finale, marking a third consecutive game on the inactive list due to right knee soreness. Over two Las Vegas Summer League appearances, he averaged 23.0 points, 4.5 rebounds, 3.0 assists and 2.0 steals in 27.2 minutes per showing.",
-            "value_tier": "starter"
-          },
-          {
             "player": "Ryan Conwell",
             "status": "Day-To-Day",
             "position": "G",
@@ -4370,7 +4393,7 @@
         ]
       },
       "injury_impact": {
-        "home_elo_penalty": 54.24,
+        "home_elo_penalty": 45.76,
         "away_elo_penalty": 7.5,
         "home_key_players_out": [
           {
@@ -4386,13 +4409,6 @@
             "status": "Day-To-Day",
             "elo_impact": 12.0,
             "value_tier": "all-star"
-          },
-          {
-            "player": "Trevor Keels",
-            "position": "G",
-            "status": "Day-To-Day",
-            "elo_impact": 7.5,
-            "value_tier": "starter"
           },
           {
             "player": "Ryan Conwell",
@@ -4427,12 +4443,12 @@
         "ELO advantage: MIA +124 rating points",
         "Giannis Antetokounmpo (MIA) [Superstar] DAY-TO-DAY \u2014 \u221214 ELO",
         "Bam Adebayo (MIA) [All-Star] DAY-TO-DAY \u2014 \u221212 ELO",
-        "Trevor Keels (MIA) [Starter] DAY-TO-DAY \u2014 \u22128 ELO",
-        "MIA star stack: 2\u00d7 elite out \u2192 \u00d71.13 (\u221254 ELO)",
+        "Ryan Conwell (MIA) [Starter] DAY-TO-DAY \u2014 \u22128 ELO",
+        "MIA star stack: 2\u00d7 elite out \u2192 \u00d71.13 (\u221246 ELO)",
         "Bryce McGowens (NOP) [Starter] DAY-TO-DAY \u2014 \u22128 ELO",
         "Home court: MIA +100 ELO advantage"
       ],
-      "explanation": "The model gives Miami Heat a 67.9% win probability \u2014 a moderate favorite over New Orleans Pelicans. Miami Heat net rating: +0.0. Home court +100 ELO for Miami Heat."
+      "explanation": "The model gives Miami Heat a 68.5% win probability \u2014 a moderate favorite over New Orleans Pelicans. Miami Heat net rating: +0.0. Home court +100 ELO for Miami Heat."
     },
     {
       "game_id": "401901823",
@@ -4449,10 +4465,10 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.3282,
-        "logistic_prob": 0.5607,
-        "elo_prob": 0.1815,
-        "xgb_prob": 0.5277,
+        "ensemble_prob": 0.3302,
+        "logistic_prob": 0.5566,
+        "elo_prob": 0.1811,
+        "xgb_prob": 0.549,
         "pyth_prob": 0.5696,
         "eff_prob": 0.6401,
         "bayesian_prob": 0.6258
@@ -4465,19 +4481,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6178,
-        "exp_margin": 3.57,
-        "prob_7plus": 0.381,
-        "prob_14plus": 0.186,
-        "prob_21plus": 0.0694,
+        "win_prob": 0.6273,
+        "exp_margin": 3.64,
+        "prob_7plus": 0.3827,
+        "prob_14plus": 0.1826,
+        "prob_21plus": 0.0695,
         "margin_percentiles": [
-          -15.6,
+          -15.4,
           -11.3,
-          -4.3,
-          3.5,
-          11.3,
-          18.5,
-          22.9
+          -4.1,
+          3.6,
+          11.2,
+          18.8,
+          23.1
         ]
       },
       "adjustments": {
@@ -4547,9 +4563,9 @@
         ]
       },
       "elo": {
-        "home": 1246.6,
-        "away": 1567.9,
-        "diff": -321.4
+        "home": 1246.5,
+        "away": 1568.2,
+        "diff": -321.7
       },
       "bayesian": {
         "home_mu": 1773.4,
@@ -4578,10 +4594,10 @@
       "injuries": {
         "home": [
           {
-            "player": "Nolan Traore",
+            "player": "Mikel Brown Jr.",
             "status": "Day-To-Day",
             "position": "G",
-            "injury_description": "Although Traore won't play in Summer League, he's expected to be 100 percent by training camp. During his rookie campaign, Traore averaged 8.9 points, 3.8 assists and 1.8 rebounds while shooting 38.0 percent from the field in 22.2 minutes per showing across 56 regular-season games (31 starts).",
+            "injury_description": "The team \"doesn't expect him to miss considerable time,\" though Brown's status will be worth monitoring heading into the Nets' preseason opener against the Hornets on Tuesday, Oct. 6. The rookie guard was selected with the sixth overall pick this summer and figures to take on a sizable role early in his career. Over 21 appearances (19 starts) at Louisville in 2025-26, he averaged 18.2 points, 4.7 assists, 3.3 rebounds and 1.2 steals while shooting 41.0 percent from the field in 29.2 minutes per game.",
             "value_tier": "starter"
           }
         ],
@@ -4607,7 +4623,7 @@
         "away_elo_penalty": 15.5,
         "home_key_players_out": [
           {
-            "player": "Nolan Traore",
+            "player": "Mikel Brown Jr.",
             "position": "G",
             "status": "Day-To-Day",
             "elo_impact": 7.5,
@@ -4636,13 +4652,13 @@
         "away_star_stack_multiplier": 1.0
       },
       "prediction_drivers": [
-        "ELO advantage: PHI +321 rating points",
-        "Nolan Traore (BKN) [Starter] DAY-TO-DAY \u2014 \u22128 ELO",
+        "ELO advantage: PHI +322 rating points",
+        "Mikel Brown Jr. (BKN) [Starter] DAY-TO-DAY \u2014 \u22128 ELO",
         "Adem Bona (PHI) [Starter] DAY-TO-DAY \u2014 \u22128 ELO",
         "Kentavious Caldwell-Pope (PHI) [Starter] DAY-TO-DAY \u2014 \u22128 ELO",
         "Home court: BKN +100 ELO advantage"
       ],
-      "explanation": "The model gives Philadelphia 76ers a 67.2% win probability \u2014 a moderate favorite over Brooklyn Nets. Philadelphia 76ers net rating: +0.0. Home court +100 ELO for Brooklyn Nets."
+      "explanation": "The model gives Philadelphia 76ers a 67.0% win probability \u2014 a moderate favorite over Brooklyn Nets. Philadelphia 76ers net rating: +0.0. Home court +100 ELO for Brooklyn Nets."
     },
     {
       "game_id": "401906508",
@@ -4659,10 +4675,10 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.8566,
-        "logistic_prob": 0.6967,
+        "ensemble_prob": 0.8574,
+        "logistic_prob": 0.6991,
         "elo_prob": 0.9867,
-        "xgb_prob": 0.6029,
+        "xgb_prob": 0.604,
         "pyth_prob": 0.8424,
         "eff_prob": 0.6401,
         "bayesian_prob": 0.6577
@@ -4675,19 +4691,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6577,
-        "exp_margin": 4.75,
-        "prob_7plus": 0.4182,
-        "prob_14plus": 0.2126,
-        "prob_21plus": 0.0797,
+        "win_prob": 0.6574,
+        "exp_margin": 4.66,
+        "prob_7plus": 0.4172,
+        "prob_14plus": 0.2132,
+        "prob_21plus": 0.0827,
         "margin_percentiles": [
-          -14.3,
-          -9.9,
-          -3.0,
-          4.7,
-          12.5,
-          19.6,
-          23.9
+          -14.8,
+          -10.1,
+          -3.2,
+          4.6,
+          12.4,
+          19.8,
+          23.8
         ]
       },
       "adjustments": {
@@ -4757,9 +4773,9 @@
         ]
       },
       "elo": {
-        "home": 1832.8,
+        "home": 1832.9,
         "away": 1181.5,
-        "diff": 651.3
+        "diff": 651.4
       },
       "bayesian": {
         "home_mu": 1799.9,
@@ -4899,10 +4915,10 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.7632,
-        "logistic_prob": 0.6047,
+        "ensemble_prob": 0.7629,
+        "logistic_prob": 0.6035,
         "elo_prob": 0.8816,
-        "xgb_prob": 0.5539,
+        "xgb_prob": 0.554,
         "pyth_prob": 0.6997,
         "eff_prob": 0.6401,
         "bayesian_prob": 0.6639
@@ -4915,19 +4931,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.649,
-        "exp_margin": 4.6,
-        "prob_7plus": 0.4255,
-        "prob_14plus": 0.213,
-        "prob_21plus": 0.0796,
+        "win_prob": 0.6556,
+        "exp_margin": 4.69,
+        "prob_7plus": 0.4217,
+        "prob_14plus": 0.2128,
+        "prob_21plus": 0.0829,
         "margin_percentiles": [
-          -14.9,
-          -10.5,
-          -3.4,
-          4.9,
+          -14.7,
+          -10.2,
+          -3.2,
+          4.8,
           12.5,
-          19.5,
-          23.7
+          19.6,
+          24.2
         ]
       },
       "adjustments": {
@@ -5153,10 +5169,10 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.7816,
-        "logistic_prob": 0.6047,
+        "ensemble_prob": 0.7801,
+        "logistic_prob": 0.6035,
         "elo_prob": 0.9147,
-        "xgb_prob": 0.5437,
+        "xgb_prob": 0.5361,
         "pyth_prob": 0.7157,
         "eff_prob": 0.6401,
         "bayesian_prob": 0.6466
@@ -5169,19 +5185,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6431,
-        "exp_margin": 4.16,
-        "prob_7plus": 0.3994,
-        "prob_14plus": 0.2006,
-        "prob_21plus": 0.0775,
+        "win_prob": 0.6455,
+        "exp_margin": 4.31,
+        "prob_7plus": 0.4057,
+        "prob_14plus": 0.201,
+        "prob_21plus": 0.0792,
         "margin_percentiles": [
-          -15.3,
-          -11.0,
-          -3.6,
-          4.1,
+          -15.0,
+          -10.6,
+          -3.5,
+          4.3,
           12.0,
-          19.2,
-          23.7
+          19.5,
+          23.8
         ]
       },
       "adjustments": {
@@ -5251,9 +5267,9 @@
         ]
       },
       "elo": {
-        "home": 1634.8,
+        "home": 1634.7,
         "away": 1306.5,
-        "diff": 328.3
+        "diff": 328.2
       },
       "bayesian": {
         "home_mu": 1793.6,
@@ -5344,7 +5360,7 @@
         "De'Andre Hunter (SAC) [Starter] DAY-TO-DAY \u2014 \u22127 ELO",
         "Home court: LAL +100 ELO advantage"
       ],
-      "explanation": "The model gives Los Angeles Lakers a 78.2% win probability \u2014 a strong favorite over Sacramento Kings. Los Angeles Lakers net rating: +0.0. Home court +100 ELO for Los Angeles Lakers."
+      "explanation": "The model gives Los Angeles Lakers a 78.0% win probability \u2014 a strong favorite over Sacramento Kings. Los Angeles Lakers net rating: +0.0. Home court +100 ELO for Los Angeles Lakers."
     },
     {
       "game_id": "401898395",
@@ -5361,10 +5377,10 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.2562,
-        "logistic_prob": 0.3535,
-        "elo_prob": 0.1494,
-        "xgb_prob": 0.5214,
+        "ensemble_prob": 0.2563,
+        "logistic_prob": 0.3579,
+        "elo_prob": 0.1496,
+        "xgb_prob": 0.5139,
         "pyth_prob": 0.3724,
         "eff_prob": 0.5,
         "bayesian_prob": 0.4918
@@ -5377,19 +5393,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.493,
-        "exp_margin": -0.2,
-        "prob_7plus": 0.2686,
-        "prob_14plus": 0.1099,
-        "prob_21plus": 0.0302,
+        "win_prob": 0.4892,
+        "exp_margin": -0.21,
+        "prob_7plus": 0.2716,
+        "prob_14plus": 0.1134,
+        "prob_21plus": 0.0354,
         "margin_percentiles": [
-          -19.3,
-          -15.1,
+          -19.6,
+          -15.3,
           -8.0,
-          -0.2,
-          7.7,
-          14.6,
-          18.6
+          -0.3,
+          7.8,
+          14.9,
+          19.2
         ]
       },
       "adjustments": {
@@ -5460,8 +5476,8 @@
       },
       "elo": {
         "home": 1334.7,
-        "away": 1621.6,
-        "diff": -287.0
+        "away": 1621.4,
+        "diff": -286.8
       },
       "bayesian": {
         "home_mu": 1792.3,
@@ -5585,10 +5601,10 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.6437,
-        "logistic_prob": 0.5251,
-        "elo_prob": 0.7219,
-        "xgb_prob": 0.5284,
+        "ensemble_prob": 0.6482,
+        "logistic_prob": 0.5234,
+        "elo_prob": 0.7305,
+        "xgb_prob": 0.5271,
         "pyth_prob": 0.6097,
         "eff_prob": 0.6401,
         "bayesian_prob": 0.6579
@@ -5601,19 +5617,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.656,
-        "exp_margin": 4.72,
-        "prob_7plus": 0.4267,
-        "prob_14plus": 0.215,
-        "prob_21plus": 0.0816,
+        "win_prob": 0.6641,
+        "exp_margin": 4.84,
+        "prob_7plus": 0.429,
+        "prob_14plus": 0.216,
+        "prob_21plus": 0.0814,
         "margin_percentiles": [
-          -14.6,
-          -10.3,
-          -3.2,
-          4.8,
-          12.6,
-          19.8,
-          23.9
+          -14.7,
+          -10.1,
+          -2.9,
+          5.0,
+          12.8,
+          19.7,
+          23.7
         ]
       },
       "adjustments": {
@@ -5737,6 +5753,20 @@
         ],
         "away": [
           {
+            "player": "Micah Peavy",
+            "status": "Day-To-Day",
+            "position": "G",
+            "injury_description": "Peavy was traded from New Orleans to Memphis on Sept. 8 after averaging 4.3 points and 1.9 rebounds in 15.0 minutes per game during his rookie season with the Pelicans. The 25-year-old forward faces plenty of competition for playing time on the rebuilding Grizzlies, and it's unclear if he'll be able to suit up during the preseason, which does not bode well for his chances of carving out a meaningful role early in the season.",
+            "value_tier": "starter"
+          },
+          {
+            "player": "Zach Edey",
+            "status": "Day-To-Day",
+            "position": "C",
+            "injury_description": "Edey still hasn't been ruled out for the preseason, so there's a chance he will see some run ahead of the regular-season opener. The big man underwent surgeries on his left elbow and ankle in March, though he's trending in the right direction ahead of the 2026-27 campaign. The Purdue product appeared in only 11 regular-season games in 2025-26, averaging 13.6 points, 11.1 rebounds, 1.9 blocks, 1.1 assists and 0.6 steals in 25.8 minutes per contest.",
+            "value_tier": "starter"
+          },
+          {
             "player": "Scotty Pippen Jr.",
             "status": "Day-To-Day",
             "position": "G",
@@ -5756,26 +5786,12 @@
             "position": "F",
             "injury_description": "Lopez will be inactive for a second straight game to close Summer League. The No. 21 overall pick dealt with a hamstring injury throughout Summer League, so the team could just be playing it safe with him.",
             "value_tier": "starter"
-          },
-          {
-            "player": "Richie Saunders",
-            "status": "Out",
-            "position": "G",
-            "injury_description": "The soon-to-be 25-year-old is one of the older players in this draft, but he's also one of the more NBA-ready guys, with a pure shooting stroke and high basketball IQ. Saunders put in averages of 18.0 points, 5.8 rebounds, 2.1 assists, 2.6 triples and 1.7 steals per game on 49/38/82 shooting splits during his senior season at BYU, and he could immediately carve out a role on this rebuilding Memphis team.",
-            "value_tier": "starter"
-          },
-          {
-            "player": "Jaylen Wells",
-            "status": "Day-To-Day",
-            "position": "F",
-            "injury_description": "Wells' defensive ability and complementary skill set could help him carve out a role alongside the Grizzlies' established core. However, increased competition for minutes may make consistent opportunities more difficult to secure. In addition to Boozer, the Grizzlies also added forward Karim Lopez in the first round.",
-            "value_tier": "starter"
           }
         ]
       },
       "injury_impact": {
         "home_elo_penalty": 22.0,
-        "away_elo_penalty": 52.0,
+        "away_elo_penalty": 59.5,
         "home_key_players_out": [
           {
             "player": "Dailyn Swain",
@@ -5800,6 +5816,20 @@
           }
         ],
         "away_key_players_out": [
+          {
+            "player": "Micah Peavy",
+            "position": "G",
+            "status": "Day-To-Day",
+            "elo_impact": 7.5,
+            "value_tier": "starter"
+          },
+          {
+            "player": "Zach Edey",
+            "position": "C",
+            "status": "Day-To-Day",
+            "elo_impact": 8.0,
+            "value_tier": "starter"
+          },
           {
             "player": "Scotty Pippen Jr.",
             "position": "G",
@@ -5834,13 +5864,6 @@
             "status": "Day-To-Day",
             "elo_impact": 7.0,
             "value_tier": "starter"
-          },
-          {
-            "player": "Zach Edey",
-            "position": "C",
-            "status": "Day-To-Day",
-            "elo_impact": 8.0,
-            "value_tier": "starter"
           }
         ],
         "home_star_count": 0,
@@ -5853,12 +5876,12 @@
         "Dailyn Swain (CHI) [Starter] DAY-TO-DAY \u2014 \u22128 ELO",
         "Zach Collins (CHI) [Starter] DAY-TO-DAY \u2014 \u22127 ELO",
         "Josh Giddey (CHI) [Starter] DAY-TO-DAY \u2014 \u22128 ELO",
+        "Micah Peavy (MEM) [Starter] DAY-TO-DAY \u2014 \u22128 ELO",
+        "Zach Edey (MEM) [Starter] DAY-TO-DAY \u2014 \u22128 ELO",
         "Scotty Pippen Jr. (MEM) [Starter] DAY-TO-DAY \u2014 \u22128 ELO",
-        "Walter Clayton Jr. (MEM) [Starter] DAY-TO-DAY \u2014 \u22128 ELO",
-        "Karim Lopez (MEM) [Starter] DAY-TO-DAY \u2014 \u22127 ELO",
         "Home court: CHI +100 ELO advantage"
       ],
-      "explanation": "The model gives Chicago Bulls a 64.4% win probability \u2014 a moderate favorite over Memphis Grizzlies. Chicago Bulls net rating: +0.0. Home court +100 ELO for Chicago Bulls."
+      "explanation": "The model gives Chicago Bulls a 64.8% win probability \u2014 a moderate favorite over Memphis Grizzlies. Chicago Bulls net rating: +0.0. Home court +100 ELO for Chicago Bulls."
     },
     {
       "game_id": "401902645",
@@ -5875,10 +5898,10 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.5674,
-        "logistic_prob": 0.3661,
-        "elo_prob": 0.6643,
-        "xgb_prob": 0.5148,
+        "ensemble_prob": 0.5742,
+        "logistic_prob": 0.3696,
+        "elo_prob": 0.6734,
+        "xgb_prob": 0.5185,
         "pyth_prob": 0.5756,
         "eff_prob": 0.6401,
         "bayesian_prob": 0.6378
@@ -5891,19 +5914,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6364,
-        "exp_margin": 4.14,
-        "prob_7plus": 0.4045,
-        "prob_14plus": 0.202,
-        "prob_21plus": 0.0733,
+        "win_prob": 0.6382,
+        "exp_margin": 4.1,
+        "prob_7plus": 0.4089,
+        "prob_14plus": 0.1991,
+        "prob_21plus": 0.0732,
         "margin_percentiles": [
-          -15.2,
-          -10.8,
-          -3.7,
-          4.1,
+          -15.4,
+          -11.1,
+          -3.9,
+          4.3,
           12.1,
           19.1,
-          23.5
+          23.2
         ]
       },
       "adjustments": {
@@ -5973,9 +5996,9 @@
         ]
       },
       "elo": {
-        "home": 1564.2,
+        "home": 1564.3,
         "away": 1546.6,
-        "diff": 17.6
+        "diff": 17.7
       },
       "bayesian": {
         "home_mu": 1799.2,
@@ -6023,13 +6046,6 @@
             "position": "G",
             "injury_description": "Hepburn will be held out of the Raptors' Summer League finale, marking his third consecutive contest on the inactive list. The 23-year-old point guard appeared in two Las Vegas Summer League games, averaging 6.5 points, 6.5 assists, 3.5 rebounds and 1.5 steals in 29.1 minutes per contest.",
             "value_tier": "starter"
-          },
-          {
-            "player": "Collin Murray-Boyles",
-            "status": "Day-To-Day",
-            "position": "F",
-            "injury_description": "Murray-Boyles will miss all the Raptors' Las Vegas Summer League games due to a sprained finger. The 21-year-old big man was productive on both ends of the floor in his rookie campaign, and he figures to continue seeing meaningful playing time in 2026-27.",
-            "value_tier": "starter"
           }
         ],
         "away": [
@@ -6064,7 +6080,7 @@
         ]
       },
       "injury_impact": {
-        "home_elo_penalty": 30.0,
+        "home_elo_penalty": 23.0,
         "away_elo_penalty": 37.5,
         "home_key_players_out": [
           {
@@ -6086,13 +6102,6 @@
             "position": "G",
             "status": "Day-To-Day",
             "elo_impact": 7.5,
-            "value_tier": "starter"
-          },
-          {
-            "player": "Collin Murray-Boyles",
-            "position": "F",
-            "status": "Day-To-Day",
-            "elo_impact": 7.0,
             "value_tier": "starter"
           }
         ],
@@ -6141,7 +6150,7 @@
         "Travel: away travels 2173 miles",
         "Home court: TOR +100 ELO advantage"
       ],
-      "explanation": "The model gives Toronto Raptors a 56.7% win probability \u2014 a slight favorite over LA Clippers. Toronto Raptors net rating: +0.0. Home court +100 ELO for Toronto Raptors."
+      "explanation": "The model gives Toronto Raptors a 57.4% win probability \u2014 a slight favorite over LA Clippers. Toronto Raptors net rating: +0.0. Home court +100 ELO for Toronto Raptors."
     },
     {
       "game_id": "401898396",
@@ -6158,10 +6167,10 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.3768,
-        "logistic_prob": 0.6047,
-        "elo_prob": 0.2333,
-        "xgb_prob": 0.571,
+        "ensemble_prob": 0.3759,
+        "logistic_prob": 0.6035,
+        "elo_prob": 0.2331,
+        "xgb_prob": 0.568,
         "pyth_prob": 0.6109,
         "eff_prob": 0.6401,
         "bayesian_prob": 0.6603
@@ -6174,19 +6183,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6558,
-        "exp_margin": 4.69,
-        "prob_7plus": 0.4203,
-        "prob_14plus": 0.2135,
-        "prob_21plus": 0.0849,
+        "win_prob": 0.6594,
+        "exp_margin": 4.78,
+        "prob_7plus": 0.4231,
+        "prob_14plus": 0.2115,
+        "prob_21plus": 0.0823,
         "margin_percentiles": [
-          -14.5,
-          -10.5,
+          -14.4,
+          -10.1,
           -3.1,
-          4.7,
-          12.6,
+          4.8,
+          12.5,
           19.9,
-          24.1
+          24.0
         ]
       },
       "adjustments": {
@@ -6256,9 +6265,9 @@
         ]
       },
       "elo": {
-        "home": 1275.1,
+        "home": 1274.9,
         "away": 1563.4,
-        "diff": -288.2
+        "diff": -288.5
       },
       "bayesian": {
         "home_mu": 1797.1,
@@ -6373,14 +6382,14 @@
         "away_star_stack_multiplier": 1.0
       },
       "prediction_drivers": [
-        "ELO advantage: ATL +288 rating points",
+        "ELO advantage: ATL +289 rating points",
         "Johnny Furphy (IND) [Starter] OUT \u2014 \u221215 ELO",
         "Henri Veesaar (ATL) [Starter] OUT \u2014 \u221216 ELO",
         "Mouhamed Gueye (ATL) [Starter] DAY-TO-DAY \u2014 \u22127 ELO",
         "Keshon Gilbert (ATL) [Starter] DAY-TO-DAY \u2014 \u22128 ELO",
         "Home court: IND +100 ELO advantage"
       ],
-      "explanation": "The model gives Atlanta Hawks a 62.3% win probability \u2014 a moderate favorite over Indiana Pacers. Atlanta Hawks net rating: +0.0. Home court +100 ELO for Indiana Pacers."
+      "explanation": "The model gives Atlanta Hawks a 62.4% win probability \u2014 a moderate favorite over Indiana Pacers. Atlanta Hawks net rating: +0.0. Home court +100 ELO for Indiana Pacers."
     },
     {
       "game_id": "401906510",
@@ -6397,10 +6406,10 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.1921,
-        "logistic_prob": 0.3535,
+        "ensemble_prob": 0.1915,
+        "logistic_prob": 0.3579,
         "elo_prob": 0.0517,
-        "xgb_prob": 0.4845,
+        "xgb_prob": 0.4734,
         "pyth_prob": 0.3877,
         "eff_prob": 0.6401,
         "bayesian_prob": 0.6248
@@ -6413,19 +6422,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6197,
-        "exp_margin": 3.65,
-        "prob_7plus": 0.3891,
-        "prob_14plus": 0.1929,
-        "prob_21plus": 0.0674,
+        "win_prob": 0.6213,
+        "exp_margin": 3.63,
+        "prob_7plus": 0.3881,
+        "prob_14plus": 0.1856,
+        "prob_21plus": 0.0687,
         "margin_percentiles": [
           -15.8,
-          -11.7,
-          -4.4,
-          3.7,
-          11.7,
-          18.6,
-          22.8
+          -11.6,
+          -4.3,
+          3.8,
+          11.4,
+          18.8,
+          22.9
         ]
       },
       "adjustments": {
@@ -6620,10 +6629,10 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.4786,
-        "logistic_prob": 0.5251,
-        "elo_prob": 0.4402,
-        "xgb_prob": 0.5547,
+        "ensemble_prob": 0.4865,
+        "logistic_prob": 0.5234,
+        "elo_prob": 0.4523,
+        "xgb_prob": 0.5617,
         "pyth_prob": 0.5916,
         "eff_prob": 0.6401,
         "bayesian_prob": 0.651
@@ -6636,19 +6645,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6482,
-        "exp_margin": 4.42,
-        "prob_7plus": 0.4136,
-        "prob_14plus": 0.2079,
-        "prob_21plus": 0.0787,
+        "win_prob": 0.6413,
+        "exp_margin": 4.27,
+        "prob_7plus": 0.4069,
+        "prob_14plus": 0.2075,
+        "prob_21plus": 0.0755,
         "margin_percentiles": [
-          -14.7,
-          -10.5,
-          -3.5,
-          4.4,
-          12.3,
+          -14.9,
+          -10.7,
+          -3.6,
+          4.2,
+          12.4,
           19.2,
-          23.8
+          23.3
         ]
       },
       "adjustments": {
@@ -6719,7 +6728,7 @@
       },
       "elo": {
         "home": 1531.0,
-        "away": 1613.8,
+        "away": 1613.7,
         "diff": -82.7
       },
       "bayesian": {
@@ -6763,13 +6772,6 @@
             "value_tier": "all-star"
           },
           {
-            "player": "Trevor Keels",
-            "status": "Day-To-Day",
-            "position": "G",
-            "injury_description": "Keels missed Miami's Summer League finale, marking a third consecutive game on the inactive list due to right knee soreness. Over two Las Vegas Summer League appearances, he averaged 23.0 points, 4.5 rebounds, 3.0 assists and 2.0 steals in 27.2 minutes per showing.",
-            "value_tier": "starter"
-          },
-          {
             "player": "Ryan Conwell",
             "status": "Day-To-Day",
             "position": "G",
@@ -6795,7 +6797,7 @@
         ]
       },
       "injury_impact": {
-        "home_elo_penalty": 54.24,
+        "home_elo_penalty": 45.76,
         "away_elo_penalty": 15.0,
         "home_key_players_out": [
           {
@@ -6811,13 +6813,6 @@
             "status": "Day-To-Day",
             "elo_impact": 12.0,
             "value_tier": "all-star"
-          },
-          {
-            "player": "Trevor Keels",
-            "position": "G",
-            "status": "Day-To-Day",
-            "elo_impact": 7.5,
-            "value_tier": "starter"
           },
           {
             "player": "Ryan Conwell",
@@ -6852,13 +6847,13 @@
         "ELO advantage: MIN +83 rating points",
         "Giannis Antetokounmpo (MIA) [Superstar] DAY-TO-DAY \u2014 \u221214 ELO",
         "Bam Adebayo (MIA) [All-Star] DAY-TO-DAY \u2014 \u221212 ELO",
-        "Trevor Keels (MIA) [Starter] DAY-TO-DAY \u2014 \u22128 ELO",
-        "MIA star stack: 2\u00d7 elite out \u2192 \u00d71.13 (\u221254 ELO)",
+        "Ryan Conwell (MIA) [Starter] DAY-TO-DAY \u2014 \u22128 ELO",
+        "MIA star stack: 2\u00d7 elite out \u2192 \u00d71.13 (\u221246 ELO)",
         "Donte DiVincenzo (MIN) [Starter] OUT \u2014 \u221215 ELO",
         "Travel: away travels 1514 miles",
         "Home court: MIA +100 ELO advantage"
       ],
-      "explanation": "The model gives Minnesota Timberwolves a 52.1% win probability \u2014 a slight favorite over Miami Heat. Minnesota Timberwolves net rating: +0.0. Home court +100 ELO for Miami Heat."
+      "explanation": "The model gives Minnesota Timberwolves a 51.4% win probability \u2014 a slight favorite over Miami Heat. Minnesota Timberwolves net rating: +0.0. Home court +100 ELO for Miami Heat."
     },
     {
       "game_id": "401898398",
@@ -6875,10 +6870,10 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.7156,
-        "logistic_prob": 0.6967,
-        "elo_prob": 0.7467,
-        "xgb_prob": 0.6224,
+        "ensemble_prob": 0.7184,
+        "logistic_prob": 0.6991,
+        "elo_prob": 0.7464,
+        "xgb_prob": 0.6388,
         "pyth_prob": 0.7973,
         "eff_prob": 0.6401,
         "bayesian_prob": 0.6603
@@ -6891,19 +6886,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6645,
-        "exp_margin": 4.66,
-        "prob_7plus": 0.4241,
-        "prob_14plus": 0.2073,
-        "prob_21plus": 0.078,
+        "win_prob": 0.6597,
+        "exp_margin": 4.83,
+        "prob_7plus": 0.4299,
+        "prob_14plus": 0.2234,
+        "prob_21plus": 0.0841,
         "margin_percentiles": [
-          -14.6,
+          -14.7,
           -10.4,
-          -3.0,
-          4.7,
-          12.4,
-          19.6,
-          23.8
+          -3.2,
+          4.9,
+          12.9,
+          19.8,
+          24.2
         ]
       },
       "adjustments": {
@@ -6973,9 +6968,9 @@
         ]
       },
       "elo": {
-        "home": 1684.7,
-        "away": 1567.9,
-        "diff": 116.8
+        "home": 1684.8,
+        "away": 1568.2,
+        "diff": 116.5
       },
       "bayesian": {
         "home_mu": 1799.6,
@@ -7051,7 +7046,7 @@
         "Kentavious Caldwell-Pope (PHI) [Starter] DAY-TO-DAY \u2014 \u22128 ELO",
         "Home court: BOS +100 ELO advantage"
       ],
-      "explanation": "The model gives Boston Celtics a 71.6% win probability \u2014 a strong favorite over Philadelphia 76ers. Boston Celtics net rating: +0.0. Home court +100 ELO for Boston Celtics."
+      "explanation": "The model gives Boston Celtics a 71.8% win probability \u2014 a strong favorite over Philadelphia 76ers. Boston Celtics net rating: +0.0. Home court +100 ELO for Boston Celtics."
     },
     {
       "game_id": "401898399",
@@ -7068,10 +7063,10 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.6935,
-        "logistic_prob": 0.6897,
-        "elo_prob": 0.7153,
-        "xgb_prob": 0.6125,
+        "ensemble_prob": 0.6916,
+        "logistic_prob": 0.6865,
+        "elo_prob": 0.7059,
+        "xgb_prob": 0.6433,
         "pyth_prob": 0.7361,
         "eff_prob": 0.6401,
         "bayesian_prob": 0.6529
@@ -7084,18 +7079,18 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6446,
-        "exp_margin": 4.38,
-        "prob_7plus": 0.4062,
-        "prob_14plus": 0.2045,
-        "prob_21plus": 0.0804,
+        "win_prob": 0.6409,
+        "exp_margin": 4.31,
+        "prob_7plus": 0.4087,
+        "prob_14plus": 0.2029,
+        "prob_21plus": 0.0796,
         "margin_percentiles": [
           -14.7,
-          -10.5,
+          -10.9,
           -3.6,
           4.2,
-          12.3,
-          19.5,
+          12.2,
+          19.4,
           23.8
         ]
       },
@@ -7197,17 +7192,24 @@
       "injuries": {
         "home": [
           {
+            "player": "Kristaps Porzingis",
+            "status": "Day-To-Day",
+            "position": "C",
+            "injury_description": "Porzingis will miss the start of training camp due to the unknown issue, and his status for the beginning of the regular season is murky. If the veteran big man is forced to miss time to begin the campaign, Al Horford and Charles Bassey would be candidates for increased playing time.",
+            "value_tier": "starter"
+          },
+          {
             "player": "Jimmy Butler III",
             "status": "Out",
             "position": "F",
-            "injury_description": "There remains significant uncertainty surrounding his return timeline, as his injury typically carries a nine-to-12-month recovery window. A return sometime between Christmas and March appears to be a reasonable range for now, though fantasy managers shouldn't put much stock into a specific target date until Butler progresses further in his rehab.",
+            "injury_description": "Butler tore the ACL in his right knee in January before undergoing surgery in early February. The star forward still does not have a clear timetable for a return to game action, though it's encouraging to see his progression thus far. The 37-year-old appeared in 38 games during the 2025-26 regular season, averaging 20.0 points, 5.6 rebounds, 4.9 assists and 1.4 steals across 31.1 minutes per contest.",
             "value_tier": "starter"
           },
           {
             "player": "Moses Moody",
             "status": "Out",
             "position": "G",
-            "injury_description": "The diagnosis ends Moody's season, and he'll require a long recovery period. Through 60 regular-season appearances, the fifth-year swingman averaged a career-high 12.1 points, 3.3 rebounds, 1.6 assists and 1.0 steals in 25.7 minutes per game. With Moody's campaign now over, De'Anthony Melton and Gary Payton should continue to help pick up the slack in the Golden State backcourt down the stretch.",
+            "injury_description": "Moody suffered the injury March 23 and underwent season-ending surgery four days later. The 24-year-old had been targeting September to resume running and on-court work, so his latest progress appears to keep his rehabilitation on track, though he remains without a firm timetable for his return to game action.",
             "value_tier": "starter"
           }
         ],
@@ -7236,9 +7238,16 @@
         ]
       },
       "injury_impact": {
-        "home_elo_penalty": 29.0,
+        "home_elo_penalty": 37.0,
         "away_elo_penalty": 26.67,
         "home_key_players_out": [
+          {
+            "player": "Kristaps Porzingis",
+            "position": "C",
+            "status": "Day-To-Day",
+            "elo_impact": 8.0,
+            "value_tier": "starter"
+          },
           {
             "player": "Jimmy Butler III",
             "position": "F",
@@ -7284,6 +7293,7 @@
       },
       "prediction_drivers": [
         "ELO advantage: GSW +111 rating points",
+        "Kristaps Porzingis (GSW) [Starter] DAY-TO-DAY \u2014 \u22128 ELO",
         "Jimmy Butler III (GSW) [Starter] OUT \u2014 \u221214 ELO",
         "Moses Moody (GSW) [Starter] OUT \u2014 \u221215 ELO",
         "Keegan Murray (SAC) [Starter] DAY-TO-DAY \u2014 \u22127 ELO",
@@ -7291,7 +7301,7 @@
         "De'Andre Hunter (SAC) [Starter] DAY-TO-DAY \u2014 \u22127 ELO",
         "Home court: GSW +100 ELO advantage"
       ],
-      "explanation": "The model gives Golden State Warriors a 69.3% win probability \u2014 a moderate favorite over Sacramento Kings. Golden State Warriors net rating: +0.0. Home court +100 ELO for Golden State Warriors."
+      "explanation": "The model gives Golden State Warriors a 69.2% win probability \u2014 a moderate favorite over Sacramento Kings. Golden State Warriors net rating: +0.0. Home court +100 ELO for Golden State Warriors."
     },
     {
       "game_id": "401898720",
@@ -7308,10 +7318,10 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.3449,
-        "logistic_prob": 0.5607,
+        "ensemble_prob": 0.3461,
+        "logistic_prob": 0.5566,
         "elo_prob": 0.2003,
-        "xgb_prob": 0.5638,
+        "xgb_prob": 0.5788,
         "pyth_prob": 0.5681,
         "eff_prob": 0.6401,
         "bayesian_prob": 0.6272
@@ -7324,19 +7334,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6206,
-        "exp_margin": 3.64,
-        "prob_7plus": 0.3827,
-        "prob_14plus": 0.1947,
-        "prob_21plus": 0.07,
+        "win_prob": 0.6113,
+        "exp_margin": 3.62,
+        "prob_7plus": 0.384,
+        "prob_14plus": 0.1918,
+        "prob_21plus": 0.0708,
         "margin_percentiles": [
-          -15.9,
-          -11.5,
-          -4.2,
-          3.6,
-          11.6,
-          18.9,
-          22.9
+          -15.4,
+          -11.0,
+          -4.3,
+          3.4,
+          11.5,
+          18.8,
+          23.0
         ]
       },
       "adjustments": {
@@ -7531,7 +7541,7 @@
         "Jayden Quaintance (SAS) [Starter] OUT \u2014 \u221214 ELO",
         "Home court: PHX +100 ELO advantage"
       ],
-      "explanation": "The model gives San Antonio Spurs a 65.5% win probability \u2014 a moderate favorite over Phoenix Suns. San Antonio Spurs net rating: +0.0. Home court +100 ELO for Phoenix Suns."
+      "explanation": "The model gives San Antonio Spurs a 65.4% win probability \u2014 a moderate favorite over Phoenix Suns. San Antonio Spurs net rating: +0.0. Home court +100 ELO for Phoenix Suns."
     },
     {
       "game_id": "401898400",
@@ -7548,10 +7558,10 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.7282,
-        "logistic_prob": 0.5251,
-        "elo_prob": 0.8571,
-        "xgb_prob": 0.5512,
+        "ensemble_prob": 0.7264,
+        "logistic_prob": 0.5234,
+        "elo_prob": 0.8569,
+        "xgb_prob": 0.5425,
         "pyth_prob": 0.6276,
         "eff_prob": 0.5,
         "bayesian_prob": 0.5082
@@ -7564,19 +7574,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.513,
-        "exp_margin": 0.33,
-        "prob_7plus": 0.2879,
-        "prob_14plus": 0.119,
-        "prob_21plus": 0.0388,
+        "win_prob": 0.5044,
+        "exp_margin": 0.16,
+        "prob_7plus": 0.2836,
+        "prob_14plus": 0.1173,
+        "prob_21plus": 0.0367,
         "margin_percentiles": [
           -19.1,
-          -15.1,
+          -15.0,
           -7.6,
-          0.4,
+          0.2,
           8.2,
-          15.2,
-          19.5
+          15.1,
+          19.2
         ]
       },
       "adjustments": {
@@ -7646,9 +7656,9 @@
         ]
       },
       "elo": {
-        "home": 1621.6,
+        "home": 1621.4,
         "away": 1334.7,
-        "diff": 287.0
+        "diff": 286.8
       },
       "bayesian": {
         "home_mu": 1798.1,
@@ -7755,7 +7765,7 @@
         "Kyrie Irving (DAL) [All-Star] DAY-TO-DAY \u2014 \u221211 ELO",
         "Dereck Lively II (DAL) [Starter] DAY-TO-DAY \u2014 \u22128 ELO"
       ],
-      "explanation": "The model gives Houston Rockets a 72.8% win probability \u2014 a strong favorite over Dallas Mavericks. Houston Rockets net rating: +0.0."
+      "explanation": "The model gives Houston Rockets a 72.6% win probability \u2014 a strong favorite over Dallas Mavericks. Houston Rockets net rating: +0.0."
     },
     {
       "game_id": "401898401",
@@ -7772,10 +7782,10 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.6636,
-        "logistic_prob": 0.6497,
+        "ensemble_prob": 0.6637,
+        "logistic_prob": 0.6484,
         "elo_prob": 0.6822,
-        "xgb_prob": 0.6127,
+        "xgb_prob": 0.6152,
         "pyth_prob": 0.7163,
         "eff_prob": 0.6401,
         "bayesian_prob": 0.6345
@@ -7788,19 +7798,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6287,
-        "exp_margin": 3.87,
-        "prob_7plus": 0.3931,
-        "prob_14plus": 0.1991,
-        "prob_21plus": 0.0715,
+        "win_prob": 0.6245,
+        "exp_margin": 3.76,
+        "prob_7plus": 0.3911,
+        "prob_14plus": 0.1916,
+        "prob_21plus": 0.0698,
         "margin_percentiles": [
           -15.4,
-          -11.4,
-          -4.2,
-          3.8,
-          11.9,
-          19.1,
-          23.5
+          -11.3,
+          -4.1,
+          3.7,
+          11.7,
+          18.7,
+          23.1
         ]
       },
       "adjustments": {
@@ -7996,10 +8006,10 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.7376,
-        "logistic_prob": 0.5251,
-        "elo_prob": 0.8805,
-        "xgb_prob": 0.5198,
+        "ensemble_prob": 0.7316,
+        "logistic_prob": 0.5,
+        "elo_prob": 0.8802,
+        "xgb_prob": 0.523,
         "pyth_prob": 0.6395,
         "eff_prob": 0.6401,
         "bayesian_prob": 0.6551
@@ -8012,19 +8022,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.646,
-        "exp_margin": 4.33,
-        "prob_7plus": 0.4064,
-        "prob_14plus": 0.2054,
-        "prob_21plus": 0.0732,
+        "win_prob": 0.6534,
+        "exp_margin": 4.53,
+        "prob_7plus": 0.4141,
+        "prob_14plus": 0.2116,
+        "prob_21plus": 0.0785,
         "margin_percentiles": [
-          -14.9,
-          -10.3,
-          -3.4,
-          4.3,
-          12.3,
-          19.1,
-          23.2
+          -15.1,
+          -10.4,
+          -3.3,
+          4.4,
+          12.4,
+          19.6,
+          23.7
         ]
       },
       "adjustments": {
@@ -8094,7 +8104,7 @@
         ]
       },
       "elo": {
-        "home": 1651.1,
+        "home": 1651.2,
         "away": 1345.3,
         "diff": 305.8
       },
@@ -8128,7 +8138,14 @@
             "player": "Kon Knueppel",
             "status": "Day-To-Day",
             "position": "G",
-            "injury_description": "The Hornets say that Knueppel will be re-evaluated during the first week of the regular season, putting his status for Opening Night on Oct. 21 in jeopardy. Knueppel is coming off a dominant rookie campaign with regular-season averages of 18.5 points, 5.3 rebounds and 3.4 assists on 47.5 percent shooting from the field.",
+            "injury_description": "Knueppel's status for Opening Night remains uncertain as he continues to work his way back from his left hamstring injury. Peterson's comments suggest the Hornets aren't ready to rule out the second-year wing, though his availability will likely become clearer as training camp progresses. He has already been ruled out for the entire preseason, to be clear.",
+            "value_tier": "starter"
+          },
+          {
+            "player": "Rob Dillingham",
+            "status": "Day-To-Day",
+            "position": "G",
+            "injury_description": "Dillingham, the 2024 No. 8 overall pick, has appeared in 114 regular-season games for the Timberwolves and Bulls throughout his career, averaging 5.5 points, 1.6 rebounds and 2.1 assists over 13.0 minutes per contest. It's unknown what kind of role he will have in Charlotte, though it may not be a meaningful one, considering the Hornets have plenty of backcourt depth. Dillingham had minor surgery in April to remove a ganglion cyst but is expected to be ready to go to begin the 2026-27 campaign.",
             "value_tier": "starter"
           },
           {
@@ -8136,13 +8153,6 @@
             "status": "Day-To-Day",
             "position": "F",
             "injury_description": "Williams will be re-evaluated the first week of the regular season, putting his status for Opening Night in the air. Williams will have a difficult path to minutes this season as he competes with the likes of Naz Reid, Royce O'Neale and Tidjane Salaun.",
-            "value_tier": "starter"
-          },
-          {
-            "player": "Brandon Miller",
-            "status": "Day-To-Day",
-            "position": "F",
-            "injury_description": "With Miller coming off May surgery to address left shoulder instability, any rehab update is notable as Charlotte prepares for training camp. \"It's going good, going good,\" Miller said. \"I'm getting stronger. That's all I can ask for. The stronger I get, the more mobile I am with the shoulder and that is the most important thing.\" He wasn't ready to commit to a timetable, and he's still awaiting full clearance for basketball activities with training camp a little over a month away.",
             "value_tier": "starter"
           },
           {
@@ -8164,7 +8174,7 @@
         ]
       },
       "injury_impact": {
-        "home_elo_penalty": 29.5,
+        "home_elo_penalty": 30.0,
         "away_elo_penalty": 7.5,
         "home_key_players_out": [
           {
@@ -8175,14 +8185,14 @@
             "value_tier": "starter"
           },
           {
-            "player": "Grant Williams",
-            "position": "F",
+            "player": "Rob Dillingham",
+            "position": "G",
             "status": "Day-To-Day",
-            "elo_impact": 7.0,
+            "elo_impact": 7.5,
             "value_tier": "starter"
           },
           {
-            "player": "Brandon Miller",
+            "player": "Grant Williams",
             "position": "F",
             "status": "Day-To-Day",
             "elo_impact": 7.0,
@@ -8213,12 +8223,12 @@
       "prediction_drivers": [
         "ELO advantage: CHA +306 rating points",
         "Kon Knueppel (CHA) [Starter] DAY-TO-DAY \u2014 \u22128 ELO",
+        "Rob Dillingham (CHA) [Starter] DAY-TO-DAY \u2014 \u22128 ELO",
         "Grant Williams (CHA) [Starter] DAY-TO-DAY \u2014 \u22127 ELO",
-        "Brandon Miller (CHA) [Starter] DAY-TO-DAY \u2014 \u22127 ELO",
         "Kevin Porter Jr. (MIL) [Starter] DAY-TO-DAY \u2014 \u22128 ELO",
         "Home court: CHA +100 ELO advantage"
       ],
-      "explanation": "The model gives Charlotte Hornets a 73.8% win probability \u2014 a strong favorite over Milwaukee Bucks. Charlotte Hornets net rating: +0.0. Home court +100 ELO for Charlotte Hornets."
+      "explanation": "The model gives Charlotte Hornets a 73.2% win probability \u2014 a strong favorite over Milwaukee Bucks. Charlotte Hornets net rating: +0.0. Home court +100 ELO for Charlotte Hornets."
     },
     {
       "game_id": "401908941",
@@ -8235,10 +8245,10 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.7831,
-        "logistic_prob": 0.6047,
+        "ensemble_prob": 0.7833,
+        "logistic_prob": 0.6035,
         "elo_prob": 0.9167,
-        "xgb_prob": 0.5458,
+        "xgb_prob": 0.5491,
         "pyth_prob": 0.7309,
         "eff_prob": 0.6401,
         "bayesian_prob": 0.6531
@@ -8251,19 +8261,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6388,
-        "exp_margin": 4.32,
-        "prob_7plus": 0.411,
-        "prob_14plus": 0.2084,
-        "prob_21plus": 0.0794,
+        "win_prob": 0.6525,
+        "exp_margin": 4.62,
+        "prob_7plus": 0.42,
+        "prob_14plus": 0.2146,
+        "prob_21plus": 0.0781,
         "margin_percentiles": [
-          -15.0,
-          -10.8,
-          -3.7,
-          4.4,
-          12.3,
+          -14.6,
+          -10.4,
+          -3.2,
+          4.7,
+          12.6,
           19.6,
-          23.5
+          23.6
         ]
       },
       "adjustments": {
@@ -8333,9 +8343,9 @@
         ]
       },
       "elo": {
-        "home": 1653.4,
+        "home": 1653.3,
         "away": 1320.1,
-        "diff": 333.2
+        "diff": 333.3
       },
       "bayesian": {
         "home_mu": 1798.9,
@@ -8444,6 +8454,1103 @@
         "Home court: DEN +100 ELO advantage"
       ],
       "explanation": "The model gives Denver Nuggets a 78.3% win probability \u2014 a strong favorite over Chicago Bulls. Denver Nuggets net rating: +0.0. Home court +100 ELO for Denver Nuggets."
+    },
+    {
+      "game_id": "401914130",
+      "game_time": "2026-10-12T20:00Z",
+      "status": "STATUS_SCHEDULED",
+      "is_future": true,
+      "home_team": "POR",
+      "away_team": "LON",
+      "home_name": "Portland Trail Blazers",
+      "away_name": "London Lions",
+      "home_logo": "https://a.espncdn.com/i/teamlogos/nba/500/por.png",
+      "away_logo": "https://a.espncdn.com/i/teamlogos/nba/500/lon.png",
+      "neutral": false,
+      "home_score": 0,
+      "away_score": 0,
+      "predictions": {
+        "ensemble_prob": 0.6356,
+        "logistic_prob": 0.6991,
+        "elo_prob": 0.6086,
+        "xgb_prob": 0.6377,
+        "pyth_prob": 0.6136,
+        "eff_prob": 0.6401,
+        "bayesian_prob": 0.9151
+      },
+      "market": {
+        "home_prob": null,
+        "edge": null,
+        "kelly_pct": null,
+        "home_american": null,
+        "away_american": null
+      },
+      "monte_carlo": {
+        "win_prob": 0.9071,
+        "exp_margin": 15.9,
+        "prob_7plus": 0.7687,
+        "prob_14plus": 0.5608,
+        "prob_21plus": 0.3359,
+        "margin_percentiles": [
+          -3.7,
+          0.5,
+          7.8,
+          15.9,
+          24.1,
+          31.3,
+          35.8
+        ]
+      },
+      "adjustments": {
+        "rest_home": 7,
+        "rest_away": 7,
+        "rest_diff": 0,
+        "travel_dist_miles": 0.0,
+        "b2b_home": false,
+        "b2b_away": false,
+        "home_elo_bonus": 100
+      },
+      "h2h": {
+        "home_wins": 0,
+        "away_wins": 0,
+        "total_meetings": 0,
+        "last_n": []
+      },
+      "elo": {
+        "home": 1549.2,
+        "away": 1500.0,
+        "diff": 49.2
+      },
+      "bayesian": {
+        "home_mu": 1797.7,
+        "home_sigma": 40.0,
+        "away_mu": 1500.0,
+        "away_sigma": 75.0,
+        "home_band": [
+          1757.7,
+          1837.7
+        ],
+        "away_band": [
+          1425.0,
+          1575.0
+        ]
+      },
+      "efficiency": {
+        "home_off_rating": 110.0,
+        "home_def_rating": 110.0,
+        "home_net_rating": 0.0,
+        "away_off_rating": 110.0,
+        "away_def_rating": 110.0,
+        "away_net_rating": 0.0,
+        "home_pace": 100.0,
+        "away_pace": 100.0
+      },
+      "injuries": {
+        "home": [
+          {
+            "player": "Ja Morant",
+            "status": "Day-To-Day",
+            "position": "G",
+            "injury_description": "Chris Haynes of NBA TV reported when the trade went down that the Trail Blazers had a Morant and Lillard backcourt pairing in mind, so it'll be interesting to see how the ball-handling responsibilities are divvied up in 2026-27 should they stick to that plan. Morant endured yet another injury-plagued campaign in 2025-26 with the Grizzlies, making just 20 appearances while shooting a career-low 41.0 percent from the floor and 23.5 percent from deep, and he's reached the 60-game mark just one time over his past five seasons. With plenty of questions surrounding his fit in his new digs, the dynamic 27-year-old point guard is shaping up as a difficult fantasy player to rank as a high-risk, high-reward gamble in the second half of drafts.",
+            "value_tier": "starter"
+          },
+          {
+            "player": "Shaedon Sharpe",
+            "status": "Out",
+            "position": "G",
+            "injury_description": "It's a tough blow to the Trail Blazers' depth on the wing ahead of training camp. Sharpe, who is now likely to be sidelined until after the All-Star break, had been ticketed for a reserve role behind Toumani Camara following an injury-plagued 2025-26 campaign, which saw average a career-high 20.8 points, 1.4 steals and 2.1 three-pointers per game over 50 regular-season appearances. The door is now open for Vit Krejci and Jeremy Sochan to compete for bench minutes during camp.",
+            "value_tier": "starter"
+          }
+        ],
+        "away": []
+      },
+      "injury_impact": {
+        "home_elo_penalty": 22.5,
+        "away_elo_penalty": 0.0,
+        "home_key_players_out": [
+          {
+            "player": "Ja Morant",
+            "position": "G",
+            "status": "Day-To-Day",
+            "elo_impact": 7.5,
+            "value_tier": "starter"
+          },
+          {
+            "player": "Shaedon Sharpe",
+            "position": "G",
+            "status": "Out",
+            "elo_impact": 15.0,
+            "value_tier": "starter"
+          }
+        ],
+        "away_key_players_out": [],
+        "home_star_count": 0,
+        "away_star_count": 0,
+        "home_star_stack_multiplier": 1.0,
+        "away_star_stack_multiplier": 1.0
+      },
+      "prediction_drivers": [
+        "Ja Morant (POR) [Starter] DAY-TO-DAY \u2014 \u22128 ELO",
+        "Shaedon Sharpe (POR) [Starter] OUT \u2014 \u221215 ELO",
+        "Home court: POR +100 ELO advantage"
+      ],
+      "explanation": "The model gives Portland Trail Blazers a 63.6% win probability \u2014 a moderate favorite over LON. Portland Trail Blazers net rating: +0.0. Home court +100 ELO for Portland Trail Blazers."
+    },
+    {
+      "game_id": "401898402",
+      "game_time": "2026-10-12T23:00Z",
+      "status": "STATUS_SCHEDULED",
+      "is_future": true,
+      "home_team": "ATL",
+      "away_team": "OKC",
+      "home_name": "Atlanta Hawks",
+      "away_name": "Oklahoma City Thunder",
+      "home_logo": "https://a.espncdn.com/i/teamlogos/nba/500/atl.png",
+      "away_logo": "https://a.espncdn.com/i/teamlogos/nba/500/okc.png",
+      "neutral": false,
+      "home_score": 0,
+      "away_score": 0,
+      "predictions": {
+        "ensemble_prob": 0.3152,
+        "logistic_prob": 0.3696,
+        "elo_prob": 0.2568,
+        "xgb_prob": 0.4582,
+        "pyth_prob": 0.4685,
+        "eff_prob": 0.6401,
+        "bayesian_prob": 0.6181
+      },
+      "market": {
+        "home_prob": null,
+        "edge": null,
+        "kelly_pct": null,
+        "home_american": null,
+        "away_american": null
+      },
+      "monte_carlo": {
+        "win_prob": 0.6101,
+        "exp_margin": 3.45,
+        "prob_7plus": 0.3793,
+        "prob_14plus": 0.1855,
+        "prob_21plus": 0.0664,
+        "margin_percentiles": [
+          -15.4,
+          -11.5,
+          -4.5,
+          3.3,
+          11.4,
+          18.4,
+          22.8
+        ]
+      },
+      "adjustments": {
+        "rest_home": 7,
+        "rest_away": 7,
+        "rest_diff": 0,
+        "travel_dist_miles": 755.0,
+        "b2b_home": false,
+        "b2b_away": false,
+        "home_elo_bonus": 100
+      },
+      "h2h": {
+        "home_wins": 4,
+        "away_wins": 7,
+        "total_meetings": 11,
+        "last_n": [
+          {
+            "date": "2022-03-31",
+            "winner": "ATL",
+            "margin": 18
+          },
+          {
+            "date": "2022-12-06",
+            "winner": "OKC",
+            "margin": 7
+          },
+          {
+            "date": "2023-01-26",
+            "winner": "ATL",
+            "margin": 5
+          },
+          {
+            "date": "2023-11-07",
+            "winner": "OKC",
+            "margin": 9
+          },
+          {
+            "date": "2024-01-04",
+            "winner": "ATL",
+            "margin": 3
+          },
+          {
+            "date": "2024-10-18",
+            "winner": "OKC",
+            "margin": 5
+          },
+          {
+            "date": "2024-10-27",
+            "winner": "OKC",
+            "margin": 24
+          },
+          {
+            "date": "2025-03-01",
+            "winner": "OKC",
+            "margin": 16
+          },
+          {
+            "date": "2025-10-25",
+            "winner": "OKC",
+            "margin": 17
+          },
+          {
+            "date": "2025-12-30",
+            "winner": "OKC",
+            "margin": 11
+          }
+        ]
+      },
+      "elo": {
+        "home": 1563.4,
+        "away": 1813.6,
+        "diff": -250.3
+      },
+      "bayesian": {
+        "home_mu": 1780.3,
+        "home_sigma": 40.0,
+        "away_mu": 1795.3,
+        "away_sigma": 40.0,
+        "home_band": [
+          1740.3,
+          1820.3
+        ],
+        "away_band": [
+          1755.3,
+          1835.3
+        ]
+      },
+      "efficiency": {
+        "home_off_rating": 110.0,
+        "home_def_rating": 110.0,
+        "home_net_rating": 0.0,
+        "away_off_rating": 110.0,
+        "away_def_rating": 110.0,
+        "away_net_rating": 0.0,
+        "home_pace": 100.0,
+        "away_pace": 100.0
+      },
+      "injuries": {
+        "home": [
+          {
+            "player": "Henri Veesaar",
+            "status": "Out",
+            "position": "C",
+            "injury_description": "Veesaar suffered the injury during a workout on Sept. 15, and an MRI confirmed the diagnosis. The No. 52 overall pick in the 2026 NBA Draft, Veesaar was expected to spend a lot of time with Atlanta's G League affiliate this season.",
+            "value_tier": "starter"
+          },
+          {
+            "player": "Mouhamed Gueye",
+            "status": "Day-To-Day",
+            "position": "F",
+            "injury_description": "Gueye will be re-evaluated by medical staff in 3-to-4 months, which means he'll miss all of training camp and preseason and likely the start of the 2026-27 regular season. It's a brutal blow for the fourth-year big man, given that the Hawks used the No. 23 overall pick of the 2026 NBA Draft to select St. John's product Zuby Ejiofor. Gueye's absence means Ejiofor will have more opportunities in the preseason, and the rookie could establish a key role off the bench behind Onyeka Okongwu and projected backup center Jock Landale (ankle).",
+            "value_tier": "starter"
+          },
+          {
+            "player": "Keshon Gilbert",
+            "status": "Day-To-Day",
+            "position": "G",
+            "injury_description": "A hip injury cost Gilbert his final three games in Las Vegas. In his one appearance for the Hawks at Summer League, he finished with 10 points, five rebounds, five assists and two steals in 20 minutes off the bench.",
+            "value_tier": "starter"
+          },
+          {
+            "player": "RayJ Dennis",
+            "status": "Day-To-Day",
+            "position": "G",
+            "injury_description": "Dennis will miss a third consecutive contest due to a right Achilles issue. He appeared in just one Las Vegas Summer League game, posting 10 points, three assists, three steals and two rebounds in 16 minutes during the July 9 win over the Spurs.",
+            "value_tier": "starter"
+          }
+        ],
+        "away": [
+          {
+            "player": "Ajay Mitchell",
+            "status": "Day-To-Day",
+            "position": "G",
+            "injury_description": "Mitchell appears to be a candidate for an expanded role in Oklahoma City's rotation after showing promise in a limited capacity last season.  The team lost Isaiah Joe, Aaron Wiggins and Luguentz Dort this offseason, making Mitchell an obvious player to watch ahead of fantasy drafts. His exact place in the rotation will become clearer during training camp and the preseason.",
+            "value_tier": "starter"
+          },
+          {
+            "player": "Thomas Sorber",
+            "status": "Day-To-Day",
+            "position": "C",
+            "injury_description": "The young center underwent a minor arthroscopic procedure on his right knee in early July after missing the 2025-26 campaign while recovering from a torn ACL in the same knee. Sorber had initially been expected to return to full basketball activities roughly four weeks after the procedure, so his workload will be worth monitoring as camp progresses.",
+            "value_tier": "starter"
+          },
+          {
+            "player": "Nikola Topic",
+            "status": "Day-To-Day",
+            "position": "G",
+            "injury_description": "General manager Sam Presti announced the restriction Thursday, and Topic is currently dealing with a back issue stemming from offseason surgery. The 21-year-old guard's participation level will be worth monitoring throughout camp as Oklahoma City prepares for the preseason.",
+            "value_tier": "starter"
+          },
+          {
+            "player": "Isaiah Hartenstein",
+            "status": "Day-To-Day",
+            "position": "C",
+            "injury_description": "Hartenstein sat out FIBA qualifiers with Germany to nurse an ankle injury he sustained earlier this summer, so it's encouraging to see him back on the court ahead of training camp in the fall. The 28-year-old big man appears to be firmly on track for the start of the regular season in October, barring any setbacks along the way.",
+            "value_tier": "starter"
+          },
+          {
+            "player": "Otega Oweh",
+            "status": "Day-To-Day",
+            "position": "G",
+            "injury_description": "Oweh suffered an apparent lower left leg injury in the Salt Lake City Summer League and did not suit up in Las Vegas. He appeared in two Salt Lake City Summer League outings, averaging 6.0 points, 4.5 rebounds, 2.0 steals and 1.5 assists in 23.6 minutes per contest.",
+            "value_tier": "starter"
+          }
+        ]
+      },
+      "injury_impact": {
+        "home_elo_penalty": 38.0,
+        "away_elo_penalty": 38.5,
+        "home_key_players_out": [
+          {
+            "player": "Henri Veesaar",
+            "position": "C",
+            "status": "Out",
+            "elo_impact": 16.0,
+            "value_tier": "starter"
+          },
+          {
+            "player": "Mouhamed Gueye",
+            "position": "F",
+            "status": "Day-To-Day",
+            "elo_impact": 7.0,
+            "value_tier": "starter"
+          },
+          {
+            "player": "Keshon Gilbert",
+            "position": "G",
+            "status": "Day-To-Day",
+            "elo_impact": 7.5,
+            "value_tier": "starter"
+          },
+          {
+            "player": "RayJ Dennis",
+            "position": "G",
+            "status": "Day-To-Day",
+            "elo_impact": 7.5,
+            "value_tier": "starter"
+          }
+        ],
+        "away_key_players_out": [
+          {
+            "player": "Ajay Mitchell",
+            "position": "G",
+            "status": "Day-To-Day",
+            "elo_impact": 7.5,
+            "value_tier": "starter"
+          },
+          {
+            "player": "Thomas Sorber",
+            "position": "C",
+            "status": "Day-To-Day",
+            "elo_impact": 8.0,
+            "value_tier": "starter"
+          },
+          {
+            "player": "Nikola Topic",
+            "position": "G",
+            "status": "Day-To-Day",
+            "elo_impact": 7.5,
+            "value_tier": "starter"
+          },
+          {
+            "player": "Isaiah Hartenstein",
+            "position": "C",
+            "status": "Day-To-Day",
+            "elo_impact": 8.0,
+            "value_tier": "starter"
+          },
+          {
+            "player": "Otega Oweh",
+            "position": "G",
+            "status": "Day-To-Day",
+            "elo_impact": 7.5,
+            "value_tier": "starter"
+          }
+        ],
+        "home_star_count": 0,
+        "away_star_count": 0,
+        "home_star_stack_multiplier": 1.0,
+        "away_star_stack_multiplier": 1.0
+      },
+      "prediction_drivers": [
+        "ELO advantage: OKC +250 rating points",
+        "Henri Veesaar (ATL) [Starter] OUT \u2014 \u221216 ELO",
+        "Mouhamed Gueye (ATL) [Starter] DAY-TO-DAY \u2014 \u22127 ELO",
+        "Keshon Gilbert (ATL) [Starter] DAY-TO-DAY \u2014 \u22128 ELO",
+        "Ajay Mitchell (OKC) [Starter] DAY-TO-DAY \u2014 \u22128 ELO",
+        "Thomas Sorber (OKC) [Starter] DAY-TO-DAY \u2014 \u22128 ELO",
+        "Nikola Topic (OKC) [Starter] DAY-TO-DAY \u2014 \u22128 ELO",
+        "Home court: ATL +100 ELO advantage"
+      ],
+      "explanation": "The model gives Oklahoma City Thunder a 68.5% win probability \u2014 a moderate favorite over Atlanta Hawks. Oklahoma City Thunder net rating: +0.0. Home court +100 ELO for Atlanta Hawks."
+    },
+    {
+      "game_id": "401901824",
+      "game_time": "2026-10-12T23:00Z",
+      "status": "STATUS_SCHEDULED",
+      "is_future": true,
+      "home_team": "WAS",
+      "away_team": "BKN",
+      "home_name": "Washington Wizards",
+      "away_name": "Brooklyn Nets",
+      "home_logo": "https://a.espncdn.com/i/teamlogos/nba/500/wsh.png",
+      "away_logo": "https://a.espncdn.com/i/teamlogos/nba/500/bkn.png",
+      "neutral": false,
+      "home_score": 0,
+      "away_score": 0,
+      "predictions": {
+        "ensemble_prob": 0.4727,
+        "logistic_prob": 0.5353,
+        "elo_prob": 0.4241,
+        "xgb_prob": 0.5629,
+        "pyth_prob": 0.5985,
+        "eff_prob": 0.6401,
+        "bayesian_prob": 0.6536
+      },
+      "market": {
+        "home_prob": null,
+        "edge": null,
+        "kelly_pct": null,
+        "home_american": null,
+        "away_american": null
+      },
+      "monte_carlo": {
+        "win_prob": 0.6468,
+        "exp_margin": 4.46,
+        "prob_7plus": 0.4152,
+        "prob_14plus": 0.2089,
+        "prob_21plus": 0.0809,
+        "margin_percentiles": [
+          -14.9,
+          -10.5,
+          -3.4,
+          4.4,
+          12.4,
+          19.5,
+          23.9
+        ]
+      },
+      "adjustments": {
+        "rest_home": 7,
+        "rest_away": 7,
+        "rest_diff": 0,
+        "travel_dist_miles": 204.0,
+        "b2b_home": false,
+        "b2b_away": false,
+        "home_elo_bonus": 100
+      },
+      "h2h": {
+        "home_wins": 6,
+        "away_wins": 14,
+        "total_meetings": 20,
+        "last_n": [
+          {
+            "date": "2023-12-30",
+            "winner": "WAS",
+            "margin": 6
+          },
+          {
+            "date": "2024-03-27",
+            "winner": "BKN",
+            "margin": 3
+          },
+          {
+            "date": "2024-10-14",
+            "winner": "BKN",
+            "margin": 39
+          },
+          {
+            "date": "2025-02-06",
+            "winner": "WAS",
+            "margin": 17
+          },
+          {
+            "date": "2025-02-25",
+            "winner": "WAS",
+            "margin": 8
+          },
+          {
+            "date": "2025-03-29",
+            "winner": "BKN",
+            "margin": 3
+          },
+          {
+            "date": "2025-11-16",
+            "winner": "BKN",
+            "margin": 23
+          },
+          {
+            "date": "2026-01-03",
+            "winner": "WAS",
+            "margin": 20
+          },
+          {
+            "date": "2026-02-07",
+            "winner": "BKN",
+            "margin": 14
+          },
+          {
+            "date": "2026-04-05",
+            "winner": "BKN",
+            "margin": 6
+          }
+        ]
+      },
+      "elo": {
+        "home": 1181.5,
+        "away": 1246.5,
+        "diff": -65.1
+      },
+      "bayesian": {
+        "home_mu": 1785.1,
+        "home_sigma": 40.0,
+        "away_mu": 1773.4,
+        "away_sigma": 40.0,
+        "home_band": [
+          1745.1,
+          1825.1
+        ],
+        "away_band": [
+          1733.4,
+          1813.4
+        ]
+      },
+      "efficiency": {
+        "home_off_rating": 110.0,
+        "home_def_rating": 110.0,
+        "home_net_rating": 0.0,
+        "away_off_rating": 110.0,
+        "away_def_rating": 110.0,
+        "away_net_rating": 0.0,
+        "home_pace": 100.0,
+        "away_pace": 100.0
+      },
+      "injuries": {
+        "home": [
+          {
+            "player": "Anthony Davis",
+            "status": "Day-To-Day",
+            "position": "F",
+            "injury_description": "Davis was limited to only 20 regular-season appearances with Dallas last season due to health issues, but Dawkins said the 10-time All-Star is currently in a \"great frame of mind.\" Washington also views Davis as a starting-caliber center in a revamped frontcourt featuring Alex Sarr and Deandre Ayton. Davis and the Wizards reportedly postponed contract extension discussions earlier this offseason, but Dawkins declined to specifically address those talks Thursday.",
+            "value_tier": "all-star"
+          },
+          {
+            "player": "Alex Sarr",
+            "status": "Day-To-Day",
+            "position": "C",
+            "injury_description": "General manager Will Dawkins said Thursday that Sarr is expected to be ready for the start of the regular season, so the limited workload to begin camp appears precautionary. Sarr underwent surgery in mid-June, and his progress during the preseason will be worth monitoring, but there currently doesn't appear to be significant concern about his availability for Opening Night.",
+            "value_tier": "starter"
+          },
+          {
+            "player": "Trae Young",
+            "status": "Day-To-Day",
+            "position": "G",
+            "injury_description": "With Young limited to 15 regular-season appearances in 2025-26 due to injuries, any sign of offseason rehab progress is notable. This report points to active conditioning work after his quadriceps issue, though it does not provide a return timeline or formal clearance update ahead of training camp for Washington.",
+            "value_tier": "all-star"
+          },
+          {
+            "player": "Jamir Watkins",
+            "status": "Out",
+            "position": "G",
+            "injury_description": "Watkins, a two-way player for the Wizards, suffered the injury during the Summer League. Although Washington has yet to offer a timetable for a return, a typical recovery time for the procedure is approximately 9-to-12 months. That leaves Watkins in serious jeopardy of missing most, if not all, of the 2026-27 season, and it remains to be seen if the team will continue keeping him around on a two-way roster spot while he's injured.",
+            "value_tier": "starter"
+          }
+        ],
+        "away": [
+          {
+            "player": "Mikel Brown Jr.",
+            "status": "Day-To-Day",
+            "position": "G",
+            "injury_description": "The team \"doesn't expect him to miss considerable time,\" though Brown's status will be worth monitoring heading into the Nets' preseason opener against the Hornets on Tuesday, Oct. 6. The rookie guard was selected with the sixth overall pick this summer and figures to take on a sizable role early in his career. Over 21 appearances (19 starts) at Louisville in 2025-26, he averaged 18.2 points, 4.7 assists, 3.3 rebounds and 1.2 steals while shooting 41.0 percent from the field in 29.2 minutes per game.",
+            "value_tier": "starter"
+          }
+        ]
+      },
+      "injury_impact": {
+        "home_elo_penalty": 49.62,
+        "away_elo_penalty": 7.5,
+        "home_key_players_out": [
+          {
+            "player": "Anthony Davis",
+            "position": "F",
+            "status": "Day-To-Day",
+            "elo_impact": 10.5,
+            "value_tier": "all-star"
+          },
+          {
+            "player": "Alex Sarr",
+            "position": "C",
+            "status": "Day-To-Day",
+            "elo_impact": 8.0,
+            "value_tier": "starter"
+          },
+          {
+            "player": "Trae Young",
+            "position": "G",
+            "status": "Day-To-Day",
+            "elo_impact": 11.2,
+            "value_tier": "all-star"
+          },
+          {
+            "player": "Jamir Watkins",
+            "position": "G",
+            "status": "Out",
+            "elo_impact": 15.0,
+            "value_tier": "starter"
+          }
+        ],
+        "away_key_players_out": [
+          {
+            "player": "Mikel Brown Jr.",
+            "position": "G",
+            "status": "Day-To-Day",
+            "elo_impact": 7.5,
+            "value_tier": "starter"
+          }
+        ],
+        "home_star_count": 2,
+        "away_star_count": 0,
+        "home_star_stack_multiplier": 1.1087,
+        "away_star_stack_multiplier": 1.0
+      },
+      "prediction_drivers": [
+        "Anthony Davis (WAS) [All-Star] DAY-TO-DAY \u2014 \u221210 ELO",
+        "Alex Sarr (WAS) [Starter] DAY-TO-DAY \u2014 \u22128 ELO",
+        "Trae Young (WAS) [All-Star] DAY-TO-DAY \u2014 \u221211 ELO",
+        "WAS star stack: 2\u00d7 elite out \u2192 \u00d71.11 (\u221250 ELO)",
+        "Mikel Brown Jr. (BKN) [Starter] DAY-TO-DAY \u2014 \u22128 ELO",
+        "Home court: WAS +100 ELO advantage"
+      ],
+      "explanation": "The model gives Brooklyn Nets a 52.7% win probability \u2014 a slight favorite over Washington Wizards. Brooklyn Nets net rating: +0.0. Home court +100 ELO for Washington Wizards."
+    },
+    {
+      "game_id": "401914124",
+      "game_time": "2026-10-12T23:30Z",
+      "status": "STATUS_SCHEDULED",
+      "is_future": true,
+      "home_team": "NYK",
+      "away_team": "MIN",
+      "home_name": "New York Knicks",
+      "away_name": "Minnesota Timberwolves",
+      "home_logo": "https://a.espncdn.com/i/teamlogos/nba/500/ny.png",
+      "away_logo": "https://a.espncdn.com/i/teamlogos/nba/500/min.png",
+      "neutral": false,
+      "home_score": 0,
+      "away_score": 0,
+      "predictions": {
+        "ensemble_prob": 0.7298,
+        "logistic_prob": 0.5566,
+        "elo_prob": 0.8472,
+        "xgb_prob": 0.5492,
+        "pyth_prob": 0.6724,
+        "eff_prob": 0.6401,
+        "bayesian_prob": 0.6567
+      },
+      "market": {
+        "home_prob": null,
+        "edge": null,
+        "kelly_pct": null,
+        "home_american": null,
+        "away_american": null
+      },
+      "monte_carlo": {
+        "win_prob": 0.6497,
+        "exp_margin": 4.53,
+        "prob_7plus": 0.4133,
+        "prob_14plus": 0.2097,
+        "prob_21plus": 0.0815,
+        "margin_percentiles": [
+          -14.6,
+          -10.4,
+          -3.5,
+          4.4,
+          12.4,
+          19.6,
+          23.9
+        ]
+      },
+      "adjustments": {
+        "rest_home": 7,
+        "rest_away": 7,
+        "rest_diff": 0,
+        "travel_dist_miles": 1016.0,
+        "b2b_home": false,
+        "b2b_away": false,
+        "home_elo_bonus": 100
+      },
+      "h2h": {
+        "home_wins": 7,
+        "away_wins": 6,
+        "total_meetings": 13,
+        "last_n": [
+          {
+            "date": "2023-03-20",
+            "winner": "MIN",
+            "margin": 6
+          },
+          {
+            "date": "2023-10-14",
+            "winner": "MIN",
+            "margin": 9
+          },
+          {
+            "date": "2023-11-21",
+            "winner": "MIN",
+            "margin": 17
+          },
+          {
+            "date": "2024-01-01",
+            "winner": "NYK",
+            "margin": 6
+          },
+          {
+            "date": "2024-10-13",
+            "winner": "NYK",
+            "margin": 5
+          },
+          {
+            "date": "2024-12-20",
+            "winner": "NYK",
+            "margin": 26
+          },
+          {
+            "date": "2025-01-18",
+            "winner": "MIN",
+            "margin": 17
+          },
+          {
+            "date": "2025-10-09",
+            "winner": "NYK",
+            "margin": 5
+          },
+          {
+            "date": "2025-11-06",
+            "winner": "NYK",
+            "margin": 23
+          },
+          {
+            "date": "2025-12-24",
+            "winner": "MIN",
+            "margin": 11
+          }
+        ]
+      },
+      "elo": {
+        "home": 1832.9,
+        "away": 1613.7,
+        "diff": 219.1
+      },
+      "bayesian": {
+        "home_mu": 1799.9,
+        "home_sigma": 40.0,
+        "away_mu": 1785.8,
+        "away_sigma": 40.0,
+        "home_band": [
+          1759.9,
+          1839.9
+        ],
+        "away_band": [
+          1745.8,
+          1825.8
+        ]
+      },
+      "efficiency": {
+        "home_off_rating": 110.0,
+        "home_def_rating": 110.0,
+        "home_net_rating": 0.0,
+        "away_off_rating": 110.0,
+        "away_def_rating": 110.0,
+        "away_net_rating": 0.0,
+        "home_pace": 100.0,
+        "away_pace": 100.0
+      },
+      "injuries": {
+        "home": [
+          {
+            "player": "Mohamed Diawara",
+            "status": "Day-To-Day",
+            "position": "F",
+            "injury_description": "The severity of the finger injury is unknown, though it kept Diawara from playing in New York's final three Las Vegas Summer League outings. Over two outings in Las Vegas this summer, he averaged 3.5 points and 5.5 rebounds in 24.7 minutes per tilt.",
+            "value_tier": "starter"
+          }
+        ],
+        "away": [
+          {
+            "player": "Donte DiVincenzo",
+            "status": "Out",
+            "position": "G",
+            "injury_description": "DiVincenzo will have his surgery done by Dr. Martin O'Malley, the same surgeon who repaired the torn right Achilles of Jayson Tatum in May of 2025. The fact that the procedure is taking place within 24 hours of DiVincenzo's injury should help with the recovery, though it would be unfair to expect the veteran guard to return as quickly as Tatum did, which took approximately 10 months for the latter. It seems more likely that DiVincenzo will miss the entire 2026-27 season, though if he does progress enough to return, it wouldn't be until late in the regular season. The Timberwolves will also be without Anthony Edwards (knee) for multiple weeks, so the team will turn to Ayo Dosunmu, Mike Conley and Bones Hyland to carry more of the load for the rest of the postseason.",
+            "value_tier": "starter"
+          }
+        ]
+      },
+      "injury_impact": {
+        "home_elo_penalty": 7.0,
+        "away_elo_penalty": 15.0,
+        "home_key_players_out": [
+          {
+            "player": "Mohamed Diawara",
+            "position": "F",
+            "status": "Day-To-Day",
+            "elo_impact": 7.0,
+            "value_tier": "starter"
+          }
+        ],
+        "away_key_players_out": [
+          {
+            "player": "Donte DiVincenzo",
+            "position": "G",
+            "status": "Out",
+            "elo_impact": 15.0,
+            "value_tier": "starter"
+          }
+        ],
+        "home_star_count": 0,
+        "away_star_count": 0,
+        "home_star_stack_multiplier": 1.0,
+        "away_star_stack_multiplier": 1.0
+      },
+      "prediction_drivers": [
+        "ELO advantage: NYK +219 rating points",
+        "Mohamed Diawara (NYK) [Starter] DAY-TO-DAY \u2014 \u22127 ELO",
+        "Donte DiVincenzo (MIN) [Starter] OUT \u2014 \u221215 ELO",
+        "Home court: NYK +100 ELO advantage"
+      ],
+      "explanation": "The model gives New York Knicks a 73.0% win probability \u2014 a strong favorite over Minnesota Timberwolves. New York Knicks net rating: +0.0. Home court +100 ELO for New York Knicks."
+    },
+    {
+      "game_id": "401898721",
+      "game_time": "2026-10-13T01:00Z",
+      "status": "STATUS_SCHEDULED",
+      "is_future": true,
+      "home_team": "UTAH",
+      "away_team": "SAS",
+      "home_name": "Utah Jazz",
+      "away_name": "San Antonio Spurs",
+      "home_logo": "https://a.espncdn.com/i/teamlogos/nba/500/utah.png",
+      "away_logo": "https://a.espncdn.com/i/teamlogos/nba/500/sa.png",
+      "neutral": false,
+      "home_score": 0,
+      "away_score": 0,
+      "predictions": {
+        "ensemble_prob": 0.2149,
+        "logistic_prob": 0.4235,
+        "elo_prob": 0.0476,
+        "xgb_prob": 0.5363,
+        "pyth_prob": 0.5834,
+        "eff_prob": 0.6401,
+        "bayesian_prob": 0.6147
+      },
+      "market": {
+        "home_prob": null,
+        "edge": null,
+        "kelly_pct": null,
+        "home_american": null,
+        "away_american": null
+      },
+      "monte_carlo": {
+        "win_prob": 0.6061,
+        "exp_margin": 3.24,
+        "prob_7plus": 0.3753,
+        "prob_14plus": 0.1844,
+        "prob_21plus": 0.0693,
+        "margin_percentiles": [
+          -16.2,
+          -12.0,
+          -4.9,
+          3.2,
+          11.2,
+          18.5,
+          22.9
+        ]
+      },
+      "adjustments": {
+        "rest_home": 7,
+        "rest_away": 7,
+        "rest_diff": 0,
+        "travel_dist_miles": 0.0,
+        "b2b_home": false,
+        "b2b_away": false,
+        "home_elo_bonus": 100
+      },
+      "h2h": {
+        "home_wins": 7,
+        "away_wins": 14,
+        "total_meetings": 21,
+        "last_n": [
+          {
+            "date": "2024-03-28",
+            "winner": "SAS",
+            "margin": 7
+          },
+          {
+            "date": "2024-10-13",
+            "winner": "SAS",
+            "margin": 6
+          },
+          {
+            "date": "2024-11-01",
+            "winner": "SAS",
+            "margin": 18
+          },
+          {
+            "date": "2024-11-09",
+            "winner": "UTAH",
+            "margin": 1
+          },
+          {
+            "date": "2024-11-22",
+            "winner": "SAS",
+            "margin": 8
+          },
+          {
+            "date": "2024-11-27",
+            "winner": "SAS",
+            "margin": 13
+          },
+          {
+            "date": "2025-10-11",
+            "winner": "SAS",
+            "margin": 4
+          },
+          {
+            "date": "2025-12-28",
+            "winner": "UTAH",
+            "margin": 13
+          },
+          {
+            "date": "2026-01-19",
+            "winner": "SAS",
+            "margin": 13
+          },
+          {
+            "date": "2026-01-23",
+            "winner": "SAS",
+            "margin": 17
+          }
+        ]
+      },
+      "elo": {
+        "home": 1250.4,
+        "away": 1827.5,
+        "diff": -577.0
+      },
+      "bayesian": {
+        "home_mu": 1782.4,
+        "home_sigma": 40.0,
+        "away_mu": 1799.9,
+        "away_sigma": 40.0,
+        "home_band": [
+          1742.4,
+          1822.4
+        ],
+        "away_band": [
+          1759.9,
+          1839.9
+        ]
+      },
+      "efficiency": {
+        "home_off_rating": 110.0,
+        "home_def_rating": 110.0,
+        "home_net_rating": 0.0,
+        "away_off_rating": 110.0,
+        "away_def_rating": 110.0,
+        "away_net_rating": 0.0,
+        "home_pace": 100.0,
+        "away_pace": 100.0
+      },
+      "injuries": {
+        "home": [
+          {
+            "player": "Jaren Jackson Jr.",
+            "status": "Day-To-Day",
+            "position": "F",
+            "injury_description": "Jackson was traded from Memphis to Utah in February, though he appeared in only three regular-season games for the Jazz before undergoing surgery due to a growth in his left knee. The 2022-23 Defensive Player of the Year will look to make his presence felt on that end of the floor and anchor a now Kessler-less Jazz frontcourt. Jackson's two-way production will be crucial for a Utah team that's looking to return to playoff contention, and he hasn't averaged fewer than 18.6 points per game since the 2021-22 campaign, when he averaged 16.3 points per tilt for the Grizzlies.",
+            "value_tier": "starter"
+          },
+          {
+            "player": "Trey Alexander",
+            "status": "Day-To-Day",
+            "position": "G",
+            "injury_description": "Alexander was taken off the court on a stretcher in Monday's 80-63 win over the Bulls due to a left rib contusion, and Utah is taking a cautious approach in its Summer League finale. The two-way player has plenty of time to recuperate ahead of training camp in the fall.",
+            "value_tier": "starter"
+          }
+        ],
+        "away": [
+          {
+            "player": "David Jones Garcia",
+            "status": "Day-To-Day",
+            "position": "F",
+            "injury_description": "Jones Garcia is set for his second season with San Antonio in 2026-27, though most of his action is likely to come with the G League's Austin Spurs. He underwent ankle surgery in February, so it's unclear if Jones Garcia will be ready for full participation in training camp this fall.",
+            "value_tier": "starter"
+          },
+          {
+            "player": "Jayden Quaintance",
+            "status": "Out",
+            "position": "F",
+            "injury_description": "The rookie center faced severe complications and persistent knee swelling last season following February 2025 ACL surgery, and a follow-up procedure was required. It remains to be seen how long he will be sidelined for, but this certainly puts his status for training camp in doubt.",
+            "value_tier": "starter"
+          }
+        ]
+      },
+      "injury_impact": {
+        "home_elo_penalty": 14.5,
+        "away_elo_penalty": 21.0,
+        "home_key_players_out": [
+          {
+            "player": "Jaren Jackson Jr.",
+            "position": "F",
+            "status": "Day-To-Day",
+            "elo_impact": 7.0,
+            "value_tier": "starter"
+          },
+          {
+            "player": "Trey Alexander",
+            "position": "G",
+            "status": "Day-To-Day",
+            "elo_impact": 7.5,
+            "value_tier": "starter"
+          }
+        ],
+        "away_key_players_out": [
+          {
+            "player": "David Jones Garcia",
+            "position": "F",
+            "status": "Day-To-Day",
+            "elo_impact": 7.0,
+            "value_tier": "starter"
+          },
+          {
+            "player": "Jayden Quaintance",
+            "position": "F",
+            "status": "Out",
+            "elo_impact": 14.0,
+            "value_tier": "starter"
+          }
+        ],
+        "home_star_count": 0,
+        "away_star_count": 0,
+        "home_star_stack_multiplier": 1.0,
+        "away_star_stack_multiplier": 1.0
+      },
+      "prediction_drivers": [
+        "ELO advantage: SAS +577 rating points",
+        "Jaren Jackson Jr. (UTAH) [Starter] DAY-TO-DAY \u2014 \u22127 ELO",
+        "Trey Alexander (UTAH) [Starter] DAY-TO-DAY \u2014 \u22128 ELO",
+        "David Jones Garcia (SAS) [Starter] DAY-TO-DAY \u2014 \u22127 ELO",
+        "Jayden Quaintance (SAS) [Starter] OUT \u2014 \u221214 ELO",
+        "Home court: UTAH +100 ELO advantage"
+      ],
+      "explanation": "The model gives San Antonio Spurs a 78.5% win probability \u2014 a strong favorite over UTAH. San Antonio Spurs net rating: +0.0. Home court +100 ELO for UTAH."
     }
   ]
 }
