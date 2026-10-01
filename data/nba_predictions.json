@@ -1,6 +1,6 @@
 {
-  "updated": "2026-09-30T15:24:42.125631+00:00",
-  "season": 2026,
+  "updated": "2026-10-01T15:45:15.932091+00:00",
+  "season": 2027,
   "league": "nba",
   "is_offseason": false,
   "games": [
@@ -19,13 +19,13 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.5879,
-        "logistic_prob": 0.5251,
+        "ensemble_prob": 0.5996,
+        "logistic_prob": 0.5568,
         "elo_prob": 0.6205,
-        "xgb_prob": 0.5622,
-        "pyth_prob": 0.6208,
+        "xgb_prob": 0.5874,
+        "pyth_prob": 0.6559,
         "eff_prob": 0.6401,
-        "bayesian_prob": 0.643
+        "bayesian_prob": 0.6432
       },
       "market": {
         "home_prob": null,
@@ -35,18 +35,18 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6395,
-        "exp_margin": 4.18,
-        "prob_7plus": 0.4091,
-        "prob_14plus": 0.1933,
-        "prob_21plus": 0.0732,
+        "win_prob": 0.6416,
+        "exp_margin": 4.19,
+        "prob_7plus": 0.4086,
+        "prob_14plus": 0.2012,
+        "prob_21plus": 0.0792,
         "margin_percentiles": [
-          -15.0,
-          -10.8,
-          -3.6,
+          -15.4,
+          -11.1,
+          -3.7,
           4.2,
-          11.9,
-          19.0,
+          12.1,
+          19.4,
           23.4
         ]
       },
@@ -60,9 +60,9 @@
         "home_elo_bonus": 100
       },
       "h2h": {
-        "home_wins": 11,
-        "away_wins": 9,
-        "total_meetings": 20,
+        "home_wins": 9,
+        "away_wins": 7,
+        "total_meetings": 16,
         "last_n": [
           {
             "date": "2024-04-13",
@@ -117,22 +117,22 @@
         ]
       },
       "elo": {
-        "home": 1564.2,
-        "away": 1531.0,
-        "diff": 33.2
+        "home": 1563.9,
+        "away": 1530.7,
+        "diff": 33.1
       },
       "bayesian": {
-        "home_mu": 1799.2,
+        "home_mu": 1799.0,
         "home_sigma": 40.0,
-        "away_mu": 1795.6,
+        "away_mu": 1795.2,
         "away_sigma": 40.0,
         "home_band": [
-          1759.2,
-          1839.2
+          1759.0,
+          1839.0
         ],
         "away_band": [
-          1755.6,
-          1835.6
+          1755.2,
+          1835.2
         ]
       },
       "efficiency": {
@@ -255,7 +255,7 @@
         "Myron Gardner (MIA) [Starter] DAY-TO-DAY \u2014 \u22127 ELO",
         "Home court: TOR +100 ELO advantage"
       ],
-      "explanation": "The model gives Toronto Raptors a 58.8% win probability \u2014 a slight favorite over Miami Heat. Toronto Raptors net rating: +0.0. Home court +100 ELO for Toronto Raptors."
+      "explanation": "The model gives Toronto Raptors a 60.0% win probability \u2014 a slight favorite over Miami Heat. Toronto Raptors net rating: +0.0. Home court +100 ELO for Toronto Raptors."
     },
     {
       "game_id": "401914127",
@@ -272,13 +272,13 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.8255,
-        "logistic_prob": 0.6967,
+        "ensemble_prob": 0.883,
+        "logistic_prob": 0.8333,
         "elo_prob": 0.9285,
-        "xgb_prob": 0.6281,
-        "pyth_prob": 0.686,
+        "xgb_prob": 0.7836,
+        "pyth_prob": 0.703,
         "eff_prob": 0.6401,
-        "bayesian_prob": 0.6599
+        "bayesian_prob": 0.6606
       },
       "market": {
         "home_prob": null,
@@ -288,19 +288,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6585,
-        "exp_margin": 4.71,
-        "prob_7plus": 0.4255,
-        "prob_14plus": 0.2146,
-        "prob_21plus": 0.0843,
+        "win_prob": 0.6545,
+        "exp_margin": 4.56,
+        "prob_7plus": 0.4152,
+        "prob_14plus": 0.2081,
+        "prob_21plus": 0.0807,
         "margin_percentiles": [
-          -14.4,
-          -10.3,
-          -3.2,
-          4.7,
-          12.6,
-          19.7,
-          24.0
+          -15.0,
+          -10.4,
+          -3.3,
+          4.6,
+          12.4,
+          19.4,
+          24.1
         ]
       },
       "adjustments": {
@@ -314,8 +314,8 @@
       },
       "h2h": {
         "home_wins": 13,
-        "away_wins": 7,
-        "total_meetings": 20,
+        "away_wins": 3,
+        "total_meetings": 16,
         "last_n": [
           {
             "date": "2024-03-10",
@@ -370,22 +370,22 @@
         ]
       },
       "elo": {
-        "home": 1653.4,
-        "away": 1250.5,
+        "home": 1652.9,
+        "away": 1250.0,
         "diff": 402.9
       },
       "bayesian": {
-        "home_mu": 1798.9,
+        "home_mu": 1798.8,
         "home_sigma": 40.0,
-        "away_mu": 1782.4,
+        "away_mu": 1781.7,
         "away_sigma": 40.0,
         "home_band": [
-          1758.9,
-          1838.9
+          1758.8,
+          1838.8
         ],
         "away_band": [
-          1742.4,
-          1822.4
+          1741.7,
+          1821.7
         ]
       },
       "efficiency": {
@@ -465,7 +465,7 @@
         "Jaren Jackson Jr. (UTAH) [Starter] DAY-TO-DAY \u2014 \u22127 ELO",
         "Home court: DEN +100 ELO advantage"
       ],
-      "explanation": "The model gives Denver Nuggets a 82.5% win probability \u2014 a strong favorite over UTAH. Denver Nuggets net rating: +0.0. Home court +100 ELO for Denver Nuggets."
+      "explanation": "The model gives Denver Nuggets a 88.3% win probability \u2014 a strong favorite over UTAH. Denver Nuggets net rating: +0.0. Home court +100 ELO for Denver Nuggets."
     },
     {
       "game_id": "401918010",
@@ -482,11 +482,11 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.6115,
-        "logistic_prob": 0.4267,
+        "ensemble_prob": 0.5808,
+        "logistic_prob": 0.3955,
         "elo_prob": 0.6932,
-        "xgb_prob": 0.5926,
-        "pyth_prob": 0.5293,
+        "xgb_prob": 0.4402,
+        "pyth_prob": 0.5394,
         "eff_prob": 0.5,
         "bayesian_prob": 0.5015
       },
@@ -498,19 +498,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.4984,
-        "exp_margin": -0.13,
-        "prob_7plus": 0.2703,
-        "prob_14plus": 0.1131,
-        "prob_21plus": 0.0327,
+        "win_prob": 0.502,
+        "exp_margin": -0.11,
+        "prob_7plus": 0.2725,
+        "prob_14plus": 0.1147,
+        "prob_21plus": 0.0366,
         "margin_percentiles": [
-          -19.3,
-          -15.0,
-          -7.9,
-          -0.0,
-          7.7,
-          14.7,
-          18.7
+          -19.5,
+          -15.3,
+          -8.1,
+          0.1,
+          7.8,
+          15.0,
+          19.3
         ]
       },
       "adjustments": {
@@ -523,9 +523,9 @@
         "home_elo_bonus": 0
       },
       "h2h": {
-        "home_wins": 14,
-        "away_wins": 9,
-        "total_meetings": 23,
+        "home_wins": 13,
+        "away_wins": 6,
+        "total_meetings": 19,
         "last_n": [
           {
             "date": "2024-10-28",
@@ -580,22 +580,22 @@
         ]
       },
       "elo": {
-        "home": 1546.6,
-        "away": 1417.4,
+        "home": 1546.2,
+        "away": 1417.0,
         "diff": 129.2
       },
       "bayesian": {
-        "home_mu": 1799.4,
+        "home_mu": 1799.2,
         "home_sigma": 40.0,
-        "away_mu": 1798.4,
+        "away_mu": 1798.1,
         "away_sigma": 40.0,
         "home_band": [
-          1759.4,
-          1839.4
+          1759.2,
+          1839.2
         ],
         "away_band": [
-          1758.4,
-          1838.4
+          1758.1,
+          1838.1
         ]
       },
       "efficiency": {
@@ -733,7 +733,7 @@
         "Jimmy Butler III (GSW) [Starter] OUT \u2014 \u221214 ELO",
         "Moses Moody (GSW) [Starter] OUT \u2014 \u221215 ELO"
       ],
-      "explanation": "The model gives LA Clippers a 61.1% win probability \u2014 a moderate favorite over Golden State Warriors. LA Clippers net rating: +0.0."
+      "explanation": "The model gives LA Clippers a 58.1% win probability \u2014 a slight favorite over Golden State Warriors. LA Clippers net rating: +0.0."
     },
     {
       "game_id": "401898388",
@@ -750,13 +750,13 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.7512,
-        "logistic_prob": 0.5251,
-        "elo_prob": 0.904,
-        "xgb_prob": 0.5166,
-        "pyth_prob": 0.6531,
+        "ensemble_prob": 0.7681,
+        "logistic_prob": 0.5916,
+        "elo_prob": 0.9004,
+        "xgb_prob": 0.5334,
+        "pyth_prob": 0.7384,
         "eff_prob": 0.6401,
-        "bayesian_prob": 0.6483
+        "bayesian_prob": 0.6488
       },
       "market": {
         "home_prob": null,
@@ -766,19 +766,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6392,
-        "exp_margin": 4.15,
-        "prob_7plus": 0.4017,
-        "prob_14plus": 0.1974,
-        "prob_21plus": 0.0741,
+        "win_prob": 0.6486,
+        "exp_margin": 4.41,
+        "prob_7plus": 0.415,
+        "prob_14plus": 0.205,
+        "prob_21plus": 0.0782,
         "margin_percentiles": [
-          -15.3,
-          -10.6,
-          -3.8,
-          4.0,
-          12.0,
-          19.3,
-          23.4
+          -14.6,
+          -10.5,
+          -3.5,
+          4.5,
+          12.3,
+          19.4,
+          23.5
         ]
       },
       "adjustments": {
@@ -791,9 +791,9 @@
         "home_elo_bonus": 100
       },
       "h2h": {
-        "home_wins": 9,
+        "home_wins": 6,
         "away_wins": 4,
-        "total_meetings": 13,
+        "total_meetings": 10,
         "last_n": [
           {
             "date": "2022-12-13",
@@ -848,22 +848,22 @@
         ]
       },
       "elo": {
-        "home": 1563.4,
-        "away": 1244.1,
-        "diff": 319.3
+        "home": 1563.0,
+        "away": 1243.3,
+        "diff": 319.7
       },
       "bayesian": {
-        "home_mu": 1780.3,
+        "home_mu": 1780.1,
         "home_sigma": 40.0,
-        "away_mu": 1772.7,
+        "away_mu": 1772.1,
         "away_sigma": 40.0,
         "home_band": [
-          1740.3,
-          1820.3
+          1740.1,
+          1820.1
         ],
         "away_band": [
-          1732.7,
-          1812.7
+          1732.1,
+          1812.1
         ]
       },
       "efficiency": {
@@ -947,7 +947,7 @@
       },
       "injury_impact": {
         "home_elo_penalty": 38.0,
-        "away_elo_penalty": 51.5,
+        "away_elo_penalty": 44.0,
         "home_key_players_out": [
           {
             "player": "Henri Veesaar",
@@ -1020,13 +1020,6 @@
             "status": "Day-To-Day",
             "elo_impact": 7.0,
             "value_tier": "starter"
-          },
-          {
-            "player": "Kentavious Caldwell-Pope",
-            "position": "G",
-            "status": "Day-To-Day",
-            "elo_impact": 7.5,
-            "value_tier": "starter"
           }
         ],
         "home_star_count": 0,
@@ -1035,7 +1028,7 @@
         "away_star_stack_multiplier": 1.0
       },
       "prediction_drivers": [
-        "ELO advantage: ATL +319 rating points",
+        "ELO advantage: ATL +320 rating points",
         "Henri Veesaar (ATL) [Starter] OUT \u2014 \u221216 ELO",
         "Mouhamed Gueye (ATL) [Starter] DAY-TO-DAY \u2014 \u22127 ELO",
         "Keshon Gilbert (ATL) [Starter] DAY-TO-DAY \u2014 \u22128 ELO",
@@ -1044,7 +1037,7 @@
         "Scotty Pippen Jr. (MEM) [Starter] DAY-TO-DAY \u2014 \u22128 ELO",
         "Home court: ATL +100 ELO advantage"
       ],
-      "explanation": "The model gives Atlanta Hawks a 75.1% win probability \u2014 a strong favorite over Memphis Grizzlies. Atlanta Hawks net rating: +0.0. Home court +100 ELO for Atlanta Hawks."
+      "explanation": "The model gives Atlanta Hawks a 76.8% win probability \u2014 a strong favorite over Memphis Grizzlies. Atlanta Hawks net rating: +0.0. Home court +100 ELO for Atlanta Hawks."
     },
     {
       "game_id": "401908947",
@@ -1061,13 +1054,13 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.723,
-        "logistic_prob": 0.6047,
-        "elo_prob": 0.8204,
-        "xgb_prob": 0.5305,
-        "pyth_prob": 0.7227,
+        "ensemble_prob": 0.6974,
+        "logistic_prob": 0.5437,
+        "elo_prob": 0.82,
+        "xgb_prob": 0.4633,
+        "pyth_prob": 0.726,
         "eff_prob": 0.6401,
-        "bayesian_prob": 0.6428
+        "bayesian_prob": 0.643
       },
       "market": {
         "home_prob": null,
@@ -1077,19 +1070,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.641,
-        "exp_margin": 4.27,
-        "prob_7plus": 0.4099,
-        "prob_14plus": 0.2011,
-        "prob_21plus": 0.0771,
+        "win_prob": 0.6463,
+        "exp_margin": 4.25,
+        "prob_7plus": 0.4049,
+        "prob_14plus": 0.196,
+        "prob_21plus": 0.0761,
         "margin_percentiles": [
-          -14.9,
+          -14.7,
           -10.6,
           -3.6,
-          4.3,
-          12.1,
-          19.2,
-          23.6
+          4.2,
+          12.0,
+          19.0,
+          23.5
         ]
       },
       "adjustments": {
@@ -1103,8 +1096,8 @@
       },
       "h2h": {
         "home_wins": 3,
-        "away_wins": 10,
-        "total_meetings": 13,
+        "away_wins": 8,
+        "total_meetings": 11,
         "last_n": [
           {
             "date": "2023-02-05",
@@ -1159,22 +1152,22 @@
         ]
       },
       "elo": {
-        "home": 1695.2,
-        "away": 1530.0,
-        "diff": 165.2
+        "home": 1694.7,
+        "away": 1530.1,
+        "diff": 164.6
       },
       "bayesian": {
         "home_mu": 1795.1,
         "home_sigma": 40.0,
-        "away_mu": 1791.6,
+        "away_mu": 1791.4,
         "away_sigma": 40.0,
         "home_band": [
           1755.1,
           1835.1
         ],
         "away_band": [
-          1751.6,
-          1831.6
+          1751.4,
+          1831.4
         ]
       },
       "efficiency": {
@@ -1255,7 +1248,7 @@
         "Travel: away travels 1688 miles",
         "Home court: DET +100 ELO advantage"
       ],
-      "explanation": "The model gives Detroit Pistons a 72.3% win probability \u2014 a strong favorite over Phoenix Suns. Detroit Pistons net rating: +0.0. Home court +100 ELO for Detroit Pistons."
+      "explanation": "The model gives Detroit Pistons a 69.7% win probability \u2014 a moderate favorite over Phoenix Suns. Detroit Pistons net rating: +0.0. Home court +100 ELO for Detroit Pistons."
     },
     {
       "game_id": "401914101",
@@ -1272,13 +1265,13 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.3046,
-        "logistic_prob": 0.3661,
-        "elo_prob": 0.2421,
-        "xgb_prob": 0.4518,
-        "pyth_prob": 0.4868,
+        "ensemble_prob": 0.303,
+        "logistic_prob": 0.4194,
+        "elo_prob": 0.2257,
+        "xgb_prob": 0.4188,
+        "pyth_prob": 0.4884,
         "eff_prob": 0.6401,
-        "bayesian_prob": 0.6152
+        "bayesian_prob": 0.6151
       },
       "market": {
         "home_prob": null,
@@ -1288,19 +1281,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.611,
-        "exp_margin": 3.1,
-        "prob_7plus": 0.3699,
-        "prob_14plus": 0.1741,
-        "prob_21plus": 0.0605,
+        "win_prob": 0.6144,
+        "exp_margin": 3.37,
+        "prob_7plus": 0.3808,
+        "prob_14plus": 0.1805,
+        "prob_21plus": 0.0648,
         "margin_percentiles": [
-          -16.2,
-          -12.1,
-          -4.8,
-          3.2,
-          11.0,
-          18.0,
-          22.1
+          -16.0,
+          -11.5,
+          -4.4,
+          3.3,
+          11.3,
+          18.4,
+          22.6
         ]
       },
       "adjustments": {
@@ -1313,9 +1306,9 @@
         "home_elo_bonus": 100
       },
       "h2h": {
-        "home_wins": 9,
-        "away_wins": 23,
-        "total_meetings": 32,
+        "home_wins": 7,
+        "away_wins": 21,
+        "total_meetings": 28,
         "last_n": [
           {
             "date": "2025-10-02",
@@ -1370,18 +1363,18 @@
         ]
       },
       "elo": {
-        "home": 1567.9,
-        "away": 1832.8,
+        "home": 1567.5,
+        "away": 1832.4,
         "diff": -264.9
       },
       "bayesian": {
-        "home_mu": 1782.7,
+        "home_mu": 1782.6,
         "home_sigma": 40.0,
         "away_mu": 1799.9,
         "away_sigma": 40.0,
         "home_band": [
-          1742.7,
-          1822.7
+          1742.6,
+          1822.6
         ],
         "away_band": [
           1759.9,
@@ -1410,13 +1403,6 @@
         ],
         "away": [
           {
-            "player": "N'Faly Dante",
-            "status": "Out",
-            "position": "C",
-            "injury_description": "This is an expected move for New York. Dante was previously on an Exhibit 10 deal and is still on the mend from a January ACL surgery.",
-            "value_tier": "starter"
-          },
-          {
             "player": "Mohamed Diawara",
             "status": "Day-To-Day",
             "position": "F",
@@ -1427,7 +1413,7 @@
       },
       "injury_impact": {
         "home_elo_penalty": 8.0,
-        "away_elo_penalty": 23.0,
+        "away_elo_penalty": 7.0,
         "home_key_players_out": [
           {
             "player": "Adem Bona",
@@ -1438,13 +1424,6 @@
           }
         ],
         "away_key_players_out": [
-          {
-            "player": "N'Faly Dante",
-            "position": "C",
-            "status": "Out",
-            "elo_impact": 16.0,
-            "value_tier": "starter"
-          },
           {
             "player": "Mohamed Diawara",
             "position": "F",
@@ -1461,11 +1440,10 @@
       "prediction_drivers": [
         "ELO advantage: NYK +265 rating points",
         "Adem Bona (PHI) [Starter] DAY-TO-DAY \u2014 \u22128 ELO",
-        "N'Faly Dante (NYK) [Starter] OUT \u2014 \u221216 ELO",
         "Mohamed Diawara (NYK) [Starter] DAY-TO-DAY \u2014 \u22127 ELO",
         "Home court: PHI +100 ELO advantage"
       ],
-      "explanation": "The model gives New York Knicks a 69.5% win probability \u2014 a moderate favorite over Philadelphia 76ers. New York Knicks net rating: +0.0. Home court +100 ELO for Philadelphia 76ers."
+      "explanation": "The model gives New York Knicks a 69.7% win probability \u2014 a moderate favorite over Philadelphia 76ers. New York Knicks net rating: +0.0. Home court +100 ELO for Philadelphia 76ers."
     },
     {
       "game_id": "401914102",
@@ -1482,13 +1460,13 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.3557,
-        "logistic_prob": 0.5251,
+        "ensemble_prob": 0.336,
+        "logistic_prob": 0.4717,
         "elo_prob": 0.235,
-        "xgb_prob": 0.556,
-        "pyth_prob": 0.5464,
+        "xgb_prob": 0.5137,
+        "pyth_prob": 0.5048,
         "eff_prob": 0.6401,
-        "bayesian_prob": 0.6325
+        "bayesian_prob": 0.6317
       },
       "market": {
         "home_prob": null,
@@ -1498,17 +1476,17 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6312,
-        "exp_margin": 3.78,
-        "prob_7plus": 0.3921,
-        "prob_14plus": 0.1881,
-        "prob_21plus": 0.0719,
+        "win_prob": 0.623,
+        "exp_margin": 3.67,
+        "prob_7plus": 0.3854,
+        "prob_14plus": 0.1884,
+        "prob_21plus": 0.0702,
         "margin_percentiles": [
-          -15.6,
-          -11.3,
-          -4.1,
-          3.8,
-          11.6,
+          -15.8,
+          -11.4,
+          -4.2,
+          3.6,
+          11.5,
           18.8,
           23.2
         ]
@@ -1524,19 +1502,9 @@
       },
       "h2h": {
         "home_wins": 5,
-        "away_wins": 5,
-        "total_meetings": 10,
+        "away_wins": 3,
+        "total_meetings": 8,
         "last_n": [
-          {
-            "date": "2021-10-28",
-            "winner": "MIN",
-            "margin": 5
-          },
-          {
-            "date": "2022-03-19",
-            "winner": "MIN",
-            "margin": 19
-          },
           {
             "date": "2022-11-05",
             "winner": "MIL",
@@ -1580,22 +1548,22 @@
         ]
       },
       "elo": {
-        "home": 1345.3,
-        "away": 1613.8,
+        "home": 1344.9,
+        "away": 1613.3,
         "diff": -268.4
       },
       "bayesian": {
-        "home_mu": 1781.5,
+        "home_mu": 1780.8,
         "home_sigma": 40.0,
-        "away_mu": 1785.8,
+        "away_mu": 1785.7,
         "away_sigma": 40.0,
         "home_band": [
-          1741.5,
-          1821.5
+          1740.8,
+          1820.8
         ],
         "away_band": [
-          1745.8,
-          1825.8
+          1745.7,
+          1825.7
         ]
       },
       "efficiency": {
@@ -1660,7 +1628,7 @@
         "Donte DiVincenzo (MIN) [Starter] OUT \u2014 \u221215 ELO",
         "Home court: MIL +100 ELO advantage"
       ],
-      "explanation": "The model gives Minnesota Timberwolves a 64.4% win probability \u2014 a moderate favorite over Milwaukee Bucks. Minnesota Timberwolves net rating: +0.0. Home court +100 ELO for Milwaukee Bucks."
+      "explanation": "The model gives Minnesota Timberwolves a 66.4% win probability \u2014 a moderate favorite over Milwaukee Bucks. Minnesota Timberwolves net rating: +0.0. Home court +100 ELO for Milwaukee Bucks."
     },
     {
       "game_id": "401898716",
@@ -1677,13 +1645,13 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.315,
-        "logistic_prob": 0.5251,
+        "ensemble_prob": 0.2816,
+        "logistic_prob": 0.4271,
         "elo_prob": 0.1679,
-        "xgb_prob": 0.5531,
-        "pyth_prob": 0.5567,
+        "xgb_prob": 0.4939,
+        "pyth_prob": 0.4846,
         "eff_prob": 0.6401,
-        "bayesian_prob": 0.6298
+        "bayesian_prob": 0.629
       },
       "market": {
         "home_prob": null,
@@ -1693,19 +1661,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6201,
-        "exp_margin": 3.67,
-        "prob_7plus": 0.392,
-        "prob_14plus": 0.192,
-        "prob_21plus": 0.072,
+        "win_prob": 0.6296,
+        "exp_margin": 3.77,
+        "prob_7plus": 0.3929,
+        "prob_14plus": 0.1954,
+        "prob_21plus": 0.0713,
         "margin_percentiles": [
-          -15.6,
-          -11.4,
-          -4.4,
-          3.7,
-          11.7,
-          18.7,
-          23.1
+          -15.7,
+          -11.7,
+          -4.1,
+          3.9,
+          11.8,
+          18.9,
+          23.2
         ]
       },
       "adjustments": {
@@ -1718,9 +1686,9 @@
         "home_elo_bonus": 100
       },
       "h2h": {
-        "home_wins": 14,
-        "away_wins": 11,
-        "total_meetings": 25,
+        "home_wins": 11,
+        "away_wins": 9,
+        "total_meetings": 20,
         "last_n": [
           {
             "date": "2024-03-14",
@@ -1775,22 +1743,22 @@
         ]
       },
       "elo": {
-        "home": 1306.5,
-        "away": 1634.8,
+        "home": 1306.1,
+        "away": 1634.4,
         "diff": -328.3
       },
       "bayesian": {
-        "home_mu": 1787.2,
+        "home_mu": 1786.5,
         "home_sigma": 40.0,
-        "away_mu": 1793.6,
+        "away_mu": 1793.4,
         "away_sigma": 40.0,
         "home_band": [
-          1747.2,
-          1827.2
+          1746.5,
+          1826.5
         ],
         "away_band": [
-          1753.6,
-          1833.6
+          1753.4,
+          1833.4
         ]
       },
       "efficiency": {
@@ -1838,7 +1806,7 @@
         "Drew Eubanks (SAC) [Starter] DAY-TO-DAY \u2014 \u22127 ELO",
         "Home court: SAC +100 ELO advantage"
       ],
-      "explanation": "The model gives Los Angeles Lakers a 68.5% win probability \u2014 a moderate favorite over Sacramento Kings. Los Angeles Lakers net rating: +0.0. Home court +100 ELO for Sacramento Kings."
+      "explanation": "The model gives Los Angeles Lakers a 71.8% win probability \u2014 a strong favorite over Sacramento Kings. Los Angeles Lakers net rating: +0.0. Home court +100 ELO for Sacramento Kings."
     },
     {
       "game_id": "401901820",
@@ -1855,13 +1823,13 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.7876,
-        "logistic_prob": 0.6047,
+        "ensemble_prob": 0.811,
+        "logistic_prob": 0.7059,
         "elo_prob": 0.9303,
-        "xgb_prob": 0.5212,
-        "pyth_prob": 0.7239,
+        "xgb_prob": 0.5087,
+        "pyth_prob": 0.8113,
         "eff_prob": 0.6401,
-        "bayesian_prob": 0.6656
+        "bayesian_prob": 0.6663
       },
       "market": {
         "home_prob": null,
@@ -1871,19 +1839,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6617,
-        "exp_margin": 4.83,
-        "prob_7plus": 0.4237,
-        "prob_14plus": 0.2168,
-        "prob_21plus": 0.0853,
+        "win_prob": 0.6575,
+        "exp_margin": 4.79,
+        "prob_7plus": 0.4273,
+        "prob_14plus": 0.2174,
+        "prob_21plus": 0.0828,
         "margin_percentiles": [
-          -14.4,
-          -10.2,
-          -3.1,
+          -14.3,
+          -10.4,
+          -3.2,
           4.8,
-          12.7,
-          20.1,
-          23.9
+          12.8,
+          19.9,
+          24.1
         ]
       },
       "adjustments": {
@@ -1896,9 +1864,9 @@
         "home_elo_bonus": 100
       },
       "h2h": {
-        "home_wins": 7,
-        "away_wins": 10,
-        "total_meetings": 17,
+        "home_wins": 5,
+        "away_wins": 9,
+        "total_meetings": 14,
         "last_n": [
           {
             "date": "2023-10-30",
@@ -1953,22 +1921,22 @@
         ]
       },
       "elo": {
-        "home": 1651.1,
-        "away": 1246.6,
+        "home": 1650.7,
+        "away": 1246.1,
         "diff": 404.6
       },
       "bayesian": {
-        "home_mu": 1794.3,
+        "home_mu": 1794.1,
         "home_sigma": 40.0,
-        "away_mu": 1773.4,
+        "away_mu": 1772.6,
         "away_sigma": 40.0,
         "home_band": [
-          1754.3,
-          1834.3
+          1754.1,
+          1834.1
         ],
         "away_band": [
-          1733.4,
-          1813.4
+          1732.6,
+          1812.6
         ]
       },
       "efficiency": {
@@ -2063,7 +2031,7 @@
         "Mikel Brown Jr. (BKN) [Starter] DAY-TO-DAY \u2014 \u22128 ELO",
         "Home court: CHA +100 ELO advantage"
       ],
-      "explanation": "The model gives Charlotte Hornets a 78.8% win probability \u2014 a strong favorite over Brooklyn Nets. Charlotte Hornets net rating: +0.0. Home court +100 ELO for Charlotte Hornets."
+      "explanation": "The model gives Charlotte Hornets a 81.1% win probability \u2014 a strong favorite over Brooklyn Nets. Charlotte Hornets net rating: +0.0. Home court +100 ELO for Charlotte Hornets."
     },
     {
       "game_id": "401898389",
@@ -2080,13 +2048,13 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.8242,
-        "logistic_prob": 0.6967,
+        "ensemble_prob": 0.7995,
+        "logistic_prob": 0.6515,
         "elo_prob": 0.9311,
-        "xgb_prob": 0.609,
-        "pyth_prob": 0.8446,
+        "xgb_prob": 0.5197,
+        "pyth_prob": 0.8163,
         "eff_prob": 0.6401,
-        "bayesian_prob": 0.6403
+        "bayesian_prob": 0.6409
       },
       "market": {
         "home_prob": null,
@@ -2096,19 +2064,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6349,
-        "exp_margin": 4.0,
-        "prob_7plus": 0.3972,
-        "prob_14plus": 0.1973,
-        "prob_21plus": 0.0738,
+        "win_prob": 0.637,
+        "exp_margin": 3.96,
+        "prob_7plus": 0.3977,
+        "prob_14plus": 0.1962,
+        "prob_21plus": 0.0733,
         "margin_percentiles": [
-          -15.0,
-          -10.9,
-          -3.8,
-          3.9,
-          11.8,
-          19.1,
-          23.4
+          -15.6,
+          -11.3,
+          -4.0,
+          4.1,
+          11.9,
+          18.9,
+          23.5
         ]
       },
       "adjustments": {
@@ -2121,9 +2089,9 @@
         "home_elo_bonus": 100
       },
       "h2h": {
-        "home_wins": 17,
-        "away_wins": 5,
-        "total_meetings": 22,
+        "home_wins": 15,
+        "away_wins": 4,
+        "total_meetings": 19,
         "last_n": [
           {
             "date": "2024-04-25",
@@ -2178,22 +2146,22 @@
         ]
       },
       "elo": {
-        "home": 1813.7,
-        "away": 1406.9,
-        "diff": 406.7
+        "home": 1813.3,
+        "away": 1406.5,
+        "diff": 406.8
       },
       "bayesian": {
         "home_mu": 1795.3,
         "home_sigma": 40.0,
-        "away_mu": 1793.8,
+        "away_mu": 1793.3,
         "away_sigma": 40.0,
         "home_band": [
           1755.3,
           1835.3
         ],
         "away_band": [
-          1753.8,
-          1833.8
+          1753.3,
+          1833.3
         ]
       },
       "efficiency": {
@@ -2346,7 +2314,7 @@
         "Trey Alexander (NOP) [Starter] DAY-TO-DAY \u2014 \u22128 ELO",
         "Home court: OKC +100 ELO advantage"
       ],
-      "explanation": "The model gives Oklahoma City Thunder a 82.4% win probability \u2014 a strong favorite over New Orleans Pelicans. Oklahoma City Thunder net rating: +0.0. Home court +100 ELO for Oklahoma City Thunder."
+      "explanation": "The model gives Oklahoma City Thunder a 79.9% win probability \u2014 a strong favorite over New Orleans Pelicans. Oklahoma City Thunder net rating: +0.0. Home court +100 ELO for Oklahoma City Thunder."
     },
     {
       "game_id": "401914128",
@@ -2363,13 +2331,13 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.2396,
-        "logistic_prob": 0.3661,
+        "ensemble_prob": 0.1784,
+        "logistic_prob": 0.1739,
         "elo_prob": 0.1204,
-        "xgb_prob": 0.5057,
-        "pyth_prob": 0.5914,
+        "xgb_prob": 0.4177,
+        "pyth_prob": 0.572,
         "eff_prob": 0.6401,
-        "bayesian_prob": 0.6161
+        "bayesian_prob": 0.6153
       },
       "market": {
         "home_prob": null,
@@ -2379,19 +2347,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6165,
-        "exp_margin": 3.56,
-        "prob_7plus": 0.3838,
-        "prob_14plus": 0.1898,
-        "prob_21plus": 0.0711,
+        "win_prob": 0.6158,
+        "exp_margin": 3.37,
+        "prob_7plus": 0.3804,
+        "prob_14plus": 0.1815,
+        "prob_21plus": 0.0613,
         "margin_percentiles": [
-          -15.9,
-          -11.5,
-          -4.3,
+          -15.7,
+          -11.4,
+          -4.4,
           3.4,
-          11.5,
-          18.8,
-          23.0
+          11.3,
+          18.2,
+          22.3
         ]
       },
       "adjustments": {
@@ -2404,9 +2372,9 @@
         "home_elo_bonus": 100
       },
       "h2h": {
-        "home_wins": 7,
+        "home_wins": 3,
         "away_wins": 13,
-        "total_meetings": 20,
+        "total_meetings": 16,
         "last_n": [
           {
             "date": "2024-03-10",
@@ -2461,22 +2429,22 @@
         ]
       },
       "elo": {
-        "home": 1250.5,
-        "away": 1653.4,
+        "home": 1250.0,
+        "away": 1652.9,
         "diff": -402.9
       },
       "bayesian": {
-        "home_mu": 1782.4,
+        "home_mu": 1781.7,
         "home_sigma": 40.0,
-        "away_mu": 1798.9,
+        "away_mu": 1798.8,
         "away_sigma": 40.0,
         "home_band": [
-          1742.4,
-          1822.4
+          1741.7,
+          1821.7
         ],
         "away_band": [
-          1758.9,
-          1838.9
+          1758.8,
+          1838.8
         ]
       },
       "efficiency": {
@@ -2556,7 +2524,7 @@
         "Trevon Brazile (DEN) [Starter] DAY-TO-DAY \u2014 \u22127 ELO",
         "Home court: UTAH +100 ELO advantage"
       ],
-      "explanation": "The model gives Denver Nuggets a 76.0% win probability \u2014 a strong favorite over UTAH. Denver Nuggets net rating: +0.0. Home court +100 ELO for UTAH."
+      "explanation": "The model gives Denver Nuggets a 82.2% win probability \u2014 a strong favorite over UTAH. Denver Nuggets net rating: +0.0. Home court +100 ELO for UTAH."
     },
     {
       "game_id": "401898390",
@@ -2573,13 +2541,13 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.3931,
-        "logistic_prob": 0.6497,
+        "ensemble_prob": 0.3705,
+        "logistic_prob": 0.5916,
         "elo_prob": 0.2356,
-        "xgb_prob": 0.5956,
-        "pyth_prob": 0.6633,
+        "xgb_prob": 0.5418,
+        "pyth_prob": 0.625,
         "eff_prob": 0.6401,
-        "bayesian_prob": 0.6446
+        "bayesian_prob": 0.6445
       },
       "market": {
         "home_prob": null,
@@ -2589,19 +2557,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6411,
-        "exp_margin": 4.26,
-        "prob_7plus": 0.4048,
-        "prob_14plus": 0.204,
-        "prob_21plus": 0.0774,
+        "win_prob": 0.634,
+        "exp_margin": 4.09,
+        "prob_7plus": 0.4003,
+        "prob_14plus": 0.1995,
+        "prob_21plus": 0.0747,
         "margin_percentiles": [
-          -14.6,
-          -10.6,
-          -3.7,
-          4.2,
+          -15.2,
+          -11.0,
+          -3.9,
+          4.0,
           12.1,
-          19.3,
-          23.6
+          19.2,
+          23.4
         ]
       },
       "adjustments": {
@@ -2614,9 +2582,9 @@
         "home_elo_bonus": 100
       },
       "h2h": {
-        "home_wins": 18,
-        "away_wins": 17,
-        "total_meetings": 35,
+        "home_wins": 13,
+        "away_wins": 16,
+        "total_meetings": 29,
         "last_n": [
           {
             "date": "2024-12-26",
@@ -2671,22 +2639,22 @@
         ]
       },
       "elo": {
-        "home": 1417.4,
-        "away": 1634.8,
+        "home": 1417.0,
+        "away": 1634.4,
         "diff": -217.4
       },
       "bayesian": {
-        "home_mu": 1798.4,
+        "home_mu": 1798.1,
         "home_sigma": 40.0,
-        "away_mu": 1793.6,
+        "away_mu": 1793.4,
         "away_sigma": 40.0,
         "home_band": [
-          1758.4,
-          1838.4
+          1758.1,
+          1838.1
         ],
         "away_band": [
-          1753.6,
-          1833.6
+          1753.4,
+          1833.4
         ]
       },
       "efficiency": {
@@ -2778,7 +2746,7 @@
         "Moses Moody (GSW) [Starter] OUT \u2014 \u221215 ELO",
         "Home court: GSW +100 ELO advantage"
       ],
-      "explanation": "The model gives Los Angeles Lakers a 60.7% win probability \u2014 a moderate favorite over Golden State Warriors. Los Angeles Lakers net rating: +0.0. Home court +100 ELO for Golden State Warriors."
+      "explanation": "The model gives Los Angeles Lakers a 63.0% win probability \u2014 a moderate favorite over Golden State Warriors. Los Angeles Lakers net rating: +0.0. Home court +100 ELO for Golden State Warriors."
     },
     {
       "game_id": "401914123",
@@ -2795,13 +2763,13 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.2497,
-        "logistic_prob": 0.3535,
-        "elo_prob": 0.1311,
-        "xgb_prob": 0.5507,
-        "pyth_prob": 0.4014,
+        "ensemble_prob": 0.1767,
+        "logistic_prob": 0.1739,
+        "elo_prob": 0.1312,
+        "xgb_prob": 0.3635,
+        "pyth_prob": 0.3366,
         "eff_prob": 0.5,
-        "bayesian_prob": 0.5159
+        "bayesian_prob": 0.5153
       },
       "market": {
         "home_prob": null,
@@ -2811,19 +2779,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.5172,
-        "exp_margin": 0.44,
-        "prob_7plus": 0.2884,
-        "prob_14plus": 0.1225,
-        "prob_21plus": 0.04,
+        "win_prob": 0.5116,
+        "exp_margin": 0.38,
+        "prob_7plus": 0.2868,
+        "prob_14plus": 0.1197,
+        "prob_21plus": 0.0395,
         "margin_percentiles": [
-          -18.9,
+          -18.8,
           -14.6,
           -7.5,
-          0.5,
+          0.4,
           8.4,
-          15.5,
-          19.7
+          15.0,
+          19.6
         ]
       },
       "adjustments": {
@@ -2837,14 +2805,9 @@
       },
       "h2h": {
         "home_wins": 3,
-        "away_wins": 8,
-        "total_meetings": 11,
+        "away_wins": 6,
+        "total_meetings": 9,
         "last_n": [
-          {
-            "date": "2022-02-13",
-            "winner": "MIN",
-            "margin": 9
-          },
           {
             "date": "2022-11-24",
             "winner": "MIN",
@@ -2893,22 +2856,22 @@
         ]
       },
       "elo": {
-        "home": 1275.1,
-        "away": 1613.8,
+        "home": 1274.7,
+        "away": 1613.3,
         "diff": -338.6
       },
       "bayesian": {
-        "home_mu": 1797.1,
+        "home_mu": 1796.6,
         "home_sigma": 40.0,
-        "away_mu": 1785.8,
+        "away_mu": 1785.7,
         "away_sigma": 40.0,
         "home_band": [
-          1757.1,
-          1837.1
+          1756.6,
+          1836.6
         ],
         "away_band": [
-          1745.8,
-          1825.8
+          1745.7,
+          1825.7
         ]
       },
       "efficiency": {
@@ -2972,7 +2935,7 @@
         "Johnny Furphy (IND) [Starter] OUT \u2014 \u221215 ELO",
         "Donte DiVincenzo (MIN) [Starter] OUT \u2014 \u221215 ELO"
       ],
-      "explanation": "The model gives Minnesota Timberwolves a 75.0% win probability \u2014 a strong favorite over Indiana Pacers. Minnesota Timberwolves net rating: +0.0."
+      "explanation": "The model gives Minnesota Timberwolves a 82.3% win probability \u2014 a strong favorite over Indiana Pacers. Minnesota Timberwolves net rating: +0.0."
     },
     {
       "game_id": "401898391",
@@ -2989,13 +2952,13 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.3243,
-        "logistic_prob": 0.6047,
-        "elo_prob": 0.1467,
-        "xgb_prob": 0.5668,
-        "pyth_prob": 0.6146,
+        "ensemble_prob": 0.318,
+        "logistic_prob": 0.5437,
+        "elo_prob": 0.1634,
+        "xgb_prob": 0.5603,
+        "pyth_prob": 0.5238,
         "eff_prob": 0.6401,
-        "bayesian_prob": 0.6087
+        "bayesian_prob": 0.608
       },
       "market": {
         "home_prob": null,
@@ -3005,19 +2968,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6077,
-        "exp_margin": 3.19,
-        "prob_7plus": 0.3698,
-        "prob_14plus": 0.1787,
-        "prob_21plus": 0.0613,
+        "win_prob": 0.6014,
+        "exp_margin": 3.04,
+        "prob_7plus": 0.3672,
+        "prob_14plus": 0.175,
+        "prob_21plus": 0.0595,
         "margin_percentiles": [
-          -15.8,
-          -11.7,
-          -4.7,
-          3.2,
-          11.2,
-          18.3,
-          22.1
+          -16.2,
+          -11.8,
+          -4.8,
+          3.0,
+          11.0,
+          17.8,
+          22.2
         ]
       },
       "adjustments": {
@@ -3030,9 +2993,9 @@
         "home_elo_bonus": 100
       },
       "h2h": {
-        "home_wins": 9,
+        "home_wins": 7,
         "away_wins": 3,
-        "total_meetings": 12,
+        "total_meetings": 10,
         "last_n": [
           {
             "date": "2022-10-04",
@@ -3087,22 +3050,22 @@
         ]
       },
       "elo": {
-        "home": 1244.1,
-        "away": 1583.0,
+        "home": 1243.3,
+        "away": 1582.2,
         "diff": -338.9
       },
       "bayesian": {
-        "home_mu": 1772.7,
+        "home_mu": 1772.1,
         "home_sigma": 40.0,
-        "away_mu": 1794.7,
+        "away_mu": 1794.5,
         "away_sigma": 40.0,
         "home_band": [
-          1732.7,
-          1812.7
+          1732.1,
+          1812.1
         ],
         "away_band": [
-          1754.7,
-          1834.7
+          1754.5,
+          1834.5
         ]
       },
       "efficiency": {
@@ -3155,6 +3118,20 @@
         ],
         "away": [
           {
+            "player": "Noah Penda",
+            "status": "Day-To-Day",
+            "position": "F",
+            "injury_description": "There aren't many details yet, but it sounds like a minor issue that the Magic will handle carefully. It's unclear if this will linger into the preseason. Orlando's first exhibition is scheduled for Oct. 7.",
+            "value_tier": "starter"
+          },
+          {
+            "player": "Anthony Black",
+            "status": "Day-To-Day",
+            "position": "G",
+            "injury_description": "Black is being held out of practices as a precaution, and it remains to be seen if this will impact Black's availability for the start of preseason. At this point, it's hard to imagine this minor setback jeopardizing his status for Opening Night.",
+            "value_tier": "starter"
+          },
+          {
             "player": "Izaiyah Nelson",
             "status": "Out",
             "position": "F",
@@ -3171,8 +3148,8 @@
         ]
       },
       "injury_impact": {
-        "home_elo_penalty": 51.5,
-        "away_elo_penalty": 21.0,
+        "home_elo_penalty": 44.0,
+        "away_elo_penalty": 35.5,
         "home_key_players_out": [
           {
             "player": "Santi Aldama",
@@ -3215,16 +3192,23 @@
             "status": "Day-To-Day",
             "elo_impact": 7.0,
             "value_tier": "starter"
+          }
+        ],
+        "away_key_players_out": [
+          {
+            "player": "Noah Penda",
+            "position": "F",
+            "status": "Day-To-Day",
+            "elo_impact": 7.0,
+            "value_tier": "starter"
           },
           {
-            "player": "Kentavious Caldwell-Pope",
+            "player": "Anthony Black",
             "position": "G",
             "status": "Day-To-Day",
             "elo_impact": 7.5,
             "value_tier": "starter"
-          }
-        ],
-        "away_key_players_out": [
+          },
           {
             "player": "Izaiyah Nelson",
             "position": "F",
@@ -3250,11 +3234,12 @@
         "Santi Aldama (MEM) [Starter] DAY-TO-DAY \u2014 \u22127 ELO",
         "Zach Edey (MEM) [Starter] DAY-TO-DAY \u2014 \u22128 ELO",
         "Scotty Pippen Jr. (MEM) [Starter] DAY-TO-DAY \u2014 \u22128 ELO",
+        "Noah Penda (ORL) [Starter] DAY-TO-DAY \u2014 \u22127 ELO",
+        "Anthony Black (ORL) [Starter] DAY-TO-DAY \u2014 \u22128 ELO",
         "Izaiyah Nelson (ORL) [Starter] OUT \u2014 \u221214 ELO",
-        "Jonathan Isaac (ORL) [Starter] DAY-TO-DAY \u2014 \u22127 ELO",
         "Home court: MEM +100 ELO advantage"
       ],
-      "explanation": "The model gives Orlando Magic a 67.6% win probability \u2014 a moderate favorite over Memphis Grizzlies. Orlando Magic net rating: +0.0. Home court +100 ELO for Memphis Grizzlies."
+      "explanation": "The model gives Orlando Magic a 68.2% win probability \u2014 a moderate favorite over Memphis Grizzlies. Orlando Magic net rating: +0.0. Home court +100 ELO for Memphis Grizzlies."
     },
     {
       "game_id": "401908620",
@@ -3271,13 +3256,13 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.8242,
-        "logistic_prob": 0.6897,
-        "elo_prob": 0.9473,
-        "xgb_prob": 0.5556,
-        "pyth_prob": 0.8009,
+        "ensemble_prob": 0.8262,
+        "logistic_prob": 0.7059,
+        "elo_prob": 0.9474,
+        "xgb_prob": 0.5418,
+        "pyth_prob": 0.8306,
         "eff_prob": 0.6401,
-        "bayesian_prob": 0.6564
+        "bayesian_prob": 0.6572
       },
       "market": {
         "home_prob": null,
@@ -3287,19 +3272,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6478,
-        "exp_margin": 4.4,
-        "prob_7plus": 0.4088,
-        "prob_14plus": 0.2062,
-        "prob_21plus": 0.0753,
+        "win_prob": 0.6445,
+        "exp_margin": 4.48,
+        "prob_7plus": 0.415,
+        "prob_14plus": 0.2068,
+        "prob_21plus": 0.0797,
         "margin_percentiles": [
           -14.5,
-          -10.4,
-          -3.5,
+          -10.5,
+          -3.6,
           4.3,
-          12.3,
-          19.2,
-          23.4
+          12.5,
+          19.6,
+          23.7
         ]
       },
       "adjustments": {
@@ -3313,8 +3298,8 @@
       },
       "h2h": {
         "home_wins": 6,
-        "away_wins": 8,
-        "total_meetings": 14,
+        "away_wins": 5,
+        "total_meetings": 11,
         "last_n": [
           {
             "date": "2022-11-10",
@@ -3369,22 +3354,22 @@
         ]
       },
       "elo": {
-        "home": 1813.7,
-        "away": 1345.3,
-        "diff": 468.3
+        "home": 1813.3,
+        "away": 1344.9,
+        "diff": 468.4
       },
       "bayesian": {
         "home_mu": 1795.3,
         "home_sigma": 40.0,
-        "away_mu": 1781.5,
+        "away_mu": 1780.8,
         "away_sigma": 40.0,
         "home_band": [
           1755.3,
           1835.3
         ],
         "away_band": [
-          1741.5,
-          1821.5
+          1740.8,
+          1820.8
         ]
       },
       "efficiency": {
@@ -3507,7 +3492,7 @@
         "Kevin Porter Jr. (MIL) [Starter] DAY-TO-DAY \u2014 \u22128 ELO",
         "Home court: OKC +100 ELO advantage"
       ],
-      "explanation": "The model gives Oklahoma City Thunder a 82.4% win probability \u2014 a strong favorite over Milwaukee Bucks. Oklahoma City Thunder net rating: +0.0. Home court +100 ELO for Oklahoma City Thunder."
+      "explanation": "The model gives Oklahoma City Thunder a 82.6% win probability \u2014 a strong favorite over Milwaukee Bucks. Oklahoma City Thunder net rating: +0.0. Home court +100 ELO for Oklahoma City Thunder."
     },
     {
       "game_id": "401908939",
@@ -3524,13 +3509,13 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.4193,
-        "logistic_prob": 0.5251,
-        "elo_prob": 0.3404,
-        "xgb_prob": 0.5582,
-        "pyth_prob": 0.6035,
+        "ensemble_prob": 0.3867,
+        "logistic_prob": 0.4194,
+        "elo_prob": 0.3399,
+        "xgb_prob": 0.5198,
+        "pyth_prob": 0.5449,
         "eff_prob": 0.6401,
-        "bayesian_prob": 0.6329
+        "bayesian_prob": 0.6325
       },
       "market": {
         "home_prob": null,
@@ -3540,18 +3525,18 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.626,
-        "exp_margin": 3.7,
-        "prob_7plus": 0.3879,
-        "prob_14plus": 0.1872,
-        "prob_21plus": 0.0718,
+        "win_prob": 0.6313,
+        "exp_margin": 3.87,
+        "prob_7plus": 0.3917,
+        "prob_14plus": 0.1878,
+        "prob_21plus": 0.0695,
         "margin_percentiles": [
-          -16.0,
-          -11.5,
-          -4.2,
-          3.6,
-          11.6,
-          19.0,
+          -15.3,
+          -11.2,
+          -3.9,
+          3.9,
+          11.7,
+          18.7,
           23.1
         ]
       },
@@ -3566,19 +3551,9 @@
       },
       "h2h": {
         "home_wins": 1,
-        "away_wins": 9,
-        "total_meetings": 10,
+        "away_wins": 7,
+        "total_meetings": 8,
         "last_n": [
-          {
-            "date": "2022-02-08",
-            "winner": "PHX",
-            "margin": 3
-          },
-          {
-            "date": "2022-03-19",
-            "winner": "PHX",
-            "margin": 27
-          },
           {
             "date": "2022-12-01",
             "winner": "PHX",
@@ -3622,22 +3597,22 @@
         ]
       },
       "elo": {
-        "home": 1320.1,
-        "away": 1530.0,
-        "diff": -209.9
+        "home": 1319.7,
+        "away": 1530.1,
+        "diff": -210.4
       },
       "bayesian": {
-        "home_mu": 1787.7,
+        "home_mu": 1787.2,
         "home_sigma": 40.0,
-        "away_mu": 1791.6,
+        "away_mu": 1791.4,
         "away_sigma": 40.0,
         "home_band": [
-          1747.7,
-          1827.7
+          1747.2,
+          1827.2
         ],
         "away_band": [
-          1751.6,
-          1831.6
+          1751.4,
+          1831.4
         ]
       },
       "efficiency": {
@@ -3717,7 +3692,7 @@
         "CJ Huntley (PHX) [Starter] DAY-TO-DAY \u2014 \u22127 ELO",
         "Home court: CHI +100 ELO advantage"
       ],
-      "explanation": "The model gives Phoenix Suns a 58.1% win probability \u2014 a slight favorite over Chicago Bulls. Phoenix Suns net rating: +0.0. Home court +100 ELO for Chicago Bulls."
+      "explanation": "The model gives Phoenix Suns a 61.3% win probability \u2014 a moderate favorite over Chicago Bulls. Phoenix Suns net rating: +0.0. Home court +100 ELO for Chicago Bulls."
     },
     {
       "game_id": "401914129",
@@ -3734,11 +3709,11 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.6561,
-        "logistic_prob": 0.4508,
+        "ensemble_prob": 0.6726,
+        "logistic_prob": 0.5437,
         "elo_prob": 0.7736,
-        "xgb_prob": 0.5284,
-        "pyth_prob": 0.5872,
+        "xgb_prob": 0.4832,
+        "pyth_prob": 0.6319,
         "eff_prob": 0.6401,
         "bayesian_prob": 0.6373
       },
@@ -3750,19 +3725,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6335,
-        "exp_margin": 3.96,
-        "prob_7plus": 0.402,
-        "prob_14plus": 0.1962,
-        "prob_21plus": 0.0702,
+        "win_prob": 0.6295,
+        "exp_margin": 3.82,
+        "prob_7plus": 0.3876,
+        "prob_14plus": 0.1903,
+        "prob_21plus": 0.0655,
         "margin_percentiles": [
-          -15.5,
-          -11.1,
+          -15.2,
+          -11.0,
           -3.9,
-          4.0,
-          11.9,
-          18.8,
-          22.9
+          3.8,
+          11.7,
+          18.5,
+          22.7
         ]
       },
       "adjustments": {
@@ -3776,8 +3751,8 @@
       },
       "h2h": {
         "home_wins": 4,
-        "away_wins": 19,
-        "total_meetings": 23,
+        "away_wins": 14,
+        "total_meetings": 18,
         "last_n": [
           {
             "date": "2024-04-12",
@@ -3832,22 +3807,22 @@
         ]
       },
       "elo": {
-        "home": 1549.2,
-        "away": 1417.4,
+        "home": 1548.8,
+        "away": 1417.0,
         "diff": 131.8
       },
       "bayesian": {
-        "home_mu": 1797.7,
+        "home_mu": 1797.5,
         "home_sigma": 40.0,
-        "away_mu": 1798.4,
+        "away_mu": 1798.1,
         "away_sigma": 40.0,
         "home_band": [
-          1757.7,
-          1837.7
+          1757.5,
+          1837.5
         ],
         "away_band": [
-          1758.4,
-          1838.4
+          1758.1,
+          1838.1
         ]
       },
       "efficiency": {
@@ -3971,7 +3946,7 @@
         "Moses Moody (GSW) [Starter] OUT \u2014 \u221215 ELO",
         "Home court: POR +100 ELO advantage"
       ],
-      "explanation": "The model gives Portland Trail Blazers a 65.6% win probability \u2014 a moderate favorite over Golden State Warriors. Portland Trail Blazers net rating: +0.0. Home court +100 ELO for Portland Trail Blazers."
+      "explanation": "The model gives Portland Trail Blazers a 67.3% win probability \u2014 a moderate favorite over Golden State Warriors. Portland Trail Blazers net rating: +0.0. Home court +100 ELO for Portland Trail Blazers."
     },
     {
       "game_id": "401898392",
@@ -3988,11 +3963,11 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.5141,
-        "logistic_prob": 0.5251,
-        "elo_prob": 0.4983,
-        "xgb_prob": 0.5593,
-        "pyth_prob": 0.5972,
+        "ensemble_prob": 0.498,
+        "logistic_prob": 0.4717,
+        "elo_prob": 0.4986,
+        "xgb_prob": 0.5398,
+        "pyth_prob": 0.5597,
         "eff_prob": 0.6401,
         "bayesian_prob": 0.628
       },
@@ -4004,19 +3979,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6284,
-        "exp_margin": 3.76,
-        "prob_7plus": 0.3922,
-        "prob_14plus": 0.1858,
-        "prob_21plus": 0.0715,
+        "win_prob": 0.6297,
+        "exp_margin": 3.86,
+        "prob_7plus": 0.3951,
+        "prob_14plus": 0.1946,
+        "prob_21plus": 0.0717,
         "margin_percentiles": [
-          -15.6,
-          -11.3,
+          -15.7,
+          -11.4,
           -4.0,
-          3.7,
-          11.5,
+          3.9,
+          11.9,
           18.8,
-          23.3
+          23.1
         ]
       },
       "adjustments": {
@@ -4029,9 +4004,9 @@
         "home_elo_bonus": 100
       },
       "h2h": {
-        "home_wins": 8,
-        "away_wins": 15,
-        "total_meetings": 23,
+        "home_wins": 7,
+        "away_wins": 13,
+        "total_meetings": 20,
         "last_n": [
           {
             "date": "2024-05-13",
@@ -4086,22 +4061,22 @@
         ]
       },
       "elo": {
-        "home": 1629.5,
-        "away": 1684.7,
-        "diff": -55.1
+        "home": 1629.3,
+        "away": 1684.2,
+        "diff": -55.0
       },
       "bayesian": {
-        "home_mu": 1791.9,
+        "home_mu": 1791.8,
         "home_sigma": 40.0,
-        "away_mu": 1799.6,
+        "away_mu": 1799.5,
         "away_sigma": 40.0,
         "home_band": [
-          1751.9,
-          1831.9
+          1751.8,
+          1831.8
         ],
         "away_band": [
-          1759.6,
-          1839.6
+          1759.5,
+          1839.5
         ]
       },
       "efficiency": {
@@ -4148,7 +4123,7 @@
         "Larry Nance Jr. (CLE) [Starter] DAY-TO-DAY \u2014 \u22127 ELO",
         "Home court: CLE +100 ELO advantage"
       ],
-      "explanation": "The model gives Cleveland Cavaliers a 51.4% win probability \u2014 a slight favorite over Boston Celtics. Cleveland Cavaliers net rating: +0.0. Home court +100 ELO for Cleveland Cavaliers."
+      "explanation": "The model gives Boston Celtics a 50.2% win probability \u2014 a slight favorite over Cleveland Cavaliers. Boston Celtics net rating: +0.0. Home court +100 ELO for Cleveland Cavaliers."
     },
     {
       "game_id": "401898393",
@@ -4165,13 +4140,13 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.7163,
-        "logistic_prob": 0.6897,
-        "elo_prob": 0.7549,
-        "xgb_prob": 0.6066,
-        "pyth_prob": 0.743,
+        "ensemble_prob": 0.6887,
+        "logistic_prob": 0.5929,
+        "elo_prob": 0.7551,
+        "xgb_prob": 0.583,
+        "pyth_prob": 0.724,
         "eff_prob": 0.6401,
-        "bayesian_prob": 0.6406
+        "bayesian_prob": 0.6408
       },
       "market": {
         "home_prob": null,
@@ -4181,19 +4156,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6326,
-        "exp_margin": 3.98,
-        "prob_7plus": 0.3978,
-        "prob_14plus": 0.1948,
-        "prob_21plus": 0.0745,
+        "win_prob": 0.6369,
+        "exp_margin": 4.07,
+        "prob_7plus": 0.4015,
+        "prob_14plus": 0.2001,
+        "prob_21plus": 0.0727,
         "margin_percentiles": [
-          -15.3,
-          -11.1,
-          -3.8,
-          4.0,
-          11.8,
-          19.0,
-          23.2
+          -15.6,
+          -11.0,
+          -3.7,
+          4.1,
+          12.1,
+          19.1,
+          23.4
         ]
       },
       "adjustments": {
@@ -4206,9 +4181,9 @@
         "home_elo_bonus": 100
       },
       "h2h": {
-        "home_wins": 11,
+        "home_wins": 9,
         "away_wins": 1,
-        "total_meetings": 12,
+        "total_meetings": 10,
         "last_n": [
           {
             "date": "2022-10-12",
@@ -4263,22 +4238,22 @@
         ]
       },
       "elo": {
-        "home": 1531.0,
-        "away": 1406.9,
-        "diff": 124.1
+        "home": 1530.7,
+        "away": 1406.5,
+        "diff": 124.3
       },
       "bayesian": {
-        "home_mu": 1795.6,
+        "home_mu": 1795.2,
         "home_sigma": 40.0,
-        "away_mu": 1793.8,
+        "away_mu": 1793.3,
         "away_sigma": 40.0,
         "home_band": [
-          1755.6,
-          1835.6
+          1755.2,
+          1835.2
         ],
         "away_band": [
-          1753.8,
-          1833.8
+          1753.3,
+          1833.3
         ]
       },
       "efficiency": {
@@ -4388,7 +4363,7 @@
         "Trey Alexander (NOP) [Starter] DAY-TO-DAY \u2014 \u22128 ELO",
         "Home court: MIA +100 ELO advantage"
       ],
-      "explanation": "The model gives Miami Heat a 71.6% win probability \u2014 a strong favorite over New Orleans Pelicans. Miami Heat net rating: +0.0. Home court +100 ELO for Miami Heat."
+      "explanation": "The model gives Miami Heat a 68.9% win probability \u2014 a moderate favorite over New Orleans Pelicans. Miami Heat net rating: +0.0. Home court +100 ELO for Miami Heat."
     },
     {
       "game_id": "401901823",
@@ -4405,13 +4380,13 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.3244,
-        "logistic_prob": 0.5607,
+        "ensemble_prob": 0.2931,
+        "logistic_prob": 0.4762,
         "elo_prob": 0.1751,
-        "xgb_prob": 0.5277,
-        "pyth_prob": 0.5696,
+        "xgb_prob": 0.4599,
+        "pyth_prob": 0.5208,
         "eff_prob": 0.6401,
-        "bayesian_prob": 0.6258
+        "bayesian_prob": 0.6249
       },
       "market": {
         "home_prob": null,
@@ -4421,19 +4396,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6176,
+        "win_prob": 0.6195,
         "exp_margin": 3.57,
-        "prob_7plus": 0.388,
-        "prob_14plus": 0.1887,
-        "prob_21plus": 0.0683,
+        "prob_7plus": 0.3872,
+        "prob_14plus": 0.1858,
+        "prob_21plus": 0.0697,
         "margin_percentiles": [
-          -15.6,
-          -11.6,
-          -4.4,
-          3.5,
-          11.6,
-          18.6,
-          22.8
+          -15.9,
+          -11.5,
+          -4.2,
+          3.6,
+          11.5,
+          18.5,
+          23.0
         ]
       },
       "adjustments": {
@@ -4446,9 +4421,9 @@
         "home_elo_bonus": 100
       },
       "h2h": {
-        "home_wins": 8,
-        "away_wins": 20,
-        "total_meetings": 28,
+        "home_wins": 5,
+        "away_wins": 18,
+        "total_meetings": 23,
         "last_n": [
           {
             "date": "2024-04-14",
@@ -4503,22 +4478,22 @@
         ]
       },
       "elo": {
-        "home": 1246.6,
-        "away": 1567.9,
-        "diff": -321.4
+        "home": 1246.1,
+        "away": 1567.5,
+        "diff": -321.3
       },
       "bayesian": {
-        "home_mu": 1773.4,
+        "home_mu": 1772.6,
         "home_sigma": 40.0,
-        "away_mu": 1782.7,
+        "away_mu": 1782.6,
         "away_sigma": 40.0,
         "home_band": [
-          1733.4,
-          1813.4
+          1732.6,
+          1812.6
         ],
         "away_band": [
-          1742.7,
-          1822.7
+          1742.6,
+          1822.6
         ]
       },
       "efficiency": {
@@ -4583,7 +4558,7 @@
         "Adem Bona (PHI) [Starter] DAY-TO-DAY \u2014 \u22128 ELO",
         "Home court: BKN +100 ELO advantage"
       ],
-      "explanation": "The model gives Philadelphia 76ers a 67.6% win probability \u2014 a moderate favorite over Brooklyn Nets. Philadelphia 76ers net rating: +0.0. Home court +100 ELO for Brooklyn Nets."
+      "explanation": "The model gives Philadelphia 76ers a 70.7% win probability \u2014 a strong favorite over Brooklyn Nets. Philadelphia 76ers net rating: +0.0. Home court +100 ELO for Brooklyn Nets."
     },
     {
       "game_id": "401906508",
@@ -4600,13 +4575,13 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.8552,
-        "logistic_prob": 0.6967,
-        "elo_prob": 0.9843,
-        "xgb_prob": 0.6029,
-        "pyth_prob": 0.8424,
+        "ensemble_prob": 0.8927,
+        "logistic_prob": 0.7785,
+        "elo_prob": 0.9856,
+        "xgb_prob": 0.7114,
+        "pyth_prob": 0.8548,
         "eff_prob": 0.6401,
-        "bayesian_prob": 0.6577
+        "bayesian_prob": 0.6587
       },
       "market": {
         "home_prob": null,
@@ -4616,19 +4591,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6507,
-        "exp_margin": 4.66,
-        "prob_7plus": 0.4224,
-        "prob_14plus": 0.2121,
-        "prob_21plus": 0.0859,
+        "win_prob": 0.6551,
+        "exp_margin": 4.71,
+        "prob_7plus": 0.4235,
+        "prob_14plus": 0.213,
+        "prob_21plus": 0.0809,
         "margin_percentiles": [
           -14.4,
-          -10.3,
-          -3.4,
-          4.6,
+          -10.1,
+          -3.3,
+          4.7,
           12.5,
-          20.0,
-          24.2
+          19.6,
+          23.9
         ]
       },
       "adjustments": {
@@ -4641,9 +4616,9 @@
         "home_elo_bonus": 100
       },
       "h2h": {
-        "home_wins": 19,
-        "away_wins": 5,
-        "total_meetings": 24,
+        "home_wins": 15,
+        "away_wins": 4,
+        "total_meetings": 19,
         "last_n": [
           {
             "date": "2024-10-09",
@@ -4698,22 +4673,22 @@
         ]
       },
       "elo": {
-        "home": 1832.8,
-        "away": 1181.5,
+        "home": 1832.4,
+        "away": 1181.1,
         "diff": 651.3
       },
       "bayesian": {
         "home_mu": 1799.9,
         "home_sigma": 40.0,
-        "away_mu": 1785.1,
+        "away_mu": 1784.3,
         "away_sigma": 40.0,
         "home_band": [
           1759.9,
           1839.9
         ],
         "away_band": [
-          1745.1,
-          1825.1
+          1744.3,
+          1824.3
         ]
       },
       "efficiency": {
@@ -4728,13 +4703,6 @@
       },
       "injuries": {
         "home": [
-          {
-            "player": "N'Faly Dante",
-            "status": "Out",
-            "position": "C",
-            "injury_description": "This is an expected move for New York. Dante was previously on an Exhibit 10 deal and is still on the mend from a January ACL surgery.",
-            "value_tier": "starter"
-          },
           {
             "player": "Mohamed Diawara",
             "status": "Day-To-Day",
@@ -4768,16 +4736,9 @@
         ]
       },
       "injury_impact": {
-        "home_elo_penalty": 23.0,
+        "home_elo_penalty": 7.0,
         "away_elo_penalty": 36.18,
         "home_key_players_out": [
-          {
-            "player": "N'Faly Dante",
-            "position": "C",
-            "status": "Out",
-            "elo_impact": 16.0,
-            "value_tier": "starter"
-          },
           {
             "player": "Mohamed Diawara",
             "position": "F",
@@ -4816,14 +4777,13 @@
       },
       "prediction_drivers": [
         "ELO advantage: NYK +651 rating points",
-        "N'Faly Dante (NYK) [Starter] OUT \u2014 \u221216 ELO",
         "Mohamed Diawara (NYK) [Starter] DAY-TO-DAY \u2014 \u22127 ELO",
         "Alex Sarr (WAS) [Starter] DAY-TO-DAY \u2014 \u22128 ELO",
         "Trae Young (WAS) [All-Star] DAY-TO-DAY \u2014 \u221211 ELO",
         "Jamir Watkins (WAS) [Starter] OUT \u2014 \u221215 ELO",
         "Home court: NYK +100 ELO advantage"
       ],
-      "explanation": "The model gives New York Knicks a 85.5% win probability \u2014 a strong favorite over Washington Wizards. New York Knicks net rating: +0.0. Home court +100 ELO for New York Knicks."
+      "explanation": "The model gives New York Knicks a 89.3% win probability \u2014 a strong favorite over Washington Wizards. New York Knicks net rating: +0.0. Home court +100 ELO for New York Knicks."
     },
     {
       "game_id": "401898394",
@@ -4840,13 +4800,13 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.7632,
-        "logistic_prob": 0.6047,
+        "ensemble_prob": 0.7699,
+        "logistic_prob": 0.6204,
         "elo_prob": 0.8816,
-        "xgb_prob": 0.5539,
-        "pyth_prob": 0.6997,
+        "xgb_prob": 0.5723,
+        "pyth_prob": 0.743,
         "eff_prob": 0.6401,
-        "bayesian_prob": 0.6639
+        "bayesian_prob": 0.6642
       },
       "market": {
         "home_prob": null,
@@ -4856,19 +4816,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6605,
-        "exp_margin": 4.86,
-        "prob_7plus": 0.4273,
-        "prob_14plus": 0.2207,
-        "prob_21plus": 0.0833,
+        "win_prob": 0.663,
+        "exp_margin": 4.9,
+        "prob_7plus": 0.428,
+        "prob_14plus": 0.2144,
+        "prob_21plus": 0.0857,
         "margin_percentiles": [
-          -14.6,
+          -14.5,
           -10.1,
-          -3.0,
-          4.8,
-          12.9,
-          19.8,
-          24.0
+          -3.1,
+          4.9,
+          12.7,
+          19.9,
+          24.3
         ]
       },
       "adjustments": {
@@ -4881,20 +4841,10 @@
         "home_elo_bonus": 100
       },
       "h2h": {
-        "home_wins": 6,
-        "away_wins": 4,
-        "total_meetings": 10,
+        "home_wins": 5,
+        "away_wins": 3,
+        "total_meetings": 8,
         "last_n": [
-          {
-            "date": "2021-11-25",
-            "winner": "ATL",
-            "margin": 18
-          },
-          {
-            "date": "2022-02-12",
-            "winner": "SAS",
-            "margin": 15
-          },
           {
             "date": "2023-02-12",
             "winner": "ATL",
@@ -4938,22 +4888,22 @@
         ]
       },
       "elo": {
-        "home": 1827.5,
-        "away": 1563.4,
+        "home": 1827.1,
+        "away": 1563.0,
         "diff": 264.1
       },
       "bayesian": {
         "home_mu": 1799.9,
         "home_sigma": 40.0,
-        "away_mu": 1780.3,
+        "away_mu": 1780.1,
         "away_sigma": 40.0,
         "home_band": [
           1759.9,
           1839.9
         ],
         "away_band": [
-          1740.3,
-          1820.3
+          1740.1,
+          1820.1
         ]
       },
       "efficiency": {
@@ -5077,7 +5027,7 @@
         "Keshon Gilbert (ATL) [Starter] DAY-TO-DAY \u2014 \u22128 ELO",
         "Home court: SAS +100 ELO advantage"
       ],
-      "explanation": "The model gives San Antonio Spurs a 76.3% win probability \u2014 a strong favorite over Atlanta Hawks. San Antonio Spurs net rating: +0.0. Home court +100 ELO for San Antonio Spurs."
+      "explanation": "The model gives San Antonio Spurs a 77.0% win probability \u2014 a strong favorite over Atlanta Hawks. San Antonio Spurs net rating: +0.0. Home court +100 ELO for San Antonio Spurs."
     },
     {
       "game_id": "401898717",
@@ -5094,13 +5044,13 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.776,
-        "logistic_prob": 0.6047,
+        "ensemble_prob": 0.7847,
+        "logistic_prob": 0.6322,
         "elo_prob": 0.9055,
-        "xgb_prob": 0.5437,
-        "pyth_prob": 0.7157,
+        "xgb_prob": 0.5558,
+        "pyth_prob": 0.7708,
         "eff_prob": 0.6401,
-        "bayesian_prob": 0.6466
+        "bayesian_prob": 0.6474
       },
       "market": {
         "home_prob": null,
@@ -5110,19 +5060,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6329,
-        "exp_margin": 4.03,
-        "prob_7plus": 0.4067,
-        "prob_14plus": 0.1982,
-        "prob_21plus": 0.0732,
+        "win_prob": 0.642,
+        "exp_margin": 4.31,
+        "prob_7plus": 0.4079,
+        "prob_14plus": 0.2017,
+        "prob_21plus": 0.0796,
         "margin_percentiles": [
-          -15.5,
-          -11.2,
-          -4.0,
-          4.1,
-          12.1,
-          18.9,
-          23.4
+          -15.0,
+          -10.9,
+          -3.7,
+          4.3,
+          12.2,
+          19.6,
+          23.8
         ]
       },
       "adjustments": {
@@ -5135,9 +5085,9 @@
         "home_elo_bonus": 100
       },
       "h2h": {
-        "home_wins": 11,
-        "away_wins": 14,
-        "total_meetings": 25,
+        "home_wins": 9,
+        "away_wins": 11,
+        "total_meetings": 20,
         "last_n": [
           {
             "date": "2024-03-14",
@@ -5192,22 +5142,22 @@
         ]
       },
       "elo": {
-        "home": 1634.8,
-        "away": 1306.5,
+        "home": 1634.4,
+        "away": 1306.1,
         "diff": 328.3
       },
       "bayesian": {
-        "home_mu": 1793.6,
+        "home_mu": 1793.4,
         "home_sigma": 40.0,
-        "away_mu": 1787.2,
+        "away_mu": 1786.5,
         "away_sigma": 40.0,
         "home_band": [
-          1753.6,
-          1833.6
+          1753.4,
+          1833.4
         ],
         "away_band": [
-          1747.2,
-          1827.2
+          1746.5,
+          1826.5
         ]
       },
       "efficiency": {
@@ -5255,7 +5205,7 @@
         "Drew Eubanks (SAC) [Starter] DAY-TO-DAY \u2014 \u22127 ELO",
         "Home court: LAL +100 ELO advantage"
       ],
-      "explanation": "The model gives Los Angeles Lakers a 77.6% win probability \u2014 a strong favorite over Sacramento Kings. Los Angeles Lakers net rating: +0.0. Home court +100 ELO for Los Angeles Lakers."
+      "explanation": "The model gives Los Angeles Lakers a 78.5% win probability \u2014 a strong favorite over Sacramento Kings. Los Angeles Lakers net rating: +0.0. Home court +100 ELO for Los Angeles Lakers."
     },
     {
       "game_id": "401898395",
@@ -5272,13 +5222,13 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.2474,
-        "logistic_prob": 0.3535,
-        "elo_prob": 0.1347,
-        "xgb_prob": 0.5214,
-        "pyth_prob": 0.3724,
+        "ensemble_prob": 0.177,
+        "logistic_prob": 0.1739,
+        "elo_prob": 0.1345,
+        "xgb_prob": 0.3517,
+        "pyth_prob": 0.3423,
         "eff_prob": 0.5,
-        "bayesian_prob": 0.4918
+        "bayesian_prob": 0.4913
       },
       "market": {
         "home_prob": null,
@@ -5288,19 +5238,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.4819,
-        "exp_margin": -0.37,
-        "prob_7plus": 0.263,
-        "prob_14plus": 0.1114,
-        "prob_21plus": 0.0357,
+        "win_prob": 0.49,
+        "exp_margin": -0.25,
+        "prob_7plus": 0.2672,
+        "prob_14plus": 0.1112,
+        "prob_21plus": 0.0319,
         "margin_percentiles": [
-          -19.6,
-          -15.3,
-          -8.5,
-          -0.5,
-          7.5,
-          14.6,
-          19.0
+          -19.1,
+          -15.0,
+          -8.3,
+          -0.3,
+          7.6,
+          14.7,
+          18.8
         ]
       },
       "adjustments": {
@@ -5313,9 +5263,9 @@
         "home_elo_bonus": 0
       },
       "h2h": {
-        "home_wins": 13,
+        "home_wins": 9,
         "away_wins": 7,
-        "total_meetings": 20,
+        "total_meetings": 16,
         "last_n": [
           {
             "date": "2024-03-31",
@@ -5370,22 +5320,22 @@
         ]
       },
       "elo": {
-        "home": 1334.7,
-        "away": 1621.6,
+        "home": 1334.2,
+        "away": 1621.3,
         "diff": -287.0
       },
       "bayesian": {
-        "home_mu": 1792.3,
+        "home_mu": 1791.8,
         "home_sigma": 40.0,
-        "away_mu": 1798.1,
+        "away_mu": 1797.9,
         "away_sigma": 40.0,
         "home_band": [
-          1752.3,
-          1832.3
+          1751.8,
+          1831.8
         ],
         "away_band": [
-          1758.1,
-          1838.1
+          1757.9,
+          1837.9
         ]
       },
       "efficiency": {
@@ -5404,7 +5354,7 @@
             "player": "Morez Johnson Jr.",
             "status": "Day-To-Day",
             "position": "F",
-            "injury_description": "It's unclear what Johnson is dealing with, though the issue doesn't appear to be a long-term concern. Still, the 20-year-old's status will be worth monitoring ahead of Dallas' preseason opener against Houston on Friday, Oct. 9. The No. 9 overall pick in this year's draft, Johnson is fresh off winning a title at Michigan, where he averaged 13.1 points, 7.3 rebounds, 1.2 assists and 1.1 blocks in 25.1 minutes per game.",
+            "injury_description": "The Mavericks have been managing Johnson's workload ahead of his rookie season, with May noting that the 20-year-old participated in every other live session Wednesday. Additionally, May said Monday that the power forward was getting close to practicing in full. Still, the Michigan product's status will be worth monitoring ahead of Dallas' preseason opener against the Rockets on Friday, Oct. 9.",
             "value_tier": "starter"
           },
           {
@@ -5477,7 +5427,7 @@
         "Dereck Lively II (DAL) [Starter] DAY-TO-DAY \u2014 \u22128 ELO",
         "DAL star stack: 2\u00d7 elite out \u2192 \u00d71.11 (\u221241 ELO)"
       ],
-      "explanation": "The model gives Houston Rockets a 75.3% win probability \u2014 a strong favorite over Dallas Mavericks. Houston Rockets net rating: +0.0."
+      "explanation": "The model gives Houston Rockets a 82.3% win probability \u2014 a strong favorite over Dallas Mavericks. Houston Rockets net rating: +0.0."
     },
     {
       "game_id": "401908940",
@@ -5494,13 +5444,13 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.6535,
-        "logistic_prob": 0.5251,
-        "elo_prob": 0.7383,
-        "xgb_prob": 0.5284,
-        "pyth_prob": 0.6097,
+        "ensemble_prob": 0.6666,
+        "logistic_prob": 0.5568,
+        "elo_prob": 0.7304,
+        "xgb_prob": 0.5944,
+        "pyth_prob": 0.6598,
         "eff_prob": 0.6401,
-        "bayesian_prob": 0.6579
+        "bayesian_prob": 0.658
       },
       "market": {
         "home_prob": null,
@@ -5510,19 +5460,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6547,
-        "exp_margin": 4.58,
-        "prob_7plus": 0.4248,
-        "prob_14plus": 0.212,
-        "prob_21plus": 0.0803,
+        "win_prob": 0.6594,
+        "exp_margin": 4.71,
+        "prob_7plus": 0.4254,
+        "prob_14plus": 0.2137,
+        "prob_21plus": 0.0802,
         "margin_percentiles": [
-          -15.2,
-          -10.5,
-          -3.4,
+          -14.3,
+          -10.3,
+          -3.1,
           4.7,
           12.6,
-          19.8,
-          23.8
+          19.6,
+          23.9
         ]
       },
       "adjustments": {
@@ -5535,15 +5485,10 @@
         "home_elo_bonus": 100
       },
       "h2h": {
-        "home_wins": 6,
-        "away_wins": 6,
-        "total_meetings": 12,
+        "home_wins": 5,
+        "away_wins": 4,
+        "total_meetings": 9,
         "last_n": [
-          {
-            "date": "2022-02-27",
-            "winner": "MEM",
-            "margin": 6
-          },
           {
             "date": "2023-02-08",
             "winner": "MEM",
@@ -5592,22 +5537,22 @@
         ]
       },
       "elo": {
-        "home": 1320.1,
-        "away": 1244.1,
-        "diff": 76.0
+        "home": 1319.7,
+        "away": 1243.3,
+        "diff": 76.4
       },
       "bayesian": {
-        "home_mu": 1787.7,
+        "home_mu": 1787.2,
         "home_sigma": 40.0,
-        "away_mu": 1772.7,
+        "away_mu": 1772.1,
         "away_sigma": 40.0,
         "home_band": [
-          1747.7,
-          1827.7
+          1747.2,
+          1827.2
         ],
         "away_band": [
-          1732.7,
-          1812.7
+          1732.1,
+          1812.1
         ]
       },
       "efficiency": {
@@ -5670,7 +5615,7 @@
       },
       "injury_impact": {
         "home_elo_penalty": 7.0,
-        "away_elo_penalty": 51.5,
+        "away_elo_penalty": 44.0,
         "home_key_players_out": [
           {
             "player": "Zach Collins",
@@ -5722,13 +5667,6 @@
             "status": "Day-To-Day",
             "elo_impact": 7.0,
             "value_tier": "starter"
-          },
-          {
-            "player": "Kentavious Caldwell-Pope",
-            "position": "G",
-            "status": "Day-To-Day",
-            "elo_impact": 7.5,
-            "value_tier": "starter"
           }
         ],
         "home_star_count": 0,
@@ -5744,7 +5682,7 @@
         "Scotty Pippen Jr. (MEM) [Starter] DAY-TO-DAY \u2014 \u22128 ELO",
         "Home court: CHI +100 ELO advantage"
       ],
-      "explanation": "The model gives Chicago Bulls a 65.4% win probability \u2014 a moderate favorite over Memphis Grizzlies. Chicago Bulls net rating: +0.0. Home court +100 ELO for Chicago Bulls."
+      "explanation": "The model gives Chicago Bulls a 66.7% win probability \u2014 a moderate favorite over Memphis Grizzlies. Chicago Bulls net rating: +0.0. Home court +100 ELO for Chicago Bulls."
     },
     {
       "game_id": "401902645",
@@ -5761,13 +5699,13 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.5627,
-        "logistic_prob": 0.3661,
-        "elo_prob": 0.6566,
-        "xgb_prob": 0.5148,
-        "pyth_prob": 0.5756,
+        "ensemble_prob": 0.572,
+        "logistic_prob": 0.4194,
+        "elo_prob": 0.6567,
+        "xgb_prob": 0.4878,
+        "pyth_prob": 0.6515,
         "eff_prob": 0.6401,
-        "bayesian_prob": 0.6378
+        "bayesian_prob": 0.638
       },
       "market": {
         "home_prob": null,
@@ -5777,19 +5715,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.643,
-        "exp_margin": 4.15,
-        "prob_7plus": 0.4008,
-        "prob_14plus": 0.1943,
-        "prob_21plus": 0.0723,
+        "win_prob": 0.6364,
+        "exp_margin": 4.07,
+        "prob_7plus": 0.4002,
+        "prob_14plus": 0.1982,
+        "prob_21plus": 0.0758,
         "margin_percentiles": [
-          -15.0,
-          -10.7,
-          -3.5,
+          -15.4,
+          -11.2,
+          -3.8,
           4.2,
-          11.9,
-          18.7,
-          23.5
+          12.0,
+          19.3,
+          23.4
         ]
       },
       "adjustments": {
@@ -5802,20 +5740,10 @@
         "home_elo_bonus": 100
       },
       "h2h": {
-        "home_wins": 3,
+        "home_wins": 1,
         "away_wins": 7,
-        "total_meetings": 10,
+        "total_meetings": 8,
         "last_n": [
-          {
-            "date": "2022-01-01",
-            "winner": "TOR",
-            "margin": 8
-          },
-          {
-            "date": "2022-03-17",
-            "winner": "TOR",
-            "margin": 3
-          },
           {
             "date": "2022-12-28",
             "winner": "LAC",
@@ -5859,22 +5787,22 @@
         ]
       },
       "elo": {
-        "home": 1564.2,
-        "away": 1546.6,
-        "diff": 17.6
+        "home": 1563.9,
+        "away": 1546.2,
+        "diff": 17.7
       },
       "bayesian": {
-        "home_mu": 1799.2,
+        "home_mu": 1799.0,
         "home_sigma": 40.0,
-        "away_mu": 1799.4,
+        "away_mu": 1799.2,
         "away_sigma": 40.0,
         "home_band": [
-          1759.2,
-          1839.2
+          1759.0,
+          1839.0
         ],
         "away_band": [
-          1759.4,
-          1839.4
+          1759.2,
+          1839.2
         ]
       },
       "efficiency": {
@@ -6013,7 +5941,7 @@
         "Travel: away travels 2173 miles",
         "Home court: TOR +100 ELO advantage"
       ],
-      "explanation": "The model gives Toronto Raptors a 56.3% win probability \u2014 a slight favorite over LA Clippers. Toronto Raptors net rating: +0.0. Home court +100 ELO for Toronto Raptors."
+      "explanation": "The model gives Toronto Raptors a 57.2% win probability \u2014 a slight favorite over LA Clippers. Toronto Raptors net rating: +0.0. Home court +100 ELO for Toronto Raptors."
     },
     {
       "game_id": "401898396",
@@ -6030,13 +5958,13 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.3768,
-        "logistic_prob": 0.6047,
+        "ensemble_prob": 0.334,
+        "logistic_prob": 0.4626,
         "elo_prob": 0.2333,
-        "xgb_prob": 0.571,
-        "pyth_prob": 0.6109,
+        "xgb_prob": 0.5228,
+        "pyth_prob": 0.5031,
         "eff_prob": 0.6401,
-        "bayesian_prob": 0.6603
+        "bayesian_prob": 0.6599
       },
       "market": {
         "home_prob": null,
@@ -6046,19 +5974,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6529,
-        "exp_margin": 4.54,
-        "prob_7plus": 0.4178,
-        "prob_14plus": 0.2069,
-        "prob_21plus": 0.0781,
+        "win_prob": 0.6554,
+        "exp_margin": 4.72,
+        "prob_7plus": 0.422,
+        "prob_14plus": 0.2197,
+        "prob_21plus": 0.0841,
         "margin_percentiles": [
-          -14.8,
+          -14.5,
           -10.5,
-          -3.4,
+          -3.1,
           4.6,
-          12.3,
-          19.5,
-          23.7
+          12.8,
+          19.8,
+          24.2
         ]
       },
       "adjustments": {
@@ -6072,8 +6000,8 @@
       },
       "h2h": {
         "home_wins": 8,
-        "away_wins": 11,
-        "total_meetings": 19,
+        "away_wins": 7,
+        "total_meetings": 15,
         "last_n": [
           {
             "date": "2024-01-06",
@@ -6128,22 +6056,22 @@
         ]
       },
       "elo": {
-        "home": 1275.1,
-        "away": 1563.4,
+        "home": 1274.7,
+        "away": 1563.0,
         "diff": -288.2
       },
       "bayesian": {
-        "home_mu": 1797.1,
+        "home_mu": 1796.6,
         "home_sigma": 40.0,
-        "away_mu": 1780.3,
+        "away_mu": 1780.1,
         "away_sigma": 40.0,
         "home_band": [
-          1757.1,
-          1837.1
+          1756.6,
+          1836.6
         ],
         "away_band": [
-          1740.3,
-          1820.3
+          1740.1,
+          1820.1
         ]
       },
       "efficiency": {
@@ -6252,7 +6180,7 @@
         "Keshon Gilbert (ATL) [Starter] DAY-TO-DAY \u2014 \u22128 ELO",
         "Home court: IND +100 ELO advantage"
       ],
-      "explanation": "The model gives Atlanta Hawks a 62.3% win probability \u2014 a moderate favorite over Indiana Pacers. Atlanta Hawks net rating: +0.0. Home court +100 ELO for Indiana Pacers."
+      "explanation": "The model gives Atlanta Hawks a 66.6% win probability \u2014 a moderate favorite over Indiana Pacers. Atlanta Hawks net rating: +0.0. Home court +100 ELO for Indiana Pacers."
     },
     {
       "game_id": "401906510",
@@ -6269,13 +6197,13 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.1959,
-        "logistic_prob": 0.3535,
+        "ensemble_prob": 0.1939,
+        "logistic_prob": 0.3955,
         "elo_prob": 0.0581,
-        "xgb_prob": 0.4845,
-        "pyth_prob": 0.3877,
+        "xgb_prob": 0.4009,
+        "pyth_prob": 0.359,
         "eff_prob": 0.6401,
-        "bayesian_prob": 0.6248
+        "bayesian_prob": 0.6238
       },
       "market": {
         "home_prob": null,
@@ -6285,19 +6213,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6254,
-        "exp_margin": 3.65,
-        "prob_7plus": 0.3892,
-        "prob_14plus": 0.1927,
-        "prob_21plus": 0.0681,
+        "win_prob": 0.6251,
+        "exp_margin": 3.67,
+        "prob_7plus": 0.3874,
+        "prob_14plus": 0.189,
+        "prob_21plus": 0.0718,
         "margin_percentiles": [
-          -15.6,
+          -15.4,
           -11.5,
           -4.3,
           3.7,
-          11.6,
-          18.5,
-          22.8
+          11.7,
+          18.7,
+          23.1
         ]
       },
       "adjustments": {
@@ -6310,9 +6238,9 @@
         "home_elo_bonus": 100
       },
       "h2h": {
-        "home_wins": 11,
+        "home_wins": 7,
         "away_wins": 8,
-        "total_meetings": 19,
+        "total_meetings": 15,
         "last_n": [
           {
             "date": "2024-01-27",
@@ -6367,18 +6295,18 @@
         ]
       },
       "elo": {
-        "home": 1181.5,
-        "away": 1695.2,
-        "diff": -513.7
+        "home": 1181.1,
+        "away": 1694.7,
+        "diff": -513.6
       },
       "bayesian": {
-        "home_mu": 1785.1,
+        "home_mu": 1784.3,
         "home_sigma": 40.0,
         "away_mu": 1795.1,
         "away_sigma": 40.0,
         "home_band": [
-          1745.1,
-          1825.1
+          1744.3,
+          1824.3
         ],
         "away_band": [
           1755.1,
@@ -6477,7 +6405,7 @@
         "Jalen Duren (DET) [Starter] DAY-TO-DAY \u2014 \u22128 ELO",
         "Home court: WAS +100 ELO advantage"
       ],
-      "explanation": "The model gives Detroit Pistons a 80.4% win probability \u2014 a strong favorite over Washington Wizards. Detroit Pistons net rating: +0.0. Home court +100 ELO for Washington Wizards."
+      "explanation": "The model gives Detroit Pistons a 80.6% win probability \u2014 a strong favorite over Washington Wizards. Detroit Pistons net rating: +0.0. Home court +100 ELO for Washington Wizards."
     },
     {
       "game_id": "401898397",
@@ -6494,13 +6422,13 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.5128,
-        "logistic_prob": 0.5251,
-        "elo_prob": 0.4971,
-        "xgb_prob": 0.5547,
-        "pyth_prob": 0.5916,
+        "ensemble_prob": 0.4984,
+        "logistic_prob": 0.4762,
+        "elo_prob": 0.4974,
+        "xgb_prob": 0.5395,
+        "pyth_prob": 0.624,
         "eff_prob": 0.6401,
-        "bayesian_prob": 0.651
+        "bayesian_prob": 0.6508
       },
       "market": {
         "home_prob": null,
@@ -6510,19 +6438,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6391,
-        "exp_margin": 4.28,
-        "prob_7plus": 0.4032,
-        "prob_14plus": 0.2076,
-        "prob_21plus": 0.08,
+        "win_prob": 0.6441,
+        "exp_margin": 4.36,
+        "prob_7plus": 0.4093,
+        "prob_14plus": 0.2058,
+        "prob_21plus": 0.0781,
         "margin_percentiles": [
-          -15.2,
-          -11.1,
-          -3.8,
-          4.2,
-          12.3,
-          19.7,
-          24.1
+          -14.7,
+          -10.4,
+          -3.6,
+          4.3,
+          12.2,
+          19.4,
+          23.9
         ]
       },
       "adjustments": {
@@ -6536,14 +6464,9 @@
       },
       "h2h": {
         "home_wins": 2,
-        "away_wins": 9,
-        "total_meetings": 11,
+        "away_wins": 7,
+        "total_meetings": 9,
         "last_n": [
-          {
-            "date": "2022-03-13",
-            "winner": "MIN",
-            "margin": 9
-          },
           {
             "date": "2022-10-04",
             "winner": "MIN",
@@ -6592,22 +6515,22 @@
         ]
       },
       "elo": {
-        "home": 1531.0,
-        "away": 1613.8,
-        "diff": -82.7
+        "home": 1530.7,
+        "away": 1613.3,
+        "diff": -82.6
       },
       "bayesian": {
-        "home_mu": 1795.6,
+        "home_mu": 1795.2,
         "home_sigma": 40.0,
-        "away_mu": 1785.8,
+        "away_mu": 1785.7,
         "away_sigma": 40.0,
         "home_band": [
-          1755.6,
-          1835.6
+          1755.2,
+          1835.2
         ],
         "away_band": [
-          1745.8,
-          1825.8
+          1745.7,
+          1825.7
         ]
       },
       "efficiency": {
@@ -6688,7 +6611,7 @@
         "Travel: away travels 1514 miles",
         "Home court: MIA +100 ELO advantage"
       ],
-      "explanation": "The model gives Miami Heat a 51.3% win probability \u2014 a slight favorite over Minnesota Timberwolves. Miami Heat net rating: +0.0. Home court +100 ELO for Miami Heat."
+      "explanation": "The model gives Minnesota Timberwolves a 50.2% win probability \u2014 a slight favorite over Miami Heat. Minnesota Timberwolves net rating: +0.0. Home court +100 ELO for Miami Heat."
     },
     {
       "game_id": "401898398",
@@ -6705,13 +6628,13 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.7106,
-        "logistic_prob": 0.6967,
-        "elo_prob": 0.7384,
-        "xgb_prob": 0.6224,
-        "pyth_prob": 0.7973,
+        "ensemble_prob": 0.6952,
+        "logistic_prob": 0.6515,
+        "elo_prob": 0.7383,
+        "xgb_prob": 0.5952,
+        "pyth_prob": 0.7667,
         "eff_prob": 0.6401,
-        "bayesian_prob": 0.6603
+        "bayesian_prob": 0.6604
       },
       "market": {
         "home_prob": null,
@@ -6721,19 +6644,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6631,
-        "exp_margin": 4.76,
-        "prob_7plus": 0.4274,
-        "prob_14plus": 0.2166,
-        "prob_21plus": 0.0784,
+        "win_prob": 0.658,
+        "exp_margin": 4.82,
+        "prob_7plus": 0.4244,
+        "prob_14plus": 0.213,
+        "prob_21plus": 0.0845,
         "margin_percentiles": [
-          -14.7,
-          -10.5,
-          -3.1,
+          -14.6,
+          -10.3,
+          -2.9,
           4.9,
-          12.8,
-          19.5,
-          23.9
+          12.6,
+          20.0,
+          24.1
         ]
       },
       "adjustments": {
@@ -6746,9 +6669,9 @@
         "home_elo_bonus": 100
       },
       "h2h": {
-        "home_wins": 23,
-        "away_wins": 14,
-        "total_meetings": 37,
+        "home_wins": 21,
+        "away_wins": 12,
+        "total_meetings": 33,
         "last_n": [
           {
             "date": "2025-10-31",
@@ -6803,22 +6726,22 @@
         ]
       },
       "elo": {
-        "home": 1684.7,
-        "away": 1567.9,
+        "home": 1684.2,
+        "away": 1567.5,
         "diff": 116.8
       },
       "bayesian": {
-        "home_mu": 1799.6,
+        "home_mu": 1799.5,
         "home_sigma": 40.0,
-        "away_mu": 1782.7,
+        "away_mu": 1782.6,
         "away_sigma": 40.0,
         "home_band": [
-          1759.6,
-          1839.6
+          1759.5,
+          1839.5
         ],
         "away_band": [
-          1742.7,
-          1822.7
+          1742.6,
+          1822.6
         ]
       },
       "efficiency": {
@@ -6866,7 +6789,7 @@
         "Adem Bona (PHI) [Starter] DAY-TO-DAY \u2014 \u22128 ELO",
         "Home court: BOS +100 ELO advantage"
       ],
-      "explanation": "The model gives Boston Celtics a 71.1% win probability \u2014 a strong favorite over Philadelphia 76ers. Boston Celtics net rating: +0.0. Home court +100 ELO for Boston Celtics."
+      "explanation": "The model gives Boston Celtics a 69.5% win probability \u2014 a moderate favorite over Philadelphia 76ers. Boston Celtics net rating: +0.0. Home court +100 ELO for Boston Celtics."
     },
     {
       "game_id": "401898399",
@@ -6883,13 +6806,13 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.6681,
-        "logistic_prob": 0.6897,
+        "ensemble_prob": 0.6686,
+        "logistic_prob": 0.6515,
         "elo_prob": 0.673,
-        "xgb_prob": 0.6125,
-        "pyth_prob": 0.7361,
+        "xgb_prob": 0.6793,
+        "pyth_prob": 0.7592,
         "eff_prob": 0.6401,
-        "bayesian_prob": 0.6529
+        "bayesian_prob": 0.6536
       },
       "market": {
         "home_prob": null,
@@ -6899,19 +6822,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6523,
-        "exp_margin": 4.58,
-        "prob_7plus": 0.4202,
-        "prob_14plus": 0.2113,
-        "prob_21plus": 0.0826,
+        "win_prob": 0.6556,
+        "exp_margin": 4.44,
+        "prob_7plus": 0.4156,
+        "prob_14plus": 0.2076,
+        "prob_21plus": 0.078,
         "margin_percentiles": [
-          -14.6,
-          -10.7,
-          -3.3,
-          4.6,
-          12.6,
-          19.6,
-          24.2
+          -15.0,
+          -10.6,
+          -3.4,
+          4.5,
+          12.3,
+          19.4,
+          23.9
         ]
       },
       "adjustments": {
@@ -6924,9 +6847,9 @@
         "home_elo_bonus": 100
       },
       "h2h": {
-        "home_wins": 21,
+        "home_wins": 17,
         "away_wins": 11,
-        "total_meetings": 32,
+        "total_meetings": 28,
         "last_n": [
           {
             "date": "2024-10-10",
@@ -6981,22 +6904,22 @@
         ]
       },
       "elo": {
-        "home": 1417.4,
-        "away": 1306.5,
+        "home": 1417.0,
+        "away": 1306.1,
         "diff": 110.9
       },
       "bayesian": {
-        "home_mu": 1798.4,
+        "home_mu": 1798.1,
         "home_sigma": 40.0,
-        "away_mu": 1787.2,
+        "away_mu": 1786.5,
         "away_sigma": 40.0,
         "home_band": [
-          1758.4,
-          1838.4
+          1758.1,
+          1838.1
         ],
         "away_band": [
-          1747.2,
-          1827.2
+          1746.5,
+          1826.5
         ]
       },
       "efficiency": {
@@ -7105,7 +7028,7 @@
         "Drew Eubanks (SAC) [Starter] DAY-TO-DAY \u2014 \u22127 ELO",
         "Home court: GSW +100 ELO advantage"
       ],
-      "explanation": "The model gives Golden State Warriors a 66.8% win probability \u2014 a moderate favorite over Sacramento Kings. Golden State Warriors net rating: +0.0. Home court +100 ELO for Golden State Warriors."
+      "explanation": "The model gives Golden State Warriors a 66.9% win probability \u2014 a moderate favorite over Sacramento Kings. Golden State Warriors net rating: +0.0. Home court +100 ELO for Golden State Warriors."
     },
     {
       "game_id": "401898720",
@@ -7122,13 +7045,13 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.3494,
-        "logistic_prob": 0.5607,
-        "elo_prob": 0.2078,
-        "xgb_prob": 0.5638,
-        "pyth_prob": 0.5681,
+        "ensemble_prob": 0.3398,
+        "logistic_prob": 0.5437,
+        "elo_prob": 0.2083,
+        "xgb_prob": 0.5261,
+        "pyth_prob": 0.5275,
         "eff_prob": 0.6401,
-        "bayesian_prob": 0.6272
+        "bayesian_prob": 0.6269
       },
       "market": {
         "home_prob": null,
@@ -7138,19 +7061,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6295,
-        "exp_margin": 3.94,
-        "prob_7plus": 0.3923,
-        "prob_14plus": 0.1925,
-        "prob_21plus": 0.0739,
+        "win_prob": 0.6204,
+        "exp_margin": 3.63,
+        "prob_7plus": 0.383,
+        "prob_14plus": 0.1931,
+        "prob_21plus": 0.0702,
         "margin_percentiles": [
-          -14.9,
-          -10.7,
-          -3.9,
-          3.8,
-          11.7,
-          18.9,
-          23.2
+          -16.0,
+          -11.4,
+          -4.3,
+          3.6,
+          11.6,
+          18.7,
+          23.1
         ]
       },
       "adjustments": {
@@ -7163,9 +7086,9 @@
         "home_elo_bonus": 100
       },
       "h2h": {
-        "home_wins": 12,
+        "home_wins": 8,
         "away_wins": 6,
-        "total_meetings": 18,
+        "total_meetings": 14,
         "last_n": [
           {
             "date": "2023-11-03",
@@ -7220,18 +7143,18 @@
         ]
       },
       "elo": {
-        "home": 1530.0,
-        "away": 1827.5,
-        "diff": -297.5
+        "home": 1530.1,
+        "away": 1827.1,
+        "diff": -297.0
       },
       "bayesian": {
-        "home_mu": 1791.6,
+        "home_mu": 1791.4,
         "home_sigma": 40.0,
         "away_mu": 1799.9,
         "away_sigma": 40.0,
         "home_band": [
-          1751.6,
-          1831.6
+          1751.4,
+          1831.4
         ],
         "away_band": [
           1759.9,
@@ -7330,7 +7253,7 @@
         "Jayden Quaintance (SAS) [Starter] OUT \u2014 \u221214 ELO",
         "Home court: PHX +100 ELO advantage"
       ],
-      "explanation": "The model gives San Antonio Spurs a 65.1% win probability \u2014 a moderate favorite over Phoenix Suns. San Antonio Spurs net rating: +0.0. Home court +100 ELO for Phoenix Suns."
+      "explanation": "The model gives San Antonio Spurs a 66.0% win probability \u2014 a moderate favorite over Phoenix Suns. San Antonio Spurs net rating: +0.0. Home court +100 ELO for Phoenix Suns."
     },
     {
       "game_id": "401898400",
@@ -7347,13 +7270,13 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.7367,
-        "logistic_prob": 0.5251,
-        "elo_prob": 0.8712,
-        "xgb_prob": 0.5512,
-        "pyth_prob": 0.6276,
+        "ensemble_prob": 0.7172,
+        "logistic_prob": 0.4717,
+        "elo_prob": 0.8714,
+        "xgb_prob": 0.5097,
+        "pyth_prob": 0.6577,
         "eff_prob": 0.5,
-        "bayesian_prob": 0.5082
+        "bayesian_prob": 0.5087
       },
       "market": {
         "home_prob": null,
@@ -7363,19 +7286,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.4977,
-        "exp_margin": -0.07,
-        "prob_7plus": 0.2736,
-        "prob_14plus": 0.1145,
-        "prob_21plus": 0.0337,
+        "win_prob": 0.5074,
+        "exp_margin": 0.12,
+        "prob_7plus": 0.275,
+        "prob_14plus": 0.1191,
+        "prob_21plus": 0.0381,
         "margin_percentiles": [
-          -19.4,
-          -15.1,
-          -8.0,
-          -0.1,
-          7.8,
-          14.9,
-          19.0
+          -19.2,
+          -14.9,
+          -7.7,
+          0.2,
+          7.9,
+          15.2,
+          19.6
         ]
       },
       "adjustments": {
@@ -7389,8 +7312,8 @@
       },
       "h2h": {
         "home_wins": 7,
-        "away_wins": 13,
-        "total_meetings": 20,
+        "away_wins": 9,
+        "total_meetings": 16,
         "last_n": [
           {
             "date": "2024-03-31",
@@ -7445,22 +7368,22 @@
         ]
       },
       "elo": {
-        "home": 1621.6,
-        "away": 1334.7,
+        "home": 1621.3,
+        "away": 1334.2,
         "diff": 287.0
       },
       "bayesian": {
-        "home_mu": 1798.1,
+        "home_mu": 1797.9,
         "home_sigma": 40.0,
-        "away_mu": 1792.3,
+        "away_mu": 1791.8,
         "away_sigma": 40.0,
         "home_band": [
-          1758.1,
-          1838.1
+          1757.9,
+          1837.9
         ],
         "away_band": [
-          1752.3,
-          1832.3
+          1751.8,
+          1831.8
         ]
       },
       "efficiency": {
@@ -7480,7 +7403,7 @@
             "player": "Morez Johnson Jr.",
             "status": "Day-To-Day",
             "position": "F",
-            "injury_description": "It's unclear what Johnson is dealing with, though the issue doesn't appear to be a long-term concern. Still, the 20-year-old's status will be worth monitoring ahead of Dallas' preseason opener against Houston on Friday, Oct. 9. The No. 9 overall pick in this year's draft, Johnson is fresh off winning a title at Michigan, where he averaged 13.1 points, 7.3 rebounds, 1.2 assists and 1.1 blocks in 25.1 minutes per game.",
+            "injury_description": "The Mavericks have been managing Johnson's workload ahead of his rookie season, with May noting that the 20-year-old participated in every other live session Wednesday. Additionally, May said Monday that the power forward was getting close to practicing in full. Still, the Michigan product's status will be worth monitoring ahead of Dallas' preseason opener against the Rockets on Friday, Oct. 9.",
             "value_tier": "starter"
           },
           {
@@ -7552,7 +7475,7 @@
         "Dereck Lively II (DAL) [Starter] DAY-TO-DAY \u2014 \u22128 ELO",
         "DAL star stack: 2\u00d7 elite out \u2192 \u00d71.11 (\u221241 ELO)"
       ],
-      "explanation": "The model gives Houston Rockets a 73.7% win probability \u2014 a strong favorite over Dallas Mavericks. Houston Rockets net rating: +0.0."
+      "explanation": "The model gives Houston Rockets a 71.7% win probability \u2014 a strong favorite over Dallas Mavericks. Houston Rockets net rating: +0.0."
     },
     {
       "game_id": "401898401",
@@ -7569,13 +7492,13 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.6604,
-        "logistic_prob": 0.6497,
-        "elo_prob": 0.6768,
-        "xgb_prob": 0.6127,
-        "pyth_prob": 0.7163,
+        "ensemble_prob": 0.652,
+        "logistic_prob": 0.5916,
+        "elo_prob": 0.6956,
+        "xgb_prob": 0.5783,
+        "pyth_prob": 0.6625,
         "eff_prob": 0.6401,
-        "bayesian_prob": 0.6345
+        "bayesian_prob": 0.6346
       },
       "market": {
         "home_prob": null,
@@ -7585,19 +7508,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6235,
-        "exp_margin": 3.8,
-        "prob_7plus": 0.393,
-        "prob_14plus": 0.1949,
-        "prob_21plus": 0.0715,
+        "win_prob": 0.6375,
+        "exp_margin": 4.11,
+        "prob_7plus": 0.4032,
+        "prob_14plus": 0.1996,
+        "prob_21plus": 0.0732,
         "margin_percentiles": [
-          -15.5,
-          -11.3,
-          -4.2,
-          3.7,
-          11.7,
-          18.8,
-          23.1
+          -15.0,
+          -10.9,
+          -3.7,
+          4.0,
+          12.0,
+          19.1,
+          23.2
         ]
       },
       "adjustments": {
@@ -7610,9 +7533,9 @@
         "home_elo_bonus": 100
       },
       "h2h": {
-        "home_wins": 17,
-        "away_wins": 10,
-        "total_meetings": 27,
+        "home_wins": 15,
+        "away_wins": 9,
+        "total_meetings": 24,
         "last_n": [
           {
             "date": "2024-05-01",
@@ -7667,22 +7590,22 @@
         ]
       },
       "elo": {
-        "home": 1629.5,
-        "away": 1583.0,
-        "diff": 46.5
+        "home": 1629.3,
+        "away": 1582.2,
+        "diff": 47.1
       },
       "bayesian": {
-        "home_mu": 1791.9,
+        "home_mu": 1791.8,
         "home_sigma": 40.0,
-        "away_mu": 1794.7,
+        "away_mu": 1794.5,
         "away_sigma": 40.0,
         "home_band": [
-          1751.9,
-          1831.9
+          1751.8,
+          1831.8
         ],
         "away_band": [
-          1754.7,
-          1834.7
+          1754.5,
+          1834.5
         ]
       },
       "efficiency": {
@@ -7707,6 +7630,20 @@
         ],
         "away": [
           {
+            "player": "Noah Penda",
+            "status": "Day-To-Day",
+            "position": "F",
+            "injury_description": "There aren't many details yet, but it sounds like a minor issue that the Magic will handle carefully. It's unclear if this will linger into the preseason. Orlando's first exhibition is scheduled for Oct. 7.",
+            "value_tier": "starter"
+          },
+          {
+            "player": "Anthony Black",
+            "status": "Day-To-Day",
+            "position": "G",
+            "injury_description": "Black is being held out of practices as a precaution, and it remains to be seen if this will impact Black's availability for the start of preseason. At this point, it's hard to imagine this minor setback jeopardizing his status for Opening Night.",
+            "value_tier": "starter"
+          },
+          {
             "player": "Izaiyah Nelson",
             "status": "Out",
             "position": "F",
@@ -7724,7 +7661,7 @@
       },
       "injury_impact": {
         "home_elo_penalty": 7.0,
-        "away_elo_penalty": 21.0,
+        "away_elo_penalty": 35.5,
         "home_key_players_out": [
           {
             "player": "Larry Nance Jr.",
@@ -7735,6 +7672,20 @@
           }
         ],
         "away_key_players_out": [
+          {
+            "player": "Noah Penda",
+            "position": "F",
+            "status": "Day-To-Day",
+            "elo_impact": 7.0,
+            "value_tier": "starter"
+          },
+          {
+            "player": "Anthony Black",
+            "position": "G",
+            "status": "Day-To-Day",
+            "elo_impact": 7.5,
+            "value_tier": "starter"
+          },
           {
             "player": "Izaiyah Nelson",
             "position": "F",
@@ -7757,11 +7708,12 @@
       },
       "prediction_drivers": [
         "Larry Nance Jr. (CLE) [Starter] DAY-TO-DAY \u2014 \u22127 ELO",
+        "Noah Penda (ORL) [Starter] DAY-TO-DAY \u2014 \u22127 ELO",
+        "Anthony Black (ORL) [Starter] DAY-TO-DAY \u2014 \u22128 ELO",
         "Izaiyah Nelson (ORL) [Starter] OUT \u2014 \u221214 ELO",
-        "Jonathan Isaac (ORL) [Starter] DAY-TO-DAY \u2014 \u22127 ELO",
         "Home court: CLE +100 ELO advantage"
       ],
-      "explanation": "The model gives Cleveland Cavaliers a 66.0% win probability \u2014 a moderate favorite over Orlando Magic. Cleveland Cavaliers net rating: +0.0. Home court +100 ELO for Cleveland Cavaliers."
+      "explanation": "The model gives Cleveland Cavaliers a 65.2% win probability \u2014 a moderate favorite over Orlando Magic. Cleveland Cavaliers net rating: +0.0. Home court +100 ELO for Cleveland Cavaliers."
     },
     {
       "game_id": "401901821",
@@ -7778,13 +7730,13 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.7401,
-        "logistic_prob": 0.5251,
+        "ensemble_prob": 0.7676,
+        "logistic_prob": 0.6204,
         "elo_prob": 0.8847,
-        "xgb_prob": 0.5198,
-        "pyth_prob": 0.6395,
+        "xgb_prob": 0.5444,
+        "pyth_prob": 0.7766,
         "eff_prob": 0.6401,
-        "bayesian_prob": 0.6551
+        "bayesian_prob": 0.6557
       },
       "market": {
         "home_prob": null,
@@ -7794,19 +7746,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6586,
-        "exp_margin": 4.77,
-        "prob_7plus": 0.4307,
-        "prob_14plus": 0.2195,
-        "prob_21plus": 0.0835,
+        "win_prob": 0.6512,
+        "exp_margin": 4.6,
+        "prob_7plus": 0.417,
+        "prob_14plus": 0.2124,
+        "prob_21plus": 0.0853,
         "margin_percentiles": [
-          -14.9,
-          -10.4,
-          -3.3,
-          4.9,
-          12.8,
-          19.8,
-          23.9
+          -14.6,
+          -10.6,
+          -3.2,
+          4.7,
+          12.6,
+          19.9,
+          24.3
         ]
       },
       "adjustments": {
@@ -7819,9 +7771,9 @@
         "home_elo_bonus": 100
       },
       "h2h": {
-        "home_wins": 5,
-        "away_wins": 13,
-        "total_meetings": 18,
+        "home_wins": 3,
+        "away_wins": 11,
+        "total_meetings": 14,
         "last_n": [
           {
             "date": "2024-02-10",
@@ -7876,22 +7828,22 @@
         ]
       },
       "elo": {
-        "home": 1651.1,
-        "away": 1345.3,
+        "home": 1650.7,
+        "away": 1344.9,
         "diff": 305.8
       },
       "bayesian": {
-        "home_mu": 1794.3,
+        "home_mu": 1794.1,
         "home_sigma": 40.0,
-        "away_mu": 1781.5,
+        "away_mu": 1780.8,
         "away_sigma": 40.0,
         "home_band": [
-          1754.3,
-          1834.3
+          1754.1,
+          1834.1
         ],
         "away_band": [
-          1741.5,
-          1821.5
+          1740.8,
+          1820.8
         ]
       },
       "efficiency": {
@@ -7986,7 +7938,7 @@
         "Kevin Porter Jr. (MIL) [Starter] DAY-TO-DAY \u2014 \u22128 ELO",
         "Home court: CHA +100 ELO advantage"
       ],
-      "explanation": "The model gives Charlotte Hornets a 74.0% win probability \u2014 a strong favorite over Milwaukee Bucks. Charlotte Hornets net rating: +0.0. Home court +100 ELO for Charlotte Hornets."
+      "explanation": "The model gives Charlotte Hornets a 76.8% win probability \u2014 a strong favorite over Milwaukee Bucks. Charlotte Hornets net rating: +0.0. Home court +100 ELO for Charlotte Hornets."
     },
     {
       "game_id": "401908941",
@@ -8003,13 +7955,13 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.7768,
-        "logistic_prob": 0.6047,
+        "ensemble_prob": 0.7871,
+        "logistic_prob": 0.6204,
         "elo_prob": 0.9062,
-        "xgb_prob": 0.5458,
-        "pyth_prob": 0.7309,
+        "xgb_prob": 0.5882,
+        "pyth_prob": 0.7654,
         "eff_prob": 0.6401,
-        "bayesian_prob": 0.6531
+        "bayesian_prob": 0.6536
       },
       "market": {
         "home_prob": null,
@@ -8019,19 +7971,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6465,
+        "win_prob": 0.6477,
         "exp_margin": 4.4,
-        "prob_7plus": 0.414,
-        "prob_14plus": 0.2014,
-        "prob_21plus": 0.0749,
+        "prob_7plus": 0.4161,
+        "prob_14plus": 0.2115,
+        "prob_21plus": 0.0801,
         "margin_percentiles": [
-          -14.5,
-          -10.4,
-          -3.6,
-          4.5,
-          12.2,
-          19.4,
-          23.4
+          -15.3,
+          -10.8,
+          -3.5,
+          4.4,
+          12.4,
+          19.7,
+          23.5
         ]
       },
       "adjustments": {
@@ -8045,8 +7997,8 @@
       },
       "h2h": {
         "home_wins": 6,
-        "away_wins": 8,
-        "total_meetings": 14,
+        "away_wins": 6,
+        "total_meetings": 12,
         "last_n": [
           {
             "date": "2023-03-09",
@@ -8101,22 +8053,22 @@
         ]
       },
       "elo": {
-        "home": 1653.4,
-        "away": 1320.1,
+        "home": 1652.9,
+        "away": 1319.7,
         "diff": 333.2
       },
       "bayesian": {
-        "home_mu": 1798.9,
+        "home_mu": 1798.8,
         "home_sigma": 40.0,
-        "away_mu": 1787.7,
+        "away_mu": 1787.2,
         "away_sigma": 40.0,
         "home_band": [
-          1758.9,
-          1838.9
+          1758.8,
+          1838.8
         ],
         "away_band": [
-          1747.7,
-          1827.7
+          1747.2,
+          1827.2
         ]
       },
       "efficiency": {
@@ -8196,7 +8148,7 @@
         "Zach Collins (CHI) [Starter] DAY-TO-DAY \u2014 \u22127 ELO",
         "Home court: DEN +100 ELO advantage"
       ],
-      "explanation": "The model gives Denver Nuggets a 77.7% win probability \u2014 a strong favorite over Chicago Bulls. Denver Nuggets net rating: +0.0. Home court +100 ELO for Denver Nuggets."
+      "explanation": "The model gives Denver Nuggets a 78.7% win probability \u2014 a strong favorite over Chicago Bulls. Denver Nuggets net rating: +0.0. Home court +100 ELO for Denver Nuggets."
     },
     {
       "game_id": "401914130",
@@ -8213,13 +8165,13 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.635,
-        "logistic_prob": 0.6967,
-        "elo_prob": 0.6079,
-        "xgb_prob": 0.6404,
-        "pyth_prob": 0.6136,
+        "ensemble_prob": 0.7127,
+        "logistic_prob": 0.8889,
+        "elo_prob": 0.6074,
+        "xgb_prob": 0.8404,
+        "pyth_prob": 0.6231,
         "eff_prob": 0.6401,
-        "bayesian_prob": 0.9151
+        "bayesian_prob": 0.9149
       },
       "market": {
         "home_prob": null,
@@ -8229,19 +8181,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.9056,
-        "exp_margin": 15.79,
-        "prob_7plus": 0.767,
-        "prob_14plus": 0.5649,
-        "prob_21plus": 0.3338,
+        "win_prob": 0.9074,
+        "exp_margin": 15.84,
+        "prob_7plus": 0.7738,
+        "prob_14plus": 0.5639,
+        "prob_21plus": 0.335,
         "margin_percentiles": [
-          -3.8,
-          0.4,
-          7.7,
+          -3.7,
+          0.6,
+          7.9,
           16.0,
           23.9,
           30.9,
-          35.6
+          35.4
         ]
       },
       "adjustments": {
@@ -8260,18 +8212,18 @@
         "last_n": []
       },
       "elo": {
-        "home": 1549.2,
+        "home": 1548.8,
         "away": 1500.0,
-        "diff": 49.2
+        "diff": 48.8
       },
       "bayesian": {
-        "home_mu": 1797.7,
+        "home_mu": 1797.5,
         "home_sigma": 40.0,
         "away_mu": 1500.0,
         "away_sigma": 75.0,
         "home_band": [
-          1757.7,
-          1837.7
+          1757.5,
+          1837.5
         ],
         "away_band": [
           1425.0,
@@ -8337,7 +8289,7 @@
         "Shaedon Sharpe (POR) [Starter] OUT \u2014 \u221215 ELO",
         "Home court: POR +100 ELO advantage"
       ],
-      "explanation": "The model gives Portland Trail Blazers a 63.5% win probability \u2014 a moderate favorite over LON. Portland Trail Blazers net rating: +0.0. Home court +100 ELO for Portland Trail Blazers."
+      "explanation": "The model gives Portland Trail Blazers a 71.3% win probability \u2014 a strong favorite over LON. Portland Trail Blazers net rating: +0.0. Home court +100 ELO for Portland Trail Blazers."
     },
     {
       "game_id": "401898402",
@@ -8354,13 +8306,13 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.3119,
-        "logistic_prob": 0.3535,
-        "elo_prob": 0.2568,
-        "xgb_prob": 0.4628,
-        "pyth_prob": 0.4685,
+        "ensemble_prob": 0.3277,
+        "logistic_prob": 0.3955,
+        "elo_prob": 0.2567,
+        "xgb_prob": 0.499,
+        "pyth_prob": 0.5005,
         "eff_prob": 0.6401,
-        "bayesian_prob": 0.6181
+        "bayesian_prob": 0.6178
       },
       "market": {
         "home_prob": null,
@@ -8370,19 +8322,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6261,
-        "exp_margin": 3.53,
-        "prob_7plus": 0.382,
-        "prob_14plus": 0.1821,
-        "prob_21plus": 0.0665,
+        "win_prob": 0.6149,
+        "exp_margin": 3.31,
+        "prob_7plus": 0.3759,
+        "prob_14plus": 0.1794,
+        "prob_21plus": 0.0653,
         "margin_percentiles": [
-          -15.9,
-          -11.4,
-          -4.2,
-          3.6,
-          11.4,
-          18.3,
-          22.7
+          -16.2,
+          -11.7,
+          -4.5,
+          3.4,
+          11.2,
+          18.4,
+          22.4
         ]
       },
       "adjustments": {
@@ -8395,15 +8347,10 @@
         "home_elo_bonus": 100
       },
       "h2h": {
-        "home_wins": 4,
+        "home_wins": 2,
         "away_wins": 7,
-        "total_meetings": 11,
+        "total_meetings": 9,
         "last_n": [
-          {
-            "date": "2022-03-31",
-            "winner": "ATL",
-            "margin": 18
-          },
           {
             "date": "2022-12-06",
             "winner": "OKC",
@@ -8452,18 +8399,18 @@
         ]
       },
       "elo": {
-        "home": 1563.4,
-        "away": 1813.7,
+        "home": 1563.0,
+        "away": 1813.3,
         "diff": -250.3
       },
       "bayesian": {
-        "home_mu": 1780.3,
+        "home_mu": 1780.1,
         "home_sigma": 40.0,
         "away_mu": 1795.3,
         "away_sigma": 40.0,
         "home_band": [
-          1740.3,
-          1820.3
+          1740.1,
+          1820.1
         ],
         "away_band": [
           1755.3,
@@ -8634,7 +8581,7 @@
         "Nikola Topic (OKC) [Starter] DAY-TO-DAY \u2014 \u22128 ELO",
         "Home court: ATL +100 ELO advantage"
       ],
-      "explanation": "The model gives Oklahoma City Thunder a 68.8% win probability \u2014 a moderate favorite over Atlanta Hawks. Oklahoma City Thunder net rating: +0.0. Home court +100 ELO for Atlanta Hawks."
+      "explanation": "The model gives Oklahoma City Thunder a 67.2% win probability \u2014 a moderate favorite over Atlanta Hawks. Oklahoma City Thunder net rating: +0.0. Home court +100 ELO for Atlanta Hawks."
     },
     {
       "game_id": "401901824",
@@ -8651,11 +8598,11 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.4802,
-        "logistic_prob": 0.5331,
+        "ensemble_prob": 0.4971,
+        "logistic_prob": 0.5916,
         "elo_prob": 0.4431,
-        "xgb_prob": 0.5403,
-        "pyth_prob": 0.5985,
+        "xgb_prob": 0.5556,
+        "pyth_prob": 0.6207,
         "eff_prob": 0.6401,
         "bayesian_prob": 0.6536
       },
@@ -8667,19 +8614,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6557,
-        "exp_margin": 4.67,
-        "prob_7plus": 0.4204,
-        "prob_14plus": 0.2136,
-        "prob_21plus": 0.0804,
+        "win_prob": 0.6556,
+        "exp_margin": 4.65,
+        "prob_7plus": 0.4232,
+        "prob_14plus": 0.2115,
+        "prob_21plus": 0.0814,
         "margin_percentiles": [
-          -14.5,
-          -10.2,
+          -14.8,
+          -10.6,
           -3.2,
-          4.6,
+          4.7,
           12.6,
           19.6,
-          23.8
+          23.9
         ]
       },
       "adjustments": {
@@ -8692,9 +8639,9 @@
         "home_elo_bonus": 100
       },
       "h2h": {
-        "home_wins": 6,
-        "away_wins": 14,
-        "total_meetings": 20,
+        "home_wins": 4,
+        "away_wins": 12,
+        "total_meetings": 16,
         "last_n": [
           {
             "date": "2023-12-30",
@@ -8749,22 +8696,22 @@
         ]
       },
       "elo": {
-        "home": 1181.5,
-        "away": 1246.6,
-        "diff": -65.1
+        "home": 1181.1,
+        "away": 1246.1,
+        "diff": -65.0
       },
       "bayesian": {
-        "home_mu": 1785.1,
+        "home_mu": 1784.3,
         "home_sigma": 40.0,
-        "away_mu": 1773.4,
+        "away_mu": 1772.6,
         "away_sigma": 40.0,
         "home_band": [
-          1745.1,
-          1825.1
+          1744.3,
+          1824.3
         ],
         "away_band": [
-          1733.4,
-          1813.4
+          1732.6,
+          1812.6
         ]
       },
       "efficiency": {
@@ -8858,7 +8805,7 @@
         "Mikel Brown Jr. (BKN) [Starter] DAY-TO-DAY \u2014 \u22128 ELO",
         "Home court: WAS +100 ELO advantage"
       ],
-      "explanation": "The model gives Brooklyn Nets a 52.0% win probability \u2014 a slight favorite over Washington Wizards. Brooklyn Nets net rating: +0.0. Home court +100 ELO for Washington Wizards."
+      "explanation": "The model gives Brooklyn Nets a 50.3% win probability \u2014 a slight favorite over Washington Wizards. Brooklyn Nets net rating: +0.0. Home court +100 ELO for Washington Wizards."
     },
     {
       "game_id": "401914124",
@@ -8875,13 +8822,13 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.724,
-        "logistic_prob": 0.5607,
-        "elo_prob": 0.8348,
-        "xgb_prob": 0.5533,
-        "pyth_prob": 0.6724,
+        "ensemble_prob": 0.7387,
+        "logistic_prob": 0.5929,
+        "elo_prob": 0.8471,
+        "xgb_prob": 0.5478,
+        "pyth_prob": 0.7153,
         "eff_prob": 0.6401,
-        "bayesian_prob": 0.6567
+        "bayesian_prob": 0.6568
       },
       "market": {
         "home_prob": null,
@@ -8891,19 +8838,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6538,
-        "exp_margin": 4.6,
-        "prob_7plus": 0.4255,
-        "prob_14plus": 0.2141,
-        "prob_21plus": 0.082,
+        "win_prob": 0.6448,
+        "exp_margin": 4.32,
+        "prob_7plus": 0.4101,
+        "prob_14plus": 0.2073,
+        "prob_21plus": 0.0744,
         "margin_percentiles": [
-          -15.1,
-          -10.6,
-          -3.4,
-          4.7,
-          12.6,
-          19.6,
-          24.0
+          -15.2,
+          -10.8,
+          -3.7,
+          4.4,
+          12.3,
+          19.2,
+          23.4
         ]
       },
       "adjustments": {
@@ -8916,9 +8863,9 @@
         "home_elo_bonus": 100
       },
       "h2h": {
-        "home_wins": 7,
-        "away_wins": 6,
-        "total_meetings": 13,
+        "home_wins": 6,
+        "away_wins": 5,
+        "total_meetings": 11,
         "last_n": [
           {
             "date": "2023-03-20",
@@ -8973,22 +8920,22 @@
         ]
       },
       "elo": {
-        "home": 1832.8,
-        "away": 1613.8,
-        "diff": 219.0
+        "home": 1832.4,
+        "away": 1613.3,
+        "diff": 219.1
       },
       "bayesian": {
         "home_mu": 1799.9,
         "home_sigma": 40.0,
-        "away_mu": 1785.8,
+        "away_mu": 1785.7,
         "away_sigma": 40.0,
         "home_band": [
           1759.9,
           1839.9
         ],
         "away_band": [
-          1745.8,
-          1825.8
+          1745.7,
+          1825.7
         ]
       },
       "efficiency": {
@@ -9003,13 +8950,6 @@
       },
       "injuries": {
         "home": [
-          {
-            "player": "N'Faly Dante",
-            "status": "Out",
-            "position": "C",
-            "injury_description": "This is an expected move for New York. Dante was previously on an Exhibit 10 deal and is still on the mend from a January ACL surgery.",
-            "value_tier": "starter"
-          },
           {
             "player": "Mohamed Diawara",
             "status": "Day-To-Day",
@@ -9029,16 +8969,9 @@
         ]
       },
       "injury_impact": {
-        "home_elo_penalty": 23.0,
+        "home_elo_penalty": 7.0,
         "away_elo_penalty": 15.0,
         "home_key_players_out": [
-          {
-            "player": "N'Faly Dante",
-            "position": "C",
-            "status": "Out",
-            "elo_impact": 16.0,
-            "value_tier": "starter"
-          },
           {
             "player": "Mohamed Diawara",
             "position": "F",
@@ -9063,12 +8996,11 @@
       },
       "prediction_drivers": [
         "ELO advantage: NYK +219 rating points",
-        "N'Faly Dante (NYK) [Starter] OUT \u2014 \u221216 ELO",
         "Mohamed Diawara (NYK) [Starter] DAY-TO-DAY \u2014 \u22127 ELO",
         "Donte DiVincenzo (MIN) [Starter] OUT \u2014 \u221215 ELO",
         "Home court: NYK +100 ELO advantage"
       ],
-      "explanation": "The model gives New York Knicks a 72.4% win probability \u2014 a strong favorite over Minnesota Timberwolves. New York Knicks net rating: +0.0. Home court +100 ELO for New York Knicks."
+      "explanation": "The model gives New York Knicks a 73.9% win probability \u2014 a strong favorite over Minnesota Timberwolves. New York Knicks net rating: +0.0. Home court +100 ELO for New York Knicks."
     },
     {
       "game_id": "401898721",
@@ -9085,13 +9017,13 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.2179,
-        "logistic_prob": 0.4267,
+        "ensemble_prob": 0.1363,
+        "logistic_prob": 0.1739,
         "elo_prob": 0.0496,
-        "xgb_prob": 0.5432,
-        "pyth_prob": 0.5834,
+        "xgb_prob": 0.4208,
+        "pyth_prob": 0.5089,
         "eff_prob": 0.6401,
-        "bayesian_prob": 0.6147
+        "bayesian_prob": 0.6139
       },
       "market": {
         "home_prob": null,
@@ -9101,19 +9033,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6052,
-        "exp_margin": 3.13,
-        "prob_7plus": 0.3727,
-        "prob_14plus": 0.1772,
-        "prob_21plus": 0.0652,
+        "win_prob": 0.6119,
+        "exp_margin": 3.31,
+        "prob_7plus": 0.3785,
+        "prob_14plus": 0.18,
+        "prob_21plus": 0.0622,
         "margin_percentiles": [
-          -16.3,
-          -11.8,
-          -4.6,
-          3.1,
-          10.9,
-          18.1,
-          22.6
+          -15.7,
+          -11.6,
+          -4.7,
+          3.3,
+          11.3,
+          18.2,
+          22.3
         ]
       },
       "adjustments": {
@@ -9126,9 +9058,9 @@
         "home_elo_bonus": 100
       },
       "h2h": {
-        "home_wins": 7,
-        "away_wins": 14,
-        "total_meetings": 21,
+        "home_wins": 6,
+        "away_wins": 11,
+        "total_meetings": 17,
         "last_n": [
           {
             "date": "2024-03-28",
@@ -9183,18 +9115,18 @@
         ]
       },
       "elo": {
-        "home": 1250.5,
-        "away": 1827.5,
-        "diff": -577.0
+        "home": 1250.0,
+        "away": 1827.1,
+        "diff": -577.1
       },
       "bayesian": {
-        "home_mu": 1782.4,
+        "home_mu": 1781.7,
         "home_sigma": 40.0,
         "away_mu": 1799.9,
         "away_sigma": 40.0,
         "home_band": [
-          1742.4,
-          1822.4
+          1741.7,
+          1821.7
         ],
         "away_band": [
           1759.9,
@@ -9278,7 +9210,7 @@
         "Jayden Quaintance (SAS) [Starter] OUT \u2014 \u221214 ELO",
         "Home court: UTAH +100 ELO advantage"
       ],
-      "explanation": "The model gives San Antonio Spurs a 78.2% win probability \u2014 a strong favorite over UTAH. San Antonio Spurs net rating: +0.0. Home court +100 ELO for UTAH."
+      "explanation": "The model gives San Antonio Spurs a 86.4% win probability \u2014 a strong favorite over UTAH. San Antonio Spurs net rating: +0.0. Home court +100 ELO for UTAH."
     },
     {
       "game_id": "401898403",
@@ -9295,13 +9227,13 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.4973,
-        "logistic_prob": 0.4267,
-        "elo_prob": 0.5106,
-        "xgb_prob": 0.5614,
-        "pyth_prob": 0.5561,
+        "ensemble_prob": 0.5107,
+        "logistic_prob": 0.5437,
+        "elo_prob": 0.4889,
+        "xgb_prob": 0.5427,
+        "pyth_prob": 0.617,
         "eff_prob": 0.6401,
-        "bayesian_prob": 0.6419
+        "bayesian_prob": 0.6418
       },
       "market": {
         "home_prob": null,
@@ -9311,19 +9243,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6275,
-        "exp_margin": 3.88,
-        "prob_7plus": 0.3951,
-        "prob_14plus": 0.1959,
-        "prob_21plus": 0.0737,
+        "win_prob": 0.6391,
+        "exp_margin": 4.11,
+        "prob_7plus": 0.3996,
+        "prob_14plus": 0.199,
+        "prob_21plus": 0.0761,
         "margin_percentiles": [
-          -15.2,
-          -11.2,
-          -4.1,
-          3.9,
-          11.8,
-          18.8,
-          23.2
+          -15.0,
+          -11.0,
+          -3.8,
+          4.1,
+          11.9,
+          19.1,
+          23.3
         ]
       },
       "adjustments": {
@@ -9336,9 +9268,9 @@
         "home_elo_bonus": 100
       },
       "h2h": {
-        "home_wins": 10,
-        "away_wins": 17,
-        "total_meetings": 27,
+        "home_wins": 9,
+        "away_wins": 15,
+        "total_meetings": 24,
         "last_n": [
           {
             "date": "2024-05-01",
@@ -9393,22 +9325,22 @@
         ]
       },
       "elo": {
-        "home": 1583.0,
-        "away": 1629.5,
-        "diff": -46.5
+        "home": 1582.2,
+        "away": 1629.3,
+        "diff": -47.1
       },
       "bayesian": {
-        "home_mu": 1794.7,
+        "home_mu": 1794.5,
         "home_sigma": 40.0,
-        "away_mu": 1791.9,
+        "away_mu": 1791.8,
         "away_sigma": 40.0,
         "home_band": [
-          1754.7,
-          1834.7
+          1754.5,
+          1834.5
         ],
         "away_band": [
-          1751.9,
-          1831.9
+          1751.8,
+          1831.8
         ]
       },
       "efficiency": {
@@ -9423,6 +9355,20 @@
       },
       "injuries": {
         "home": [
+          {
+            "player": "Noah Penda",
+            "status": "Day-To-Day",
+            "position": "F",
+            "injury_description": "There aren't many details yet, but it sounds like a minor issue that the Magic will handle carefully. It's unclear if this will linger into the preseason. Orlando's first exhibition is scheduled for Oct. 7.",
+            "value_tier": "starter"
+          },
+          {
+            "player": "Anthony Black",
+            "status": "Day-To-Day",
+            "position": "G",
+            "injury_description": "Black is being held out of practices as a precaution, and it remains to be seen if this will impact Black's availability for the start of preseason. At this point, it's hard to imagine this minor setback jeopardizing his status for Opening Night.",
+            "value_tier": "starter"
+          },
           {
             "player": "Izaiyah Nelson",
             "status": "Out",
@@ -9449,9 +9395,23 @@
         ]
       },
       "injury_impact": {
-        "home_elo_penalty": 21.0,
+        "home_elo_penalty": 35.5,
         "away_elo_penalty": 7.0,
         "home_key_players_out": [
+          {
+            "player": "Noah Penda",
+            "position": "F",
+            "status": "Day-To-Day",
+            "elo_impact": 7.0,
+            "value_tier": "starter"
+          },
+          {
+            "player": "Anthony Black",
+            "position": "G",
+            "status": "Day-To-Day",
+            "elo_impact": 7.5,
+            "value_tier": "starter"
+          },
           {
             "player": "Izaiyah Nelson",
             "position": "F",
@@ -9482,12 +9442,13 @@
         "away_star_stack_multiplier": 1.0
       },
       "prediction_drivers": [
+        "Noah Penda (ORL) [Starter] DAY-TO-DAY \u2014 \u22127 ELO",
+        "Anthony Black (ORL) [Starter] DAY-TO-DAY \u2014 \u22128 ELO",
         "Izaiyah Nelson (ORL) [Starter] OUT \u2014 \u221214 ELO",
-        "Jonathan Isaac (ORL) [Starter] DAY-TO-DAY \u2014 \u22127 ELO",
         "Larry Nance Jr. (CLE) [Starter] DAY-TO-DAY \u2014 \u22127 ELO",
         "Home court: ORL +100 ELO advantage"
       ],
-      "explanation": "The model gives Cleveland Cavaliers a 50.3% win probability \u2014 a slight favorite over Orlando Magic. Cleveland Cavaliers net rating: +0.0. Home court +100 ELO for Orlando Magic."
+      "explanation": "The model gives Orlando Magic a 51.1% win probability \u2014 a slight favorite over Cleveland Cavaliers. Orlando Magic net rating: +0.0. Home court +100 ELO for Orlando Magic."
     },
     {
       "game_id": "401908944",
@@ -9504,13 +9465,13 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.3414,
-        "logistic_prob": 0.5251,
-        "elo_prob": 0.2142,
-        "xgb_prob": 0.5443,
-        "pyth_prob": 0.536,
+        "ensemble_prob": 0.3257,
+        "logistic_prob": 0.5333,
+        "elo_prob": 0.1992,
+        "xgb_prob": 0.4859,
+        "pyth_prob": 0.5574,
         "eff_prob": 0.6401,
-        "bayesian_prob": 0.6373
+        "bayesian_prob": 0.6371
       },
       "market": {
         "home_prob": null,
@@ -9520,19 +9481,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6334,
-        "exp_margin": 4.0,
-        "prob_7plus": 0.3973,
-        "prob_14plus": 0.1954,
-        "prob_21plus": 0.0744,
+        "win_prob": 0.6441,
+        "exp_margin": 4.18,
+        "prob_7plus": 0.4073,
+        "prob_14plus": 0.2001,
+        "prob_21plus": 0.073,
         "margin_percentiles": [
-          -15.1,
+          -15.4,
           -10.8,
-          -3.9,
-          3.9,
-          12.0,
+          -3.7,
+          4.4,
+          11.8,
           19.1,
-          23.5
+          23.1
         ]
       },
       "adjustments": {
@@ -9545,9 +9506,9 @@
         "home_elo_bonus": 100
       },
       "h2h": {
-        "home_wins": 6,
-        "away_wins": 15,
-        "total_meetings": 21,
+        "home_wins": 3,
+        "away_wins": 14,
+        "total_meetings": 17,
         "last_n": [
           {
             "date": "2024-03-27",
@@ -9602,18 +9563,18 @@
         ]
       },
       "elo": {
-        "home": 1564.2,
-        "away": 1832.8,
-        "diff": -268.6
+        "home": 1563.9,
+        "away": 1832.4,
+        "diff": -268.5
       },
       "bayesian": {
-        "home_mu": 1799.2,
+        "home_mu": 1799.0,
         "home_sigma": 40.0,
         "away_mu": 1799.9,
         "away_sigma": 40.0,
         "home_band": [
-          1759.2,
-          1839.2
+          1759.0,
+          1839.0
         ],
         "away_band": [
           1759.9,
@@ -9663,13 +9624,6 @@
         ],
         "away": [
           {
-            "player": "N'Faly Dante",
-            "status": "Out",
-            "position": "C",
-            "injury_description": "This is an expected move for New York. Dante was previously on an Exhibit 10 deal and is still on the mend from a January ACL surgery.",
-            "value_tier": "starter"
-          },
-          {
             "player": "Mohamed Diawara",
             "status": "Day-To-Day",
             "position": "F",
@@ -9680,7 +9634,7 @@
       },
       "injury_impact": {
         "home_elo_penalty": 37.0,
-        "away_elo_penalty": 23.0,
+        "away_elo_penalty": 7.0,
         "home_key_players_out": [
           {
             "player": "Brandon Ingram",
@@ -9713,13 +9667,6 @@
         ],
         "away_key_players_out": [
           {
-            "player": "N'Faly Dante",
-            "position": "C",
-            "status": "Out",
-            "elo_impact": 16.0,
-            "value_tier": "starter"
-          },
-          {
             "player": "Mohamed Diawara",
             "position": "F",
             "status": "Day-To-Day",
@@ -9737,11 +9684,10 @@
         "Brandon Ingram (TOR) [Starter] OUT \u2014 \u221214 ELO",
         "Nate Bittle (TOR) [Starter] DAY-TO-DAY \u2014 \u22128 ELO",
         "Alijah Martin (TOR) [Starter] DAY-TO-DAY \u2014 \u22128 ELO",
-        "N'Faly Dante (NYK) [Starter] OUT \u2014 \u221216 ELO",
         "Mohamed Diawara (NYK) [Starter] DAY-TO-DAY \u2014 \u22127 ELO",
         "Home court: TOR +100 ELO advantage"
       ],
-      "explanation": "The model gives New York Knicks a 65.9% win probability \u2014 a moderate favorite over Toronto Raptors. New York Knicks net rating: +0.0. Home court +100 ELO for Toronto Raptors."
+      "explanation": "The model gives New York Knicks a 67.4% win probability \u2014 a moderate favorite over Toronto Raptors. New York Knicks net rating: +0.0. Home court +100 ELO for Toronto Raptors."
     },
     {
       "game_id": "401908621",
@@ -9758,13 +9704,13 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.8403,
-        "logistic_prob": 0.6897,
+        "ensemble_prob": 0.878,
+        "logistic_prob": 0.7785,
         "elo_prob": 0.9655,
-        "xgb_prob": 0.5903,
-        "pyth_prob": 0.8025,
+        "xgb_prob": 0.6942,
+        "pyth_prob": 0.8472,
         "eff_prob": 0.6401,
-        "bayesian_prob": 0.6358
+        "bayesian_prob": 0.6365
       },
       "market": {
         "home_prob": null,
@@ -9774,17 +9720,17 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.632,
-        "exp_margin": 3.85,
-        "prob_7plus": 0.3912,
-        "prob_14plus": 0.1973,
-        "prob_21plus": 0.0723,
+        "win_prob": 0.6284,
+        "exp_margin": 3.88,
+        "prob_7plus": 0.3939,
+        "prob_14plus": 0.1998,
+        "prob_21plus": 0.0725,
         "margin_percentiles": [
-          -15.3,
-          -11.4,
+          -15.5,
+          -11.1,
           -4.1,
-          3.8,
-          11.8,
+          3.9,
+          11.9,
           19.0,
           23.1
         ]
@@ -9799,9 +9745,9 @@
         "home_elo_bonus": 100
       },
       "h2h": {
-        "home_wins": 9,
-        "away_wins": 9,
-        "total_meetings": 18,
+        "home_wins": 8,
+        "away_wins": 8,
+        "total_meetings": 16,
         "last_n": [
           {
             "date": "2025-06-06",
@@ -9856,22 +9802,22 @@
         ]
       },
       "elo": {
-        "home": 1813.7,
-        "away": 1275.1,
-        "diff": 538.5
+        "home": 1813.3,
+        "away": 1274.7,
+        "diff": 538.6
       },
       "bayesian": {
         "home_mu": 1795.3,
         "home_sigma": 40.0,
-        "away_mu": 1797.1,
+        "away_mu": 1796.6,
         "away_sigma": 40.0,
         "home_band": [
           1755.3,
           1835.3
         ],
         "away_band": [
-          1757.1,
-          1837.1
+          1756.6,
+          1836.6
         ]
       },
       "efficiency": {
@@ -9994,7 +9940,7 @@
         "Johnny Furphy (IND) [Starter] OUT \u2014 \u221215 ELO",
         "Home court: OKC +100 ELO advantage"
       ],
-      "explanation": "The model gives Oklahoma City Thunder a 84.0% win probability \u2014 a strong favorite over Indiana Pacers. Oklahoma City Thunder net rating: +0.0. Home court +100 ELO for Oklahoma City Thunder."
+      "explanation": "The model gives Oklahoma City Thunder a 87.8% win probability \u2014 a strong favorite over Indiana Pacers. Oklahoma City Thunder net rating: +0.0. Home court +100 ELO for Oklahoma City Thunder."
     },
     {
       "game_id": "401898718",
@@ -10011,13 +9957,13 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.6654,
-        "logistic_prob": 0.3535,
+        "ensemble_prob": 0.6676,
+        "logistic_prob": 0.3902,
         "elo_prob": 0.8241,
-        "xgb_prob": 0.55,
-        "pyth_prob": 0.4744,
+        "xgb_prob": 0.5035,
+        "pyth_prob": 0.5162,
         "eff_prob": 0.5,
-        "bayesian_prob": 0.4932
+        "bayesian_prob": 0.4933
       },
       "market": {
         "home_prob": null,
@@ -10027,18 +9973,18 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.5065,
-        "exp_margin": -0.05,
-        "prob_7plus": 0.2773,
-        "prob_14plus": 0.1144,
-        "prob_21plus": 0.0371,
+        "win_prob": 0.4904,
+        "exp_margin": -0.13,
+        "prob_7plus": 0.2697,
+        "prob_14plus": 0.111,
+        "prob_21plus": 0.0364,
         "margin_percentiles": [
-          -19.5,
-          -15.2,
+          -19.4,
+          -14.7,
           -8.0,
-          0.1,
-          7.9,
-          15.0,
+          -0.2,
+          7.7,
+          14.8,
           19.2
         ]
       },
@@ -10052,9 +9998,9 @@
         "home_elo_bonus": 0
       },
       "h2h": {
-        "home_wins": 17,
-        "away_wins": 18,
-        "total_meetings": 35,
+        "home_wins": 16,
+        "away_wins": 13,
+        "total_meetings": 29,
         "last_n": [
           {
             "date": "2024-12-26",
@@ -10109,22 +10055,22 @@
         ]
       },
       "elo": {
-        "home": 1634.8,
-        "away": 1417.4,
+        "home": 1634.4,
+        "away": 1417.0,
         "diff": 217.4
       },
       "bayesian": {
-        "home_mu": 1793.6,
+        "home_mu": 1793.4,
         "home_sigma": 40.0,
-        "away_mu": 1798.4,
+        "away_mu": 1798.1,
         "away_sigma": 40.0,
         "home_band": [
-          1753.6,
-          1833.6
+          1753.4,
+          1833.4
         ],
         "away_band": [
-          1758.4,
-          1838.4
+          1758.1,
+          1838.1
         ]
       },
       "efficiency": {
@@ -10215,7 +10161,7 @@
         "Jimmy Butler III (GSW) [Starter] OUT \u2014 \u221214 ELO",
         "Moses Moody (GSW) [Starter] OUT \u2014 \u221215 ELO"
       ],
-      "explanation": "The model gives Los Angeles Lakers a 66.5% win probability \u2014 a moderate favorite over Golden State Warriors. Los Angeles Lakers net rating: +0.0."
+      "explanation": "The model gives Los Angeles Lakers a 66.8% win probability \u2014 a moderate favorite over Golden State Warriors. Los Angeles Lakers net rating: +0.0."
     },
     {
       "game_id": "401901826",
@@ -10232,13 +10178,13 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.3834,
-        "logistic_prob": 0.5331,
+        "ensemble_prob": 0.3505,
+        "logistic_prob": 0.4194,
         "elo_prob": 0.2766,
-        "xgb_prob": 0.5613,
-        "pyth_prob": 0.5863,
+        "xgb_prob": 0.5312,
+        "pyth_prob": 0.5096,
         "eff_prob": 0.6401,
-        "bayesian_prob": 0.6243
+        "bayesian_prob": 0.6235
       },
       "market": {
         "home_prob": null,
@@ -10248,19 +10194,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6167,
-        "exp_margin": 3.51,
-        "prob_7plus": 0.3838,
-        "prob_14plus": 0.1812,
-        "prob_21plus": 0.0662,
+        "win_prob": 0.6134,
+        "exp_margin": 3.41,
+        "prob_7plus": 0.3758,
+        "prob_14plus": 0.1848,
+        "prob_21plus": 0.069,
         "margin_percentiles": [
-          -15.6,
-          -11.6,
-          -4.2,
-          3.5,
+          -15.7,
+          -11.7,
+          -4.6,
+          3.3,
           11.3,
-          18.3,
-          22.8
+          18.6,
+          23.2
         ]
       },
       "adjustments": {
@@ -10273,9 +10219,9 @@
         "home_elo_bonus": 100
       },
       "h2h": {
-        "home_wins": 11,
-        "away_wins": 11,
-        "total_meetings": 22,
+        "home_wins": 8,
+        "away_wins": 10,
+        "total_meetings": 18,
         "last_n": [
           {
             "date": "2024-10-13",
@@ -10330,22 +10276,22 @@
         ]
       },
       "elo": {
-        "home": 1306.5,
-        "away": 1549.2,
+        "home": 1306.1,
+        "away": 1548.8,
         "diff": -242.7
       },
       "bayesian": {
-        "home_mu": 1787.2,
+        "home_mu": 1786.5,
         "home_sigma": 40.0,
-        "away_mu": 1797.7,
+        "away_mu": 1797.5,
         "away_sigma": 40.0,
         "home_band": [
-          1747.2,
-          1827.2
+          1746.5,
+          1826.5
         ],
         "away_band": [
-          1757.7,
-          1837.7
+          1757.5,
+          1837.5
         ]
       },
       "efficiency": {
@@ -10425,7 +10371,7 @@
         "Shaedon Sharpe (POR) [Starter] OUT \u2014 \u221215 ELO",
         "Home court: SAC +100 ELO advantage"
       ],
-      "explanation": "The model gives Portland Trail Blazers a 61.7% win probability \u2014 a moderate favorite over Sacramento Kings. Portland Trail Blazers net rating: +0.0. Home court +100 ELO for Sacramento Kings."
+      "explanation": "The model gives Portland Trail Blazers a 65.0% win probability \u2014 a moderate favorite over Sacramento Kings. Portland Trail Blazers net rating: +0.0. Home court +100 ELO for Sacramento Kings."
     },
     {
       "game_id": "401898404",
@@ -10442,13 +10388,13 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.7871,
-        "logistic_prob": 0.6897,
-        "elo_prob": 0.8819,
-        "xgb_prob": 0.5702,
-        "pyth_prob": 0.7597,
+        "ensemble_prob": 0.771,
+        "logistic_prob": 0.6204,
+        "elo_prob": 0.882,
+        "xgb_prob": 0.5778,
+        "pyth_prob": 0.7816,
         "eff_prob": 0.6401,
-        "bayesian_prob": 0.6672
+        "bayesian_prob": 0.6677
       },
       "market": {
         "home_prob": null,
@@ -10458,19 +10404,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6613,
-        "exp_margin": 4.77,
-        "prob_7plus": 0.423,
-        "prob_14plus": 0.2126,
-        "prob_21plus": 0.0829,
+        "win_prob": 0.6598,
+        "exp_margin": 4.93,
+        "prob_7plus": 0.4276,
+        "prob_14plus": 0.2221,
+        "prob_21plus": 0.0906,
         "margin_percentiles": [
-          -14.4,
-          -10.1,
+          -14.8,
+          -10.4,
           -3.0,
-          4.7,
-          12.6,
-          19.8,
-          23.8
+          4.9,
+          13.1,
+          20.4,
+          24.6
         ]
       },
       "adjustments": {
@@ -10483,9 +10429,9 @@
         "home_elo_bonus": 100
       },
       "h2h": {
-        "home_wins": 11,
-        "away_wins": 8,
-        "total_meetings": 19,
+        "home_wins": 8,
+        "away_wins": 7,
+        "total_meetings": 15,
         "last_n": [
           {
             "date": "2023-11-01",
@@ -10540,22 +10486,22 @@
         ]
       },
       "elo": {
-        "home": 1531.0,
-        "away": 1246.6,
-        "diff": 284.5
+        "home": 1530.7,
+        "away": 1246.1,
+        "diff": 284.6
       },
       "bayesian": {
-        "home_mu": 1795.6,
+        "home_mu": 1795.2,
         "home_sigma": 40.0,
-        "away_mu": 1773.4,
+        "away_mu": 1772.6,
         "away_sigma": 40.0,
         "home_band": [
-          1755.6,
-          1835.6
+          1755.2,
+          1835.2
         ],
         "away_band": [
-          1733.4,
-          1813.4
+          1732.6,
+          1812.6
         ]
       },
       "efficiency": {
@@ -10629,13 +10575,13 @@
         "away_star_stack_multiplier": 1.0
       },
       "prediction_drivers": [
-        "ELO advantage: MIA +284 rating points",
+        "ELO advantage: MIA +285 rating points",
         "Ryan Conwell (MIA) [Starter] DAY-TO-DAY \u2014 \u22128 ELO",
         "Myron Gardner (MIA) [Starter] DAY-TO-DAY \u2014 \u22127 ELO",
         "Mikel Brown Jr. (BKN) [Starter] DAY-TO-DAY \u2014 \u22128 ELO",
         "Home court: MIA +100 ELO advantage"
       ],
-      "explanation": "The model gives Miami Heat a 78.7% win probability \u2014 a strong favorite over Brooklyn Nets. Miami Heat net rating: +0.0. Home court +100 ELO for Miami Heat."
+      "explanation": "The model gives Miami Heat a 77.1% win probability \u2014 a strong favorite over Brooklyn Nets. Miami Heat net rating: +0.0. Home court +100 ELO for Miami Heat."
     },
     {
       "game_id": "401898405",
@@ -10652,13 +10598,13 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.6737,
-        "logistic_prob": 0.6967,
-        "elo_prob": 0.6668,
-        "xgb_prob": 0.6631,
-        "pyth_prob": 0.7818,
+        "ensemble_prob": 0.6355,
+        "logistic_prob": 0.5929,
+        "elo_prob": 0.6667,
+        "xgb_prob": 0.5816,
+        "pyth_prob": 0.6899,
         "eff_prob": 0.6401,
-        "bayesian_prob": 0.6451
+        "bayesian_prob": 0.6453
       },
       "market": {
         "home_prob": null,
@@ -10668,19 +10614,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6461,
-        "exp_margin": 4.26,
-        "prob_7plus": 0.406,
-        "prob_14plus": 0.1993,
-        "prob_21plus": 0.0755,
+        "win_prob": 0.6455,
+        "exp_margin": 4.25,
+        "prob_7plus": 0.4124,
+        "prob_14plus": 0.2023,
+        "prob_21plus": 0.0747,
         "margin_percentiles": [
-          -14.8,
-          -10.6,
-          -3.4,
-          4.2,
-          11.9,
-          19.1,
-          23.5
+          -15.0,
+          -10.8,
+          -3.7,
+          4.3,
+          12.2,
+          19.2,
+          23.1
         ]
       },
       "adjustments": {
@@ -10693,9 +10639,9 @@
         "home_elo_bonus": 100
       },
       "h2h": {
-        "home_wins": 18,
-        "away_wins": 3,
-        "total_meetings": 21,
+        "home_wins": 15,
+        "away_wins": 2,
+        "total_meetings": 17,
         "last_n": [
           {
             "date": "2023-11-21",
@@ -10750,22 +10696,22 @@
         ]
       },
       "elo": {
-        "home": 1684.7,
-        "away": 1651.1,
-        "diff": 33.6
+        "home": 1684.2,
+        "away": 1650.7,
+        "diff": 33.5
       },
       "bayesian": {
-        "home_mu": 1799.6,
+        "home_mu": 1799.5,
         "home_sigma": 40.0,
-        "away_mu": 1794.3,
+        "away_mu": 1794.1,
         "away_sigma": 40.0,
         "home_band": [
-          1759.6,
-          1839.6
+          1759.5,
+          1839.5
         ],
         "away_band": [
-          1754.3,
-          1834.3
+          1754.1,
+          1834.1
         ]
       },
       "efficiency": {
@@ -10842,7 +10788,7 @@
         "PJ Hall (CHA) [Starter] DAY-TO-DAY \u2014 \u22128 ELO",
         "Home court: BOS +100 ELO advantage"
       ],
-      "explanation": "The model gives Boston Celtics a 67.4% win probability \u2014 a moderate favorite over Charlotte Hornets. Boston Celtics net rating: +0.0. Home court +100 ELO for Boston Celtics."
+      "explanation": "The model gives Boston Celtics a 63.5% win probability \u2014 a moderate favorite over Charlotte Hornets. Boston Celtics net rating: +0.0. Home court +100 ELO for Boston Celtics."
     },
     {
       "game_id": "401898722",
@@ -10859,13 +10805,13 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.7528,
-        "logistic_prob": 0.5607,
-        "elo_prob": 0.8918,
-        "xgb_prob": 0.5171,
-        "pyth_prob": 0.7062,
+        "ensemble_prob": 0.7625,
+        "logistic_prob": 0.5916,
+        "elo_prob": 0.8915,
+        "xgb_prob": 0.5312,
+        "pyth_prob": 0.7391,
         "eff_prob": 0.6401,
-        "bayesian_prob": 0.6492
+        "bayesian_prob": 0.6494
       },
       "market": {
         "home_prob": null,
@@ -10875,19 +10821,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6453,
-        "exp_margin": 4.25,
-        "prob_7plus": 0.4116,
-        "prob_14plus": 0.2023,
-        "prob_21plus": 0.078,
+        "win_prob": 0.6473,
+        "exp_margin": 4.44,
+        "prob_7plus": 0.4131,
+        "prob_14plus": 0.2092,
+        "prob_21plus": 0.0756,
         "margin_percentiles": [
-          -15.2,
-          -10.9,
-          -3.7,
-          4.3,
-          12.2,
-          19.2,
-          23.4
+          -15.0,
+          -10.8,
+          -3.4,
+          4.5,
+          12.3,
+          19.3,
+          23.6
         ]
       },
       "adjustments": {
@@ -10901,8 +10847,8 @@
       },
       "h2h": {
         "home_wins": 6,
-        "away_wins": 12,
-        "total_meetings": 18,
+        "away_wins": 8,
+        "total_meetings": 14,
         "last_n": [
           {
             "date": "2023-11-03",
@@ -10957,22 +10903,22 @@
         ]
       },
       "elo": {
-        "home": 1827.5,
-        "away": 1530.0,
-        "diff": 297.5
+        "home": 1827.1,
+        "away": 1530.1,
+        "diff": 297.0
       },
       "bayesian": {
         "home_mu": 1799.9,
         "home_sigma": 40.0,
-        "away_mu": 1791.6,
+        "away_mu": 1791.4,
         "away_sigma": 40.0,
         "home_band": [
           1759.9,
           1839.9
         ],
         "away_band": [
-          1751.6,
-          1831.6
+          1751.4,
+          1831.4
         ]
       },
       "efficiency": {
@@ -11067,7 +11013,7 @@
         "CJ Huntley (PHX) [Starter] DAY-TO-DAY \u2014 \u22127 ELO",
         "Home court: SAS +100 ELO advantage"
       ],
-      "explanation": "The model gives San Antonio Spurs a 75.3% win probability \u2014 a strong favorite over Phoenix Suns. San Antonio Spurs net rating: +0.0. Home court +100 ELO for San Antonio Spurs."
+      "explanation": "The model gives San Antonio Spurs a 76.2% win probability \u2014 a strong favorite over Phoenix Suns. San Antonio Spurs net rating: +0.0. Home court +100 ELO for San Antonio Spurs."
     },
     {
       "game_id": "401901825",
@@ -11084,13 +11030,13 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.527,
-        "logistic_prob": 0.6497,
+        "ensemble_prob": 0.4992,
+        "logistic_prob": 0.5437,
         "elo_prob": 0.4546,
-        "xgb_prob": 0.612,
-        "pyth_prob": 0.6956,
+        "xgb_prob": 0.6037,
+        "pyth_prob": 0.6347,
         "eff_prob": 0.6401,
-        "bayesian_prob": 0.6363
+        "bayesian_prob": 0.6362
       },
       "market": {
         "home_prob": null,
@@ -11100,18 +11046,18 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6354,
-        "exp_margin": 3.92,
-        "prob_7plus": 0.392,
-        "prob_14plus": 0.1956,
-        "prob_21plus": 0.0699,
+        "win_prob": 0.6336,
+        "exp_margin": 3.83,
+        "prob_7plus": 0.3904,
+        "prob_14plus": 0.1929,
+        "prob_21plus": 0.0698,
         "margin_percentiles": [
           -15.4,
-          -11.0,
-          -3.8,
+          -11.4,
+          -4.1,
           3.9,
           11.7,
-          18.8,
+          18.7,
           23.0
         ]
       },
@@ -11125,9 +11071,9 @@
         "home_elo_bonus": 100
       },
       "h2h": {
-        "home_wins": 11,
-        "away_wins": 9,
-        "total_meetings": 20,
+        "home_wins": 8,
+        "away_wins": 8,
+        "total_meetings": 16,
         "last_n": [
           {
             "date": "2024-01-14",
@@ -11182,22 +11128,22 @@
         ]
       },
       "elo": {
-        "home": 1334.7,
-        "away": 1406.9,
+        "home": 1334.2,
+        "away": 1406.5,
         "diff": -72.3
       },
       "bayesian": {
-        "home_mu": 1792.3,
+        "home_mu": 1791.8,
         "home_sigma": 40.0,
-        "away_mu": 1793.8,
+        "away_mu": 1793.3,
         "away_sigma": 40.0,
         "home_band": [
-          1752.3,
-          1832.3
+          1751.8,
+          1831.8
         ],
         "away_band": [
-          1753.8,
-          1833.8
+          1753.3,
+          1833.3
         ]
       },
       "efficiency": {
@@ -11216,7 +11162,7 @@
             "player": "Morez Johnson Jr.",
             "status": "Day-To-Day",
             "position": "F",
-            "injury_description": "It's unclear what Johnson is dealing with, though the issue doesn't appear to be a long-term concern. Still, the 20-year-old's status will be worth monitoring ahead of Dallas' preseason opener against Houston on Friday, Oct. 9. The No. 9 overall pick in this year's draft, Johnson is fresh off winning a title at Michigan, where he averaged 13.1 points, 7.3 rebounds, 1.2 assists and 1.1 blocks in 25.1 minutes per game.",
+            "injury_description": "The Mavericks have been managing Johnson's workload ahead of his rookie season, with May noting that the 20-year-old participated in every other live session Wednesday. Additionally, May said Monday that the power forward was getting close to practicing in full. Still, the Michigan product's status will be worth monitoring ahead of Dallas' preseason opener against the Rockets on Friday, Oct. 9.",
             "value_tier": "starter"
           },
           {
@@ -11336,7 +11282,7 @@
         "Trey Alexander (NOP) [Starter] DAY-TO-DAY \u2014 \u22128 ELO",
         "Home court: DAL +100 ELO advantage"
       ],
-      "explanation": "The model gives Dallas Mavericks a 52.7% win probability \u2014 a slight favorite over New Orleans Pelicans. Dallas Mavericks net rating: +0.0. Home court +100 ELO for Dallas Mavericks."
+      "explanation": "The model gives New Orleans Pelicans a 50.1% win probability \u2014 a slight favorite over Dallas Mavericks. New Orleans Pelicans net rating: +0.0. Home court +100 ELO for Dallas Mavericks."
     },
     {
       "game_id": "401908942",
@@ -11353,13 +11299,13 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.6069,
-        "logistic_prob": 0.6047,
+        "ensemble_prob": 0.5965,
+        "logistic_prob": 0.5568,
         "elo_prob": 0.6081,
-        "xgb_prob": 0.6055,
-        "pyth_prob": 0.6566,
+        "xgb_prob": 0.6162,
+        "pyth_prob": 0.6248,
         "eff_prob": 0.6401,
-        "bayesian_prob": 0.63
+        "bayesian_prob": 0.6298
       },
       "market": {
         "home_prob": null,
@@ -11369,19 +11315,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6174,
-        "exp_margin": 3.68,
-        "prob_7plus": 0.3882,
-        "prob_14plus": 0.1929,
-        "prob_21plus": 0.0723,
+        "win_prob": 0.6316,
+        "exp_margin": 3.83,
+        "prob_7plus": 0.3922,
+        "prob_14plus": 0.1895,
+        "prob_21plus": 0.0712,
         "margin_percentiles": [
           -15.4,
-          -11.3,
-          -4.3,
-          3.5,
+          -11.0,
+          -4.1,
+          3.8,
           11.6,
-          19.0,
-          23.0
+          18.9,
+          23.2
         ]
       },
       "adjustments": {
@@ -11394,9 +11340,9 @@
         "home_elo_bonus": 100
       },
       "h2h": {
-        "home_wins": 21,
-        "away_wins": 8,
-        "total_meetings": 29,
+        "home_wins": 13,
+        "away_wins": 7,
+        "total_meetings": 20,
         "last_n": [
           {
             "date": "2024-10-15",
@@ -11451,22 +11397,22 @@
         ]
       },
       "elo": {
-        "home": 1345.3,
-        "away": 1320.1,
+        "home": 1344.9,
+        "away": 1319.7,
         "diff": 25.2
       },
       "bayesian": {
-        "home_mu": 1781.5,
+        "home_mu": 1780.8,
         "home_sigma": 40.0,
-        "away_mu": 1787.7,
+        "away_mu": 1787.2,
         "away_sigma": 40.0,
         "home_band": [
-          1741.5,
-          1821.5
+          1740.8,
+          1820.8
         ],
         "away_band": [
-          1747.7,
-          1827.7
+          1747.2,
+          1827.2
         ]
       },
       "efficiency": {
@@ -11530,7 +11476,7 @@
         "Zach Collins (CHI) [Starter] DAY-TO-DAY \u2014 \u22127 ELO",
         "Home court: MIL +100 ELO advantage"
       ],
-      "explanation": "The model gives Milwaukee Bucks a 60.7% win probability \u2014 a moderate favorite over Chicago Bulls. Milwaukee Bucks net rating: +0.0. Home court +100 ELO for Milwaukee Bucks."
+      "explanation": "The model gives Milwaukee Bucks a 59.6% win probability \u2014 a slight favorite over Chicago Bulls. Milwaukee Bucks net rating: +0.0. Home court +100 ELO for Milwaukee Bucks."
     },
     {
       "game_id": "401914125",
@@ -11547,13 +11493,13 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.5044,
-        "logistic_prob": 0.5732,
-        "elo_prob": 0.4605,
-        "xgb_prob": 0.5652,
-        "pyth_prob": 0.6224,
+        "ensemble_prob": 0.4945,
+        "logistic_prob": 0.5437,
+        "elo_prob": 0.4604,
+        "xgb_prob": 0.5487,
+        "pyth_prob": 0.5676,
         "eff_prob": 0.6401,
-        "bayesian_prob": 0.6258
+        "bayesian_prob": 0.6257
       },
       "market": {
         "home_prob": null,
@@ -11563,19 +11509,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6174,
-        "exp_margin": 3.47,
-        "prob_7plus": 0.3761,
-        "prob_14plus": 0.183,
-        "prob_21plus": 0.0665,
+        "win_prob": 0.627,
+        "exp_margin": 3.72,
+        "prob_7plus": 0.3893,
+        "prob_14plus": 0.1888,
+        "prob_21plus": 0.0677,
         "margin_percentiles": [
-          -15.6,
-          -11.4,
-          -4.4,
-          3.3,
-          11.3,
+          -15.7,
+          -11.2,
+          -4.1,
+          3.8,
+          11.6,
           18.5,
-          22.7
+          22.9
         ]
       },
       "adjustments": {
@@ -11588,20 +11534,10 @@
         "home_elo_bonus": 100
       },
       "h2h": {
-        "home_wins": 5,
+        "home_wins": 3,
         "away_wins": 5,
-        "total_meetings": 10,
+        "total_meetings": 8,
         "last_n": [
-          {
-            "date": "2022-02-04",
-            "winner": "MIN",
-            "margin": 11
-          },
-          {
-            "date": "2022-02-06",
-            "winner": "MIN",
-            "margin": 13
-          },
           {
             "date": "2023-01-01",
             "winner": "DET",
@@ -11645,18 +11581,18 @@
         ]
       },
       "elo": {
-        "home": 1613.8,
-        "away": 1695.2,
+        "home": 1613.3,
+        "away": 1694.7,
         "diff": -81.4
       },
       "bayesian": {
-        "home_mu": 1785.8,
+        "home_mu": 1785.7,
         "home_sigma": 40.0,
         "away_mu": 1795.1,
         "away_sigma": 40.0,
         "home_band": [
-          1745.8,
-          1825.8
+          1745.7,
+          1825.7
         ],
         "away_band": [
           1755.1,
@@ -11725,7 +11661,7 @@
         "Jalen Duren (DET) [Starter] DAY-TO-DAY \u2014 \u22128 ELO",
         "Home court: MIN +100 ELO advantage"
       ],
-      "explanation": "The model gives Minnesota Timberwolves a 50.4% win probability \u2014 a slight favorite over Detroit Pistons. Minnesota Timberwolves net rating: +0.0. Home court +100 ELO for Minnesota Timberwolves."
+      "explanation": "The model gives Detroit Pistons a 50.6% win probability \u2014 a slight favorite over Minnesota Timberwolves. Detroit Pistons net rating: +0.0. Home court +100 ELO for Minnesota Timberwolves."
     },
     {
       "game_id": "401918011",
@@ -11742,13 +11678,13 @@
       "home_score": 0,
       "away_score": 0,
       "predictions": {
-        "ensemble_prob": 0.4857,
-        "logistic_prob": 0.6047,
+        "ensemble_prob": 0.4783,
+        "logistic_prob": 0.5916,
         "elo_prob": 0.4088,
-        "xgb_prob": 0.595,
-        "pyth_prob": 0.645,
+        "xgb_prob": 0.5677,
+        "pyth_prob": 0.6011,
         "eff_prob": 0.6401,
-        "bayesian_prob": 0.6389
+        "bayesian_prob": 0.6387
       },
       "market": {
         "home_prob": null,
@@ -11758,19 +11694,19 @@
         "away_american": null
       },
       "monte_carlo": {
-        "win_prob": 0.6363,
-        "exp_margin": 4.14,
-        "prob_7plus": 0.4068,
-        "prob_14plus": 0.2013,
-        "prob_21plus": 0.0783,
+        "win_prob": 0.6443,
+        "exp_margin": 4.19,
+        "prob_7plus": 0.4012,
+        "prob_14plus": 0.195,
+        "prob_21plus": 0.0738,
         "margin_percentiles": [
-          -15.5,
-          -10.9,
-          -3.9,
-          4.2,
-          12.1,
-          19.4,
-          23.5
+          -14.7,
+          -10.4,
+          -3.7,
+          4.1,
+          12.0,
+          19.0,
+          23.3
         ]
       },
       "adjustments": {
@@ -11783,9 +11719,9 @@
         "home_elo_bonus": 100
       },
       "h2h": {
-        "home_wins": 11,
-        "away_wins": 20,
-        "total_meetings": 31,
+        "home_wins": 9,
+        "away_wins": 17,
+        "total_meetings": 26,
         "last_n": [
           {
             "date": "2025-04-22",
@@ -11840,22 +11776,22 @@
         ]
       },
       "elo": {
-        "home": 1546.6,
-        "away": 1653.4,
-        "diff": -106.8
+        "home": 1546.2,
+        "away": 1652.9,
+        "diff": -106.7
       },
       "bayesian": {
-        "home_mu": 1799.4,
+        "home_mu": 1799.2,
         "home_sigma": 40.0,
-        "away_mu": 1798.9,
+        "away_mu": 1798.8,
         "away_sigma": 40.0,
         "home_band": [
-          1759.4,
-          1839.4
+          1759.2,
+          1839.2
         ],
         "away_band": [
-          1758.9,
-          1838.9
+          1758.8,
+          1838.8
         ]
       },
       "efficiency": {
@@ -11965,7 +11901,482 @@
         "Trevon Brazile (DEN) [Starter] DAY-TO-DAY \u2014 \u22127 ELO",
         "Home court: LAC +100 ELO advantage"
       ],
-      "explanation": "The model gives Denver Nuggets a 51.4% win probability \u2014 a slight favorite over LA Clippers. Denver Nuggets net rating: +0.0. Home court +100 ELO for LA Clippers."
+      "explanation": "The model gives Denver Nuggets a 52.2% win probability \u2014 a slight favorite over LA Clippers. Denver Nuggets net rating: +0.0. Home court +100 ELO for LA Clippers."
+    },
+    {
+      "game_id": "401908945",
+      "game_time": "2026-10-15T23:30Z",
+      "status": "STATUS_SCHEDULED",
+      "is_future": true,
+      "home_team": "NYK",
+      "away_team": "TOR",
+      "home_name": "New York Knicks",
+      "away_name": "Toronto Raptors",
+      "home_logo": "https://a.espncdn.com/i/teamlogos/nba/500/ny.png",
+      "away_logo": "https://a.espncdn.com/i/teamlogos/nba/500/tor.png",
+      "neutral": false,
+      "home_score": 0,
+      "away_score": 0,
+      "predictions": {
+        "ensemble_prob": 0.7719,
+        "logistic_prob": 0.6171,
+        "elo_prob": 0.8855,
+        "xgb_prob": 0.5753,
+        "pyth_prob": 0.7152,
+        "eff_prob": 0.6401,
+        "bayesian_prob": 0.6394
+      },
+      "market": {
+        "home_prob": null,
+        "edge": null,
+        "kelly_pct": null,
+        "home_american": null,
+        "away_american": null
+      },
+      "monte_carlo": {
+        "win_prob": 0.6458,
+        "exp_margin": 4.23,
+        "prob_7plus": 0.4094,
+        "prob_14plus": 0.1986,
+        "prob_21plus": 0.0742,
+        "margin_percentiles": [
+          -14.9,
+          -10.9,
+          -3.7,
+          4.4,
+          12.1,
+          19.1,
+          23.4
+        ]
+      },
+      "adjustments": {
+        "rest_home": 7,
+        "rest_away": 7,
+        "rest_diff": 0,
+        "travel_dist_miles": 341.0,
+        "b2b_home": false,
+        "b2b_away": false,
+        "home_elo_bonus": 100
+      },
+      "h2h": {
+        "home_wins": 14,
+        "away_wins": 3,
+        "total_meetings": 17,
+        "last_n": [
+          {
+            "date": "2024-03-27",
+            "winner": "NYK",
+            "margin": 44
+          },
+          {
+            "date": "2024-12-10",
+            "winner": "NYK",
+            "margin": 5
+          },
+          {
+            "date": "2024-12-24",
+            "winner": "NYK",
+            "margin": 14
+          },
+          {
+            "date": "2025-01-09",
+            "winner": "NYK",
+            "margin": 14
+          },
+          {
+            "date": "2025-02-05",
+            "winner": "NYK",
+            "margin": 6
+          },
+          {
+            "date": "2025-11-30",
+            "winner": "NYK",
+            "margin": 22
+          },
+          {
+            "date": "2025-12-10",
+            "winner": "NYK",
+            "margin": 16
+          },
+          {
+            "date": "2026-01-29",
+            "winner": "NYK",
+            "margin": 27
+          },
+          {
+            "date": "2026-03-04",
+            "winner": "NYK",
+            "margin": 16
+          },
+          {
+            "date": "2026-04-10",
+            "winner": "NYK",
+            "margin": 17
+          }
+        ]
+      },
+      "elo": {
+        "home": 1832.4,
+        "away": 1563.9,
+        "diff": 268.5
+      },
+      "bayesian": {
+        "home_mu": 1799.9,
+        "home_sigma": 40.0,
+        "away_mu": 1799.0,
+        "away_sigma": 40.0,
+        "home_band": [
+          1759.9,
+          1839.9
+        ],
+        "away_band": [
+          1759.0,
+          1839.0
+        ]
+      },
+      "efficiency": {
+        "home_off_rating": 110.0,
+        "home_def_rating": 110.0,
+        "home_net_rating": 0.0,
+        "away_off_rating": 110.0,
+        "away_def_rating": 110.0,
+        "away_net_rating": 0.0,
+        "home_pace": 100.0,
+        "away_pace": 100.0
+      },
+      "injuries": {
+        "home": [
+          {
+            "player": "Mohamed Diawara",
+            "status": "Day-To-Day",
+            "position": "F",
+            "injury_description": "The severity of the finger injury is unknown, though it kept Diawara from playing in New York's final three Las Vegas Summer League outings. Over two outings in Las Vegas this summer, he averaged 3.5 points and 5.5 rebounds in 24.7 minutes per tilt.",
+            "value_tier": "starter"
+          }
+        ],
+        "away": [
+          {
+            "player": "Brandon Ingram",
+            "status": "Out",
+            "position": "F",
+            "injury_description": "The Clippers learned about the injury this summer, though it's unclear exactly how far along Ingram is in his recovery. The star forward's timeline for a return is unclear, clouding his fantasy outlook in the meantime. Darius Garland should take on all the usage he can handle in Ingram's stead, while Kris Dunn and Max Strus could have additional streaming appeal early in the year.",
+            "value_tier": "starter"
+          },
+          {
+            "player": "Nate Bittle",
+            "status": "Day-To-Day",
+            "position": "C",
+            "injury_description": "Bittle missed Toronto's Summer League finale due to right knee soreness, though it's unclear exactly what he's dealing with now. The 23-year-old center out of Oregon signed an Exhibit 10 contract with the Raptors in June and is set to compete for a spot on the regular-season roster at training camp, so his status will be worth monitoring moving forward.",
+            "value_tier": "starter"
+          },
+          {
+            "player": "Alijah Martin",
+            "status": "Day-To-Day",
+            "position": "G",
+            "injury_description": "Martin will miss the Raptors' Summer League finale after being held out of the team's first four games in Las Vegas. He appeared in just 23 regular-season games in 2025-26 and figures to continue providing backcourt depth in 2026-27.",
+            "value_tier": "starter"
+          },
+          {
+            "player": "Chucky Hepburn",
+            "status": "Day-To-Day",
+            "position": "G",
+            "injury_description": "Hepburn will be held out of the Raptors' Summer League finale, marking his third consecutive contest on the inactive list. The 23-year-old point guard appeared in two Las Vegas Summer League games, averaging 6.5 points, 6.5 assists, 3.5 rebounds and 1.5 steals in 29.1 minutes per contest.",
+            "value_tier": "starter"
+          }
+        ]
+      },
+      "injury_impact": {
+        "home_elo_penalty": 7.0,
+        "away_elo_penalty": 37.0,
+        "home_key_players_out": [
+          {
+            "player": "Mohamed Diawara",
+            "position": "F",
+            "status": "Day-To-Day",
+            "elo_impact": 7.0,
+            "value_tier": "starter"
+          }
+        ],
+        "away_key_players_out": [
+          {
+            "player": "Brandon Ingram",
+            "position": "F",
+            "status": "Out",
+            "elo_impact": 14.0,
+            "value_tier": "starter"
+          },
+          {
+            "player": "Nate Bittle",
+            "position": "C",
+            "status": "Day-To-Day",
+            "elo_impact": 8.0,
+            "value_tier": "starter"
+          },
+          {
+            "player": "Alijah Martin",
+            "position": "G",
+            "status": "Day-To-Day",
+            "elo_impact": 7.5,
+            "value_tier": "starter"
+          },
+          {
+            "player": "Chucky Hepburn",
+            "position": "G",
+            "status": "Day-To-Day",
+            "elo_impact": 7.5,
+            "value_tier": "starter"
+          }
+        ],
+        "home_star_count": 0,
+        "away_star_count": 0,
+        "home_star_stack_multiplier": 1.0,
+        "away_star_stack_multiplier": 1.0
+      },
+      "prediction_drivers": [
+        "ELO advantage: NYK +269 rating points",
+        "Mohamed Diawara (NYK) [Starter] DAY-TO-DAY \u2014 \u22127 ELO",
+        "Brandon Ingram (TOR) [Starter] OUT \u2014 \u221214 ELO",
+        "Nate Bittle (TOR) [Starter] DAY-TO-DAY \u2014 \u22128 ELO",
+        "Alijah Martin (TOR) [Starter] DAY-TO-DAY \u2014 \u22128 ELO",
+        "Home court: NYK +100 ELO advantage"
+      ],
+      "explanation": "The model gives New York Knicks a 77.2% win probability \u2014 a strong favorite over Toronto Raptors. New York Knicks net rating: +0.0. Home court +100 ELO for New York Knicks."
+    },
+    {
+      "game_id": "401908622",
+      "game_time": "2026-10-16T00:30Z",
+      "status": "STATUS_SCHEDULED",
+      "is_future": true,
+      "home_team": "HOU",
+      "away_team": "OKC",
+      "home_name": "Houston Rockets",
+      "away_name": "Oklahoma City Thunder",
+      "home_logo": "https://a.espncdn.com/i/teamlogos/nba/500/hou.png",
+      "away_logo": "https://a.espncdn.com/i/teamlogos/nba/500/okc.png",
+      "neutral": false,
+      "home_score": 0,
+      "away_score": 0,
+      "predictions": {
+        "ensemble_prob": 0.4175,
+        "logistic_prob": 0.4717,
+        "elo_prob": 0.3663,
+        "xgb_prob": 0.5318,
+        "pyth_prob": 0.5719,
+        "eff_prob": 0.6401,
+        "bayesian_prob": 0.6417
+      },
+      "market": {
+        "home_prob": null,
+        "edge": null,
+        "kelly_pct": null,
+        "home_american": null,
+        "away_american": null
+      },
+      "monte_carlo": {
+        "win_prob": 0.639,
+        "exp_margin": 4.09,
+        "prob_7plus": 0.4094,
+        "prob_14plus": 0.2002,
+        "prob_21plus": 0.0743,
+        "margin_percentiles": [
+          -15.5,
+          -11.2,
+          -3.8,
+          4.2,
+          12.0,
+          19.3,
+          23.3
+        ]
+      },
+      "adjustments": {
+        "rest_home": 7,
+        "rest_away": 7,
+        "rest_diff": 0,
+        "travel_dist_miles": 413.0,
+        "b2b_home": false,
+        "b2b_away": false,
+        "home_elo_bonus": 100
+      },
+      "h2h": {
+        "home_wins": 8,
+        "away_wins": 9,
+        "total_meetings": 17,
+        "last_n": [
+          {
+            "date": "2024-03-28",
+            "winner": "HOU",
+            "margin": 6
+          },
+          {
+            "date": "2024-10-10",
+            "winner": "HOU",
+            "margin": 9
+          },
+          {
+            "date": "2024-11-09",
+            "winner": "OKC",
+            "margin": 19
+          },
+          {
+            "date": "2024-12-02",
+            "winner": "HOU",
+            "margin": 3
+          },
+          {
+            "date": "2024-12-15",
+            "winner": "OKC",
+            "margin": 15
+          },
+          {
+            "date": "2025-03-04",
+            "winner": "OKC",
+            "margin": 9
+          },
+          {
+            "date": "2025-04-05",
+            "winner": "HOU",
+            "margin": 14
+          },
+          {
+            "date": "2025-10-21",
+            "winner": "OKC",
+            "margin": 1
+          },
+          {
+            "date": "2026-01-16",
+            "winner": "OKC",
+            "margin": 20
+          },
+          {
+            "date": "2026-02-07",
+            "winner": "HOU",
+            "margin": 6
+          }
+        ]
+      },
+      "elo": {
+        "home": 1621.3,
+        "away": 1813.3,
+        "diff": -192.0
+      },
+      "bayesian": {
+        "home_mu": 1797.9,
+        "home_sigma": 40.0,
+        "away_mu": 1795.3,
+        "away_sigma": 40.0,
+        "home_band": [
+          1757.9,
+          1837.9
+        ],
+        "away_band": [
+          1755.3,
+          1835.3
+        ]
+      },
+      "efficiency": {
+        "home_off_rating": 110.0,
+        "home_def_rating": 110.0,
+        "home_net_rating": 0.0,
+        "away_off_rating": 110.0,
+        "away_def_rating": 110.0,
+        "away_net_rating": 0.0,
+        "home_pace": 100.0,
+        "away_pace": 100.0
+      },
+      "injuries": {
+        "home": [],
+        "away": [
+          {
+            "player": "Ajay Mitchell",
+            "status": "Day-To-Day",
+            "position": "G",
+            "injury_description": "Mitchell appears to be a candidate for an expanded role in Oklahoma City's rotation after showing promise in a limited capacity last season.  The team lost Isaiah Joe, Aaron Wiggins and Luguentz Dort this offseason, making Mitchell an obvious player to watch ahead of fantasy drafts. His exact place in the rotation will become clearer during training camp and the preseason.",
+            "value_tier": "starter"
+          },
+          {
+            "player": "Thomas Sorber",
+            "status": "Day-To-Day",
+            "position": "C",
+            "injury_description": "The young center underwent a minor arthroscopic procedure on his right knee in early July after missing the 2025-26 campaign while recovering from a torn ACL in the same knee. Sorber had initially been expected to return to full basketball activities roughly four weeks after the procedure, so his workload will be worth monitoring as camp progresses.",
+            "value_tier": "starter"
+          },
+          {
+            "player": "Nikola Topic",
+            "status": "Day-To-Day",
+            "position": "G",
+            "injury_description": "General manager Sam Presti announced the restriction Thursday, and Topic is currently dealing with a back issue stemming from offseason surgery. The 21-year-old guard's participation level will be worth monitoring throughout camp as Oklahoma City prepares for the preseason.",
+            "value_tier": "starter"
+          },
+          {
+            "player": "Isaiah Hartenstein",
+            "status": "Day-To-Day",
+            "position": "C",
+            "injury_description": "Hartenstein sat out FIBA qualifiers with Germany to nurse an ankle injury he sustained earlier this summer, so it's encouraging to see him back on the court ahead of training camp in the fall. The 28-year-old big man appears to be firmly on track for the start of the regular season in October, barring any setbacks along the way.",
+            "value_tier": "starter"
+          },
+          {
+            "player": "Otega Oweh",
+            "status": "Day-To-Day",
+            "position": "G",
+            "injury_description": "Oweh suffered an apparent lower left leg injury in the Salt Lake City Summer League and did not suit up in Las Vegas. He appeared in two Salt Lake City Summer League outings, averaging 6.0 points, 4.5 rebounds, 2.0 steals and 1.5 assists in 23.6 minutes per contest.",
+            "value_tier": "starter"
+          }
+        ]
+      },
+      "injury_impact": {
+        "home_elo_penalty": 0.0,
+        "away_elo_penalty": 38.5,
+        "home_key_players_out": [],
+        "away_key_players_out": [
+          {
+            "player": "Ajay Mitchell",
+            "position": "G",
+            "status": "Day-To-Day",
+            "elo_impact": 7.5,
+            "value_tier": "starter"
+          },
+          {
+            "player": "Thomas Sorber",
+            "position": "C",
+            "status": "Day-To-Day",
+            "elo_impact": 8.0,
+            "value_tier": "starter"
+          },
+          {
+            "player": "Nikola Topic",
+            "position": "G",
+            "status": "Day-To-Day",
+            "elo_impact": 7.5,
+            "value_tier": "starter"
+          },
+          {
+            "player": "Isaiah Hartenstein",
+            "position": "C",
+            "status": "Day-To-Day",
+            "elo_impact": 8.0,
+            "value_tier": "starter"
+          },
+          {
+            "player": "Otega Oweh",
+            "position": "G",
+            "status": "Day-To-Day",
+            "elo_impact": 7.5,
+            "value_tier": "starter"
+          }
+        ],
+        "home_star_count": 0,
+        "away_star_count": 0,
+        "home_star_stack_multiplier": 1.0,
+        "away_star_stack_multiplier": 1.0
+      },
+      "prediction_drivers": [
+        "ELO advantage: OKC +192 rating points",
+        "Ajay Mitchell (OKC) [Starter] DAY-TO-DAY \u2014 \u22128 ELO",
+        "Thomas Sorber (OKC) [Starter] DAY-TO-DAY \u2014 \u22128 ELO",
+        "Nikola Topic (OKC) [Starter] DAY-TO-DAY \u2014 \u22128 ELO",
+        "Home court: HOU +100 ELO advantage"
+      ],
+      "explanation": "The model gives Oklahoma City Thunder a 58.3% win probability \u2014 a slight favorite over Houston Rockets. Oklahoma City Thunder net rating: +0.0. Home court +100 ELO for Houston Rockets."
     }
   ]
 }
