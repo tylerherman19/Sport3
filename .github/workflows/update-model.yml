@@ -55,6 +55,10 @@ jobs:
         run: python scripts/updatekalshi.py
         continue-on-error: true
 
+      - name: Update public prediction record
+        run: python scripts/build_record.py
+        continue-on-error: true
+
       - name: Commit updated NFL predictions
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
