@@ -70,8 +70,6 @@ body{background:var(--paper);color:var(--ink);font-family:"Archivo",sans-serif;f
 .rec .res.hit{color:var(--blue)}
 .rec .res.miss{color:var(--muted);text-decoration:line-through}
 .rec .res.pend{color:var(--muted);font-family:"Archivo";font-weight:600;font-size:11px;letter-spacing:.1em}
-.burn{display:block;width:100%;background:none;border:none;border-top:1px solid var(--faint);padding:12px;font:inherit;font-size:11px;font-weight:700;letter-spacing:.14em;color:var(--muted);cursor:pointer;text-align:center}
-.burn:hover{color:var(--ink)}
 
 /* halftime report */
 .halftime{display:grid;grid-template-columns:1fr 1fr;border-top:4px solid var(--ink)}
@@ -162,10 +160,9 @@ body{background:var(--paper);color:var(--ink);font-family:"Archivo",sans-serif;f
 </nav>
 <main>
 <header class="strip-head"><h2>ON THE RECORD</h2><span>THE PREDICTION LOG</span></header>
-<p class="sec-note">Personal device log. This browser saves a snapshot before kickoff and grades it after games finish. It is not a public or immutable performance record.</p>
+<p class="sec-note">The public prediction log. Every pick is published before kickoff and graded after the final whistle. The pick of record is the last prediction published before each game; once a game starts, the pick does not move. Ties don't count.</p>
 <div class="rec-strip" id="rec-strip"></div>
 <div id="rec"></div>
-<button class="burn" id="burn" type="button">Burn the tape</button>
 </main>
 <script>const TZ="America/Chicago";
 const DATA_BASE="./data/";
@@ -191,79 +188,32 @@ const eP=d=>1/(1+Math.pow(10,-d/400));
 
 let WEEK=null, PRED=null, LB=null;
 
-/* ── on the record: the prediction log ── */
-const LOGKEY="sport3_log_nfl";
-function logRead(){try{return JSON.parse(localStorage.getItem(LOGKEY)||"[]")}catch{return[]}}
-function logWrite(e){try{localStorage.setItem(LOGKEY,JSON.stringify(e))}catch{}}
-function logGames(){
-  const entries=logRead(), ids=new Set(entries.map(e=>e.game_id));
-  let added=false;
-  for(const g of (PRED?.games||[])){
-    if(!g.game_id||ids.has(g.game_id))continue;
-    const p=g.predictions?.ensemble_prob;
-    if(typeof p!=="number")continue;
-    entries.push({game_id:g.game_id,saved_at:new Date().toISOString(),home_team:g.home_team,away_team:g.away_team,game_time:g.game_time,week:g.week,predicted_winner:p>=.5?g.home_team:g.away_team,predicted_prob:Math.max(p,1-p),actual_winner:null,home_score:null,away_score:null});
-    added=true;
-  }
-  if(added)logWrite(entries);
-}
-const ESPNFIX={"JAC":"JAX","ARZ":"ARI","CLV":"CLE","HST":"HOU","LVR":"LV","WSH":"WAS"};
-const normAbbr=a=>{const u=(a||"").toUpperCase();return ESPNFIX[u]||u};
-async function resolveWinners(){
-  const entries=logRead(), un=entries.filter(e=>!e.actual_winner&&e.game_time&&new Date(e.game_time)<new Date());
-  if(!un.length)return;
-  const groups={};
-  for(const e of un){const dt=new Date(e.game_time);const d=dt.getUTCFullYear()+String(dt.getUTCMonth()+1).padStart(2,"0")+String(dt.getUTCDate()).padStart(2,"0");(groups[d]=groups[d]||[]).push(e)}
-  for(const [date,dayEntries] of Object.entries(groups)){
-    try{
-      const data=await fetch("https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard?dates="+date).then(r=>r.json());
-      for(const ev of (data.events||[])){
-        const comp=(ev.competitions||[])[0]; if(!comp)continue;
-        const cs=comp.competitors||[]; if(cs.length<2)continue;
-        let winner=cs.find(c=>c.winner);
-        const homeC=cs.find(c=>c.homeAway==="home"), awayC=cs.find(c=>c.homeAway==="away");
-        if(!winner&&ev.status?.type?.name==="STATUS_FINAL"&&homeC&&awayC){
-          const hs=parseInt(homeC.score,10),as=parseInt(awayC.score,10);
-          if(!isNaN(hs)&&!isNaN(as)&&hs!==as)winner=hs>as?homeC:awayC;
-        }
-        if(!winner)continue;
-        const wAbbr=normAbbr(winner.team?.abbreviation);
-        const match=dayEntries.find(e=>e.game_id===ev.id||(e.home_team===normAbbr(homeC?.team?.abbreviation)&&e.away_team===normAbbr(awayC?.team?.abbreviation)));
-        const entry=match&&entries.find(e=>e.game_id===match.game_id);
-        if(entry&&wAbbr){
-          entry.actual_winner=wAbbr;
-          if(homeC?.score!=null)entry.home_score=parseInt(homeC.score,10);
-          if(awayC?.score!=null)entry.away_score=parseInt(awayC.score,10);
-        }
-      }
-    }catch{/* network failure, skip */}
-  }
-  logWrite(entries);
-}
-function renderLog(){
-  const entries=logRead().slice().sort((a,b)=>new Date(b.game_time)-new Date(a.game_time));
-  const resolved=entries.filter(e=>e.actual_winner);
-  const hits=resolved.filter(e=>e.actual_winner===e.predicted_winner);
+/* ── on the record: the public prediction log ── */
+async function loadRecord(){try{const r=await fetch(DATA_BASE+"nfl_record.json?t="+Date.now());return r.ok?await r.json():null}catch{return null}}
+function renderRecord(rec){
+  const games=(rec?.games||[]).slice().sort((a,b)=>new Date(b.game_time)-new Date(a.game_time));
+  const called=games.filter(e=>e.predicted_winner);
+  const graded=called.filter(e=>e.result==="HIT"||e.result==="MISS");
+  const hits=graded.filter(e=>e.result==="HIT");
   document.getElementById("rec-strip").innerHTML=[
-    {n:entries.length,l:"Called"},
+    {n:called.length,l:"Called"},
     {n:hits.length,l:"Hit",blue:1},
-    {n:resolved.length-hits.length,l:"Missed"},
-    {n:resolved.length?(hits.length/resolved.length*100).toFixed(1)+"%":"—",l:"Graded",blue:1},
+    {n:graded.length-hits.length,l:"Missed"},
+    {n:graded.length?(hits.length/graded.length*100).toFixed(1)+"%":"—",l:"Graded",blue:1},
   ].map(s=>`<div class="rs"><span class="n ${s.blue?"blue":""}">${s.n}</span><span class="l">${s.l}</span></div>`).join("");
-  document.getElementById("rec").innerHTML=entries.length?entries.map(e=>{
+  let html="",lastWeek=null;
+  for(const e of games){
+    if(e.week!==lastWeek){lastWeek=e.week;html+=`<p class="sec-note">WEEK ${e.week}</p>`}
     const d=new Date(e.game_time);
     const ds=d.toLocaleDateString("en-US",{timeZone:TZ,month:"short",day:"numeric"}).toUpperCase();
-    const graded=!!e.actual_winner, hit=graded&&e.actual_winner===e.predicted_winner;
-    const score=graded&&e.home_score!=null?` · ${esc(e.away_team)} ${e.away_score}, ${esc(e.home_team)} ${e.home_score}`:"";
-    return `<div class="rec"><span class="d">${ds}</span><span class="pk"><b>${esc(e.predicted_winner)}</b> ${(e.predicted_prob*100).toFixed(1)}%<span class="v"> · ${esc(e.away_team)} at ${esc(e.home_team)}${score}</span></span><span class="res ${graded?(hit?"hit":"miss"):"pend"}">${graded?(hit?"HIT":"MISS"):"PENDING"}</span></div>`;
-  }).join(""):`<p class="sec-note">No picks on the record yet. This week's card was just dealt - check back after kickoff.</p>`;
+    const done=e.result==="HIT"||e.result==="MISS", hit=e.result==="HIT";
+    const score=done&&e.home_score!=null?` · ${esc(e.away_team)} ${e.away_score}, ${esc(e.home_team)} ${e.home_score}`:(e.result==="TIE"&&e.home_score!=null?` · ${esc(e.away_team)} ${e.away_score}, ${esc(e.home_team)} ${e.home_score}`:"");
+    const res=e.result==="TIE"?["pend","TIE"]:e.result==="NO_PICK"||!e.predicted_winner?["pend","NO PICK"]:done?(hit?["hit","HIT"]:["miss","MISS"]):["pend","PENDING"];
+    const pk=e.predicted_winner?`<b>${esc(e.predicted_winner)}</b> ${(e.predicted_prob*100).toFixed(1)}%`:`<b>—</b>`;
+    html+=`<div class="rec"><span class="d">${ds}</span><span class="pk">${pk}<span class="v"> · ${esc(e.away_team)} at ${esc(e.home_team)}${score}</span></span><span class="res ${res[0]}">${res[1]}</span></div>`;
+  }
+  document.getElementById("rec").innerHTML=html||`<p class="sec-note">No picks on the record yet. This week's card was just dealt - check back after kickoff.</p>`;
 }
-document.getElementById("burn").addEventListener("click",()=>{
-  if(!confirm("Burn the whole tape? Every logged pick on this device gets erased."))return;
-  try{localStorage.removeItem(LOGKEY)}catch{};
-  renderLog();
-});
-
 
 function fillBug(pred){
   if(!pred)return;
@@ -275,8 +225,7 @@ function fillBug(pred){
 (async()=>{
   const {pred}=await loadAll();
   PRED=pred;fillBug(pred);
-  logGames();renderLog();
-  resolveWinners().then(renderLog);
+  renderRecord(await loadRecord());
 })();
 </script>
 </body>
