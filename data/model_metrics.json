@@ -1,8 +1,8 @@
 {
-  "updated": "2026-11-26T17:58:43.430844+00:00",
-  "log_loss": 0.6231,
-  "brier_score": 0.2171,
-  "auc": 0.705,
+  "updated": "2026-11-27T17:44:04.163697+00:00",
+  "log_loss": 0.6232,
+  "brier_score": 0.2172,
+  "auc": 0.7049,
   "calibration_buckets": [
     {
       "bucket": "0-10%",
@@ -37,14 +37,14 @@
     {
       "bucket": "50-60%",
       "predicted": 0.551,
-      "actual": 0.549,
-      "count": 530
+      "actual": 0.548,
+      "count": 531
     },
     {
       "bucket": "60-70%",
-      "predicted": 0.648,
-      "actual": 0.613,
-      "count": 524
+      "predicted": 0.649,
+      "actual": 0.612,
+      "count": 526
     },
     {
       "bucket": "70-80%",
@@ -98,61 +98,61 @@
     },
     {
       "year": 2026,
-      "accuracy": 0.6503
+      "accuracy": 0.6446
     }
   ],
-  "accuracy": 0.6546,
+  "accuracy": 0.6542,
   "evaluation": "walk-forward backtest of the shipped QB-adjusted Elo with the offseason roster-value layer, 2017-2026, pre-game information only",
-  "n_scored_games": 2649,
+  "n_scored_games": 2652,
   "vegas_benchmark": {
     "accuracy": 0.6635,
-    "log_loss": 0.6087,
-    "brier_score": 0.2106,
-    "auc": 0.7246,
-    "n_games": 2425
+    "log_loss": 0.609,
+    "brier_score": 0.2108,
+    "auc": 0.7242,
+    "n_games": 2428
   },
   "market_edge_backtest": {
     "method": "Hypothetical one-unit moneyline bets when model probability differs from devigged archived market probability. Fixed cutoffs; no threshold chosen after results.",
     "market_price_note": "nflverse archived moneyline fields; capture timestamp and sportsbook are not available in this dataset.",
-    "n_market_games": 2425,
+    "n_market_games": 2428,
     "cutoffs": [
       {
-        "bets": 2425,
-        "win_rate": 0.4548,
-        "roi": -0.0236,
-        "net_units": -57.27,
-        "average_edge": 0.0672,
+        "bets": 2428,
+        "win_rate": 0.4547,
+        "roi": -0.0228,
+        "net_units": -55.35,
+        "average_edge": 0.0673,
         "min_edge": 0.0
       },
       {
-        "bets": 1813,
-        "win_rate": 0.4385,
-        "roi": -0.0303,
-        "net_units": -54.89,
+        "bets": 1817,
+        "win_rate": 0.4392,
+        "roi": -0.0276,
+        "net_units": -50.24,
         "average_edge": 0.0858,
         "min_edge": 0.025
       },
       {
-        "bets": 1280,
-        "win_rate": 0.4289,
-        "roi": -0.029,
-        "net_units": -37.13,
-        "average_edge": 0.106,
+        "bets": 1282,
+        "win_rate": 0.429,
+        "roi": -0.0278,
+        "net_units": -35.58,
+        "average_edge": 0.1061,
         "min_edge": 0.05
       },
       {
-        "bets": 859,
-        "win_rate": 0.4389,
-        "roi": 0.0323,
-        "net_units": 27.76,
-        "average_edge": 0.1277,
+        "bets": 863,
+        "win_rate": 0.4415,
+        "roi": 0.0377,
+        "net_units": 32.55,
+        "average_edge": 0.1276,
         "min_edge": 0.075
       },
       {
-        "bets": 571,
-        "win_rate": 0.4151,
-        "roi": -0.0118,
-        "net_units": -6.75,
+        "bets": 573,
+        "win_rate": 0.4171,
+        "roi": -0.0045,
+        "net_units": -2.6,
         "average_edge": 0.1483,
         "min_edge": 0.1
       }
@@ -176,8 +176,8 @@
       },
       {
         "season": 2020,
-        "bets": 127,
-        "roi": -0.1804
+        "bets": 126,
+        "roi": -0.1945
       },
       {
         "season": 2021,
@@ -206,11 +206,11 @@
       },
       {
         "season": 2026,
-        "bets": 85,
-        "roi": 0.0098
+        "bets": 88,
+        "roi": 0.0453
       }
     ]
   },
-  "n_training_games": 7440,
+  "n_training_games": 7443,
   "xgboost_available": true
 }
